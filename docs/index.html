@@ -1,56 +1,58 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fantasy Manager 25</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 { text-align: center; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
-        th, td {
-            padding: 8px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-        th {
-            background-color: #333;
-            color: white;
-        }
-        .last-updated {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fantasy Manager 25</title>
+  <style>
+    :root {
+      --bg:#f6f7f9; --card:#ffffff; --text:#1f2937; --muted:#6b7280; --border:#e5e7eb;
+      --head:#111827; --headbg:#111827; --headfg:#ffffff;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; padding:24px 16px; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .container { max-width: 980px; margin: 0 auto; }
+    h1 { margin: 0 0 8px 0; text-align:center; }
+    .status { text-align:center; color:var(--muted); margin-bottom:18px; }
+    .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,.06);}
+    table { width:100%; border-collapse: collapse; }
+    thead th { background:var(--headbg); color:var(--headfg); font-weight:600; letter-spacing:.01em; }
+    th, td { padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }
+    tbody tr:hover { background:#fafafa; }
+    .footer { margin-top:16px; text-align:center; color:var(--muted); font-size:.9rem; }
+    .hidden { display:none; }
+  </style>
 </head>
 <body>
+  <div class="container">
     <h1>Fantasy Manager 25</h1>
-    <div class="last-updated" id="lastUpdated">Loading last update time...</div>
-    <table id="standingsTable">
+    <div class="status" id="lastUpdate">Loading last update time...</div>
+
+    <div class="card">
+      <table id="standingsTable" aria-label="League Standings">
         <thead>
-            <tr>
-                <th>Team</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Points For</th>
-                <th>Points Against</th>
-            </tr>
+          <tr>
+            <th>Team</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Points For</th>
+            <th>Points Against</th>
+          </tr>
         </thead>
         <tbody></tbody>
-    </table>
+      </table>
+      <div id="emptyState" class="status hidden">No data found in <code>data/latest.json</code>.</div>
+    </div>
 
-    <script src="js/app.js"></script>
+    <div class="footer">
+      <span id="buildNote">Serving static JSON from <code>/docs/data/latest.json</code></span>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="container status">Enable JavaScript to view data.</div>
+  </noscript>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
