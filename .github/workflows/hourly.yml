@@ -1,1 +1,36 @@
+name: Hourly Build
 
+on:
+  schedule:
+    - cron: "0 * * * *"   # top of every hour (UTC)
+  workflow_dispatch:       # manual run button
+
+concurrency:
+  group: fantasy-war-room
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Run pipeline
+        run: |
+          python -V
+          python pipeline/run_all.py
+
+      - name: Commit and push JSON outputs
+        run: |
+          git config user.email "robot@users.noreply.github.com"
+          git config user.name "robot"
+          git add docs/data/status.json
+          git commit -m "Update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
+          git push
