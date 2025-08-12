@@ -2,8 +2,8 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: "0 * * * *"   # top of every hour (UTC)
-  workflow_dispatch:       # manual run button
+    - cron: "0 * * * *"    # top of every hour UTC
+  workflow_dispatch:        # manual button
 
 concurrency:
   group: fantasy-war-room
@@ -32,5 +32,5 @@ jobs:
           git config user.email "robot@users.noreply.github.com"
           git config user.name "robot"
           git add docs/data/status.json
-          git commit -m "Update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes to commit"
+          git commit -m "Update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes"
           git push
