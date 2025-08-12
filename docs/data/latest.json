@@ -1,0 +1,8 @@
+{
+    "last_updated": "2025-08-12T20:00:00Z",
+    "standings": [
+        { "name": "Team Alpha", "wins": 3, "losses": 0, "points_for": 320, "points_against": 250 },
+        { "name": "Team Bravo", "wins": 2, "losses": 1, "points_for": 290, "points_against": 270 },
+        { "name": "Team Charlie", "wins": 1, "losses": 2, "points_for": 250, "points_against": 310 }
+    ]
+}
