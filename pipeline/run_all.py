@@ -14,4 +14,5 @@ status = {
 
 with open(data_dir / "status.json", "w", encoding="utf-8") as f:
     json.dump(status, f, indent=2)
+
 print("Wrote docs/data/status.json")
