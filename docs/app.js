@@ -1,15 +1,130 @@
-fetch('data/espn_mStandings.json')
-  .then(response => response.json())
-  .then(json => {
-    const teams = json.standings.entries.map(entry => {
-      return {
-        teamName: entry.team.displayName,
-        wins: entry.stats.find(s => s.name === 'wins').value,
-        losses: entry.stats.find(s => s.name === 'losses').value,
-        pointsFor: entry.stats.find(s => s.name === 'pointsFor').value,
-        pointsAgainst: entry.stats.find(s => s.name === 'pointsAgainst').value
-      };
-    });
+// Fetch status.json for timestamp + espn_mStandings.json for data.
+// Accepts typical ESPN structure: { standings: { entries: [ { team, stats: [...] } ] } }
 
-    renderStandingsTable(teams);
+const tbody = document.getElementById('tbody');
+const lastUpdate = document.getElementById('lastUpdate');
+const emptyEl = document.getElementById('empty');
+const errEl = document.getElementById('error');
+const spin = document.getElementById('spin');
+const statusText = document.getElementById('statusText');
+const refreshBtn = document.getElementById('refreshBtn');
+const countEl = document.getElementById('count');
+
+let timer, secs = 60;
+
+function startCountdown(){
+  clearInterval(timer);
+  secs = 60;
+  countEl.textContent = secs;
+  timer = setInterval(()=>{
+    secs -= 1;
+    if(secs <= 0){ clearInterval(timer); load(); }
+    countEl.textContent = secs;
+  }, 1000);
+}
+
+function rowHtml(t){
+  return `<tr>
+      <td class="left">${t.teamName}</td>
+      <td>${t.wins}</td>
+      <td>${t.losses}</td>
+      <td>${t.pointsFor}</td>
+      <td>${t.pointsAgainst}</td>
+    </tr>`;
+}
+
+function highlightLeader(rows){
+  // leader: max wins, tie-break by pointsFor
+  let bestIdx = -1, best = {wins:-1, pf:-1};
+  rows.forEach((t, i) => {
+    const w = Number(t.wins ?? -1);
+    const pf = Number(t.pointsFor ?? -1);
+    if (w > best.wins || (w === best.wins && pf > best.pf)) {
+      bestIdx = i; best = {wins:w, pf:pf};
+    }
   });
+  if(bestIdx >= 0){
+    tbody.rows[bestIdx].classList.add('leader');
+    const nameCell = tbody.rows[bestIdx].cells[0];
+    nameCell.innerHTML = nameCell.innerHTML + `<span class="badge">Leader</span>`;
+  }
+}
+
+async function fetchJson(path){
+  const res = await fetch(path, { cache: 'no-store' });
+  if(!res.ok) throw new Error(`${path} HTTP ${res.status}`);
+  return await res.json();
+}
+
+function mapEspnStandings(json){
+  // ESPN commonly: json.standings.entries = [ { team:{displayName}, stats:[{name,value},...] } ]
+  const entries =
+    json?.standings?.entries ??
+    json?.entries ?? // fallback if flattened
+    [];
+
+  const teams = entries.map(e => {
+    const teamName =
+      e?.team?.displayName ??
+      e?.team?.location && e?.team?.nickname ? `${e.team.location} ${e.team.nickname}` :
+      e?.team?.nickname ?? e?.team?.location ?? '—';
+
+    const get = (name) => {
+      const s = (e?.stats || []).find(x => x?.name === name);
+      return (s && (s.value ?? s.displayValue)) ?? 0;
+    };
+
+    return {
+      teamName,
+      wins: Number(get('wins')),
+      losses: Number(get('losses')),
+      pointsFor: Number(get('pointsFor')),
+      pointsAgainst: Number(get('pointsAgainst'))
+    };
+  });
+
+  // sort: wins desc, pointsFor desc
+  teams.sort((a,b)=> (b.wins - a.wins) || (b.pointsFor - a.pointsFor));
+  return teams;
+}
+
+async function load(){
+  spin.style.visibility = 'visible';
+  statusText.textContent = 'Fetching data';
+  errEl.classList.add('hidden');
+
+  try{
+    // Fetch both in parallel
+    const [statusJson, standingsJson] = await Promise.all([
+      fetchJson('data/status.json').catch(()=>({generated_utc: null})),
+      fetchJson('data/espn_mStandings.json')
+    ]);
+
+    // Update timestamp
+    const ts = statusJson.generated_utc || new Date().toISOString();
+    lastUpdate.textContent = `Last updated (UTC): ${ts}`;
+
+    // Map standings
+    const rows = mapEspnStandings(standingsJson);
+    tbody.innerHTML = '';
+    if(!rows.length){
+      emptyEl.classList.remove('hidden');
+    } else {
+      emptyEl.classList.add('hidden');
+      rows.forEach(t => tbody.insertAdjacentHTML('beforeend', rowHtml(t)));
+      highlightLeader(rows);
+    }
+
+    statusText.textContent = 'Up to date';
+  } catch(err){
+    console.error(err);
+    errEl.classList.remove('hidden');
+    statusText.textContent = 'Fetch failed';
+  } finally{
+    spin.style.visibility = 'hidden';
+    startCountdown();
+  }
+}
+
+refreshBtn.addEventListener('click', ()=> load());
+document.addEventListener('DOMContentLoaded', load);
