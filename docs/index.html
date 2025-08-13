@@ -5,99 +5,162 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fantasy Manager 25</title>
   <style>
-    :root { --bg:#f6f7f9; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#e5e7eb; --headbg:#111827; --headfg:#fff; }
-    * { box-sizing: border-box; }
-    body { margin:0; padding:24px 16px; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .container { max-width: 980px; margin: 0 auto; }
-    h1 { margin: 0 0 8px; text-align:center; }
-    .status { text-align:center; color:var(--muted); margin: 6px 0 16px; }
-    .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px; box-shadow:0 1px 3px rgba(0,0,0,.06);}
-    table { width:100%; border-collapse: collapse; }
-    thead th { background:var(--headbg); color:var(--headfg); font-weight:600; letter-spacing:.01em; }
-    th, td { padding:10px 8px; text-align:center; border-bottom:1px solid var(--border); }
-    tbody tr:hover { background:#fafafa; }
-    .hidden { display:none; }
-    .error { color:#b91c1c; }
+    :root{
+      --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2a44;
+      --headbg:#111827; --headfg:#ffffff; --accent:#22c55e; --warn:#ef4444; --chip:#334155;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0b1220 0%, #0b1220 40%, #0e1426 100%); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
+    .wrap{max-width:1000px; margin:28px auto; padding:0 14px;}
+    h1{margin:0 0 6px; text-align:center; font-weight:800; letter-spacing:.2px}
+    .sub{color:var(--muted); text-align:center; font-size:.95rem; margin-bottom:14px}
+    .bar{display:flex; gap:10px; justify-content:center; align-items:center; color:var(--muted); font-size:.9rem; margin-bottom:14px}
+    .pill{background:var(--chip); border:1px solid var(--border); padding:6px 10px; border-radius:999px}
+    .btn{cursor:pointer; user-select:none}
+    .card{background:rgba(19,28,56,.6); border:1px solid var(--border); border-radius:14px; box-shadow:0 8px 30px rgba(0,0,0,.22); overflow:hidden}
+    table{width:100%; border-collapse:collapse}
+    thead th{background:var(--headbg); color:var(--headfg); font-weight:700; text-transform:uppercase; font-size:.78rem; letter-spacing:.06em}
+    th,td{padding:12px 10px; text-align:center; border-bottom:1px solid var(--border)}
+    tbody tr:hover{background:rgba(51,65,85,.25)}
+    .left{text-align:left}
+    .leader{background:rgba(34,197,94,.14)}
+    .badge{background:var(--accent); color:#06250f; font-weight:700; font-size:.72rem; padding:4px 8px; border-radius:999px; margin-left:8px}
+    .err{color:var(--warn)}
+    .foot{color:var(--muted); text-align:center; font-size:.85rem; margin-top:14px}
+    .hidden{display:none}
+    .spinner{width:14px;height:14px;border:2px solid var(--muted);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin 1s linear infinite;vertical-align:-2px;margin-right:6px}
+    @keyframes spin{to{transform:rotate(360deg)}}
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="wrap">
     <h1>Fantasy Manager 25</h1>
-    <div class="status" id="lastUpdate">Loading last update time…</div>
+    <div class="sub" id="lastUpdate">Loading…</div>
+
+    <div class="bar">
+      <span class="pill"><span class="spinner" id="spin"></span><span id="statusText">Fetching data</span></span>
+      <span class="pill">Auto refresh in <span id="count">60</span>s</span>
+      <span class="pill btn" id="refreshBtn" title="Refresh now">↻ Refresh</span>
+    </div>
 
     <div class="card">
-      <table id="standingsTable" aria-label="League Standings">
+      <table aria-label="League Standings">
         <thead>
           <tr>
-            <th>Team</th>
+            <th class="left">Team</th>
             <th>Wins</th>
             <th>Losses</th>
             <th>Points For</th>
             <th>Points Against</th>
           </tr>
         </thead>
-        <tbody id="standingsBody"></tbody>
+        <tbody id="tbody"></tbody>
       </table>
-      <div id="emptyState" class="status hidden">No data found in <code>data/latest.json</code>.</div>
-      <div id="errorState" class="status error hidden">Error loading <code>data/latest.json</code>. Check Actions/logs.</div>
+      <div id="empty" class="sub hidden">No rows in <code>data/latest.json</code>.</div>
+      <div id="error" class="sub err hidden">Error loading <code>data/latest.json</code>. Check the Actions run logs.</div>
     </div>
 
-    <div class="status">Serving static JSON from <code>/docs/data/latest.json</code></div>
+    <div class="foot">Serving static JSON from <code>/docs/data/latest.json</code></div>
   </div>
 
   <script>
-    // Robust loader that handles a few possible JSON shapes.
-    async function loadData() {
-      const lastEl = document.getElementById('lastUpdate');
-      const bodyEl = document.getElementById('standingsBody');
-      const emptyEl = document.getElementById('emptyState');
-      const errEl = document.getElementById('errorState');
+    const tbody = document.getElementById('tbody');
+    const lastUpdate = document.getElementById('lastUpdate');
+    const emptyEl = document.getElementById('empty');
+    const errEl = document.getElementById('error');
+    const spin = document.getElementById('spin');
+    const statusText = document.getElementById('statusText');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const countEl = document.getElementById('count');
 
-      try {
-        const res = await fetch('data/latest.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw = await res.json();
+    let timer, secs = 60;
 
-        // Accept either:
-        // 1) array of teams [{team, wins, losses, pointsFor, pointsAgainst}]
-        // 2) {standings: [...]}
-        // 3) {teams: [...]}    (fallback)
-        const rows = Array.isArray(raw) ? raw
-                   : Array.isArray(raw.standings) ? raw.standings
-                   : Array.isArray(raw.teams) ? raw.teams
-                   : [];
+    function startCountdown(){
+      clearInterval(timer);
+      secs = 60;
+      countEl.textContent = secs;
+      timer = setInterval(()=>{
+        secs -= 1;
+        if(secs <= 0){ clearInterval(timer); load(); }
+        countEl.textContent = secs;
+      }, 1000);
+    }
 
-        // Update "last updated"
-        const ts = raw.last_updated || raw.generated_utc || new Date().toISOString();
-        lastEl.textContent = `Last updated (UTC): ${ts}`;
+    function rowHtml(t){
+      const name = t.team ?? t.name ?? '—';
+      const wins = t.wins ?? '—';
+      const losses = t.losses ?? '—';
+      const pf = t.pointsFor ?? t.points_for ?? '—';
+      const pa = t.pointsAgainst ?? t.points_against ?? '—';
+      return `<tr>
+        <td class="left">${name}</td>
+        <td>${wins}</td>
+        <td>${losses}</td>
+        <td>${pf}</td>
+        <td>${pa}</td>
+      </tr>`;
+    }
 
-        // Render rows
-        bodyEl.innerHTML = '';
-        if (!rows.length) {
-          emptyEl.classList.remove('hidden');
-          return;
+    function highlightLeader(rows){
+      // leader: max wins, tie-break by pointsFor
+      let bestIdx = -1, best = {wins:-1, pointsFor:-1};
+      rows.forEach((t, i) => {
+        const w = Number(t.wins ?? -1);
+        const pf = Number(t.pointsFor ?? t.points_for ?? -1);
+        if (w > best.wins || (w === best.wins && pf > best.pointsFor)){
+          bestIdx = i; best = {wins:w, pointsFor:pf};
         }
-        emptyEl.classList.add('hidden');
-
-        for (const t of rows) {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${t.team || t.name || '—'}</td>
-            <td>${t.wins ?? '—'}</td>
-            <td>${t.losses ?? '—'}</td>
-            <td>${t.pointsFor ?? t.points_for ?? '—'}</td>
-            <td>${t.pointsAgainst ?? t.points_against ?? '—'}</td>
-          `;
-          bodyEl.appendChild(tr);
-        }
-      } catch (e) {
-        console.error(e);
-        errEl.classList.remove('hidden');
-        lastEl.textContent = 'Last updated: (failed to load)';
+      });
+      if(bestIdx >= 0){
+        tbody.rows[bestIdx].classList.add('leader');
+        const nameCell = tbody.rows[bestIdx].cells[0];
+        nameCell.innerHTML = nameCell.innerHTML + `<span class="badge">Leader</span>`;
       }
     }
 
-    document.addEventListener('DOMContentLoaded', loadData);
+    async function load(){
+      // UI: fetching
+      spin.style.visibility = 'visible';
+      statusText.textContent = 'Fetching data';
+
+      try{
+        const res = await fetch('data/latest.json', {cache:'no-store'});
+        if(!res.ok) throw new Error(`HTTP ${res.status}`);
+        const raw = await res.json();
+
+        // normalize shapes: array | {standings:[]} | {teams:[]}
+        const rows = Array.isArray(raw) ? raw
+          : Array.isArray(raw.standings) ? raw.standings
+          : Array.isArray(raw.teams) ? raw.teams
+          : [];
+
+        const ts = raw.last_updated || raw.generated_utc || new Date().toISOString();
+        lastUpdate.textContent = `Last updated (UTC): ${ts}`;
+
+        tbody.innerHTML = '';
+        errEl.classList.add('hidden');
+
+        if(!rows.length){
+          emptyEl.classList.remove('hidden');
+        } else {
+          emptyEl.classList.add('hidden');
+          rows.forEach(t => tbody.insertAdjacentHTML('beforeend', rowHtml(t)));
+          highlightLeader(rows);
+        }
+
+        statusText.textContent = 'Up to date';
+      } catch(err){
+        console.error(err);
+        errEl.classList.remove('hidden');
+        statusText.textContent = 'Fetch failed';
+      } finally{
+        spin.style.visibility = 'hidden';
+        startCountdown();
+      }
+    }
+
+    refreshBtn.addEventListener('click', ()=> load());
+    document.addEventListener('DOMContentLoaded', load);
   </script>
 </body>
 </html>
