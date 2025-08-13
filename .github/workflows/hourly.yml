@@ -2,8 +2,11 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: '0 * * * *'  # every hour
-  workflow_dispatch:
+    - cron: "0 * * * *" # every hour
+  workflow_dispatch: # allows manual run
+
+permissions:
+  contents: write  # <-- Needed so the bot can commit to repo
 
 jobs:
   build:
@@ -11,70 +14,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.x"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install requests==2.32.3
+          pip install -r requirements.txt
 
       - name: Fetch ESPN (public)
         run: |
-          import json, requests, os
-          
-          LEAGUE_ID = "508419792"
-          SEASON = "2025"
-          BASE_URL = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}"
-
-          headers = {
-              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-              "Accept": "application/json",
-              "X-Fantasy-Filter": "{}"
-          }
-
-          os.makedirs("docs/data", exist_ok=True)
-
-          endpoints = {
-              "mTeam": {"view": "mTeam"},
-              "mRoster": {"view": "mRoster"},
-              "mStandings": {"view": "mStandings"},
-              "mSettings": {"view": "mSettings"},
-              "mMatchup": {"view": "mMatchup"}
-          }
-
-          errors = {}
-
-          for name, params in endpoints.items():
-              url = BASE_URL
-              try:
-                  resp = requests.get(url, headers=headers, params=params)
-                  resp.raise_for_status()
-                  with open(f"docs/data/espn_{name}.json", "w") as f:
-                      json.dump(resp.json(), f)
-              except Exception as e:
-                  errors[name] = str(e)
-
-          manifest = {
-              "league_id": LEAGUE_ID,
-              "season": SEASON,
-              "generated_utc": __import__("datetime").datetime.utcnow().isoformat() + "Z",
-              "files": list(endpoints.keys()),
-              "errors": errors
-          }
-
-          with open("docs/data/espn_manifest.json", "w") as f:
-              json.dump(manifest, f, indent=2)
-
-        shell: python
+          python fetch_espn.py
 
       - name: Commit & push JSON
         run: |
+          git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
           git add docs/data/*.json
           git commit -m "Update ESPN JSON data" || echo "No changes to commit"
           git push
