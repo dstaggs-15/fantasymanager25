@@ -1,0 +1,78 @@
+{
+  "league_id": "508419792",
+  "season": "2025",
+  "generated_utc": "2025-08-13T04:28:20Z",
+  "files": [],
+  "errors": [
+    {
+      "mTeam": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mRoster": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mStandings": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mSettings": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_1": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_2": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_3": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_4": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_5": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_6": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_7": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_8": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_9": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_10": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_11": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_12": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_13": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_14": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_15": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_16": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_17": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    },
+    {
+      "mMatchup_week_18": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+    }
+  ],
+  "weekly_matchup_weeks": []
+}
