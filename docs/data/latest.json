@@ -1,16 +1,23 @@
 [
   {
-    "team": "Team A",
-    "wins": 5,
-    "losses": 2,
-    "pointsFor": 750,
-    "pointsAgainst": 690
+    "team": "Duloc Gingerbread Men",
+    "wins": 2,
+    "losses": 1,
+    "pointsFor": 297,
+    "pointsAgainst": 274
   },
   {
-    "team": "Team B",
-    "wins": 4,
-    "losses": 3,
-    "pointsFor": 710,
-    "pointsAgainst": 705
+    "team": "Far Far Away Knights",
+    "wins": 2,
+    "losses": 1,
+    "pointsFor": 282,
+    "pointsAgainst": 263
+  },
+  {
+    "team": "Dragon\u2019s Lair",
+    "wins": 1,
+    "losses": 2,
+    "pointsFor": 249,
+    "pointsAgainst": 302
   }
 ]
