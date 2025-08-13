@@ -2,15 +2,18 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: "0 * * * *"   # top of every hour (UTC)
+    - cron: "0 * * * *"   # hourly (UTC)
   workflow_dispatch:
 
 permissions:
-  contents: write   # allow pushing JSON back to the repo
+  contents: write
 
 concurrency:
   group: fantasymanager25-hourly
   cancel-in-progress: true
+
+env:
+  SEASON: "2025"    # adjust if needed
 
 jobs:
   build:
@@ -27,10 +30,13 @@ jobs:
 
       - name: Install deps
         run: |
-          python -V
-          pip install -r requirements.txt || true
+          pip install -r requirements.txt
 
-      - name: Run pipeline
+      - name: Run ESPN sync
+        env:
+          LEAGUE_ID: ${{ secrets.LEAGUE_ID }}
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2:   ${{ secrets.ESPN_S2 }}
         run: |
           python pipeline/run_all.py
 
