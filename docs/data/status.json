@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2025-08-13T17:27:37Z",
-  "season": "2025",
+  "generated_utc": "2025-08-13T17:33:59Z",
+  "season": null,
   "week": null,
-  "notes": "LEAGUE_ID missing; nothing fetched"
+  "notes": "ESPN secrets missing \u2192 serving dummy data"
 }
