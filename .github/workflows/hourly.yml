@@ -2,11 +2,14 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: "0 * * * *"    # top of every hour UTC
-  workflow_dispatch:        # manual button
+    - cron: "0 * * * *"   # top of every hour (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write   # allow pushing JSON back to the repo
 
 concurrency:
-  group: fantasy-war-room
+  group: fantasymanager25-hourly
   cancel-in-progress: true
 
 jobs:
@@ -22,15 +25,19 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
-      - name: Run pipeline
+      - name: Install deps
         run: |
           python -V
+          pip install -r requirements.txt || true
+
+      - name: Run pipeline
+        run: |
           python pipeline/run_all.py
 
       - name: Commit and push JSON outputs
         run: |
           git config user.email "robot@users.noreply.github.com"
           git config user.name "robot"
-          git add docs/data/status.json
-          git commit -m "Update status $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "No changes"
+          git add docs/data/status.json docs/data/latest.json
+          git commit -m "robot: update data $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes to commit"
           git push
