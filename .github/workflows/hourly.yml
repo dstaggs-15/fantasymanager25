@@ -2,39 +2,47 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: "0 * * * *" # every hour
-  workflow_dispatch: # allows manual run
-
-permissions:
-  contents: write  # <-- Needed so the bot can commit to repo
+    - cron: "0 * * * *"  # every hour
+  workflow_dispatch:     # allow manual runs
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # allows pushing changes
+
     steps:
+      - name: Set up job
+        run: echo "Starting hourly build..."
+
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.11"
 
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install requests espn-api==0.38.1  # latest compatible
+          pip install beautifulsoup4
 
       - name: Fetch ESPN (public)
-        run: |
-          python fetch_espn.py
+        run: python pipeline/fetch_espn_public.py
+
+      # If you want to run the SDK version instead, uncomment this:
+      # - name: Fetch ESPN via SDK
+      #   run: python pipeline/fetch_espn_via_sdk.py
 
       - name: Commit & push JSON
         run: |
-          git config --global user.name "github-actions[bot]"
           git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git add docs/data/*.json
           git commit -m "Update ESPN JSON data" || echo "No changes to commit"
-          git push
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
