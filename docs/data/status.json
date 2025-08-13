@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2025-08-13T04:31:43Z",
+  "generated_utc": "2025-08-13T04:40:48Z",
   "season": "2025",
   "week": null,
-  "notes": "ESPN fetch partial: 23 error(s)"
+  "notes": "ESPN fetch failed: no files written"
 }

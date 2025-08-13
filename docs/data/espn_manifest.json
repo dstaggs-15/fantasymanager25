@@ -1,78 +1,79 @@
 {
   "league_id": "508419792",
   "season": "2025",
-  "generated_utc": "2025-08-13T04:31:41Z",
+  "generated_utc": "2025-08-13T04:40:44Z",
   "files": [],
   "errors": [
     {
-      "mTeam": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mTeam": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mRoster": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mRoster": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mStandings": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mStandings": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mSettings": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mSettings": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_1": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_1": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_2": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_2": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_3": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_3": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_4": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_4": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_5": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_5": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_6": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_6": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_7": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_7": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_8": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_8": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_9": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_9": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_10": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_10": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_11": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_11": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_12": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_12": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_13": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_13": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_14": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_14": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_15": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_15": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_16": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_16": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_17": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_17": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     },
     {
-      "mMatchup_week_18": "HTTPError: 403 Client Error: Forbidden for url: https://www.espn.com/fantasy/"
+      "mMatchup_week_18": "JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
     }
   ],
+  "used_cookies": false,
   "weekly_matchup_weeks": []
 }
