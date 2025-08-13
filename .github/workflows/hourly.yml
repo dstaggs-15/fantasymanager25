@@ -2,7 +2,7 @@ name: Hourly Build
 
 on:
   schedule:
-    - cron: "0 * * * *"   # hourly (UTC)
+    - cron: "0 * * * *"   # top of every hour (UTC)
   workflow_dispatch:
 
 permissions:
@@ -13,37 +13,34 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  SEASON: "2025"    # adjust if needed
+  SEASON: "2025"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repo
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
 
       - name: Install deps
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
-      - name: Run ESPN sync
+      - name: Fetch ESPN (public)
         env:
-          LEAGUE_ID: ${{ secrets.LEAGUE_ID }}
-          ESPN_SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2:   ${{ secrets.ESPN_S2 }}
-        run: |
-          python pipeline/run_all.py
+          LEAGUE_ID: "508419792"  # set your ID here or use a repo secret
+          SEASON: ${{ env.SEASON }}
+        run: python pipeline/fetch_espn_public.py
 
-      - name: Commit and push JSON outputs
+      - name: Commit & push JSON
         run: |
           git config user.email "robot@users.noreply.github.com"
           git config user.name "robot"
-          git add docs/data/status.json docs/data/latest.json
-          git commit -m "robot: update data $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes to commit"
+          git add docs/data/espn_*.json docs/data/status.json
+          git commit -m "robot: espn refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes"
           git push
