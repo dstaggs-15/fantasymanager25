@@ -1,5 +1,5 @@
-// Fetch status.json for timestamp + espn_mStandings.json for data.
-// Accepts typical ESPN structure: { standings: { entries: [ { team, stats: [...] } ] } }
+// Reads: data/status.json and data/espn_mStandings.json
+// Accepts either nested ESPN JSON or a flat array written by our fetcher.
 
 const tbody = document.getElementById('tbody');
 const lastUpdate = document.getElementById('lastUpdate');
@@ -34,7 +34,6 @@ function rowHtml(t){
 }
 
 function highlightLeader(rows){
-  // leader: max wins, tie-break by pointsFor
   let bestIdx = -1, best = {wins:-1, pf:-1};
   rows.forEach((t, i) => {
     const w = Number(t.wins ?? -1);
@@ -43,7 +42,7 @@ function highlightLeader(rows){
       bestIdx = i; best = {wins:w, pf:pf};
     }
   });
-  if(bestIdx >= 0){
+  if(bestIdx >= 0 && tbody.rows[bestIdx]){
     tbody.rows[bestIdx].classList.add('leader');
     const nameCell = tbody.rows[bestIdx].cells[0];
     nameCell.innerHTML = nameCell.innerHTML + `<span class="badge">Leader</span>`;
@@ -56,18 +55,29 @@ async function fetchJson(path){
   return await res.json();
 }
 
-function mapEspnStandings(json){
-  // ESPN commonly: json.standings.entries = [ { team:{displayName}, stats:[{name,value},...] } ]
-  const entries =
-    json?.standings?.entries ??
-    json?.entries ?? // fallback if flattened
-    [];
+// Map ESPN standings JSON -> flat rows for table
+function mapStandings(json){
+  // Case 1: already flat array from our fetcher
+  if (Array.isArray(json)) {
+    return json.map(x => ({
+      teamName: x.teamName ?? '—',
+      wins: Number(x.wins ?? 0),
+      losses: Number(x.losses ?? 0),
+      pointsFor: Number(x.pointsFor ?? 0),
+      pointsAgainst: Number(x.pointsAgainst ?? 0),
+    })).sort((a,b)=> (b.wins - a.wins) || (b.pointsFor - a.pointsFor));
+  }
 
-  const teams = entries.map(e => {
+  // Case 2: our fetcher wrapped the raw ESPN object under { fetched_at, data: {...} }
+  const payload = (json && json.data) ? json.data : json;
+
+  // ESPN nested shape: payload.standings.entries = [ { team, stats: [...] } ]
+  const entries = payload?.standings?.entries ?? payload?.entries ?? [];
+  const rows = entries.map(e => {
     const teamName =
-      e?.team?.displayName ??
-      e?.team?.location && e?.team?.nickname ? `${e.team.location} ${e.team.nickname}` :
-      e?.team?.nickname ?? e?.team?.location ?? '—';
+      e?.team?.displayName ||
+      (e?.team?.location && e?.team?.nickname ? `${e.team.location} ${e.team.nickname}` :
+       (e?.team?.nickname || e?.team?.location || '—'));
 
     const get = (name) => {
       const s = (e?.stats || []).find(x => x?.name === name);
@@ -79,13 +89,12 @@ function mapEspnStandings(json){
       wins: Number(get('wins')),
       losses: Number(get('losses')),
       pointsFor: Number(get('pointsFor')),
-      pointsAgainst: Number(get('pointsAgainst'))
+      pointsAgainst: Number(get('pointsAgainst')),
     };
   });
 
-  // sort: wins desc, pointsFor desc
-  teams.sort((a,b)=> (b.wins - a.wins) || (b.pointsFor - a.pointsFor));
-  return teams;
+  rows.sort((a,b)=> (b.wins - a.wins) || (b.pointsFor - a.pointsFor));
+  return rows;
 }
 
 async function load(){
@@ -94,18 +103,15 @@ async function load(){
   errEl.classList.add('hidden');
 
   try{
-    // Fetch both in parallel
     const [statusJson, standingsJson] = await Promise.all([
       fetchJson('data/status.json').catch(()=>({generated_utc: null})),
       fetchJson('data/espn_mStandings.json')
     ]);
 
-    // Update timestamp
     const ts = statusJson.generated_utc || new Date().toISOString();
     lastUpdate.textContent = `Last updated (UTC): ${ts}`;
 
-    // Map standings
-    const rows = mapEspnStandings(standingsJson);
+    const rows = mapStandings(standingsJson);
     tbody.innerHTML = '';
     if(!rows.length){
       emptyEl.classList.remove('hidden');
