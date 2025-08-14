@@ -1,4 +1,4 @@
 {
-  "fetched_at": "2025-08-14T20:39:59Z",
+  "fetched_at": "2025-08-14T21:15:43Z",
   "error": "RuntimeError: RuntimeError: Non-JSON (content-type=text/html;charset=utf-8), snippet= \t<!DOCTYPE html> \t<html class=\"no-icon-fonts\" lang=\"en\"> \t<head> \t\t<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" /> <meta http-equiv=\"x-ua-compatible\" content=\"IE=edge,chrome=1\" /> <meta name=\"viewport\" content=\"initia"
 }
