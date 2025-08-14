@@ -19,9 +19,27 @@ HEADERS = {
     "Referer": f"https://fantasy.espn.com/football/league?leagueId={LEAGUE_ID}",
 }
 
+def _clean_cookie(val: str | None) -> str | None:
+    if not val:
+        return None
+    v = val.strip().strip('"').strip("'")
+    return v
+
+def _clean_swid(val: str | None) -> str | None:
+    v = _clean_cookie(val)
+    if not v:
+        return None
+    # ensure braces exist
+    if not (v.startswith("{") and v.endswith("}")):
+        v = "{" + v.strip("{}") + "}"
+    return v
+
+SWID = _clean_swid(os.getenv("ESPN_SWID"))
+S2   = _clean_cookie(os.getenv("ESPN_S2"))
+
 COOKIES = {}
-if os.getenv("ESPN_SWID") and os.getenv("ESPN_S2"):
-    COOKIES = {"SWID": os.getenv("ESPN_SWID"), "espn_s2": os.getenv("ESPN_S2")}
+if SWID and S2:
+    COOKIES = {"SWID": SWID, "espn_s2": S2}
 
 def utcnow() -> str:
     return datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -35,6 +53,10 @@ def fetch_view(session: requests.Session, view: str, extra_params: dict | None =
         params.update(extra_params)
     r = session.get(BASE, headers=HEADERS, cookies=COOKIES, params=params, timeout=30)
     r.raise_for_status()
+    # guard non-JSON
+    ctype = (r.headers.get("content-type") or "").lower()
+    if "json" not in ctype:
+        raise RuntimeError(f"Non-JSON response (content-type={ctype})")
     return r.json()
 
 def main() -> int:
@@ -66,33 +88,12 @@ def main() -> int:
 
     # Status + manifest
     write_json(DATA_DIR / "espn_manifest.json", manifest)
+
     status_note = "ESPN fetch OK" if manifest["files"] else "ESPN fetch failed: no files"
     if manifest["errors"]:
         status_note = f"ESPN fetch partial: {len(manifest['errors'])} error(s)"
     write_json(DATA_DIR / "status.json",
                {"generated_utc": utcnow(), "season": SEASON, "week": None, "notes": status_note})
-
-    # Also write a simple latest.json (table-ready) so UI can be dumb-simple
-    # Try to map standings into rows: team, wins, losses, PF, PA
-    rows = []
-    try:
-        raw = json.loads((DATA_DIR / "espn_mStandings.json").read_text(encoding="utf-8"))
-        entries = raw.get("data", {}).get("standings", {}).get("entries", [])
-        for e in entries:
-            team = e.get("team", {}) or {}
-            name = team.get("displayName") or f"{team.get('location','').strip()} {team.get('nickname','').strip()}".strip() or "—"
-            stats = { (st.get("name") or "").lower(): st.get("value") for st in (e.get("stats") or []) }
-            rows.append({
-                "teamName": name,
-                "wins": int(stats.get("wins", 0) or 0),
-                "losses": int(stats.get("losses", 0) or 0),
-                "pointsFor": float(stats.get("pointsfor", 0) or 0),
-                "pointsAgainst": float(stats.get("pointsagainst", 0) or 0),
-            })
-    except Exception as e:
-        manifest["errors"].append(f"latest.json mapping: {type(e).__name__}: {e}")
-
-    write_json(DATA_DIR / "latest.json", {"generated_utc": utcnow(), "rows": rows})
     return 0
 
 if __name__ == "__main__":
