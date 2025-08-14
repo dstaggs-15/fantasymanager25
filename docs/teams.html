@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teams • Fantasy Manager 25</title>
+  <style>
+    :root{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--border:#1f2a44;--headbg:#111827;--headfg:#fff;}
+    *{box-sizing:border-box}
+    body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
+    .wrap{max-width:1100px;margin:28px auto;padding:0 14px}
+    h1{margin:0 0 8px;font-weight:800}
+    .sub{color:var(--muted);margin-bottom:12px}
+    .card{background:#0f172a;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:14px}
+    .team{margin-bottom:8px;font-weight:700}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
+    .num{text-align:right}
+    a{color:#93c5fd;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Teams</h1>
+    <div class="sub">Source: <code>data/team_rosters.json</code> • <a href="./">Home</a></div>
+    <div id="container"></div>
+  </div>
+
+  <script src="teams.js"></script>
+</body>
+</html>
