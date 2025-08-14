@@ -1,8 +1,7 @@
 {
   "league_id": "508419792",
   "season": "2025",
-  "generated_utc": "2025-08-14T04:50:32Z",
-  "used_cookies": false,
+  "generated_utc": "2025-08-14T05:14:23Z",
   "files": [],
   "errors": [
     "mStandings: JSONDecodeError: Expecting value: line 2 column 2 (char 2)",
@@ -28,6 +27,5 @@
     "mMatchup_week_16: JSONDecodeError: Expecting value: line 2 column 2 (char 2)",
     "mMatchup_week_17: JSONDecodeError: Expecting value: line 2 column 2 (char 2)",
     "mMatchup_week_18: JSONDecodeError: Expecting value: line 2 column 2 (char 2)"
-  ],
-  "weekly_matchup_weeks": []
+  ]
 }
