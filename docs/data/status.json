@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2025-08-14T19:13:10Z",
+  "generated_utc": "2025-08-14T20:17:21Z",
   "season": "2025",
   "week": null,
   "notes": "ESPN fetch partial: 23 error(s)",
-  "players_error": "players fetch error: RuntimeError: Non-JSON response (content-type=text/html;charset=utf-8):  \t<!DOCTYPE html> \t<html class=\"no-icon-fonts\" lang=\"en\"> \t<head> \t\t<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" /> <meta http-equiv=\"x-ua"
+  "players_error": "players fetch error: ValueError: Invalid header value b'SWID={F0AB9EEB-EFC6-4E1D-A9FC-818448FFC022}; espn_s2=AEAEzePfv4oiM0SmKwYVkHpdfEAmd3b98tI7nN4c29I%2BpYXXlSsYs0BJXRmoWJK43fNLKvOXTMFEVr4Jm8QUiSj6KLxDK1br3w4KUkXcl7%2Bl%2BrOPwx34cTmV58GN%2BNPrY15dOyv%2B9kmhSlDet63%2Fd0BAX24aBPp2Hpbp%2BVHuPtAiODX%2FsBs%2FkSjSxsSAdJla%2FEjlL0FLOwzNYKO8JK7uB10FNrNhtfHVwMUgdRvCASSVGjXHIb%2FrzgosC4Gps%2B3cbQ2YnHiIXfBzpjaAdmX2KmbdZkUAylgW5W%2FBm%2Fp1upf4GrPl84ffyhQJR5W%2FgcAiV59389L8%2F1RvlTXNJFJsbupj\\n'"
 }
