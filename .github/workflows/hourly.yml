@@ -2,39 +2,47 @@ name: Hourly Build and Deploy
 
 on:
   schedule:
-    - cron: "0 * * * *" # Every hour
+    - cron: "0 * * * *" # every hour
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests>=2.31,<3
 
-    - name: Ensure data folder exists
-      run: |
-        mkdir -p fantasymanager25/docs/data
-        touch fantasymanager25/docs/data/.gitkeep
+      - name: Ensure docs/data exists
+        run: |
+          mkdir -p fantasymanager25/docs/data
+          touch fantasymanager25/docs/data/.gitkeep
 
-    - name: Fetch all ESPN data
-      run: python pipeline/fetch_espn_all.py
+      - name: Fetch ALL ESPN data (single-file, no imports)
+        env:
+          LEAGUE_ID: "508419792"              # or set as a repo secret and reference ${{ secrets.LEAGUE_ID }}
+          SEASON: "2025"
+          ESPN_SWID: ${{ secrets.ESPN_SWID }} # optional
+          ESPN_S2:   ${{ secrets.ESPN_S2 }}   # optional
+        run: |
+          python pipeline/fetch_espn_all.py
 
-    - name: Commit and push changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add fantasymanager25/docs/data
-        git commit -m "Update ESPN data [skip ci]" || echo "No changes to commit"
-        git push
+      - name: Commit & push JSON
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add fantasymanager25/docs/data
+          git commit -m "robot: espn refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes"
+          git push
