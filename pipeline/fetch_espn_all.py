@@ -1,37 +1,21 @@
 #!/usr/bin/env python3
 """
-Single-file ESPN fetcher (no imports from other project files).
-- Works for public leagues; can optionally use cookies if provided.
-- Writes outputs to fantasymanager25/docs/data/.
-- Produces a manifest + status so the frontend can show errors gracefully.
-
-Env vars (recommended):
-  LEAGUE_ID   e.g. 508419792
-  SEASON      e.g. 2025
-  ESPN_SWID   optional; include braces, e.g. {ABCDEF12-....}
-  ESPN_S2     optional; long cookie string
-
-Outputs (JSON):
-  fantasymanager25/docs/data/espn_mStandings.json
-  fantasymanager25/docs/data/espn_mMatchup.json
-  fantasymanager25/docs/data/espn_mRoster.json
-  fantasymanager25/docs/data/espn_mTeam.json
-  fantasymanager25/docs/data/espn_mSettings.json
-  fantasymanager25/docs/data/espn_mMatchup_week_#.json  (best effort, 1..18)
-  fantasymanager25/docs/data/espn_manifest.json
-  fantasymanager25/docs/data/status.json
+Single-file ESPN fetcher (no intra-project imports).
+Writes outputs to docs/data/ so GitHub Pages can serve them at:
+https://<user>.github.io/fantasymanager25/data/<file>.json
 """
 
 from __future__ import annotations
 import os, json, time, datetime, pathlib
 import requests
 
-# ---------- Config ----------
+# ---------- Config from env with safe defaults ----------
 LEAGUE_ID = os.getenv("LEAGUE_ID", "508419792")
 SEASON    = os.getenv("SEASON", "2025")
 
+# Repo root is parent of this file's folder (pipeline/)
 ROOT     = pathlib.Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "fantasymanager25" / "docs" / "data"
+DATA_DIR = ROOT / "docs" / "data"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 BASE = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}"
@@ -49,6 +33,7 @@ HEADERS = {
     "Pragma": "no-cache",
 }
 
+# Optional cookies (only needed for private leagues)
 COOKIES = {}
 if os.getenv("ESPN_SWID") and os.getenv("ESPN_S2"):
     COOKIES = {"SWID": os.getenv("ESPN_SWID"), "espn_s2": os.getenv("ESPN_S2")}
@@ -85,7 +70,7 @@ def main() -> int:
         out = DATA_DIR / name
         write_json(out, data)
         manifest["files"].append(name)
-        print(f"✅ wrote {out}")
+        print(f"✅ wrote {out.relative_to(ROOT)}")
 
     core_views = ["mStandings", "mMatchup", "mRoster", "mTeam", "mSettings"]
 
@@ -94,15 +79,14 @@ def main() -> int:
         try:
             print(f"→ fetching {v}")
             data = fetch_view(session, v)
-            # include timestamp to help the UI
             save(f"espn_{v}.json", {"fetched_at": utcnow(), "data": data})
-            time.sleep(0.4)
+            time.sleep(0.35)
         except Exception as e:
             err = f"{v}: {type(e).__name__}: {e}"
             manifest["errors"].append(err)
             print(f"⚠️  {err}")
 
-    # Weekly matchup snapshots (best effort, not fatal if pre-season)
+    # Weekly matchup snapshots (not fatal if pre-season)
     weekly_ok = []
     for sp in range(1, 19):
         try:
@@ -110,14 +94,14 @@ def main() -> int:
             data = fetch_view(session, "mMatchup", {"scoringPeriodId": sp})
             save(f"espn_mMatchup_week_{sp}.json", {"fetched_at": utcnow(), "data": data})
             weekly_ok.append(sp)
-            time.sleep(0.3)
+            time.sleep(0.25)
         except Exception as e:
             manifest["errors"].append(f"mMatchup_week_{sp}: {type(e).__name__}: {e}")
 
     manifest["weekly_matchup_weeks"] = weekly_ok
     write_json(DATA_DIR / "espn_manifest.json", manifest)
 
-    # Status banner for the site
+    # Status banner for the UI
     note = "ESPN fetch OK" if manifest["files"] else "ESPN fetch failed: no files written"
     if manifest["errors"]:
         note = f"ESPN fetch partial: {len(manifest['errors'])} error(s)"
@@ -131,7 +115,7 @@ def main() -> int:
 
     print("———— done ————")
     print(json.dumps({"files": len(manifest["files"]), "errors": len(manifest["errors"])}, indent=2))
-    # Never hard-fail the workflow on ESPN quirks; return 0.
+    # Do not fail the action on ESPN hiccups
     return 0
 
 if __name__ == "__main__":
