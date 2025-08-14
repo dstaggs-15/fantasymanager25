@@ -2,7 +2,7 @@ name: Hourly Build and Deploy
 
 on:
   schedule:
-    - cron: "0 * * * *" # every hour (UTC)
+    - cron: "0 * * * *"   # every hour (UTC)
   workflow_dispatch:
 
 permissions:
@@ -28,15 +28,15 @@ jobs:
 
       - name: Ensure docs/data exists
         run: |
-          mkdir -p fantasymanager25/docs/data
-          touch fantasymanager25/docs/data/.gitkeep
+          mkdir -p docs/data
+          touch docs/data/.gitkeep
 
-      - name: Fetch ALL ESPN data (single-file, no imports)
+      - name: Fetch ALL ESPN data (single-file, writes to docs/data)
         env:
           LEAGUE_ID: "508419792"              # or use ${{ secrets.LEAGUE_ID }}
           SEASON: "2025"
-          ESPN_SWID: ${{ secrets.ESPN_SWID }} # optional
-          ESPN_S2:   ${{ secrets.ESPN_S2 }}   # optional
+          ESPN_SWID: ${{ secrets.ESPN_SWID }} # optional for private leagues
+          ESPN_S2:   ${{ secrets.ESPN_S2 }}   # optional for private leagues
         run: |
           python pipeline/fetch_espn_all.py
 
@@ -44,6 +44,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add fantasymanager25/docs/data
+          git add docs/data
           git commit -m "robot: espn refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes"
           git push
