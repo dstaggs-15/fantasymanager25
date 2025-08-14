@@ -48,6 +48,10 @@ jobs:
         run: |
           python pipeline/fetch_players.py
 
+      - name: Build team_rosters.json from ESPN files
+        run: |
+          python pipeline/build_team_rosters.py
+
       - name: Commit & push JSON
         run: |
           git config user.name  "github-actions[bot]"
