@@ -1,14 +1,8 @@
-import sys
-import os
-
-# Make sure Python can find the other fetch scripts in this folder
-sys.path.append(os.path.dirname(__file__))
-
-from fetch_espn_standings import fetch_espn_standings
-from fetch_espn_matchups import fetch_espn_matchups
-from fetch_espn_rosters import fetch_espn_rosters
-from fetch_espn_teams import fetch_espn_teams
-from fetch_espn_settings import fetch_espn_settings
+from .fetch_espn_standings import fetch_espn_standings
+from .fetch_espn_matchups import fetch_espn_matchups
+from .fetch_espn_rosters import fetch_espn_rosters
+from .fetch_espn_teams import fetch_espn_teams
+from .fetch_espn_settings import fetch_espn_settings
 
 if __name__ == "__main__":
     LEAGUE_ID = 508419792
