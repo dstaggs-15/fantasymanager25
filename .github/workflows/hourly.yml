@@ -23,6 +23,11 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
 
+    - name: Ensure data folder exists
+      run: |
+        mkdir -p fantasymanager25/docs/data
+        touch fantasymanager25/docs/data/.gitkeep
+
     - name: Fetch all ESPN data
       run: python pipeline/fetch_espn_all.py
 
@@ -30,6 +35,6 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add data/*.json
+        git add fantasymanager25/docs/data
         git commit -m "Update ESPN data [skip ci]" || echo "No changes to commit"
         git push
