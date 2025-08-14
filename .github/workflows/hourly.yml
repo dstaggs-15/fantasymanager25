@@ -2,7 +2,7 @@ name: Hourly Build and Deploy
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *"   # every hour (UTC)
   workflow_dispatch:
 
 permissions:
@@ -30,6 +30,27 @@ jobs:
         run: |
           mkdir -p docs/data
           echo '{}' > docs/data/status.json
+
+      - name: Check secrets present (lengths only)
+        env:
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2:   ${{ secrets.ESPN_S2 }}
+        run: |
+          python - << 'PY'
+          import os, json
+          swid = (os.getenv("ESPN_SWID") or "").strip()
+          s2   = (os.getenv("ESPN_S2") or "").strip()
+          def clean(v):
+              v = v.strip().strip('"').strip("'")
+              return v
+          swid_c = clean(swid)
+          s2_c   = clean(s2)
+          print(json.dumps({
+              "swid_len": len(swid_c),
+              "s2_len": len(s2_c),
+              "swid_has_braces": swid_c.startswith("{") and swid_c.endswith("}"),
+          }, indent=2))
+          PY
 
       - name: Fetch ESPN league core (standings/rosters/etc)
         env:
