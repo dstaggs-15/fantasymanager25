@@ -1,5 +1,10 @@
 import os
+import sys
 import json
+
+# Add current folder (pipeline) to Python path so imports work
+sys.path.append(os.path.dirname(__file__))
+
 from fetch_espn_standings import fetch_espn_standings
 from fetch_espn_scoreboard import fetch_espn_scoreboard
 from fetch_status import fetch_status
