@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2025-08-14T03:16:55Z",
-  "season": null,
+  "generated_utc": "2025-08-14T04:50:37Z",
+  "season": "2025",
   "week": null,
-  "notes": "ESPN secrets missing \u2192 serving dummy data"
+  "notes": "ESPN fetch partial: 23 error(s)"
 }
