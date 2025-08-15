@@ -1,7 +1,6 @@
 {
-  "generated_utc": "2025-08-15T01:18:37Z",
+  "generated_utc": "2025-08-15T03:00:05Z",
   "season": "2025",
   "week": null,
-  "notes": "ESPN fetch partial: 23 error(s)",
-  "players_error": "players fetch error: RuntimeError: Non-JSON response (content-type=text/html;charset=utf-8):  \t<!DOCTYPE html> \t<html class=\"no-icon-fonts\" lang=\"en\"> \t<head> \t\t<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" /> <meta http-equiv=\"x-ua"
+  "notes": "ESPN fetch partial: 23 error(s)"
 }
