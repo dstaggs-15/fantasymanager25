@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T21:14:01Z",
+  "fetched_at": "2025-08-15T22:16:56Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -35,8 +35,8 @@
       },
       "draftSettings": {
         "auctionBudget": 200,
-        "availableDate": 1756074600000,
-        "date": 1756078200000,
+        "availableDate": 1756069200000,
+        "date": 1756072800000,
         "isTradingEnabled": false,
         "keeperCount": 0,
         "keeperCountFuture": 0,

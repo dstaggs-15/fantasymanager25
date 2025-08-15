@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T21:14:08Z",
+  "fetched_at": "2025-08-15T22:17:03Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -4559,7 +4559,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 30,
+                          "rank": 31,
                           "rankSourceId": 3,
                           "rankType": "PPR",
                           "slotId": 2
@@ -6724,7 +6724,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 35,
+                          "rank": 36,
                           "rankSourceId": 3,
                           "rankType": "PPR",
                           "slotId": 2
@@ -8647,7 +8647,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 31,
+                          "rank": 32,
                           "rankSourceId": 3,
                           "rankType": "PPR",
                           "slotId": 2
@@ -12517,7 +12517,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 34,
+                          "rank": 35,
                           "rankSourceId": 3,
                           "rankType": "PPR",
                           "slotId": 2
@@ -13560,7 +13560,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 29,
+                          "rank": 30,
                           "rankSourceId": 3,
                           "rankType": "PPR",
                           "slotId": 2
