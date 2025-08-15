@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T17:15:50Z",
+  "fetched_at": "2025-08-15T18:26:07Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -10294,7 +10294,7 @@
                     "injured": false,
                     "injuryStatus": "ACTIVE",
                     "lastName": "Waddle",
-                    "lastNewsDate": 1755185328000,
+                    "lastNewsDate": 1755278632000,
                     "proTeamId": 15,
                     "rankings": {
                       "0": [
