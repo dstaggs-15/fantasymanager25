@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T22:16:57Z",
+  "fetched_at": "2025-08-15T23:17:03Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -2428,7 +2428,7 @@
                     "injured": false,
                     "injuryStatus": "ACTIVE",
                     "lastName": "Ridley",
-                    "lastNewsDate": 1754796103000,
+                    "lastNewsDate": 1755296758000,
                     "proTeamId": 10,
                     "rankings": {
                       "0": [
