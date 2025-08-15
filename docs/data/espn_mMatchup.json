@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T16:22:13Z",
+  "fetched_at": "2025-08-15T17:15:50Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -210,7 +210,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 34,
+                          "rank": 32,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -469,7 +469,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 15,
+                          "rank": 14,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -504,15 +504,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 15,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 15,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -860,7 +860,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 51,
+                          "rank": 52,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -895,15 +895,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 45,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 45,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -1556,7 +1556,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 33,
+                          "rank": 34,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -1687,6 +1687,13 @@
                         },
                         {
                           "auctionValue": 0,
+                          "rank": 57,
+                          "rankSourceId": 5,
+                          "rankType": "PPR",
+                          "slotId": 4
+                        },
+                        {
+                          "auctionValue": 0,
                           "rank": 49,
                           "rankSourceId": 3,
                           "rankType": "PPR",
@@ -1708,15 +1715,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 51,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 51,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         }
@@ -1797,7 +1804,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 28,
+                          "rank": 30,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -1832,15 +1839,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 36,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 36,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -2423,7 +2430,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 34,
+                          "rank": 29,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -2458,15 +2465,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 26,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 26,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -2678,7 +2685,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 18,
+                          "rank": 17,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 6
@@ -3634,7 +3641,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 29,
+                          "rank": 34,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -3669,15 +3676,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 33,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 33,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -3764,7 +3771,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 26,
+                          "rank": 25,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -4024,7 +4031,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 43,
+                          "rank": 39,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -5075,7 +5082,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 17,
+                          "rank": 18,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -5110,15 +5117,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 20,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 20,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -5466,7 +5473,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 40,
+                          "rank": 39,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -5501,15 +5508,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 44,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 44,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -5597,7 +5604,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 14,
+                          "rank": 15,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -5632,15 +5639,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 14,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 14,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -5727,7 +5734,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 32,
+                          "rank": 33,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -6240,7 +6247,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 6,
+                          "rank": 5,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -6275,15 +6282,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 4,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 4,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -6370,7 +6377,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 2,
+                          "rank": 3,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -6631,7 +6638,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 5,
+                          "rank": 6,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -6666,15 +6673,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 5,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 5,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -7140,7 +7147,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 39,
+                          "rank": 38,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -7175,15 +7182,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 43,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 43,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -7270,7 +7277,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 5,
+                          "rank": 6,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -7517,7 +7524,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 46,
+                          "rank": 50,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -7976,7 +7983,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 17,
+                          "rank": 16,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 0
@@ -8343,7 +8350,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 3,
+                          "rank": 2,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 0
@@ -8737,7 +8744,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 24,
+                          "rank": 29,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -9275,7 +9282,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 11,
+                          "rank": 10,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -9666,7 +9673,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 38,
+                          "rank": 35,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -10321,7 +10328,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 35,
+                          "rank": 33,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -10356,15 +10363,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 30,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 30,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -10452,7 +10459,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 33,
+                          "rank": 35,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -10487,15 +10494,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 32,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 32,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -10921,7 +10928,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 26,
+                          "rank": 27,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -10956,15 +10963,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 28,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 28,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -11272,7 +11279,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 18,
+                          "rank": 17,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -11307,15 +11314,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 16,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 16,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -11780,7 +11787,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 17,
+                          "rank": 18,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 6
@@ -12108,7 +12115,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 3,
+                          "rank": 2,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -12238,7 +12245,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 28,
+                          "rank": 26,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -12613,7 +12620,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 2,
+                          "rank": 3,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 0
@@ -12758,7 +12765,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 45,
+                          "rank": 49,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -12793,15 +12800,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 39,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 39,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -12889,7 +12896,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 42,
+                          "rank": 43,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -12924,15 +12931,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 38,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 38,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -13139,7 +13146,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 10,
+                          "rank": 11,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
@@ -13270,7 +13277,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 23,
+                          "rank": 21,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -13305,15 +13312,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 21,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 21,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -13401,7 +13408,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 22,
+                          "rank": 23,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 4
@@ -13436,15 +13443,15 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 0,
-                          "rankSourceId": 0,
+                          "rank": 31,
+                          "rankSourceId": 11,
                           "rankType": "PPR",
                           "slotId": 4
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 31,
-                          "rankSourceId": 11,
+                          "rank": 0,
+                          "rankSourceId": 0,
                           "rankType": "PPR",
                           "slotId": 4
                         },
@@ -13920,7 +13927,7 @@
                         },
                         {
                           "auctionValue": 0,
-                          "rank": 42,
+                          "rank": 45,
                           "rankSourceId": 5,
                           "rankType": "PPR",
                           "slotId": 2
