@@ -12,11 +12,11 @@ permissions:
 jobs:
   build:
     runs-on: self-hosted
+
+    # only league/season here; DO NOT set SWID/ESPN_S2 so we inherit from runner env
     env:
       LEAGUE_ID: "508419792"
       SEASON: "2025"
-      SWID: ${{ secrets.SWID }}
-      ESPN_S2: ${{ secrets.ESPN_S2 }}
 
     steps:
       - name: Checkout repository
@@ -25,17 +25,18 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Preflight – verify secrets
+      - name: Preflight – verify runner env contains cookies
         shell: bash
         run: |
           MISSING=0
-          if [ -z "${SWID}" ]; then echo "::error::SWID secret is not set"; MISSING=1; fi
-          if [ -z "${ESPN_S2}" ]; then echo "::error::ESPN_S2 secret is not set"; MISSING=1; fi
+          if [ -z "${SWID}" ];   then echo "::error::SWID env is not set (runner)"; MISSING=1; fi
+          if [ -z "${ESPN_S2}" ]; then echo "::error::ESPN_S2 env is not set (runner)"; MISSING=1; fi
           if [ "$MISSING" -ne 0 ]; then
-            echo "Go to Settings → Secrets and variables → Actions, add SWID and ESPN_S2, then re-run."
+            echo "You set SWID/ESPN_S2 in /etc/environment — make sure the runner service is restarted and sees them."
+            echo "Alternative: add repo Secrets SWID and ESPN_S2, then we can map them explicitly."
             exit 1
           fi
-          echo "Secrets present (values hidden)."
+          echo "Runner environment has SWID/ESPN_S2 (values hidden)."
 
       - name: Set up Python
         uses: actions/setup-python@v5
