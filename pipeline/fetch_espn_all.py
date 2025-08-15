@@ -1,230 +1,144 @@
 #!/usr/bin/env python3
 """
 Robust ESPN fetcher for private leagues (runs on self-hosted runner).
-- Reads SWID and ESPN_S2 from env (including braces in SWID).
-- Uses real browser-like headers.
-- Sends cookies via 'cookies={...}' (safer than raw Cookie header).
-- Detects redirects to HTML and logs them.
+- Accepts SWID secrets as either SWID or ESPN_SWID, and s2 as ESPN_S2 or S2.
+- Uses browser-like headers + cookies param (not raw Cookie header).
+- Detects redirects/HTML and logs a probe.
 - Writes JSON into docs/data/*.json
 """
 
-import json
-import os
-import sys
-import time
+import json, os, sys, time
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
-
 import requests
 
-# --------- Config from env ----------
-LEAGUE_ID = os.getenv("LEAGUE_ID", "").strip()
-SEASON = os.getenv("SEASON", "").strip()
-SWID = os.getenv("SWID", "").strip()
-ESPN_S2 = os.getenv("ESPN_S2", "").strip()
-
-OUT_DIR = os.path.join("docs", "data")
-
-# --------- Utilities ----------
+# --------- helpers ----------
 def utcnow() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-def ensure_outdir() -> None:
-    os.makedirs(OUT_DIR, exist_ok=True)
+def getenv_any(*names: str, default: str = "") -> str:
+    for n in names:
+        v = os.getenv(n)
+        if v and v.strip():
+            return v.strip()
+    return default
 
-def write_json(fname: str, obj: Dict[str, Any]) -> None:
-    ensure_outdir()
-    path = os.path.join(OUT_DIR, fname)
+def ensure_dir(path: str):
+    os.makedirs(path, exist_ok=True)
+
+def write_json(path: str, obj: Dict[str, Any]):
+    ensure_dir(os.path.dirname(path))
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=2)
+        json.dump(obj, f, indent=2, ensure_ascii=False)
 
-def fail(msg: str, code: int = 1) -> None:
-    print(msg, file=sys.stderr)
-    sys.exit(code)
+# --------- config ----------
+OUT_DIR = "docs/data"
 
-# --------- Validate env ----------
-missing = []
-if not LEAGUE_ID:
-    missing.append("LEAGUE_ID")
-if not SEASON:
-    missing.append("SEASON")
-if not SWID:
-    missing.append("SWID")
-if not ESPN_S2:
-    missing.append("ESPN_S2")
+LEAGUE_ID = getenv_any("LEAGUE_ID")
+SEASON    = getenv_any("SEASON")
+# Accept both naming schemes
+SWID      = getenv_any("SWID", "ESPN_SWID")
+ESPN_S2   = getenv_any("ESPN_S2", "S2")
+
+missing = [k for k,v in [("LEAGUE_ID",LEAGUE_ID), ("SEASON",SEASON), ("SWID",SWID), ("ESPN_S2",ESPN_S2)] if not v]
 if missing:
-    fail(f"Missing required env: {', '.join(missing)}")
+    print(f"Missing required env: {', '.join(missing)}", file=sys.stderr)
+    sys.exit(1)
 
-# ESPN requires SWID including braces. Quick sanity check:
+# normalize SWID braces
 if not (SWID.startswith("{") and SWID.endswith("}")):
-    print("WARNING: SWID usually includes curly braces {…}. Your SWID does not.", file=sys.stderr)
+    SWID = "{" + SWID.strip("{}") + "}"
 
-# --------- HTTP session ----------
+# ESPN endpoints (reads cluster is sometimes friendlier)
+BASE_V3 = f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}"
+
+# --------- session ----------
 SESSION = requests.Session()
 SESSION.headers.update({
-    # Reasonable desktop UA:
-    "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-    ),
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
     "Accept-Language": "en-US,en;q=0.9",
+    "Origin": "https://fantasy.espn.com",
     "Referer": f"https://fantasy.espn.com/football/league?leagueId={LEAGUE_ID}",
     "Connection": "keep-alive",
 })
+COOKIES = {"SWID": SWID, "espn_s2": ESPN_S2}
 
-# Send cookies via requests' cookies arg, not a raw header string:
-COOKIES = {
-    "SWID": SWID,
-    "espn_s2": ESPN_S2,
-}
-
-# --------- Endpoints ----------
-BASE_V3 = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}"
-
-VIEWS = {
-    "espn_mStandings.json": ["mStandings"],
-    "espn_mTeam.json": ["mTeam"],
-    "espn_mRoster.json": ["mRoster"],
-    "espn_mSettings.json": ["mSettings"],
-    "espn_mMatchup.json": ["mMatchup"],
-}
-
-# We’ll also try each matchup week, 1..18 (ESPN uses mMatchup + scoringPeriodId)
-WEEKS = list(range(1, 19))
-
-# --------- Core fetch ----------
-def fetch_json(url: str, params: Optional[Dict[str, Any]] = None, timeout: int = 20) -> Dict[str, Any]:
-    """
-    Return dict with keys: ok(bool), status(int), type(str), json(obj|None), text_snippet(str|None), redirected(bool)
-    """
-    info: Dict[str, Any] = {
-        "ok": False,
-        "status": None,
-        "type": None,
-        "json": None,
-        "text_snippet": None,
-        "redirected": False,
-    }
+def fetch_json(url: str, params: Optional[Dict[str, Any]] = None, timeout: int = 25) -> Dict[str, Any]:
+    info: Dict[str, Any] = {"ok": False, "status": None, "type": None, "json": None, "snippet": None, "redirected": False}
     try:
-        # We want to detect redirects to login pages explicitly.
         r = SESSION.get(url, params=params or {}, cookies=COOKIES, timeout=timeout, allow_redirects=False)
         info["status"] = r.status_code
-        ctype = r.headers.get("Content-Type", "")
-        info["type"] = ctype
-
-        # If ESPN tries to redirect to HTML, record it:
+        info["type"] = (r.headers.get("Content-Type") or "")
         if 300 <= r.status_code < 400:
             info["redirected"] = True
-            # follow once to show what content-type looks like
-            loc = r.headers.get("Location", "")
+            loc = r.headers.get("Location","")
             r = SESSION.get(requests.compat.urljoin(url, loc), cookies=COOKIES, timeout=timeout)
             info["status"] = r.status_code
-            info["type"] = r.headers.get("Content-Type", "")
-            info["redirected"] = True
-
-        if "application/json" in (info["type"] or "").lower():
+            info["type"] = (r.headers.get("Content-Type") or "")
+        if "json" in info["type"].lower():
             info["json"] = r.json()
             info["ok"] = True
         else:
-            # Not JSON → stash a small snippet to debug
-            text = r.text or ""
-            info["text_snippet"] = text[:300].replace("\n", "\\n")
-            info["ok"] = False
-        return info
+            info["snippet"] = (r.text or "")[:300].replace("\n"," ")
     except Exception as e:
-        info["text_snippet"] = f"EXC: {type(e).__name__}: {e}"
-        info["ok"] = False
-        return info
+        info["snippet"] = f"EXC {type(e).__name__}: {e}"
+    return info
 
-def fetch_view(view_name: str) -> Dict[str, Any]:
-    url = BASE_V3
-    params = {"view": view_name}
-    return fetch_json(url, params=params)
-
-def fetch_week(view_name: str, week: int) -> Dict[str, Any]:
-    url = BASE_V3
-    params = {"view": view_name, "scoringPeriodId": week}
-    return fetch_json(url, params=params)
-
-# --------- Main ----------
 def main() -> int:
-    ensure_outdir()
+    ensure_dir(OUT_DIR)
+    views = ["mStandings","mTeam","mRoster","mSettings","mMatchup"]
+    wrote, errors = [], {}
 
-    manifest = {
-        "league_id": LEAGUE_ID,
-        "season": SEASON,
+    # Probe first
+    probe = fetch_json(BASE_V3, {"view":"mStandings"})
+    write_json(f"{OUT_DIR}/espn_probe.json", {
         "generated_utc": utcnow(),
-        "probe": {},
-        "errors": [],
-        "wrote": [],
-    }
-
-    # Probe: simple call to mStandings
-    probe = fetch_view("mStandings")
-    manifest["probe"]["mStandings"] = {
-        "ok": probe["ok"],
+        "url": BASE_V3,
         "status": probe["status"],
         "type": probe["type"],
         "redirected": probe["redirected"],
-        "has_json": probe["json"] is not None,
-        "snippet": probe["text_snippet"],
-    }
-    write_json("espn_probe.json", manifest["probe"])
+        "ok": probe["ok"],
+        "snippet": probe["snippet"],
+    })
 
-    # Save each primary view
-    for fname, views in VIEWS.items():
-        results = []
-        ok_any = False
-        for v in views:
-            res = fetch_view(v)
-            results.append({k: res[k] for k in ("ok", "status", "type", "redirected")})
-            if res["ok"] and isinstance(res["json"], dict):
-                write_json(fname, res["json"])
-                manifest["wrote"].append(fname)
-                ok_any = True
-                break  # one good result is enough
-        if not ok_any:
-            manifest["errors"].append(f"{fname}: Non-JSON or failed. probe={results} (see espn_probe.json)")
-
-        time.sleep(0.8)  # be polite
-
-    # Matchup per week
-    for wk in WEEKS:
-        res = fetch_week("mMatchup", wk)
-        fname = f"espn_mMatchup_week_{wk}.json"
+    # Core views
+    for v in views:
+        res = fetch_json(BASE_V3, {"view": v})
+        fname = f"{OUT_DIR}/espn_{v}.json"
         if res["ok"] and isinstance(res["json"], dict):
-            write_json(fname, res["json"])
-            manifest["wrote"].append(fname)
+            write_json(fname, {"fetched_at": utcnow(), "data": res["json"]})
+            wrote.append(fname)
         else:
-            manifest["errors"].append(
-                f"{fname}: status={res['status']} type={res['type']} redirected={res['redirected']} "
-                f"snippet={res['text_snippet']}"
-            )
+            write_json(fname, {"fetched_at": utcnow(), "error": f"status={res['status']} type={res['type']} redir={res['redirected']} snip={res['snippet']}"})
+            errors[f"espn_{v}.json"] = res
+
         time.sleep(0.5)
 
-    # Final manifest
-    write_json("espn_manifest.json", manifest)
+    # Weeks 1..18
+    for wk in range(1,19):
+        res = fetch_json(BASE_V3, {"view":"mMatchup", "scoringPeriodId": wk})
+        fname = f"{OUT_DIR}/espn_mMatchup_week_{wk}.json"
+        if res["ok"] and isinstance(res["json"], dict):
+            write_json(fname, {"fetched_at": utcnow(), "data": res["json"]})
+            wrote.append(fname)
+        else:
+            write_json(fname, {"fetched_at": utcnow(), "error": f"status={res['status']} type={res['type']} redir={res['redirected']} snip={res['snippet']}"})
 
-    # If nothing at all worked, signal error (so you notice in Actions)
-    if not manifest["wrote"]:
-        write_json("status.json", {
-            "generated_utc": utcnow(),
-            "season": SEASON,
-            "notes": f"ESPN fetch failed — see espn_probe.json and espn_manifest.json",
-        })
-        print("ERROR: No JSON files written. See espn_probe.json / espn_manifest.json details.")
-        return 2
+        time.sleep(0.35)
 
-    # Success-ish
-    write_json("status.json", {
-        "generated_utc": utcnow(),
-        "season": SEASON,
-        "notes": f"Wrote {len(manifest['wrote'])} files",
+    # Manifest + status
+    write_json(f"{OUT_DIR}/espn_manifest.json", {
+        "league_id": LEAGUE_ID, "season": SEASON, "generated_utc": utcnow(),
+        "wrote": wrote, "error_count": len(errors), "probe_ok": probe["ok"]
     })
-    print(f"OK: wrote {len(manifest['wrote'])} files")
-    return 0
+    write_json(f"{OUT_DIR}/status.json", {
+        "generated_utc": utcnow(), "season": SEASON,
+        "notes": f"Wrote {len(wrote)} files; probe_ok={probe['ok']}"
+    })
 
+    # non-zero exit on total failure to get your attention
+    return 0 if wrote else 2
 
 if __name__ == "__main__":
     sys.exit(main())
