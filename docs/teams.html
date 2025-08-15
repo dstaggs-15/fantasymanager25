@@ -2,30 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Teams • Fantasy Manager 25</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fantasy Manager 25 — Teams</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    :root{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--border:#1f2a44;--headbg:#111827;--headfg:#fff;}
-    *{box-sizing:border-box}
-    body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:28px auto;padding:0 14px}
-    h1{margin:0 0 8px;font-weight:800}
-    .sub{color:var(--muted);margin-bottom:12px}
-    .card{background:#0f172a;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:14px}
-    .team{margin-bottom:8px;font-weight:700}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:8px;border-bottom:1px solid var(--border);text-align:left}
-    .num{text-align:right}
-    a{color:#93c5fd;text-decoration:none}
+    :root { --bg:#0b0f1a; --card:#101827; --muted:#8ba1c4; --acc:#60a5fa; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#0b0f1a,#0b0f1a 60%,#0e1422); color:#e5ecff; }
+    a { color: var(--acc); text-decoration: none; }
+    header { padding:24px 16px; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; }
+    nav a { margin-right:16px; opacity:.9 }
+    .wrap { max-width:1100px; margin:0 auto; padding: 8px 16px 48px; }
+    .h1 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; letter-spacing: .2px; margin: 8px 0 6px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; margin-top: 18px; }
+    .card { background:linear-gradient(180deg,#101827, #0e1626); border:1px solid #1b2741; border-radius:14px; padding:14px; box-shadow: 0 10px 30px rgba(7,12,26,.35) inset, 0 20px 60px rgba(6,10,22,.25); }
+    .row { display:flex; gap:12px; align-items:center; }
+    .logo { width:52px; height:52px; border-radius:10px; background:#0c1220; border:1px solid #1c2a4d; object-fit:cover; }
+    .teamname { font-weight:700; font-size:16px; line-height:1.15; }
+    .owner { font-size:13px; color: var(--muted); }
+    .meta { display:flex; gap:10px; margin-top:10px; font-size:13px; color:#9db3d9; }
+    .chip { background:#0b1324; border:1px solid #19305c; padding:4px 8px; border-radius:999px; }
+    footer { margin-top: 26px; border-top:1px solid #1b2741; padding-top:14px; color:#9db3d9; font-size:13px; display:flex; justify-content:space-between; align-items:center; }
+    .status { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:#8ba1c4; }
   </style>
 </head>
 <body>
+  <header>
+    <div><a href="./" class="muted">⟵ Back</a></div>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./teams.html"><strong>Teams</strong></a>
+      <a href="./players.html">Players</a>
+    </nav>
+  </header>
+
   <div class="wrap">
-    <h1>Teams</h1>
-    <div class="sub">Source: <code>data/team_rosters.json</code> • <a href="./">Home</a></div>
-    <div id="container"></div>
+    <div class="h1">League Teams</div>
+    <div class="muted">Live from ESPN mTeam view. Updates hourly from our VPS.</div>
+
+    <div id="teams" class="grid"></div>
+
+    <footer>
+      <div>Data sources: <span class="status">data/espn_mTeam.json</span></div>
+      <div id="stamp" class="status"></div>
+    </footer>
   </div>
 
-  <script src="teams.js"></script>
+  <script src="js/teams.js" defer></script>
 </body>
 </html>
