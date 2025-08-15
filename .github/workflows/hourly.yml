@@ -25,6 +25,18 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      - name: Preflight – verify secrets
+        shell: bash
+        run: |
+          MISSING=0
+          if [ -z "${SWID}" ]; then echo "::error::SWID secret is not set"; MISSING=1; fi
+          if [ -z "${ESPN_S2}" ]; then echo "::error::ESPN_S2 secret is not set"; MISSING=1; fi
+          if [ "$MISSING" -ne 0 ]; then
+            echo "Go to Settings → Secrets and variables → Actions, add SWID and ESPN_S2, then re-run."
+            exit 1
+          fi
+          echo "Secrets present (values hidden)."
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -35,20 +47,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Pull all ESPN endpoints (team/roster/standings/matchup/settings)
       - name: Fetch ESPN (authenticated)
         run: |
           python pipeline/fetch_espn_all.py \
-            --league $LEAGUE_ID \
-            --season $SEASON \
+            --league "$LEAGUE_ID" \
+            --season "$SEASON" \
             --out docs/data
 
-      # Build team_rosters.json from mTeam + mRoster
       - name: Build team_rosters.json
         run: |
           python pipeline/build_team_rosters.py
 
-      # Fetch players and build players_summary.json
       - name: Fetch players summary
         run: |
           python pipeline/fetch_players.py
@@ -58,13 +67,10 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "actions@github.com"
-
           git add docs/data/*.json || true
-
           if git diff --cached --quiet; then
             echo "No JSON changes to commit."
             exit 0
           fi
-
           git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           git push origin HEAD:main
