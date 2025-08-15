@@ -2,7 +2,7 @@ name: Hourly Build and Deploy
 
 on:
   schedule:
-    - cron: "0 * * * *"   # every hour (UTC)
+    - cron: "7 * * * *"    # hourly at minute 7
   workflow_dispatch:
 
 permissions:
@@ -10,13 +10,13 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -24,59 +24,25 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install "requests>=2.31,<3"
+          pip install -r requirements.txt
 
-      - name: Ensure docs/data exists
-        run: |
-          mkdir -p docs/data
-          echo '{}' > docs/data/status.json
-
-      - name: Check secrets present (lengths only)
+      - name: Fetch all ESPN data
         env:
-          ESPN_SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2:   ${{ secrets.ESPN_S2 }}
-        run: |
-          python - << 'PY'
-          import os, json
-          swid = (os.getenv("ESPN_SWID") or "").strip()
-          s2   = (os.getenv("ESPN_S2") or "").strip()
-          def clean(v):
-              v = v.strip().strip('"').strip("'")
-              return v
-          swid_c = clean(swid)
-          s2_c   = clean(s2)
-          print(json.dumps({
-              "swid_len": len(swid_c),
-              "s2_len": len(s2_c),
-              "swid_has_braces": swid_c.startswith("{") and swid_c.endswith("}"),
-          }, indent=2))
-          PY
-
-      - name: Fetch ESPN league core (standings/rosters/etc)
-        env:
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
           LEAGUE_ID: "508419792"
           SEASON: "2025"
-          ESPN_SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2:   ${{ secrets.ESPN_S2 }}
         run: |
           python pipeline/fetch_espn_all.py
 
-      - name: Fetch ESPN players (public catalog + projections)
-        env:
-          SEASON: "2025"
-          ESPN_SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2:   ${{ secrets.ESPN_S2 }}
+      - name: Commit and push changes
         run: |
-          python pipeline/fetch_players.py
-
-      - name: Build team_rosters.json from ESPN files
-        run: |
-          python pipeline/build_team_rosters.py
-
-      - name: Commit & push JSON
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data
-          git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "no changes"
-          git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "actions@github.com"
+          git add docs/data/*.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "robot: espn refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push
+          fi
