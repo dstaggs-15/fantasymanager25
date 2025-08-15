@@ -1,21 +1,27 @@
 # pipeline/fetch_players.py
 """
-Fetch active NFL players from ESPN Fantasy API and write:
-- docs/data/players_raw.json
-- docs/data/players_summary.json
+Players fetch with graceful fallback.
 
-Needs env:
+1) Try the private fantasy players endpoint (needs SWID + ESPN_S2).
+   - Writes projections & recent averages when available.
+2) If ESPN serves HTML (anti-bot), fall back to public ESPN players feed
+   (no cookies required) so the site still has player rows.
+
+Outputs (always under docs/data):
+  - players_raw.json        (source payload or minimal payload on fallback)
+  - players_summary.json    (rows UI reads)
+
+Env required for private pull:
   SWID     = {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
-  ESPN_S2  = (long cookie string)
-
-If ESPN returns HTML (bot page), we retry a few times and then fail
-gracefully while writing small JSON error files so the UI won't break.
+  ESPN_S2  = long cookie string
+Optional:
+  SEASON   = 2025 (default)
 """
 
 from __future__ import annotations
-import os, sys, json, time, random
+import json, os, sys, time, random
 from datetime import datetime, timezone
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 
 import requests
 
@@ -24,155 +30,223 @@ OUT_DIR = "docs/data"
 RAW_PATH = f"{OUT_DIR}/players_raw.json"
 SUM_PATH = f"{OUT_DIR}/players_summary.json"
 
-BASE = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/players"
+# Private fantasy endpoint (cookie-gated)
+FANTASY_BASE = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/players"
+
+# Public (no cookie) – broad NFL athletes list
+PUBLIC_FEED = "https://site.api.espn.com/apis/common/v3/sports/football/nfl/athletes?limit=2000"
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+def write(path: str, obj: Any) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+
+# ---------------------- PRIVATE FANTASY PULL ----------------------
+
 def require_env(name: str) -> str:
     v = os.getenv(name)
     if not v:
-        print(f"missing env {name}", file=sys.stderr)
-        sys.exit(1)
+        raise RuntimeError(f"missing env {name}")
     return v
 
-def make_session() -> requests.Session:
+def make_private_session() -> requests.Session:
     swid = require_env("SWID")
     s2   = require_env("ESPN_S2")
-
     s = requests.Session()
-    # ESPN cookies on the .espn.com domain
     s.cookies.set("SWID", swid, domain=".espn.com", secure=True)
     s.cookies.set("espn_s2", s2,  domain=".espn.com", secure=True)
-
     s.headers.update({
-        "User-Agent": (
-            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-            "KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-        ),
+        "User-Agent": ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                       "KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "en-US,en;q=0.9",
         "Accept-Encoding": "gzip, deflate, br",
         "Connection": "keep-alive",
-        "Referer": f"https://fantasy.espn.com/football/freeagency?leagueId=508419792&seasonId={SEASON}",
+        "Referer": f"https://fantasy.espn.com/football/freeagency?seasonId={SEASON}",
         "Origin": "https://fantasy.espn.com",
-        # this header is critical for /players
-        # value is the JSON string of the filter (set per-request)
     })
     return s
 
-def fantasy_filter(offset: int, limit: int = 200) -> Dict[str, Any]:
-    # This mirrors what the site requests from the Free Agency page.
+def fantasy_filter(offset: int, limit: int = 100) -> Dict[str, Any]:
+    # smaller page + sane filters reduces bot triggers
     return {
         "filterActive": {"value": True},
-        "filterSlotIds": {"value": list(range(0, 20))},  # most slots
+        "filterSlotIds": {"value": list(range(0, 20))},
         "filterRanksForScoringPeriodIds": {"value": [0]},
         "filterRanksForRankTypes": {"value": ["STANDARD"]},
-        "filterRanksForSlotIds": {"value": [0, 2, 4, 6, 16]},  # QB, RB, WR, TE, DST
+        "filterRanksForSlotIds": {"value": [0, 2, 4, 6, 16]},
         "limit": limit,
         "offset": offset,
         "sortPercOwned": {"sortPriority": 1, "sortAsc": False},
         "sortDraftRanks": {"sortPriority": 2, "sortAsc": True, "value": "STANDARD"},
     }
 
-def get_page(session: requests.Session, offset: int) -> List[Dict[str, Any]]:
-    headers = {
-        "X-Fantasy-Filter": json.dumps(fantasy_filter(offset)),
-    }
-    # IMPORTANT: include view=players_wl (what the web app uses)
+def private_page(session: requests.Session, offset: int) -> List[Dict[str, Any]]:
+    headers = {"X-Fantasy-Filter": json.dumps(fantasy_filter(offset))}
     params = {"scoringPeriodId": 0, "view": "players_wl"}
-    r = session.get(BASE, headers=headers, params=params, timeout=30)
+    r = session.get(FANTASY_BASE, headers=headers, params=params, timeout=30)
     ctype = r.headers.get("content-type", "")
     if "application/json" not in ctype:
         raise RuntimeError(f"Non-JSON (content-type={ctype})")
     return r.json()
 
-def summarize(players: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def summarize_private(players: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     rows = []
     for p in players:
-        pid = p.get("id")
-        name = (p.get("fullName") or f"{p.get('firstName','')} {p.get('lastName','')}").strip()
+        pid  = p.get("id")
+        name = (p.get("fullName")
+                or f"{p.get('firstName','')} {p.get('lastName','')}".strip())
         pos  = p.get("defaultPositionId") or p.get("positionId")
         team = p.get("proTeamId")
         proj = None
         last5 = None
-        for stat in p.get("stats", []) or []:
-            if stat.get("statSourceId") == 0 and stat.get("scoringPeriodId") == 0:
-                proj = stat.get("appliedTotal")
-            if stat.get("statSourceId") == 1 and stat.get("scoringPeriodId") == 0:
-                last5 = stat.get("appliedAverage")
+        for st in (p.get("stats") or []):
+            # 0=projected, 1=actual
+            if st.get("statSourceId") == 0 and st.get("scoringPeriodId") == 0:
+                proj = st.get("appliedTotal")
+            if st.get("statSourceId") == 1 and st.get("scoringPeriodId") == 0:
+                last5 = st.get("appliedAverage")
         rows.append({
-            "id": pid,
-            "name": name,
-            "positionId": pos,
-            "proTeamId": team,
-            "proj_season": proj,
-            "recent_avg": last5,
+            "id": pid, "name": name,
+            "positionId": pos, "proTeamId": team,
+            "proj_season": proj, "recent_avg": last5,
+            "source": "private"
         })
     return rows
 
-def write_error(e: Exception) -> int:
-    err_msg = f"players fetch error: {type(e).__name__}: {e}"
-    payload = {"generated_utc": utc_now(), "count": 0, "error": err_msg}
-    os.makedirs(OUT_DIR, exist_ok=True)
-    with open(RAW_PATH, "w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
-    with open(SUM_PATH, "w", encoding="utf-8") as f:
-        json.dump({**payload, "rows": []}, f, ensure_ascii=False, separators=(",", ":"))
-    print(err_msg, file=sys.stderr)
-    return 2
+def try_private() -> Dict[str, Any]:
+    s = make_private_session()
+    all_players: List[Dict[str, Any]] = []
+    offset = 0
+    page_size = 100
+    max_pages = 60
+
+    for _ in range(max_pages):
+        # retry each page up to 4 times if we see HTML
+        last_err = None
+        for attempt in range(4):
+            try:
+                chunk = private_page(s, offset)
+                break
+            except Exception as e:
+                last_err = e
+                time.sleep(0.7 + random.random() * 0.7)
+        else:
+            raise last_err or RuntimeError("private page failed")
+
+        if not isinstance(chunk, list):
+            raise RuntimeError("Unexpected payload (not list)")
+        all_players.extend(chunk)
+        if len(chunk) < page_size:
+            break
+        offset += page_size
+        time.sleep(0.3 + random.random() * 0.3)
+
+    return {
+        "generated_utc": utc_now(),
+        "count": len(all_players),
+        "players": all_players,
+        "mode": "private",
+    }
+
+# ---------------------- PUBLIC FALLBACK ----------------------
+
+def public_players() -> Dict[str, Any]:
+    # Public athletes feed (no cookies). Shape is different, but safe.
+    r = requests.get(PUBLIC_FEED, timeout=30, headers={
+        "User-Agent": ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                       "KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
+        "Accept": "application/json, text/plain, */*",
+    })
+    ctype = r.headers.get("content-type", "")
+    if "application/json" not in ctype:
+        raise RuntimeError(f"Public feed non-JSON (content-type={ctype})")
+    data = r.json()
+
+    # The public response has 'athletes' list (current ESPN format).
+    # If it changes, we still produce a stable, minimal summary.
+    athletes = data.get("athletes") or data.get("items") or []
+    players = []
+    for a in athletes:
+        # different keys across variants; be defensive
+        pid  = a.get("id") or a.get("uid") or a.get("athlete", {}).get("id")
+        name = a.get("displayName") or a.get("fullName") or a.get("name")
+        pos  = (a.get("position", {}) or {}).get("abbreviation") or a.get("position")
+        team = (a.get("team", {}) or {}).get("abbreviation") or a.get("team")
+        players.append({
+            "id": pid, "name": name,
+            "position": pos, "team": team,
+            "source": "public"
+        })
+
+    return {
+        "generated_utc": utc_now(),
+        "count": len(players),
+        "players": players,
+        "mode": "public",
+    }
+
+def summarize_public(players: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    rows = []
+    for p in players:
+        rows.append({
+            "id": p.get("id"),
+            "name": p.get("name"),
+            "positionId": None,     # unknown here
+            "proTeamId": None,      # unknown here
+            "proj_season": None,
+            "recent_avg": None,
+            "team": p.get("team"),
+            "position": p.get("position"),
+        })
+    return rows
+
+# ---------------------- MAIN ----------------------
 
 def main() -> int:
     os.makedirs(OUT_DIR, exist_ok=True)
-    s = make_session()
 
-    all_players: List[Dict[str, Any]] = []
-    offset = 0
-    page_size = 200
-    max_pages = 100
-
+    # 1) Try private pull (if cookies missing, skip to public)
+    private_ok = False
+    raw = None
     try:
-        for _ in range(max_pages):
-            # retry up to 4 times per page if we see HTML
-            for attempt in range(4):
-                try:
-                    chunk = get_page(s, offset)
-                    break
-                except Exception as e:
-                    if attempt == 3:
-                        raise
-                    # small jittered backoff (helps with CF heuristics)
-                    time.sleep(0.6 + random.random() * 0.6)
-            if not chunk:
-                break
-            if not isinstance(chunk, list):
-                raise RuntimeError("Unexpected payload (not list)")
-            all_players.extend(chunk)
-            if len(chunk) < page_size:
-                break
-            offset += page_size
-            time.sleep(0.25)
-
-        with open(RAW_PATH, "w", encoding="utf-8") as f:
-            json.dump({
-                "generated_utc": utc_now(),
-                "count": len(all_players),
-                "players": all_players,
-            }, f, ensure_ascii=False, separators=(",", ":"))
-
-        summary_rows = summarize(all_players)
-        with open(SUM_PATH, "w", encoding="utf-8") as f:
-            json.dump({
-                "generated_utc": utc_now(),
-                "count": len(summary_rows),
-                "rows": summary_rows,
-            }, f, ensure_ascii=False, separators=(",", ":"))
-
-        print(f"Wrote {len(all_players)} players to {RAW_PATH} and {len(summary_rows)} rows to {SUM_PATH}")
-        return 0
-
+        if os.getenv("SWID") and os.getenv("ESPN_S2"):
+            raw = try_private()
+            private_ok = True
+        else:
+            raise RuntimeError("cookies not provided")
     except Exception as e:
-        return write_error(e)
+        # Fallback to public
+        try:
+            raw = public_players()
+        except Exception as e2:
+            # Write minimal error files and fail
+            err = {"generated_utc": utc_now(), "count": 0,
+                   "error": f"players fetch error: {type(e2).__name__}: {e2}"}
+            write(RAW_PATH, err)
+            write(SUM_PATH, {**err, "rows": []})
+            print(err["error"], file=sys.stderr)
+            return 2
+
+    write(RAW_PATH, raw)
+
+    # 2) Summarize into a uniform table
+    if raw.get("mode") == "private":
+        rows = summarize_private(raw.get("players", []))
+    else:
+        rows = summarize_public(raw.get("players", []))
+
+    write(SUM_PATH, {
+        "generated_utc": utc_now(),
+        "count": len(rows),
+        "rows": rows
+    })
+
+    print(f"players: mode={raw.get('mode')} wrote {len(rows)} rows")
+    return 0
 
 if __name__ == "__main__":
     raise SystemExit(main())
