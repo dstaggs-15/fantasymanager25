@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2025-08-15T15:18:17Z",
+  "fetched_at": "2025-08-15T16:22:17Z",
   "data": {
     "draftDetail": {
       "drafted": false,
@@ -4097,7 +4097,7 @@
                     "injured": false,
                     "injuryStatus": "ACTIVE",
                     "lastName": "Odunze",
-                    "lastNewsDate": 1749244403000,
+                    "lastNewsDate": 1755268364000,
                     "proTeamId": 3,
                     "rankings": {
                       "0": [
