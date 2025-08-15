@@ -12,11 +12,11 @@ permissions:
 jobs:
   build:
     runs-on: self-hosted
-
-    # only league/season here; DO NOT set SWID/ESPN_S2 so we inherit from runner env
     env:
       LEAGUE_ID: "508419792"
       SEASON: "2025"
+      SWID: ${{ secrets.SWID }}
+      ESPN_S2: ${{ secrets.ESPN_S2 }}
 
     steps:
       - name: Checkout repository
@@ -25,18 +25,13 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Preflight – verify runner env contains cookies
+      - name: Preflight – verify secrets
         shell: bash
         run: |
           MISSING=0
-          if [ -z "${SWID}" ];   then echo "::error::SWID env is not set (runner)"; MISSING=1; fi
-          if [ -z "${ESPN_S2}" ]; then echo "::error::ESPN_S2 env is not set (runner)"; MISSING=1; fi
-          if [ "$MISSING" -ne 0 ]; then
-            echo "You set SWID/ESPN_S2 in /etc/environment — make sure the runner service is restarted and sees them."
-            echo "Alternative: add repo Secrets SWID and ESPN_S2, then we can map them explicitly."
-            exit 1
-          fi
-          echo "Runner environment has SWID/ESPN_S2 (values hidden)."
+          [ -z "${SWID}" ] && echo "::error::SWID secret is not set" && MISSING=1
+          [ -z "${ESPN_S2}" ] && echo "::error::ESPN_S2 secret is not set" && MISSING=1
+          [ "$MISSING" -ne 0 ] && exit 1 || echo "Secrets OK"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -56,12 +51,10 @@ jobs:
             --out docs/data
 
       - name: Build team_rosters.json
-        run: |
-          python pipeline/build_team_rosters.py
+        run: python pipeline/build_team_rosters.py
 
       - name: Fetch players summary
-        run: |
-          python pipeline/fetch_players.py
+        run: python pipeline/fetch_players.py
 
       - name: Commit and push JSON
         shell: bash
