@@ -1,4 +1,110 @@
 {
-  "generated_utc": "2025-08-15T01:18:37Z",
-  "teams": []
+  "generated_utc": "2025-08-15T05:03:13+00:00",
+  "count_teams": 10,
+  "rows": [
+    {
+      "team_id": 1,
+      "team": "Duloc Gingerbread Men",
+      "abbrev": "DGM",
+      "owners": [
+        "F0AB9EEB-EFC6-4E1D-A9FC-818448FFC022"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 3,
+      "team": "Indoctrinated Ravens",
+      "abbrev": "IRA",
+      "owners": [
+        "F5A0707D-5431-4DBC-BB55-92834F2AE647"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 4,
+      "team": "Mac Daddy's",
+      "abbrev": "MAC",
+      "owners": [
+        "46E7C0E0-4933-426F-9A44-9514DB529003"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 5,
+      "team": "HerpesDonator",
+      "abbrev": "SOCK",
+      "owners": [
+        "F165D2A7-7F38-4719-8F3E-D0445997C682"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 6,
+      "team": "Crip Crip",
+      "abbrev": "CRIP",
+      "owners": [
+        "887BA3B4-35F1-49CF-9E74-4F55FEA58636"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 7,
+      "team": "Our Lard and Savior",
+      "abbrev": "LARD",
+      "owners": [
+        "A7AB81CC-43B6-4F51-9130-CF6C0910665C"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 10,
+      "team": "Koolaid Jammer",
+      "abbrev": "KAJA",
+      "owners": [
+        "9732886E-2FD0-4545-AF7B-245C055D9BCD"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 11,
+      "team": "Don't Blink ",
+      "abbrev": "DB",
+      "owners": [
+        "1ACB6016-9FF6-493B-B886-06F95D293352"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 12,
+      "team": "Josh's Scary Team",
+      "abbrev": "JST",
+      "owners": [
+        "D86AD8F4-8325-440B-82D0-7DE5ACE586A0"
+      ],
+      "player_count": 0,
+      "players": []
+    },
+    {
+      "team_id": 13,
+      "team": "James's Finest Team",
+      "abbrev": "JFT",
+      "owners": [
+        "1224FE8A-638A-4F46-9D6F-B006A2537B14"
+      ],
+      "player_count": 0,
+      "players": []
+    }
+  ],
+  "source": [
+    "espn_mTeam.json",
+    "espn_mRoster.json"
+  ]
 }

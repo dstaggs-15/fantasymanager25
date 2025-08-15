@@ -1,6 +1,1 @@
-{
-  "generated_utc": "2025-08-15T01:18:37Z",
-  "count": 0,
-  "error": "players fetch error: RuntimeError: Non-JSON response (content-type=text/html;charset=utf-8):  \t<!DOCTYPE html> \t<html class=\"no-icon-fonts\" lang=\"en\"> \t<head> \t\t<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" /> <meta http-equiv=\"x-ua",
-  "players": []
-}
+{"generated_utc":"2025-08-15T05:03:18Z","count":0,"players":[],"mode":"public"}
