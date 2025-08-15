@@ -2,50 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fantasy Manager 25</title>
-  <div class="sub"><a href="./players.html">Players</a> · <a href="./teams.html">Teams</a></div>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--border:#1f2a44;--headbg:#111827;--headfg:#fff;}
-    *{box-sizing:border-box}
-    body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
-    .wrap{max-width:1000px;margin:28px auto;padding:0 14px}
-    h1{margin:0 0 4px;text-align:center;font-weight:800}
-    .sub{color:var(--muted);text-align:center;margin-bottom:10px}
-    .nav{text-align:center;margin-bottom:12px}
-    .nav a{color:#93c5fd;text-decoration:none;margin:0 8px}
-    .card{background:#0f172a;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-    table{width:100%;border-collapse:collapse}
-    thead th{background:var(--headbg);color:var(--headfg);text-transform:uppercase;font-size:.8rem;letter-spacing:.06em}
-    th,td{padding:12px 10px;text-align:center;border-bottom:1px solid var(--border)}
-    .left{text-align:left}
-    .muted{color:var(--muted)}
+    :root { --bg:#0b0f1a; --card:#101827; --muted:#8ba1c4; --acc:#60a5fa; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#0b0f1a,#0b0f1a 60%,#0e1422); color:#e5ecff; }
+    header { padding:24px 16px; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; }
+    nav a { color: var(--acc); margin-left:14px; text-decoration:none; }
+    .wrap { max-width:1100px; margin:0 auto; padding: 8px 16px 48px; }
+    .h1 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; letter-spacing: .2px; margin: 8px 0 6px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .card { background:linear-gradient(180deg,#101827, #0e1626); border:1px solid #1b2741; border-radius:14px; padding:14px; box-shadow: 0 10px 30px rgba(7,12,26,.35) inset, 0 20px 60px rgba(6,10,22,.25); }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:12px 10px; text-align:left; }
+    th { color:#cfe2ff; font-weight:700; font-size:13px; border-bottom:1px solid #22345d; letter-spacing:.3px; }
+    td { border-bottom:1px solid #13203a; font-size:14px; }
+    .right { text-align:right; }
+    .status { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:#8ba1c4; }
+    footer { margin-top: 14px; color:#9db3d9; font-size:13px; display:flex; gap:10px; flex-wrap:wrap; }
+    .pill { background:#0b1324; border:1px solid #19305c; padding:5px 10px; border-radius:999px; }
+    a.btn { display:inline-block; background:#0b1324; border:1px solid #1b2e55; padding:8px 12px; border-radius:10px; color:#d9e6ff; text-decoration:none; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Fantasy Manager 25</h1>
-    <div class="nav"><a href="./players.html">Players</a></div>
-    <div class="sub" id="lastUpdate">Loading…</div>
+  <header>
+    <div style="color:#9db3d9">Fantasy Manager 25</div>
+    <nav>
+      <a href="./teams.html">Teams</a>
+      <a href="./players.html">Players</a>
+    </nav>
+  </header>
 
-    <div class="card">
-      <table aria-label="Standings">
+  <div class="wrap">
+    <div class="h1">Standings</div>
+    <div class="muted" id="subtitle">Loading…</div>
+
+    <div class="card" style="margin-top:12px;">
+      <table id="standings">
         <thead>
           <tr>
-            <th class="left">Team</th>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>Points For</th>
-            <th>Points Against</th>
+            <th>Team</th>
+            <th class="right">Wins</th>
+            <th class="right">Losses</th>
+            <th class="right">Points For</th>
+            <th class="right">Points Against</th>
           </tr>
         </thead>
-        <tbody id="tbody"></tbody>
+        <tbody id="tbody">
+          <!-- rows injected by app.js -->
+        </tbody>
       </table>
     </div>
 
-    <div class="sub muted">Data: <code>data/latest.json</code> (generated hourly).</div>
+    <footer>
+      <span class="status">Data sources: <code>docs/data/espn_mStandings.json</code> (primary) and <code>docs/data/espn_mTeam.json</code> (fallback)</span>
+      <span class="pill" id="stamp"></span>
+      <a class="btn" href="" id="refresh">Refresh</a>
+    </footer>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
