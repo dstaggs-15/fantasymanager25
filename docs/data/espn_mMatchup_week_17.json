@@ -1,4 +1,1228 @@
 {
-  "fetched_at": "2025-08-15T03:00:01Z",
-  "error": "RuntimeError: RuntimeError: Non-JSON (content-type=text/html;charset=utf-8), snippet= \t<!DOCTYPE html> \t<html class=\"no-icon-fonts\" lang=\"en\"> \t<head> \t\t<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\" /> <meta http-equiv=\"x-ua-compatible\" content=\"IE=edge,chrome=1\" /> <meta name=\"viewport\" content=\"initia"
+  "fetched_at": "2025-08-15T03:19:30Z",
+  "data": {
+    "draftDetail": {
+      "drafted": false,
+      "inProgress": false
+    },
+    "gameId": 1,
+    "id": 508419792,
+    "schedule": [
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 1,
+        "matchupPeriodId": 1,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 2,
+        "matchupPeriodId": 1,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 3,
+        "matchupPeriodId": 1,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 4,
+        "matchupPeriodId": 1,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 5,
+        "matchupPeriodId": 1,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 6,
+        "matchupPeriodId": 2,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 7,
+        "matchupPeriodId": 2,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 8,
+        "matchupPeriodId": 2,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 9,
+        "matchupPeriodId": 2,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 10,
+        "matchupPeriodId": 2,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 11,
+        "matchupPeriodId": 3,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 12,
+        "matchupPeriodId": 3,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 13,
+        "matchupPeriodId": 3,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 14,
+        "matchupPeriodId": 3,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 15,
+        "matchupPeriodId": 3,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 16,
+        "matchupPeriodId": 4,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 17,
+        "matchupPeriodId": 4,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 18,
+        "matchupPeriodId": 4,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 19,
+        "matchupPeriodId": 4,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 20,
+        "matchupPeriodId": 4,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 21,
+        "matchupPeriodId": 5,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 22,
+        "matchupPeriodId": 5,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 23,
+        "matchupPeriodId": 5,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 24,
+        "matchupPeriodId": 5,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 25,
+        "matchupPeriodId": 5,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 26,
+        "matchupPeriodId": 6,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 27,
+        "matchupPeriodId": 6,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 28,
+        "matchupPeriodId": 6,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 29,
+        "matchupPeriodId": 6,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 30,
+        "matchupPeriodId": 6,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 31,
+        "matchupPeriodId": 7,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 32,
+        "matchupPeriodId": 7,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 33,
+        "matchupPeriodId": 7,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 34,
+        "matchupPeriodId": 7,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 35,
+        "matchupPeriodId": 7,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 36,
+        "matchupPeriodId": 8,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 37,
+        "matchupPeriodId": 8,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 38,
+        "matchupPeriodId": 8,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 39,
+        "matchupPeriodId": 8,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 40,
+        "matchupPeriodId": 8,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 41,
+        "matchupPeriodId": 9,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 42,
+        "matchupPeriodId": 9,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 43,
+        "matchupPeriodId": 9,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 44,
+        "matchupPeriodId": 9,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 45,
+        "matchupPeriodId": 9,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 46,
+        "matchupPeriodId": 10,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 47,
+        "matchupPeriodId": 10,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 48,
+        "matchupPeriodId": 10,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 49,
+        "matchupPeriodId": 10,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 50,
+        "matchupPeriodId": 10,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 51,
+        "matchupPeriodId": 11,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 52,
+        "matchupPeriodId": 11,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 53,
+        "matchupPeriodId": 11,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 54,
+        "matchupPeriodId": 11,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 55,
+        "matchupPeriodId": 11,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 56,
+        "matchupPeriodId": 12,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 57,
+        "matchupPeriodId": 12,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 58,
+        "matchupPeriodId": 12,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 59,
+        "matchupPeriodId": 12,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 60,
+        "matchupPeriodId": 12,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 61,
+        "matchupPeriodId": 13,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 62,
+        "matchupPeriodId": 13,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 63,
+        "matchupPeriodId": 13,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 64,
+        "matchupPeriodId": 13,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 65,
+        "matchupPeriodId": 13,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "id": 66,
+        "matchupPeriodId": 14,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "id": 67,
+        "matchupPeriodId": 14,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "id": 68,
+        "matchupPeriodId": 14,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "id": 69,
+        "matchupPeriodId": 14,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "id": 70,
+        "matchupPeriodId": 14,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 3,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 7,
+          "totalPoints": 0.0
+        },
+        "id": 71,
+        "matchupPeriodId": 15,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 13,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 6,
+          "totalPoints": 0.0
+        },
+        "id": 72,
+        "matchupPeriodId": 15,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 11,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 1,
+          "totalPoints": 0.0
+        },
+        "id": 73,
+        "matchupPeriodId": 15,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 5,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 12,
+          "totalPoints": 0.0
+        },
+        "id": 74,
+        "matchupPeriodId": 15,
+        "winner": "UNDECIDED"
+      },
+      {
+        "away": {
+          "gamesPlayed": 0,
+          "teamId": 10,
+          "totalPoints": 0.0
+        },
+        "home": {
+          "gamesPlayed": 0,
+          "teamId": 4,
+          "totalPoints": 0.0
+        },
+        "id": 75,
+        "matchupPeriodId": 15,
+        "winner": "UNDECIDED"
+      }
+    ],
+    "scoringPeriodId": 0,
+    "seasonId": 2025,
+    "segmentId": 0,
+    "status": {
+      "activatedDate": 1750214799610,
+      "createdAsLeagueType": 3,
+      "currentLeagueType": 0,
+      "currentMatchupPeriod": 1,
+      "finalScoringPeriod": 18,
+      "firstScoringPeriod": 1,
+      "isActive": true,
+      "isExpired": false,
+      "isFull": true,
+      "isPlayoffMatchupEdited": false,
+      "isToBeDeleted": false,
+      "isViewable": false,
+      "isWaiverOrderEdited": false,
+      "latestScoringPeriod": 0,
+      "previousSeasons": [
+        2022,
+        2023,
+        2024
+      ],
+      "teamsJoined": 10,
+      "transactionScoringPeriod": 0,
+      "waiverLastExecutionDate": 1755156349227,
+      "waiverProcessStatus": {}
+    },
+    "teams": [
+      {
+        "id": 1,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 3,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 4,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 5,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 6,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 7,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 10,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 11,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 12,
+        "roster": {
+          "entries": []
+        }
+      },
+      {
+        "id": 13,
+        "roster": {
+          "entries": []
+        }
+      }
+    ]
+  }
 }
