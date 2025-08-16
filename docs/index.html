@@ -2,69 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Aura Fantasy – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fantasy Manager 25</title>
-  <link rel="icon" href="favicon.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#0b0f1a; --card:#101827; --muted:#8ba1c4; --acc:#60a5fa; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#0b0f1a,#0b0f1a 60%,#0e1422); color:#e5ecff; }
-    header { padding:24px 16px; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; }
-    nav a { color: var(--acc); margin-left:14px; text-decoration:none; }
-    .wrap { max-width:1100px; margin:0 auto; padding: 8px 16px 48px; }
-    .h1 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; letter-spacing: .2px; margin: 8px 0 6px; }
-    .muted { color: var(--muted); font-size: 14px; }
-    .card { background:linear-gradient(180deg,#101827, #0e1626); border:1px solid #1b2741; border-radius:14px; padding:14px; box-shadow: 0 10px 30px rgba(7,12,26,.35) inset, 0 20px 60px rgba(6,10,22,.25); }
-    table { width:100%; border-collapse: collapse; }
-    th, td { padding:12px 10px; text-align:left; }
-    th { color:#cfe2ff; font-weight:700; font-size:13px; border-bottom:1px solid #22345d; letter-spacing:.3px; }
-    td { border-bottom:1px solid #13203a; font-size:14px; }
-    .right { text-align:right; }
-    .status { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:#8ba1c4; }
-    footer { margin-top: 14px; color:#9db3d9; font-size:13px; display:flex; gap:10px; flex-wrap:wrap; }
-    .pill { background:#0b1324; border:1px solid #19305c; padding:5px 10px; border-radius:999px; }
-    a.btn { display:inline-block; background:#0b1324; border:1px solid #1b2e55; padding:8px 12px; border-radius:10px; color:#d9e6ff; text-decoration:none; }
+    :root { --bg:#0b0f17; --card:#131b2a; --muted:#8aa0c7; --accent:#6ee7ff; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444; }
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(110,231,255,.08),transparent),linear-gradient(180deg,#0b0f17,#0a0d14);color:#e6efff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1f9bff,#7c4dff);box-shadow:0 8px 28px rgba(124,77,255,.25)}
+    h1{font-size:22px;margin:0}
+    .nav{display:flex;gap:10px;margin-top:6px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.03);color:#e6efff;text-decoration:none}
+    .btn:hover{background:rgba(255,255,255,.06)}
+    .grid{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1.3fr .7fr}}
+    .card{background:linear-gradient(180deg,#131b2a,#101725);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    h2{font-size:16px;margin:0 0 10px 0}
+    .tiny{color:var(--muted);font-size:12px}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
+    code{background:#0f1522;border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2px 6px}
   </style>
 </head>
 <body>
-  <header>
-    <div style="color:#9db3d9">Fantasy Manager 25</div>
-    <nav>
-      <a href="./teams.html">Teams</a>
-      <a href="./players.html">Players</a>
-    </nav>
-  </header>
-
   <div class="wrap">
-    <div class="h1">Standings</div>
-    <div class="muted" id="subtitle">Loading…</div>
+    <header>
+      <div class="logo"></div>
+      <div>
+        <h1>Aura Fantasy</h1>
+        <div class="nav">
+          <a class="btn" href="./players.html">Players</a>
+          <a class="btn" href="./teams.html">Teams</a>
+          <a class="btn" href="./index.html">Home</a>
+        </div>
+      </div>
+    </header>
 
-    <div class="card" style="margin-top:12px;">
-      <table id="standings">
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th class="right">Wins</th>
-            <th class="right">Losses</th>
-            <th class="right">Points For</th>
-            <th class="right">Points Against</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
-          <!-- rows injected by app.js -->
-        </tbody>
-      </table>
+    <div class="grid">
+      <section class="card">
+        <h2>What this site does</h2>
+        <p class="tiny">This site reads JSON files our GitHub Action writes every hour. If JSON exists, pages populate. If not, they’ll show a helpful error.</p>
+        <ul>
+          <li>Players → <code>data/players_summary.json</code></li>
+          <li>Teams → <code>data/team_rosters.json</code></li>
+        </ul>
+        <p class="tiny" id="statusLine">Checking JSON timestamps…</p>
+      </section>
+
+      <aside class="card">
+        <h2>Data status</h2>
+        <div class="tiny">
+          <div id="playersStatus">players_summary.json: (loading)</div>
+          <div id="teamsStatus">team_rosters.json: (loading)</div>
+        </div>
+      </aside>
     </div>
-
-    <footer>
-      <span class="status">Data sources: <code>docs/data/espn_mStandings.json</code> (primary) and <code>docs/data/espn_mTeam.json</code> (fallback)</span>
-      <span class="pill" id="stamp"></span>
-      <a class="btn" href="" id="refresh">Refresh</a>
-    </footer>
   </div>
 
-  <script src="app.js" defer></script>
+  <script>
+    // Quick status pings so you can see if JSONs are present
+    async function ping(path, elId){
+      const el = document.getElementById(elId);
+      try{
+        const r = await fetch(path + "?v=" + Date.now());
+        if(!r.ok){ el.textContent = `${path}: ${r.status}`; return; }
+        const j = await r.json();
+        const when = j.generated_utc || "unknown time";
+        const cnt = j.count ?? (Array.isArray(j.players)? j.players.length : (j.rows? j.rows.length : 'n/a'));
+        el.innerHTML = `${path}: <span class="ok">OK</span> — items: ${cnt}, time: ${when}`;
+      }catch(e){
+        el.innerHTML = `${path}: <span class="err">${e}</span>`;
+      }
+    }
+    ping("./data/players_summary.json","playersStatus");
+    ping("./data/team_rosters.json","teamsStatus");
+  </script>
 </body>
 </html>
