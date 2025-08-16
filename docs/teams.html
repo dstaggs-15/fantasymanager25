@@ -2,55 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Aura Fantasy – Teams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fantasy Manager 25 — Teams</title>
-  <link rel="icon" href="favicon.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
   <style>
-    :root { --bg:#0b0f1a; --card:#101827; --muted:#8ba1c4; --acc:#60a5fa; }
-    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg,#0b0f1a,#0b0f1a 60%,#0e1422); color:#e5ecff; }
-    a { color: var(--acc); text-decoration: none; }
-    header { padding:24px 16px; display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; }
-    nav a { margin-right:16px; opacity:.9 }
-    .wrap { max-width:1100px; margin:0 auto; padding: 8px 16px 48px; }
-    .h1 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; letter-spacing: .2px; margin: 8px 0 6px; }
-    .muted { color: var(--muted); font-size: 14px; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px; margin-top: 18px; }
-    .card { background:linear-gradient(180deg,#101827, #0e1626); border:1px solid #1b2741; border-radius:14px; padding:14px; box-shadow: 0 10px 30px rgba(7,12,26,.35) inset, 0 20px 60px rgba(6,10,22,.25); }
-    .row { display:flex; gap:12px; align-items:center; }
-    .logo { width:52px; height:52px; border-radius:10px; background:#0c1220; border:1px solid #1c2a4d; object-fit:cover; }
-    .teamname { font-weight:700; font-size:16px; line-height:1.15; }
-    .owner { font-size:13px; color: var(--muted); }
-    .meta { display:flex; gap:10px; margin-top:10px; font-size:13px; color:#9db3d9; }
-    .chip { background:#0b1324; border:1px solid #19305c; padding:4px 8px; border-radius:999px; }
-    footer { margin-top: 26px; border-top:1px solid #1b2741; padding-top:14px; color:#9db3d9; font-size:13px; display:flex; justify-content:space-between; align-items:center; }
-    .status { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; color:#8ba1c4; }
+    :root { --bg:#0b0f17; --card:#131b2a; --muted:#8aa0c7; }
+    body{margin:0;background:linear-gradient(180deg,#0b0f17,#0a0d14);color:#e6efff;font-family:system-ui,Inter,Arial}
+    .wrap{max-width:1000px;margin:0 auto;padding:28px}
+    a{color:#a5d8ff;text-decoration:none} a:hover{text-decoration:underline}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .card{background:#131b2a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px}
+    .muted{color:#8aa0c7}
+    ul{margin:8px 0 0 18px}
   </style>
 </head>
 <body>
-  <header>
-    <div><a href="./" class="muted">⟵ Back</a></div>
-    <nav>
-      <a href="./">Home</a>
-      <a href="./teams.html"><strong>Teams</strong></a>
-      <a href="./players.html">Players</a>
-    </nav>
-  </header>
-
   <div class="wrap">
-    <div class="h1">League Teams</div>
-    <div class="muted">Live from ESPN mTeam view. Updates hourly from our VPS.</div>
-
-    <div id="teams" class="grid"></div>
-
-    <footer>
-      <div>Data sources: <span class="status">data/espn_mTeam.json</span></div>
-      <div id="stamp" class="status"></div>
-    </footer>
+    <h1 style="margin:0 0 8px 0">Teams</h1>
+    <div class="muted" id="meta"><a href="./index.html">← Home</a></div>
+    <div id="grid" class="grid" style="margin-top:14px">
+      <div class="card muted">Loading…</div>
+    </div>
   </div>
 
-  <script src="js/teams.js" defer></script>
+  <script>
+    async function load(){
+      const r = await fetch("./data/team_rosters.json?v=" + Date.now());
+      const j = await r.json();
+      const grid = document.getElementById('grid');
+      grid.innerHTML = "";
+      const teams = j.teams || [];
+      document.getElementById('meta').innerHTML =
+        `<a href="./index.html">← Home</a> • Loaded ${teams.length} teams • ${j.generated_utc || ''}`;
+
+      for(const t of teams){
+        const div = document.createElement('div');
+        div.className = "card";
+        const players = t.players || [];
+        div.innerHTML = `
+          <div style="display:flex;align-items:center;gap:10px">
+            <img src="${t.logo || 'https://g.espncdn.com/lm-static/ffl/images/ffl-fantasy-football-logo.png'}" alt="" width="32" height="32" style="border-radius:8px">
+            <div>
+              <div style="font-weight:600">${t.name || 'Team'}</div>
+              <div class="muted" style="font-size:12px">${players.length} players</div>
+            </div>
+          </div>
+          <ul>${players.slice(0,8).map(p=>`<li>${p.name || '?'} – ${p.position || p.positionId || ''}</li>`).join('')}</ul>
+        `;
+        grid.appendChild(div);
+      }
+    }
+    load().catch(e=>{
+      const grid = document.getElementById('grid');
+      grid.innerHTML = `<div class="card muted">Error: ${e}</div>`;
+    });
+  </script>
 </body>
 </html>
