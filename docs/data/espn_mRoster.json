@@ -1,1 +1,111 @@
-{"fetched_at":"2025-08-16T04:57:53Z","data":{"draftDetail":{"drafted":false,"inProgress":false},"gameId":1,"id":508419792,"scoringPeriodId":0,"seasonId":2025,"segmentId":0,"status":{"activatedDate":1750214799610,"createdAsLeagueType":3,"currentLeagueType":0,"currentMatchupPeriod":1,"finalScoringPeriod":18,"firstScoringPeriod":1,"isActive":true,"isExpired":false,"isFull":false,"isPlayoffMatchupEdited":false,"isToBeDeleted":false,"isViewable":false,"isWaiverOrderEdited":false,"latestScoringPeriod":0,"previousSeasons":[2022,2023,2024],"teamsJoined":1,"transactionScoringPeriod":0,"waiverLastExecutionDate":1755241940656,"waiverProcessStatus":{}},"teams":[{"id":1,"roster":{"entries":[],"tradeReservedEntries":0}}]}}
+{
+  "fetched_at": "2025-08-16T05:21:47+00:00",
+  "data": {
+    "draftDetail": {
+      "drafted": false,
+      "inProgress": false
+    },
+    "gameId": 1,
+    "id": 508419792,
+    "scoringPeriodId": 0,
+    "seasonId": 2025,
+    "segmentId": 0,
+    "status": {
+      "activatedDate": 1750214799610,
+      "createdAsLeagueType": 3,
+      "currentLeagueType": 0,
+      "currentMatchupPeriod": 1,
+      "finalScoringPeriod": 18,
+      "firstScoringPeriod": 1,
+      "isActive": true,
+      "isExpired": false,
+      "isFull": true,
+      "isPlayoffMatchupEdited": false,
+      "isToBeDeleted": false,
+      "isViewable": false,
+      "isWaiverOrderEdited": false,
+      "latestScoringPeriod": 0,
+      "previousSeasons": [
+        2022,
+        2023,
+        2024
+      ],
+      "teamsJoined": 10,
+      "transactionScoringPeriod": 0,
+      "waiverLastExecutionDate": 1755241940656,
+      "waiverProcessStatus": {}
+    },
+    "teams": [
+      {
+        "id": 1,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 3,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 4,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 5,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 6,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 7,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 10,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 11,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 12,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      },
+      {
+        "id": 13,
+        "roster": {
+          "entries": [],
+          "tradeReservedEntries": 0
+        }
+      }
+    ]
+  }
+}

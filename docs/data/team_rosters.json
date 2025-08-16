@@ -1,1 +1,105 @@
-{"league_id":"508419792","season":2025,"generated_utc":"2025-08-16T04:57:53Z","teams":[{"teamId":1,"name":"Duloc Gingerbread Men","abbrev":"DGM","logo":"https://i1.sndcdn.com/artworks-EqXTkYLrPyKhds3k-vat1GA-t500x500.jpg","owners":["{F0AB9EEB-EFC6-4E1D-A9FC-818448FFC022}"],"players":[]}]}
+{
+  "generated_utc": "2025-08-16T05:21:47+00:00",
+  "teams": [
+    {
+      "id": 1,
+      "name": "Duloc Gingerbread Men",
+      "logo": "https://i1.sndcdn.com/artworks-EqXTkYLrPyKhds3k-vat1GA-t500x500.jpg",
+      "owners": [
+        "{F0AB9EEB-EFC6-4E1D-A9FC-818448FFC022}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 3,
+      "name": "Indoctrinated Ravens",
+      "logo": "https://www.mtlemmonazimages.com/uploads/3/7/7/7/37772539/azsondesmusoct2017-198-of-597_1_orig.jpg",
+      "owners": [
+        "{F5A0707D-5431-4DBC-BB55-92834F2AE647}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 4,
+      "name": "Mac Daddy's",
+      "logo": "https://pbs.twimg.com/profile_images/1465442484260007940/hIO1Gtxt_400x400.jpg",
+      "owners": [
+        "{46E7C0E0-4933-426F-9A44-9514DB529003}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 5,
+      "name": "HerpesDonator",
+      "logo": "https://g.espncdn.com/lm-static/ffl/images/default_logos/6.svg",
+      "owners": [
+        "{F165D2A7-7F38-4719-8F3E-D0445997C682}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 6,
+      "name": "Crip Crip",
+      "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/CreepShow-ToddDetwiler/CreepShow-06.svg",
+      "owners": [
+        "{887BA3B4-35F1-49CF-9E74-4F55FEA58636}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 7,
+      "name": "Our Lard and Savior",
+      "logo": "https://i1.sndcdn.com/artworks-000618296587-8j631n-t500x500.jpg",
+      "owners": [
+        "{A7AB81CC-43B6-4F51-9130-CF6C0910665C}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 10,
+      "name": "Koolaid Jammer",
+      "logo": "https://g.espncdn.com/lm-static/logo-packs/ffl/Talent-ChipWass/talent-woody.svg",
+      "owners": [
+        "{9732886E-2FD0-4545-AF7B-245C055D9BCD}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 11,
+      "name": "Don't Blink ",
+      "logo": "https://g.espncdn.com/lm-static/ffl/images/default_logos/19.svg",
+      "owners": [
+        "{1ACB6016-9FF6-493B-B886-06F95D293352}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 12,
+      "name": "Josh's Scary Team",
+      "logo": "https://g.espncdn.com/lm-static/ffl/images/default_logos/20.svg",
+      "owners": [
+        "{D86AD8F4-8325-440B-82D0-7DE5ACE586A0}"
+      ],
+      "players": [],
+      "roster_count": 0
+    },
+    {
+      "id": 13,
+      "name": "James's Finest Team",
+      "logo": "https://g.espncdn.com/lm-static/ffl/images/default_logos/12.svg",
+      "owners": [
+        "{1224FE8A-638A-4F46-9D6F-B006A2537B14}"
+      ],
+      "players": [],
+      "roster_count": 0
+    }
+  ]
+}
