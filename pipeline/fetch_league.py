@@ -1,255 +1,203 @@
-# pipeline/fetch_league.py
+#!/usr/bin/env python3
 """
-Fetch league teams + rosters and emit:
-  - docs/data/espn_mTeam.json
-  - docs/data/espn_mRoster.json
-  - docs/data/team_rosters.json   (normalized for Teams page)
+Fetch league-wide data from ESPN (mTeam + mRoster) using SWID/ESPN_S2 cookies
+and generate the site-ready JSON under docs/data/.
 
-Hardening:
-  • Tries read-only host first (lm-api-reads.fantasy.espn.com), then fantasy.espn.com
-  • "Priming" GETs to public league page & static assets (mimic browser)
-  • Optional CF clearance cookie (CF_CLEARANCE env) if you provide it
-  • Retries with jitter and alternate query shapes
-  • Falls back to last-good JSON if today’s fetch is blocked
+Requires env:
+  LEAGUE_ID   (e.g. 508419792)
+  SEASON      (e.g. 2025)
+  SWID        (keep the {} braces)
+  ESPN_S2     (your long token)
 
-Env (repo secrets or runner env):
-  LEAGUE_ID   default '508419792'
-  SEASON      default '2025'
-  SWID        {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
-  ESPN_S2     long cookie string
-  CF_CLEARANCE  (optional) Cloudflare cookie from a real browser session
-
-Exit 0 on success (or safe fallback), 2 on hard failure with error breadcrumbs.
+Outputs (all UTC timestamps):
+  docs/data/espn_mTeam.json          # raw ESPN league (mTeam)
+  docs/data/espn_mRoster.json        # raw ESPN league (mRoster)
+  docs/data/team_rosters.json        # {generated_utc, teams:[{id,name,logo,owners,roster_count,players:[...] }]}
+  docs/data/players_summary.json     # {generated_utc, count, rows:[{id, name, pos, proTeam, teamId, team}]}
 """
 
-from __future__ import annotations
-import os, sys, json, time, random, pathlib
+import json
+import os
+import sys
+import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List
 
 import requests
 
-LEAGUE_ID = os.getenv("LEAGUE_ID", "508419792")
-SEASON = int(os.getenv("SEASON", "2025"))
-OUT_DIR = "docs/data"
+SESSION = requests.Session()
+SESSION.headers.update({
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+})
 
-TEAM_RAW = f"{OUT_DIR}/espn_mTeam.json"
-ROSTER_RAW = f"{OUT_DIR}/espn_mRoster.json"
-COMBINED   = f"{OUT_DIR}/team_rosters.json"
+def utcnow_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
-BASES = [
-    f"https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}",
-    f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}",
-]
+def env_required(key: str) -> str:
+    val = os.environ.get(key, "").strip()
+    if not val:
+        print(f"Missing required env: {key}", file=sys.stderr)
+        sys.exit(1)
+    return val
 
-POS_MAP = {
-    0:"Quarterback", 2:"Running back", 4:"Wide receiver", 6:"Tight end",
-    16:"Team defense / special teams", 17:"Kicker",
-}
-NFL = {
-    1:"ATL",2:"BUFF",3:"CHI",4:"CIN",5:"CLE",6:"DAL",7:"DEN",8:"DET",9:"GB",
-    10:"TEN",11:"IND",12:"KC",13:"OAK",14:"LAR",15:"MIA",16:"MIN",17:"NE",
-    18:"NO",19:"NYG",20:"NYJ",21:"PHI",22:"ARI",23:"PIT",24:"LAC",25:"SF",
-    26:"SEA",27:"TB",28:"WSH",29:"CAR",30:"JAX",33:"BAL",34:"HOU",35:"NO TEAM"
-}
+def league_url(season: int, league_id: int, params: Dict[str, Any]) -> str:
+    base = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/segments/0/leagues/{league_id}"
+    if params:
+        # requests will add params; building string here only for logs
+        return base
+    return base
 
-def utc_now() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+def req_json(url: str, params: Dict[str, Any], cookies: Dict[str, str]) -> Dict[str, Any]:
+    r = SESSION.get(url, params=params, cookies=cookies, timeout=30)
+    ctype = r.headers.get("content-type", "")
+    if "application/json" not in ctype:
+        raise RuntimeError(f"Non-JSON (content-type={ctype})")
+    return r.json()
 
-def ensure_out():
-    os.makedirs(OUT_DIR, exist_ok=True)
-
-def read_json_if_exists(path: str) -> Any | None:
-    p = pathlib.Path(path)
-    if p.exists() and p.is_file():
-        try:
-            return json.loads(p.read_text(encoding="utf-8"))
-        except Exception:
-            return None
-    return None
-
-def write(path: str, obj: Any):
-    ensure_out()
+def safe_write(path: str, data: Any):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, separators=(",", ":"))
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-def require(name: str) -> str:
-    v = os.getenv(name)
-    if not v:
-        raise RuntimeError(f"Missing env: {name}")
-    return v
+def fetch_view(season: int, league_id: int, view: str, cookies: Dict[str, str], *,
+               scoring_period_id: int | None = None,
+               tries: int = 4, sleep_secs: float = 1.5) -> Dict[str, Any]:
+    url = league_url(season, league_id, {})
+    params = {"view": view}
+    if scoring_period_id is not None:
+        params["scoringPeriodId"] = scoring_period_id
 
-def make_session() -> requests.Session:
-    swid = require("SWID")
-    s2   = require("ESPN_S2")
-    s = requests.Session()
-    s.cookies.set("SWID", swid, domain=".espn.com", secure=True)
-    s.cookies.set("espn_s2", s2,  domain=".espn.com", secure=True)
-    # Optional Cloudflare bypass cookie if you grabbed one from your browser:
-    cf = os.getenv("CF_CLEARANCE")
-    if cf:
-        # CF typically sets cookie on domain (fantasy.espn.com) — set on .espn.com to be safe
-        s.cookies.set("cf_clearance", cf, domain=".espn.com", secure=True)
-    s.headers.update({
-        "User-Agent": ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-                       "KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Connection": "keep-alive",
-        "Upgrade-Insecure-Requests": "1",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "Origin": "https://fantasy.espn.com",
-        "Referer": f"https://fantasy.espn.com/football/league?leagueId={LEAGUE_ID}&seasonId={SEASON}",
-    })
-    return s
-
-def prime_session(s: requests.Session):
-    """
-    Hit a few public pages to let ESPN set harmless cookies and reduce bot score.
-    Ignore failures.
-    """
-    urls = [
-        f"https://fantasy.espn.com/football/league?leagueId={LEAGUE_ID}&seasonId={SEASON}",
-        "https://g.espncdn.com/lm-static/ffl/images/ffl-fantasy-football-logo.png",
-        "https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/scoreboard/nwe.png&h=40&w=40",  # a random asset
-    ]
-    for u in urls:
-        try:
-            s.get(u, timeout=15)
-            time.sleep(0.3 + random.random()*0.4)
-        except Exception:
-            pass
-
-def hardened_get(s: requests.Session, base: str, view: str) -> Dict[str, Any]:
-    """
-    Try alternate query shapes with backoff on a given base host.
-    """
-    shapes = [
-        {"view": view, "forTeamId": 1},
-        {"view": view},
-        {"view": view, "scoringPeriodId": 0},
-    ]
-    errors: List[str] = []
-    for shape in shapes:
-        for attempt in range(1, 5):
-            try:
-                r = s.get(base, params=shape, timeout=30)
-                ctype = r.headers.get("content-type", "")
-                if "application/json" not in ctype:
-                    raise RuntimeError(f"{view} Non-JSON (content-type={ctype})")
-                return r.json()
-            except Exception as e:
-                errors.append(f"{base} {view} {shape} try={attempt}: {type(e).__name__}: {e}")
-                time.sleep(0.7 + random.random()*0.9)
-        time.sleep(0.8 + random.random()*0.6)
-    raise RuntimeError("; ".join(errors[-6:]))
-
-def get_json_any_host(s: requests.Session, view: str) -> Dict[str, Any]:
-    prime_session(s)
     last_err = None
-    for base in BASES:
+    for attempt in range(1, tries + 1):
         try:
-            return hardened_get(s, base, view)
+            return req_json(url, params, cookies)
         except Exception as e:
             last_err = e
-            # small pause before trying next base
-            time.sleep(0.8 + random.random()*0.6)
-    raise last_err or RuntimeError(f"{view} all hosts failed")
+            time.sleep(sleep_secs)
+    raise RuntimeError(f"{view} failed after {tries} tries: {last_err}")
 
-def normalize_teams(team_payload: Dict[str, Any]) -> Dict[int, Dict[str, Any]]:
-    teams: Dict[int, Dict[str, Any]] = {}
-    for t in (team_payload.get("teams") or []):
-        teams[t["id"]] = {
-            "teamId": t["id"],
-            "name": t.get("name") or f"Team {t['id']}",
-            "abbrev": t.get("abbrev"),
+def flatten_players_from_roster(mroster: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    mRoster -> rows of players with minimal fields used by Players page.
+    """
+    rows: List[Dict[str, Any]] = []
+    teams = mroster.get("teams", [])
+    # player metadata sometimes sits under mRoster["players"] too, but teams[*].roster.entries is reliable
+    for t in teams:
+        team_id = t.get("id")
+        team_name = t.get("name") or f"Team {team_id}"
+        roster = (t.get("roster") or {}).get("entries", [])
+        for entry in roster:
+            p = (entry.get("playerPoolEntry") or {}).get("player", {})
+            pid = p.get("id")
+            full = p.get("fullName") or p.get("name") or "Unknown"
+            default_pos = (p.get("defaultPositionId") or "")
+            pro_team_id = p.get("proTeamId")
+            # position mapping (basic)
+            pos_map = {1: "QB", 2: "RB", 3: "WR", 4: "TE", 5: "K", 16: "D/ST"}
+            pos = pos_map.get(default_pos, str(default_pos))
+
+            rows.append({
+                "id": pid,
+                "name": full,
+                "pos": pos,
+                "proTeam": pro_team_id,
+                "teamId": team_id,
+                "team": team_name,
+            })
+    return rows
+
+def build_team_rosters(mteam: Dict[str, Any], mroster: Dict[str, Any]) -> Dict[str, Any]:
+    team_index: Dict[int, Dict[str, Any]] = {}
+    for t in mteam.get("teams", []):
+        tid = t.get("id")
+        team_index[tid] = {
+            "id": tid,
+            "name": t.get("name"),
             "logo": t.get("logo"),
             "owners": t.get("owners", []),
-            "players": [],
+            "roster_count": 0,
+            "players": [],  # we’ll fill from mRoster if available
         }
-    return teams
 
-def normalize_roster(roster_payload: Dict[str, Any], teams: Dict[int, Dict[str, Any]]):
-    for t in (roster_payload.get("teams") or []):
+    for t in mroster.get("teams", []):
         tid = t.get("id")
-        team_rec = teams.get(tid)
-        if not team_rec:
-            continue
-        players = []
-        roster = (t.get("roster") or {}).get("entries") or []
-        for e in roster:
-            p = (e.get("playerPoolEntry") or {}).get("player") or {}
-            name = p.get("fullName") or f"{p.get('firstName','')} {p.get('lastName','')}".strip()
-            posId = p.get("defaultPositionId")
-            proId = p.get("proTeamId")
-            players.append({
-                "id": p.get("id"),
-                "name": name,
-                "positionId": posId,
-                "position": POS_MAP.get(posId, str(posId) if posId is not None else None),
-                "proTeamId": proId,
-                "team": NFL.get(proId, str(proId) if proId is not None else None),
-            })
-        team_rec["players"] = players
+        target = team_index.get(tid)
+        if not target:
+            # create if not seen in mTeam (edge-case)
+            target = {
+                "id": tid,
+                "name": t.get("name"),
+                "logo": t.get("logo"),
+                "owners": t.get("owners", []),
+                "roster_count": 0,
+                "players": [],
+            }
+            team_index[tid] = target
 
-def success_bundle(teams_map: Dict[int, Dict[str, Any]]) -> Dict[str, Any]:
+        entries = (t.get("roster") or {}).get("entries", []) or []
+        target["roster_count"] = len(entries)
+        for e in entries:
+            p = (e.get("playerPoolEntry") or {}).get("player", {})
+            target["players"].append({
+                "id": p.get("id"),
+                "name": p.get("fullName") or p.get("name"),
+                "posId": p.get("defaultPositionId"),
+                "proTeamId": p.get("proTeamId"),
+            })
+
+    teams_sorted = sorted(team_index.values(), key=lambda x: x["id"] or 0)
     return {
-        "league_id": LEAGUE_ID,
-        "season": SEASON,
-        "generated_utc": utc_now(),
-        "teams": list(teams_map.values()),
+        "generated_utc": utcnow_iso(),
+        "teams": teams_sorted,
     }
 
 def main() -> int:
-    ensure_out()
+    league_id = int(env_required("LEAGUE_ID"))
+    season = int(os.environ.get("SEASON", "2025").strip() or "2025")
+    swid = env_required("SWID")
+    s2 = env_required("ESPN_S2")
 
-    # keep a last-good snapshot for fallback
-    last_good = read_json_if_exists(COMBINED)
+    cookies = {"SWID": swid, "espn_s2": s2}
 
-    try:
-        s = make_session()
-        # mTeam
-        teams_raw = get_json_any_host(s, "mTeam")
-        write(TEAM_RAW, {"fetched_at": utc_now(), "data": teams_raw})
+    # 1) fetch raw views
+    mteam = fetch_view(season, league_id, "mTeam", cookies)
+    # preseason / pre-week rosters are under scoringPeriodId 0; once the season starts, current week works too
+    mroster = fetch_view(season, league_id, "mRoster", cookies, scoring_period_id=0)
 
-        # mRoster
-        rosters_raw = get_json_any_host(s, "mRoster")
-        write(ROSTER_RAW, {"fetched_at": utc_now(), "data": rosters_raw})
+    # 2) write raw dumps (handy for debugging)
+    raw_out_dir = "docs/data"
+    safe_write(f"{raw_out_dir}/espn_mTeam.json", {"fetched_at": utcnow_iso(), "data": mteam})
+    safe_write(f"{raw_out_dir}/espn_mRoster.json", {"fetched_at": utcnow_iso(), "data": mroster})
 
-        # normalize
-        teams_map = normalize_teams(teams_raw)
-        normalize_roster(rosters_raw, teams_map)
+    # 3) build team_rosters.json (feeds Teams page)
+    team_rosters = build_team_rosters(mteam, mroster)
+    safe_write(f"{raw_out_dir}/team_rosters.json", team_rosters)
 
-        final = success_bundle(teams_map)
-        write(COMBINED, final)
-        print(f"team_rosters: {len(final['teams'])} teams written")
-        return 0
+    # 4) build players_summary.json (feeds Players page)
+    rows = flatten_players_from_roster(mroster)
+    players_summary = {
+        "generated_utc": utcnow_iso(),
+        "count": len(rows),
+        "rows": rows,
+        "source": "espn mRoster",
+    }
+    safe_write(f"{raw_out_dir}/players_summary.json", players_summary)
 
-    except Exception as e:
-        msg = f"{type(e).__name__}: {e}"
-
-        # If we have last-good with teams, keep serving it (soft success)
-        if last_good and isinstance(last_good, dict) and len(last_good.get("teams", [])) > 0:
-            warn = {"generated_utc": utc_now(), "teams": last_good["teams"], "warning": msg}
-            write(COMBINED, warn)
-            write(TEAM_RAW, {"fetched_at": utc_now(), "error": msg})
-            write(ROSTER_RAW, {"fetched_at": utc_now(), "error": msg})
-            print(f"[WARN] fetch_league blocked; served last-good ({len(last_good['teams'])} teams). Detail: {msg}", file=sys.stderr)
-            return 0  # soft OK
-
-        # Otherwise emit explicit error files
-        err = {"fetched_at": utc_now(), "error": msg}
-        try:
-            write(TEAM_RAW, err)
-            write(ROSTER_RAW, err)
-            write(COMBINED, {"generated_utc": utc_now(), "teams": [], "error": msg})
-        except Exception:
-            pass
-        print(f"fetch_league ERROR: {msg}", file=sys.stderr)
-        return 2
+    print(f"Wrote {len(team_rosters['teams'])} teams; {players_summary['count']} players.")
+    return 0
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except SystemExit:
+        raise
+    except Exception as e:
+        # If we ever regress, emit a small error file so the site shows why it’s empty
+        safe_write("docs/data/fetch_league_error.json", {
+            "generated_utc": utcnow_iso(),
+            "error": repr(e)
+        })
+        print(f"fetch_league ERROR: {e}", file=sys.stderr)
+        sys.exit(2)
