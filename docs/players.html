@@ -2,66 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Players • Fantasy Manager 25</title>
+  <title>Aura Fantasy – Players</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root{--bg:#0b1220;--card:#0f172a;--text:#e5e7eb;--muted:#94a3b8;--border:#1f2a44;--headbg:#111827;--headfg:#fff;}
-    *{box-sizing:border-box}
-    body{margin:0;background:#0b1220;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif}
-    .wrap{max-width:1100px;margin:26px auto;padding:0 14px}
-    h1{margin:0 0 8px;font-weight:800}
-    .sub{color:var(--muted);margin-bottom:12px}
-    .card{background:#0f172a;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    :root { --bg:#0b0f17; --card:#131b2a; --muted:#8aa0c7; --accent:#6ee7ff; }
+    body{margin:0;background:linear-gradient(180deg,#0b0f17,#0a0d14);color:#e6efff;font-family:system-ui,Inter,Arial}
+    .wrap{max-width:1200px;margin:0 auto;padding:28px}
+    a{color:#a5d8ff;text-decoration:none} a:hover{text-decoration:underline}
+    .toolbar{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+    input{background:#0f1522;border:1px solid rgba(255,255,255,.08);border-radius:10px;color:#e6efff;padding:10px 12px;min-width:240px}
+    .card{background:#131b2a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px}
     table{width:100%;border-collapse:collapse}
-    thead th{background:var(--headbg);color:var(--headfg);text-transform:uppercase;font-size:.8rem;letter-spacing:.06em}
-    th,td{padding:10px 8px;border-bottom:1px solid var(--border);text-align:left}
-    .num{text-align:right}
-    .controls{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}
-    input,select{background:#0f172a;color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:10px}
-    a{color:#93c5fd;text-decoration:none}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+    th{text-align:left;color:#8aa0c7}
+    .muted{color:#8aa0c7}
+    .chip{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Players</h1>
-    <div class="sub">Source: <code>data/players_summary.json</code> • <a href="./">Home</a></div>
-
-    <div class="controls">
-      <input id="search" type="text" placeholder="Search name or team…" />
-      <select id="pos">
-        <option value="">All positions</option>
-        <option>Quarterback</option>
-        <option>Running Back</option>
-        <option>Wide Receiver</option>
-        <option>Tight End</option>
-        <option>Kicker</option>
-        <option>Defense/Special Teams</option>
-      </select>
-      <select id="sort">
-        <option value="name">Sort: Name</option>
-        <option value="position">Sort: Position</option>
-        <option value="team">Sort: Team</option>
-        <option value="-proj_season">Sort: Proj Season (desc)</option>
-        <option value="-recent_avg">Sort: Recent Avg (desc)</option>
-      </select>
+    <h1 style="margin:0 0 8px 0">Players</h1>
+    <div class="toolbar">
+      <a href="./index.html">← Home</a>
+      <input id="q" placeholder="Search name or team…" />
+      <span id="meta" class="muted"></span>
     </div>
 
     <div class="card">
-      <table>
+      <table id="tbl">
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Pos</th>
-            <th>Team</th>
-            <th class="num">Proj Season</th>
-            <th class="num">Recent Avg (last 5)</th>
-          </tr>
+        <tr>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Team</th>
+          <th>Projected (season)</th>
+          <th>Recent avg</th>
+          <th class="muted">Source</th>
+        </tr>
         </thead>
-        <tbody id="tbody"></tbody>
+        <tbody id="rows"><tr><td class="muted" colspan="6">Loading…</td></tr></tbody>
       </table>
     </div>
   </div>
 
-  <script src="players.js"></script>
+  <script>
+    const POS = {
+      0: "Quarterback", 2: "Running back", 4: "Wide receiver", 6: "Tight end", 16:"Team defense / special teams"
+    };
+    const NFL = {
+      1:"ATL",2:"BUF",3:"CHI",4:"CIN",5:"CLE",6:"DAL",7:"DEN",8:"DET",9:"GB",
+      10:"TEN",11:"IND",12:"KC",13:"OAK",14:"LAR",15:"MIA",16:"MIN",17:"NE",
+      18:"NO",19:"NYG",20:"NYJ",21:"PHI",22:"ARI",23:"PIT",24:"LAC",25:"SF",
+      26:"SEA",27:"TB",28:"WSH",29:"CAR",30:"JAX",33:"BAL",34:"HOU",35:"NO TEAM"
+    };
+
+    const fmt = n => (n==null? "–" : (Math.round(n*10)/10).toFixed(1));
+
+    async function load(){
+      const url = "./data/players_summary.json?v=" + Date.now();
+      const r = await fetch(url);
+      const j = await r.json();
+      const rows = j.rows || [];
+      const meta = document.getElementById('meta');
+      meta.textContent = `Loaded ${rows.length} players • ${j.generated_utc || ''}`;
+
+      const tbody = document.getElementById('rows');
+      tbody.innerHTML = "";
+
+      for(const p of rows){
+        // Handle both private (positionId/proTeamId) and public (position/team) modes
+        const pos = p.positionId!=null ? (POS[p.positionId] || `#${p.positionId}`) : (p.position || "–");
+        const team = p.proTeamId!=null ? (NFL[p.proTeamId] || `#${p.proTeamId}`) : (p.team || "–");
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${p.name || "?"}</td>
+          <td>${pos}</td>
+          <td>${team}</td>
+          <td>${fmt(p.proj_season)}</td>
+          <td>${fmt(p.recent_avg)}</td>
+          <td><span class="chip">${p.source || 'n/a'}</span></td>
+        `;
+        tbody.appendChild(tr);
+      }
+
+      // Simple client-side search
+      const q = document.getElementById('q');
+      q.oninput = () => {
+        const term = q.value.toLowerCase();
+        for(const tr of tbody.querySelectorAll('tr')){
+          const txt = tr.textContent.toLowerCase();
+          tr.style.display = txt.includes(term) ? "" : "none";
+        }
+      };
+    }
+
+    load().catch(e=>{
+      const tbody = document.getElementById('rows');
+      tbody.innerHTML = `<tr><td class="muted" colspan="6">Error: ${e}</td></tr>`;
+    });
+  </script>
 </body>
 </html>
