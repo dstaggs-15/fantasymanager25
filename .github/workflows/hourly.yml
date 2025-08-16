@@ -2,54 +2,53 @@ name: Hourly Build and Deploy
 
 on:
   schedule:
-    - cron: '15 * * * *'   # hourly at :15
+    - cron: "5 * * * *"   # every hour :05
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: self-hosted
-    env:
-      LEAGUE_ID: '508419792'
-      SEASON: '2025'
-      # The runner or repo secrets must provide SWID and ESPN_S2
-      # We’ll read from env at runtime inside the Python scripts.
-
+    runs-on: self-hosted   # your VPS runner
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Ensure Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          python -m pip install requests
 
-      - name: Fetch league (teams + rosters)
+      - name: Verify secrets available
         env:
           SWID: ${{ secrets.SWID }}
           ESPN_S2: ${{ secrets.ESPN_S2 }}
         run: |
-          python pipeline/fetch_league.py
+          MISSING=0
+          if [ -z "${SWID}" ]; then echo "Error: SWID secret is not set"; MISSING=1; fi
+          if [ -z "${ESPN_S2}" ]; then echo "Error: ESPN_S2 secret is not set"; MISSING=1; fi
+          if [ "$MISSING" -eq 1 ]; then exit 1; fi
 
-      - name: Fetch players (with public fallback)
+      - name: Fetch Teams & Rosters (writes docs/data/*.json)
         env:
           SWID: ${{ secrets.SWID }}
           ESPN_S2: ${{ secrets.ESPN_S2 }}
+          LEAGUE_ID: "508419792"
+          SEASON: "2025"
         run: |
-          python pipeline/fetch_players.py
+          python pipeline/fetch_rosters.py
 
-      - name: Commit data (if changed)
+      - name: Commit and push JSON
         run: |
-          git config user.name "gh-actions"
-          git config user.email "actions@users.noreply.github.com"
-          git add docs/data/*.json || true
-          if ! git diff --cached --quiet; then
-            git commit -m "Update data ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
-            git push
+          git config --global user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git add docs/data/team_rosters.json docs/data/players_summary.json docs/data/status.json || true
+          if git diff --cached --quiet; then
+            echo "No JSON changes to commit."
           else
-            echo "No data changes"
+            git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            git push
           fi
