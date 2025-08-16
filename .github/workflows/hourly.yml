@@ -1,109 +1,55 @@
 name: Hourly Build and Deploy
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"   # hourly at :00 UTC
-
-permissions:
-  contents: write
-  actions: read
+    - cron: '15 * * * *'   # hourly at :15
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: self-hosted
-
     env:
-      LEAGUE_ID: "508419792"
-      SEASON: "2025"
-      # DO NOT put SWID/ESPN_S2 here; we resolve them below from either secrets or runner env.
+      LEAGUE_ID: '508419792'
+      SEASON: '2025'
+      # The runner or repo secrets must provide SWID and ESPN_S2
+      # We’ll read from env at runtime inside the Python scripts.
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
 
-      # Resolve credentials from either repo secrets OR runner env (/etc/environment or service drop-in).
-      # Result: later steps will have SWID and ESPN_S2 available via $GITHUB_ENV.
-      - name: Resolve ESPN credentials (secrets or runner env)
-        shell: bash
-        run: |
-          FOUND=0
-
-          # Prefer repo secrets if set
-          if [ -n "${{ secrets.SWID }}" ]; then
-            echo "SWID=${{ secrets.SWID }}" >> "$GITHUB_ENV"
-            FOUND=1
-          fi
-          if [ -n "${{ secrets.ESPN_S2 }}" ]; then
-            echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
-            FOUND=$(( FOUND + 1 ))
-          fi
-
-          # Fallback to runner env if secrets missing
-          if [ $FOUND -lt 2 ]; then
-            if [ -n "${SWID}" ] && ! grep -q '^SWID=' "$GITHUB_ENV" 2>/dev/null; then
-              echo "SWID=${SWID}" >> "$GITHUB_ENV"
-              FOUND=$(( FOUND + 1 ))
-            fi
-            if [ -n "${ESPN_S2}" ] && ! grep -q '^ESPN_S2=' "$GITHUB_ENV" 2>/dev/null; then
-              echo "ESPN_S2=${ESPN_S2}" >> "$GITHUB_ENV"
-              FOUND=$(( FOUND + 1 ))
-            fi
-          fi
-
-          # Validate presence now that we've exported
-          # (We intentionally don't echo values for security)
-          source "$GITHUB_ENV"
-          MISSING=0
-          [ -z "$SWID" ] && echo "::error::SWID is not set (neither repo secret nor runner env provided it)" && MISSING=1
-          [ -z "$ESPN_S2" ] && echo "::error::ESPN_S2 is not set (neither repo secret nor runner env provided it)" && MISSING=1
-          [ "$MISSING" -ne 0 ] && exit 1
-          echo "Credentials resolved."
-
-      - name: Set up Python
+      - name: Ensure Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install requests
 
-      - name: Fetch ESPN (authenticated)
+      - name: Fetch league (teams + rosters)
         env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-          LEAGUE_ID: ${{ env.LEAGUE_ID }}
-          SEASON: ${{ env.SEASON }}
+          SWID: ${{ secrets.SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
         run: |
-          python pipeline/fetch_espn_all.py \
-            --league "$LEAGUE_ID" \
-            --season "$SEASON" \
-            --out docs/data
+          python pipeline/fetch_league.py
 
-      - name: Build team_rosters.json
-        run: python pipeline/build_team_rosters.py
-
-      - name: Fetch players summary
+      - name: Fetch players (with public fallback)
         env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-          SEASON: ${{ env.SEASON }}
-        run: python pipeline/fetch_players.py
-
-      - name: Commit and push JSON
-        shell: bash
+          SWID: ${{ secrets.SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "actions@github.com"
+          python pipeline/fetch_players.py
+
+      - name: Commit data (if changed)
+        run: |
+          git config user.name "gh-actions"
+          git config user.email "actions@users.noreply.github.com"
           git add docs/data/*.json || true
-          if git diff --cached --quiet; then
-            echo "No JSON changes to commit."
-            exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m "Update data ($(date -u +'%Y-%m-%dT%H:%M:%SZ'))"
+            git push
+          else
+            echo "No data changes"
           fi
-          git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          git push origin HEAD:main
