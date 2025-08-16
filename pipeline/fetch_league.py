@@ -8,14 +8,16 @@ Fetch league teams + rosters from ESPN and emit:
 Env needed on runner:
   LEAGUE_ID   (defaults to 508419792)
   SEASON      (defaults to 2025)
-  SWID        e.g. {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
+  SWID        {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
   ESPN_S2     long cookie string
 
-Exit 0 on success; nonzero on failure (but still writes error JSONs).
+This version adds:
+  • Cloudflare-hardened requests (retries, alt query shapes, jitter)
+  • Graceful error files if ESPN serves HTML repeatedly
 """
 
 from __future__ import annotations
-import os, sys, json, time
+import os, sys, json, time, random
 from datetime import datetime, timezone
 from typing import Any, Dict, List
 
@@ -30,6 +32,24 @@ ROSTER_RAW = f"{OUT_DIR}/espn_mRoster.json"
 COMBINED = f"{OUT_DIR}/team_rosters.json"
 
 BASE = f"https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON}/segments/0/leagues/{LEAGUE_ID}"
+
+POS_MAP = {
+    0: "Quarterback",
+    2: "Running back",
+    4: "Wide receiver",
+    6: "Tight end",
+    16: "Team defense / special teams",
+    17: "Kicker",
+}
+
+NFL = {
+    1:"ATL",2:"BUF",3:"CHI",4:"CIN",5:"CLE",6:"DAL",7:"DEN",8:"DET",9:"GB",
+    10:"TEN",11:"IND",12:"KC",13:"OAK",14:"LAR",15:"MIA",16:"MIN",17:"NE",
+    18:"NO",19:"NYG",20:"NYJ",21:"PHI",22:"ARI",23:"PIT",24:"LAC",25:"SF",
+    26:"SEA",27:"TB",28:"WSH",29:"CAR",30:"JAX",33:"BAL",34:"HOU",35:"NO TEAM"
+}
+
+# ---------- utils ----------
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -52,6 +72,7 @@ def make_session() -> requests.Session:
     swid = require("SWID")
     s2   = require("ESPN_S2")
     s = requests.Session()
+    # cookies on .espn.com so subdomains pick it up
     s.cookies.set("SWID", swid, domain=".espn.com", secure=True)
     s.cookies.set("espn_s2", s2,  domain=".espn.com", secure=True)
     s.headers.update({
@@ -59,50 +80,59 @@ def make_session() -> requests.Session:
                        "KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
         "Accept": "application/json, text/plain, */*",
         "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
         "Origin": "https://fantasy.espn.com",
         "Referer": f"https://fantasy.espn.com/football/league?leagueId={LEAGUE_ID}&seasonId={SEASON}",
     })
     return s
 
-def get_json(session: requests.Session, view: str) -> Dict[str, Any]:
-    r = session.get(BASE, params={"view": view, "forTeamId": 1}, timeout=30)
-    ctype = r.headers.get("content-type", "")
-    if "application/json" not in ctype:
-        raise RuntimeError(f"{view} Non-JSON (content-type={ctype})")
-    return r.json()
+def get_json_hardened(session: requests.Session, view: str) -> Dict[str, Any]:
+    """
+    Try multiple request shapes + retry backoff to dodge HTML challenge.
+    """
+    attempts = []
+    # shapes: with forTeamId=1 (what the app often uses), without, and with an extra benign param
+    query_shapes = [
+        {"view": view, "forTeamId": 1},
+        {"view": view},
+        {"view": view, "scoringPeriodId": 0},
+    ]
 
-POS_MAP = {
-    0: "Quarterback",
-    2: "Running back",
-    4: "Wide receiver",
-    6: "Tight end",
-    16: "Team defense / special teams",
-    17: "Kicker",
-}
+    for shape in query_shapes:
+        for attempt in range(1, 5):  # up to 4 tries per shape
+            try:
+                r = session.get(BASE, params=shape, timeout=30)
+                ctype = r.headers.get("content-type", "")
+                if "application/json" not in ctype:
+                    raise RuntimeError(f"{view} Non-JSON (content-type={ctype})")
+                return r.json()
+            except Exception as e:
+                attempts.append(f"{view} shape={shape} try={attempt}: {type(e).__name__}: {e}")
+                # jittered backoff
+                time.sleep(0.7 + random.random() * 0.8)
+        # brief pause before trying the next shape
+        time.sleep(0.8 + random.random() * 0.6)
 
-NFL = {
-    1:"ATL",2:"BUF",3:"CHI",4:"CIN",5:"CLE",6:"DAL",7:"DEN",8:"DET",9:"GB",
-    10:"TEN",11:"IND",12:"KC",13:"OAK",14:"LAR",15:"MIA",16:"MIN",17:"NE",
-    18:"NO",19:"NYG",20:"NYJ",21:"PHI",22:"ARI",23:"PIT",24:"LAC",25:"SF",
-    26:"SEA",27:"TB",28:"WSH",29:"CAR",30:"JAX",33:"BAL",34:"HOU",35:"NO TEAM"
-}
+    raise RuntimeError("; ".join(attempts[-6:]))  # include details from the last few tries
+
+# ---------- normalize ----------
 
 def normalize_teams(team_payload: Dict[str, Any]) -> Dict[int, Dict[str, Any]]:
-    teams = {}
-    for t in team_payload.get("teams", []):
+    teams: Dict[int, Dict[str, Any]] = {}
+    for t in team_payload.get("teams", []) or []:
         teams[t["id"]] = {
             "teamId": t["id"],
             "name": t.get("name") or f"Team {t['id']}",
             "abbrev": t.get("abbrev"),
             "logo": t.get("logo"),
             "owners": t.get("owners", []),
-            "players": [],  # fill from roster view
+            "players": [],  # filled from roster
         }
     return teams
 
 def normalize_roster(roster_payload: Dict[str, Any], teams: Dict[int, Dict[str, Any]]):
-    # mRoster contains a "teams" array; each team has "roster" with "entries"
-    for t in roster_payload.get("teams", []):
+    for t in roster_payload.get("teams", []) or []:
         tid = t.get("id")
         team_rec = teams.get(tid)
         if not team_rec:
@@ -124,28 +154,30 @@ def normalize_roster(roster_payload: Dict[str, Any], teams: Dict[int, Dict[str, 
             })
         team_rec["players"] = players
 
+# ---------- main ----------
+
 def main() -> int:
     ensure_out()
     try:
         s = make_session()
 
-        # 1) Teams
-        teams_raw = get_json(s, "mTeam")
+        # 1) Teams (mTeam) with hardened fetch
+        teams_raw = get_json_hardened(s, "mTeam")
         write(TEAM_RAW, {"fetched_at": utc_now(), "data": teams_raw})
 
-        # 2) Rosters
-        rosters_raw = get_json(s, "mRoster")
+        # 2) Rosters (mRoster) with hardened fetch
+        rosters_raw = get_json_hardened(s, "mRoster")
         write(ROSTER_RAW, {"fetched_at": utc_now(), "data": rosters_raw})
 
-        # 3) Normalize
-        teams = normalize_teams(teams_raw)
-        normalize_roster(rosters_raw, teams)
+        # 3) Normalize for Teams page
+        teams_map = normalize_teams(teams_raw)
+        normalize_roster(rosters_raw, teams_map)
 
         final = {
             "league_id": LEAGUE_ID,
             "season": SEASON,
             "generated_utc": utc_now(),
-            "teams": list(teams.values()),
+            "teams": list(teams_map.values()),
         }
         write(COMBINED, final)
 
@@ -153,15 +185,16 @@ def main() -> int:
         return 0
 
     except Exception as e:
-        # Write error stubs so the UI shows a message instead of dying
-        err = {"fetched_at": utc_now(), "error": f"{type(e).__name__}: {e}"}
+        # Always leave breadcrumbs the UI can read
+        msg = f"{type(e).__name__}: {e}"
+        err = {"fetched_at": utc_now(), "error": msg}
         try:
             write(TEAM_RAW, err)
             write(ROSTER_RAW, err)
-            write(COMBINED, {"generated_utc": utc_now(), "teams": [], "error": err["error"]})
+            write(COMBINED, {"generated_utc": utc_now(), "teams": [], "error": msg})
         except Exception:
             pass
-        print(f"fetch_league ERROR: {err['error']}", file=sys.stderr)
+        print(f"fetch_league ERROR: {msg}", file=sys.stderr)
         return 2
 
 if __name__ == "__main__":
