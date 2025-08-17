@@ -29,6 +29,9 @@ jobs:
       LEAGUE_ID: ${{ vars.LEAGUE_ID || '508419792' }}
       PLAYWRIGHT_BROWSERS_PATH: ${{ vars.PLAYWRIGHT_BROWSERS_PATH || '/home/ghrunner/.cache/ms-playwright' }}
       PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: ${{ vars.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS || '1' }}
+      ESPN_SWID: ''
+      ESPN_S2: ''
+      SWID: ''
 
     steps:
       - name: Checkout
@@ -51,28 +54,21 @@ jobs:
         run: |
           python -m playwright install chromium || true
 
-      - name: Prefer cookie secrets if present
-        id: check_cookies
+      - name: Set cookies from secrets if present
+        if: ${{ secrets.ESPN_SWID != '' && secrets.ESPN_S2 != '' }}
         run: |
-          if [[ "${{ secrets.ESPN_SWID }}" != "" && "${{ secrets.ESPN_S2 }}" != "" ]]; then
-            echo "ESPN_SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
-            echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
-            echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
-            echo "skip_login=true" >> "$GITHUB_OUTPUT"
-            echo "Using existing secrets, skipping Playwright login."
-          else
-            echo "skip_login=false" >> "$GITHUB_OUTPUT"
-            echo "Cookies not present, will use Playwright to log in."
-          fi
+          echo "ESPN_SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
+          echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
+          echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
 
       - name: Login to ESPN to get cookies (Playwright)
-        if: steps.check_cookies.outputs.skip_login == 'false'
+        if: ${{ env.ESPN_SWID == '' || env.ESPN_S2 == '' }}
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
         run: |
           mkdir -p artifacts
-          python pipeline/get_espn_cookies.py --league-id "${LEAGUE_ID}"
+          python pipeline/get_espn_cookies.py --league-id "${LEAGUE_ID}" >> "$GITHUB_ENV"
 
       - name: Verify cookies
         run: |
@@ -81,21 +77,12 @@ jobs:
           echo "Cookies present."
 
       - name: Fetch players
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_players.py
 
       - name: Fetch league
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_league.py
 
       - name: Fetch rosters
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_rosters.py
 
       - name: Commit JSON updates
@@ -105,7 +92,7 @@ jobs:
           file_pattern: docs/data/*.json
 
       - name: Upload login screenshots (debug)
-        if: always() && steps.check_cookies.outputs.skip_login == 'false'
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-login
