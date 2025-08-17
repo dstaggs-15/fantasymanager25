@@ -35,8 +35,7 @@ jobs:
           python -m playwright install chromium
           python -m playwright --version
 
-      # -------------- COOKIE SOURCE --------------
-      # A) If repo secrets are set, use them directly.
+      # Try repo secrets first (preferred)
       - name: Use cookie secrets if provided
         id: from_secrets
         shell: bash
@@ -49,45 +48,32 @@ jobs:
           fi
           echo "found=$FOUND" >> $GITHUB_OUTPUT
 
-      # B) Otherwise, log in with Playwright to get fresh cookies.
+      # Fallback: Playwright login to fetch cookies
       - name: Get ESPN cookies via Playwright
         if: steps.from_secrets.outputs.found != '1'
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          # Optional: if you use ESPN 2FA (TOTP), add this secret (base32 seed from your authenticator)
-          ESPN_TOTP_SECRET: ${{ secrets.ESPN_TOTP_SECRET }}
+          ESPN_TOTP_SECRET: ${{ secrets.ESPN_TOTP_SECRET }} # optional
         run: |
-          mkdir -p artifacts
           python pipeline/get_espn_cookies.py \
             --league 508419792 \
-            --write-github-env "$GITHUB_ENV" \
-            --screenshot-dir artifacts || echo "PW_FAILED=1" >> $GITHUB_ENV
+            --write-github-env "$GITHUB_ENV" || echo "PW_FAILED=1" >> $GITHUB_ENV
 
-      - name: Upload Playwright artifacts (only if PW failed)
-        if: env.PW_FAILED == '1'
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-debug
-          path: artifacts
-
-      # -------------- DATA FETCH --------------
       - name: Verify cookies present
         run: |
-          : "${SWID:?SWID missing}"
-          : "${ESPN_S2:?ESPN_S2 missing}"
-          echo "Got SWID/ESPN_S2; proceeding."
+          if [ -z "${SWID:-}" ] || [ -z "${ESPN_S2:-}" ]; then
+            echo "ERROR: Missing SWID/ESPN_S2. Provide repo secrets ESPN_SWID & ESPN_S2, or ESPN_USER/ESPN_PASS (+ ESPN_TOTP_SECRET if you use 2FA)." >&2
+            exit 1
+          fi
+          echo "Cookies present; continuing."
 
       - name: Fetch league
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
+        env: { SWID: ${{ env.SWID }}, ESPN_S2: ${{ env.ESPN_S2 }} }
         run: python pipeline/fetch_league.py
 
       - name: Fetch rosters
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
+        env: { SWID: ${{ env.SWID }}, ESPN_S2: ${{ env.ESPN_S2 }} }
         run: python pipeline/fetch_rosters.py
 
       - name: Fetch players
