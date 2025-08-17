@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
 LOGIN_URLS = [
     "https://www.espn.com/login/",
-    "https://registerdisney.go.com/login"  # fallback
+    "https://registerdisney.go.com/login"
 ]
 LEAGUE_URL_TMPL = "https://fantasy.espn.com/football/league?leagueId={league}"
 API_PING_TMPL = "https://fantasy.espn.com/apis/v3/games/ffl/seasons/2025/segments/0/leagues/{league}?view=mTeam"
@@ -16,18 +16,18 @@ def write_env_line(github_env_path: str, key: str, value: str) -> None:
 
 def save(page, folder: str, name: str):
     try:
-        os.makedirs(folder, exist_ok=True)
-        page.screenshot(path=os.path.join(folder, f"{name}.png"), full_page=True)
+        if folder:
+            os.makedirs(folder, exist_ok=True)
+            page.screenshot(path=os.path.join(folder, f"{name}.png"), full_page=True)
     except Exception:
         pass
 
 def find_login_frame(page):
     for fr in page.frames:
-        url = (fr.url or "").lower()
-        name = (fr.name or "").lower()
-        if any(k in url for k in ["disney", "did", "login"]) or any(k in name for k in ["disney","login"]):
+        u = (fr.url or "").lower()
+        n = (fr.name or "").lower()
+        if any(k in u for k in ["disney", "did", "login"]) or any(k in n for k in ["disney","login"]):
             return fr
-    # fallback: first child frame
     for fr in page.frames:
         if fr != page.main_frame:
             return fr
@@ -36,7 +36,7 @@ def find_login_frame(page):
 def try_fill(fr, selectors, text) -> bool:
     for sel in selectors:
         try:
-            el = fr.wait_for_selector(sel, timeout=6000)
+            el = fr.wait_for_selector(sel, timeout=7000)
             el.fill(text)
             return True
         except Exception:
@@ -46,7 +46,7 @@ def try_fill(fr, selectors, text) -> bool:
 def try_click(fr, selectors) -> bool:
     for sel in selectors:
         try:
-            el = fr.wait_for_selector(sel, timeout=6000)
+            el = fr.wait_for_selector(sel, timeout=7000)
             el.click()
             return True
         except Exception:
@@ -91,7 +91,7 @@ def main():
         )
         page = ctx.new_page()
 
-        # 1) Hit a login page
+        # 1) reach login
         ok_login = False
         for url in LOGIN_URLS:
             try:
@@ -103,12 +103,11 @@ def main():
         if not ok_login:
             save(page, args.screenshot_dir, "step0_login_nav_fail")
             print("Could not reach ESPN/Disney login", file=sys.stderr)
-            browser.close()
-            sys.exit(2)
+            browser.close(); sys.exit(2)
 
         save(page, args.screenshot_dir, "step1_login_landing")
 
-        # Sometimes there's a visible 'Log In' trigger to open the iframe
+        # 2) click any visible “Log In” to expose iframe
         for sel in ["button:has-text('Log In')", "a:has-text('Log In')", "[data-testid='log-in-btn']"]:
             try:
                 if page.query_selector(sel):
@@ -117,58 +116,53 @@ def main():
             except Exception:
                 pass
 
-        # 2) Find login frame and fill credentials
         frame = find_login_frame(page)
-        user_ok = try_fill(frame, ["#did-ui-view input[type=email]", "input[name=email]", "input[type=text]"], user)
-        pass_ok = try_fill(frame, ["#did-ui-view input[type=password]", "input[name=password]"], pw)
 
-        if not (user_ok and pass_ok):
-            # give the iframe a second pass
+        # 3) fill credentials (try several selectors)
+        u_ok = try_fill(frame, ["#did-ui-view input[type=email]", "input[name=email]", "input[type=text]"], user)
+        p_ok = try_fill(frame, ["#did-ui-view input[type=password]", "input[name=password]"], pw)
+
+        if not (u_ok and p_ok):
             time.sleep(1.5)
             frame = find_login_frame(page)
-            if not user_ok:
-                user_ok = try_fill(frame, ["#did-ui-view input[type=email]", "input[name=email]", "input[type=text]"], user)
-            if not pass_ok:
-                pass_ok = try_fill(frame, ["#did-ui-view input[type=password]", "input[name=password]"], pw)
+            if not u_ok:
+                u_ok = try_fill(frame, ["#did-ui-view input[type=email]", "input[name=email]", "input[type=text]"], user)
+            if not p_ok:
+                p_ok = try_fill(frame, ["#did-ui-view input[type=password]", "input[name=password]"], pw)
 
-        if not (user_ok and pass_ok):
+        if not (u_ok and p_ok):
             save(page, args.screenshot_dir, "step2_login_fields_not_found")
             print("Could not locate login fields", file=sys.stderr)
-            browser.close()
-            sys.exit(2)
+            browser.close(); sys.exit(2)
 
         if not try_click(frame, ["#did-ui-view button[type=submit]", "button[type=submit]", "[data-testid='log-in-btn']"]):
             save(page, args.screenshot_dir, "step3_submit_not_clicked")
             print("Could not click submit", file=sys.stderr)
-            browser.close()
-            sys.exit(2)
+            browser.close(); sys.exit(2)
 
-        # Wait for login to settle
         try:
             page.wait_for_load_state("networkidle", timeout=60000)
         except Exception:
             pass
-
         save(page, args.screenshot_dir, "step4_after_submit")
 
-        # 3) Go to league landing (sets fantasy cookies on subdomain)
+        # 4) League page to set cookies on fantasy subdomain
         try:
             page.goto(league_url, wait_until="networkidle", timeout=60000)
         except Exception:
             save(page, args.screenshot_dir, "step5_league_nav_fail")
             print("League page failed to load after login", file=sys.stderr)
-            browser.close()
-            sys.exit(2)
+            browser.close(); sys.exit(2)
 
-        time.sleep(2.0)  # give cookies time
+        time.sleep(2.0)
         save(page, args.screenshot_dir, "step6_league_loaded")
 
         swid, s2 = harvest_cookies(ctx)
-        # 4) Force an API request in-page to ensure cookies are valid for the API
         if not (swid and s2):
+            # nudge the API once in-page
             try:
                 page.goto(api_ping, wait_until="domcontentloaded", timeout=60000)
-                time.sleep(1.5)
+                time.sleep(2.0)
                 swid, s2 = harvest_cookies(ctx)
             except Exception:
                 pass
