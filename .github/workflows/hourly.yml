@@ -1,110 +1,71 @@
+# .github/workflows/hourly.yml
 name: hourly
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
   schedule:
-    - cron: "17 * * * *"   # hourly at :17 UTC
+    - cron: "17 * * * *"   # every hour at :17
 
 jobs:
-  fetch-and-publish:
+  fetch-and-deploy:
     runs-on: self-hosted
-    timeout-minutes: 25
-
     env:
-      PYTHONUNBUFFERED: "1"
-      PIP_DISABLE_PIP_VERSION_CHECK: "1"
-      # Force playwright to keep browsers inside this job's venv
-      PLAYWRIGHT_BROWSERS_PATH: "0"
       LEAGUE_ID: "508419792"
-      SEASON: "2025"
-
+      PYTHONUNBUFFERED: "1"
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: "1"  # we preinstalled libs
     steps:
-      - name: Show runner info (debug)
-        run: |
-          echo "whoami=$(whoami)"
-          echo "pwd=$(pwd)"
-          echo "python=$(command -v python || true)"
-          echo "python3=$(command -v python3 || true)"
-          echo "pip=$(command -v pip || true)"
-          echo "PATH=$PATH"
+      - uses: actions/checkout@v4
 
-      - name: Ensure ~/.local/bin on PATH (for user installs)
-        shell: bash
-        run: |
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "Updated PATH with ~/.local/bin"
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python 3.11
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Python deps + Chromium (Playwright)
+      - name: Install Python deps (no sudo)
         run: |
           python -m pip install --upgrade pip
-          pip install -r pipeline/requirements.txt
-          # Install Chromium for THIS Python environment
-          python -m playwright install chromium
-          python -m playwright --version
+          pip install -r requirements.txt
+          pip install playwright
+          # Browsers already installed on the host; skip download/validation
 
-      - name: Login with Playwright and harvest cookies
+      - name: Sanity check playwright
+        run: python -m playwright --version
+
+      - name: Get ESPN cookies with Playwright
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
         run: |
           mkdir -p artifacts
-          python pipeline/get_espn_cookies.py \
-            --league "$LEAGUE_ID" \
-            --write-github-env "$GITHUB_ENV" \
-            --screenshot-dir artifacts
+          python pipeline/get_espn_cookies.py --league "$LEAGUE_ID" --write-github-env "$GITHUB_ENV"
 
-      - name: Upload login screenshots
+      - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: login-screens
+          name: cookies-screens
           path: artifacts
-          if-no-files-found: ignore
 
-      - name: Show cookies (masked)
-        run: |
-          echo "SWID set? $([[ -n \"$SWID\" ]] && echo yes || echo no)"
-          echo "ESPN_S2 set? $([[ -n \"$ESPN_S2\" ]] && echo yes || echo no)"
-
-      - name: Fetch league (mTeam/mStandings/mSettings)
+      - name: Fetch league & rosters using cookies
         env:
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
-          python pipeline/fetch_league.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/espn_league.json
-          ls -lah docs/data || true
+          echo "Using SWID=${SWID:0:6}… ESPN_S2=${ESPN_S2:0:8}…"
+          python pipeline/fetch_league.py
+          python pipeline/fetch_rosters.py
+          python pipeline/fetch_players.py || true   # players sometimes rate-limit; don't fail whole job
 
-      - name: Fetch rosters (mRoster)
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
+      - name: Commit data to docs/data
         run: |
-          python pipeline/fetch_rosters.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/team_rosters.json
-          ls -lah docs/data || true
-
-      - name: Fetch players (paged summary)
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-        run: |
-          python pipeline/fetch_players.py --season "$SEASON" --out docs/data/players_summary.json
-          ls -lah docs/data || true
-
-      - name: Commit updated JSON
-        run: |
-          git config user.name "dstaggs-15 bot"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "robot"
+          git config user.email "robot@users.noreply.github.com"
           git add docs/data/*.json || true
-          if git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"; then
-            git push
-          else
-            echo "No changes."
-          fi
+          git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "Nothing to commit"
+
+      - name: Deploy (GitHub Pages)
+        if: success()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
