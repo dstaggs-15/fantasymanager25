@@ -1,123 +1,112 @@
-# pipeline/get_espn_cookies.py
-# Usage:
-#   python pipeline/get_espn_cookies.py --league 508419792 --write-github-env /path/to/GITHUB_ENV
-#
-# Requires repo secrets or env: ESPN_USER, ESPN_PASS
-# Writes SWID and ESPN_S2 to the provided $GITHUB_ENV file on success.
-from __future__ import annotations
-import argparse, os, sys, time
+#!/usr/bin/env python3
+import argparse, json, os, sys, time
 from pathlib import Path
 from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
 
-LOGIN_URL = "https://www.espn.com/login"
-FANTASY_URL_TMPL = "https://fantasy.espn.com/football/team?leagueId={league}"
+def write_to_github_env(env_file, pairs):
+    # pairs: dict of {NAME: VALUE}
+    with open(env_file, "a", encoding="utf-8") as f:
+        for k, v in pairs.items():
+            f.write(f"{k}={v}\n")
 
-UA = (
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-)
-
-def write_github_env(env_path: str, key: str, value: str) -> None:
-    Path(env_path).parent.mkdir(parents=True, exist_ok=True)
-    with open(env_path, "a", encoding="utf-8") as f:
-        f.write(f"{key}={value}\n")
-
-def main() -> int:
+def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--league", required=True, dest="league")
-    ap.add_argument("--write-github-env", required=True, dest="github_env")
+    ap.add_argument("--league", required=True, help="ESPN league id")
+    ap.add_argument("--write-github-env", required=True, help="Path to $GITHUB_ENV")
     args = ap.parse_args()
 
-    user = os.getenv("ESPN_USER")
-    pwd  = os.getenv("ESPN_PASS")
-    if not user or not pwd:
-        print("ESPN_USER/ESPN_PASS not set", file=sys.stderr)
-        return 2
+    username = os.getenv("ESPN_USER", "").strip()
+    password = os.getenv("ESPN_PASS", "").strip()
+    if not username or not password:
+        print("ESPN_USER/ESPN_PASS env vars are required", file=sys.stderr)
+        sys.exit(2)
 
-    screenshots_dir = Path("artifacts"); screenshots_dir.mkdir(exist_ok=True, parents=True)
+    league = args.league.strip()
+
+    login_url = f"https://www.espn.com/login/"
+    league_hub = f"https://fantasy.espn.com/football/league?leagueId={league}"
+
+    # Optional artifacts dir for screenshots if you want them
+    artifacts = os.getenv("ARTIFACTS_DIR")
+    Path(artifacts).mkdir(parents=True, exist_ok=True) if artifacts else None
+
+    # Reuse browsers downloaded under the runner user if provided
+    os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH", str(Path.home() / ".cache" / "ms-playwright"))
 
     with sync_playwright() as p:
-        # Use a persistent context so cookies survive page navigations
-        browser = p.chromium.launch(headless=True, args=[
-            "--disable-blink-features=AutomationControlled",
-            "--no-sandbox",
-            "--disable-dev-shm-usage",
-        ])
-        context = browser.new_context(
-            user_agent=UA,
-            viewport={"width": 1280, "height": 900},
-            locale="en-US",
-            timezone_id="America/New_York",
+        # Make headless look less “automation-y”
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+            ],
         )
-        page = context.new_page()
+        ctx = browser.new_context(
+            viewport={"width": 1366, "height": 768},
+            user_agent=("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"),
+            locale="en-US",
+        )
+        # Remove navigator.webdriver flag
+        ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined});")
 
-        # 1) Hit the login URL
-        page.goto(LOGIN_URL, wait_until="domcontentloaded", timeout=60_000)
-        page.screenshot(path=str(screenshots_dir / "step1_login_landing.png"))
+        page = ctx.new_page()
+        page.goto(league_hub, wait_until="domcontentloaded")
+        # Force open the ESPN login modal
+        page.goto(login_url, wait_until="domcontentloaded")
 
+        # The login form is in an iframe titled “Sign in”
         try:
-            # The login dialog is inside an iframe whose name usually starts with "oneid".
-            # Use a locator that will work even if they change the name slightly.
-            frame = page.frame_locator("iframe[name^='oneid'], iframe[id^='oneid'], iframe[src*='oneid']").first
-
-            # Wait for inputs by placeholder text shown on your screenshot
+            frame = page.frame_locator("iframe[title='Sign in']")
+            # Wait for placeholders EXACTLY as seen in your screenshot
             user_input = frame.get_by_placeholder("Username or Email Address")
             pass_input = frame.get_by_placeholder("Password (case sensitive)")
-
-            user_input.wait_for(state="visible", timeout=20_000)
-            pass_input.wait_for(state="visible", timeout=20_000)
-
-            user_input.fill(user)
-            pass_input.fill(pwd)
-
-            # Click the blue "Log In" button
-            frame.get_by_role("button", name="Log In").click()
-
+            user_input.wait_for(timeout=15000)
+            pass_input.wait_for(timeout=15000)
         except PWTimeout:
-            page.screenshot(path=str(screenshots_dir / "step2_login_fields_not_found.png"))
+            if artifacts:
+                page.screenshot(path=f"{artifacts}/step_fields_timeout.png", full_page=True)
             print("Could not locate login fields", file=sys.stderr)
-            context.close(); browser.close()
-            return 2
+            sys.exit(2)
 
-        # 2) Give SSO a moment; then navigate to a league page so the cookies are set for fantasy.*
-        page.wait_for_timeout(3000)
-        page.goto(FANTASY_URL_TMPL.format(league=args.league), wait_until="domcontentloaded", timeout=60_000)
-        page.screenshot(path=str(screenshots_dir / "step3_after_login_league.png"))
+        # Fill and submit
+        user_input.fill(username)
+        pass_input.fill(password)
+        frame.get_by_role("button", name="Log In").click()
 
-        # 3) Pull cookies (both domains matter)
-        def find_cookie(name: str):
-            for c in context.cookies():
-                if c.get("name") == name:
-                    return c.get("value")
-            return None
+        # After login, ESPN sets cookies on *.espn.com and fantasy.espn.com
+        # Wait for cookies to appear
+        swid, s2 = None, None
+        deadline = time.time() + 20
+        while time.time() < deadline and (not swid or not s2):
+            cookies = ctx.cookies()
+            for c in cookies:
+                if c["name"].upper() in ("SWID", "ESPN_S2", "ESPN_s2", "espn_s2"):
+                    if c["name"].upper() == "SWID":
+                        swid = c["value"]
+                    else:
+                        s2 = c["value"]
+            if not swid or not s2:
+                time.sleep(1)
 
-        swid = find_cookie("SWID")
-        s2   = find_cookie("espn_s2")
-
-        if not swid or not s2:
-            # Try fantasy subdomain explicitly once more
-            page.goto("https://fantasy.espn.com", wait_until="domcontentloaded", timeout=60_000)
-            page.wait_for_timeout(1500)
-            swid = swid or find_cookie("SWID")
-            s2   = s2 or find_cookie("espn_s2")
-
-        context.close(); browser.close()
+        if artifacts:
+            page.screenshot(path=f"{artifacts}/post_login.png", full_page=True)
 
         if not swid or not s2:
             print("Failed to retrieve SWID/espn_s2 cookies from ESPN after login", file=sys.stderr)
-            return 2
+            sys.exit(2)
 
-        # 4) Write to GITHUB_ENV so later steps can use them
-        write_github_env(args.github_env, "SWID", swid)
-        write_github_env(args.github_env, "ESPN_S2", s2)
+        # Normalize names we use in the rest of the pipeline
+        write_to_github_env(args.write_github_env, {
+            "ESPN_SWID": swid,
+            "ESPN_S2": s2,
+        })
 
-        # Also drop a copy for debugging if you ever need it locally (ignored by git)
-        Path(".local_debug").mkdir(exist_ok=True)
-        with open(".local_debug/cookies.txt", "w") as f:
-            f.write(f"SWID={swid}\nESPN_S2={s2}\n")
-
-        print("Got SWID & ESPN_S2 via Playwright.")
-        return 0
+        print("Got cookies. ✅")
+        ctx.close()
+        browser.close()
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())
