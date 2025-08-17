@@ -3,7 +3,7 @@ name: hourly
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "19 * * * *"   # hourly at :19 UTC
+    - cron: "17 * * * *"   # hourly at :17 UTC
 
 jobs:
   fetch-and-publish:
@@ -12,10 +12,28 @@ jobs:
 
     env:
       PYTHONUNBUFFERED: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+      # Force playwright to keep browsers inside this job's venv
+      PLAYWRIGHT_BROWSERS_PATH: "0"
       LEAGUE_ID: "508419792"
       SEASON: "2025"
 
     steps:
+      - name: Show runner info (debug)
+        run: |
+          echo "whoami=$(whoami)"
+          echo "pwd=$(pwd)"
+          echo "python=$(command -v python || true)"
+          echo "python3=$(command -v python3 || true)"
+          echo "pip=$(command -v pip || true)"
+          echo "PATH=$PATH"
+
+      - name: Ensure ~/.local/bin on PATH (for user installs)
+        shell: bash
+        run: |
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          echo "Updated PATH with ~/.local/bin"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -24,12 +42,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
+      - name: Install Python deps + Chromium (Playwright)
         run: |
           python -m pip install --upgrade pip
           pip install -r pipeline/requirements.txt
-          # browsers must be installed in THIS Python env
+          # Install Chromium for THIS Python environment
           python -m playwright install chromium
+          python -m playwright --version
 
       - name: Login with Playwright and harvest cookies
         env:
@@ -42,7 +61,7 @@ jobs:
             --write-github-env "$GITHUB_ENV" \
             --screenshot-dir artifacts
 
-      - name: Upload login screenshots (if any)
+      - name: Upload login screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -50,12 +69,18 @@ jobs:
           path: artifacts
           if-no-files-found: ignore
 
+      - name: Show cookies (masked)
+        run: |
+          echo "SWID set? $([[ -n \"$SWID\" ]] && echo yes || echo no)"
+          echo "ESPN_S2 set? $([[ -n \"$ESPN_S2\" ]] && echo yes || echo no)"
+
       - name: Fetch league (mTeam/mStandings/mSettings)
         env:
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_league.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/espn_league.json
+          ls -lah docs/data || true
 
       - name: Fetch rosters (mRoster)
         env:
@@ -63,6 +88,7 @@ jobs:
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_rosters.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/team_rosters.json
+          ls -lah docs/data || true
 
       - name: Fetch players (paged summary)
         env:
@@ -70,6 +96,7 @@ jobs:
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_players.py --season "$SEASON" --out docs/data/players_summary.json
+          ls -lah docs/data || true
 
       - name: Commit updated JSON
         run: |
