@@ -1,57 +1,91 @@
-#!/usr/bin/env python3
-import argparse, os, sys, math
-from util import auth_headers, fetch_json, write_json
+# pipeline/fetch_players.py
 
-# ESPN caps players page size; we page through a few chunks for summary
-PLAYERS_URL = "https://fantasy.espn.com/apis/v3/games/ffl/seasons/{season}/players?scoringPeriodId=0&view=players_wl&view=players_sort_eligible"
+import json
+import requests
+import os
+import sys
+import logging
+from datetime import datetime, timezone
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def fetch_players(league_id, swid, espn_s2):
+    """
+    Fetches a summary of players for the given league using the provided cookies.
+    """
+    url = f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/2025/players?leagueId={league_id}'
+    
+    headers = {
+        'Accept': 'application/json',
+        'x-fantasy-filter': json.dumps({"players": {"filterStatus": {"value": ["FREEAGENT", "WAIVERS", "ONTEAM"]}}})
+    }
+
+    cookies = {
+        'SWID': swid,
+        'espn_s2': espn_s2
+    }
+
+    try:
+        logging.info("Starting player data fetch...")
+        session = requests.Session()
+        response = session.get(url, headers=headers, cookies=cookies)
+        response.raise_for_status()
+
+        # Check for HTML content, which indicates an anti-bot block
+        if 'text/html' in response.headers.get('Content-Type', ''):
+            logging.error("Received HTML response instead of JSON. ESPN's anti-bot system is blocking the request. Cookies may be invalid or expired.")
+            return None
+
+        data = response.json()
+        logging.info("Player data fetched successfully.")
+        
+        # Process the data to create a lean summary
+        player_summary = []
+        for player in data:
+            summary = {
+                'id': player.get('id'),
+                'name': player.get('fullName'),
+                'position': player.get('defaultPositionId'),
+                'team': player.get('proTeamId'),
+                'projections': player.get('playerRatingsBySeasonId', {}).get('2025', {}).get('points', {}).get('total')
+            }
+            player_summary.append(summary)
+
+        return player_summary
+
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Error fetching player data: {e}")
+        return None
+
+def save_data(data, filename):
+    """
+    Saves data to a JSON file.
+    """
+    output_dir = 'docs/data'
+    os.makedirs(output_dir, exist_ok=True)
+    filepath = os.path.join(output_dir, filename)
+    
+    with open(filepath, 'w') as f:
+        json.dump(data, f, indent=2)
+    logging.info(f"Data saved to {filepath}")
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--season", required=True)
-    ap.add_argument("--out", required=True)
-    args = ap.parse_args()
+    league_id = os.environ.get('LEAGUE_ID')
+    swid = os.environ.get('SWID') or os.environ.get('ESPN_SWID')
+    espn_s2 = os.environ.get('ESPN_S2')
 
-    swid = os.getenv("SWID")
-    s2 = os.getenv("ESPN_S2")
-    if not swid or not s2:
-        print("SWID/ESPN_S2 missing from env", file=sys.stderr)
-        sys.exit(2)
+    if not all([league_id, swid, espn_s2]):
+        logging.error("Missing required environment variables: LEAGUE_ID, SWID, and ESPN_S2.")
+        sys.exit(1)
 
-    hdrs = auth_headers(swid, s2)
-    # First call for total count
-    base = PLAYERS_URL.format(season=args.season) + "&limit=50&offset=0"
-    first = fetch_json(base, headers=hdrs)
-    items = first if isinstance(first, list) else []
-    # Page through a few pages (enough for your UI; adjust if you want full universe)
-    for offset in [50, 100, 150, 200, 250, 300]:
-        try:
-            page = fetch_json(
-                PLAYERS_URL.format(season=args.season) + f"&limit=50&offset={offset}",
-                headers=hdrs
-            )
-            if not page: break
-            items.extend(page)
-        except Exception:
-            break
+    players_data = fetch_players(league_id, swid, espn_s2)
 
-    # Light summary
-    summary = []
-    for p in items:
-        try:
-            summary.append({
-                "id": p.get("id"),
-                "fullName": p.get("fullName"),
-                "proTeamId": p.get("proTeamId"),
-                "defaultPositionId": p.get("defaultPositionId"),
-                "ownership": p.get("ownership", {}),
-                "stats": p.get("stats", [])[:2],  # keep small
-                "status": p.get("status"),
-            })
-        except Exception:
-            continue
-
-    write_json(args.out, summary)
-    print(f"Wrote {args.out} ({len(summary)} players) ✔")
+    if players_data:
+        save_data(players_data, 'players_summary.json')
+    else:
+        logging.error("Failed to fetch player data. Saving an empty list to prevent site breakage.")
+        save_data([], 'players_summary.json')
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
