@@ -39,71 +39,21 @@ jobs:
           pip install -r requirements.txt
           pip install --upgrade playwright requests pydantic
 
-      - name: Ensure Chromium (no sudo)
+      - name: Ensure Chromium
         run: |
           python -m playwright install chromium || true
 
-      - name: Prefer cookie secrets if present
-        id: check_cookies
-        run: |
-          if [[ "${{ secrets.ESPN_SWID }}" != "" && "${{ secrets.ESPN_S2 }}" != "" ]]; then
-            echo "SWID=${{ secrets.ESPN_SWID }}" >> $GITHUB_ENV
-            echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> $GITHUB_ENV
-            echo "skip_login=true" >> $GITHUB_OUTPUT
-            echo "Using existing secrets, skipping Playwright login."
-          else
-            echo "skip_login=false" >> $GITHUB_OUTPUT
-            echo "Cookies not present, will use Playwright to log in."
-          fi
-      
-      - name: Login to ESPN to get cookies (Playwright)
-        if: steps.check_cookies.outputs.skip_login == 'false'
+      - name: Fetch and process all data
         env:
+          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-        run: |
-          mkdir -p artifacts
-          python pipeline/get_espn_cookies.py --league-id "${{ env.LEAGUE_ID }}" >> $GITHUB_ENV
-      
-      - name: Verify cookies
-        run: |
-          : "${{ env.ESPN_S2:?ESPN_S2 missing}}"
-          : "${{ env.SWID:?SWID missing}}"
-          echo "Cookies present."
-
-      - name: Fetch players
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-        run: python pipeline/fetch_players.py
-
-      - name: Fetch league
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-        run: python pipeline/fetch_league.py
-
-      - name: Fetch rosters
-        env:
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
-          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-        run: python pipeline/fetch_rosters.py
+          SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+        run: python pipeline/fetch_all_data.py
 
       - name: Commit JSON updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "robot: refresh ${{ vars.LEAGUE_ID }}"
+          commit_message: "robot: refresh data"
           file_pattern: docs/data/*.json
-
-      - name: Upload login screenshots (debug)
-        if: always() && steps.check_cookies.outputs.skip_login == 'false'
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-login
-          path: artifacts
-          if-no-files-found: ignore
-
