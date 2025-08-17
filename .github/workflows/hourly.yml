@@ -3,86 +3,76 @@ name: hourly
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "17 * * * *"
-
-permissions:
-  contents: write
-
-concurrency:
-  group: hourly-${{ github.ref }}
-  cancel-in-progress: false
+    - cron: "17 * * * *" # hourly at :17
 
 jobs:
-  hourly:
+  fetch-and-publish:
     runs-on: self-hosted
-    env:
-      HOME: /home/ghrunner
-      PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
-    steps:
-      - uses: actions/checkout@v4
+    timeout-minutes: 20
 
-      - uses: actions/setup-python@v5
+    env:
+      PYTHONUNBUFFERED: "1"
+      # Required for API calls after login:
+      LEAGUE_ID: "508419792"
+      SEASON: "2025"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Python & deps
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade playwright requests cloudscraper pyotp
-
-      - name: Install Playwright Chromium (idempotent)
-        run: |
+          pip install -r pipeline/requirements.txt
+          # Install Playwright browser bits (runner already has system libs)
           python -m playwright install chromium
-          python -m playwright --version
 
-      # Try repo secrets first (preferred)
-      - name: Use cookie secrets if provided
-        id: from_secrets
-        shell: bash
-        run: |
-          FOUND=0
-          if [ -n "${{ secrets.ESPN_SWID }}" ] && [ -n "${{ secrets.ESPN_S2 }}" ]; then
-            echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
-            echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
-            FOUND=1
-          fi
-          echo "found=$FOUND" >> $GITHUB_OUTPUT
-
-      # Fallback: Playwright login to fetch cookies
-      - name: Get ESPN cookies via Playwright
-        if: steps.from_secrets.outputs.found != '1'
+      # 1) Login and capture SWID + espn_s2
+      - name: Get ESPN cookies (Playwright)
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          ESPN_TOTP_SECRET: ${{ secrets.ESPN_TOTP_SECRET }} # optional
         run: |
-          python pipeline/get_espn_cookies.py \
-            --league 508419792 \
-            --write-github-env "$GITHUB_ENV" || echo "PW_FAILED=1" >> $GITHUB_ENV
+          python pipeline/get_espn_cookies.py --league "$LEAGUE_ID" --write-github-env "$GITHUB_ENV"
 
-      - name: Verify cookies present
-        run: |
-          if [ -z "${SWID:-}" ] || [ -z "${ESPN_S2:-}" ]; then
-            echo "ERROR: Missing SWID/ESPN_S2. Provide repo secrets ESPN_SWID & ESPN_S2, or ESPN_USER/ESPN_PASS (+ ESPN_TOTP_SECRET if you use 2FA)." >&2
-            exit 1
-          fi
-          echo "Cookies present; continuing."
-
+      # 2) Fetch league meta (teams/standings/settings) → docs/data/espn_league.json
       - name: Fetch league
-        env: { SWID: ${{ env.SWID }}, ESPN_S2: ${{ env.ESPN_S2 }} }
-        run: python pipeline/fetch_league.py
-
-      - name: Fetch rosters
-        env: { SWID: ${{ env.SWID }}, ESPN_S2: ${{ env.ESPN_S2 }} }
-        run: python pipeline/fetch_rosters.py
-
-      - name: Fetch players
-        run: python pipeline/fetch_players.py
-
-      - name: Commit data
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
-          git config user.name "robot"
-          git config user.email "robot@users.noreply.github.com"
-          git add docs/data
-          git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "nothing to commit"
-          git push
+          python pipeline/fetch_league.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/espn_league.json
+
+      # 3) Fetch rosters (all teams) → docs/data/team_rosters.json
+      - name: Fetch rosters
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
+        run: |
+          python pipeline/fetch_rosters.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/team_rosters.json
+
+      # 4) (Optional) Fetch players summary → docs/data/players_summary.json
+      - name: Fetch players (summary)
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
+        run: |
+          python pipeline/fetch_players.py --season "$SEASON" --out docs/data/players_summary.json
+
+      # Commit site data
+      - name: Commit updated JSON
+        run: |
+          git config user.name  "dstaggs-15 bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/*.json
+          if git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" ; then
+            git push
+          else
+            echo "No changes to commit."
+          fi
