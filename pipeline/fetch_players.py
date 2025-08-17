@@ -20,15 +20,13 @@ def fetch_players(league_id, swid, espn_s2):
         'x-fantasy-filter': json.dumps({"players": {"filterStatus": {"value": ["FREEAGENT", "WAIVERS", "ONTEAM"]}}})
     }
 
-    cookies = {
-        'SWID': swid,
-        'espn_s2': espn_s2
-    }
-
     try:
         logging.info("Starting player data fetch...")
         session = requests.Session()
-        response = session.get(url, headers=headers, cookies=cookies)
+        session.cookies.set('SWID', swid)
+        session.cookies.set('espn_s2', espn_s2)
+        
+        response = session.get(url, headers=headers)
         response.raise_for_status()
 
         # Check for HTML content, which indicates an anti-bot block
