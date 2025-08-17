@@ -1,95 +1,55 @@
-name: Hourly Build and Deploy
-
-on:
-  schedule:
-    - cron: "12 * * * *"
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
 jobs:
-  build:
+  hourly:
     runs-on: self-hosted
     env:
-      PYTHONUNBUFFERED: "1"
-      LEAGUE_ID: "508419792"
-      SEASON: "2025"
-      # ensure user-local bin is in PATH for the runner shell steps
-      PATH: "$HOME/.local/bin:${{ env.PATH }}"
-
+      # Force a real home so Playwright installs to a stable cache
+      HOME: /home/ghrunner
+      PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Upgrade pip
-        run: python -m pip install --upgrade pip
+      - name: Install Python deps (no sudo)
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade playwright requests cloudscraper
 
-      - name: Install Python deps
-        run: pip install -r requirements.txt
+      - name: Install Playwright Chromium (no --with-deps)
+        run: |
+          python -m playwright install chromium
+          python -m playwright --version
 
-      # 🔧 Make sure the Chromium binaries are downloaded for THIS job's Python env
-      - name: Install Playwright browsers (Chromium)
-        run: python -m playwright install chromium
+      # if you use a requirements.txt, keep it, but the two lines above must stay
 
-      - name: Print Playwright version
-        run: python -m playwright --version
-
-      # Headless login to get fresh SWID/ESPN_S2 each run
       - name: Get ESPN cookies via Playwright
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          GITHUB_ENV: ${{ env.GITHUB_ENV }}
         run: |
-          if [ -z "${ESPN_USER}" ] || [ -z "${ESPN_PASS}" ]; then
-            echo "ESPN_USER/ESPN_PASS secrets are required"; exit 1
-          fi
-          python pipeline/get_espn_cookies.py --league "${{ env.LEAGUE_ID }}" --write-github-env "$GITHUB_ENV"
-          echo "Cookies exported to job env."
+          python pipeline/get_espn_cookies.py --league 508419792 --write-github-env "$GITHUB_ENV"
 
-      - name: Assert cookies exist
-        run: |
-          [ -z "${SWID:-}" ] && echo "SWID missing" && exit 1 || echo "SWID OK"
-          [ -z "${ESPN_S2:-}" ] && echo "ESPN_S2 missing" && exit 1 || echo "ESPN_S2 OK"
-
-      - name: Fetch League (teams/standings/settings)
+      - name: Fetch league
         env:
-          LEAGUE_ID: ${{ env.LEAGUE_ID }}
-          SEASON: ${{ env.SEASON }}
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_league.py
 
-      - name: Fetch Rosters
+      - name: Fetch rosters
         env:
-          LEAGUE_ID: ${{ env.LEAGUE_ID }}
-          SEASON: ${{ env.SEASON }}
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_rosters.py
 
-      - name: Fetch Players
-        env:
-          LEAGUE_ID: ${{ env.LEAGUE_ID }}
-          SEASON: ${{ env.SEASON }}
-          SWID: ${{ env.SWID }}
-          ESPN_S2: ${{ env.ESPN_S2 }}
+      - name: Fetch players summary
         run: python pipeline/fetch_players.py
 
-      - name: Commit and push data
+      - name: Commit data
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "github-actions[bot]"
-          git add docs/data/*.json || true
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-            git push
-          fi
+          git config user.name "robot"
+          git config user.email "robot@users.noreply.github.com"
+          git add docs/data
+          git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "nothing to commit"
+          git push
