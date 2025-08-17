@@ -57,9 +57,9 @@ jobs:
       - name: Set cookies from secrets if present
         if: ${{ secrets.ESPN_SWID != '' && secrets.ESPN_S2 != '' }}
         run: |
-          echo "ESPN_SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
-          echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
-          echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
+          echo "ESPN_SWID=${{ secrets.ESPN_SWID }}" >> $GITHUB_ENV
+          echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> $GITHUB_ENV
+          echo "SWID=${{ secrets.ESPN_SWID }}" >> $GITHUB_ENV
 
       - name: Login to ESPN to get cookies (Playwright)
         if: ${{ env.ESPN_SWID == '' || env.ESPN_S2 == '' }}
@@ -68,7 +68,7 @@ jobs:
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
         run: |
           mkdir -p artifacts
-          python pipeline/get_espn_cookies.py --league-id "${LEAGUE_ID}" >> "$GITHUB_ENV"
+          python pipeline/get_espn_cookies.py --league-id "${LEAGUE_ID}" >> $GITHUB_ENV
 
       - name: Verify cookies
         run: |
