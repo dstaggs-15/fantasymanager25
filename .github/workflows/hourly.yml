@@ -5,55 +5,77 @@ on:
   schedule:
     - cron: '9 * * * *'
   push:
+    branches:
+      - main
     paths:
       - 'pipeline/**'
       - 'docs/**'
-      - '.github/workflows/hourly.yml'
-
-permissions:
-  contents: write
-
-concurrency:
-  group: hourly-build
-  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-commit-data:
     runs-on: [self-hosted, Linux, X64]
-    timeout-minutes: 25
+
+    env:
+      LEAGUE_ID: ${{ vars.LEAGUE_ID }}
+      ESPN_USER: ${{ secrets.ESPN_USER }}
+      ESPN_PASS: ${{ secrets.ESPN_PASS }}
+      ESPN_SWID: ${{ secrets.ESPN_SWID }}
+      ESPN_S2: ${{ secrets.ESPN_S2 }}
+      PLAYWRIGHT_BROWSERS_PATH: ${{ vars.PLAYWRIGHT_BROWSERS_PATH }}
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: ${{ vars.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS }}
 
     steps:
-      - name: Checkout
+      - name: Checkout Repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python deps
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+          key: ${{ runner.os }}-playwright-chromium
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ensure Chromium Browser is Installed
+        run: python -m playwright install chromium
+
+      - name: Fetch All Fantasy Data
+        id: fetch_data
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install --upgrade playwright requests pydantic
+          # If SWID/S2 secrets are not provided, try to get them with Playwright
+          if [ -z "$ESPN_SWID" ] || [ -z "$ESPN_S2" ]; then
+            echo "SWID/S2 secrets not found. Running Playwright to log in..."
+            python pipeline/get_espn_cookies.py
+          else
+            echo "SWID/S2 secrets found. Skipping Playwright login."
+          fi
+          
+          # Run the data fetchers
+          python pipeline/fetch_league.py
+          python pipeline/fetch_rosters.py
+          python pipeline/fetch_players.py
 
-      - name: Ensure Chromium
-        run: |
-          python -m playwright install chromium || true
-
-      - name: Fetch and process all data
-        env:
-          LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-          ESPN_USER: ${{ secrets.ESPN_USER }}
-          ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          SWID: ${{ secrets.ESPN_SWID }}
-          ESPN_S2: ${{ secrets.ESPN_S2 }}
-        run: python pipeline/fetch_all_data.py
-
-      - name: Commit JSON updates
+      - name: Commit data files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "robot: refresh data"
-          file_pattern: docs/data/*.json
+          commit_message: "📊 Chore: Update fantasy data"
+          file_pattern: "docs/data/*.json"
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "github-actions@github.com"
+          commit_author: "GitHub Actions Bot <github-actions@github.com>"
