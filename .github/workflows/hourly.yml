@@ -1,7 +1,7 @@
 name: Hourly Data Build
 
 on:
-  workflow_dispatch:     # click-to-run
+  workflow_dispatch:     # click-to-run button
   schedule:
     - cron: '9 * * * *'  # hourly at :09
   push:
@@ -98,18 +98,27 @@ jobs:
               ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined});")
               page = ctx.new_page()
 
+              # warm up
               page.goto(league_hub, wait_until="domcontentloaded")
               page.goto(login_url,  wait_until="domcontentloaded")
 
-              # ESPN’s login is inside an iframe titled "Sign in"
+              # ESPN login lives inside an iframe titled "Sign in"
               try:
                 frame = page.frame_locator("iframe[title='Sign in']")
+                # primary locators
                 user_input = frame.get_by_placeholder("Username or Email Address")
                 pass_input = frame.get_by_placeholder("Password (case sensitive)")
                 user_input.wait_for(timeout=20000); pass_input.wait_for(timeout=20000)
               except PWTimeout:
-                if artifacts: page.screenshot(path=f"{artifacts}/fields_timeout.png", full_page=True)
-                print("Could not locate login fields", file=sys.stderr); sys.exit(2)
+                # fallbacks
+                try:
+                  frame = page.frame_locator("iframe[title='Sign in']")
+                  user_input = frame.locator("input[name='username'],input[type='email']").first
+                  pass_input = frame.locator("input[name='password'],input[type='password']").first
+                  user_input.wait_for(timeout=10000); pass_input.wait_for(timeout=10000)
+                except PWTimeout:
+                  if artifacts: page.screenshot(path=f"{artifacts}/fields_timeout.png", full_page=True)
+                  print("Could not locate login fields", file=sys.stderr); sys.exit(2)
 
               user_input.fill(user)
               pass_input.fill(pwd)
