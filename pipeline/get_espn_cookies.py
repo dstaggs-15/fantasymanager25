@@ -1,19 +1,4 @@
 #!/usr/bin/env python3
-# pipeline/get_espn_cookies.py
-#
-# Logs into fantasy.espn.com with ESPN_USER/ESPN_PASS using Playwright (Chromium),
-# grabs SWID and espn_s2 cookies, and exports them to the current job's env by
-# appending to the file path passed via --write-github-env (GITHUB_ENV).
-#
-# Usage:
-#   python pipeline/get_espn_cookies.py --league 508419792 --write-github-env "$GITHUB_ENV"
-#
-# Required env:
-#   ESPN_USER, ESPN_PASS
-#
-# Optional env:
-#   PLAYWRIGHT_BROWSERS_PATH  (helpful on self-hosted runners)
-
 import argparse
 import os
 import sys
@@ -22,108 +7,96 @@ from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
 
-LOGIN_URL_TMPL = "https://fantasy.espn.com/football/league?leagueId={league_id}"
+LEAGUE_URL = "https://fantasy.espn.com/football/league?leagueId={league}"
 
-def fail(msg: str, code: int = 2):
-    print(msg, file=sys.stderr)
-    sys.exit(code)
-
-def mask(s: str) -> str:
-    if not s:
-        return ""
-    if len(s) <= 8:
-        return "*" * len(s)
-    return s[:4] + "..." + s[-4:]
-
-def write_github_env(env_path: str, kv: dict):
-    # Append VAR=VALUE lines. Do not quote values; newlines are not expected.
-    with open(env_path, "a", encoding="utf-8") as f:
-        for k, v in kv.items():
-            f.write(f"{k}={v}\n")
+def write_github_env(path, key, value):
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(f"{key}={value}\n")
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--league", required=True, help="ESPN leagueId")
-    parser.add_argument("--write-github-env", required=True, help="Path to $GITHUB_ENV file")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--league", required=True)
+    ap.add_argument("--write-github-env", required=True, help="Path to $GITHUB_ENV")
+    args = ap.parse_args()
 
-    user = os.environ.get("ESPN_USER", "")
-    pw = os.environ.get("ESPN_PASS", "")
+    user = os.getenv("ESPN_USER")
+    pw = os.getenv("ESPN_PASS")
     if not user or not pw:
-        fail("ESPN_USER/ESPN_PASS not set in env")
+        print("ESPN_USER/ESPN_PASS missing", file=sys.stderr)
+        sys.exit(2)
 
-    league_url = LOGIN_URL_TMPL.format(league_id=args.league)
+    login_url = "https://www.espn.com/login/"
+    league_url = LEAGUE_URL.format(league=args.league)
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         ctx = browser.new_context()
         page = ctx.new_page()
 
-        # 1) Hit league page (it will redirect to SSO)
-        page.goto(league_url, wait_until="domcontentloaded", timeout=120_000)
-
-        # 2) Detect and handle ESPN SSO page
-        # ESPN SSO has input[name='username'] and input[name='password'] eventually.
-        # There can be interstitials; try to be robust with waits.
+        # Go to login
+        page.goto(login_url, wait_until="networkidle")
+        # ESPN login is in an iframe
+        # Try common selectors (ESPN changes UI, so we check a couple)
         try:
-            page.wait_for_selector("input[name='username']", timeout=60_000)
+            # The login iframe usually contains id or name like "disneyid-iframe" or similar
+            frame = None
+            for f in page.frames:
+                if "login" in (f.name or "").lower() or "disney" in (f.name or "").lower():
+                    frame = f
+                    break
+            if frame is None:
+                # Fallback: pick any non-main frame
+                frames = [f for f in page.frames if f != page.main_frame]
+                frame = frames[0] if frames else page.main_frame
         except Exception:
-            # Maybe already logged in or cookie present. Continue.
-            pass
+            frame = page.main_frame
 
-        # If username field exists, do login flow.
-        if page.locator("input[name='username']").count() > 0:
-            page.fill("input[name='username']", user)
-            # ESPN SSO uses a “Continue” button then password on next step
-            if page.locator("button[type='submit']").count() > 0:
-                page.click("button[type='submit']")
-            else:
-                page.press("input[name='username']", "Enter")
+        # Username / password fields (try multiple selectors defensively)
+        user_selectors = ["#did-ui-view input[type=email]", "input[name=email]", "input[type=text]"]
+        pass_selectors = ["#did-ui-view input[type=password]", "input[name=password]", "input[type=password]"]
+        submit_selectors = ["#did-ui-view button[type=submit]", "button[type=submit]", "button[data-testid=log-in-btn]"]
 
-            # Wait for password field
-            page.wait_for_selector("input[name='password']", timeout=60_000)
-            page.fill("input[name='password']", pw)
-
-            # Submit
-            if page.locator("button[type='submit']").count() > 0:
-                page.click("button[type='submit']")
-            else:
-                page.press("input[name='password']", "Enter")
-
-            # give time to redirect back to league page
-            page.wait_for_load_state("domcontentloaded", timeout=120_000)
-
-        # 3) Ensure we’ve landed on fantasy.espn.com
-        # If still on SSO domain, wait a bit longer to redirect.
-        max_wait = time.time() + 30
-        while time.time() < max_wait:
-            host = urlparse(page.url).hostname or ""
-            if "espn.com" in host:
+        for sel in user_selectors:
+            if frame.query_selector(sel):
+                frame.fill(sel, user)
                 break
-            time.sleep(1)
+        for sel in pass_selectors:
+            if frame.query_selector(sel):
+                frame.fill(sel, pw)
+                break
+        for sel in submit_selectors:
+            if frame.query_selector(sel):
+                frame.click(sel)
+                break
 
-        # 4) Grab cookies for fantasy.espn.com
+        # Wait for login to propagate
+        page.wait_for_load_state("networkidle", timeout=30000)
+
+        # Hit the league page (sets the fantasy cookies)
+        page.goto(league_url, wait_until="networkidle")
+
+        # Give cookies time to settle
+        time.sleep(2)
+
         cookies = ctx.cookies()
-        swid_val = None
-        s2_val = None
+        swid = None
+        s2 = None
         for c in cookies:
             if c.get("name") == "SWID":
-                swid_val = c.get("value")
+                swid = c.get("value")
             if c.get("name") == "espn_s2":
-                s2_val = c.get("value")
+                s2 = c.get("value")
 
         browser.close()
 
-    if not swid_val or not s2_val:
-        fail("Failed to retrieve SWID/espn_s2 cookies from ESPN after login")
+    if not swid or not s2:
+        print("Failed to retrieve SWID/espn_s2 cookies from ESPN after login", file=sys.stderr)
+        sys.exit(2)
 
-    # Write to GITHUB_ENV
-    write_github_env(args.write_github_env, {
-        "SWID": swid_val,
-        "ESPN_S2": s2_val,
-    })
-
-    print(f"OK: SWID={mask(swid_val)} ESPN_S2={mask(s2_val)}")
+    # Write to GitHub env so following steps can use them
+    write_github_env(args.write_github_env, "SWID", swid)
+    write_github_env(args.write_github_env, "ESPN_S2", s2)
+    print("Got cookies ✔")
 
 if __name__ == "__main__":
     main()
