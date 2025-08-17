@@ -1,20 +1,202 @@
-    - name: Ensure pip deps (once)
-      run: |
-        python -m pip install --upgrade pip
-        pip install playwright
-    - name: Get ESPN cookies with Playwright
-      env:
-        ESPN_USER: ${{ secrets.ESPN_USER }}
-        ESPN_PASS: ${{ secrets.ESPN_PASS }}
-        PLAYWRIGHT_BROWSERS_PATH: ${{ vars.PLAYWRIGHT_BROWSERS_PATH }}
-        PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: ${{ vars.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS }}
-        ARTIFACTS_DIR: artifacts
-      run: |
-        mkdir -p artifacts
-        python pipeline/get_espn_cookies.py --league "${{ vars.LEAGUE_ID }}" --write-github-env "$GITHUB_ENV"
-    - name: Upload login screenshots (if any)
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: playwright-login
-        path: artifacts
+name: Hourly Data Build
+
+on:
+  workflow_dispatch:    # <- gives you the "Run workflow" button
+  schedule:
+    - cron: '9 * * * *' # hourly, 9 minutes past the hour
+  push:
+    paths:
+      - 'pipeline/**'
+      - 'docs/**'
+      - '.github/workflows/hourly.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hourly-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 25
+    env:
+      # You can set these as "Repository Variables" in GitHub (Settings → Secrets and variables → Variables)
+      LEAGUE_ID: ${{ vars.LEAGUE_ID }}
+      PLAYWRIGHT_BROWSERS_PATH: ${{ vars.PLAYWRIGHT_BROWSERS_PATH }}
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: ${{ vars.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure defaults (LEAGUE_ID & Playwright paths)
+        run: |
+          : "${LEAGUE_ID:=508419792}"
+          echo "LEAGUE_ID=$LEAGUE_ID" >> "$GITHUB_ENV"
+          : "${PLAYWRIGHT_BROWSERS_PATH:=/home/ghrunner/.cache/ms-playwright}"
+          echo "PLAYWRIGHT_BROWSERS_PATH=$PLAYWRIGHT_BROWSERS_PATH" >> "$GITHUB_ENV"
+          : "${PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS:=1}"
+          echo "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=$PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS" >> "$GITHUB_ENV"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install --upgrade playwright cloudscraper requests pydantic
+
+      - name: Ensure Chromium (no sudo)
+        run: |
+          python -m playwright install chromium || true
+
+      - name: Create Playwright cookie fetcher
+        run: |
+          mkdir -p pipeline
+          cat > pipeline/get_espn_cookies.py <<'PY'
+          #!/usr/bin/env python3
+          import argparse, os, sys, time
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+
+          def write_env(path, kv):
+              with open(path, "a", encoding="utf-8") as f:
+                  for k, v in kv.items():
+                      f.write(f"{k}={v}\n")
+
+          def main():
+              ap = argparse.ArgumentParser()
+              ap.add_argument("--league", required=True)
+              ap.add_argument("--write-github-env", required=True)
+              args = ap.parse_args()
+
+              user = os.getenv("ESPN_USER", "").strip()
+              pwd  = os.getenv("ESPN_PASS", "").strip()
+              if not user or not pwd:
+                  print("ESPN_USER/ESPN_PASS env vars are required", file=sys.stderr)
+                  sys.exit(2)
+
+              login_url  = "https://www.espn.com/login/"
+              league_hub = f"https://fantasy.espn.com/football/league?leagueId={args.league}"
+              artifacts  = os.getenv("ARTIFACTS_DIR")
+              if artifacts: Path(artifacts).mkdir(parents=True, exist_ok=True)
+
+              os.environ.setdefault("PLAYWRIGHT_BROWSERS_PATH",
+                                    str(Path.home() / ".cache" / "ms-playwright"))
+
+              with sync_playwright() as p:
+                  browser = p.chromium.launch(
+                      headless=True,
+                      args=["--disable-blink-features=AutomationControlled",
+                            "--no-sandbox", "--disable-dev-shm-usage"]
+                  )
+                  ctx = browser.new_context(
+                      viewport={"width":1366,"height":768},
+                      user_agent=("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                                  "(KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"),
+                      locale="en-US",
+                  )
+                  ctx.add_init_script("Object.defineProperty(navigator,'webdriver',{get:()=>undefined});")
+                  page = ctx.new_page()
+
+                  page.goto(league_hub, wait_until="domcontentloaded")
+                  page.goto(login_url,  wait_until="domcontentloaded")
+
+                  try:
+                      frame = page.frame_locator("iframe[title='Sign in']")
+                      user_input = frame.get_by_placeholder("Username or Email Address")
+                      pass_input = frame.get_by_placeholder("Password (case sensitive)")
+                      user_input.wait_for(timeout=15000); pass_input.wait_for(timeout=15000)
+                  except PWTimeout:
+                      if artifacts: page.screenshot(path=f"{artifacts}/fields_timeout.png", full_page=True)
+                      print("Could not locate login fields", file=sys.stderr); sys.exit(2)
+
+                  user_input.fill(user)
+                  pass_input.fill(pwd)
+                  frame.get_by_role("button", name="Log In").click()
+
+                  swid, s2 = None, None
+                  deadline = time.time() + 20
+                  while time.time() < deadline and (not swid or not s2):
+                      for c in ctx.cookies():
+                          n = c["name"].upper()
+                          if n == "SWID": swid = c["value"]
+                          if n in ("ESPN_S2","ESPN_s2","ESPN_S2".upper(),"espn_s2".upper()): s2 = c["value"]
+                      time.sleep(1)
+
+                  if artifacts: page.screenshot(path=f"{artifacts}/post_login.png", full_page=True)
+                  if not swid or not s2:
+                      print("Failed to retrieve SWID/espn_s2 cookies from ESPN after login", file=sys.stderr)
+                      sys.exit(2)
+
+                  write_env(args.write_github_env, {"ESPN_SWID": swid, "ESPN_S2": s2})
+                  print("Got cookies. ✅")
+                  ctx.close(); browser.close()
+
+          if __name__ == "__main__":
+              sys.exit(main())
+          PY
+          chmod +x pipeline/get_espn_cookies.py
+
+      # If you already have fresh cookie secrets, use them and skip login
+      - name: Use cookie secrets if provided
+        if: ${{ secrets.ESPN_SWID != '' && secrets.ESPN_S2 != '' }}
+        run: |
+          echo "ESPN_SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
+          echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
+          echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
+
+      # Otherwise log in with Playwright
+      - name: Login to ESPN and capture cookies
+        if: ${{ secrets.ESPN_SWID == '' || secrets.ESPN_S2 == '' }}
+        env:
+          ESPN_USER: ${{ secrets.ESPN_USER }}
+          ESPN_PASS: ${{ secrets.ESPN_PASS }}
+          ARTIFACTS_DIR: artifacts
+        run: |
+          mkdir -p artifacts
+          python pipeline/get_espn_cookies.py --league "${LEAGUE_ID}" --write-github-env "$GITHUB_ENV"
+
+      - name: Normalize cookie names for fetchers
+        run: |
+          : "${SWID:=${ESPN_SWID}}"
+          echo "SWID=${SWID}" >> "$GITHUB_ENV"
+          : "${ESPN_S2:?ESPN_S2 missing after cookie step}"
+
+      - name: Fetch players
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
+        run: python pipeline/fetch_players.py
+
+      - name: Fetch league
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
+        run: python pipeline/fetch_league.py
+
+      - name: Fetch rosters
+        env:
+          SWID: ${{ env.SWID }}
+          ESPN_S2: ${{ env.ESPN_S2 }}
+        run: python pipeline/fetch_rosters.py
+
+      - name: Commit JSON updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "robot: refresh ${{ env.LEAGUE_ID }}"
+          file_pattern: docs/data/*.json
+
+      - name: Upload login screenshots (debug)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-login
+          path: artifacts
+          if-no-files-found: ignore
