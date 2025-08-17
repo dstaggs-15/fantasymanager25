@@ -1,8 +1,21 @@
+name: hourly
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "17 * * * *"   # hourly at :17
+
+permissions:
+  contents: write
+
+concurrency:
+  group: hourly-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   hourly:
     runs-on: self-hosted
     env:
-      # Force a real home so Playwright installs to a stable cache
       HOME: /home/ghrunner
       PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
     steps:
@@ -10,20 +23,20 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Install Python deps (no sudo)
+      - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade playwright requests cloudscraper
 
-      - name: Install Playwright Chromium (no --with-deps)
+      # IMPORTANT: install the Playwright-managed Chromium in this HOME
+      - name: Install Playwright Chromium
         run: |
           python -m playwright install chromium
           python -m playwright --version
 
-      # if you use a requirements.txt, keep it, but the two lines above must stay
-
+      # Get cookies headlessly and export SWID/ESPN_S2 to job env
       - name: Get ESPN cookies via Playwright
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
@@ -43,7 +56,7 @@ jobs:
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: python pipeline/fetch_rosters.py
 
-      - name: Fetch players summary
+      - name: Fetch players
         run: python pipeline/fetch_players.py
 
       - name: Commit data
