@@ -3,7 +3,7 @@ name: hourly
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "17 * * * *"   # hourly at :17
+    - cron: "17 * * * *"
 
 permissions:
   contents: write
@@ -28,21 +28,55 @@ jobs:
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade playwright requests cloudscraper
+          pip install --upgrade playwright requests cloudscraper pyotp
 
-      # IMPORTANT: install the Playwright-managed Chromium in this HOME
-      - name: Install Playwright Chromium
+      - name: Install Playwright Chromium (idempotent)
         run: |
           python -m playwright install chromium
           python -m playwright --version
 
-      # Get cookies headlessly and export SWID/ESPN_S2 to job env
+      # -------------- COOKIE SOURCE --------------
+      # A) If repo secrets are set, use them directly.
+      - name: Use cookie secrets if provided
+        id: from_secrets
+        shell: bash
+        run: |
+          FOUND=0
+          if [ -n "${{ secrets.ESPN_SWID }}" ] && [ -n "${{ secrets.ESPN_S2 }}" ]; then
+            echo "SWID=${{ secrets.ESPN_SWID }}" >> "$GITHUB_ENV"
+            echo "ESPN_S2=${{ secrets.ESPN_S2 }}" >> "$GITHUB_ENV"
+            FOUND=1
+          fi
+          echo "found=$FOUND" >> $GITHUB_OUTPUT
+
+      # B) Otherwise, log in with Playwright to get fresh cookies.
       - name: Get ESPN cookies via Playwright
+        if: steps.from_secrets.outputs.found != '1'
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
+          # Optional: if you use ESPN 2FA (TOTP), add this secret (base32 seed from your authenticator)
+          ESPN_TOTP_SECRET: ${{ secrets.ESPN_TOTP_SECRET }}
         run: |
-          python pipeline/get_espn_cookies.py --league 508419792 --write-github-env "$GITHUB_ENV"
+          mkdir -p artifacts
+          python pipeline/get_espn_cookies.py \
+            --league 508419792 \
+            --write-github-env "$GITHUB_ENV" \
+            --screenshot-dir artifacts || echo "PW_FAILED=1" >> $GITHUB_ENV
+
+      - name: Upload Playwright artifacts (only if PW failed)
+        if: env.PW_FAILED == '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-debug
+          path: artifacts
+
+      # -------------- DATA FETCH --------------
+      - name: Verify cookies present
+        run: |
+          : "${SWID:?SWID missing}"
+          : "${ESPN_S2:?ESPN_S2 missing}"
+          echo "Got SWID/ESPN_S2; proceeding."
 
       - name: Fetch league
         env:
