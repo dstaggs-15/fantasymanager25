@@ -3,16 +3,15 @@ name: hourly
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "17 * * * *" # hourly at :17
+    - cron: "19 * * * *"   # hourly at :19 UTC
 
 jobs:
   fetch-and-publish:
     runs-on: self-hosted
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     env:
       PYTHONUNBUFFERED: "1"
-      # Required for API calls after login:
       LEAGUE_ID: "508419792"
       SEASON: "2025"
 
@@ -20,59 +19,65 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Python & deps
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install Python deps
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r pipeline/requirements.txt
-          # Install Playwright browser bits (runner already has system libs)
+          # browsers must be installed in THIS Python env
           python -m playwright install chromium
 
-      # 1) Login and capture SWID + espn_s2
-      - name: Get ESPN cookies (Playwright)
+      - name: Login with Playwright and harvest cookies
         env:
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
         run: |
-          python pipeline/get_espn_cookies.py --league "$LEAGUE_ID" --write-github-env "$GITHUB_ENV"
+          mkdir -p artifacts
+          python pipeline/get_espn_cookies.py \
+            --league "$LEAGUE_ID" \
+            --write-github-env "$GITHUB_ENV" \
+            --screenshot-dir artifacts
 
-      # 2) Fetch league meta (teams/standings/settings) → docs/data/espn_league.json
-      - name: Fetch league
+      - name: Upload login screenshots (if any)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: login-screens
+          path: artifacts
+          if-no-files-found: ignore
+
+      - name: Fetch league (mTeam/mStandings/mSettings)
         env:
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_league.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/espn_league.json
 
-      # 3) Fetch rosters (all teams) → docs/data/team_rosters.json
-      - name: Fetch rosters
+      - name: Fetch rosters (mRoster)
         env:
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_rosters.py --league "$LEAGUE_ID" --season "$SEASON" --out docs/data/team_rosters.json
 
-      # 4) (Optional) Fetch players summary → docs/data/players_summary.json
-      - name: Fetch players (summary)
+      - name: Fetch players (paged summary)
         env:
           SWID: ${{ env.SWID }}
           ESPN_S2: ${{ env.ESPN_S2 }}
         run: |
           python pipeline/fetch_players.py --season "$SEASON" --out docs/data/players_summary.json
 
-      # Commit site data
       - name: Commit updated JSON
         run: |
-          git config user.name  "dstaggs-15 bot"
+          git config user.name "dstaggs-15 bot"
           git config user.email "actions@users.noreply.github.com"
-          git add docs/data/*.json
-          if git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')" ; then
+          git add docs/data/*.json || true
+          if git commit -m "robot: refresh $(date -u +'%Y-%m-%dT%H:%M:%SZ')"; then
             git push
           else
-            echo "No changes to commit."
+            echo "No changes."
           fi
