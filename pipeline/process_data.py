@@ -6,6 +6,7 @@ DATA_DIR = 'docs/data'
 
 # --- Data Processing Functions ---
 def process_rosters(roster_data):
+    """Processes raw mRoster data into the format the website expects."""
     teams_processed = {}
     for team in roster_data.get('teams', []):
         team_id = team['id']
@@ -16,6 +17,7 @@ def process_rosters(roster_data):
     return {"teams": teams_processed, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
 
 def process_players(player_data):
+    """Processes raw players_wl data into a clean list for the website."""
     players_processed = []
     position_map = {0: 'TQB', 1: 'QB', 2: 'RB', 3: 'WR', 4: 'TE', 5: 'K', 16: 'D/ST'}
     for player_entry in player_data.get('players', []):
@@ -34,33 +36,45 @@ def process_players(player_data):
 def main():
     print("--- Starting Data Processing ---")
     
-    # Define which files to read, process, and overwrite
-    files_to_process = {
-        'team_rosters.json': process_rosters,
-        'players_summary.json': process_players,
+    # Files to read from the fetcher script
+    raw_files = {
+        "mTeam": "raw_mTeam.json",
+        "mRoster": "raw_mRoster.json",
+        "players_wl": "raw_players.json"
     }
-
-    for filename, process_func in files_to_process.items():
-        filepath = os.path.join(DATA_DIR, filename)
+    
+    # Load all raw data first
+    raw_data = {}
+    for key, filename in raw_files.items():
         try:
-            print(f"Processing {filepath}...")
-            with open(filepath, 'r') as f:
-                raw_data = json.load(f)
-
-            # Transform the data using the correct function
-            processed_data = process_func(raw_data)
-            
-            # Overwrite the original file with the clean data
-            with open(filepath, 'w') as f:
-                json.dump(processed_data, f, indent=2)
-            print(f"Successfully processed and overwrote {filepath}")
-
+            with open(os.path.join(DATA_DIR, filename), 'r') as f:
+                raw_data[key] = json.load(f)
         except FileNotFoundError:
-            print(f"Error: File not found at {filepath}. Skipping.")
-        except Exception as e:
-            print(f"An error occurred while processing {filename}: {e}")
+            print(f"::error::Raw file not found: {filename}. The fetching script may have failed.")
+            return
+        except json.JSONDecodeError:
+            print(f"::error::Could not decode JSON from {filename}. It may be empty or malformed.")
+            return
+
+    # Process and save the final, clean files
+    print("Processing and saving final files for the website...")
+    
+    # 1. Process and save rosters
+    processed_rosters = process_rosters(raw_data['mRoster'])
+    with open(os.path.join(DATA_DIR, 'team_rosters.json'), 'w') as f:
+        json.dump(processed_rosters, f, indent=2)
+
+    # 2. Process and save players
+    processed_players = process_players(raw_data['players_wl'])
+    with open(os.path.join(DATA_DIR, 'players_summary.json'), 'w') as f:
+        json.dump(processed_players, f, indent=2)
+    
+    # 3. Copy the team data directly (this was the missing step)
+    with open(os.path.join(DATA_DIR, 'espn_mTeam.json'), 'w') as f:
+        json.dump(raw_data['mTeam'], f, indent=2)
 
     print("--- Data Processing Finished ---")
+    print("All three data files have been created successfully.")
 
 if __name__ == '__main__':
     main()
