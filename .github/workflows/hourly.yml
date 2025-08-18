@@ -1,82 +1,15 @@
-name: Hourly Data Build
+name: File Path Diagnostic
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '9 * * * *'
-  push:
-    branches:
-      - main
-    paths:
-      - 'pipeline/**'
-      - 'docs/**'
 
 jobs:
-  build-and-commit-data:
+  diagnose-file-paths:
     runs-on: [self-hosted, Linux, X64]
-
-    env:
-      LEAGUE_ID: ${{ vars.LEAGUE_ID }}
-      ESPN_USER: ${{ secrets.ESPN_USER }}
-      ESPN_PASS: ${{ secrets.ESPN_PASS }}
-      ESPN_SWID: ${{ secrets.ESPN_SWID }}
-      ESPN_S2: ${{ secrets.ESPN_S2 }}
-      PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
-      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: 1
 
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Cache Python dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
-          key: ${{ runner.os }}-playwright-chromium
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
-      - name: Install Python Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Ensure Chromium Browser is Installed
-        run: python -m playwright install chromium
-
-      - name: Fetch All Fantasy Data
-        id: fetch_data
-        working-directory: ${{ github.workspace }}
-        run: |
-          # If SWID/S2 secrets are not provided, try to get them with Playwright
-          if [ -z "$ESPN_SWID" ] || [ -z "$ESPN_S2" ]; then
-            echo "SWID/S2 secrets not found. Running Playwright to log in..."
-            python pipeline/get_espn_cookies.py
-          else
-            echo "SWID/S2 secrets found. Skipping Playwright login."
-          fi
-          
-          # Run the data fetchers
-          python pipeline/fetch_league.py
-          python pipeline/fetch_rosters.py
-          python pipeline/fetch_players.py
-
-      - name: Commit data files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📊 Chore: Update fantasy data"
-          file_pattern: "docs/data/*.json"
-          commit_user_name: "GitHub Actions Bot"
-          commit_user_email: "github-actions@github.com"
-          commit_author: "GitHub Actions Bot <github-actions@github.com>"
+      - name: Show the entire file structure
+        run: ls -R
