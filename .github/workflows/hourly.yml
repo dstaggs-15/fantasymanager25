@@ -41,6 +41,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      - name: Debug Environment Variables
+        run: |
+          echo "Value from vars context is: '${{ vars.PLAYWRIGHT_BROWSERS_PATH }}'"
+          echo "Value from env context is: '${{ env.PLAYWRIGHT_BROWSERS_PATH }}'"
+
       - name: Cache Playwright browsers
         uses: actions/cache@v4
         with:
