@@ -21,8 +21,9 @@ jobs:
       ESPN_PASS: ${{ secrets.ESPN_PASS }}
       ESPN_SWID: ${{ secrets.ESPN_SWID }}
       ESPN_S2: ${{ secrets.ESPN_S2 }}
-      PLAYWRIGHT_BROWSERS_PATH: ${{ vars.PLAYWRIGHT_BROWSERS_PATH }}
-      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: ${{ vars.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS }}
+      # THE FIX: Paths are now hardcoded to prevent variable errors.
+      PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: 1
 
     steps:
       - name: Checkout Repo
@@ -40,11 +41,6 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
-      - name: Debug Environment Variables
-        run: |
-          echo "Value from vars context is: '${{ vars.PLAYWRIGHT_BROWSERS_PATH }}'"
-          echo "Value from env context is: '${{ env.PLAYWRIGHT_BROWSERS_PATH }}'"
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
