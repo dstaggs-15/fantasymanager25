@@ -1,12 +1,10 @@
 import os
 import json
-import requests
-from playwright.sync_api import sync_playwright, TimeoutError
+import time
+from playwright.sync_api import sync_playwright
 
 # --- Configuration ---
 LEAGUE_ID = os.getenv('LEAGUE_ID')
-ESPN_USER = os.getenv('ESPN_USER')
-ESPN_PASS = os.getenv('ESPN_PASS')
 ESPN_SWID = os.getenv('ESPN_SWID')
 ESPN_S2 = os.getenv('ESPN_S2')
 SEASON_ID = '2025'
@@ -18,48 +16,53 @@ ENDPOINTS = {
     'raw_players.json': f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/players?scoringPeriodId=0&view=players_wl'
 }
 
-def fetch_with_requests():
-    """Fetches data using the fast requests method with cookies."""
-    print("--- Starting Fast Fetch using cookies (requests) ---")
-    
-    cookies = {'swid': ESPN_SWID, 'espn_s2': ESPN_S2}
-    # THE FIX: Add a User-Agent header to look like a real browser
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'}
-    
-    os.makedirs(DATA_DIR, exist_ok=True)
-    for filename, url in ENDPOINTS.items():
-        print(f"Fetching: {filename}...")
-        try:
-            res = requests.get(url, cookies=cookies, headers=headers, timeout=15)
-            res.raise_for_status()
-            
-            with open(os.path.join(DATA_DIR, filename), 'w') as f:
-                json.dump(res.json(), f)
-            print(f"Successfully saved {filename}")
-        except requests.exceptions.RequestException as e:
-            print(f"::error::Failed to fetch {url}. Error: {e}")
-            exit(1)
-    print("--- Fast Fetch Finished ---")
-
-def fetch_with_playwright():
-    # This is now just a fallback and is unlikely to be used, but we keep it.
-    print("--- Starting Full Fetch using browser (Playwright) ---")
-    # ... (rest of the playwright function remains the same, no changes needed here) ...
-
-# ... (the rest of the file remains the same) ...
-
-# The code below this line is unchanged.
-
 def main():
-    if not LEAGUE_ID:
-        print("::error::LEAGUE_ID is not set.")
+    print("--- Starting Playwright Fetch with Pre-Authentication ---")
+    if not all([LEAGUE_ID, ESPN_SWID, ESPN_S2]):
+        print("::error::This script requires LEAGUE_ID, ESPN_SWID, and ESPN_S2 to be set.")
         exit(1)
 
-    if ESPN_SWID and ESPN_S2:
-        fetch_with_requests()
-    else:
-        print("SWID and S2 secrets not found. Falling back to Playwright login.")
-        fetch_with_playwright()
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        context = browser.new_context()
+        
+        try:
+            # THE FIX: Inject the authentication cookies directly into the browser context.
+            print("Injecting authentication cookies into the browser...")
+            cookies = [
+                {'name': 'swid', 'value': ESPN_SWID, 'domain': '.espn.com', 'path': '/'},
+                {'name': 'espn_s2', 'value': ESPN_S2, 'domain': '.espn.com', 'path': '/'}
+            ]
+            context.add_cookies(cookies)
+            print("Cookies injected. The browser is now pre-authenticated.")
+
+            page = context.new_page()
+            os.makedirs(DATA_DIR, exist_ok=True)
+
+            for filename, url in ENDPOINTS.items():
+                print(f"Fetching: {filename} from {url}")
+                # Go directly to the API endpoint. No login page needed.
+                page.goto(url)
+                
+                # ESPN API endpoints wrap the JSON in a <pre> tag
+                json_text = page.locator('pre').inner_text(timeout=20000)
+                
+                if not json_text.strip().startswith('{'):
+                   raise Exception(f"Failed to fetch valid JSON from {url}. Response was not JSON.")
+
+                output_path = os.path.join(DATA_DIR, filename)
+                with open(output_path, 'w') as f:
+                    f.write(json_text)
+                print(f"Successfully saved raw data to {output_path}")
+
+        except Exception as e:
+            print(f"::error::Playwright failed: {e}")
+            page.screenshot(path='error_screenshot.png')
+            exit(1)
+        finally:
+            browser.close()
+    
+    print("--- Playwright Fetch Finished Successfully ---")
 
 if __name__ == '__main__':
     main()
