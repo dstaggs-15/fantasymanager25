@@ -1,68 +1,56 @@
 import os
-import json
-import time
 from playwright.sync_api import sync_playwright
 
 # --- Configuration ---
-LEAGUE_ID = os.getenv('LEAGUE_ID')
-ESPN_SWID = os.getenv('ESPN_SWID')
-ESPN_S2 = os.getenv('ESPN_S2')
-SEASON_ID = '2025'
-DATA_DIR = 'docs/data'
-
-ENDPOINTS = {
-    'raw_mTeam.json': f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/leagues/{LEAGUE_ID}?view=mTeam',
-    'raw_mRoster.json': f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/leagues/{LEAGUE_ID}?view=mRoster',
-    'raw_players.json': f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/players?scoringPeriodId=0&view=players_wl'
-}
+ESPN_USER = os.getenv('ESPN_USER')
+ESPN_PASS = os.getenv('ESPN_PASS')
 
 def main():
-    print("--- Starting Playwright Fetch with Pre-Authentication ---")
-    if not all([LEAGUE_ID, ESPN_SWID, ESPN_S2]):
-        print("::error::This script requires LEAGUE_ID, ESPN_SWID, and ESPN_S2 to be set.")
+    print("--- Starting Interactive Cookie-Grabber Script ---")
+    if not all([ESPN_USER, ESPN_PASS]):
+        print("::error::This script requires ESPN_USER and ESPN_PASS.")
         exit(1)
 
     with sync_playwright() as p:
-        browser = p.chromium.launch()
+        # THE CHANGE: headless=False makes the browser window visible.
+        browser = p.chromium.launch(headless=False)
         context = browser.new_context()
-        
+        page = context.new_page()
+
         try:
-            # THE FIX: Inject the authentication cookies directly into the browser context.
-            print("Injecting authentication cookies into the browser...")
-            cookies = [
-                {'name': 'swid', 'value': ESPN_SWID, 'domain': '.espn.com', 'path': '/'},
-                {'name': 'espn_s2', 'value': ESPN_S2, 'domain': '.espn.com', 'path': '/'}
-            ]
-            context.add_cookies(cookies)
-            print("Cookies injected. The browser is now pre-authenticated.")
+            print("Opening ESPN login page in a visible browser...")
+            page.goto('https://fantasy.espn.com/football/')
+            
+            print("\n" + "="*50)
+            print("ACTION REQUIRED: Please log in to ESPN in the browser window that will open on your remote desktop.")
+            print("The script will wait for up to 3 minutes for you to complete the login.")
+            print("="*50 + "\n")
 
-            page = context.new_page()
-            os.makedirs(DATA_DIR, exist_ok=True)
+            # Wait for the user to successfully log in. 
+            # We know login is successful when the URL contains "myteams".
+            page.wait_for_url("**/myteams**", timeout=180000)
 
-            for filename, url in ENDPOINTS.items():
-                print(f"Fetching: {filename} from {url}")
-                # Go directly to the API endpoint. No login page needed.
-                page.goto(url)
-                
-                # ESPN API endpoints wrap the JSON in a <pre> tag
-                json_text = page.locator('pre').inner_text(timeout=20000)
-                
-                if not json_text.strip().startswith('{'):
-                   raise Exception(f"Failed to fetch valid JSON from {url}. Response was not JSON.")
+            print("Login successful! Capturing cookies...")
+            
+            cookies = context.cookies()
+            swid_cookie = next((c for c in cookies if c['name'] == 'swid'), None)
+            s2_cookie = next((c for c in cookies if c['name'] == 'espn_s2'), None)
 
-                output_path = os.path.join(DATA_DIR, filename)
-                with open(output_path, 'w') as f:
-                    f.write(json_text)
-                print(f"Successfully saved raw data to {output_path}")
+            if not all([swid_cookie, s2_cookie]):
+                raise Exception("Could not find SWID or ESPN_S2 cookies after login.")
+
+            print("\n" + "="*50)
+            print("✅ SUCCESS! Copy the values below and save them as GitHub Secrets.")
+            print(f"\nESPN_SWID:\n{swid_cookie['value']}")
+            print(f"\nESPN_S2:\n{s2_cookie['value']}")
+            print("\n" + "="*50 + "\n")
 
         except Exception as e:
-            print(f"::error::Playwright failed: {e}")
+            print(f"::error::An error occurred: {e}")
             page.screenshot(path='error_screenshot.png')
             exit(1)
         finally:
             browser.close()
-    
-    print("--- Playwright Fetch Finished Successfully ---")
 
 if __name__ == '__main__':
     main()
