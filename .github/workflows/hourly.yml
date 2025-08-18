@@ -21,7 +21,6 @@ jobs:
       ESPN_PASS: ${{ secrets.ESPN_PASS }}
       ESPN_SWID: ${{ secrets.ESPN_SWID }}
       ESPN_S2: ${{ secrets.ESPN_S2 }}
-      # THE FIX: Paths are now hardcoded to prevent variable errors.
       PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
       PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: 1
 
@@ -58,6 +57,7 @@ jobs:
 
       - name: Fetch All Fantasy Data
         id: fetch_data
+        working-directory: ${{ github.workspace }}
         run: |
           # If SWID/S2 secrets are not provided, try to get them with Playwright
           if [ -z "$ESPN_SWID" ] || [ -z "$ESPN_S2" ]; then
