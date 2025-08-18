@@ -58,18 +58,27 @@ jobs:
       - name: Fetch All Fantasy Data
         id: fetch_data
         run: |
+          # Dynamically find the pipeline directory to ensure the path is correct
+          PIPELINE_DIR=$(find . -type d -name "pipeline" | head -n 1)
+          echo "Found pipeline directory at: ${PIPELINE_DIR}"
+
+          if [ -z "${PIPELINE_DIR}" ]; then
+            echo "::error::Could not find the 'pipeline' directory."
+            exit 1
+          fi
+
           # If SWID/S2 secrets are not provided, try to get them with Playwright
           if [ -z "$ESPN_SWID" ] || [ -z "$ESPN_S2" ]; then
             echo "SWID/S2 secrets not found. Running Playwright to log in..."
-            python ${{ github.workspace }}/pipeline/get_espn_cookies.py
+            python "${PIPELINE_DIR}/get_espn_cookies.py"
           else
             echo "SWID/S2 secrets found. Skipping Playwright login."
           fi
           
-          # Run the data fetchers using absolute paths
-          python ${{ github.workspace }}/pipeline/fetch_league.py
-          python ${{ github.workspace }}/pipeline/fetch_rosters.py
-          python ${{ github.workspace }}/pipeline/fetch_players.py
+          # Run the data fetchers using the dynamically found absolute path
+          python "${PIPELINE_DIR}/fetch_league.py"
+          python "${PIPELINE_DIR}/fetch_rosters.py"
+          python "${PIPELINE_DIR}/fetch_players.py"
 
       - name: Commit data files
         uses: stefanzweifel/git-auto-commit-action@v5
