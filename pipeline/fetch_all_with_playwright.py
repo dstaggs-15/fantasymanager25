@@ -4,6 +4,8 @@ from playwright.sync_api import sync_playwright
 # --- Configuration ---
 ESPN_USER = os.getenv('ESPN_USER')
 ESPN_PASS = os.getenv('ESPN_PASS')
+# The correct URL you provided
+LEAGUE_HOMEPAGE_URL = "https://fantasy.espn.com/football/team?leagueId=508419792&teamId=1&seasonId=2025"
 
 def main():
     print("--- Starting Interactive Cookie-Grabber Script ---")
@@ -12,24 +14,23 @@ def main():
         exit(1)
 
     with sync_playwright() as p:
-        # THE CHANGE: headless=False makes the browser window visible.
+        # headless=False makes the browser window visible for you to interact with.
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
 
         try:
-            print("Opening ESPN login page in a visible browser...")
-            page.goto('https://fantasy.espn.com/football/')
+            print(f"Opening your league homepage in a visible browser: {LEAGUE_HOMEPAGE_URL}")
+            page.goto(LEAGUE_HOMEPAGE_URL)
             
             print("\n" + "="*50)
-            print("ACTION REQUIRED: Please log in to ESPN in the browser window that will open on your remote desktop.")
+            print("ACTION REQUIRED: Please log in to ESPN in the browser window that just opened on your remote desktop.")
             print("The script will wait for up to 3 minutes for you to complete the login.")
             print("="*50 + "\n")
 
-            # Wait for the user to successfully log in. 
-            # We know login is successful when the URL contains "myteams".
-            page.wait_for_url("**/myteams**", timeout=180000)
-
+            # After a successful login, the URL will still contain "myteams" or the leagueId.
+            # We will wait for the page to fully load after you log in.
+            page.wait_for_load_state('networkidle', timeout=180000)
             print("Login successful! Capturing cookies...")
             
             cookies = context.cookies()
