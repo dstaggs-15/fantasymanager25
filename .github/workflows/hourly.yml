@@ -39,7 +39,8 @@ jobs:
       - name: 4. Cache Browser
         uses: actions/cache@v4
         with:
-          path: /home/ghrunner/.cache/ms-playwright
+          # THE FIX: Use a dynamic path for the current user's home directory
+          path: ${{ env.HOME }}/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-chromium
 
       # Step 5: Install the required Python libraries
@@ -50,7 +51,8 @@ jobs:
       - name: 6. Install Playwright Browser
         run: python -m playwright install chromium
         env:
-          PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
+          # THE FIX: Use a dynamic path for the current user's home directory
+          PLAYWRIGHT_BROWSERS_PATH: ${{ env.HOME }}/.cache/ms-playwright
 
       # Step 7: Run the Python scripts to get and clean the data
       - name: 7. Run Data Pipeline Scripts
@@ -63,7 +65,6 @@ jobs:
           LEAGUE_ID: ${{ vars.LEAGUE_ID }}
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
-          # THE FIX: Added the missing SWID and S2 secrets here
           ESPN_SWID: ${{ secrets.ESPN_SWID }}
           ESPN_S2: ${{ secrets.ESPN_S2 }}
 
