@@ -50,11 +50,12 @@ jobs:
       - name: STEP 1: Fetch Raw Data from ESPN
         run: python ${{ github.workspace }}/pipeline/fetch_all_with_playwright.py
 
-      - name: STEP 2: Process and Clean the Data
+      - name: STEP 2: Process Raw Data into Clean Files
         run: python ${{ github.workspace }}/pipeline/process_data.py
 
       - name: Commit data files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📊 Chore: Update fantasy data"
-          file_pattern: "docs/data/*.json"
+          # Only commit the final, clean files
+          file_pattern: "docs/data/team_rosters.json docs/data/players_summary.json docs/data/espn_mTeam.json"
