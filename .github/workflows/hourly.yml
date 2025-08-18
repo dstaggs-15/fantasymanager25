@@ -39,8 +39,8 @@ jobs:
       - name: 4. Cache Browser
         uses: actions/cache@v4
         with:
-          # THE FIX: Use a dynamic path for the current user's home directory
-          path: ${{ env.HOME }}/.cache/ms-playwright
+          # THE FIX: Use the ~ shell shortcut for the home directory
+          path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-chromium
 
       # Step 5: Install the required Python libraries
@@ -49,10 +49,8 @@ jobs:
 
       # Step 6: Ensure the Playwright browser is installed
       - name: 6. Install Playwright Browser
-        run: python -m playwright install chromium
-        env:
-          # THE FIX: Use a dynamic path for the current user's home directory
-          PLAYWRIGHT_BROWSERS_PATH: ${{ env.HOME }}/.cache/ms-playwright
+        # THE FIX: Define the environment variable inside the run step using the ~ shortcut
+        run: PLAYWRIGHT_BROWSERS_PATH=~/.cache/ms-playwright python -m playwright install chromium
 
       # Step 7: Run the Python scripts to get and clean the data
       - name: 7. Run Data Pipeline Scripts
