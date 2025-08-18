@@ -63,10 +63,21 @@ jobs:
           LEAGUE_ID: ${{ vars.LEAGUE_ID }}
           ESPN_USER: ${{ secrets.ESPN_USER }}
           ESPN_PASS: ${{ secrets.ESPN_PASS }}
+          # THE FIX: Added the missing SWID and S2 secrets here
+          ESPN_SWID: ${{ secrets.ESPN_SWID }}
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
 
       # Step 8: Commit the updated data files back to your repository
       - name: 8. Commit New Data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📊 Chore: Automated fantasy data update"
-          file_pattern: docs/data/team_rosters.json docs/data/players_summary.json docs/data/espn_mTeam.json
+          file_pattern: docs/data/*.json
+
+      # This step will run ONLY if the job fails, to help with debugging
+      - name: Upload Error Screenshot on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshot
+          path: error_screenshot.png
