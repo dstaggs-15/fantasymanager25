@@ -1,1 +1,60 @@
+name: Hourly Data Build
 
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '9 * * * *'
+
+jobs:
+  build-and-commit-data:
+    runs-on: [self-hosted, Linux, X64]
+
+    env:
+      LEAGUE_ID: ${{ vars.LEAGUE_ID }}
+      ESPN_USER: ${{ secrets.ESPN_USER }}
+      ESPN_PASS: ${{ secrets.ESPN_PASS }}
+      PLAYWRIGHT_BROWSERS_PATH: /home/ghrunner/.cache/ms-playwright
+      PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS: 1
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+          key: ${{ runner.os }}-playwright-chromium
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ensure Chromium Browser is Installed
+        run: python -m playwright install chromium
+
+      - name: STEP 1: Fetch Raw Data from ESPN
+        run: python ${{ github.workspace }}/pipeline/fetch_all_with_playwright.py
+
+      - name: STEP 2: Process Raw Data into Clean Files
+        run: python ${{ github.workspace }}/pipeline/process_data.py
+
+      - name: Commit data files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📊 Chore: Update fantasy data"
+          file_pattern: docs/data/team_rosters.json docs/data/players_summary.json docs/data/espn_mTeam.json
