@@ -47,14 +47,14 @@ jobs:
       - name: Ensure Chromium Browser is Installed
         run: python -m playwright install chromium
 
-      - name: Fetch All Data Using Only Playwright
+      - name: STEP 1: Fetch Raw Data from ESPN
         run: python ${{ github.workspace }}/pipeline/fetch_all_with_playwright.py
+
+      - name: STEP 2: Process and Clean the Data
+        run: python ${{ github.workspace }}/pipeline/process_data.py
 
       - name: Commit data files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📊 Chore: Update fantasy data"
           file_pattern: "docs/data/*.json"
-          commit_user_name: "GitHub Actions Bot"
-          commit_user_email: "github-actions@github.com"
-          commit_author: "GitHub Actions Bot <github-actions@github.com>"
