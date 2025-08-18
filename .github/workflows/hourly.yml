@@ -57,5 +57,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📊 Chore: Update fantasy data"
-          # Only commit the final, clean files
-          file_pattern: "docs/data/team_rosters.json docs/data/players_summary.json docs/data/espn_mTeam.json"
+          file_pattern: docs/data/team_rosters.json docs/data/players_summary.json docs/data/espn_mTeam.json
