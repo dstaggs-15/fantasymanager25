@@ -1,75 +1,46 @@
 import os
-import json
-import time
-from playwright.sync_api import sync_playwright, TimeoutError
+from playwright.sync_api import sync_playwright
 
-# --- Configuration ---
-LEAGUE_ID = '508419792'
-SEASON_ID = '2025'
-DATA_DIR = 'docs/data'
+LEAGUE_HOMEPAGE_URL = "https://fantasy.espn.com/football/team?leagueId=508419792&teamId=1&seasonId=2025"
+LOGOUT_URL = "https://www.espn.com/logout"
 
-ENDPOINTS = {
-    'league_data': f'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/segments/0/leagues/{LEAGUE_ID}?view=mSettings&view=mRoster&view=mTeam&view=modular&view=mNav',
-    'players_wl': f'https://fantasy.espn.com/apis/v3/games/ffl/seasons/{SEASON_ID}/players?scoringPeriodId=0&view=players_wl'
-}
-
-# --- Data Processing Functions ---
-def process_rosters(roster_data):
-    teams_processed = {}
-    for team in roster_data.get('teams', []):
-        teams_processed[team['id']] = {
-            'teamName': team.get('name', 'Unknown Team'),
-            'players': [player['playerPoolEntry']['player']['fullName'] for player in team.get('roster', {}).get('entries', [])]
-        }
-    return {"teams": teams_processed, "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
-
-def process_players(player_data):
-    players_processed = []
-    position_map = {0: 'TQB', 1: 'QB', 2: 'RB', 3: 'WR', 4: 'TE', 5: 'K', 16: 'D/ST'}
-    for player_entry in player_data.get('players', []):
-        player = player_entry.get('player', {})
-        if not player or not player.get('proTeamAbbr'): continue
-        players_processed.append({
-            'id': player.get('id'),
-            'name': player.get('fullName'),
-            'pos': position_map.get(player.get('defaultPositionId'), 'N/A'),
-            'team': player.get('proTeamAbbr', 'FA')
-        })
-    return players_processed
-
-# --- Main Execution ---
 def main():
-    print("--- Starting Public Data Fetch with Playwright ---")
-    raw_data = {}
+    print("--- Starting Interactive Cookie-Grabber Script ---")
     with sync_playwright() as p:
-        browser = p.chromium.launch()
-        # THE FIX: Impersonate a real browser by setting a User-Agent
-        context = browser.new_context(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36')
+        browser = p.chromium.launch(headless=False) # Makes the browser visible
+        context = browser.new_context()
         page = context.new_page()
         try:
-            os.makedirs(DATA_DIR, exist_ok=True)
-            for key, url in ENDPOINTS.items():
-                print(f"Fetching {key} from {url}...")
-                page.goto(url, wait_until='domcontentloaded')
-                try:
-                    json_text = page.locator('pre').inner_text(timeout=5000)
-                except TimeoutError:
-                    print("Could not find <pre> tag, using body content.")
-                    json_text = page.locator('body').inner_text()
-                raw_data[key] = json.loads(json_text)
-                print(f"Success.")
-            
-            print("Processing and saving final files...")
-            with open(os.path.join(DATA_DIR, 'team_rosters.json'), 'w') as f:
-                json.dump(process_rosters(raw_data['league_data']), f, indent=2)
-            with open(os.path.join(DATA_DIR, 'players_summary.json'), 'w') as f:
-                json.dump(process_players(raw_data['players_wl']), f, indent=2)
-            with open(os.path.join(DATA_DIR, 'espn_mTeam.json'), 'w') as f:
-                json.dump(raw_data['league_data'], f, indent=2)
+            print("Logging out of any existing ESPN session...")
+            page.goto(LOGOUT_URL)
+            page.wait_for_load_state('networkidle')
 
-            print("--- Data Fetch and Processing Finished Successfully ---")
+            print(f"Opening your league homepage...")
+            page.goto(LEAGUE_HOMEPAGE_URL)
+
+            print("\n" + "="*50)
+            print("ACTION REQUIRED: Please log in to ESPN and solve the CAPTCHA in the browser window on your desktop.")
+            print("The script will wait for up to 3 minutes for you to complete the login.")
+            print("="*50 + "\n")
+
+            page.wait_for_url("**/myteams**", timeout=180000)
+            print("Login successful! Capturing cookies...")
+
+            cookies = context.cookies()
+            swid_cookie = next((c for c in cookies if c['name'] == 'swid'), None)
+            s2_cookie = next((c for c in cookies if c['name'] == 'espn_s2'), None)
+
+            if not all([swid_cookie, s2_cookie]):
+                raise Exception("Could not find SWID or ESPN_S2 cookies after login.")
+
+            print("\n" + "="*50)
+            print("✅ SUCCESS! Copy the values below and save them as GitHub Secrets.")
+            print(f"\nESPN_SWID:\n{swid_cookie['value']}")
+            print(f"\nESPN_S2:\n{s2_cookie['value']}")
+            print("\n" + "="*50 + "\n")
+
         except Exception as e:
-            print(f"::error::Playwright failed: {e}")
+            print(f"::error::An error occurred: {e}")
             page.screenshot(path='error_screenshot.png')
             exit(1)
         finally:
