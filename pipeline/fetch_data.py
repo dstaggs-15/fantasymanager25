@@ -1,7 +1,7 @@
 import os
 import json
 import time
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError
 
 # --- Configuration ---
 LEAGUE_ID = '508419792' # Your public league ID
@@ -52,8 +52,16 @@ def main():
             os.makedirs(DATA_DIR, exist_ok=True)
             for key, url in ENDPOINTS.items():
                 print(f"Fetching {key} from {url}...")
-                page.goto(url)
-                json_text = page.locator('pre').inner_text(timeout=20000)
+                page.goto(url, wait_until='domcontentloaded')
+                
+                # THE FIX: Try to get data from the <pre> tag, but if it fails,
+                # fall back to getting the whole body content.
+                try:
+                    json_text = page.locator('pre').inner_text(timeout=5000) # Quick timeout
+                except TimeoutError:
+                    print("Could not find <pre> tag, falling back to body content.")
+                    json_text = page.locator('body').inner_text()
+
                 raw_data[key] = json.loads(json_text)
                 print(f"Success.")
             
