@@ -28,7 +28,6 @@ def calculate_fantasy_points(df):
     # Apply scoring rules dynamically
     for column, points in scoring_rules.items():
         if column in df.columns:
-            # Fill NaN (Not a Number) with 0 to prevent errors
             df['fantasy_points_custom'] += df[column].fillna(0) * points
         else:
             print(f"Warning: Column '{column}' not found in data. Skipping.")
@@ -48,11 +47,65 @@ def calculate_fantasy_points(df):
     }
     for column, points in dst_rules.items():
         if column in df.columns:
-            # Apply these points only to rows where the position is DEF
             df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df[column].fillna(0) * points
 
-    # Points Allowed (for D/ST position only)
+    # THE FIX: Rewritten D/ST Points Allowed logic to be correct and avoid syntax errors.
     if 'points_allowed' in df.columns:
-        conditions_pa = [
-            (df['points_allowed'] == 0), (df['points_allowed'] <= 6), (df['points_allowed'] <= 13),
-            (df['points_allowed'] <= 17), (df['points_allowed'] <= 34), (df['points_allowed'] <= 45),
+        conditions = [
+            (df['points_allowed'] == 0),
+            (df['points_allowed'] >= 1) & (df['points_allowed'] <= 6),
+            (df['points_allowed'] >= 7) & (df['points_allowed'] <= 13),
+            (df['points_allowed'] >= 14) & (df['points_allowed'] <= 17),
+            (df['points_allowed'] >= 18) & (df['points_allowed'] <= 27),
+            (df['points_allowed'] >= 28) & (df['points_allowed'] <= 34),
+            (df['points_allowed'] >= 35) & (df['points_allowed'] <= 45),
+            (df['points_allowed'] >= 46)
+        ]
+        points = [5, 4, 3, 1, 0, -1, -3, -5]
+        
+        # Use np.select to apply points based on the conditions
+        pa_points = np.select(conditions, points, default=0)
+        
+        # Apply these points only to rows where the position is DEF
+        df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += pa_points
+
+    return df
+
+def main():
+    print("--- Starting Waiver Wire Assistant ---")
+    
+    try:
+        print(f"Loading data from {DATA_FILE}...")
+        df = pd.read_csv(DATA_FILE, low_memory=False)
+        print("Data loaded successfully.")
+    except FileNotFoundError:
+        print(f"❌ ERROR: Data file not found. Please run the 'Fetch NFL Data' workflow first.")
+        return
+
+    df = calculate_fantasy_points(df)
+
+    latest_season = df['season'].max()
+    latest_week = df[df['season'] == latest_season]['week'].max()
+    print(f"\n🔥 Analyzing Top Performers for Season: {latest_season}, Week: {latest_week} 🔥\n")
+
+    latest_week_df = df[(df['season'] == latest_season) & (df['week'] == latest_week)]
+
+    positions = {'QB': 10, 'RB': 15, 'WR': 15, 'TE': 10, 'K': 5, 'DEF': 5}
+    for pos, num_players in positions.items():
+        print("-" * 40)
+        print(f"Top {num_players} {pos}s for Week {latest_week}")
+        print("-" * 40)
+        
+        top_performers = (
+            latest_week_df[latest_week_df['position'] == pos]
+            .sort_values(by='fantasy_points_custom', ascending=False)
+            .head(num_players)
+        )
+        
+        display_cols = ['player_display_name', 'recent_team', 'fantasy_points_custom']
+        top_performers_display = top_performers[display_cols].fillna('N/A')
+        print(top_performers_display.round(2).to_string(index=False))
+        print("\n")
+
+if __name__ == '__main__':
+    main()
