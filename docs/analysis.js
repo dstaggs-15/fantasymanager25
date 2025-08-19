@@ -1,14 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const dataTable = document.getElementById('data-table');
     const statusEl = document.getElementById('status');
-    const dataUrl = '../data/analysis/nfl_data_with_weather.csv';
+    // THE FIX: Corrected path to the data file
+    const dataUrl = 'data/analysis/nfl_data_with_weather.csv';
 
     statusEl.textContent = `Fetching data from ${dataUrl}...`;
 
-    // Use PapaParse to fetch and parse the CSV file
     Papa.parse(dataUrl, {
         download: true,
-        header: true, // Treat the first row as headers
+        header: true,
         dynamicTyping: true,
         skipEmptyLines: true,
         complete: function(results) {
@@ -28,12 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTable(data, headers) {
         const thead = dataTable.querySelector('thead');
         const tbody = dataTable.querySelector('tbody');
-
-        // Clear existing table content
         thead.innerHTML = '';
         tbody.innerHTML = '';
-
-        // Create table header
         const headerRow = document.createElement('tr');
         headers.forEach(header => {
             const th = document.createElement('th');
@@ -41,8 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
             headerRow.appendChild(th);
         });
         thead.appendChild(headerRow);
-
-        // Create table body
         data.forEach(row => {
             const tr = document.createElement('tr');
             headers.forEach(header => {
