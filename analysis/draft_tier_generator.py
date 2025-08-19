@@ -4,11 +4,13 @@ import numpy as np
 import json
 
 # --- Configuration ---
-DATA_FILE = os.path.join('data', 'analysis', 'nfl_data.csv')
+# THE FIX: Corrected the path to include the 'docs' folder
+DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
 OUTPUT_DIR = 'docs/data/analysis'
 ANALYSIS_SEASON = 2024
 POSITIONS_TO_TIER = ['QB', 'RB', 'WR', 'TE']
 
+# ... (The rest of the script is unchanged) ...
 def calculate_fantasy_points(df):
     """
     Calculates fantasy points based on your league's specific custom scoring rules.
