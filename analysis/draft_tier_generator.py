@@ -4,14 +4,15 @@ import numpy as np
 import json
 
 # --- Configuration ---
-DATA_FILE = os.path.join('data', 'analysis', 'nfl_data_with_weather.csv')
+DATA_FILE = os.path.join('data', 'analysis', 'nfl_data.csv')
 OUTPUT_DIR = 'docs/data/analysis'
 ANALYSIS_SEASON = 2024
 POSITIONS_TO_TIER = ['QB', 'RB', 'WR', 'TE']
 
 def calculate_fantasy_points(df):
-    # ... (calculation logic is unchanged)
-    # ... (same function as above)
+    """
+    Calculates fantasy points based on your league's specific custom scoring rules.
+    """
     df['fantasy_points_custom'] = 0.0
     scoring_rules = {
         'passing_yards': 0.05, 'passing_tds': 4, 'interceptions': -2, 'passing_2pt_conversions': 2,
@@ -25,6 +26,9 @@ def calculate_fantasy_points(df):
     return df
 
 def generate_tiers(player_data, position, num_tiers=6):
+    """
+    Uses a simple clustering method to separate players into tiers.
+    """
     pos_df = player_data[player_data['position'] == position].copy()
     if pos_df.empty: return {}
     ppg_std = pos_df['ppg'].std()
@@ -48,7 +52,7 @@ def main():
     try:
         df = pd.read_csv(DATA_FILE, low_memory=False)
     except FileNotFoundError:
-        print(f"❌ ERROR: Data file not found.")
+        print(f"❌ ERROR: Data file not found. Please ensure the 'Fetch NFL Data' job ran successfully.")
         return
 
     df = calculate_fantasy_points(df)
@@ -63,7 +67,6 @@ def main():
     for pos in POSITIONS_TO_TIER:
         report_data['positions'][pos] = generate_tiers(relevant_players, pos)
 
-    # Save the report to a JSON file
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_path = os.path.join(OUTPUT_DIR, 'draft_tiers_report.json')
     with open(output_path, 'w') as f:
