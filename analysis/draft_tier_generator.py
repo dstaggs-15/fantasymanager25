@@ -1,16 +1,17 @@
 import pandas as pd
 import os
 import numpy as np
+import json
 
 # --- Configuration ---
 DATA_FILE = os.path.join('data', 'analysis', 'nfl_data_with_weather.csv')
-ANALYSIS_SEASON = 2024 # The most recent full season in our dataset
+OUTPUT_DIR = 'docs/data/analysis'
+ANALYSIS_SEASON = 2024
 POSITIONS_TO_TIER = ['QB', 'RB', 'WR', 'TE']
 
 def calculate_fantasy_points(df):
-    """
-    Calculates fantasy points based on your league's specific custom scoring rules.
-    """
+    # ... (calculation logic is unchanged)
+    # ... (same function as above)
     df['fantasy_points_custom'] = 0.0
     scoring_rules = {
         'passing_yards': 0.05, 'passing_tds': 4, 'interceptions': -2, 'passing_2pt_conversions': 2,
@@ -24,65 +25,50 @@ def calculate_fantasy_points(df):
     return df
 
 def generate_tiers(player_data, position, num_tiers=6):
-    """
-    Uses a simple clustering method to separate players into tiers.
-    """
     pos_df = player_data[player_data['position'] == position].copy()
-    if pos_df.empty:
-        return
-        
-    # Simple tiering based on standard deviation of PPG
+    if pos_df.empty: return {}
     ppg_std = pos_df['ppg'].std()
     top_ppg = pos_df['ppg'].max()
-    
     tier_thresholds = [top_ppg - (i * ppg_std * 0.75) for i in range(1, num_tiers + 1)]
-    
     def assign_tier(ppg):
         for i, threshold in enumerate(tier_thresholds):
-            if ppg >= threshold:
-                return i + 1
+            if ppg >= threshold: return i + 1
         return num_tiers
-    
     pos_df['tier'] = pos_df['ppg'].apply(assign_tier)
     
-    print("-" * 50)
-    print(f"DRAFT TIERS FOR: {position}")
-    print("-" * 50)
+    tiers = {}
     for tier_num in range(1, num_tiers + 1):
         tier_players = pos_df[pos_df['tier'] == tier_num]
         if not tier_players.empty:
-            player_names = [f"{row['player_display_name']} ({row['ppg']:.1f})" for index, row in tier_players.iterrows()]
-            print(f"Tier {tier_num}: {', '.join(player_names)}")
-    print("\n")
-
+            tiers[f'Tier {tier_num}'] = tier_players[['player_display_name', 'ppg']].round(2).to_dict('records')
+    return tiers
 
 def main():
     print("--- Starting Draft Tier Generator ---")
-    
     try:
         df = pd.read_csv(DATA_FILE, low_memory=False)
     except FileNotFoundError:
-        print(f"❌ ERROR: Data file not found. Please run the 'Fetch NFL Data' workflow first.")
+        print(f"❌ ERROR: Data file not found.")
         return
 
     df = calculate_fantasy_points(df)
-    
-    # Calculate average points per game (PPG)
-    # We only want to average over games where the player actually played a significant amount
     active_players = df[df['fantasy_points_custom'] > 0]
     ppg = active_players.groupby(['player_id', 'player_display_name', 'position'])['fantasy_points_custom'].mean().reset_index()
     ppg = ppg.rename(columns={'fantasy_points_custom': 'ppg'})
-    
-    # Get last season's data for tiering
     last_season_df = df[df['season'] == ANALYSIS_SEASON]
-    # We only care about players who played last season
     relevant_players = ppg[ppg['player_id'].isin(last_season_df['player_id'])]
-
-    print(f"\nGenerating draft tiers based on PPG from the {ANALYSIS_SEASON} season...\n")
     
+    report_data = {'season': ANALYSIS_SEASON, 'positions': {}}
+    print(f"\nGenerating draft tiers based on PPG from the {ANALYSIS_SEASON} season...\n")
     for pos in POSITIONS_TO_TIER:
-        generate_tiers(relevant_players, pos)
+        report_data['positions'][pos] = generate_tiers(relevant_players, pos)
 
+    # Save the report to a JSON file
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    output_path = os.path.join(OUTPUT_DIR, 'draft_tiers_report.json')
+    with open(output_path, 'w') as f:
+        json.dump(report_data, f, indent=2)
+    print(f"✅ Draft tiers report saved to {output_path}")
 
 if __name__ == '__main__':
     main()
