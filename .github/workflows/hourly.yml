@@ -31,5 +31,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "🤖 Chore: Process and update website data"
-          # Only commit the final, clean files
-          file_pattern: "docs/data/team_rosters.json docs/data/espn_mTeam.json"
+          # Add all new and changed json files
+          file_pattern: "docs/data/*.json"
