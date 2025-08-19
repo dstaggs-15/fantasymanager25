@@ -1,35 +1,35 @@
-name: Fetch Fantasy Data
+name: Process and Deploy Fantasy Data
 
 on:
+  # This workflow now runs ONLY when you push changes to the master data file
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/data/fantasy_league_data.json'
+  
+  # We'll also keep the manual trigger
   workflow_dispatch:
-  schedule:
-    - cron: '9 * * * *'
 
 jobs:
-  build-and-commit-data:
-    runs-on: [self-hosted, Linux, X64]
+  process-and-deploy:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Set up Python 3.11
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Install Playwright Browsers
-        run: python -m playwright install chromium
-      - name: Scrape and Process Data
-        run: python pipeline/scraper.py
-      - name: Commit data files
+      
+      - name: Process Master Data File
+        run: python pipeline/process_data.py
+
+      - name: Commit Processed Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "📊 Chore: Update fantasy data"
-          file_pattern: docs/data/*.json
-      - name: Upload Error Screenshot on Failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: error-screenshot
-          path: error_screenshot.png
+          commit_message: "🤖 Chore: Process and update website data"
+          # Only commit the final, clean files
+          file_pattern: "docs/data/team_rosters.json docs/data/espn_mTeam.json"
