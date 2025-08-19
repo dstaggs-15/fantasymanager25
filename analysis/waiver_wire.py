@@ -31,9 +31,9 @@ def calculate_fantasy_points(df):
     df['fantasy_points_custom'] += df['receiving_2pt_conversions'] * 2
     df['fantasy_points_custom'] += df['receiving_first_downs'] * 0.5
     
-    df['fantasy_points_custom'] += df['fumbles_lost'] * -2
+    # THE FIX: The correct column name is 'fumbles', not 'fumbles_lost'.
+    df['fantasy_points_custom'] += df['fumbles'] * -2
     
-    # Offensive player return TDs
     df['fantasy_points_custom'] += (df['special_teams_tds']) * 6
 
     # --- Bonuses ---
@@ -50,12 +50,12 @@ def calculate_fantasy_points(df):
     df['fantasy_points_custom'] += (df['fg_missed']) * -1
 
     # --- D/ST Scoring ---
-    df['fantasy_points_custom'] += df['sacks'] * 1
-    df['fantasy_points_custom'] += df['interceptions'] * 2 # Note: 'interceptions' col is used for both offense and defense
-    df['fantasy_points_custom'] += df['fumbles_recovered'] * 2
-    df['fantasy_points_custom'] += df['safeties'] * 2
-    df['fantasy_points_custom'] += df['defensive_tds'] * 6
-    df['fantasy_points_custom'] += df['blocked_kicks'] * 2
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['sacks'] * 1
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['interceptions'] * 2
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['fumbles_recovered'] * 2
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['safeties'] * 2
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['defensive_tds'] * 6
+    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['blocked_kicks'] * 2
     
     # Points Allowed (for D/ST position only)
     conditions_pa = [
@@ -68,6 +68,8 @@ def calculate_fantasy_points(df):
         (df['points_allowed'] >= 46)
     ]
     points_pa = [5, 4, 3, 1, -1, -3, -5]
+    
+    # Apply points allowed scoring only to DEF positions
     df['pa_points'] = np.select(conditions_pa, points_pa, default=0)
     df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['pa_points']
     
@@ -78,7 +80,8 @@ def main():
     
     try:
         print(f"Loading data from {DATA_FILE}...")
-        df = pd.read_csv(DATA_FILE)
+        # THE FIX: Added low_memory=False to silence the DtypeWarning
+        df = pd.read_csv(DATA_FILE, low_memory=False)
         print("Data loaded successfully.")
     except FileNotFoundError:
         print(f"❌ ERROR: Data file not found. Please run the 'Fetch NFL Data' workflow first.")
@@ -105,7 +108,9 @@ def main():
         )
         
         display_cols = ['player_display_name', 'recent_team', 'fantasy_points_custom']
-        print(top_performers[display_cols].round(2).to_string(index=False))
+        # Fill NaN values in display columns for cleaner output
+        top_performers_display = top_performers[display_cols].fillna('N/A')
+        print(top_performers_display.round(2).to_string(index=False))
         print("\n")
 
 if __name__ == '__main__':
