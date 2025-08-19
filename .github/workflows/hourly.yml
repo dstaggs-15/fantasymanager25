@@ -1,31 +1,27 @@
-name: Fetch NFL Data
+name: Run Waiver Wire Analysis
 
 on:
-  workflow_dispatch: # Allows manual runs
-  schedule:
-    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
+  workflow_dispatch: # Allows you to run this manually from the Actions tab
 
 jobs:
-  fetch-nfl-data:
+  run-waiver-analysis:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
+        # This step checks out the repository code, including the big data CSV
         uses: actions/checkout@v4
+        with:
+          # Fetches the entire git history so we can read the data file
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
+      
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Data Collection Script
-        run: python pipeline/get_nfl_data.py
-      
-      - name: Commit New Data File
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🏈 Chore: Update historical NFL and weather data"
-          file_pattern: data/analysis/*.csv
+      - name: Run Waiver Wire Script
+        run: python analysis/waiver_wire.py
