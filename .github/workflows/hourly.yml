@@ -1,18 +1,12 @@
-name: Process and Deploy Fantasy Data
+name: Fetch NFL Data
 
 on:
-  # This workflow now runs ONLY when you push changes to the master data file
-  push:
-    branches:
-      - main
-    paths:
-      - 'docs/data/fantasy_league_data.json'
-  
-  # We'll also keep the manual trigger
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual runs
+  schedule:
+    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
 
 jobs:
-  process-and-deploy:
+  fetch-nfl-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,13 +17,15 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
-      - name: Process Master Data File
-        run: python pipeline/process_data.py
 
-      - name: Commit Processed Files
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Data Collection Script
+        run: python pipeline/get_nfl_data.py
+      
+      - name: Commit New Data File
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Chore: Process and update website data"
-          # Add all new and changed json files
-          file_pattern: "docs/data/*.json"
+          commit_message: "🏈 Chore: Update historical NFL and weather data"
+          file_pattern: data/analysis/*.csv
