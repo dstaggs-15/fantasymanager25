@@ -1,0 +1,116 @@
+{
+  "season": 2024,
+  "week": 22,
+  "positions": {
+    "QB": [
+      {
+        "player_display_name": "Jalen Hurts",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 35.25
+      },
+      {
+        "player_display_name": "Patrick Mahomes",
+        "recent_team": "KC",
+        "fantasy_points_custom": 27.35
+      },
+      {
+        "player_display_name": "Kenny Pickett",
+        "recent_team": "PHI",
+        "fantasy_points_custom": -0.4
+      }
+    ],
+    "RB": [
+      {
+        "player_display_name": "Saquon Barkley",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 18.7
+      },
+      {
+        "player_display_name": "Isiah Pacheco",
+        "recent_team": "KC",
+        "fantasy_points_custom": 2.7
+      },
+      {
+        "player_display_name": "Kareem Hunt",
+        "recent_team": "KC",
+        "fantasy_points_custom": 2.4
+      },
+      {
+        "player_display_name": "Samaje Perine",
+        "recent_team": "KC",
+        "fantasy_points_custom": 1.8
+      },
+      {
+        "player_display_name": "Kenneth Gainwell",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 1.0
+      }
+    ],
+    "WR": [
+      {
+        "player_display_name": "Xavier Worthy",
+        "recent_team": "KC",
+        "fantasy_points_custom": 38.2
+      },
+      {
+        "player_display_name": "DeVonta Smith",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 18.4
+      },
+      {
+        "player_display_name": "A.J. Brown",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 14.8
+      },
+      {
+        "player_display_name": "DeAndre Hopkins",
+        "recent_team": "KC",
+        "fantasy_points_custom": 12.8
+      },
+      {
+        "player_display_name": "Jahan Dotson",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 7.2
+      },
+      {
+        "player_display_name": "JuJu Smith-Schuster",
+        "recent_team": "KC",
+        "fantasy_points_custom": 4.1
+      },
+      {
+        "player_display_name": "Marquise Brown",
+        "recent_team": "KC",
+        "fantasy_points_custom": 4.0
+      },
+      {
+        "player_display_name": "Justin Watson",
+        "recent_team": "KC",
+        "fantasy_points_custom": 2.0
+      },
+      {
+        "player_display_name": "Johnny Wilson",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 0.0
+      }
+    ],
+    "TE": [
+      {
+        "player_display_name": "Travis Kelce",
+        "recent_team": "KC",
+        "fantasy_points_custom": 8.4
+      },
+      {
+        "player_display_name": "Dallas Goedert",
+        "recent_team": "PHI",
+        "fantasy_points_custom": 5.2
+      },
+      {
+        "player_display_name": "Noah Gray",
+        "recent_team": "KC",
+        "fantasy_points_custom": 1.2
+      }
+    ],
+    "K": [],
+    "DEF": []
+  }
+}

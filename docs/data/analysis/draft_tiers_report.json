@@ -1,0 +1,2353 @@
+{
+  "season": 2024,
+  "positions": {
+    "QB": {
+      "Tier 1": [
+        {
+          "player_display_name": "Lamar Jackson",
+          "ppg": 28.1
+        },
+        {
+          "player_display_name": "Josh Allen",
+          "ppg": 30.44
+        },
+        {
+          "player_display_name": "Jalen Hurts",
+          "ppg": 28.7
+        },
+        {
+          "player_display_name": "Joe Milton",
+          "ppg": 27.65
+        },
+        {
+          "player_display_name": "Jayden Daniels",
+          "ppg": 26.8
+        }
+      ],
+      "Tier 2": [
+        {
+          "player_display_name": "Russell Wilson",
+          "ppg": 20.68
+        },
+        {
+          "player_display_name": "Dak Prescott",
+          "ppg": 22.96
+        },
+        {
+          "player_display_name": "Patrick Mahomes",
+          "ppg": 25.38
+        },
+        {
+          "player_display_name": "Jake Browning",
+          "ppg": 21.99
+        },
+        {
+          "player_display_name": "Kyler Murray",
+          "ppg": 22.95
+        },
+        {
+          "player_display_name": "Justin Herbert",
+          "ppg": 22.36
+        },
+        {
+          "player_display_name": "Joe Burrow",
+          "ppg": 24.05
+        },
+        {
+          "player_display_name": "Brock Purdy",
+          "ppg": 20.93
+        },
+        {
+          "player_display_name": "Anthony Richardson",
+          "ppg": 20.6
+        },
+        {
+          "player_display_name": "Bo Nix",
+          "ppg": 23.11
+        }
+      ],
+      "Tier 3": [
+        {
+          "player_display_name": "Aaron Rodgers",
+          "ppg": 19.52
+        },
+        {
+          "player_display_name": "Joe Flacco",
+          "ppg": 18.28
+        },
+        {
+          "player_display_name": "Matthew Stafford",
+          "ppg": 19.72
+        },
+        {
+          "player_display_name": "Kirk Cousins",
+          "ppg": 20.4
+        },
+        {
+          "player_display_name": "Geno Smith",
+          "ppg": 19.89
+        },
+        {
+          "player_display_name": "Teddy Bridgewater",
+          "ppg": 16.57
+        },
+        {
+          "player_display_name": "Derek Carr",
+          "ppg": 17.92
+        },
+        {
+          "player_display_name": "Jimmy Garoppolo",
+          "ppg": 17.37
+        },
+        {
+          "player_display_name": "Jameis Winston",
+          "ppg": 16.3
+        },
+        {
+          "player_display_name": "Carson Wentz",
+          "ppg": 17.81
+        },
+        {
+          "player_display_name": "Jared Goff",
+          "ppg": 20.11
+        },
+        {
+          "player_display_name": "Deshaun Watson",
+          "ppg": 17.92
+        },
+        {
+          "player_display_name": "Joshua Dobbs",
+          "ppg": 20.1
+        },
+        {
+          "player_display_name": "Baker Mayfield",
+          "ppg": 19.64
+        },
+        {
+          "player_display_name": "Sam Darnold",
+          "ppg": 19.4
+        },
+        {
+          "player_display_name": "Daniel Jones",
+          "ppg": 20.32
+        },
+        {
+          "player_display_name": "Tua Tagovailoa",
+          "ppg": 19.31
+        },
+        {
+          "player_display_name": "Jordan Love",
+          "ppg": 17.44
+        },
+        {
+          "player_display_name": "Justin Fields",
+          "ppg": 20.46
+        },
+        {
+          "player_display_name": "Trevor Lawrence",
+          "ppg": 19.58
+        },
+        {
+          "player_display_name": "Sam Howell",
+          "ppg": 20.3
+        },
+        {
+          "player_display_name": "Tanner McKee",
+          "ppg": 16.53
+        },
+        {
+          "player_display_name": "C.J. Stroud",
+          "ppg": 19.39
+        },
+        {
+          "player_display_name": "Drake Maye",
+          "ppg": 19.49
+        },
+        {
+          "player_display_name": "Caleb Williams",
+          "ppg": 19.23
+        }
+      ],
+      "Tier 4": [
+        {
+          "player_display_name": "Andy Dalton",
+          "ppg": 14.29
+        },
+        {
+          "player_display_name": "Tyrod Taylor",
+          "ppg": 12.46
+        },
+        {
+          "player_display_name": "Taylor Heinicke",
+          "ppg": 15.17
+        },
+        {
+          "player_display_name": "Marcus Mariota",
+          "ppg": 13.6
+        },
+        {
+          "player_display_name": "Jacoby Brissett",
+          "ppg": 13.88
+        },
+        {
+          "player_display_name": "Taysom Hill",
+          "ppg": 12.29
+        },
+        {
+          "player_display_name": "Mike White",
+          "ppg": 12.53
+        },
+        {
+          "player_display_name": "Mason Rudolph",
+          "ppg": 14.94
+        },
+        {
+          "player_display_name": "Jarrett Stidham",
+          "ppg": 15.42
+        },
+        {
+          "player_display_name": "Gardner Minshew",
+          "ppg": 14.45
+        },
+        {
+          "player_display_name": "Drew Lock",
+          "ppg": 13.91
+        },
+        {
+          "player_display_name": "Tyler Huntley",
+          "ppg": 14.97
+        },
+        {
+          "player_display_name": "Davis Mills",
+          "ppg": 13.32
+        },
+        {
+          "player_display_name": "Mac Jones",
+          "ppg": 15.0
+        },
+        {
+          "player_display_name": "Trey Lance",
+          "ppg": 10.82
+        },
+        {
+          "player_display_name": "Kenny Pickett",
+          "ppg": 13.32
+        },
+        {
+          "player_display_name": "Bailey Zappe",
+          "ppg": 10.91
+        },
+        {
+          "player_display_name": "Desmond Ridder",
+          "ppg": 14.13
+        },
+        {
+          "player_display_name": "Tyson Bagent",
+          "ppg": 11.06
+        },
+        {
+          "player_display_name": "Tommy DeVito",
+          "ppg": 11.87
+        },
+        {
+          "player_display_name": "Aidan O'Connell",
+          "ppg": 14.13
+        },
+        {
+          "player_display_name": "Bryce Young",
+          "ppg": 15.63
+        },
+        {
+          "player_display_name": "Will Levis",
+          "ppg": 15.42
+        },
+        {
+          "player_display_name": "Spencer Rattler",
+          "ppg": 13.35
+        }
+      ],
+      "Tier 5": [
+        {
+          "player_display_name": "Josh Johnson",
+          "ppg": 6.72
+        },
+        {
+          "player_display_name": "Brandon Allen",
+          "ppg": 6.18
+        },
+        {
+          "player_display_name": "Nick Mullens",
+          "ppg": 10.2
+        },
+        {
+          "player_display_name": "Cooper Rush",
+          "ppg": 9.01
+        },
+        {
+          "player_display_name": "Mitchell Trubisky",
+          "ppg": 9.89
+        },
+        {
+          "player_display_name": "Tim Boyle",
+          "ppg": 8.26
+        },
+        {
+          "player_display_name": "Kyle Allen",
+          "ppg": 7.43
+        },
+        {
+          "player_display_name": "Skylar Thompson",
+          "ppg": 5.87
+        },
+        {
+          "player_display_name": "Malik Willis",
+          "ppg": 8.2
+        },
+        {
+          "player_display_name": "Michael Penix",
+          "ppg": 10.57
+        }
+      ],
+      "Tier 6": [
+        {
+          "player_display_name": "Kyle Trask",
+          "ppg": 0.7
+        },
+        {
+          "player_display_name": "Chris Oladokun",
+          "ppg": 0.5
+        },
+        {
+          "player_display_name": "Hendon Hooker",
+          "ppg": 1.43
+        },
+        {
+          "player_display_name": "Clayton Tune",
+          "ppg": 1.98
+        },
+        {
+          "player_display_name": "Dorian Thompson-Robinson",
+          "ppg": 5.14
+        },
+        {
+          "player_display_name": "Jake Haener",
+          "ppg": 4.03
+        }
+      ]
+    },
+    "RB": {
+      "Tier 1": [
+        {
+          "player_display_name": "Derrick Henry",
+          "ppg": 23.78
+        },
+        {
+          "player_display_name": "Christian McCaffrey",
+          "ppg": 26.69
+        },
+        {
+          "player_display_name": "Jonathan Taylor",
+          "ppg": 23.18
+        },
+        {
+          "player_display_name": "Jahmyr Gibbs",
+          "ppg": 23.4
+        }
+      ],
+      "Tier 2": [
+        {
+          "player_display_name": "Aaron Jones",
+          "ppg": 18.5
+        },
+        {
+          "player_display_name": "James Conner",
+          "ppg": 20.42
+        },
+        {
+          "player_display_name": "Austin Ekeler",
+          "ppg": 20.84
+        },
+        {
+          "player_display_name": "Joe Mixon",
+          "ppg": 20.76
+        },
+        {
+          "player_display_name": "Alvin Kamara",
+          "ppg": 21.23
+        },
+        {
+          "player_display_name": "Nick Chubb",
+          "ppg": 18.45
+        },
+        {
+          "player_display_name": "Saquon Barkley",
+          "ppg": 22.0
+        },
+        {
+          "player_display_name": "David Montgomery",
+          "ppg": 18.06
+        },
+        {
+          "player_display_name": "Josh Jacobs",
+          "ppg": 21.29
+        },
+        {
+          "player_display_name": "Kyren Williams",
+          "ppg": 19.97
+        },
+        {
+          "player_display_name": "Breece Hall",
+          "ppg": 19.45
+        },
+        {
+          "player_display_name": "Kenneth Walker",
+          "ppg": 18.25
+        },
+        {
+          "player_display_name": "Bijan Robinson",
+          "ppg": 22.0
+        },
+        {
+          "player_display_name": "De'Von Achane",
+          "ppg": 19.6
+        },
+        {
+          "player_display_name": "Devon Achane",
+          "ppg": 20.7
+        },
+        {
+          "player_display_name": "Bucky Irving",
+          "ppg": 18.12
+        }
+      ],
+      "Tier 3": [
+        {
+          "player_display_name": "Raheem Mostert",
+          "ppg": 14.85
+        },
+        {
+          "player_display_name": "Ezekiel Elliott",
+          "ppg": 13.0
+        },
+        {
+          "player_display_name": "Dalvin Cook",
+          "ppg": 13.64
+        },
+        {
+          "player_display_name": "Devin Singletary",
+          "ppg": 13.22
+        },
+        {
+          "player_display_name": "Tony Pollard",
+          "ppg": 16.32
+        },
+        {
+          "player_display_name": "J.K. Dobbins",
+          "ppg": 16.39
+        },
+        {
+          "player_display_name": "D'Andre Swift",
+          "ppg": 16.41
+        },
+        {
+          "player_display_name": "Chuba Hubbard",
+          "ppg": 14.26
+        },
+        {
+          "player_display_name": "Rhamondre Stevenson",
+          "ppg": 15.52
+        },
+        {
+          "player_display_name": "Najee Harris",
+          "ppg": 16.79
+        },
+        {
+          "player_display_name": "Travis Etienne",
+          "ppg": 16.56
+        },
+        {
+          "player_display_name": "Javonte Williams",
+          "ppg": 13.68
+        },
+        {
+          "player_display_name": "Isiah Pacheco",
+          "ppg": 14.21
+        },
+        {
+          "player_display_name": "James Cook",
+          "ppg": 15.9
+        },
+        {
+          "player_display_name": "Rachaad White",
+          "ppg": 15.68
+        },
+        {
+          "player_display_name": "Brian Robinson",
+          "ppg": 15.25
+        },
+        {
+          "player_display_name": "Kenneth Walker III",
+          "ppg": 16.66
+        },
+        {
+          "player_display_name": "Chase Brown",
+          "ppg": 14.58
+        },
+        {
+          "player_display_name": "Tyrone Tracy",
+          "ppg": 13.64
+        }
+      ],
+      "Tier 4": [
+        {
+          "player_display_name": "Cordarrelle Patterson",
+          "ppg": 10.78
+        },
+        {
+          "player_display_name": "Kareem Hunt",
+          "ppg": 12.64
+        },
+        {
+          "player_display_name": "D'Onta Foreman",
+          "ppg": 10.68
+        },
+        {
+          "player_display_name": "Jamaal Williams",
+          "ppg": 10.56
+        },
+        {
+          "player_display_name": "Jeffery Wilson",
+          "ppg": 10.59
+        },
+        {
+          "player_display_name": "Gus Edwards",
+          "ppg": 10.8
+        },
+        {
+          "player_display_name": "Alexander Mattison",
+          "ppg": 9.88
+        },
+        {
+          "player_display_name": "Miles Sanders",
+          "ppg": 11.73
+        },
+        {
+          "player_display_name": "Myles Gaskin",
+          "ppg": 11.04
+        },
+        {
+          "player_display_name": "Rico Dowdle",
+          "ppg": 11.52
+        },
+        {
+          "player_display_name": "Zack Moss",
+          "ppg": 11.26
+        },
+        {
+          "player_display_name": "Antonio Gibson",
+          "ppg": 12.54
+        },
+        {
+          "player_display_name": "Clyde Edwards-Helaire",
+          "ppg": 9.61
+        },
+        {
+          "player_display_name": "Cam Akers",
+          "ppg": 10.15
+        },
+        {
+          "player_display_name": "Khalil Herbert",
+          "ppg": 9.48
+        },
+        {
+          "player_display_name": "Michael Carter",
+          "ppg": 9.96
+        },
+        {
+          "player_display_name": "Jaylen Warren",
+          "ppg": 10.92
+        },
+        {
+          "player_display_name": "Dameon Pierce",
+          "ppg": 10.27
+        },
+        {
+          "player_display_name": "Tyler Allgeier",
+          "ppg": 10.92
+        },
+        {
+          "player_display_name": "Jerome Ford",
+          "ppg": 12.59
+        },
+        {
+          "player_display_name": "Sincere McCormick",
+          "ppg": 9.55
+        },
+        {
+          "player_display_name": "Jordan Mason",
+          "ppg": 8.62
+        },
+        {
+          "player_display_name": "Keaton Mitchell",
+          "ppg": 11.19
+        },
+        {
+          "player_display_name": "Tyjae Spears",
+          "ppg": 11.15
+        },
+        {
+          "player_display_name": "Zach Charbonnet",
+          "ppg": 10.93
+        },
+        {
+          "player_display_name": "Isaac Guerendo",
+          "ppg": 11.77
+        },
+        {
+          "player_display_name": "Ray Davis",
+          "ppg": 8.25
+        }
+      ],
+      "Tier 5": [
+        {
+          "player_display_name": "Ameer Abdullah",
+          "ppg": 6.84
+        },
+        {
+          "player_display_name": "Samaje Perine",
+          "ppg": 7.95
+        },
+        {
+          "player_display_name": "Dare Ogunbowale",
+          "ppg": 4.82
+        },
+        {
+          "player_display_name": "Jeremy McNichols",
+          "ppg": 6.16
+        },
+        {
+          "player_display_name": "Jeff Wilson",
+          "ppg": 5.24
+        },
+        {
+          "player_display_name": "Justice Hill",
+          "ppg": 8.06
+        },
+        {
+          "player_display_name": "Ty Johnson",
+          "ppg": 7.49
+        },
+        {
+          "player_display_name": "Craig Reynolds",
+          "ppg": 6.62
+        },
+        {
+          "player_display_name": "Travis Homer",
+          "ppg": 5.58
+        },
+        {
+          "player_display_name": "D'Ernest Johnson",
+          "ppg": 6.11
+        },
+        {
+          "player_display_name": "Jamycal Hasty",
+          "ppg": 5.4
+        },
+        {
+          "player_display_name": "Tony Jones",
+          "ppg": 5.05
+        },
+        {
+          "player_display_name": "Patrick Taylor",
+          "ppg": 4.68
+        },
+        {
+          "player_display_name": "J.J. Taylor",
+          "ppg": 3.73
+        },
+        {
+          "player_display_name": "Darrynton Evans",
+          "ppg": 5.44
+        },
+        {
+          "player_display_name": "Joshua Kelley",
+          "ppg": 5.16
+        },
+        {
+          "player_display_name": "DeeJay Dallas",
+          "ppg": 4.56
+        },
+        {
+          "player_display_name": "Ke'Shawn Vaughn",
+          "ppg": 4.77
+        },
+        {
+          "player_display_name": "Jermar Jefferson",
+          "ppg": 6.07
+        },
+        {
+          "player_display_name": "Kenneth Gainwell",
+          "ppg": 7.59
+        },
+        {
+          "player_display_name": "Trey Sermon",
+          "ppg": 5.32
+        },
+        {
+          "player_display_name": "Tyler Badie",
+          "ppg": 5.22
+        },
+        {
+          "player_display_name": "Tyler Goodson",
+          "ppg": 5.73
+        },
+        {
+          "player_display_name": "Ty Chandler",
+          "ppg": 6.91
+        },
+        {
+          "player_display_name": "Raheem Blackshear",
+          "ppg": 4.13
+        },
+        {
+          "player_display_name": "Ronnie Rivers",
+          "ppg": 4.41
+        },
+        {
+          "player_display_name": "Hassan Haskins",
+          "ppg": 4.84
+        },
+        {
+          "player_display_name": "Velus Jones",
+          "ppg": 3.9
+        },
+        {
+          "player_display_name": "Zamir White",
+          "ppg": 5.67
+        },
+        {
+          "player_display_name": "Pierre Strong",
+          "ppg": 4.88
+        },
+        {
+          "player_display_name": "Kendre Miller",
+          "ppg": 7.45
+        },
+        {
+          "player_display_name": "Tank Bigsby",
+          "ppg": 7.76
+        },
+        {
+          "player_display_name": "Chris Rodriguez",
+          "ppg": 7.0
+        },
+        {
+          "player_display_name": "Chris Rodriguez Jr.",
+          "ppg": 6.8
+        },
+        {
+          "player_display_name": "Kenny McIntosh",
+          "ppg": 4.41
+        },
+        {
+          "player_display_name": "Jordan Mims",
+          "ppg": 4.3
+        },
+        {
+          "player_display_name": "Chris Brooks",
+          "ppg": 4.2
+        },
+        {
+          "player_display_name": "Christopher Brooks",
+          "ppg": 4.84
+        },
+        {
+          "player_display_name": "Emari Demercado",
+          "ppg": 6.59
+        },
+        {
+          "player_display_name": "Jaleel McLaughlin",
+          "ppg": 7.38
+        },
+        {
+          "player_display_name": "Emanuel Wilson",
+          "ppg": 6.18
+        },
+        {
+          "player_display_name": "Sean Tucker",
+          "ppg": 6.78
+        },
+        {
+          "player_display_name": "Roschon Johnson",
+          "ppg": 8.09
+        },
+        {
+          "player_display_name": "Jonathon Brooks",
+          "ppg": 4.4
+        },
+        {
+          "player_display_name": "Audric Estime",
+          "ppg": 5.13
+        },
+        {
+          "player_display_name": "Kimani Vidal",
+          "ppg": 4.52
+        },
+        {
+          "player_display_name": "Blake Watson",
+          "ppg": 5.3
+        },
+        {
+          "player_display_name": "Jacob Kibodi",
+          "ppg": 6.4
+        },
+        {
+          "player_display_name": "Blake Corum",
+          "ppg": 4.04
+        },
+        {
+          "player_display_name": "Will Shipley",
+          "ppg": 7.14
+        },
+        {
+          "player_display_name": "Braelon Allen",
+          "ppg": 6.54
+        },
+        {
+          "player_display_name": "Isaiah Davis",
+          "ppg": 6.43
+        },
+        {
+          "player_display_name": "Trey Benson",
+          "ppg": 5.38
+        }
+      ],
+      "Tier 6": [
+        {
+          "player_display_name": "Mike Boone",
+          "ppg": 3.39
+        },
+        {
+          "player_display_name": "Jonathan Ward",
+          "ppg": 2.38
+        },
+        {
+          "player_display_name": "Kene Nwangwu",
+          "ppg": 3.56
+        },
+        {
+          "player_display_name": "Tyreik McAllister",
+          "ppg": 2.1
+        },
+        {
+          "player_display_name": "Julius Chestnut",
+          "ppg": 2.51
+        },
+        {
+          "player_display_name": "Aaron Shampklin",
+          "ppg": 1.45
+        },
+        {
+          "player_display_name": "Velus Jones Jr.",
+          "ppg": 1.99
+        },
+        {
+          "player_display_name": "Tyrion Davis-Price",
+          "ppg": 2.67
+        },
+        {
+          "player_display_name": "Eric Gray",
+          "ppg": 2.77
+        },
+        {
+          "player_display_name": "Deuce Vaughn",
+          "ppg": 2.75
+        },
+        {
+          "player_display_name": "Chris Collier",
+          "ppg": 0.9
+        },
+        {
+          "player_display_name": "George Holani",
+          "ppg": 1.45
+        },
+        {
+          "player_display_name": "Carson Steele",
+          "ppg": 3.49
+        },
+        {
+          "player_display_name": "Sione Vaki",
+          "ppg": 2.28
+        },
+        {
+          "player_display_name": "Jase McClellan",
+          "ppg": 2.6
+        },
+        {
+          "player_display_name": "British Brooks",
+          "ppg": 0.2
+        },
+        {
+          "player_display_name": "Cody Schrader",
+          "ppg": 1.9
+        },
+        {
+          "player_display_name": "Terrell Jennings",
+          "ppg": 1.65
+        },
+        {
+          "player_display_name": "Rasheen Ali",
+          "ppg": 2.7
+        },
+        {
+          "player_display_name": "MarShawn Lloyd",
+          "ppg": 2.8
+        },
+        {
+          "player_display_name": "Jaylen Wright",
+          "ppg": 3.09
+        }
+      ]
+    },
+    "WR": {
+      "Tier 1": [
+        {
+          "player_display_name": "Davante Adams",
+          "ppg": 20.55
+        },
+        {
+          "player_display_name": "Mike Evans",
+          "ppg": 18.53
+        },
+        {
+          "player_display_name": "Stefon Diggs",
+          "ppg": 18.46
+        },
+        {
+          "player_display_name": "Tyreek Hill",
+          "ppg": 20.89
+        },
+        {
+          "player_display_name": "Cooper Kupp",
+          "ppg": 22.1
+        },
+        {
+          "player_display_name": "DJ Moore",
+          "ppg": 18.91
+        },
+        {
+          "player_display_name": "Justin Jefferson",
+          "ppg": 21.99
+        },
+        {
+          "player_display_name": "CeeDee Lamb",
+          "ppg": 20.65
+        },
+        {
+          "player_display_name": "Ja'Marr Chase",
+          "ppg": 21.6
+        },
+        {
+          "player_display_name": "Amon-Ra St. Brown",
+          "ppg": 19.93
+        },
+        {
+          "player_display_name": "Puka Nacua",
+          "ppg": 20.46
+        },
+        {
+          "player_display_name": "Malik Nabers",
+          "ppg": 20.14
+        },
+        {
+          "player_display_name": "Brian Thomas",
+          "ppg": 18.44
+        }
+      ],
+      "Tier 2": [
+        {
+          "player_display_name": "Keenan Allen",
+          "ppg": 18.31
+        },
+        {
+          "player_display_name": "Chris Godwin",
+          "ppg": 17.33
+        },
+        {
+          "player_display_name": "D.J. Moore",
+          "ppg": 14.95
+        },
+        {
+          "player_display_name": "Jakobi Meyers",
+          "ppg": 14.81
+        },
+        {
+          "player_display_name": "DK Metcalf",
+          "ppg": 15.54
+        },
+        {
+          "player_display_name": "Terry McLaurin",
+          "ppg": 15.67
+        },
+        {
+          "player_display_name": "A.J. Brown",
+          "ppg": 17.94
+        },
+        {
+          "player_display_name": "Deebo Samuel",
+          "ppg": 17.63
+        },
+        {
+          "player_display_name": "Deebo Samuel Sr.",
+          "ppg": 17.04
+        },
+        {
+          "player_display_name": "Kristian Wilkerson",
+          "ppg": 16.0
+        },
+        {
+          "player_display_name": "Michael Pittman",
+          "ppg": 15.02
+        },
+        {
+          "player_display_name": "Tee Higgins",
+          "ppg": 17.26
+        },
+        {
+          "player_display_name": "Nico Collins",
+          "ppg": 14.92
+        },
+        {
+          "player_display_name": "Jaylen Waddle",
+          "ppg": 15.54
+        },
+        {
+          "player_display_name": "DeVonta Smith",
+          "ppg": 15.43
+        },
+        {
+          "player_display_name": "Chris Olave",
+          "ppg": 14.79
+        },
+        {
+          "player_display_name": "Garrett Wilson",
+          "ppg": 15.18
+        },
+        {
+          "player_display_name": "Tank Dell",
+          "ppg": 15.02
+        },
+        {
+          "player_display_name": "Jordan Addison",
+          "ppg": 15.01
+        },
+        {
+          "player_display_name": "Rashee Rice",
+          "ppg": 16.4
+        },
+        {
+          "player_display_name": "Xavier Worthy",
+          "ppg": 15.73
+        },
+        {
+          "player_display_name": "Ladd McConkey",
+          "ppg": 17.98
+        }
+      ],
+      "Tier 3": [
+        {
+          "player_display_name": "Adam Thielen",
+          "ppg": 14.53
+        },
+        {
+          "player_display_name": "DeAndre Hopkins",
+          "ppg": 14.11
+        },
+        {
+          "player_display_name": "Brandin Cooks",
+          "ppg": 12.52
+        },
+        {
+          "player_display_name": "Amari Cooper",
+          "ppg": 14.57
+        },
+        {
+          "player_display_name": "Tyler Lockett",
+          "ppg": 13.7
+        },
+        {
+          "player_display_name": "Mike Williams",
+          "ppg": 13.45
+        },
+        {
+          "player_display_name": "Courtland Sutton",
+          "ppg": 13.44
+        },
+        {
+          "player_display_name": "Allen Lazard",
+          "ppg": 11.12
+        },
+        {
+          "player_display_name": "Christian Kirk",
+          "ppg": 14.24
+        },
+        {
+          "player_display_name": "Calvin Ridley",
+          "ppg": 14.36
+        },
+        {
+          "player_display_name": "Diontae Johnson",
+          "ppg": 14.17
+        },
+        {
+          "player_display_name": "Marquise Brown",
+          "ppg": 13.78
+        },
+        {
+          "player_display_name": "Gabe Davis",
+          "ppg": 12.75
+        },
+        {
+          "player_display_name": "Brandon Aiyuk",
+          "ppg": 13.73
+        },
+        {
+          "player_display_name": "Darnell Mooney",
+          "ppg": 12.07
+        },
+        {
+          "player_display_name": "Jerry Jeudy",
+          "ppg": 13.39
+        },
+        {
+          "player_display_name": "Drake London",
+          "ppg": 14.69
+        },
+        {
+          "player_display_name": "Jameson Williams",
+          "ppg": 12.22
+        },
+        {
+          "player_display_name": "George Pickens",
+          "ppg": 13.05
+        },
+        {
+          "player_display_name": "Tay Martin",
+          "ppg": 12.4
+        },
+        {
+          "player_display_name": "Rashid Shaheed",
+          "ppg": 12.05
+        },
+        {
+          "player_display_name": "Romeo Doubs",
+          "ppg": 11.75
+        },
+        {
+          "player_display_name": "Christian Watson",
+          "ppg": 11.24
+        },
+        {
+          "player_display_name": "Jaxon Smith-Njigba",
+          "ppg": 13.12
+        },
+        {
+          "player_display_name": "Tyrell Shavers",
+          "ppg": 14.4
+        },
+        {
+          "player_display_name": "Josh Downs",
+          "ppg": 12.07
+        },
+        {
+          "player_display_name": "Zay Flowers",
+          "ppg": 14.18
+        },
+        {
+          "player_display_name": "Jayden Reed",
+          "ppg": 14.08
+        },
+        {
+          "player_display_name": "Marvin Harrison",
+          "ppg": 13.75
+        },
+        {
+          "player_display_name": "Jalen McMillan",
+          "ppg": 12.08
+        },
+        {
+          "player_display_name": "Ricky Pearsall",
+          "ppg": 13.0
+        }
+      ],
+      "Tier 4": [
+        {
+          "player_display_name": "Robert Woods",
+          "ppg": 8.58
+        },
+        {
+          "player_display_name": "Odell Beckham",
+          "ppg": 9.53
+        },
+        {
+          "player_display_name": "Nelson Agholor",
+          "ppg": 7.37
+        },
+        {
+          "player_display_name": "Jamison Crowder",
+          "ppg": 7.97
+        },
+        {
+          "player_display_name": "Sterling Shepard",
+          "ppg": 7.75
+        },
+        {
+          "player_display_name": "Kalif Raymond",
+          "ppg": 8.39
+        },
+        {
+          "player_display_name": "Robbie Chosen",
+          "ppg": 8.2
+        },
+        {
+          "player_display_name": "Demarcus Robinson",
+          "ppg": 8.92
+        },
+        {
+          "player_display_name": "Tyler Boyd",
+          "ppg": 9.91
+        },
+        {
+          "player_display_name": "Curtis Samuel",
+          "ppg": 9.42
+        },
+        {
+          "player_display_name": "Kendrick Bourne",
+          "ppg": 10.18
+        },
+        {
+          "player_display_name": "Tim Patrick",
+          "ppg": 9.4
+        },
+        {
+          "player_display_name": "Mack Hollins",
+          "ppg": 8.78
+        },
+        {
+          "player_display_name": "Noah Brown",
+          "ppg": 8.97
+        },
+        {
+          "player_display_name": "JuJu Smith-Schuster",
+          "ppg": 8.99
+        },
+        {
+          "player_display_name": "Zay Jones",
+          "ppg": 10.72
+        },
+        {
+          "player_display_name": "Josh Reynolds",
+          "ppg": 9.49
+        },
+        {
+          "player_display_name": "Marquez Valdes-Scantling",
+          "ppg": 8.76
+        },
+        {
+          "player_display_name": "Cedrick Wilson",
+          "ppg": 8.01
+        },
+        {
+          "player_display_name": "D.J. Chark",
+          "ppg": 10.23
+        },
+        {
+          "player_display_name": "DJ Chark",
+          "ppg": 9.18
+        },
+        {
+          "player_display_name": "Mecole Hardman",
+          "ppg": 8.94
+        },
+        {
+          "player_display_name": "Olamide Zaccheaus",
+          "ppg": 7.4
+        },
+        {
+          "player_display_name": "Greg Dortch",
+          "ppg": 8.33
+        },
+        {
+          "player_display_name": "Darius Slayton",
+          "ppg": 9.48
+        },
+        {
+          "player_display_name": "Parris Campbell",
+          "ppg": 8.05
+        },
+        {
+          "player_display_name": "Isaiah Hodgins",
+          "ppg": 9.27
+        },
+        {
+          "player_display_name": "Nick Westbrook-Ikhine",
+          "ppg": 8.92
+        },
+        {
+          "player_display_name": "Jauan Jennings",
+          "ppg": 9.25
+        },
+        {
+          "player_display_name": "Laviska Shenault",
+          "ppg": 8.32
+        },
+        {
+          "player_display_name": "K.J. Osborn",
+          "ppg": 9.81
+        },
+        {
+          "player_display_name": "Van Jefferson",
+          "ppg": 7.89
+        },
+        {
+          "player_display_name": "Rashod Bateman",
+          "ppg": 9.7
+        },
+        {
+          "player_display_name": "Tutu Atwell",
+          "ppg": 8.15
+        },
+        {
+          "player_display_name": "Elijah Moore",
+          "ppg": 9.54
+        },
+        {
+          "player_display_name": "Josh Palmer",
+          "ppg": 9.8
+        },
+        {
+          "player_display_name": "Khalil Shakir",
+          "ppg": 10.52
+        },
+        {
+          "player_display_name": "Jalen Nailor",
+          "ppg": 7.96
+        },
+        {
+          "player_display_name": "Brandon Johnson",
+          "ppg": 8.21
+        },
+        {
+          "player_display_name": "Alec Pierce",
+          "ppg": 10.03
+        },
+        {
+          "player_display_name": "Jalen Tolbert",
+          "ppg": 8.46
+        },
+        {
+          "player_display_name": "Jahan Dotson",
+          "ppg": 9.12
+        },
+        {
+          "player_display_name": "Calvin Austin",
+          "ppg": 7.87
+        },
+        {
+          "player_display_name": "Wan'Dale Robinson",
+          "ppg": 10.83
+        },
+        {
+          "player_display_name": "Dontayvion Wicks",
+          "ppg": 9.9
+        },
+        {
+          "player_display_name": "Nikko Remigio",
+          "ppg": 7.8
+        },
+        {
+          "player_display_name": "Quentin Johnston",
+          "ppg": 9.81
+        },
+        {
+          "player_display_name": "Michael Wilson",
+          "ppg": 10.35
+        },
+        {
+          "player_display_name": "Tre Tucker",
+          "ppg": 8.37
+        },
+        {
+          "player_display_name": "Parker Washington",
+          "ppg": 8.34
+        },
+        {
+          "player_display_name": "Kayshon Boutte",
+          "ppg": 8.14
+        },
+        {
+          "player_display_name": "Andrei Iosivas",
+          "ppg": 8.22
+        },
+        {
+          "player_display_name": "Demario Douglas",
+          "ppg": 9.58
+        },
+        {
+          "player_display_name": "Marvin Mims",
+          "ppg": 9.65
+        },
+        {
+          "player_display_name": "Cedric Tillman",
+          "ppg": 7.81
+        },
+        {
+          "player_display_name": "Xavier Legette",
+          "ppg": 9.37
+        },
+        {
+          "player_display_name": "Bub Means",
+          "ppg": 10.1
+        },
+        {
+          "player_display_name": "Devaughn Vele",
+          "ppg": 9.96
+        },
+        {
+          "player_display_name": "Jalen Coker",
+          "ppg": 10.42
+        },
+        {
+          "player_display_name": "Jordan Whittington",
+          "ppg": 9.17
+        },
+        {
+          "player_display_name": "Devontez Walker",
+          "ppg": 9.6
+        },
+        {
+          "player_display_name": "Keon Coleman",
+          "ppg": 8.68
+        },
+        {
+          "player_display_name": "Rome Odunze",
+          "ppg": 9.79
+        }
+      ],
+      "Tier 5": [
+        {
+          "player_display_name": "Allen Robinson",
+          "ppg": 6.98
+        },
+        {
+          "player_display_name": "DeAndre Carter",
+          "ppg": 6.27
+        },
+        {
+          "player_display_name": "Chris Conley",
+          "ppg": 6.17
+        },
+        {
+          "player_display_name": "John Ross",
+          "ppg": 6.01
+        },
+        {
+          "player_display_name": "David Moore",
+          "ppg": 7.06
+        },
+        {
+          "player_display_name": "River Cracraft",
+          "ppg": 5.88
+        },
+        {
+          "player_display_name": "Anthony Miller",
+          "ppg": 4.4
+        },
+        {
+          "player_display_name": "Justin Watson",
+          "ppg": 6.14
+        },
+        {
+          "player_display_name": "Ray-Ray McCloud",
+          "ppg": 6.55
+        },
+        {
+          "player_display_name": "Cedrick Wilson Jr.",
+          "ppg": 7.02
+        },
+        {
+          "player_display_name": "Braxton Berrios",
+          "ppg": 7.12
+        },
+        {
+          "player_display_name": "Trent Sherfield",
+          "ppg": 4.53
+        },
+        {
+          "player_display_name": "Brandon Powell",
+          "ppg": 4.99
+        },
+        {
+          "player_display_name": "KhaDarel Hodge",
+          "ppg": 5.26
+        },
+        {
+          "player_display_name": "Dante Pettis",
+          "ppg": 6.78
+        },
+        {
+          "player_display_name": "Steven Sims",
+          "ppg": 3.98
+        },
+        {
+          "player_display_name": "Ashton Dulin",
+          "ppg": 5.14
+        },
+        {
+          "player_display_name": "Scott Miller",
+          "ppg": 5.66
+        },
+        {
+          "player_display_name": "Trenton Irwin",
+          "ppg": 5.98
+        },
+        {
+          "player_display_name": "Lil'Jordan Humphrey",
+          "ppg": 6.29
+        },
+        {
+          "player_display_name": "Tom Kennedy",
+          "ppg": 5.08
+        },
+        {
+          "player_display_name": "Alex Bachman",
+          "ppg": 7.1
+        },
+        {
+          "player_display_name": "Cody White",
+          "ppg": 4.6
+        },
+        {
+          "player_display_name": "James Proche",
+          "ppg": 5.5
+        },
+        {
+          "player_display_name": "Collin Johnson",
+          "ppg": 4.17
+        },
+        {
+          "player_display_name": "Devin Duvernay",
+          "ppg": 6.27
+        },
+        {
+          "player_display_name": "Jalen Reagor",
+          "ppg": 5.01
+        },
+        {
+          "player_display_name": "Tyler Johnson",
+          "ppg": 6.62
+        },
+        {
+          "player_display_name": "D.J. Turner",
+          "ppg": 4.68
+        },
+        {
+          "player_display_name": "D'Wayne Eskridge",
+          "ppg": 3.77
+        },
+        {
+          "player_display_name": "Dyami Brown",
+          "ppg": 6.08
+        },
+        {
+          "player_display_name": "Tylan Wallace",
+          "ppg": 3.99
+        },
+        {
+          "player_display_name": "Ihmir Smith-Marsette",
+          "ppg": 6.51
+        },
+        {
+          "player_display_name": "Simi Fehoko",
+          "ppg": 5.65
+        },
+        {
+          "player_display_name": "Austin Trammell",
+          "ppg": 3.74
+        },
+        {
+          "player_display_name": "Ben Skowronek",
+          "ppg": 5.46
+        },
+        {
+          "player_display_name": "Kadarius Toney",
+          "ppg": 7.19
+        },
+        {
+          "player_display_name": "Terrace Marshall",
+          "ppg": 5.77
+        },
+        {
+          "player_display_name": "Terrace Marshall Jr.",
+          "ppg": 6.15
+        },
+        {
+          "player_display_name": "Bo Melton",
+          "ppg": 5.74
+        },
+        {
+          "player_display_name": "Dareke Young",
+          "ppg": 4.0
+        },
+        {
+          "player_display_name": "Britain Covey",
+          "ppg": 5.15
+        },
+        {
+          "player_display_name": "Kevin Austin",
+          "ppg": 4.0
+        },
+        {
+          "player_display_name": "David Bell",
+          "ppg": 5.84
+        },
+        {
+          "player_display_name": "Deven Thompkins",
+          "ppg": 3.95
+        },
+        {
+          "player_display_name": "John Metchie",
+          "ppg": 6.79
+        },
+        {
+          "player_display_name": "Treylon Burks",
+          "ppg": 6.67
+        },
+        {
+          "player_display_name": "Velus Jones",
+          "ppg": 5.22
+        },
+        {
+          "player_display_name": "KaVontae Turpin",
+          "ppg": 5.77
+        },
+        {
+          "player_display_name": "Kavontae Turpin",
+          "ppg": 6.38
+        },
+        {
+          "player_display_name": "Calvin Austin III",
+          "ppg": 4.89
+        },
+        {
+          "player_display_name": "Skyy Moore",
+          "ppg": 4.89
+        },
+        {
+          "player_display_name": "Tyquan Thornton",
+          "ppg": 4.92
+        },
+        {
+          "player_display_name": "Malik Heath",
+          "ppg": 5.44
+        },
+        {
+          "player_display_name": "Bryce Ford-Wheaton",
+          "ppg": 6.0
+        },
+        {
+          "player_display_name": "Xavier Gipson",
+          "ppg": 4.51
+        },
+        {
+          "player_display_name": "Charlie Jones",
+          "ppg": 4.39
+        },
+        {
+          "player_display_name": "Jalen Brooks",
+          "ppg": 3.86
+        },
+        {
+          "player_display_name": "Ronnie Bell",
+          "ppg": 5.43
+        },
+        {
+          "player_display_name": "Jake Bobo",
+          "ppg": 4.37
+        },
+        {
+          "player_display_name": "Ryan Miller",
+          "ppg": 5.04
+        },
+        {
+          "player_display_name": "Jalin Hyatt",
+          "ppg": 5.82
+        },
+        {
+          "player_display_name": "Tyler Scott",
+          "ppg": 3.61
+        },
+        {
+          "player_display_name": "Marvin Mims Jr.",
+          "ppg": 6.35
+        },
+        {
+          "player_display_name": "Trey Palmer",
+          "ppg": 6.37
+        },
+        {
+          "player_display_name": "Jonathan Mingo",
+          "ppg": 5.18
+        },
+        {
+          "player_display_name": "Johnny Wilson",
+          "ppg": 5.43
+        },
+        {
+          "player_display_name": "Jacob Cowing",
+          "ppg": 7.1
+        },
+        {
+          "player_display_name": "Ryan Flournoy",
+          "ppg": 3.78
+        },
+        {
+          "player_display_name": "Ainias Smith",
+          "ppg": 6.4
+        },
+        {
+          "player_display_name": "Jermaine Burton",
+          "ppg": 4.18
+        },
+        {
+          "player_display_name": "Anthony Gould",
+          "ppg": 3.8
+        },
+        {
+          "player_display_name": "Troy Franklin",
+          "ppg": 5.44
+        },
+        {
+          "player_display_name": "Malik Washington",
+          "ppg": 5.85
+        },
+        {
+          "player_display_name": "Adonai Mitchell",
+          "ppg": 5.08
+        },
+        {
+          "player_display_name": "Ja'Lynn Polk",
+          "ppg": 4.34
+        }
+      ],
+      "Tier 6": [
+        {
+          "player_display_name": "Trent Taylor",
+          "ppg": 3.21
+        },
+        {
+          "player_display_name": "Dan Chisena",
+          "ppg": 2.57
+        },
+        {
+          "player_display_name": "Mason Kinsey",
+          "ppg": 1.78
+        },
+        {
+          "player_display_name": "Laviska Shenault Jr.",
+          "ppg": 2.94
+        },
+        {
+          "player_display_name": "Chris Blair",
+          "ppg": 3.2
+        },
+        {
+          "player_display_name": "Tim Jones",
+          "ppg": 3.03
+        },
+        {
+          "player_display_name": "Dee Eskridge",
+          "ppg": 2.0
+        },
+        {
+          "player_display_name": "Jaelon Darden",
+          "ppg": 2.26
+        },
+        {
+          "player_display_name": "Justyn Ross",
+          "ppg": 3.08
+        },
+        {
+          "player_display_name": "Mike Woods",
+          "ppg": 2.89
+        },
+        {
+          "player_display_name": "Tanner Conner",
+          "ppg": 2.55
+        },
+        {
+          "player_display_name": "Kendric Pryor",
+          "ppg": 1.9
+        },
+        {
+          "player_display_name": "John Metchie III",
+          "ppg": 3.21
+        },
+        {
+          "player_display_name": "Erik Ezukanma",
+          "ppg": 1.5
+        },
+        {
+          "player_display_name": "Xavier Smith",
+          "ppg": 2.57
+        },
+        {
+          "player_display_name": "Grant DuBose",
+          "ppg": 1.8
+        },
+        {
+          "player_display_name": "Derius Davis",
+          "ppg": 3.4
+        },
+        {
+          "player_display_name": "Xavier Hutchinson",
+          "ppg": 3.16
+        },
+        {
+          "player_display_name": "Rakim Jarrett",
+          "ppg": 3.44
+        },
+        {
+          "player_display_name": "Brycen Tremayne",
+          "ppg": 0.8
+        },
+        {
+          "player_display_name": "Luke McCaffrey",
+          "ppg": 3.53
+        },
+        {
+          "player_display_name": "Jamari Thrash",
+          "ppg": 3.1
+        },
+        {
+          "player_display_name": "Jha'Quan Jackson",
+          "ppg": 1.8
+        },
+        {
+          "player_display_name": "Casey Washington",
+          "ppg": 2.9
+        },
+        {
+          "player_display_name": "Isaiah Williams",
+          "ppg": 2.6
+        },
+        {
+          "player_display_name": "Ramel Keyton",
+          "ppg": 2.2
+        },
+        {
+          "player_display_name": "Kameron Johnson",
+          "ppg": 2.1
+        },
+        {
+          "player_display_name": "Mason Tipton",
+          "ppg": 3.56
+        },
+        {
+          "player_display_name": "Bryce Oliver",
+          "ppg": 3.5
+        },
+        {
+          "player_display_name": "Javon Baker",
+          "ppg": 2.7
+        },
+        {
+          "player_display_name": "Malachi Corley",
+          "ppg": 1.74
+        }
+      ]
+    },
+    "TE": {
+      "Tier 1": [
+        {
+          "player_display_name": "Travis Kelce",
+          "ppg": 18.52
+        },
+        {
+          "player_display_name": "Brock Bowers",
+          "ppg": 17.36
+        }
+      ],
+      "Tier 2": [
+        {
+          "player_display_name": "George Kittle",
+          "ppg": 14.71
+        },
+        {
+          "player_display_name": "Mark Andrews",
+          "ppg": 15.68
+        },
+        {
+          "player_display_name": "T.J. Hockenson",
+          "ppg": 14.4
+        },
+        {
+          "player_display_name": "Sam LaPorta",
+          "ppg": 14.22
+        }
+      ],
+      "Tier 3": [
+        {
+          "player_display_name": "Zach Ertz",
+          "ppg": 11.5
+        },
+        {
+          "player_display_name": "Taysom Hill",
+          "ppg": 12.68
+        },
+        {
+          "player_display_name": "Evan Engram",
+          "ppg": 11.7
+        },
+        {
+          "player_display_name": "David Njoku",
+          "ppg": 12.13
+        },
+        {
+          "player_display_name": "Dallas Goedert",
+          "ppg": 12.69
+        },
+        {
+          "player_display_name": "Dalton Schultz",
+          "ppg": 11.47
+        },
+        {
+          "player_display_name": "Trey McBride",
+          "ppg": 13.01
+        }
+      ],
+      "Tier 4": [
+        {
+          "player_display_name": "Hunter Henry",
+          "ppg": 10.19
+        },
+        {
+          "player_display_name": "Tyler Higbee",
+          "ppg": 10.34
+        },
+        {
+          "player_display_name": "Jonnu Smith",
+          "ppg": 9.55
+        },
+        {
+          "player_display_name": "Gerald Everett",
+          "ppg": 8.86
+        },
+        {
+          "player_display_name": "Tyler Conklin",
+          "ppg": 8.74
+        },
+        {
+          "player_display_name": "Mike Gesicki",
+          "ppg": 9.24
+        },
+        {
+          "player_display_name": "Noah Fant",
+          "ppg": 8.48
+        },
+        {
+          "player_display_name": "Dawson Knox",
+          "ppg": 8.68
+        },
+        {
+          "player_display_name": "Juwan Johnson",
+          "ppg": 9.04
+        },
+        {
+          "player_display_name": "Cole Kmet",
+          "ppg": 10.35
+        },
+        {
+          "player_display_name": "Pat Freiermuth",
+          "ppg": 10.44
+        },
+        {
+          "player_display_name": "Kyle Pitts",
+          "ppg": 9.83
+        },
+        {
+          "player_display_name": "Chig Okonkwo",
+          "ppg": 7.93
+        },
+        {
+          "player_display_name": "Chigoziem Okonkwo",
+          "ppg": 8.1
+        },
+        {
+          "player_display_name": "Isaiah Likely",
+          "ppg": 9.11
+        },
+        {
+          "player_display_name": "Jake Ferguson",
+          "ppg": 9.38
+        },
+        {
+          "player_display_name": "Cade Otton",
+          "ppg": 9.53
+        },
+        {
+          "player_display_name": "E.J. Jenkins",
+          "ppg": 8.2
+        },
+        {
+          "player_display_name": "Dalton Kincaid",
+          "ppg": 9.7
+        },
+        {
+          "player_display_name": "Tucker Kraft",
+          "ppg": 10.22
+        }
+      ],
+      "Tier 5": [
+        {
+          "player_display_name": "Austin Hooper",
+          "ppg": 6.3
+        },
+        {
+          "player_display_name": "Mo Alie-Cox",
+          "ppg": 5.92
+        },
+        {
+          "player_display_name": "Will Dissly",
+          "ppg": 6.2
+        },
+        {
+          "player_display_name": "Jordan Akins",
+          "ppg": 6.29
+        },
+        {
+          "player_display_name": "Tanner Hudson",
+          "ppg": 6.56
+        },
+        {
+          "player_display_name": "Hayden Hurst",
+          "ppg": 7.03
+        },
+        {
+          "player_display_name": "Irv Smith",
+          "ppg": 6.28
+        },
+        {
+          "player_display_name": "Foster Moreau",
+          "ppg": 7.28
+        },
+        {
+          "player_display_name": "Josh Oliver",
+          "ppg": 5.49
+        },
+        {
+          "player_display_name": "Harrison Bryant",
+          "ppg": 5.67
+        },
+        {
+          "player_display_name": "Colby Parkinson",
+          "ppg": 5.28
+        },
+        {
+          "player_display_name": "Adam Trautman",
+          "ppg": 5.47
+        },
+        {
+          "player_display_name": "Shane Zylstra",
+          "ppg": 6.12
+        },
+        {
+          "player_display_name": "Brevin Jordan",
+          "ppg": 5.96
+        },
+        {
+          "player_display_name": "Noah Gray",
+          "ppg": 5.37
+        },
+        {
+          "player_display_name": "Brock Wright",
+          "ppg": 5.48
+        },
+        {
+          "player_display_name": "Tommy Tremble",
+          "ppg": 5.27
+        },
+        {
+          "player_display_name": "Greg Dulcich",
+          "ppg": 7.81
+        },
+        {
+          "player_display_name": "Daniel Bellinger",
+          "ppg": 5.66
+        },
+        {
+          "player_display_name": "Luke Schoonmaker",
+          "ppg": 5.49
+        },
+        {
+          "player_display_name": "Brenton Strange",
+          "ppg": 7.44
+        },
+        {
+          "player_display_name": "Michael Mayer",
+          "ppg": 5.52
+        },
+        {
+          "player_display_name": "Davis Allen",
+          "ppg": 6.75
+        },
+        {
+          "player_display_name": "Luke Musgrave",
+          "ppg": 6.43
+        },
+        {
+          "player_display_name": "Ja'Tavion Sanders",
+          "ppg": 6.64
+        },
+        {
+          "player_display_name": "Devin Culp",
+          "ppg": 7.9
+        },
+        {
+          "player_display_name": "A.J. Barner",
+          "ppg": 6.25
+        },
+        {
+          "player_display_name": "Erick All",
+          "ppg": 5.69
+        },
+        {
+          "player_display_name": "Theo Johnson",
+          "ppg": 7.61
+        }
+      ],
+      "Tier 6": [
+        {
+          "player_display_name": "Marcedes Lewis",
+          "ppg": 4.13
+        },
+        {
+          "player_display_name": "Chris Manhertz",
+          "ppg": 3.09
+        },
+        {
+          "player_display_name": "MyCole Pruitt",
+          "ppg": 4.98
+        },
+        {
+          "player_display_name": "Eric Tomlinson",
+          "ppg": 4.5
+        },
+        {
+          "player_display_name": "Geoff Swaim",
+          "ppg": 4.46
+        },
+        {
+          "player_display_name": "Nick Vannett",
+          "ppg": 4.65
+        },
+        {
+          "player_display_name": "Johnny Mundt",
+          "ppg": 4.22
+        },
+        {
+          "player_display_name": "Pharaoh Brown",
+          "ppg": 4.03
+        },
+        {
+          "player_display_name": "Eric Saubert",
+          "ppg": 4.02
+        },
+        {
+          "player_display_name": "Ross Dwelley",
+          "ppg": 5.16
+        },
+        {
+          "player_display_name": "Ian Thomas",
+          "ppg": 3.22
+        },
+        {
+          "player_display_name": "Durham Smythe",
+          "ppg": 4.98
+        },
+        {
+          "player_display_name": "Joseph Fortson",
+          "ppg": 5.0
+        },
+        {
+          "player_display_name": "Drew Sample",
+          "ppg": 3.72
+        },
+        {
+          "player_display_name": "Josiah Deguara",
+          "ppg": 4.34
+        },
+        {
+          "player_display_name": "Charlie Woerner",
+          "ppg": 2.42
+        },
+        {
+          "player_display_name": "Stephen Sullivan",
+          "ppg": 3.84
+        },
+        {
+          "player_display_name": "Kenny Yeboah",
+          "ppg": 4.85
+        },
+        {
+          "player_display_name": "Quintin Morris",
+          "ppg": 4.74
+        },
+        {
+          "player_display_name": "John Bates",
+          "ppg": 4.2
+        },
+        {
+          "player_display_name": "Zach Davidson",
+          "ppg": 1.5
+        },
+        {
+          "player_display_name": "Jack Stoll",
+          "ppg": 2.44
+        },
+        {
+          "player_display_name": "Feleipe Franks",
+          "ppg": 1.1
+        },
+        {
+          "player_display_name": "Kylen Granson",
+          "ppg": 4.95
+        },
+        {
+          "player_display_name": "Luke Farrell",
+          "ppg": 2.69
+        },
+        {
+          "player_display_name": "Hunter Long",
+          "ppg": 3.08
+        },
+        {
+          "player_display_name": "Grant Calcaterra",
+          "ppg": 5.15
+        },
+        {
+          "player_display_name": "Andrew Ogletree",
+          "ppg": 4.9
+        },
+        {
+          "player_display_name": "Connor Heyward",
+          "ppg": 4.5
+        },
+        {
+          "player_display_name": "John FitzPatrick",
+          "ppg": 1.95
+        },
+        {
+          "player_display_name": "Stone Smartt",
+          "ppg": 4.94
+        },
+        {
+          "player_display_name": "Lucas Krull",
+          "ppg": 4.64
+        },
+        {
+          "player_display_name": "Peyton Hendershot",
+          "ppg": 4.26
+        },
+        {
+          "player_display_name": "Tucker Fisk",
+          "ppg": 1.87
+        },
+        {
+          "player_display_name": "Jeremy Ruckert",
+          "ppg": 3.21
+        },
+        {
+          "player_display_name": "Charlie Kolar",
+          "ppg": 4.81
+        },
+        {
+          "player_display_name": "Will Mallory",
+          "ppg": 4.3
+        },
+        {
+          "player_display_name": "Darnell Washington",
+          "ppg": 3.32
+        },
+        {
+          "player_display_name": "Josh Whyle",
+          "ppg": 5.06
+        },
+        {
+          "player_display_name": "Blake Whiteheart",
+          "ppg": 4.53
+        },
+        {
+          "player_display_name": "Julian Hill",
+          "ppg": 2.79
+        },
+        {
+          "player_display_name": "Nate Adkins",
+          "ppg": 3.8
+        },
+        {
+          "player_display_name": "Ben Sims",
+          "ppg": 2.96
+        },
+        {
+          "player_display_name": "John Samuel Shenker",
+          "ppg": 1.7
+        },
+        {
+          "player_display_name": "Elijah Higgins",
+          "ppg": 4.52
+        },
+        {
+          "player_display_name": "Payne Durham",
+          "ppg": 5.26
+        },
+        {
+          "player_display_name": "Cade Stover",
+          "ppg": 4.01
+        },
+        {
+          "player_display_name": "Jaheim Bell",
+          "ppg": 2.25
+        },
+        {
+          "player_display_name": "Brevyn Spann-Ford",
+          "ppg": 5.2
+        },
+        {
+          "player_display_name": "Dallin Holker",
+          "ppg": 2.8
+        },
+        {
+          "player_display_name": "Cam Grandy",
+          "ppg": 2.08
+        },
+        {
+          "player_display_name": "David Martin-Robinson",
+          "ppg": 2.1
+        },
+        {
+          "player_display_name": "Tip Reiman",
+          "ppg": 2.04
+        },
+        {
+          "player_display_name": "Jared Wiley",
+          "ppg": 1.7
+        },
+        {
+          "player_display_name": "Ben Sinnott",
+          "ppg": 3.72
+        }
+      ]
+    }
+  }
+}
