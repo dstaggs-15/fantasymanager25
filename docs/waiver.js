@@ -3,14 +3,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     const reportContainer = document.getElementById('waiver-report');
 
     try {
+        // THE FIX: Corrected path to the data file
         const response = await fetch('data/analysis/waiver_wire_report.json');
-        if (!response.ok) throw new Error('Network response was not ok');
+        if (!response.ok) throw new Error(`File not found (status: ${response.status})`);
         const data = await response.json();
 
         reportTitle.textContent = `Top Performers for Season: ${data.season}, Week: ${data.week}`;
 
         for (const [pos, players] of Object.entries(data.positions)) {
-            const section = document.createElement('section');
+            const section = document.createElement('div');
+            section.className = 'report-card';
             const title = document.createElement('h3');
             title.textContent = `Top ${pos}s`;
             section.appendChild(title);
