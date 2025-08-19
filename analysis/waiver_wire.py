@@ -8,110 +8,51 @@ DATA_FILE = os.path.join('data', 'analysis', 'nfl_data_with_weather.csv')
 def calculate_fantasy_points(df):
     """
     Calculates fantasy points based on your league's specific custom scoring rules.
+    This version is robust and checks for the existence of each column before using it.
     """
     print("Calculating fantasy points using your league's custom scoring rules...")
     
-    # Initialize points column
     df['fantasy_points_custom'] = 0.0
 
-    # --- Offensive Players Scoring ---
-    df['fantasy_points_custom'] += df['passing_yards'] * 0.05
-    df['fantasy_points_custom'] += df['passing_tds'] * 4
-    df['fantasy_points_custom'] += df['interceptions'] * -2
-    df['fantasy_points_custom'] += df['passing_2pt_conversions'] * 2
-    
-    df['fantasy_points_custom'] += df['rushing_yards'] * 0.1
-    df['fantasy_points_custom'] += df['rushing_tds'] * 6
-    df['fantasy_points_custom'] += df['rushing_2pt_conversions'] * 2
-    df['fantasy_points_custom'] += df['rushing_first_downs'] * 1
-    
-    df['fantasy_points_custom'] += df['receptions'] * 1
-    df['fantasy_points_custom'] += df['receiving_yards'] * 0.1
-    df['fantasy_points_custom'] += df['receiving_tds'] * 6
-    df['fantasy_points_custom'] += df['receiving_2pt_conversions'] * 2
-    df['fantasy_points_custom'] += df['receiving_first_downs'] * 0.5
-    
-    # THE FIX: The correct column name is 'fumbles', not 'fumbles_lost'.
-    df['fantasy_points_custom'] += df['fumbles'] * -2
-    
-    df['fantasy_points_custom'] += (df['special_teams_tds']) * 6
+    # Define all possible scoring columns and their point values
+    scoring_rules = {
+        'passing_yards': 0.05, 'passing_tds': 4, 'interceptions': -2,
+        'passing_2pt_conversions': 2, 'rushing_yards': 0.1, 'rushing_tds': 6,
+        'rushing_2pt_conversions': 2, 'rushing_first_downs': 1, 'receptions': 1,
+        'receiving_yards': 0.1, 'receiving_tds': 6, 'receiving_2pt_conversions': 2,
+        'receiving_first_downs': 0.5, 'fumbles_lost': -2, 'special_teams_tds': 6,
+        'pat_made': 1, 'fg_made_0_39': 3, 'fg_made_40_49': 4, 'fg_made_50_59': 5,
+        'fg_made_60_': 6, 'fg_missed': -1
+    }
+
+    # Apply scoring rules dynamically
+    for column, points in scoring_rules.items():
+        if column in df.columns:
+            # Fill NaN (Not a Number) with 0 to prevent errors
+            df['fantasy_points_custom'] += df[column].fillna(0) * points
+        else:
+            print(f"Warning: Column '{column}' not found in data. Skipping.")
 
     # --- Bonuses ---
-    df.loc[df['passing_yards'] >= 400, 'fantasy_points_custom'] += 1
-    df.loc[df['rushing_yards'] >= 100, 'fantasy_points_custom'] += 1
-    df.loc[df['receiving_yards'] >= 200, 'fantasy_points_custom'] += 1
+    if 'passing_yards' in df.columns:
+        df.loc[df['passing_yards'] >= 400, 'fantasy_points_custom'] += 1
+    if 'rushing_yards' in df.columns:
+        df.loc[df['rushing_yards'] >= 100, 'fantasy_points_custom'] += 1
+    if 'receiving_yards' in df.columns:
+        df.loc[df['receiving_yards'] >= 200, 'fantasy_points_custom'] += 1
     
-    # --- Kicker Scoring ---
-    df['fantasy_points_custom'] += df['pat_made'] * 1
-    df['fantasy_points_custom'] += df['fg_made_0_39'] * 3
-    df['fantasy_points_custom'] += df['fg_made_40_49'] * 4
-    df['fantasy_points_custom'] += df['fg_made_50_59'] * 5
-    df['fantasy_points_custom'] += df['fg_made_60_'] * 6
-    df['fantasy_points_custom'] += (df['fg_missed']) * -1
-
     # --- D/ST Scoring ---
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['sacks'] * 1
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['interceptions'] * 2
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['fumbles_recovered'] * 2
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['safeties'] * 2
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['defensive_tds'] * 6
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['blocked_kicks'] * 2
-    
+    dst_rules = {
+        'sacks': 1, 'interceptions': 2, 'fumbles_recovered': 2,
+        'safeties': 2, 'defensive_tds': 6, 'blocked_kicks': 2
+    }
+    for column, points in dst_rules.items():
+        if column in df.columns:
+            # Apply these points only to rows where the position is DEF
+            df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df[column].fillna(0) * points
+
     # Points Allowed (for D/ST position only)
-    conditions_pa = [
-        (df['points_allowed'] == 0),
-        (df['points_allowed'] >= 1) & (df['points_allowed'] <= 6),
-        (df['points_allowed'] >= 7) & (df['points_allowed'] <= 13),
-        (df['points_allowed'] >= 14) & (df['points_allowed'] <= 17),
-        (df['points_allowed'] >= 28) & (df['points_allowed'] <= 34),
-        (df['points_allowed'] >= 35) & (df['points_allowed'] <= 45),
-        (df['points_allowed'] >= 46)
-    ]
-    points_pa = [5, 4, 3, 1, -1, -3, -5]
-    
-    # Apply points allowed scoring only to DEF positions
-    df['pa_points'] = np.select(conditions_pa, points_pa, default=0)
-    df.loc[df['position'] == 'DEF', 'fantasy_points_custom'] += df['pa_points']
-    
-    return df
-
-def main():
-    print("--- Starting Waiver Wire Assistant ---")
-    
-    try:
-        print(f"Loading data from {DATA_FILE}...")
-        # THE FIX: Added low_memory=False to silence the DtypeWarning
-        df = pd.read_csv(DATA_FILE, low_memory=False)
-        print("Data loaded successfully.")
-    except FileNotFoundError:
-        print(f"❌ ERROR: Data file not found. Please run the 'Fetch NFL Data' workflow first.")
-        return
-
-    df = calculate_fantasy_points(df)
-
-    latest_season = df['season'].max()
-    latest_week = df[df['season'] == latest_season]['week'].max()
-    print(f"\n🔥 Analyzing Top Performers for Season: {latest_season}, Week: {latest_week} 🔥\n")
-
-    latest_week_df = df[(df['season'] == latest_season) & (df['week'] == latest_week)]
-
-    positions = {'QB': 10, 'RB': 15, 'WR': 15, 'TE': 10, 'K': 5, 'DEF': 5}
-    for pos, num_players in positions.items():
-        print("-" * 40)
-        print(f"Top {num_players} {pos}s for Week {latest_week}")
-        print("-" * 40)
-        
-        top_performers = (
-            latest_week_df[latest_week_df['position'] == pos]
-            .sort_values(by='fantasy_points_custom', ascending=False)
-            .head(num_players)
-        )
-        
-        display_cols = ['player_display_name', 'recent_team', 'fantasy_points_custom']
-        # Fill NaN values in display columns for cleaner output
-        top_performers_display = top_performers[display_cols].fillna('N/A')
-        print(top_performers_display.round(2).to_string(index=False))
-        print("\n")
-
-if __name__ == '__main__':
-    main()
+    if 'points_allowed' in df.columns:
+        conditions_pa = [
+            (df['points_allowed'] == 0), (df['points_allowed'] <= 6), (df['points_allowed'] <= 13),
+            (df['points_allowed'] <= 17), (df['points_allowed'] <= 34), (df['points_allowed'] <= 45),
