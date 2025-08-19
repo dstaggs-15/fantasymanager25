@@ -6,8 +6,8 @@ on:
     - cron: '0 10 * * *' # Runs daily at 10:00 UTC
 
 jobs:
-  # Job 1: Fetches the base NFL data and weather info
-  fetch-base-data:
+  # Job 1: Fetches the base NFL data and saves it as an artifact
+  fetch-data:
     name: 1. Fetch NFL Base Data
     runs-on: ubuntu-latest
     steps:
@@ -24,28 +24,22 @@ jobs:
 
       - name: Run Data Collection Script
         run: python pipeline/get_nfl_data.py
-
+      
       - name: Upload Data Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: analysis-data
-          path: docs/data/analysis/
+          name: raw-data-artifact
+          path: docs/data/analysis/nfl_data.csv
 
-  # Job 2: Runs the analysis scripts after the base data is fetched
-  run-analysis:
-    name: 2. Run Analysis Scripts
+  # Job 2: Downloads the base data, runs analysis, and commits everything
+  analyze-and-commit:
+    name: 2. Analyze Data and Commit
     runs-on: ubuntu-latest
-    needs: fetch-base-data # This job will not start until 'fetch-base-data' is complete
+    needs: fetch-data # This job will not start until 'fetch-data' is complete
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Download Base Data Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: analysis-data
-          path: docs/data/analysis/
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -54,6 +48,12 @@ jobs:
       
       - name: Install Dependencies
         run: pip install -r requirements.txt
+
+      - name: Download Base Data Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: raw-data-artifact
+          path: docs/data/analysis/
 
       - name: Run Waiver Wire Script
         run: python analysis/waiver_wire.py
