@@ -1,0 +1,710 @@
+	
+league	
+leagueId	508419792
+name	"Rock or Bust V"
+season	2025
+format	"Head to Head Points, Point Per Reception"
+creator	"D. Staggs"
+numTeams	10
+draftDate	"2025-08-24T15:00:00-05:00"
+divisions	
+0	
+name	"Crabs"
+teams	
+0	"Duloc Gingerbread Men"
+1	"Crip Crip"
+2	"Koolaid Jammer"
+3	"Indoctrinated Ravens"
+4	"Mac Daddy's"
+1	
+name	"Fish"
+teams	
+0	"Our Lard and Savior"
+1	"HerpesDonator"
+2	"Don't Blink"
+3	"Josh's Scary Team"
+4	"James's Finest Team"
+teams	
+0	
+teamId	1
+name	"Duloc Gingerbread Men"
+abbreviation	"DGM"
+manager	"Daniel Staggs"
+division	"Crabs"
+record	"0-0-0"
+roster	[]
+1	
+teamId	3
+name	"Indoctrinated Ravens"
+abbreviation	"IRA"
+manager	"Cameron Wheeless II"
+division	"Crabs"
+record	"0-0-0"
+roster	[]
+2	
+teamId	4
+name	"Mac Daddy's"
+abbreviation	"MAC"
+manager	"Tucker McAfee"
+division	"Crabs"
+record	"0-0-0"
+roster	[]
+3	
+teamId	5
+name	"HerpesDonator"
+abbreviation	"SOCK"
+manager	"Jacob Sockwell"
+division	"Fish"
+record	"0-0-0"
+roster	[]
+4	
+teamId	6
+name	"Crip Crip"
+abbreviation	"CRIP"
+manager	"Eli Sockwell"
+division	"Crabs"
+record	"0-0-0"
+roster	[]
+5	
+teamId	7
+name	"Our Lard and Savior"
+abbreviation	"LARD"
+manager	"Noah Walton"
+division	"Fish"
+record	"0-0-0"
+roster	[]
+6	
+teamId	10
+name	"Koolaid Jammer"
+abbreviation	"KAJA"
+manager	"Mark Angel"
+division	"Crabs"
+record	"0-0-0"
+roster	[]
+7	
+teamId	11
+name	"Don't Blink"
+abbreviation	"DB"
+manager	"Jake Mccabe"
+division	"Fish"
+record	"0-0-0"
+roster	[]
+8	
+teamId	12
+name	"Josh's Scary Team"
+abbreviation	"JST"
+manager	"Josh Bradley"
+division	"Fish"
+record	"0-0-0"
+roster	[]
+9	
+teamId	13
+name	"James's Finest Team"
+abbreviation	"JFT"
+manager	"James Jones"
+division	"Fish"
+record	"0-0-0"
+roster	[]
+waiverOrder	
+0	
+rank	1
+teamId	1
+team	"Duloc Gingerbread Men"
+manager	"Daniel Staggs"
+1	
+rank	2
+teamId	3
+team	"Indoctrinated Ravens"
+manager	"Cameron Wheeless II"
+2	
+rank	3
+teamId	10
+team	"Koolaid Jammer"
+manager	"Mark Angel"
+3	
+rank	4
+teamId	6
+team	"Crip Crip"
+manager	"Eli Sockwell"
+4	
+rank	5
+teamId	7
+team	"Our Lard and Savior"
+manager	"Noah Walton"
+5	
+rank	6
+teamId	5
+team	"HerpesDonator"
+manager	"Jacob Sockwell"
+6	
+rank	7
+teamId	4
+team	"Mac Daddy's"
+manager	"Tucker McAfee"
+7	
+rank	8
+teamId	11
+team	"Don't Blink"
+manager	"Jake Mccabe"
+8	
+rank	9
+teamId	12
+team	"Josh's Scary Team"
+manager	"Josh Bradley"
+9	
+rank	10
+teamId	13
+team	"James's Finest Team"
+manager	"James Jones"
+waiverRules	
+lineupChanges	"Lock individually at scheduled gametime"
+playerAcquisitionSystem	"Waivers"
+seasonAcquisitionLimit	"No Limit"
+waiverPeriod	"1 Day"
+waiverOrderReset	"Reset each week to inverse order of standings"
+lockEliminatedTeamsDuringPlayoffs	false
+transactions	[]
+schedule	
+NFL Week 1	
+0	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	"0.0"
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	"0.0"
+1	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	"0.0"
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	"0.0"
+2	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	"0.0"
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	"0.0"
+3	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	"0.0"
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	"0.0"
+4	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	"0.0"
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	"0.0"
+NFL Week 2	
+0	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+1	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+2	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+3	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+4	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+NFL Week 3	
+0	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+1	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+2	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+3	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+4	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+NFL Week 4	
+0	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+1	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+2	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+3	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+4	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+NFL Week 5	
+0	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+1	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+2	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+3	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+4	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+NFL Week 6	
+0	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+1	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+2	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+3	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+4	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+NFL Week 7	
+0	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+1	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+2	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+3	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+4	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+NFL Week 8	
+0	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+1	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+2	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+3	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+4	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+NFL Week 9	
+0	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+1	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+2	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+3	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+4	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+NFL Week 10	
+0	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+1	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+2	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+3	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+4	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+NFL Week 11	
+0	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+1	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+2	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+3	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+4	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+NFL Week 12	
+0	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+1	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+2	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+3	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+4	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+NFL Week 13	
+0	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+1	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+2	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+3	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+4	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+NFL Week 14	
+0	
+awayTeam	"Mac Daddy's"
+awayManager	"Tucker McAfee"
+awayScore	""
+homeTeam	"Indoctrinated Ravens"
+homeManager	"Cameron Wheeless II"
+homeScore	""
+1	
+awayTeam	"Our Lard and Savior"
+awayManager	"Noah Walton"
+awayScore	""
+homeTeam	"James's Finest Team"
+homeManager	"James Jones"
+homeScore	""
+2	
+awayTeam	"Crip Crip"
+awayManager	"Eli Sockwell"
+awayScore	""
+homeTeam	"Don't Blink"
+homeManager	"Jake Mccabe"
+homeScore	""
+3	
+awayTeam	"Duloc Gingerbread Men"
+awayManager	"Daniel Staggs"
+awayScore	""
+homeTeam	"HerpesDonator"
+homeManager	"Jacob Sockwell"
+homeScore	""
+4	
+awayTeam	"Josh's Scary Team"
+awayManager	"Josh Bradley"
+awayScore	""
+homeTeam	"Koolaid Jammer"
+homeManager	"Mark Angel"
+homeScore	""
+NFL Week 15	
+0	
+awayTeam	"Indoctrinated Ravens"
+awayManager	"Cameron Wheeless II"
+awayScore	""
+homeTeam	"Our Lard and Savior"
+homeManager	"Noah Walton"
+homeScore	""
+1	
+awayTeam	"James's Finest Team"
+awayManager	"James Jones"
+awayScore	""
+homeTeam	"Crip Crip"
+homeManager	"Eli Sockwell"
+homeScore	""
+2	
+awayTeam	"Don't Blink"
+awayManager	"Jake Mccabe"
+awayScore	""
+homeTeam	"Duloc Gingerbread Men"
+homeManager	"Daniel Staggs"
+homeScore	""
+3	
+awayTeam	"HerpesDonator"
+awayManager	"Jacob Sockwell"
+awayScore	""
+homeTeam	"Josh's Scary Team"
+homeManager	"Josh Bradley"
+homeScore	""
+4	
+awayTeam	"Koolaid Jammer"
+awayManager	"Mark Angel"
+awayScore	""
+homeTeam	"Mac Daddy's"
+homeManager	"Tucker McAfee"
+homeScore	""
+Playoff Round 1 (NFL Week 16)	[]
+Playoff Round 2 (NFL Week 17)	[]
+Playoff Round 3 (NFL Week 18)	[]
