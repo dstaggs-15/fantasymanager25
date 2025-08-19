@@ -33,9 +33,7 @@ def get_weather(lat, lon, date):
     Fetches historical weather data for a specific location and date from Open-Meteo.
     """
     try:
-        # THE FIX: The URL is now a single, valid f-string.
         url = f"https://archive-api.open-meteo.com/v1/archive?latitude={lat}&longitude={lon}&start_date={date}&end_date={date}&daily=weathercode,temperature_2m_max,precipitation_sum,windspeed_10m_max"
-        
         response = requests.get(url, timeout=15)
         response.raise_for_status()
         weather_data = response.json().get('daily', {})
@@ -69,6 +67,9 @@ def main():
 
     data_df['stadium_latitude'] = data_df['home_team'].map(lambda x: STADIUM_COORDINATES.get(x, {}).get('lat'))
     data_df['stadium_longitude'] = data_df['home_team'].map(lambda x: STADIUM_COORDINATES.get(x, {}).get('lon'))
+
+    # THE FIX: Convert the 'gameday' column to a proper datetime format.
+    data_df['gameday'] = pd.to_datetime(data_df['gameday'])
 
     print("Fetching historical weather for outdoor games. This will take several minutes...")
     outdoor_games = data_df[data_df['roof'] != 'dome'].drop_duplicates(subset=['game_id']).copy()
