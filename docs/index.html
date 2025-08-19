@@ -1,81 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Aura Fantasy – Home</title>
-  <a href="analysis.html">View Data Analysis</a>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root { --bg:#0b0f17; --card:#131b2a; --muted:#8aa0c7; --accent:#6ee7ff; --ok:#22c55e; --warn:#f59e0b; --err:#ef4444; }
-    *{box-sizing:border-box} body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,rgba(110,231,255,.08),transparent),linear-gradient(180deg,#0b0f17,#0a0d14);color:#e6efff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-    .wrap{max-width:1080px;margin:0 auto;padding:28px}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#1f9bff,#7c4dff);box-shadow:0 8px 28px rgba(124,77,255,.25)}
-    h1{font-size:22px;margin:0}
-    .nav{display:flex;gap:10px;margin-top:6px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.03);color:#e6efff;text-decoration:none}
-    .btn:hover{background:rgba(255,255,255,.06)}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){.grid{grid-template-columns:1.3fr .7fr}}
-    .card{background:linear-gradient(180deg,#131b2a,#101725);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    h2{font-size:16px;margin:0 0 10px 0}
-    .tiny{color:var(--muted);font-size:12px}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
-    code{background:#0f1522;border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:2px 6px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Data Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
     <header>
-      <div class="logo"></div>
-      <div>
-        <h1>Aura Fantasy</h1>
-        <div class="nav">
-          <a class="btn" href="./players.html">Players</a>
-          <a class="btn" href="./teams.html">Teams</a>
-          <a class="btn" href="./index.html">Home</a>
-        </div>
-      </div>
+        <h1>Fantasy Football Data Hub</h1>
     </header>
-
-    <div class="grid">
-      <section class="card">
-        <h2>What this site does</h2>
-        <p class="tiny">This site reads JSON files our GitHub Action writes every hour. If JSON exists, pages populate. If not, they’ll show a helpful error.</p>
-        <ul>
-          <li>Players → <code>data/players_summary.json</code></li>
-          <li>Teams → <code>data/team_rosters.json</code></li>
-        </ul>
-        <p class="tiny" id="statusLine">Checking JSON timestamps…</p>
-      </section>
-
-      <aside class="card">
-        <h2>Data status</h2>
-        <div class="tiny">
-          <div id="playersStatus">players_summary.json: (loading)</div>
-          <div id="teamsStatus">team_rosters.json: (loading)</div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <script>
-    // Quick status pings so you can see if JSONs are present
-    async function ping(path, elId){
-      const el = document.getElementById(elId);
-      try{
-        const r = await fetch(path + "?v=" + Date.now());
-        if(!r.ok){ el.textContent = `${path}: ${r.status}`; return; }
-        const j = await r.json();
-        const when = j.generated_utc || "unknown time";
-        const cnt = j.count ?? (Array.isArray(j.players)? j.players.length : (j.rows? j.rows.length : 'n/a'));
-        el.innerHTML = `${path}: <span class="ok">OK</span> — items: ${cnt}, time: ${when}`;
-      }catch(e){
-        el.innerHTML = `${path}: <span class="err">${e}</span>`;
-      }
-    }
-    ping("./data/players_summary.json","playersStatus");
-    ping("./data/team_rosters.json","teamsStatus");
-  </script>
+    <main>
+        <p>This site contains automatically updated data and analysis for the "Rock or Bust V" fantasy football league.</p>
+        
+        <h2>League Views</h2>
+        <nav>
+            <a href="teams.html">Teams</a>
+            <a href="players.html">Players</a>
+        </nav>
+        
+        <h2>Data Analysis</h2>
+        <nav>
+            <a href="draft.html">Draft Tiers</a>
+            <a href="waiver.html">Waiver Wire</a>
+            <a href="analysis.html">Raw Data Table</a>
+        </nav>
+    </main>
 </body>
 </html>
