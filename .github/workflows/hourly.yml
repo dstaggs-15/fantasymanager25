@@ -1,18 +1,16 @@
-name: Run Waiver Wire Analysis
+name: Run Draft Tier Analysis
 
 on:
   workflow_dispatch: # Allows you to run this manually from the Actions tab
 
 jobs:
-  run-waiver-analysis:
+  run-draft-analyzer:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
-        # This step checks out the repository code, including the big data CSV
         uses: actions/checkout@v4
         with:
-          # Fetches the entire git history so we can read the data file
           fetch-depth: 0
 
       - name: Set up Python
@@ -23,5 +21,5 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Waiver Wire Script
-        run: python analysis/waiver_wire.py
+      - name: Run Draft Tier Generator Script
+        run: python analysis/draft_tier_generator.py
