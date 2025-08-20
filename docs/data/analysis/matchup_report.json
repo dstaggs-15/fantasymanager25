@@ -1,0 +1,54 @@
+{
+  "week": 1,
+  "matchups": [
+    {
+      "player": "Lamar Jackson",
+      "position": "QB",
+      "opponent": "BUF",
+      "rating": "Average",
+      "details": "vs. the #17 easiest defense for QBs"
+    },
+    {
+      "player": "Derrick Henry",
+      "position": "RB",
+      "opponent": "BUF",
+      "rating": "Good",
+      "details": "vs. the #11 easiest defense for RBs"
+    },
+    {
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "opponent": "SEA",
+      "rating": "Bad",
+      "details": "vs. the #25 easiest defense for RBs"
+    },
+    {
+      "player": "Ja'Marr Chase",
+      "position": "WR",
+      "opponent": "CLE",
+      "rating": "Good",
+      "details": "vs. the #6 easiest defense for WRs"
+    },
+    {
+      "player": "A.J. Brown",
+      "position": "WR",
+      "opponent": "DAL",
+      "rating": "Good",
+      "details": "vs. the #8 easiest defense for WRs"
+    },
+    {
+      "player": "Travis Kelce",
+      "position": "TE",
+      "opponent": "LAC",
+      "rating": "Very Bad",
+      "details": "vs. the #30 easiest defense for TEs"
+    },
+    {
+      "player": "Jahmyr Gibbs",
+      "position": "RB",
+      "opponent": "GB",
+      "rating": "Good",
+      "details": "vs. the #10 easiest defense for RBs"
+    }
+  ]
+}
