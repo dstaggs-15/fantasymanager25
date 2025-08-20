@@ -6,49 +6,90 @@
       "position": "QB",
       "opponent": "BUF",
       "rating": "Average",
-      "details": "vs. the #17 easiest defense for QBs"
+      "details": "vs. the #17 easiest defense for QBs",
+      "player_ppg": 30.713157894736845,
+      "ppg_allowed": 17.278,
+      "projection": 30.358798268877674
     },
     {
       "player": "Derrick Henry",
       "position": "RB",
       "opponent": "BUF",
       "rating": "Good",
-      "details": "vs. the #11 easiest defense for RBs"
+      "details": "vs. the #11 easiest defense for RBs",
+      "player_ppg": 26.04736842105263,
+      "ppg_allowed": 11.78235294117647,
+      "projection": 27.302490944292398
     },
     {
       "player": "Christian McCaffrey",
       "position": "RB",
       "opponent": "SEA",
       "rating": "Bad",
-      "details": "vs. the #25 easiest defense for RBs"
+      "details": "vs. the #25 easiest defense for RBs",
+      "player_ppg": 16.2,
+      "ppg_allowed": 10.023913043478261,
+      "projection": 14.446368743702125
     },
     {
       "player": "Ja'Marr Chase",
       "position": "WR",
       "opponent": "CLE",
       "rating": "Good",
-      "details": "vs. the #6 easiest defense for WRs"
+      "details": "vs. the #6 easiest defense for WRs",
+      "player_ppg": 26.029411764705884,
+      "ppg_allowed": 10.321538461538463,
+      "projection": 28.218027451988203
     },
     {
       "player": "A.J. Brown",
       "position": "WR",
       "opponent": "DAL",
       "rating": "Good",
-      "details": "vs. the #8 easiest defense for WRs"
+      "details": "vs. the #8 easiest defense for WRs",
+      "player_ppg": 16.98235294117647,
+      "ppg_allowed": 10.256060606060606,
+      "projection": 18.293478900013547
     },
     {
       "player": "Travis Kelce",
       "position": "TE",
       "opponent": "LAC",
       "rating": "Very Bad",
-      "details": "vs. the #30 easiest defense for TEs"
+      "details": "vs. the #30 easiest defense for TEs",
+      "player_ppg": 13.705263157894736,
+      "ppg_allowed": 5.35125,
+      "projection": 10.625738545279114
     },
     {
       "player": "Jahmyr Gibbs",
       "position": "RB",
       "opponent": "GB",
       "rating": "Good",
-      "details": "vs. the #10 easiest defense for RBs"
+      "details": "vs. the #10 easiest defense for RBs",
+      "player_ppg": 26.855555555555558,
+      "ppg_allowed": 11.852380952380953,
+      "projection": 28.316927820473325
+    },
+    {
+      "player": "Josh Allen",
+      "position": "QB",
+      "opponent": "BAL",
+      "rating": "Average",
+      "details": "vs. the #19 easiest defense for QBs",
+      "player_ppg": 28.997368421052634,
+      "ppg_allowed": 16.758,
+      "projection": 27.800167124809033
+    },
+    {
+      "player": "Saquon Barkley",
+      "position": "RB",
+      "opponent": "DAL",
+      "rating": "Good",
+      "details": "vs. the #12 easiest defense for RBs",
+      "player_ppg": 28.21,
+      "ppg_allowed": 11.690697674418605,
+      "projection": 29.339310732461602
     }
   ]
 }
