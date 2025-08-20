@@ -1,10 +1,10 @@
-name: Run VORP Draft Analysis
+name: Run Weekly Matchup Analysis
 
 on:
   workflow_dispatch: # Allows you to run this manually
 
 jobs:
-  run-vorp-analyzer:
+  run-matchup-analyzer:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,11 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run VORP Calculator Script
-        run: python analysis/vorp_calculator.py
+      - name: Run Matchup Analyzer Script
+        run: python analysis/matchup_analyzer.py
       
-      - name: Commit VORP Data
+      - name: Commit Matchup Data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "📈 Chore: Update VORP analysis data"
-          file_pattern: "docs/data/analysis/vorp_analysis.json"
+          commit_message: "🎯 Chore: Update weekly matchup analysis"
+          file_pattern: "docs/data/analysis/matchup_report.json"
