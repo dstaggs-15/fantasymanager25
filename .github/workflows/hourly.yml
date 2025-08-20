@@ -1,45 +1,17 @@
-name: Fetch and Analyze NFL Data
+name: Run VORP Draft Analysis
 
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
+  workflow_dispatch: # Allows you to run this manually
 
 jobs:
-  # Job 1: Fetches the base NFL data and saves it as an artifact
-  fetch-data:
-    name: 1. Fetch NFL Base Data
+  run-vorp-analyzer:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Data Collection Script
-        run: python pipeline/get_nfl_data.py
-      
-      - name: Upload Data Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: raw-data-artifact
-          path: docs/data/analysis/nfl_data.csv
-
-  # Job 2: Downloads the base data, runs analysis, and commits everything
-  analyze-and-commit:
-    name: 2. Analyze Data and Commit
-    runs-on: ubuntu-latest
-    needs: fetch-data # This job will not start until 'fetch-data' is complete
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -49,20 +21,11 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Download Base Data Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: raw-data-artifact
-          path: docs/data/analysis/
-
-      - name: Run Waiver Wire Script
-        run: python analysis/waiver_wire.py
-
-      - name: Run Draft Tier Script
-        run: python analysis/draft_tier_generator.py
-
-      - name: Commit All Data Files
+      - name: Run VORP Calculator Script
+        run: python analysis/vorp_calculator.py
+      
+      - name: Commit VORP Data
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🏈 Chore: Update all NFL analysis data"
-          file_pattern: "docs/data/analysis/*.json docs/data/analysis/*.csv"
+          commit_message: "📈 Chore: Update VORP analysis data"
+          file_pattern: "docs/data/analysis/vorp_analysis.json"
