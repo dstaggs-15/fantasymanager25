@@ -9,31 +9,22 @@
     <main>
         <div class="report-card">
             <h3>How to Read This Page</h3>
-            <p>
-                <strong>VORP (Value Over Replacement Player)</strong> measures a player's value against an average, waiver-wire level player at the same position. A higher VORP score indicates a greater positional advantage. This is useful in drafts because it highlights players at scarce positions (like TE) who provide more value than a similarly-ranked player at a deep position (like WR).
-            </p>
+            <p>VORP measures a player's value against an average, waiver-wire level player at the same position. A higher VORP score indicates a greater positional advantage.</p>
+        </div>
+        
+        <!-- New Chart Section -->
+        <h2>Top 20 Players by VORP</h2>
+        <div class="report-card">
+            <canvas id="vorpChart"></canvas>
         </div>
 
-        <h2>Player Comparison</h2>
-        <div class="report-grid">
-            <div class="report-card">
-                <label for="player1-search">Player 1</label>
-                <input type="text" id="player1-search" list="player-list" placeholder="Search for a player...">
-            </div>
-            <div class="report-card">
-                <label for="player2-search">Player 2</label>
-                <input type="text" id="player2-search" list="player-list" placeholder="Search for a player...">
-            </div>
-        </div>
-        <div id="comparison-results"></div>
-        
-        <h2 id="report-title">VORP Rankings</h2>
+        <h2 id="report-title">Full VORP Rankings</h2>
         <div class="table-container">
             <table id="vorp-table"></table>
         </div>
-
-        <datalist id="player-list"></datalist>
     </main>
+    <!-- Include the Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="vorp.js"></script>
 </body>
 </html>
