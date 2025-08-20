@@ -7,19 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>Fantasy Football Data Hub</h1></header>
-    <main>
+    <header>
+        <h1>Fantasy Football Data Hub</h1>
         <p>This site contains automatically updated data and analysis for the "Rock or Bust V" fantasy football league.</p>
-        
+    </header>
+    <main>
         <h2>Analysis Tools</h2>
-        <nav>
-            <a href="matchup.html">Matchup Analyzer</a>
-            <a href="dashboard.html">Dashboard (Graphs)</a>
-            <a href="vorp.html">VORP Rankings</a>
-            <a href="draft.html">Draft Tiers</a>
-            <a href="waiver.html">Waiver Wire</a>
-            <a href="analysis.html">Raw Data Table</a>
-        </nav>
+        <div class="tool-grid">
+            <a href="dashboard.html" class="tool-button">
+                <h3>📊 Dashboard</h3>
+                <p>Visual charts and graphs for key analysis like VORP and weekly matchups.</p>
+            </a>
+            <a href="matchup.html" class="tool-button">
+                <h3>🎯 Matchup Analyzer</h3>
+                <p>Get data-driven start/sit advice based on your players' weekly opponents.</p>
+            </a>
+            <a href="vorp.html" class="tool-button">
+                <h3>🚀 VORP Rankings</h3>
+                <p>A powerful draft tool to identify the most valuable players by position.</p>
+            </a>
+            <a href="draft.html" class="tool-button">
+                <h3>📋 Draft Tiers</h3>
+                <p>Group players into tiers to find value and avoid reaching in your draft.</p>
+            </a>
+            <a href="waiver.html" class="tool-button">
+                <h3>🔍 Waiver Wire</h3>
+                <p>Find the top-performing players from the most recent week of games.</p>
+            </a>
+            <a href="analysis.html" class="tool-button">
+                <h3>💾 Raw Data Table</h3>
+                <p>View the complete, raw dataset of historical player and game stats.</p>
+            </a>
+        </div>
     </main>
 </body>
 </html>
