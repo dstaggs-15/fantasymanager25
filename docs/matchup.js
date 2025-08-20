@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const reportTitle = document.getElementById('report-title');
     const tableContainer = document.getElementById('matchup-table');
+    const searchInput = document.getElementById('player-search');
+    let allMatchups = []; // Store all matchups for filtering
 
     try {
         const response = await fetch('data/analysis/matchup_report.json');
@@ -8,29 +10,44 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
 
         reportTitle.textContent = `Matchup Report for Week ${data.week}`;
+        allMatchups = data.matchups;
+        renderTable(allMatchups);
 
-        const headers = ['Player', 'Position', 'Opponent', 'Rating', 'Details'];
+    } catch (error) {
+        reportTitle.textContent = 'Failed to load matchup report.';
+        console.error('Error fetching data:', error);
+    }
+    
+    // Event listener for the search bar
+    searchInput.addEventListener('keyup', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredMatchups = allMatchups.filter(m => 
+            m.player.toLowerCase().includes(searchTerm)
+        );
+        renderTable(filteredMatchups);
+    });
+
+    function renderTable(matchups) {
+        const headers = ['Player', 'Pos', 'Opp', 'Player PPG', 'Opp PPG Allowed', 'Projection', 'Rating'];
         let tableHTML = '<thead><tr>';
         headers.forEach(h => tableHTML += `<th>${h}</th>`);
         tableHTML += '</tr></thead>';
 
         tableHTML += '<tbody>';
-        data.matchups.forEach(matchup => {
+        matchups.forEach(matchup => {
             tableHTML += `
-                <tr class="rating-${matchup.rating.toLowerCase()}">
+                <tr class="rating-${matchup.rating.toLowerCase().replace(' ', '')}">
                     <td>${matchup.player}</td>
                     <td>${matchup.position}</td>
                     <td>${matchup.opponent}</td>
+                    <td>${matchup.player_ppg.toFixed(2)}</td>
+                    <td>${matchup.ppg_allowed.toFixed(2)}</td>
+                    <td><strong>${matchup.projection.toFixed(2)}</strong></td>
                     <td>${matchup.rating}</td>
-                    <td>${matchup.details}</td>
                 </tr>
             `;
         });
         tableHTML += '</tbody>';
         tableContainer.innerHTML = tableHTML;
-
-    } catch (error) {
-        reportTitle.textContent = 'Failed to load matchup report.';
-        console.error('Error fetching data:', error);
     }
 });
