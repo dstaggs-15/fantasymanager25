@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Analysis Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Analysis Dashboard</h1><nav><a href="index.html">Home</a></nav></header>
+    <main>
+        <div class="report-card">
+            <h2>Top 20 Players by VORP</h2>
+            <canvas id="vorpChart"></canvas>
+        </div>
+        
+        <div class="report-card">
+            <h2 id="matchup-title">Loading Matchup Report...</h2>
+            <canvas id="matchupChart"></canvas>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
