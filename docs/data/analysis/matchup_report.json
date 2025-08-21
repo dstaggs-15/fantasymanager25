@@ -6,90 +6,2080 @@
       "position": "QB",
       "opponent": "BUF",
       "rating": "Average",
-      "details": "vs. the #17 easiest defense for QBs",
+      "details": "vs. #17 def for QBs",
       "player_ppg": 30.713157894736845,
       "ppg_allowed": 17.278,
       "projection": 30.358798268877674
-    },
-    {
-      "player": "Derrick Henry",
-      "position": "RB",
-      "opponent": "BUF",
-      "rating": "Good",
-      "details": "vs. the #11 easiest defense for RBs",
-      "player_ppg": 26.04736842105263,
-      "ppg_allowed": 11.78235294117647,
-      "projection": 27.302490944292398
-    },
-    {
-      "player": "Christian McCaffrey",
-      "position": "RB",
-      "opponent": "SEA",
-      "rating": "Bad",
-      "details": "vs. the #25 easiest defense for RBs",
-      "player_ppg": 16.2,
-      "ppg_allowed": 10.023913043478261,
-      "projection": 14.446368743702125
-    },
-    {
-      "player": "Ja'Marr Chase",
-      "position": "WR",
-      "opponent": "CLE",
-      "rating": "Good",
-      "details": "vs. the #6 easiest defense for WRs",
-      "player_ppg": 26.029411764705884,
-      "ppg_allowed": 10.321538461538463,
-      "projection": 28.218027451988203
-    },
-    {
-      "player": "A.J. Brown",
-      "position": "WR",
-      "opponent": "DAL",
-      "rating": "Good",
-      "details": "vs. the #8 easiest defense for WRs",
-      "player_ppg": 16.98235294117647,
-      "ppg_allowed": 10.256060606060606,
-      "projection": 18.293478900013547
-    },
-    {
-      "player": "Travis Kelce",
-      "position": "TE",
-      "opponent": "LAC",
-      "rating": "Very Bad",
-      "details": "vs. the #30 easiest defense for TEs",
-      "player_ppg": 13.705263157894736,
-      "ppg_allowed": 5.35125,
-      "projection": 10.625738545279114
-    },
-    {
-      "player": "Jahmyr Gibbs",
-      "position": "RB",
-      "opponent": "GB",
-      "rating": "Good",
-      "details": "vs. the #10 easiest defense for RBs",
-      "player_ppg": 26.855555555555558,
-      "ppg_allowed": 11.852380952380953,
-      "projection": 28.316927820473325
     },
     {
       "player": "Josh Allen",
       "position": "QB",
       "opponent": "BAL",
       "rating": "Average",
-      "details": "vs. the #19 easiest defense for QBs",
+      "details": "vs. #19 def for QBs",
       "player_ppg": 28.997368421052634,
       "ppg_allowed": 16.758,
       "projection": 27.800167124809033
+    },
+    {
+      "player": "Jalen Hurts",
+      "position": "QB",
+      "opponent": "DAL",
+      "rating": "Good",
+      "details": "vs. #7 def for QBs",
+      "player_ppg": 28.097368421052632,
+      "ppg_allowed": 19.41521739130435,
+      "projection": 31.208618044924034
+    },
+    {
+      "player": "Joe Milton",
+      "position": "QB",
+      "opponent": "LV",
+      "rating": "Great",
+      "details": "vs. #4 def for QBs",
+      "player_ppg": 27.650000000000002,
+      "ppg_allowed": 19.98611111111111,
+      "projection": 31.61477296505707
+    },
+    {
+      "player": "Jayden Daniels",
+      "position": "QB",
+      "opponent": "NYG",
+      "rating": "Average",
+      "details": "vs. #16 def for QBs",
+      "player_ppg": 26.805,
+      "ppg_allowed": 17.511904761904763,
+      "projection": 26.85442343159693
+    },
+    {
+      "player": "Joe Burrow",
+      "position": "QB",
+      "opponent": "CLE",
+      "rating": "Bad",
+      "details": "vs. #24 def for QBs",
+      "player_ppg": 26.352941176470587,
+      "ppg_allowed": 16.030434782608697,
+      "projection": 24.168017594049548
+    },
+    {
+      "player": "Baker Mayfield",
+      "position": "QB",
+      "opponent": "ATL",
+      "rating": "Great",
+      "details": "vs. #1 def for QBs",
+      "player_ppg": 25.519444444444446,
+      "ppg_allowed": 21.88684210526316,
+      "projection": 31.95368537505309
+    },
+    {
+      "player": "Jimmy Garoppolo",
+      "position": "QB",
+      "opponent": "HOU",
+      "rating": "Average",
+      "details": "vs. #20 def for QBs",
+      "player_ppg": 23.2,
+      "ppg_allowed": 16.643478260869564,
+      "projection": 22.09015240592462
+    },
+    {
+      "player": "Bo Nix",
+      "position": "QB",
+      "opponent": "TEN",
+      "rating": "Good",
+      "details": "vs. #11 def for QBs",
+      "player_ppg": 23.108333333333334,
+      "ppg_allowed": 18.744736842105265,
+      "projection": 24.78075907988426
+    },
+    {
+      "player": "Brock Purdy",
+      "position": "QB",
+      "opponent": "SEA",
+      "rating": "Average",
+      "details": "vs. #18 def for QBs",
+      "player_ppg": 22.966666666666665,
+      "ppg_allowed": 16.7725,
+      "projection": 22.037503889316735
+    },
+    {
+      "player": "Patrick Mahomes",
+      "position": "QB",
+      "opponent": "LAC",
+      "rating": "Bad",
+      "details": "vs. #21 def for QBs",
+      "player_ppg": 22.49736842105263,
+      "ppg_allowed": 16.520454545454545,
+      "projection": 21.26279475472523
+    },
+    {
+      "player": "Sam Darnold",
+      "position": "QB",
+      "opponent": "CHI",
+      "rating": "Very Bad",
+      "details": "vs. #32 def for QBs",
+      "player_ppg": 22.294444444444444,
+      "ppg_allowed": 13.034090909090908,
+      "projection": 16.624325535599763
+    },
+    {
+      "player": "Jared Goff",
+      "position": "QB",
+      "opponent": "GB",
+      "rating": "Average",
+      "details": "vs. #15 def for QBs",
+      "player_ppg": 21.977777777777778,
+      "ppg_allowed": 17.573684210526316,
+      "projection": 22.095978066913283
+    },
+    {
+      "player": "Kyler Murray",
+      "position": "QB",
+      "opponent": "NO",
+      "rating": "Bad",
+      "details": "vs. #25 def for QBs",
+      "player_ppg": 21.808823529411764,
+      "ppg_allowed": 15.688636363636364,
+      "projection": 19.574202164315228
+    },
+    {
+      "player": "Russell Wilson",
+      "position": "QB",
+      "opponent": "NYJ",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for QBs",
+      "player_ppg": 20.308333333333334,
+      "ppg_allowed": 15.386956521739132,
+      "projection": 17.876958994434005
+    },
+    {
+      "player": "Anthony Richardson",
+      "position": "QB",
+      "opponent": "MIA",
+      "rating": "Bad",
+      "details": "vs. #27 def for QBs",
+      "player_ppg": 20.045454545454547,
+      "ppg_allowed": 15.476315789473684,
+      "projection": 17.7480288354697
+    },
+    {
+      "player": "Justin Herbert",
+      "position": "QB",
+      "opponent": "KC",
+      "rating": "Average",
+      "details": "vs. #13 def for QBs",
+      "player_ppg": 19.955555555555556,
+      "ppg_allowed": 18.317999999999998,
+      "projection": 20.912623166697827
+    },
+    {
+      "player": "Tua Tagovailoa",
+      "position": "QB",
+      "opponent": "IND",
+      "rating": "Great",
+      "details": "vs. #5 def for QBs",
+      "player_ppg": 19.931818181818183,
+      "ppg_allowed": 19.589473684210528,
+      "projection": 22.33759018591605
+    },
+    {
+      "player": "Caleb Williams",
+      "position": "QB",
+      "opponent": "MIN",
+      "rating": "Bad",
+      "details": "vs. #22 def for QBs",
+      "player_ppg": 19.232352941176472,
+      "ppg_allowed": 16.4825,
+      "projection": 18.13519120965429
+    },
+    {
+      "player": "Joshua Dobbs",
+      "position": "QB",
+      "opponent": "SEA",
+      "rating": "Average",
+      "details": "vs. #18 def for QBs",
+      "player_ppg": 19.225,
+      "ppg_allowed": 16.7725,
+      "projection": 18.44721388702965
+    },
+    {
+      "player": "Geno Smith",
+      "position": "QB",
+      "opponent": "SF",
+      "rating": "Bad",
+      "details": "vs. #26 def for QBs",
+      "player_ppg": 19.18823529411765,
+      "ppg_allowed": 15.59047619047619,
+      "projection": 17.114375241438662
+    },
+    {
+      "player": "Daniel Jones",
+      "position": "QB",
+      "opponent": "WAS",
+      "rating": "Very Bad",
+      "details": "vs. #31 def for QBs",
+      "player_ppg": 18.6,
+      "ppg_allowed": 14.328571428571431,
+      "projection": 15.24693228282322
+    },
+    {
+      "player": "Trevor Lawrence",
+      "position": "QB",
+      "opponent": "CAR",
+      "rating": "Good",
+      "details": "vs. #12 def for QBs",
+      "player_ppg": 18.115000000000002,
+      "ppg_allowed": 18.434782608695652,
+      "projection": 19.104821887873566
+    },
+    {
+      "player": "Joe Flacco",
+      "position": "QB",
+      "opponent": "MIA",
+      "rating": "Bad",
+      "details": "vs. #27 def for QBs",
+      "player_ppg": 18.092857142857145,
+      "ppg_allowed": 15.476315789473684,
+      "projection": 16.019220195746428
+    },
+    {
+      "player": "Aaron Rodgers",
+      "position": "QB",
+      "opponent": "PIT",
+      "rating": "Average",
+      "details": "vs. #14 def for QBs",
+      "player_ppg": 18.03235294117647,
+      "ppg_allowed": 17.765,
+      "projection": 18.326698920901556
+    },
+    {
+      "player": "Drake Maye",
+      "position": "QB",
+      "opponent": "LV",
+      "rating": "Great",
+      "details": "vs. #4 def for QBs",
+      "player_ppg": 17.992307692307694,
+      "ppg_allowed": 19.98611111111111,
+      "projection": 20.57225037286646
+    },
+    {
+      "player": "Dak Prescott",
+      "position": "QB",
+      "opponent": "PHI",
+      "rating": "Bad",
+      "details": "vs. #28 def for QBs",
+      "player_ppg": 17.912499999999998,
+      "ppg_allowed": 15.415384615384616,
+      "projection": 15.797094003809256
+    },
+    {
+      "player": "Jordan Love",
+      "position": "QB",
+      "opponent": "DET",
+      "rating": "Good",
+      "details": "vs. #8 def for QBs",
+      "player_ppg": 17.646875,
+      "ppg_allowed": 19.35952380952381,
+      "projection": 19.544704754842947
+    },
+    {
+      "player": "Derek Carr",
+      "position": "QB",
+      "opponent": "ARI",
+      "rating": "Great",
+      "details": "vs. #2 def for QBs",
+      "player_ppg": 17.635,
+      "ppg_allowed": 20.576470588235296,
+      "projection": 20.759313235734247
+    },
+    {
+      "player": "Matthew Stafford",
+      "position": "QB",
+      "opponent": "HOU",
+      "rating": "Average",
+      "details": "vs. #20 def for QBs",
+      "player_ppg": 17.180555555555557,
+      "ppg_allowed": 16.643478260869564,
+      "projection": 16.35866770002919
+    },
+    {
+      "player": "Bryce Young",
+      "position": "QB",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #6 def for QBs",
+      "player_ppg": 17.00357142857143,
+      "ppg_allowed": 19.452272727272728,
+      "projection": 18.922439887045368
+    },
+    {
+      "player": "C.J. Stroud",
+      "position": "QB",
+      "opponent": "LA",
+      "rating": "Good",
+      "details": "vs. #9 def for QBs",
+      "player_ppg": 16.915789473684214,
+      "ppg_allowed": 19.022727272727273,
+      "projection": 18.40906313649131
     },
     {
       "player": "Saquon Barkley",
       "position": "RB",
       "opponent": "DAL",
       "rating": "Good",
-      "details": "vs. the #12 easiest defense for RBs",
+      "details": "vs. #12 def for RBs",
       "player_ppg": 28.21,
       "ppg_allowed": 11.690697674418605,
       "projection": 29.339310732461602
+    },
+    {
+      "player": "Jahmyr Gibbs",
+      "position": "RB",
+      "opponent": "GB",
+      "rating": "Good",
+      "details": "vs. #10 def for RBs",
+      "player_ppg": 26.855555555555558,
+      "ppg_allowed": 11.852380952380953,
+      "projection": 28.316927820473325
+    },
+    {
+      "player": "Derrick Henry",
+      "position": "RB",
+      "opponent": "BUF",
+      "rating": "Good",
+      "details": "vs. #11 def for RBs",
+      "player_ppg": 26.04736842105263,
+      "ppg_allowed": 11.78235294117647,
+      "projection": 27.302490944292398
+    },
+    {
+      "player": "Bijan Robinson",
+      "position": "RB",
+      "opponent": "TB",
+      "rating": "Bad",
+      "details": "vs. #27 def for RBs",
+      "player_ppg": 25.511764705882353,
+      "ppg_allowed": 9.557777777777778,
+      "projection": 21.69221101706849
+    },
+    {
+      "player": "Alvin Kamara",
+      "position": "RB",
+      "opponent": "ARI",
+      "rating": "Average",
+      "details": "vs. #13 def for RBs",
+      "player_ppg": 23.307142857142857,
+      "ppg_allowed": 11.676744186046513,
+      "projection": 24.211249035399835
+    },
+    {
+      "player": "Jonathan Taylor",
+      "position": "RB",
+      "opponent": "MIA",
+      "rating": "Average",
+      "details": "vs. #16 def for RBs",
+      "player_ppg": 22.942857142857143,
+      "ppg_allowed": 11.197560975609756,
+      "projection": 22.854794882477044
+    },
+    {
+      "player": "Josh Jacobs",
+      "position": "RB",
+      "opponent": "DET",
+      "rating": "Average",
+      "details": "vs. #17 def for RBs",
+      "player_ppg": 22.45555555555556,
+      "ppg_allowed": 11.192105263157895,
+      "projection": 22.358464844658425
+    },
+    {
+      "player": "Kyren Williams",
+      "position": "RB",
+      "opponent": "HOU",
+      "rating": "Very Bad",
+      "details": "vs. #31 def for RBs",
+      "player_ppg": 22.405555555555555,
+      "ppg_allowed": 8.855102040816327,
+      "projection": 17.65044576166927
+    },
+    {
+      "player": "Joe Mixon",
+      "position": "RB",
+      "opponent": "LA",
+      "rating": "Great",
+      "details": "vs. #5 def for RBs",
+      "player_ppg": 21.493750000000002,
+      "ppg_allowed": 12.609756097560975,
+      "projection": 24.111557816995177
+    },
+    {
+      "player": "Chuba Hubbard",
+      "position": "RB",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #7 def for RBs",
+      "player_ppg": 20.973333333333336,
+      "ppg_allowed": 12.48,
+      "projection": 23.285653759561985
+    },
+    {
+      "player": "James Cook",
+      "position": "RB",
+      "opponent": "BAL",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for RBs",
+      "player_ppg": 20.80526315789474,
+      "ppg_allowed": 8.973469387755102,
+      "projection": 16.60886633292829
+    },
+    {
+      "player": "James Conner",
+      "position": "RB",
+      "opponent": "NO",
+      "rating": "Good",
+      "details": "vs. #8 def for RBs",
+      "player_ppg": 20.70625,
+      "ppg_allowed": 12.21860465116279,
+      "projection": 22.507613924827833
+    },
+    {
+      "player": "Devon Achane",
+      "position": "RB",
+      "opponent": "IND",
+      "rating": "Average",
+      "details": "vs. #18 def for RBs",
+      "player_ppg": 20.7,
+      "ppg_allowed": 11.16304347826087,
+      "projection": 20.55698186070676
+    },
+    {
+      "player": "Kenneth Walker",
+      "position": "RB",
+      "opponent": "SF",
+      "rating": "Great",
+      "details": "vs. #4 def for RBs",
+      "player_ppg": 19.88181818181818,
+      "ppg_allowed": 12.938095238095238,
+      "projection": 22.88404707676506
+    },
+    {
+      "player": "Chase Brown",
+      "position": "RB",
+      "opponent": "CLE",
+      "rating": "Bad",
+      "details": "vs. #28 def for RBs",
+      "player_ppg": 19.84375,
+      "ppg_allowed": 9.246511627906978,
+      "projection": 16.323303594498288
+    },
+    {
+      "player": "David Montgomery",
+      "position": "RB",
+      "opponent": "GB",
+      "rating": "Good",
+      "details": "vs. #10 def for RBs",
+      "player_ppg": 19.17,
+      "ppg_allowed": 11.852380952380953,
+      "projection": 20.213154972553838
+    },
+    {
+      "player": "Breece Hall",
+      "position": "RB",
+      "opponent": "PIT",
+      "rating": "Average",
+      "details": "vs. #15 def for RBs",
+      "player_ppg": 18.275,
+      "ppg_allowed": 11.37906976744186,
+      "projection": 18.49994923894243
+    },
+    {
+      "player": "Bucky Irving",
+      "position": "RB",
+      "opponent": "ATL",
+      "rating": "Bad",
+      "details": "vs. #21 def for RBs",
+      "player_ppg": 18.12222222222222,
+      "ppg_allowed": 10.85813953488372,
+      "projection": 17.505449257054707
+    },
+    {
+      "player": "J.K. Dobbins",
+      "position": "RB",
+      "opponent": "KC",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for RBs",
+      "player_ppg": 17.635714285714286,
+      "ppg_allowed": 8.889795918367348,
+      "projection": 13.947335126861695
+    },
+    {
+      "player": "Aaron Jones",
+      "position": "RB",
+      "opponent": "CHI",
+      "rating": "Good",
+      "details": "vs. #9 def for RBs",
+      "player_ppg": 17.58888888888889,
+      "ppg_allowed": 12.089130434782609,
+      "projection": 18.916459711217293
+    },
+    {
+      "player": "Tony Pollard",
+      "position": "RB",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #23 def for RBs",
+      "player_ppg": 16.3875,
+      "ppg_allowed": 10.544444444444444,
+      "projection": 15.372439717262218
+    },
+    {
+      "player": "Rico Dowdle",
+      "position": "RB",
+      "opponent": "PHI",
+      "rating": "Very Bad",
+      "details": "vs. #32 def for RBs",
+      "player_ppg": 16.33125,
+      "ppg_allowed": 8.588235294117647,
+      "projection": 12.477562457274356
+    },
+    {
+      "player": "Christian McCaffrey",
+      "position": "RB",
+      "opponent": "SEA",
+      "rating": "Bad",
+      "details": "vs. #25 def for RBs",
+      "player_ppg": 16.2,
+      "ppg_allowed": 10.023913043478261,
+      "projection": 14.446368743702125
+    },
+    {
+      "player": "Rachaad White",
+      "position": "RB",
+      "opponent": "ATL",
+      "rating": "Bad",
+      "details": "vs. #21 def for RBs",
+      "player_ppg": 15.81875,
+      "ppg_allowed": 10.85813953488372,
+      "projection": 15.280373567843702
+    },
+    {
+      "player": "D'Andre Swift",
+      "position": "RB",
+      "opponent": "MIN",
+      "rating": "Bad",
+      "details": "vs. #22 def for RBs",
+      "player_ppg": 15.5,
+      "ppg_allowed": 10.575609756097561,
+      "projection": 14.582886845358304
+    },
+    {
+      "player": "Michael Carter",
+      "position": "RB",
+      "opponent": "NO",
+      "rating": "Good",
+      "details": "vs. #8 def for RBs",
+      "player_ppg": 15.266666666666667,
+      "ppg_allowed": 12.21860465116279,
+      "projection": 16.594807811765605
+    },
+    {
+      "player": "Najee Harris",
+      "position": "RB",
+      "opponent": "NYJ",
+      "rating": "Bad",
+      "details": "vs. #24 def for RBs",
+      "player_ppg": 15.07777777777778,
+      "ppg_allowed": 10.316666666666666,
+      "projection": 13.838312311861266
+    },
+    {
+      "player": "Rhamondre Stevenson",
+      "position": "RB",
+      "opponent": "LV",
+      "rating": "Average",
+      "details": "vs. #19 def for RBs",
+      "player_ppg": 15.06,
+      "ppg_allowed": 11.08095238095238,
+      "projection": 14.845965650306514
+    },
+    {
+      "player": "Kareem Hunt",
+      "position": "RB",
+      "opponent": "LAC",
+      "rating": "Bad",
+      "details": "vs. #26 def for RBs",
+      "player_ppg": 14.9,
+      "ppg_allowed": 9.913636363636364,
+      "projection": 13.140916149404493
+    },
+    {
+      "player": "Brian Robinson",
+      "position": "RB",
+      "opponent": "NYG",
+      "rating": "Great",
+      "details": "vs. #3 def for RBs",
+      "player_ppg": 14.788235294117648,
+      "ppg_allowed": 13.4275,
+      "projection": 17.6651733667242
+    },
+    {
+      "player": "Tyrone Tracy",
+      "position": "RB",
+      "opponent": "WAS",
+      "rating": "Great",
+      "details": "vs. #2 def for RBs",
+      "player_ppg": 13.63529411764706,
+      "ppg_allowed": 13.865909090909092,
+      "projection": 16.819738897536833
+    },
+    {
+      "player": "Jordan Mason",
+      "position": "RB",
+      "opponent": "SEA",
+      "rating": "Bad",
+      "details": "vs. #25 def for RBs",
+      "player_ppg": 13.041666666666666,
+      "ppg_allowed": 10.023913043478261,
+      "projection": 11.629921339451556
+    },
+    {
+      "player": "Zach Charbonnet",
+      "position": "RB",
+      "opponent": "SF",
+      "rating": "Great",
+      "details": "vs. #4 def for RBs",
+      "player_ppg": 12.894117647058824,
+      "ppg_allowed": 12.938095238095238,
+      "projection": 14.841177630247161
+    },
+    {
+      "player": "Austin Ekeler",
+      "position": "RB",
+      "opponent": "NYG",
+      "rating": "Great",
+      "details": "vs. #3 def for RBs",
+      "player_ppg": 12.806666666666667,
+      "ppg_allowed": 13.4275,
+      "projection": 15.298105718300508
+    },
+    {
+      "player": "Zack Moss",
+      "position": "RB",
+      "opponent": "CLE",
+      "rating": "Bad",
+      "details": "vs. #28 def for RBs",
+      "player_ppg": 12.8,
+      "ppg_allowed": 9.246511627906978,
+      "projection": 10.529173468199211
+    },
+    {
+      "player": "Tony Jones",
+      "position": "RB",
+      "opponent": "NO",
+      "rating": "Good",
+      "details": "vs. #8 def for RBs",
+      "player_ppg": 12.5,
+      "ppg_allowed": 12.21860465116279,
+      "projection": 13.587451810943454
+    },
+    {
+      "player": "Alexander Mattison",
+      "position": "RB",
+      "opponent": "NE",
+      "rating": "Good",
+      "details": "vs. #6 def for RBs",
+      "player_ppg": 12.207142857142857,
+      "ppg_allowed": 12.521951219512195,
+      "projection": 13.598544463084204
+    },
+    {
+      "player": "Jerome Ford",
+      "position": "RB",
+      "opponent": "CIN",
+      "rating": "Average",
+      "details": "vs. #20 def for RBs",
+      "player_ppg": 11.714285714285714,
+      "ppg_allowed": 10.997727272727273,
+      "projection": 11.461069575101018
+    },
+    {
+      "player": "Ameer Abdullah",
+      "position": "RB",
+      "opponent": "NE",
+      "rating": "Good",
+      "details": "vs. #6 def for RBs",
+      "player_ppg": 11.476923076923075,
+      "ppg_allowed": 12.521951219512195,
+      "projection": 12.785092350222929
+    },
+    {
+      "player": "Tyjae Spears",
+      "position": "RB",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #23 def for RBs",
+      "player_ppg": 11.424999999999999,
+      "ppg_allowed": 10.544444444444444,
+      "projection": 10.717322579388
+    },
+    {
+      "player": "Javonte Williams",
+      "position": "RB",
+      "opponent": "TEN",
+      "rating": "Average",
+      "details": "vs. #14 def for RBs",
+      "player_ppg": 11.4,
+      "ppg_allowed": 11.414772727272727,
+      "projection": 11.57653292326927
+    },
+    {
+      "player": "Tank Bigsby",
+      "position": "RB",
+      "opponent": "CAR",
+      "rating": "Great",
+      "details": "vs. #1 def for RBs",
+      "player_ppg": 11.366666666666667,
+      "ppg_allowed": 15.78095238095238,
+      "projection": 15.957789228231972
+    },
+    {
+      "player": "Travis Etienne",
+      "position": "RB",
+      "opponent": "CAR",
+      "rating": "Great",
+      "details": "vs. #1 def for RBs",
+      "player_ppg": 11.313333333333333,
+      "ppg_allowed": 15.78095238095238,
+      "projection": 15.882913970856102
+    },
+    {
+      "player": "Jaylen Warren",
+      "position": "RB",
+      "opponent": "NYJ",
+      "rating": "Bad",
+      "details": "vs. #24 def for RBs",
+      "player_ppg": 10.63125,
+      "ppg_allowed": 10.316666666666666,
+      "projection": 9.757310389751478
+    },
+    {
+      "player": "Nick Chubb",
+      "position": "RB",
+      "opponent": "CIN",
+      "rating": "Average",
+      "details": "vs. #20 def for RBs",
+      "player_ppg": 10.475,
+      "ppg_allowed": 10.997727272727273,
+      "projection": 10.248572275540026
+    },
+    {
+      "player": "Justice Hill",
+      "position": "RB",
+      "opponent": "BUF",
+      "rating": "Good",
+      "details": "vs. #11 def for RBs",
+      "player_ppg": 10.370588235294118,
+      "ppg_allowed": 11.78235294117647,
+      "projection": 10.870307003921914
+    },
+    {
+      "player": "Sincere McCormick",
+      "position": "RB",
+      "opponent": "NE",
+      "rating": "Good",
+      "details": "vs. #6 def for RBs",
+      "player_ppg": 9.55,
+      "ppg_allowed": 12.521951219512195,
+      "projection": 10.638533614478398
+    },
+    {
+      "player": "Isaac Guerendo",
+      "position": "RB",
+      "opponent": "SEA",
+      "rating": "Bad",
+      "details": "vs. #25 def for RBs",
+      "player_ppg": 9.053846153846154,
+      "ppg_allowed": 10.023913043478261,
+      "projection": 8.073777783161159
+    },
+    {
+      "player": "Tyler Allgeier",
+      "position": "RB",
+      "opponent": "TB",
+      "rating": "Bad",
+      "details": "vs. #27 def for RBs",
+      "player_ppg": 8.835294117647058,
+      "ppg_allowed": 9.557777777777778,
+      "projection": 7.512497336323927
+    },
+    {
+      "player": "Devin Singletary",
+      "position": "RB",
+      "opponent": "WAS",
+      "rating": "Great",
+      "details": "vs. #2 def for RBs",
+      "player_ppg": 8.440000000000001,
+      "ppg_allowed": 13.865909090909092,
+      "projection": 10.411113619579744
+    },
+    {
+      "player": "Patrick Taylor",
+      "position": "RB",
+      "opponent": "SEA",
+      "rating": "Bad",
+      "details": "vs. #25 def for RBs",
+      "player_ppg": 8.36,
+      "ppg_allowed": 10.023913043478261,
+      "projection": 7.455039672675911
+    },
+    {
+      "player": "Miles Sanders",
+      "position": "RB",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #7 def for RBs",
+      "player_ppg": 8.345454545454546,
+      "ppg_allowed": 12.48,
+      "projection": 9.265545057769417
+    },
+    {
+      "player": "Ray Davis",
+      "position": "RB",
+      "opponent": "BAL",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for RBs",
+      "player_ppg": 8.247368421052633,
+      "ppg_allowed": 8.973469387755102,
+      "projection": 6.583884023197225
+    },
+    {
+      "player": "Isiah Pacheco",
+      "position": "RB",
+      "opponent": "LAC",
+      "rating": "Bad",
+      "details": "vs. #26 def for RBs",
+      "player_ppg": 8.23,
+      "ppg_allowed": 9.913636363636364,
+      "projection": 7.258371806013354
+    },
+    {
+      "player": "Roschon Johnson",
+      "position": "RB",
+      "opponent": "MIN",
+      "rating": "Bad",
+      "details": "vs. #22 def for RBs",
+      "player_ppg": 8.116666666666665,
+      "ppg_allowed": 10.575609756097561,
+      "projection": 7.636414939451068
+    },
+    {
+      "player": "Sean Tucker",
+      "position": "RB",
+      "opponent": "ATL",
+      "rating": "Bad",
+      "details": "vs. #21 def for RBs",
+      "player_ppg": 8.063636363636364,
+      "ppg_allowed": 10.85813953488372,
+      "projection": 7.789198005633341
+    },
+    {
+      "player": "Antonio Gibson",
+      "position": "RB",
+      "opponent": "LV",
+      "rating": "Average",
+      "details": "vs. #19 def for RBs",
+      "player_ppg": 7.847058823529412,
+      "ppg_allowed": 11.08095238095238,
+      "projection": 7.735535574372662
+    },
+    {
+      "player": "Cam Akers",
+      "position": "RB",
+      "opponent": "CHI",
+      "rating": "Good",
+      "details": "vs. #9 def for RBs",
+      "player_ppg": 7.754545454545456,
+      "ppg_allowed": 12.089130434782609,
+      "projection": 8.339841566818768
+    },
+    {
+      "player": "Raheem Mostert",
+      "position": "RB",
+      "opponent": "IND",
+      "rating": "Average",
+      "details": "vs. #18 def for RBs",
+      "player_ppg": 7.741666666666667,
+      "ppg_allowed": 11.16304347826087,
+      "projection": 7.688178803782843
+    },
+    {
+      "player": "Cam Akers",
+      "position": "RB",
+      "opponent": "LA",
+      "rating": "Great",
+      "details": "vs. #5 def for RBs",
+      "player_ppg": 7.56,
+      "ppg_allowed": 12.609756097560975,
+      "projection": 8.480761946914033
+    },
+    {
+      "player": "Jaleel McLaughlin",
+      "position": "RB",
+      "opponent": "TEN",
+      "rating": "Average",
+      "details": "vs. #14 def for RBs",
+      "player_ppg": 7.4411764705882355,
+      "ppg_allowed": 11.414772727272727,
+      "projection": 7.55640564908959
+    },
+    {
+      "player": "Emanuel Wilson",
+      "position": "RB",
+      "opponent": "DET",
+      "rating": "Average",
+      "details": "vs. #17 def for RBs",
+      "player_ppg": 7.161111111111111,
+      "ppg_allowed": 11.192105263157895,
+      "projection": 7.130148734479145
+    },
+    {
+      "player": "Ty Johnson",
+      "position": "RB",
+      "opponent": "BAL",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for RBs",
+      "player_ppg": 7.05,
+      "ppg_allowed": 8.973469387755102,
+      "projection": 5.628023388048935
+    },
+    {
+      "player": "Gus Edwards",
+      "position": "RB",
+      "opponent": "KC",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for RBs",
+      "player_ppg": 7.0249999999999995,
+      "ppg_allowed": 8.889795918367348,
+      "projection": 5.555773226921214
+    },
+    {
+      "player": "Ja'Marr Chase",
+      "position": "WR",
+      "opponent": "CLE",
+      "rating": "Good",
+      "details": "vs. #6 def for WRs",
+      "player_ppg": 26.029411764705884,
+      "ppg_allowed": 10.321538461538463,
+      "projection": 28.218027451988203
+    },
+    {
+      "player": "Rashee Rice",
+      "position": "WR",
+      "opponent": "LAC",
+      "rating": "Good",
+      "details": "vs. #11 def for WRs",
+      "player_ppg": 24.46666666666667,
+      "ppg_allowed": 9.992424242424242,
+      "projection": 25.67813822231695
+    },
+    {
+      "player": "Chris Godwin",
+      "position": "WR",
+      "opponent": "ATL",
+      "rating": "Great",
+      "details": "vs. #2 def for WRs",
+      "player_ppg": 22.114285714285717,
+      "ppg_allowed": 11.0203125,
+      "projection": 25.59674187643231
+    },
+    {
+      "player": "Amon-Ra St. Brown",
+      "position": "WR",
+      "opponent": "GB",
+      "rating": "Average",
+      "details": "vs. #19 def for WRs",
+      "player_ppg": 21.108333333333334,
+      "ppg_allowed": 9.236363636363636,
+      "projection": 20.477306429919526
+    },
+    {
+      "player": "Tee Higgins",
+      "position": "WR",
+      "opponent": "CLE",
+      "rating": "Good",
+      "details": "vs. #6 def for WRs",
+      "player_ppg": 20.675,
+      "ppg_allowed": 10.321538461538463,
+      "projection": 22.41340383884193
+    },
+    {
+      "player": "Malik Nabers",
+      "position": "WR",
+      "opponent": "WAS",
+      "rating": "Great",
+      "details": "vs. #4 def for WRs",
+      "player_ppg": 20.14,
+      "ppg_allowed": 10.593478260869565,
+      "projection": 22.408661105632635
+    },
+    {
+      "player": "Puka Nacua",
+      "position": "WR",
+      "opponent": "HOU",
+      "rating": "Bad",
+      "details": "vs. #21 def for WRs",
+      "player_ppg": 20.06923076923077,
+      "ppg_allowed": 9.230666666666666,
+      "projection": 19.45725890276904
+    },
+    {
+      "player": "Justin Jefferson",
+      "position": "WR",
+      "opponent": "CHI",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for WRs",
+      "player_ppg": 20.02777777777778,
+      "ppg_allowed": 8.357575757575757,
+      "projection": 17.580488914401087
+    },
+    {
+      "player": "Nico Collins",
+      "position": "WR",
+      "opponent": "LA",
+      "rating": "Good",
+      "details": "vs. #7 def for WRs",
+      "player_ppg": 19.88571428571429,
+      "ppg_allowed": 10.2875,
+      "projection": 21.486659728801886
+    },
+    {
+      "player": "CeeDee Lamb",
+      "position": "WR",
+      "opponent": "PHI",
+      "rating": "Very Bad",
+      "details": "vs. #31 def for WRs",
+      "player_ppg": 19.76,
+      "ppg_allowed": 8.113978494623655,
+      "projection": 16.839866928518532
+    },
+    {
+      "player": "Davante Adams",
+      "position": "WR",
+      "opponent": "PIT",
+      "rating": "Bad",
+      "details": "vs. #23 def for WRs",
+      "player_ppg": 19.62727272727273,
+      "ppg_allowed": 9.169014084507042,
+      "projection": 18.901682322352222
+    },
+    {
+      "player": "Mike Evans",
+      "position": "WR",
+      "opponent": "ATL",
+      "rating": "Great",
+      "details": "vs. #2 def for WRs",
+      "player_ppg": 19.506666666666668,
+      "ppg_allowed": 11.0203125,
+      "projection": 22.578486955774615
+    },
+    {
+      "player": "Drake London",
+      "position": "WR",
+      "opponent": "TB",
+      "rating": "Great",
+      "details": "vs. #5 def for WRs",
+      "player_ppg": 18.488235294117647,
+      "ppg_allowed": 10.407042253521126,
+      "projection": 20.20880532246291
+    },
+    {
+      "player": "Brian Thomas",
+      "position": "WR",
+      "opponent": "CAR",
+      "rating": "Good",
+      "details": "vs. #10 def for WRs",
+      "player_ppg": 18.441176470588236,
+      "ppg_allowed": 10.021212121212121,
+      "projection": 19.410053908174675
+    },
+    {
+      "player": "Ladd McConkey",
+      "position": "WR",
+      "opponent": "KC",
+      "rating": "Average",
+      "details": "vs. #16 def for WRs",
+      "player_ppg": 17.976470588235294,
+      "ppg_allowed": 9.383750000000001,
+      "projection": 17.717348186803402
+    },
+    {
+      "player": "Terry McLaurin",
+      "position": "WR",
+      "opponent": "NYG",
+      "rating": "Average",
+      "details": "vs. #20 def for WRs",
+      "player_ppg": 17.875,
+      "ppg_allowed": 9.233823529411765,
+      "projection": 17.33586369223608
+    },
+    {
+      "player": "Stefon Diggs",
+      "position": "WR",
+      "opponent": "LA",
+      "rating": "Good",
+      "details": "vs. #7 def for WRs",
+      "player_ppg": 17.31875,
+      "ppg_allowed": 10.2875,
+      "projection": 18.713036043443342
+    },
+    {
+      "player": "A.J. Brown",
+      "position": "WR",
+      "opponent": "DAL",
+      "rating": "Good",
+      "details": "vs. #8 def for WRs",
+      "player_ppg": 16.98235294117647,
+      "ppg_allowed": 10.256060606060606,
+      "projection": 18.293478900013547
+    },
+    {
+      "player": "Garrett Wilson",
+      "position": "WR",
+      "opponent": "PIT",
+      "rating": "Bad",
+      "details": "vs. #23 def for WRs",
+      "player_ppg": 16.876470588235296,
+      "ppg_allowed": 9.169014084507042,
+      "projection": 16.25257315236122
+    },
+    {
+      "player": "Courtland Sutton",
+      "position": "WR",
+      "opponent": "TEN",
+      "rating": "Very Bad",
+      "details": "vs. #32 def for WRs",
+      "player_ppg": 16.8,
+      "ppg_allowed": 7.772602739726027,
+      "projection": 13.714930646510535
+    },
+    {
+      "player": "Davante Adams",
+      "position": "WR",
+      "opponent": "NE",
+      "rating": "Average",
+      "details": "vs. #14 def for WRs",
+      "player_ppg": 16.633333333333333,
+      "ppg_allowed": 9.592307692307692,
+      "projection": 16.75792547904951
+    },
+    {
+      "player": "Jaxon Smith-Njigba",
+      "position": "WR",
+      "opponent": "SF",
+      "rating": "Bad",
+      "details": "vs. #27 def for WRs",
+      "player_ppg": 16.579411764705885,
+      "ppg_allowed": 8.782089552238805,
+      "projection": 15.292723695010528
+    },
+    {
+      "player": "Jakobi Meyers",
+      "position": "WR",
+      "opponent": "NE",
+      "rating": "Average",
+      "details": "vs. #14 def for WRs",
+      "player_ppg": 16.333333333333332,
+      "ppg_allowed": 9.592307692307692,
+      "projection": 16.45567832612076
+    },
+    {
+      "player": "Jerry Jeudy",
+      "position": "WR",
+      "opponent": "CIN",
+      "rating": "Bad",
+      "details": "vs. #28 def for WRs",
+      "player_ppg": 15.84705882352941,
+      "ppg_allowed": 8.674999999999999,
+      "projection": 14.438963422351334
+    },
+    {
+      "player": "Jameson Williams",
+      "position": "WR",
+      "opponent": "GB",
+      "rating": "Average",
+      "details": "vs. #19 def for WRs",
+      "player_ppg": 15.793750000000001,
+      "ppg_allowed": 9.236363636363636,
+      "projection": 15.321600872998413
+    },
+    {
+      "player": "Jauan Jennings",
+      "position": "WR",
+      "opponent": "SEA",
+      "rating": "Good",
+      "details": "vs. #9 def for WRs",
+      "player_ppg": 15.6,
+      "ppg_allowed": 10.09921875,
+      "projection": 16.54741809990926
+    },
+    {
+      "player": "DeVonta Smith",
+      "position": "WR",
+      "opponent": "DAL",
+      "rating": "Good",
+      "details": "vs. #8 def for WRs",
+      "player_ppg": 15.582352941176469,
+      "ppg_allowed": 10.256060606060606,
+      "projection": 16.785391619721473
+    },
+    {
+      "player": "D.J. Moore",
+      "position": "WR",
+      "opponent": "MIN",
+      "rating": "Great",
+      "details": "vs. #1 def for WRs",
+      "player_ppg": 15.564705882352943,
+      "ppg_allowed": 11.06830985915493,
+      "projection": 18.09422931542592
+    },
+    {
+      "player": "Adam Thielen",
+      "position": "WR",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #12 def for WRs",
+      "player_ppg": 15.35,
+      "ppg_allowed": 9.902857142857144,
+      "projection": 15.965655594438894
+    },
+    {
+      "player": "Jordan Addison",
+      "position": "WR",
+      "opponent": "CHI",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for WRs",
+      "player_ppg": 14.99375,
+      "ppg_allowed": 8.357575757575757,
+      "projection": 13.161592793024752
+    },
+    {
+      "player": "Rashid Shaheed",
+      "position": "WR",
+      "opponent": "ARI",
+      "rating": "Bad",
+      "details": "vs. #26 def for WRs",
+      "player_ppg": 14.966666666666669,
+      "ppg_allowed": 8.985507246376812,
+      "projection": 14.124905397688318
+    },
+    {
+      "player": "Xavier Worthy",
+      "position": "WR",
+      "opponent": "LAC",
+      "rating": "Good",
+      "details": "vs. #11 def for WRs",
+      "player_ppg": 14.852631578947367,
+      "ppg_allowed": 9.992424242424242,
+      "projection": 15.588062397112811
+    },
+    {
+      "player": "Cooper Kupp",
+      "position": "WR",
+      "opponent": "HOU",
+      "rating": "Bad",
+      "details": "vs. #21 def for WRs",
+      "player_ppg": 14.785714285714286,
+      "ppg_allowed": 9.230666666666666,
+      "projection": 14.334852901317278
+    },
+    {
+      "player": "Tyreek Hill",
+      "position": "WR",
+      "opponent": "IND",
+      "rating": "Average",
+      "details": "vs. #17 def for WRs",
+      "player_ppg": 14.541176470588235,
+      "ppg_allowed": 9.33235294117647,
+      "projection": 14.253074751575626
+    },
+    {
+      "player": "Josh Downs",
+      "position": "WR",
+      "opponent": "MIA",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for WRs",
+      "player_ppg": 14.442857142857141,
+      "ppg_allowed": 8.249295774647887,
+      "projection": 12.513760927678062
+    },
+    {
+      "player": "Tyrell Shavers",
+      "position": "WR",
+      "opponent": "BAL",
+      "rating": "Average",
+      "details": "vs. #13 def for WRs",
+      "player_ppg": 14.4,
+      "ppg_allowed": 9.691025641025641,
+      "projection": 14.657169071296948
+    },
+    {
+      "player": "DK Metcalf",
+      "position": "WR",
+      "opponent": "SF",
+      "rating": "Bad",
+      "details": "vs. #27 def for WRs",
+      "player_ppg": 14.18,
+      "ppg_allowed": 8.782089552238805,
+      "projection": 13.07952447727244
+    },
+    {
+      "player": "Zay Flowers",
+      "position": "WR",
+      "opponent": "BUF",
+      "rating": "Average",
+      "details": "vs. #18 def for WRs",
+      "player_ppg": 13.794117647058824,
+      "ppg_allowed": 9.3125,
+      "projection": 13.492054107287913
+    },
+    {
+      "player": "George Pickens",
+      "position": "WR",
+      "opponent": "NYJ",
+      "rating": "Bad",
+      "details": "vs. #25 def for WRs",
+      "player_ppg": 13.773333333333333,
+      "ppg_allowed": 9.0375,
+      "projection": 13.073902178828124
+    },
+    {
+      "player": "Keenan Allen",
+      "position": "WR",
+      "opponent": "MIN",
+      "rating": "Great",
+      "details": "vs. #1 def for WRs",
+      "player_ppg": 13.726666666666667,
+      "ppg_allowed": 11.06830985915493,
+      "projection": 15.957478174045187
+    },
+    {
+      "player": "Diontae Johnson",
+      "position": "WR",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #12 def for WRs",
+      "player_ppg": 13.614285714285714,
+      "ppg_allowed": 9.902857142857144,
+      "projection": 14.160325529548876
+    },
+    {
+      "player": "Darnell Mooney",
+      "position": "WR",
+      "opponent": "TB",
+      "rating": "Great",
+      "details": "vs. #5 def for WRs",
+      "player_ppg": 13.575000000000001,
+      "ppg_allowed": 10.407042253521126,
+      "projection": 14.838329775028251
+    },
+    {
+      "player": "Khalil Shakir",
+      "position": "WR",
+      "opponent": "BAL",
+      "rating": "Average",
+      "details": "vs. #13 def for WRs",
+      "player_ppg": 13.272222222222222,
+      "ppg_allowed": 9.691025641025641,
+      "projection": 13.509250351592751
+    },
+    {
+      "player": "Calvin Ridley",
+      "position": "WR",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #24 def for WRs",
+      "player_ppg": 13.158823529411766,
+      "ppg_allowed": 9.06111111111111,
+      "projection": 12.523230707945219
+    },
+    {
+      "player": "Marvin Harrison",
+      "position": "WR",
+      "opponent": "NO",
+      "rating": "Average",
+      "details": "vs. #15 def for WRs",
+      "player_ppg": 12.941176470588236,
+      "ppg_allowed": 9.417808219178083,
+      "projection": 12.800928286359513
+    },
+    {
+      "player": "Jayden Reed",
+      "position": "WR",
+      "opponent": "DET",
+      "rating": "Great",
+      "details": "vs. #3 def for WRs",
+      "player_ppg": 12.811111111111112,
+      "ppg_allowed": 10.842857142857143,
+      "projection": 14.589768352464976
+    },
+    {
+      "player": "Deebo Samuel",
+      "position": "WR",
+      "opponent": "SEA",
+      "rating": "Good",
+      "details": "vs. #9 def for WRs",
+      "player_ppg": 12.471428571428573,
+      "ppg_allowed": 10.09921875,
+      "projection": 13.228842491960428
+    },
+    {
+      "player": "Tay Martin",
+      "position": "WR",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #24 def for WRs",
+      "player_ppg": 12.4,
+      "ppg_allowed": 9.06111111111111,
+      "projection": 11.801059603195583
+    },
+    {
+      "player": "Rashod Bateman",
+      "position": "WR",
+      "opponent": "BUF",
+      "rating": "Average",
+      "details": "vs. #18 def for WRs",
+      "player_ppg": 12.283333333333335,
+      "ppg_allowed": 9.3125,
+      "projection": 12.014352943156382
+    },
+    {
+      "player": "Quentin Johnston",
+      "position": "WR",
+      "opponent": "KC",
+      "rating": "Average",
+      "details": "vs. #16 def for WRs",
+      "player_ppg": 11.887500000000001,
+      "ppg_allowed": 9.383750000000001,
+      "projection": 11.716147256873798
+    },
+    {
+      "player": "Wan'Dale Robinson",
+      "position": "WR",
+      "opponent": "WAS",
+      "rating": "Great",
+      "details": "vs. #4 def for WRs",
+      "player_ppg": 11.864705882352942,
+      "ppg_allowed": 10.593478260869565,
+      "projection": 13.201200259962913
+    },
+    {
+      "player": "Allen Lazard",
+      "position": "WR",
+      "opponent": "PIT",
+      "rating": "Bad",
+      "details": "vs. #23 def for WRs",
+      "player_ppg": 11.708333333333334,
+      "ppg_allowed": 9.169014084507042,
+      "projection": 11.275494067158931
+    },
+    {
+      "player": "Michael Pittman",
+      "position": "WR",
+      "opponent": "MIA",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for WRs",
+      "player_ppg": 11.58125,
+      "ppg_allowed": 8.249295774647887,
+      "projection": 10.034371475822958
+    },
+    {
+      "player": "Tank Dell",
+      "position": "WR",
+      "opponent": "LA",
+      "rating": "Good",
+      "details": "vs. #7 def for WRs",
+      "player_ppg": 11.464285714285714,
+      "ppg_allowed": 10.2875,
+      "projection": 12.387244563479532
+    },
+    {
+      "player": "Nick Westbrook-Ikhine",
+      "position": "WR",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #24 def for WRs",
+      "player_ppg": 11.399999999999999,
+      "ppg_allowed": 9.06111111111111,
+      "projection": 10.849361248099164
+    },
+    {
+      "player": "Chris Olave",
+      "position": "WR",
+      "opponent": "ARI",
+      "rating": "Bad",
+      "details": "vs. #26 def for WRs",
+      "player_ppg": 11.3375,
+      "ppg_allowed": 8.985507246376812,
+      "projection": 10.699851778148638
+    },
+    {
+      "player": "Jaylen Waddle",
+      "position": "WR",
+      "opponent": "IND",
+      "rating": "Average",
+      "details": "vs. #17 def for WRs",
+      "player_ppg": 11.306666666666667,
+      "ppg_allowed": 9.33235294117647,
+      "projection": 11.082649709747262
+    },
+    {
+      "player": "Jalen McMillan",
+      "position": "WR",
+      "opponent": "ATL",
+      "rating": "Great",
+      "details": "vs. #2 def for WRs",
+      "player_ppg": 11.214285714285714,
+      "ppg_allowed": 11.0203125,
+      "projection": 12.98025993087814
+    },
+    {
+      "player": "Alec Pierce",
+      "position": "WR",
+      "opponent": "MIA",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for WRs",
+      "player_ppg": 11.0875,
+      "ppg_allowed": 8.249295774647887,
+      "projection": 9.606570425315665
+    },
+    {
+      "player": "Amari Cooper",
+      "position": "WR",
+      "opponent": "CIN",
+      "rating": "Bad",
+      "details": "vs. #28 def for WRs",
+      "player_ppg": 11.083333333333334,
+      "ppg_allowed": 8.674999999999999,
+      "projection": 10.09852026043565
+    },
+    {
+      "player": "Romeo Doubs",
+      "position": "WR",
+      "opponent": "DET",
+      "rating": "Great",
+      "details": "vs. #3 def for WRs",
+      "player_ppg": 10.885714285714286,
+      "ppg_allowed": 10.842857142857143,
+      "projection": 12.39705505652395
+    },
+    {
+      "player": "Marquez Valdes-Scantling",
+      "position": "WR",
+      "opponent": "ARI",
+      "rating": "Bad",
+      "details": "vs. #26 def for WRs",
+      "player_ppg": 10.8,
+      "ppg_allowed": 8.985507246376812,
+      "projection": 10.1925820687105
+    },
+    {
+      "player": "Kristian Wilkerson",
+      "position": "WR",
+      "opponent": "NE",
+      "rating": "Average",
+      "details": "vs. #14 def for WRs",
+      "player_ppg": 10.8,
+      "ppg_allowed": 9.592307692307692,
+      "projection": 10.880897505434955
+    },
+    {
+      "player": "DeAndre Hopkins",
+      "position": "WR",
+      "opponent": "LAC",
+      "rating": "Good",
+      "details": "vs. #11 def for WRs",
+      "player_ppg": 10.507692307692308,
+      "ppg_allowed": 9.992424242424242,
+      "projection": 11.02798264882151
+    },
+    {
+      "player": "Ricky Pearsall",
+      "position": "WR",
+      "opponent": "SEA",
+      "rating": "Good",
+      "details": "vs. #9 def for WRs",
+      "player_ppg": 10.4,
+      "ppg_allowed": 10.09921875,
+      "projection": 11.031612066606174
+    },
+    {
+      "player": "Brandon Aiyuk",
+      "position": "WR",
+      "opponent": "SEA",
+      "rating": "Good",
+      "details": "vs. #9 def for WRs",
+      "player_ppg": 10.271428571428572,
+      "ppg_allowed": 10.09921875,
+      "projection": 10.895232247101427
+    },
+    {
+      "player": "Demario Douglas",
+      "position": "WR",
+      "opponent": "LV",
+      "rating": "Bad",
+      "details": "vs. #22 def for WRs",
+      "player_ppg": 10.200000000000001,
+      "ppg_allowed": 9.224615384615385,
+      "projection": 9.88248814509486
+    },
+    {
+      "player": "Cedric Tillman",
+      "position": "WR",
+      "opponent": "CIN",
+      "rating": "Bad",
+      "details": "vs. #28 def for WRs",
+      "player_ppg": 9.988888888888889,
+      "ppg_allowed": 8.674999999999999,
+      "projection": 9.101323021685864
+    },
+    {
+      "player": "Christian Kirk",
+      "position": "WR",
+      "opponent": "CAR",
+      "rating": "Good",
+      "details": "vs. #10 def for WRs",
+      "player_ppg": 9.9875,
+      "ppg_allowed": 10.021212121212121,
+      "projection": 10.512231349072433
+    },
+    {
+      "player": "Jalen Tolbert",
+      "position": "WR",
+      "opponent": "PHI",
+      "rating": "Very Bad",
+      "details": "vs. #31 def for WRs",
+      "player_ppg": 9.794117647058824,
+      "ppg_allowed": 8.113978494623655,
+      "projection": 8.34674280661567
+    },
+    {
+      "player": "Rome Odunze",
+      "position": "WR",
+      "opponent": "MIN",
+      "rating": "Great",
+      "details": "vs. #1 def for WRs",
+      "player_ppg": 9.788235294117648,
+      "ppg_allowed": 11.06830985915493,
+      "projection": 11.378986236155983
+    },
+    {
+      "player": "Ray-Ray McCloud",
+      "position": "WR",
+      "opponent": "TB",
+      "rating": "Great",
+      "details": "vs. #5 def for WRs",
+      "player_ppg": 9.529411764705882,
+      "ppg_allowed": 10.407042253521126,
+      "projection": 10.416247095892434
+    },
+    {
+      "player": "Jalen Coker",
+      "position": "WR",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #12 def for WRs",
+      "player_ppg": 9.477272727272727,
+      "ppg_allowed": 9.902857142857144,
+      "projection": 9.8573858200785
+    },
+    {
+      "player": "Xavier Legette",
+      "position": "WR",
+      "opponent": "JAX",
+      "rating": "Good",
+      "details": "vs. #12 def for WRs",
+      "player_ppg": 9.373333333333333,
+      "ppg_allowed": 9.902857142857144,
+      "projection": 9.749277639861493
+    },
+    {
+      "player": "Jordan Whittington",
+      "position": "WR",
+      "opponent": "HOU",
+      "rating": "Bad",
+      "details": "vs. #21 def for WRs",
+      "player_ppg": 9.171428571428573,
+      "ppg_allowed": 9.230666666666666,
+      "projection": 8.891763828643182
+    },
+    {
+      "player": "Kayshon Boutte",
+      "position": "WR",
+      "opponent": "LV",
+      "rating": "Bad",
+      "details": "vs. #22 def for WRs",
+      "player_ppg": 8.926666666666668,
+      "ppg_allowed": 9.224615384615385,
+      "projection": 8.648791912602626
+    },
+    {
+      "player": "Noah Brown",
+      "position": "WR",
+      "opponent": "NYG",
+      "rating": "Average",
+      "details": "vs. #20 def for WRs",
+      "player_ppg": 8.8,
+      "ppg_allowed": 9.233823529411765,
+      "projection": 8.534579048485456
+    },
+    {
+      "player": "Michael Wilson",
+      "position": "WR",
+      "opponent": "NO",
+      "rating": "Average",
+      "details": "vs. #15 def for WRs",
+      "player_ppg": 8.75,
+      "ppg_allowed": 9.417808219178083,
+      "projection": 8.655173102708988
+    },
+    {
+      "player": "Devaughn Vele",
+      "position": "WR",
+      "opponent": "TEN",
+      "rating": "Very Bad",
+      "details": "vs. #32 def for WRs",
+      "player_ppg": 8.535714285714286,
+      "ppg_allowed": 7.772602739726027,
+      "projection": 6.96825770517861
+    },
+    {
+      "player": "Marvin Mims",
+      "position": "WR",
+      "opponent": "TEN",
+      "rating": "Very Bad",
+      "details": "vs. #32 def for WRs",
+      "player_ppg": 8.51764705882353,
+      "ppg_allowed": 7.772602739726027,
+      "projection": 6.953508254953521
+    },
+    {
+      "player": "George Kittle",
+      "position": "TE",
+      "opponent": "SEA",
+      "rating": "Good",
+      "details": "vs. #10 def for TEs",
+      "player_ppg": 17.44,
+      "ppg_allowed": 7.551724137931035,
+      "projection": 19.081350247493173
+    },
+    {
+      "player": "Brock Bowers",
+      "position": "TE",
+      "opponent": "NE",
+      "rating": "Bad",
+      "details": "vs. #21 def for TEs",
+      "player_ppg": 17.36470588235294,
+      "ppg_allowed": 6.626470588235295,
+      "projection": 16.671175070090918
+    },
+    {
+      "player": "Trey McBride",
+      "position": "TE",
+      "opponent": "NO",
+      "rating": "Average",
+      "details": "vs. #14 def for TEs",
+      "player_ppg": 17.26875,
+      "ppg_allowed": 7.009677419354839,
+      "projection": 17.53781322135335
+    },
+    {
+      "player": "Taysom Hill",
+      "position": "TE",
+      "opponent": "ARI",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for TEs",
+      "player_ppg": 15.81875,
+      "ppg_allowed": 5.3742857142857146,
+      "projection": 12.31712700202029
+    },
+    {
+      "player": "Jonnu Smith",
+      "position": "TE",
+      "opponent": "IND",
+      "rating": "Good",
+      "details": "vs. #7 def for TEs",
+      "player_ppg": 14.811764705882354,
+      "ppg_allowed": 7.667567567567567,
+      "projection": 16.45435723455857
+    },
+    {
+      "player": "David Njoku",
+      "position": "TE",
+      "opponent": "CIN",
+      "rating": "Great",
+      "details": "vs. #2 def for TEs",
+      "player_ppg": 14.545454545454545,
+      "ppg_allowed": 8.82,
+      "projection": 18.58713222321418
+    },
+    {
+      "player": "Travis Kelce",
+      "position": "TE",
+      "opponent": "LAC",
+      "rating": "Very Bad",
+      "details": "vs. #30 def for TEs",
+      "player_ppg": 13.705263157894736,
+      "ppg_allowed": 5.35125,
+      "projection": 10.625738545279114
+    },
+    {
+      "player": "Sam LaPorta",
+      "position": "TE",
+      "opponent": "GB",
+      "rating": "Average",
+      "details": "vs. #18 def for TEs",
+      "player_ppg": 12.511764705882353,
+      "ppg_allowed": 6.867567567567568,
+      "projection": 12.449101712802733
+    },
+    {
+      "player": "Mark Andrews",
+      "position": "TE",
+      "opponent": "BUF",
+      "rating": "Bad",
+      "details": "vs. #22 def for TEs",
+      "player_ppg": 12.336842105263159,
+      "ppg_allowed": 6.54047619047619,
+      "projection": 11.690413725351988
+    },
+    {
+      "player": "Tyler Higbee",
+      "position": "TE",
+      "opponent": "HOU",
+      "rating": "Bad",
+      "details": "vs. #26 def for TEs",
+      "player_ppg": 12.16,
+      "ppg_allowed": 6.225,
+      "projection": 10.967040227078108
+    },
+    {
+      "player": "Zach Ertz",
+      "position": "TE",
+      "opponent": "NYG",
+      "rating": "Very Bad",
+      "details": "vs. #31 def for TEs",
+      "player_ppg": 12.120000000000001,
+      "ppg_allowed": 5.257575757575758,
+      "projection": 9.232188534962974
+    },
+    {
+      "player": "Dallas Goedert",
+      "position": "TE",
+      "opponent": "DAL",
+      "rating": "Bad",
+      "details": "vs. #25 def for TEs",
+      "player_ppg": 11.707142857142857,
+      "ppg_allowed": 6.312903225806451,
+      "projection": 10.70770888863429
+    },
+    {
+      "player": "Evan Engram",
+      "position": "TE",
+      "opponent": "CAR",
+      "rating": "Great",
+      "details": "vs. #3 def for TEs",
+      "player_ppg": 11.11111111111111,
+      "ppg_allowed": 8.320588235294117,
+      "projection": 13.394546884823422
+    },
+    {
+      "player": "Cade Otton",
+      "position": "TE",
+      "opponent": "ATL",
+      "rating": "Average",
+      "details": "vs. #17 def for TEs",
+      "player_ppg": 10.953333333333335,
+      "ppg_allowed": 6.988235294117647,
+      "projection": 11.089968929686824
+    },
+    {
+      "player": "T.J. Hockenson",
+      "position": "TE",
+      "opponent": "CHI",
+      "rating": "Good",
+      "details": "vs. #11 def for TEs",
+      "player_ppg": 10.945454545454545,
+      "ppg_allowed": 7.509375,
+      "projection": 11.908418808857254
+    },
+    {
+      "player": "Tucker Kraft",
+      "position": "TE",
+      "opponent": "DET",
+      "rating": "Bad",
+      "details": "vs. #28 def for TEs",
+      "player_ppg": 10.8,
+      "ppg_allowed": 5.51764705882353,
+      "projection": 8.633644820488774
+    },
+    {
+      "player": "Pat Freiermuth",
+      "position": "TE",
+      "opponent": "NYJ",
+      "rating": "Bad",
+      "details": "vs. #27 def for TEs",
+      "player_ppg": 10.711111111111112,
+      "ppg_allowed": 5.562162162162163,
+      "projection": 8.63166698363828
+    },
+    {
+      "player": "Hunter Henry",
+      "position": "TE",
+      "opponent": "LV",
+      "rating": "Good",
+      "details": "vs. #8 def for TEs",
+      "player_ppg": 10.3375,
+      "ppg_allowed": 7.556410256410256,
+      "projection": 11.31742322833326
+    },
+    {
+      "player": "Mike Gesicki",
+      "position": "TE",
+      "opponent": "CLE",
+      "rating": "Average",
+      "details": "vs. #19 def for TEs",
+      "player_ppg": 10.15625,
+      "ppg_allowed": 6.821052631578947,
+      "projection": 10.036939099119165
+    },
+    {
+      "player": "Isaiah Likely",
+      "position": "TE",
+      "opponent": "BUF",
+      "rating": "Bad",
+      "details": "vs. #22 def for TEs",
+      "player_ppg": 9.782352941176471,
+      "ppg_allowed": 6.54047619047619,
+      "projection": 9.269775207788264
+    },
+    {
+      "player": "Cole Kmet",
+      "position": "TE",
+      "opponent": "MIN",
+      "rating": "Average",
+      "details": "vs. #15 def for TEs",
+      "player_ppg": 9.492857142857144,
+      "ppg_allowed": 7.005714285714286,
+      "projection": 9.635314006914138
+    },
+    {
+      "player": "Juwan Johnson",
+      "position": "TE",
+      "opponent": "ARI",
+      "rating": "Very Bad",
+      "details": "vs. #29 def for TEs",
+      "player_ppg": 9.086666666666668,
+      "ppg_allowed": 5.3742857142857146,
+      "projection": 7.075251038062914
+    },
+    {
+      "player": "Jake Ferguson",
+      "position": "TE",
+      "opponent": "PHI",
+      "rating": "Good",
+      "details": "vs. #12 def for TEs",
+      "player_ppg": 8.385714285714286,
+      "ppg_allowed": 7.502857142857144,
+      "projection": 9.115557699386308
+    },
+    {
+      "player": "Tyler Conklin",
+      "position": "TE",
+      "opponent": "PIT",
+      "rating": "Good",
+      "details": "vs. #9 def for TEs",
+      "player_ppg": 8.36875,
+      "ppg_allowed": 7.552631578947368,
+      "projection": 9.157467799662395
+    },
+    {
+      "player": "Kyle Pitts",
+      "position": "TE",
+      "opponent": "TB",
+      "rating": "Good",
+      "details": "vs. #6 def for TEs",
+      "player_ppg": 8.335294117647058,
+      "ppg_allowed": 7.736111111111111,
+      "projection": 9.342436042097646
+    },
+    {
+      "player": "Noah Fant",
+      "position": "TE",
+      "opponent": "SF",
+      "rating": "Average",
+      "details": "vs. #16 def for TEs",
+      "player_ppg": 8.321428571428571,
+      "ppg_allowed": 6.992857142857143,
+      "projection": 8.430805138781853
+    },
+    {
+      "player": "Chigoziem Okonkwo",
+      "position": "TE",
+      "opponent": "DEN",
+      "rating": "Bad",
+      "details": "vs. #24 def for TEs",
+      "player_ppg": 7.9125000000000005,
+      "ppg_allowed": 6.328947368421052,
+      "projection": 7.255405883965122
+    },
+    {
+      "player": "Dalton Kincaid",
+      "position": "TE",
+      "opponent": "BAL",
+      "rating": "Bad",
+      "details": "vs. #23 def for TEs",
+      "player_ppg": 7.9,
+      "ppg_allowed": 6.523076923076923,
+      "projection": 7.466139445356494
+    },
+    {
+      "player": "Devin Culp",
+      "position": "TE",
+      "opponent": "ATL",
+      "rating": "Average",
+      "details": "vs. #17 def for TEs",
+      "player_ppg": 7.8999999999999995,
+      "ppg_allowed": 6.988235294117647,
+      "projection": 7.998547280388852
+    },
+    {
+      "player": "Will Dissly",
+      "position": "TE",
+      "opponent": "KC",
+      "rating": "Great",
+      "details": "vs. #4 def for TEs",
+      "player_ppg": 7.85625,
+      "ppg_allowed": 8.026315789473685,
+      "projection": 9.135830713475311
+    },
+    {
+      "player": "Dalton Schultz",
+      "position": "TE",
+      "opponent": "LA",
+      "rating": "Great",
+      "details": "vs. #1 def for TEs",
+      "player_ppg": 7.778947368421053,
+      "ppg_allowed": 9.024999999999999,
+      "projection": 10.171489367232333
+    },
+    {
+      "player": "Theo Johnson",
+      "position": "TE",
+      "opponent": "WAS",
+      "rating": "Great",
+      "details": "vs. #5 def for TEs",
+      "player_ppg": 7.609999999999999,
+      "ppg_allowed": 7.746875,
+      "projection": 8.541373455230117
     }
   ]
 }
