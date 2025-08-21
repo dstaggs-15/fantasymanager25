@@ -8,10 +8,8 @@ import nfl_data_py as nfl
 DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
 OUTPUT_DIR = 'docs/data/analysis'
 ANALYSIS_SEASON = 2024
-YOUR_TEAM_ROSTER = [
-    'Lamar Jackson', 'Derrick Henry', 'Christian McCaffrey', 'Ja\'Marr Chase', 
-    'A.J. Brown', 'Travis Kelce', 'Jahmyr Gibbs', 'Josh Allen', 'Saquon Barkley'
-]
+# How many top players at each position to include in the report
+RELEVANT_PLAYER_COUNT = {'QB': 32, 'RB': 64, 'WR': 80, 'TE': 32}
 
 def calculate_fantasy_points(df):
     # This is the same custom scoring function
@@ -38,13 +36,18 @@ def main():
 
     df = calculate_fantasy_points(df)
 
-    # 1. Calculate Player PPG from last season
+    # 1. Get a list of all fantasy-relevant players based on last season's PPG
     season_df = df[df['season'] == ANALYSIS_SEASON].copy()
-    active_players = season_df[season_df['fantasy_points_custom'] > 0]
-    player_ppg = active_players.groupby(['player_id', 'player_display_name', 'position', 'recent_team'])['fantasy_points_custom'].mean().reset_index()
+    player_ppg = season_df.groupby(['player_id', 'player_display_name', 'position', 'recent_team'])['fantasy_points_custom'].mean().reset_index()
     player_ppg = player_ppg.rename(columns={'fantasy_points_custom': 'player_ppg'})
+    
+    relevant_players_list = []
+    for pos, count in RELEVANT_PLAYER_COUNT.items():
+        top_players = player_ppg[player_ppg['position'] == pos].sort_values(by='player_ppg', ascending=False).head(count)
+        relevant_players_list.append(top_players)
+    relevant_players_df = pd.concat(relevant_players_list)
 
-    # 2. Calculate Defensive Rankings (Points Allowed Per Game to each Position)
+    # 2. Calculate Defensive Rankings
     print(f"Calculating defensive rankings...")
     season_df['opponent'] = np.where(season_df['recent_team'] == season_df['home_team'], season_df['away_team'], season_df['home_team'])
     points_allowed = season_df.groupby(['opponent', 'position'])['fantasy_points_custom'].mean().reset_index()
@@ -57,41 +60,35 @@ def main():
     next_week = schedule[schedule['week'] > 0]['week'].min()
     upcoming_games = schedule[schedule['week'] == next_week]
     
-    # 4. Analyze matchups for your team
-    print("Analyzing matchups for your roster...")
+    # 4. Analyze matchups for ALL relevant players
+    print("Analyzing matchups for all relevant players...")
     matchup_report = []
     
-    for player_name in YOUR_TEAM_ROSTER:
-        player = player_ppg[player_ppg['player_display_name'] == player_name]
-        if player.empty: continue
+    for index, player in relevant_players_df.iterrows():
+        player_name = player['player_display_name']
+        player_team = player['recent_team']
+        player_pos = player['position']
+        player_avg_ppg = player['player_ppg']
         
-        player_team = player['recent_team'].iloc[0]
-        player_pos = player['position'].iloc[0]
-        player_avg_ppg = player['player_ppg'].iloc[0]
-
         game = upcoming_games[(upcoming_games['home_team'] == player_team) | (upcoming_games['away_team'] == player_team)]
-        if game.empty:
-            matchup_report.append({'player': player_name, 'opponent': 'BYE WEEK', 'rating': 'N/A', 'details': 'Player is on a bye week.', 'player_ppg': player_avg_ppg, 'ppg_allowed': 0, 'projection': 0})
-            continue
+        if game.empty: continue # Skip players on a bye week
             
         opponent_team = game['away_team'].iloc[0] if game['home_team'].iloc[0] == player_team else game['home_team'].iloc[0]
         def_rank_row = points_allowed[(points_allowed['team'] == opponent_team) & (points_allowed['position'] == player_pos)]
         
         if def_rank_row.empty:
-            rating, details, ppg_allowed, projection = "Average", "No ranking data available.", player_avg_ppg, player_avg_ppg
+            rating, details, ppg_allowed, projection = "Average", "No ranking data.", player_avg_ppg, player_avg_ppg
         else:
             rank = def_rank_row['rank'].iloc[0]
             ppg_allowed = def_rank_row['ppg_allowed'].iloc[0]
-            # Simple projection model
             league_avg_allowed = points_allowed[points_allowed['position'] == player_pos]['ppg_allowed'].mean()
-            projection = player_avg_ppg * (ppg_allowed / league_avg_allowed)
-
+            projection = player_avg_ppg * (ppg_allowed / league_avg_allowed) if league_avg_allowed > 0 else player_avg_ppg
             if rank <= 5: rating = "Great"
             elif rank <= 12: rating = "Good"
             elif rank <= 20: rating = "Average"
             elif rank <= 28: rating = "Bad"
             else: rating = "Very Bad"
-            details = f"vs. the #{int(rank)} easiest defense for {player_pos}s"
+            details = f"vs. #{int(rank)} def for {player_pos}s"
 
         matchup_report.append({
             'player': player_name, 'position': player_pos, 'opponent': opponent_team,
