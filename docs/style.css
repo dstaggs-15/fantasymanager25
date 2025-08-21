@@ -120,3 +120,12 @@ thead tr {
 tbody tr:last-child td {
     border-bottom: none;
 }
+
+/* --- Add this to the bottom of docs/style.css --- */
+
+/* --- Matchup Rating Colors --- */
+.rating-great { background-color: rgba(76, 175, 80, 0.2); }
+.rating-good { background-color: rgba(139, 195, 74, 0.15); }
+.rating-average { /* Default background */ }
+.rating-bad { background-color: rgba(255, 152, 0, 0.15); }
+.rating-verybad { background-color: rgba(244, 67, 54, 0.2); }
