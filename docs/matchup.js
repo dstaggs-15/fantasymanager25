@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
 
         reportTitle.textContent = `Matchup Report for Week ${data.week}`;
-        allMatchups = data.matchups;
+        // Sort by projection descending by default
+        allMatchups = data.matchups.sort((a, b) => b.projection - a.projection);
         renderTable(allMatchups);
 
     } catch (error) {
@@ -21,10 +22,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Event listener for the search bar
     searchInput.addEventListener('keyup', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        const filteredMatchups = allMatchups.filter(m => 
-            m.player.toLowerCase().includes(searchTerm)
-        );
-        renderTable(filteredMatchups);
+        if (searchTerm) {
+            const filteredMatchups = allMatchups.filter(m => 
+                m.player.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filteredMatchups);
+        } else {
+            renderTable(allMatchups); // Show all if search is empty
+        }
     });
 
     function renderTable(matchups) {
@@ -35,8 +40,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         tableHTML += '<tbody>';
         matchups.forEach(matchup => {
+            // Apply class for color-coding based on rating
+            const ratingClass = `rating-${matchup.rating.toLowerCase().replace(' ', '')}`;
             tableHTML += `
-                <tr class="rating-${matchup.rating.toLowerCase().replace(' ', '')}">
+                <tr class="${ratingClass}">
                     <td>${matchup.player}</td>
                     <td>${matchup.position}</td>
                     <td>${matchup.opponent}</td>
