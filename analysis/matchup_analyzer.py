@@ -12,7 +12,9 @@ ANALYSIS_SEASON = 2024
 RELEVANT_PLAYER_COUNT = {'QB': 32, 'RB': 64, 'WR': 80, 'TE': 32}
 
 def calculate_fantasy_points(df):
-    # This is the same custom scoring function
+    """
+    Calculates fantasy points based on your league's specific custom scoring rules.
+    """
     df['fantasy_points_custom'] = 0.0
     scoring_rules = {
         'passing_yards': 0.05, 'passing_tds': 4, 'interceptions': -2, 'passing_2pt_conversions': 2,
@@ -88,21 +90,4 @@ def main():
             elif rank <= 20: rating = "Average"
             elif rank <= 28: rating = "Bad"
             else: rating = "Very Bad"
-            details = f"vs. #{int(rank)} def for {player_pos}s"
-
-        matchup_report.append({
-            'player': player_name, 'position': player_pos, 'opponent': opponent_team,
-            'rating': rating, 'details': details, 'player_ppg': player_avg_ppg, 
-            'ppg_allowed': ppg_allowed, 'projection': projection
-        })
-
-    # 5. Save the report
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    output_path = os.path.join(OUTPUT_DIR, 'matchup_report.json')
-    final_report = {'week': int(next_week), 'matchups': matchup_report}
-    with open(output_path, 'w') as f:
-        json.dump(final_report, f, indent=2)
-    print(f"✅ Advanced matchup report saved to {output_path}")
-
-if __name__ == '__main__':
-    main()
+            details = f"vs. #{
