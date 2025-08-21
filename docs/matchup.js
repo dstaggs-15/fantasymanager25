@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
 
         reportTitle.textContent = `Matchup Report for Week ${data.week}`;
-        // Sort by projection descending by default
-        allMatchups = data.matchups.sort((a, b) => b.projection - a.projection);
+        allMatchups = data.matchups;
         renderTable(allMatchups);
 
     } catch (error) {
@@ -33,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     function renderTable(matchups) {
+        // THE FIX: Added new columns for more in-depth data
         const headers = ['Player', 'Pos', 'Opp', 'Player PPG', 'Opp PPG Allowed', 'Projection', 'Rating'];
         let tableHTML = '<thead><tr>';
         headers.forEach(h => tableHTML += `<th>${h}</th>`);
@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         tableHTML += '<tbody>';
         matchups.forEach(matchup => {
-            // Apply class for color-coding based on rating
             const ratingClass = `rating-${matchup.rating.toLowerCase().replace(' ', '')}`;
             tableHTML += `
                 <tr class="${ratingClass}">
