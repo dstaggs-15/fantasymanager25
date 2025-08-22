@@ -2,7 +2,13 @@ import pandas as pd
 import os
 import json
 import numpy as np
-from pipeline.utils import calculate_fantasy_points
+import sys # Add sys import
+
+# THE FIX: Add the project's root directory to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, project_root)
+
+from pipeline.utils import calculate_fantasy_points # This will now work
 
 # --- Configuration ---
 DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
@@ -25,8 +31,7 @@ def main():
     fpa = season_df.groupby(['opponent', 'position'])['fantasy_points_custom'].mean().unstack().round(2)
     fpa = fpa.rename(columns={'opponent': 'team'}).fillna(0)
     
-    # THE FIX: Calculate average points scored using the correct columns
-    # Get unique games from the schedule to avoid double-counting scores
+    # Calculate total points scored by each offense
     unique_games = season_df[['game_id', 'home_team', 'away_team', 'home_score', 'away_score']].drop_duplicates()
     home_scores = unique_games[['home_team', 'home_score']].rename(columns={'home_team': 'team', 'home_score': 'points'})
     away_scores = unique_games[['away_team', 'away_score']].rename(columns={'away_team': 'team', 'away_score': 'points'})
