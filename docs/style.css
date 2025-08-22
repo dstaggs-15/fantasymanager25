@@ -129,3 +129,9 @@ tbody tr:last-child td {
 .rating-average { /* Default background */ }
 .rating-bad { background-color: rgba(255, 152, 0, 0.15); }
 .rating-verybad { background-color: rgba(244, 67, 54, 0.2); }
+
+/* --- For Heat Map Table Cells --- */
+td.heat-cell {
+    color: #121212;
+    font-weight: 500;
+}
