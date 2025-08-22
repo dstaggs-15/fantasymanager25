@@ -1,21 +1,27 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // --- Data Loading ---
     let allPlayers = [];
-    // Other variables from your original dashboard.js can remain if needed
+    let matchupData = {};
+    let teamData = {};
+    let chartInstances = {}; // To manage and destroy old charts
 
     try {
-        const [vorpRes] = await Promise.all([
+        const [vorpRes, matchupRes, teamRes] = await Promise.all([
             fetch('data/analysis/vorp_analysis.json'),
-            // Add other fetch calls here if the dashboard needs more data
+            fetch('data/analysis/matchup_report.json'),
+            fetch('data/analysis/team_rankings.json')
         ]);
-        if (!vorpRes.ok) throw new Error('Failed to load VORP analysis file.');
+        if (!vorpRes.ok || !matchupRes.ok || !teamRes.ok) throw new Error('Failed to load analysis files.');
 
         const vorpData = await vorpRes.json();
+        matchupData = await matchupRes.json();
+        teamData = await teamRes.json();
         allPlayers = vorpData.players;
 
         // --- Initial Page Renders ---
         populateDatalist(allPlayers);
-        // Call other chart rendering functions here
+        renderTopMatchups(matchupData.matchups);
+        renderDefensiveChart(teamData.fantasy_points_allowed);
 
     } catch (error) {
         console.error("Dashboard failed to load:", error);
@@ -34,56 +40,32 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         comparisonResults.innerHTML = '';
         if (player1 && player2) {
-            const statsToCompare = [
-                { label: 'Position', key: 'position' },
-                { label: 'Fantasy PPG', key: 'ppg', bold: true },
-                { label: 'VORP', key: 'vorp', bold: true },
-                { label: 'Pass Yds/Game', key: 'passing_yards_pg' },
-                { label: 'Pass TDs/Game', key: 'passing_tds_pg' },
-                { label: 'Rush Yds/Game', key: 'rushing_yards_pg' },
-                { label: 'Rush TDs/Game', key: 'rushing_tds_pg' },
-                { label: 'Receptions/Game', key: 'receptions_pg' },
-                { label: 'Rec Yds/Game', key: 'receiving_yards_pg' },
-                { label: 'Rec TDs/Game', key: 'receiving_tds_pg' },
-            ];
-
-            let comparisonHTML = `
-            <div class="table-container">
-                <table>
-                    <thead><tr>
-                        <th>Stat</th>
-                        <th>${player1.player_display_name}</th>
-                        <th>${player2.player_display_name}</th>
-                    </tr></thead>
-                    <tbody>`;
-
-            statsToCompare.forEach(stat => {
-                const val1 = player1[stat.key] !== undefined ? player1[stat.key] : 'N/A';
-                const val2 = player2[stat.key] !== undefined ? player2[stat.key] : 'N/A';
-                
-                // Only show rows if at least one player has a non-zero value for that stat
-                if (val1 !== 'N/A' && val1 !== 0 || val2 !== 'N/A' && val2 !== 0) {
-                     comparisonHTML += `
-                        <tr>
-                            <td>${stat.label}</td>
-                            <td class="${val1 > val2 ? 'winner' : ''}">${val1}</td>
-                            <td class="${val2 > val1 ? 'winner' : ''}">${val2}</td>
-                        </tr>
-                    `;
-                }
-            });
-            
-            comparisonHTML += '</tbody></table></div>';
-            comparisonResults.innerHTML = comparisonHTML;
+            // Add containers for the new stats and charts
+            comparisonResults.innerHTML = `
+                <div class="table-container" style="margin-top: 2rem;">
+                    <table id="comparison-table"></table>
+                </div>
+                <div class="report-grid" style="margin-top: 2rem;">
+                    <div class="report-card">
+                        <h3>Fantasy Point Composition</h3>
+                        <canvas id="composition-chart"></canvas>
+                    </div>
+                    <div class="report-card">
+                        <h3>Raw Stats Comparison</h3>
+                        <canvas id="raw-stats-chart"></canvas>
+                    </div>
+                </div>
+            `;
+            renderComparisonTable(player1, player2);
+            renderCompositionChart(player1, player2);
+            renderRawStatsChart(player1, player2);
         }
     }
-    // Use the 'input' event for a more responsive feel
     player1Search.addEventListener('input', updateComparison);
     player2Search.addEventListener('input', updateComparison);
     
     function populateDatalist(players) {
         const playerDatalist = document.getElementById('player-list');
-        // Sort players alphabetically for the dropdown
         players.sort((a, b) => a.player_display_name.localeCompare(b.player_display_name));
         players.forEach(p => {
             const option = document.createElement('option');
@@ -91,4 +73,91 @@ document.addEventListener('DOMContentLoaded', async () => {
             playerDatalist.appendChild(option);
         });
     }
-});
+
+    function renderComparisonTable(p1, p2) {
+        const table = document.getElementById('comparison-table');
+        const statsToCompare = [
+            { label: 'Position', key: 'position' },
+            { label: 'Fantasy PPG', key: 'ppg' },
+            { label: 'VORP', key: 'vorp' },
+            { label: 'Pass Yds/Game', key: 'passing_yards_pg' },
+            { label: 'Rush Yds/Game', key: 'rushing_yards_pg' },
+            { label: 'Rec Yds/Game', key: 'receiving_yards_pg' }
+        ];
+        let tableHTML = `<thead><tr><th>Stat</th><th>${p1.player_display_name}</th><th>${p2.player_display_name}</th></tr></thead><tbody>`;
+        statsToCompare.forEach(stat => {
+            const val1 = p1[stat.key] !== undefined ? p1[stat.key].toFixed(2) : 'N/A';
+            const val2 = p2[stat.key] !== undefined ? p2[stat.key].toFixed(2) : 'N/A';
+            if (parseFloat(val1) > 0 || parseFloat(val2) > 0 || stat.key === 'position') {
+                 tableHTML += `<tr><td>${stat.label}</td><td>${val1}</td><td>${val2}</td></tr>`;
+            }
+        });
+        tableHTML += `</tbody>`;
+        table.innerHTML = tableHTML;
+    }
+
+    function renderCompositionChart(p1, p2) {
+        if (chartInstances.composition) chartInstances.composition.destroy();
+        const ctx = document.getElementById('composition-chart').getContext('2d');
+        
+        const getComposition = (player) => [
+            player.passing_yards_pg * 0.05,
+            player.rushing_yards_pg * 0.1,
+            player.receiving_yards_pg * 0.1,
+            (player.passing_tds_pg + player.rushing_tds_pg + player.receiving_tds_pg) * 6, // Simplified TD avg
+            player.receptions_pg * 1
+        ];
+
+        chartInstances.composition = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Pass Yds', 'Rush Yds', 'Rec Yds', 'TDs', 'Receptions'],
+                datasets: [
+                    { label: p1.player_display_name, data: getComposition(p1) },
+                    { label: p2.player_display_name, data: getComposition(p2) }
+                ]
+            },
+            options: { plugins: { legend: { position: 'top', labels: { color: '#e0e0e0' } } } }
+        });
+    }
+
+    function renderRawStatsChart(p1, p2) {
+        if (chartInstances.rawStats) chartInstances.rawStats.destroy();
+        const ctx = document.getElementById('raw-stats-chart').getContext('2d');
+        const labels = ['Pass Yds', 'Rush Yds', 'Rec Yds'];
+        chartInstances.rawStats = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    { label: p1.player_display_name, data: [p1.passing_yards_pg, p1.rushing_yards_pg, p1.receiving_yards_pg], backgroundColor: 'rgba(3, 218, 198, 0.6)' },
+                    { label: p2.player_display_name, data: [p2.passing_yards_pg, p2.rushing_yards_pg, p2.receiving_yards_pg], backgroundColor: 'rgba(255, 99, 132, 0.6)' }
+                ]
+            },
+            options: {
+                scales: { x: { ticks: { color: '#e0e0e0' } }, y: { ticks: { color: '#e0e0e0' } } },
+                plugins: { legend: { labels: { color: '#e0e0e0' } } }
+            }
+        });
+    }
+
+    // --- Other Dashboard Rendering Functions ---
+    function renderTopMatchups(matchups) {
+        const container = document.getElementById('top-matchups');
+        const sorted = matchups.sort((a,b) => b.projection - a.projection).slice(0, 10);
+        let listHTML = '<ul>';
+        sorted.forEach(m => {
+            listHTML += `<li><strong>${m.player} (${m.position}, ${m.opponent})</strong> - ${m.rating} Matchup</li>`;
+        });
+        listHTML += '</ul>';
+        container.innerHTML = listHTML;
+    }
+
+    function renderDefensiveChart(fpaData) {
+        const teams = Object.keys(fpaData);
+        const totalPointsAllowed = teams.map(team => (fpaData[team].RB || 0) + (fpaData[team].WR || 0) + (fpaData[team].TE || 0));
+        const sortedData = teams.map((team, i) => ({team, points: totalPointsAllowed[i]}))
+            .sort((a,b) => b.points - a.points).slice(0, 5);
+
+        const ctx = document.getElementById('defensive-chart').getContext('2d');
+        new Chart(ctx,
