@@ -135,3 +135,9 @@ td.heat-cell {
     color: #121212;
     font-weight: 500;
 }
+
+/* --- For Player Comparison Table --- */
+td.winner {
+    font-weight: bold;
+    color: var(--accent-color);
+}
