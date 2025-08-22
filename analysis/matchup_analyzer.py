@@ -3,7 +3,14 @@ import os
 import numpy as np
 import json
 import nfl_data_py as nfl
+# ... (imports)
 
+# --- Configuration ---
+# THE FIX: Ensure all scripts read from and write to the 'docs' folder
+DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
+OUTPUT_DIR = os.path.join('docs', 'data', 'analysis')
+
+# ... (the rest of each script is unchanged)
 # --- Configuration ---
 DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
 OUTPUT_DIR = 'docs/data/analysis'
