@@ -1,59 +1,106 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const reportTitle = document.getElementById('report-title');
-    const tableContainer = document.getElementById('matchup-table');
     const searchInput = document.getElementById('player-search');
-    let allMatchups = []; // Store all matchups for filtering
+    const playerDatalist = document.getElementById('player-list');
+    const deepDiveContainer = document.getElementById('deep-dive-container');
+    
+    let allPlayers = [];
+    let allMatchups = {};
+    let fullDataset = [];
 
     try {
-        const response = await fetch('data/analysis/matchup_report.json');
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
+        // Load all necessary data files in parallel
+        const [matchupRes, vorpRes, fullDataRes] = await Promise.all([
+            fetch('data/analysis/matchup_report.json'),
+            fetch('data/analysis/vorp_analysis.json'),
+            fetch('data/analysis/nfl_data.csv').then(res => res.text())
+        ]);
 
-        reportTitle.textContent = `Matchup Report for Week ${data.week}`;
-        allMatchups = data.matchups;
-        renderTable(allMatchups);
+        if (!matchupRes.ok || !vorpRes.ok) throw new Error('Failed to load analysis reports.');
+
+        const matchupData = await matchupRes.json();
+        const vorpData = await vorpRes.json();
+        
+        // Parse the CSV data
+        Papa.parse(fullDataRes, {
+            header: true,
+            dynamicTyping: true,
+            complete: (results) => {
+                fullDataset = results.data;
+                
+                // Create lookup maps for quick access
+                allPlayers = vorpData.players;
+                allMatchups = matchupData.matchups.reduce((obj, item) => {
+                    obj[item.player] = item;
+                    return obj;
+                }, {});
+
+                populateDatalist(allPlayers);
+                console.log("All data loaded and ready for analysis.");
+            }
+        });
 
     } catch (error) {
-        reportTitle.textContent = 'Failed to load matchup report.';
-        console.error('Error fetching data:', error);
+        deepDiveContainer.innerHTML = `<p class="error">Failed to load necessary data files. Please ensure all analysis workflows have run successfully.</p>`;
+        console.error('Error loading data:', error);
     }
-    
-    // Event listener for the search bar
-    searchInput.addEventListener('keyup', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        if (searchTerm) {
-            const filteredMatchups = allMatchups.filter(m => 
-                m.player.toLowerCase().includes(searchTerm)
-            );
-            renderTable(filteredMatchups);
+
+    searchInput.addEventListener('change', () => {
+        const playerName = searchInput.value;
+        const playerVorp = allPlayers.find(p => p.player_display_name === playerName);
+        const playerMatchup = allMatchups[playerName];
+        
+        if (playerVorp && playerMatchup) {
+            renderPlayerDeepDive(playerVorp, playerMatchup);
         } else {
-            renderTable(allMatchups); // Show all if search is empty
+            deepDiveContainer.innerHTML = '';
         }
     });
 
-    function renderTable(matchups) {
-        // THE FIX: Added new columns for more in-depth data
-        const headers = ['Player', 'Pos', 'Opp', 'Player PPG', 'Opp PPG Allowed', 'Projection', 'Rating'];
-        let tableHTML = '<thead><tr>';
-        headers.forEach(h => tableHTML += `<th>${h}</th>`);
-        tableHTML += '</tr></thead>';
-
-        tableHTML += '<tbody>';
-        matchups.forEach(matchup => {
-            const ratingClass = `rating-${matchup.rating.toLowerCase().replace(' ', '')}`;
-            tableHTML += `
-                <tr class="${ratingClass}">
-                    <td>${matchup.player}</td>
-                    <td>${matchup.position}</td>
-                    <td>${matchup.opponent}</td>
-                    <td>${matchup.player_ppg.toFixed(2)}</td>
-                    <td>${matchup.ppg_allowed.toFixed(2)}</td>
-                    <td><strong>${matchup.projection.toFixed(2)}</strong></td>
-                    <td>${matchup.rating}</td>
-                </tr>
-            `;
+    function populateDatalist(players) {
+        players.forEach(player => {
+            const option = document.createElement('option');
+            option.value = player.player_display_name;
+            playerDatalist.appendChild(option);
         });
-        tableHTML += '</tbody>';
-        tableContainer.innerHTML = tableHTML;
+    }
+
+    function renderPlayerDeepDive(player, matchup) {
+        // Get the player's weekly scores from last season
+        const lastSeasonGames = fullDataset.filter(row => row.player_display_name === player.player_display_name && row.season === 2024);
+        
+        let deepDiveHTML = `
+            <div class="report-card">
+                <h2>${player.player_display_name} - ${player.position}</h2>
+                <div class="report-grid">
+                    <div><h3>Matchup: vs. ${matchup.opponent}</h3><p class="rating-${matchup.rating.toLowerCase().replace(' ', '')}">${matchup.rating} (${matchup.details})</p></div>
+                    <div><h3>Projection</h3><p>${matchup.projection.toFixed(2)}</p></div>
+                    <div><h3>VORP</h3><p>${player.vorp.toFixed(2)}</p></div>
+                    <div><h3>PPG (2024)</h3><p>${player.ppg.toFixed(2)}</p></div>
+                </div>
+            </div>
+            <div class="report-card">
+                <h3>2024 Weekly Performance</h3>
+                <canvas id="weeklyScoreChart"></canvas>
+            </div>
+        `;
+        deepDiveContainer.innerHTML = deepDiveHTML;
+
+        // Render the weekly performance chart
+        const ctx = document.getElementById('weeklyScoreChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: lastSeasonGames.map(g => `Week ${g.week}`),
+                datasets: [{
+                    label: 'Fantasy Points',
+                    data: lastSeasonGames.map(g => g.fantasy_points_custom),
+                    backgroundColor: 'rgba(97, 218, 251, 0.6)'
+                }]
+            },
+            options: {
+                 scales: { x: { ticks: { color: '#e0e0e0' } }, y: { ticks: { color: '#e0e0e0' }, beginAtZero: true } },
+                 plugins: { legend: { display: false } }
+            }
+        });
     }
 });
