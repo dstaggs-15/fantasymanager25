@@ -8,25 +8,37 @@
     <header><h1>Analysis Dashboard</h1><nav><a href="index.html">Home</a></nav></header>
     <main>
         <div class="report-card">
-            <h2>Data Consensus</h2>
-            <p>This is an automated analysis of the key takeaways from the latest data.</p>
-            <ul id="consensus-list"><li>Loading consensus...</li></ul>
+            <h2>Interactive Player Comparison</h2>
+            <p>Select any two players to see a side-by-side comparison of their fantasy and real-world stats.</p>
+            <div class="report-grid">
+                <div>
+                    <label for="player1-search">Player 1</label>
+                    <input type="text" id="player1-search" list="player-list" placeholder="Search for a player...">
+                </div>
+                <div>
+                    <label for="player2-search">Player 2</label>
+                    <input type="text" id="player2-search" list="player-list" placeholder="Search for a player...">
+                </div>
+            </div>
+            <div id="comparison-results"></div>
+            <datalist id="player-list"></datalist>
         </div>
-        
+
         <div class="report-grid">
             <div class="report-card">
-                <h3>Top 20 Players by VORP</h3>
-                <p>This chart shows the most valuable players relative to their position, a key metric for drafting.</p>
-                <canvas id="vorpChart"></canvas>
+                <h3>Top 10 Matchups (Week 1)</h3>
+                <p>Players with the biggest projected boost based on their opponent.</p>
+                <div id="top-matchups"></div>
             </div>
             <div class="report-card">
-                <h3>Consistency vs. Ceiling (RBs)</h3>
-                <p>This scatter plot shows player volatility. Ideal players are in the top right (high scoring, high consistency).</p>
-                <canvas id="consistencyChart"></canvas>
+                <h3>Top 5 Defenses to Target</h3>
+                <p>Defenses that allow the most fantasy points to skill positions.</p>
+                <canvas id="defensive-chart"></canvas>
             </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>
