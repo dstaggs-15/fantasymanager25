@@ -1,26 +1,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // --- Data Loading ---
     let allPlayers = [];
-    let matchupData = {};
-    let teamData = {};
+    // Other variables from your original dashboard.js can remain if needed
 
     try {
-        const [vorpRes, matchupRes, teamRes] = await Promise.all([
+        const [vorpRes] = await Promise.all([
             fetch('data/analysis/vorp_analysis.json'),
-            fetch('data/analysis/matchup_report.json'),
-            fetch('data/analysis/team_rankings.json')
+            // Add other fetch calls here if the dashboard needs more data
         ]);
-        if (!vorpRes.ok || !matchupRes.ok || !teamRes.ok) throw new Error('Failed to load analysis files.');
+        if (!vorpRes.ok) throw new Error('Failed to load VORP analysis file.');
 
         const vorpData = await vorpRes.json();
-        matchupData = await matchupRes.json();
-        teamData = await teamRes.json();
         allPlayers = vorpData.players;
 
         // --- Initial Page Renders ---
         populateDatalist(allPlayers);
-        renderTopMatchups(matchupData.matchups);
-        renderDefensiveChart(teamData.fantasy_points_allowed);
+        // Call other chart rendering functions here
 
     } catch (error) {
         console.error("Dashboard failed to load:", error);
@@ -39,70 +34,61 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         comparisonResults.innerHTML = '';
         if (player1 && player2) {
+            const statsToCompare = [
+                { label: 'Position', key: 'position' },
+                { label: 'Fantasy PPG', key: 'ppg', bold: true },
+                { label: 'VORP', key: 'vorp', bold: true },
+                { label: 'Pass Yds/Game', key: 'passing_yards_pg' },
+                { label: 'Pass TDs/Game', key: 'passing_tds_pg' },
+                { label: 'Rush Yds/Game', key: 'rushing_yards_pg' },
+                { label: 'Rush TDs/Game', key: 'rushing_tds_pg' },
+                { label: 'Receptions/Game', key: 'receptions_pg' },
+                { label: 'Rec Yds/Game', key: 'receiving_yards_pg' },
+                { label: 'Rec TDs/Game', key: 'receiving_tds_pg' },
+            ];
+
             let comparisonHTML = `
             <div class="table-container">
                 <table>
-                    <thead><tr><th>Stat</th><th>${player1.player_display_name}</th><th>${player2.player_display_name}</th></tr></thead>
-                    <tbody>
-                        <tr><td>Position</td><td>${player1.position}</td><td>${player2.position}</td></tr>
-                        <tr><td>PPG</td><td>${player1.ppg.toFixed(2)}</td><td>${player2.ppg.toFixed(2)}</td></tr>
-                        <tr><td>VORP</td><td>${player1.vorp.toFixed(2)}</td><td>${player2.vorp.toFixed(2)}</td></tr>
-                    </tbody>
-                </table>
-            </div>`;
+                    <thead><tr>
+                        <th>Stat</th>
+                        <th>${player1.player_display_name}</th>
+                        <th>${player2.player_display_name}</th>
+                    </tr></thead>
+                    <tbody>`;
+
+            statsToCompare.forEach(stat => {
+                const val1 = player1[stat.key] !== undefined ? player1[stat.key] : 'N/A';
+                const val2 = player2[stat.key] !== undefined ? player2[stat.key] : 'N/A';
+                
+                // Only show rows if at least one player has a non-zero value for that stat
+                if (val1 !== 'N/A' && val1 !== 0 || val2 !== 'N/A' && val2 !== 0) {
+                     comparisonHTML += `
+                        <tr>
+                            <td>${stat.label}</td>
+                            <td class="${val1 > val2 ? 'winner' : ''}">${val1}</td>
+                            <td class="${val2 > val1 ? 'winner' : ''}">${val2}</td>
+                        </tr>
+                    `;
+                }
+            });
+            
+            comparisonHTML += '</tbody></table></div>';
             comparisonResults.innerHTML = comparisonHTML;
         }
     }
-    player1Search.addEventListener('change', updateComparison);
-    player2Search.addEventListener('change', updateComparison);
+    // Use the 'input' event for a more responsive feel
+    player1Search.addEventListener('input', updateComparison);
+    player2Search.addEventListener('input', updateComparison);
     
     function populateDatalist(players) {
         const playerDatalist = document.getElementById('player-list');
+        // Sort players alphabetically for the dropdown
+        players.sort((a, b) => a.player_display_name.localeCompare(b.player_display_name));
         players.forEach(p => {
             const option = document.createElement('option');
             option.value = p.player_display_name;
             playerDatalist.appendChild(option);
-        });
-    }
-
-    // --- Chart and List Rendering Functions ---
-    function renderTopMatchups(matchups) {
-        const container = document.getElementById('top-matchups');
-        // Sort by projection difference from baseline PPG
-        const sorted = matchups.sort((a,b) => (b.projection - b.player_ppg) - (a.projection - a.player_ppg));
-        let listHTML = '<ul>';
-        sorted.slice(0, 10).forEach(m => {
-            const boost = m.projection - m.player_ppg;
-            listHTML += `<li><strong>${m.player}</strong> vs ${m.opponent} <span style="color:${boost > 0 ? '#4CAF50' : '#F44336'};">(${boost.toFixed(2)} pt boost)</span></li>`;
-        });
-        listHTML += '</ul>';
-        container.innerHTML = listHTML;
-    }
-
-    function renderDefensiveChart(fpaData) {
-        const teams = Object.keys(fpaData);
-        const totalPointsAllowed = teams.map(team => {
-            return (fpaData[team].RB || 0) + (fpaData[team].WR || 0) + (fpaData[team].TE || 0);
-        });
-        
-        const sortedData = teams.map((team, i) => ({team, points: totalPointsAllowed[i]}))
-            .sort((a,b) => b.points - a.points).slice(0, 5); // Top 5 worst defenses
-
-        const ctx = document.getElementById('defensive-chart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: sortedData.map(d => d.team),
-                datasets: [{
-                    label: 'Avg Fantasy Pts Allowed to RB/WR/TE',
-                    data: sortedData.map(d => d.points),
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)'
-                }]
-            },
-            options: {
-                scales: { x: { ticks: { color: '#e0e0e0' } }, y: { ticks: { color: '#e0e0e0' } } },
-                plugins: { legend: { display: false } }
-            }
         });
     }
 });
