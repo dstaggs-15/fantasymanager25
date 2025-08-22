@@ -8,13 +8,22 @@
     <header><h1>Analysis Dashboard</h1><nav><a href="index.html">Home</a></nav></header>
     <main>
         <div class="report-card">
-            <h2>Top 20 Players by VORP</h2>
-            <canvas id="vorpChart"></canvas>
+            <h2>Data Consensus</h2>
+            <p>This is an automated analysis of the key takeaways from the latest data.</p>
+            <ul id="consensus-list"><li>Loading consensus...</li></ul>
         </div>
         
-        <div class="report-card">
-            <h2 id="matchup-title">Loading Matchup Report...</h2>
-            <canvas id="matchupChart"></canvas>
+        <div class="report-grid">
+            <div class="report-card">
+                <h3>Top 20 Players by VORP</h3>
+                <p>This chart shows the most valuable players relative to their position, a key metric for drafting.</p>
+                <canvas id="vorpChart"></canvas>
+            </div>
+            <div class="report-card">
+                <h3>Consistency vs. Ceiling (RBs)</h3>
+                <p>This scatter plot shows player volatility. Ideal players are in the top right (high scoring, high consistency).</p>
+                <canvas id="consistencyChart"></canvas>
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
