@@ -1,42 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let allPlayers = []; // This will be populated by the VORP data
+document.addEventListener('DOMContentLoaded', async () => {
+    // --- Data Loading ---
+    let allPlayers = [];
+    let matchupData = {};
+    let teamData = {};
+    let chartInstances = {}; // To manage and destroy old charts
 
-    // --- Load VORP Data for Player Comparison ---
-    fetch('data/analysis/vorp_analysis.json')
-        .then(res => {
-            if (!res.ok) throw new Error('VORP data file not found.');
-            return res.json();
-        })
-        .then(data => {
-            allPlayers = data.players;
-            initializeComparisonTool(allPlayers);
-        })
-        .catch(error => {
-            console.error('Failed to load VORP data for comparison tool:', error);
-            const comparisonCard = document.querySelector('#comparison-card p');
-            if(comparisonCard) comparisonCard.textContent = 'Error: Could not load player data for comparison.';
-        });
+    try {
+        const [vorpRes, matchupRes, teamRes] = await Promise.all([
+            fetch('data/analysis/vorp_analysis.json'),
+            fetch('data/analysis/matchup_report.json'),
+            fetch('data/analysis/team_rankings.json')
+        ]);
+        if (!vorpRes.ok || !matchupRes.ok || !teamRes.ok) throw new Error('Failed to load analysis files.');
 
-    // --- Load Matchup Data ---
-    fetch('data/analysis/matchup_report.json')
-        .then(res => {
-            if (!res.ok) throw new Error('Matchup data file not found.');
-            return res.json();
-        })
-        .then(data => renderTopMatchups(data.matchups))
-        .catch(error => console.error('Failed to load matchup data:', error));
+        const vorpData = await vorpRes.json();
+        matchupData = await matchupRes.json();
+        teamData = await teamRes.json();
+        allPlayers = vorpData.players;
 
-    // --- Load Team Rankings Data ---
-    fetch('data/analysis/team_rankings.json')
-        .then(res => {
-            if (!res.ok) throw new Error('Team ranking data file not found.');
-            return res.json();
-        })
-        .then(data => renderDefensiveChart(data.fantasy_points_allowed))
-        .catch(error => console.error('Failed to load team ranking data:', error));
+        // --- Initial Page Renders ---
+        initializeComparisonTool(allPlayers);
+        renderTopMatchups(matchupData.matchups);
+        renderDefensiveChart(teamData.fantasy_points_allowed);
 
+    } catch (error) {
+        console.error("Dashboard failed to load:", error);
+    }
 
-    // --- All Functions ---
+    // --- Player Comparison Logic ---
     function initializeComparisonTool(players) {
         const player1Search = document.getElementById('player1-search');
         const player2Search = document.getElementById('player2-search');
@@ -57,22 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const player1 = players.find(p => p.player_display_name === name1);
             const player2 = players.find(p => p.player_display_name === name2);
             
-            comparisonResults.innerHTML = '';
+            comparisonResults.innerHTML = ''; // Clear previous results
             if (player1 && player2) {
-                // ... (Rendering logic from previous version)
-                let comparisonHTML = `<div class="table-container" style="margin-top: 2rem;"><table>...</table></div>`; // Your table rendering here
-                comparisonResults.innerHTML = comparisonHTML;
-            }
-        }
-        player1Search.addEventListener('input', updateComparison);
-        player2Search.addEventListener('input', updateComparison);
-    }
-    
-    function renderTopMatchups(matchups) {
-        // ... (function is unchanged)
-    }
-
-    function renderDefensiveChart(fpaData) {
-        // ... (function is unchanged)
-    }
-});
+                // THE FIX: Add the full HTML structure for the table and chart canvases
+                comparisonResults.innerHTML = `
+                    <div class="table-container" style="margin-top: 2rem;">
+                        <table id="comparison-table"></table>
+                    </div>
+                    <div class="report-grid" style="margin-top: 2rem;">
+                        <div class="report-card">
+                            <h3>Fantasy Point Composition</h3>
+                            <canvas id="composition-chart"></canvas>
+                        </div>
+                        <div class="report-card">
+                            <h3>Per-Game Stat Comparison</h3>
+                            <canvas id="raw-stats-chart"></canvas>
+                        </div>
+                    </div>
