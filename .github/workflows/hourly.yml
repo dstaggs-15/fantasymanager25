@@ -1,17 +1,18 @@
-name: Run Weekly Matchup Analysis
+name: Main Fantasy Football Data Pipeline
 
 on:
-  workflow_dispatch: # Allows you to run this manually
+  workflow_dispatch:
+  schedule:
+    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
 
 jobs:
-  run-matchup-analyzer:
+  build-and-analyze:
+    name: Fetch, Process, and Analyze All Data
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -21,11 +22,27 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Matchup Analyzer Script
-        run: python analysis/matchup_analyzer.py
+      - name: 1. Run Data Collection Script
+        run: python pipeline/get_nfl_data.py
       
-      - name: Commit Matchup Data
+      - name: 2. Run All Analysis Scripts
+        run: |
+          python analysis/waiver_wire.py
+          python analysis/draft_tier_generator.py
+          python analysis/matchup_analyzer.py
+          python analysis/consistency_analyzer.py
+          python analysis/vorp_calculator.py
+          python analysis/team_analyzer.py
+
+      - name: 3. Commit All Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🎯 Chore: Update weekly matchup analysis"
-          file_pattern: "docs/data/analysis/matchup_report.json"
+          commit_message: "🚀 Chore: Update all fantasy analysis data"
+          file_pattern: "docs/data/analysis/*.json docs/data/analysis/*.csv"
+
+      - name: Upload Error Screenshot on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshot
+          path: error_screenshot.png
