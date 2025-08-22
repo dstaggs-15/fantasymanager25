@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Player Consistency Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>Player Consistency Analysis</h1><nav><a href="index.html">Home</a></nav></header>
+    <main>
+        <div class="report-card">
+            <h3>How to Read This Page</h3>
+            <p>This table shows player volatility. <strong>Mean PPG</strong> is their average score. <strong>Std Dev</strong> shows how much their score varies (lower is more consistent). <strong>Ceiling/Floor</strong> show their 90th/10th percentile scores. <strong>Consistency %</strong> is the percentage of games they scored above a baseline for their position.</p>
+        </div>
+
+        <div class="report-card">
+            <label for="player-search">Search Player</label>
+            <input type="text" id="player-search" placeholder="Filter by player name...">
+        </div>
+
+        <div class="table-container">
+            <table id="consistency-table"></table>
+        </div>
+    </main>
+    <script src="consistency.js"></script>
+</body>
+</html>
