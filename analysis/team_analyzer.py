@@ -3,7 +3,14 @@ import os
 import json
 import numpy as np
 import sys # Add sys import
+# ... (imports)
 
+# --- Configuration ---
+# THE FIX: Ensure all scripts read from and write to the 'docs' folder
+DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
+OUTPUT_DIR = os.path.join('docs', 'data', 'analysis')
+
+# ... (the rest of each script is unchanged)
 # THE FIX: Add the project's root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
