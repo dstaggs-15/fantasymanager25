@@ -1,8 +1,14 @@
 import pandas as pd
 import os
 import json
-import numpy as np # THE FIX: Added the missing import
-from pipeline.utils import calculate_fantasy_points # Use the shared function
+import numpy as np
+import sys # Add sys import
+
+# Add the project's root directory to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, project_root)
+
+from pipeline.utils import calculate_fantasy_points # This will now work
 
 # --- Configuration ---
 DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
@@ -18,7 +24,7 @@ def main():
         return
 
     season_df = df[df['season'] == ANALYSIS_SEASON].copy()
-    season_df = calculate_fantasy_points(season_df) # Use the shared function
+    season_df = calculate_fantasy_points(season_df)
     season_df['opponent'] = np.where(season_df['recent_team'] == season_df['home_team'], season_df['away_team'], season_df['home_team'])
     
     fpa = season_df.groupby(['opponent', 'position'])['fantasy_points_custom'].mean().unstack().round(2)
