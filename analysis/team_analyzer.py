@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 import json
+import numpy as np # THE FIX: Added the missing import
+from pipeline.utils import calculate_fantasy_points # Use the shared function
 
 # --- Configuration ---
 DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
@@ -16,13 +18,12 @@ def main():
         return
 
     season_df = df[df['season'] == ANALYSIS_SEASON].copy()
+    season_df = calculate_fantasy_points(season_df) # Use the shared function
     season_df['opponent'] = np.where(season_df['recent_team'] == season_df['home_team'], season_df['away_team'], season_df['home_team'])
     
-    # Calculate Fantasy Points Allowed by each defense, to each position
-    fpa = season_df.groupby(['opponent', 'position'])['fantasy_points_ppr'].mean().unstack().round(2)
+    fpa = season_df.groupby(['opponent', 'position'])['fantasy_points_custom'].mean().unstack().round(2)
     fpa = fpa.rename(columns={'opponent': 'team'}).fillna(0)
     
-    # Calculate total points scored by each offense
     offense_scoring = season_df.groupby('recent_team')['weekly_points'].mean().round(2).sort_values(ascending=False)
     
     report = {
