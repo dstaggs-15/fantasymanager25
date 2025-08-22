@@ -7,18 +7,17 @@
 <body>
     <header><h1>Weekly Matchup Analyzer</h1><nav><a href="index.html">Home</a></nav></header>
     <main>
-        <h2 id="report-title">Loading Matchup Report...</h2>
-        
         <div class="report-card">
-            <label for="player-search">Search Player</label>
-            <input type="text" id="player-search" placeholder="Filter by player name...">
+            <h3>Player Deep Dive</h3>
+            <p>Search for a player to see their weekly performance from last season and their upcoming matchup analysis.</p>
+            <input type of="text" id="player-search" list="player-list" placeholder="Search for any fantasy-relevant player...">
+            <datalist id="player-list"></datalist>
         </div>
+        
+        <div id="deep-dive-container"></div>
 
-        <div class="table-container">
-            <table id="matchup-table">
-                </table>
-        </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="matchup.js"></script>
 </body>
 </html>
