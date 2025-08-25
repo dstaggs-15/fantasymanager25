@@ -1,20 +1,16 @@
-# fantasymanager25
-
-
-Of course. A good README file is essential for any project. This will serve as the perfect front page for your repository, explaining the project's purpose, technology, and features to any visitor.
-
-Here is a comprehensive README file. You can copy this text and paste it into the `README.md` file in your repository.
-
------
-
 # Fantasy Football Data Hub & Analysis Toolkit
 
 ## Overview
 
-This project is a fully automated data pipeline and analysis suite designed to provide a significant competitive advantage in the "Rock or Bust V" fantasy football league. It moves beyond standard fantasy platforms by collecting years of historical NFL data, running a suite of custom analysis scripts tailored to the league's specific scoring rules, and displaying the results on a clean, interactive website.
+This project is a fully automated data pipeline and analysis suite designed to provide a significant competitive advantage in the my fantasy football league. It moves beyond standard fantasy platforms by collecting years of historical NFL data, running a suite of custom analysis scripts tailored to the league's specific scoring rules, and displaying the results on a clean, interactive website.
 
 The entire system is automated using GitHub Actions, running on a daily schedule to ensure the data is always fresh. The goal is to provide unique, data-driven insights for making smarter decisions in drafting, weekly matchups, and waiver wire pickups.
+## Disclaimer of Info/Project History
+ Note on Data Sources: This project's initial goal was to create a fully automated data pipeline that pulled data directly from a private ESPN fantasy football league. To achieve this, we employed a series of progressively advanced techniques, including direct API calls with authentication cookies and browser automation using Playwright to simulate a real user.
 
+Despite these efforts—including running the automation from various trusted networks—we consistently encountered sophisticated, multi-layered bot detection and CAPTCHA challenges from ESPN's servers. These security measures are specifically designed to prevent the exact kind of automated data extraction we were attempting.
+
+After a comprehensive troubleshooting process, we concluded that reliably bypassing ESPN's security for a fully automated, 24/7 pipeline was not feasible. This led to a strategic pivot. The project's current, stable architecture is now based on a more reliable foundation: it uses the excellent nfl-data-py open-source library to collect historical and weekly public NFL data. This approach is more robust and provides a richer dataset for the kind of in-depth statistical analysis you see on this site.
 ## Features
 
 The live website, powered by this repository, provides several custom-built analysis tools:
