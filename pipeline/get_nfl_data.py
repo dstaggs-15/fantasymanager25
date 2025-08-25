@@ -3,24 +3,21 @@
 import pandas as pd
 import nfl_data_py as nfl
 import os
-import datetime # Import the datetime library
+import datetime
+from urllib.error import HTTPError  # Import the specific error we need to catch
 from utils import calculate_fantasy_points
 
 def main():
     """
     Main function to run the data collection and processing pipeline.
-    This script is now dynamic and will always fetch the last 4 seasons of data.
+    This script is now robust and will skip years with no available data.
     """
     print("Starting the NFL data pipeline...")
 
     # --- DYNAMIC YEAR CALCULATION ---
-    # Get the current year (e.g., 2025)
     current_year = datetime.date.today().year
-    # Create a list of the last 4 years including the current year
-    # In 2025, this will be [2022, 2023, 2024, 2025]
     YEARS = list(range(current_year - 3, current_year + 1))
     
-    # Define the output path for the final master CSV file
     output_folder = os.path.join('docs', 'data')
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
@@ -28,14 +25,34 @@ def main():
 
     print(f"Dynamically determined years to fetch: {YEARS}")
     
-    # Use nfl-data-py to import weekly data for the specified years
-    df = nfl.import_weekly_data(years=YEARS, columns=[
-        'player_id', 'player_name', 'position', 'team', 'season', 'week',
-        'passing_yards', 'passing_tds', 'interceptions', 'passing_2pt_conversions',
-        'rushing_yards', 'rushing_tds', 'rushing_first_downs', 'rushing_2pt_conversions',
-        'receptions', 'receiving_yards', 'receiving_tds', 'receiving_first_downs', 'receiving_2pt_conversions',
-        'fumbles_lost', 'special_teams_tds'
-    ])
+    # --- ROBUST DATA FETCHING LOGIC ---
+    all_years_data = []
+    for year in YEARS:
+        try:
+            print(f"Fetching data for {year}...")
+            # Attempt to fetch data for a single year
+            df_year = nfl.import_weekly_data(years=[year], columns=[
+                'player_id', 'player_name', 'position', 'team', 'season', 'week',
+                'passing_yards', 'passing_tds', 'interceptions', 'passing_2pt_conversions',
+                'rushing_yards', 'rushing_tds', 'rushing_first_downs', 'rushing_2pt_conversions',
+                'receptions', 'receiving_yards', 'receiving_tds', 'receiving_first_downs', 'receiving_2pt_conversions',
+                'fumbles_lost', 'special_teams_tds'
+            ])
+            all_years_data.append(df_year)
+            print(f"Successfully fetched data for {year}.")
+        except HTTPError:
+            # If a 404 error occurs, print a warning and continue
+            print(f"Warning: Data for {year} not available yet. Skipping.")
+        except Exception as e:
+            # Catch any other potential errors
+            print(f"An unexpected error occurred for year {year}: {e}. Skipping.")
+
+    if not all_years_data:
+        print("No data could be fetched. Exiting pipeline.")
+        return
+
+    # Combine all successfully fetched years into one DataFrame
+    df = pd.concat(all_years_data, ignore_index=True)
     
     print("Data fetched successfully. Now calculating fantasy points...")
 
@@ -58,10 +75,9 @@ def main():
     
     print(f"Saving master data file to: {master_data_path}")
     
-    # Save the processed data to the master CSV file
     final_df.to_csv(master_data_path, index=False)
     
-    print("Data pipeline is now future-proof and finished successfully!")
+    print("Data pipeline is now robust and finished successfully!")
 
 if __name__ == '__main__':
     main()
