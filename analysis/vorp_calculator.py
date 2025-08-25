@@ -1,70 +1,65 @@
+# analysis/vorp_calculator.py
+
 import pandas as pd
-import os
 import json
-import sys # Add sys import
-# ... (imports)
+import os
 
-# --- Configuration ---
-# THE FIX: Ensure all scripts read from and write to the 'docs' folder
-DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
-OUTPUT_DIR = os.path.join('docs', 'data', 'analysis')
+def calculate_ppg():
+    """
+    Calculates the Points Per Game (PPG) for each player based on the master data file.
+    It filters for players who have played a meaningful number of games.
+    """
+    print("Starting PPG calculation for VORP tool...")
 
-# ... (the rest of each script is unchanged)
-# Add the project's root directory to the Python path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.insert(0, project_root)
+    # Define file paths
+    data_folder = os.path.join('..', 'docs', 'data')
+    master_data_path = os.path.join(data_folder, 'master_data.csv')
+    output_path = os.path.join(data_folder, 'analysis', 'player_ppg.json')
 
-from pipeline.utils import calculate_fantasy_points
+    # Create the output directory if it doesn't exist
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
-OUTPUT_DIR = 'docs/data/analysis'
-ANALYSIS_SEASON = 2024
-REPLACEMENT_LEVELS = {'QB': 11, 'RB': 21, 'WR': 21, 'TE': 11}
-
-def main():
-    print("--- Starting VORP and Stats Calculator ---")
+    # Load the master data
     try:
-        df = pd.read_csv(DATA_FILE, low_memory=False)
+        df = pd.read_csv(master_data_path)
     except FileNotFoundError:
-        print(f"❌ ERROR: Data file not found.")
+        print(f"Error: The file {master_data_path} was not found.")
+        print("Please run the `pipeline/get_nfl_data.py` script first.")
         return
 
-    df = calculate_fantasy_points(df)
-    
-    stats_to_average = [
-        'fantasy_points_custom', 'passing_yards', 'passing_tds', 'interceptions',
-        'rushing_yards', 'rushing_tds', 'receptions', 'receiving_yards', 'receiving_tds'
-    ]
-    player_season_stats = df.groupby(['player_id', 'player_display_name', 'position', 'season']).agg(
-        games_played=('week', 'nunique'),
-        **{stat: (stat, 'sum') for stat in stats_to_average}
+    # --- PPG Calculation Logic ---
+    # We only want to analyze the most recent completed season for PPG rankings.
+    # Let's dynamically find the most recent season with at least a few weeks of data.
+    latest_season = df['season'].max()
+    print(f"Analyzing data for the {latest_season} season.")
+    df_season = df[df['season'] == latest_season]
+
+    # Group by player to calculate total points and games played
+    player_stats = df_season.groupby(['player_id', 'player_name', 'position', 'team']).agg(
+        total_points=('fantasy_points', 'sum'),
+        games_played=('fantasy_points', 'count')
     ).reset_index()
 
-    for stat in stats_to_average:
-        player_season_stats[f'{stat}_pg'] = player_season_stats[stat] / player_season_stats['games_played']
-    
-    last_season_stats = player_season_stats[player_season_stats['season'] == ANALYSIS_SEASON].copy()
-    last_season_stats = last_season_stats.rename(columns={'fantasy_points_custom_pg': 'ppg'})
+    # Filter out players with very few games to avoid skewed PPG
+    min_games_played = 4
+    player_stats = player_stats[player_stats['games_played'] >= min_games_played]
 
-    vorp_data = []
-    print("Calculating VORP for each position...")
-    for pos, rank_cutoff in REPLACEMENT_LEVELS.items():
-        pos_df = last_season_stats[last_season_stats['position'] == pos].sort_values(by='ppg', ascending=False).reset_index(drop=True)
-        if len(pos_df) > rank_cutoff:
-            replacement_value = pos_df.loc[rank_cutoff - 1, 'ppg']
-        else:
-            replacement_value = 0
-        pos_df['vorp'] = pos_df['ppg'] - replacement_value
-        vorp_data.append(pos_df)
+    # Calculate PPG
+    player_stats['ppg'] = round(player_stats['total_points'] / player_stats['games_played'], 2)
 
-    final_df = pd.concat(vorp_data).sort_values(by='vorp', ascending=False)
-    
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    output_path = os.path.join(OUTPUT_DIR, 'vorp_analysis.json')
-    report = {'season': ANALYSIS_SEASON, 'players': final_df.round(2).to_dict('records')}
+    # Select and rename columns for the final output
+    final_data = player_stats[['player_name', 'team', 'position', 'ppg']].copy()
+    final_data.sort_values(by='ppg', ascending=False, inplace=True)
+
+    # Convert the DataFrame to a list of dictionaries (JSON format)
+    players_json = final_data.to_dict(orient='records')
+
+    # Save the data to a JSON file
     with open(output_path, 'w') as f:
-        json.dump(report, f, indent=2)
-    print(f"✅ VORP analysis report with detailed stats saved to {output_path}")
+        json.dump(players_json, f, indent=4)
+
+    print(f"Successfully created PPG data at: {output_path}")
+    print("You can now open the vorp.html page.")
 
 if __name__ == '__main__':
-    main()
+    calculate_ppg()
