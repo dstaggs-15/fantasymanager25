@@ -11,13 +11,14 @@ def calculate_ppg():
     """
     print("Starting PPG calculation for VORP tool...")
 
-    # Define file paths
-    data_folder = os.path.join('..', 'docs', 'data')
-    master_data_path = os.path.join(data_folder, 'master_data.csv')
-    output_path = os.path.join(data_folder, 'analysis', 'player_ppg.json')
+    # --- CORRECTED FILE PATHS ---
+    # Paths are now relative to the project's root directory, where the workflow runs.
+    master_data_path = os.path.join('docs', 'data', 'master_data.csv')
+    output_folder = os.path.join('docs', 'data', 'analysis')
+    output_path = os.path.join(output_folder, 'player_ppg.json')
 
     # Create the output directory if it doesn't exist
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    os.makedirs(output_folder, exist_ok=True)
 
     # Load the master data
     try:
@@ -28,33 +29,25 @@ def calculate_ppg():
         return
 
     # --- PPG Calculation Logic ---
-    # We only want to analyze the most recent completed season for PPG rankings.
-    # Let's dynamically find the most recent season with at least a few weeks of data.
     latest_season = df['season'].max()
     print(f"Analyzing data for the {latest_season} season.")
     df_season = df[df['season'] == latest_season]
 
-    # Group by player to calculate total points and games played
     player_stats = df_season.groupby(['player_id', 'player_name', 'position', 'team']).agg(
         total_points=('fantasy_points', 'sum'),
         games_played=('fantasy_points', 'count')
     ).reset_index()
 
-    # Filter out players with very few games to avoid skewed PPG
     min_games_played = 4
     player_stats = player_stats[player_stats['games_played'] >= min_games_played]
 
-    # Calculate PPG
     player_stats['ppg'] = round(player_stats['total_points'] / player_stats['games_played'], 2)
 
-    # Select and rename columns for the final output
     final_data = player_stats[['player_name', 'team', 'position', 'ppg']].copy()
     final_data.sort_values(by='ppg', ascending=False, inplace=True)
 
-    # Convert the DataFrame to a list of dictionaries (JSON format)
     players_json = final_data.to_dict(orient='records')
 
-    # Save the data to a JSON file
     with open(output_path, 'w') as f:
         json.dump(players_json, f, indent=4)
 
