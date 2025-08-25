@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <title>Analysis Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <title>FantasyManager · Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .pill{display:inline-block;padding:.2rem .5rem;border-radius:999px;background:#eef;margin-left:.4rem;font-size:.8rem}
+    .card{background:#1115;border:1px solid #333;border-radius:12px;padding:16px;margin:12px 0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .meta{opacity:.75;font-size:.9rem}
+    .up{color:#6fe36f}.down{color:#f86e6e}
+  </style>
 </head>
 <body>
-    <header><h1>Analysis Dashboard</h1><nav><a href="index.html">Home</a></nav></header>
-    <main>
-        <div class="report-card">
-            <h2>Interactive Player Comparison</h2>
-            <p>Select any two players to see a side-by-side comparison of their fantasy and real-world stats for the 2024 season.</p>
-            <div class="report-grid">
-                <div>
-                    <label for="player1-search">Player 1</label>
-                    <input type="text" id="player1-search" list="player-list" placeholder="Search for a player...">
-                </div>
-                <div>
-                    <label for="player2-search">Player 2</label>
-                    <input type="text" id="player2-search" list="player-list" placeholder="Search for a player...">
-                </div>
-            </div>
-            <div id="comparison-results"></div>
-            <datalist id="player-list"></datalist>
-        </div>
+  <header>
+    <h1>Dashboard <span id="meta" class="meta"></span></h1>
+  </header>
 
-        <div class="report-grid">
-            <div class="report-card">
-                <h3>Top 10 Matchups (Week 1)</h3>
-                <p>Players with the biggest projected boost based on their opponent.</p>
-                <div id="top-matchups"></div>
-            </div>
-            <div class="report-card">
-                <h3>Top 5 Defenses to Target</h3>
-                <p>Defenses that allowed the most fantasy points to skill positions in 2024.</p>
-                <canvas id="defensive-chart"></canvas>
-            </div>
-        </div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="dashboard.js"></script>
+  <section class="grid">
+    <div class="card">
+      <h2>This Week · Top Starters</h2>
+      <div id="leaders"></div>
+    </div>
+
+    <div class="card">
+      <h2>Hot Hand (Last 4 Weeks)</h2>
+      <div id="hot"></div>
+    </div>
+
+    <div class="card">
+      <h2>Flags & Notes</h2>
+      <ul id="flags">
+        <li>All points use your league’s scoring (PPR, first downs, bonuses).</li>
+        <li>Click “Matchup” for opponent strength; “Start/Sit” to compare two players (coming next).</li>
+      </ul>
+    </div>
+  </section>
+
+  <script src="dashboard.js"></script>
 </body>
 </html>
