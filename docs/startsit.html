@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Start/Sit Comparator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .wrap { max-width: 980px; margin: 24px auto; padding: 0 12px; }
+    .card { background: #121212; border: 1px solid #2b2b2b; border-radius: 14px; padding: 16px; margin: 12px 0; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .pill { display:inline-block;padding:.25rem .6rem;border:1px solid #333;border-radius:999px;background:#232323;color:#ddd }
+    .winner { color: #10b981; font-weight: 700; }
+    .loser { color: #f87171; font-weight: 700; }
+    .muted { opacity: .8; }
+    .cols { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (max-width: 800px){ .cols { grid-template-columns: 1fr; } }
+    .explain { color:#9aa3af; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Start / Sit Comparator</h1>
+    <div class="card">
+      <div class="row">
+        <label class="pill">Player A&nbsp;<input id="p1" list="playersList" placeholder="Type a name…" /></label>
+        <label class="pill">Player B&nbsp;<input id="p2" list="playersList" placeholder="Type a name…" /></label>
+        <button id="go">Compare</button>
+        <span id="meta" class="muted"></span>
+      </div>
+      <datalist id="playersList"></datalist>
+    </div>
+
+    <div class="card" id="result" style="display:none;">
+      <h2 id="headline"></h2>
+      <p class="explain">How it works: we blend **usage**, **efficiency**, **offensive line**, **opponent difficulty**, **game environment**, and **consistency**. Scores are 0–100; higher is better. Component bars show contribution (0–100%).</p>
+      <div class="cols">
+        <div>
+          <h3 id="aName"></h3>
+          <canvas id="aRadar"></canvas>
+          <p class="muted" id="aMeta"></p>
+        </div>
+        <div>
+          <h3 id="bName"></h3>
+          <canvas id="bRadar"></canvas>
+          <p class="muted" id="bMeta"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>What the components mean</h2>
+      <ul class="explain">
+        <li><b>Usage</b>: snaps/attempts/targets/air yards & red‑zone usage (last 5 games).</li>
+        <li><b>Efficiency</b>: position‑specific (e.g., RB yards before/after contact, YPRR for WR/TE, EPA for QB) if available.</li>
+        <li><b>O‑line</b>: optional 0–1 team grade (neutral if missing).</li>
+        <li><b>Opponent</b>: defense vs position (recent points allowed; lower allowed = tougher).</li>
+        <li><b>Environment</b>: optional Vegas implied team points (neutral if missing).</li>
+        <li><b>Consistency</b>: steadiness (lower stdev/mean → higher consistency).</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="startsit.js"></script>
+</body>
+</html>
