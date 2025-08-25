@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "meta": {
+    "name": "Rock or Bust V",
+    "ppr": true,
+    "notes": "Full PPR. Yardage milestones and first-down bonuses included."
+  },
+  "offense": {
+    "passing": {
+      "yards_per": 0.05,
+      "td": 4.0,
+      "int": -2.0,
+      "two_pt": 2.0,
+      "bonus_400_plus_yards": 1.0
+    },
+    "rushing": {
+      "yards_per": 0.10,
+      "td": 6.0,
+      "first_down": 1.0,
+      "two_pt": 2.0,
+      "bonus_100_to_199_yards": 1.0
+    },
+    "receiving": {
+      "yards_per": 0.10,
+      "reception": 1.0,
+      "td": 6.0,
+      "first_down": 0.5,
+      "two_pt": 2.0,
+      "bonus_200_plus_yards": 1.0
+    },
+    "turnovers": {
+      "fumbles_lost": -2.0
+    },
+    "returns": {
+      "kick_return_td": 6.0,
+      "punt_return_td": 6.0,
+      "int_return_td": 6.0,
+      "fumble_return_td": 6.0,
+      "blocked_kick_return_td": 6.0,
+      "two_pt_return": 2.0,
+      "one_pt_safety": 1.0
+    }
+  },
+  "kicking": {
+    "pat_made": 1.0,
+    "fg_miss": -1.0,
+    "fg_0_39": 3.0,
+    "fg_40_49": 4.0,
+    "fg_50_59": 5.0,
+    "fg_60_plus": 6.0
+  },
+  "dst": {
+    "sack": 1.0,
+    "block": 2.0,
+    "interception": 2.0,
+    "fumble_recovery": 2.0,
+    "safety": 2.0,
+
+    "return_tds": {
+      "kickoff": 6.0,
+      "punt": 6.0,
+      "interception": 6.0,
+      "fumble": 6.0,
+      "blocked_kick": 6.0,
+      "two_pt_return": 2.0,
+      "one_pt_safety": 1.0
+    },
+
+    "points_allowed": [
+      {"max": 0,  "points": 5},
+      {"min": 1,  "max": 6,  "points": 4},
+      {"min": 7,  "max": 13, "points": 3},
+      {"min": 14, "max": 17, "points": 1},
+      {"min": 28, "max": 34, "points": -1},
+      {"min": 35, "max": 45, "points": -3},
+      {"min": 46,           "points": -5}
+    ],
+
+    "yards_allowed": [
+      {"max": 99,   "points": 5},
+      {"min": 100,  "max": 199, "points": 3},
+      {"min": 200,  "max": 299, "points": 2},
+      {"min": 350,  "max": 399, "points": -1},
+      {"min": 400,  "max": 449, "points": -3},
+      {"min": 450,  "max": 499, "points": -5},
+      {"min": 500,  "max": 549, "points": -6},
+      {"min": 550,             "points": -7}
+    ]
+  }
+}
