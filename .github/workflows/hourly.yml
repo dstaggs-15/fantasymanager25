@@ -1,48 +1,39 @@
-name: Main Fantasy Football Data Pipeline
+name: Build Player Points (League-Scoring)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
+    - cron: "15 9 * * 4"   # Thu 09:15 UTC (adjust if you want)
 
 jobs:
-  build-and-analyze:
-    name: Fetch, Process, and Analyze All Data
+  build-points:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
+          python-version: "3.11"
 
-      - name: 1. Run Data Collection Script
-        run: python pipeline/get_nfl_data.py
-      
-      - name: 2. Run All Analysis Scripts
+      - name: Install deps
         run: |
-          python analysis/waiver_wire.py
-          python analysis/draft_tier_generator.py
-          python analysis/matchup_analyzer.py
-          python analysis/consistency_analyzer.py
-          python analysis/vorp_calculator.py
-          python analysis/team_analyzer.py
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: 3. Commit All Data Files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🚀 Chore: Update all fantasy analysis data"
-          file_pattern: "docs/data/analysis/*.json docs/data/analysis/*.csv"
+      - name: Get NFL data
+        run: |
+          python pipeline/get_nfl_data.py
 
-      - name: Upload Error Screenshot on Failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: error-screenshot
-          path: error_screenshot.png
+      - name: Build league-scored points
+        run: |
+          python analysis/player_points.py
+
+      - name: Commit artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/analysis/*.json
+          git commit -m "Update league-scored points" || echo "No changes"
+          git push
