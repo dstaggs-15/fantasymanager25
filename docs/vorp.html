@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Additional styles specific to this page */
-        .vorp-controls {
+        .vorp-controls, .comparison-controls {
             display: flex;
             gap: 1.5rem;
             align-items: center;
@@ -21,17 +21,22 @@
             margin-bottom: 2rem;
             border: 1px solid var(--color-border);
         }
-        .control-group {
+        .control-group, .search-group {
             display: flex;
             flex-direction: column;
         }
-        .control-group label {
+        .control-group label, .search-group label {
             font-size: 0.9rem;
             color: var(--color-text-secondary);
             margin-bottom: 0.25rem;
         }
         .control-group input {
             width: 80px;
+        }
+        .search-group input {
+            width: 250px;
+        }
+        .control-group input, .search-group input {
             padding: 0.5rem;
             background-color: var(--color-background);
             border: 1px solid var(--color-border);
@@ -39,6 +44,21 @@
             border-radius: 4px;
             font-family: var(--font-family-main);
             font-size: 1rem;
+        }
+        #comparison-results {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .player-card {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+        }
+        .player-card h3 {
+            color: var(--color-primary);
         }
     </style>
 </head>
@@ -49,46 +69,40 @@
         <div class="card" style="margin-bottom: 2rem;">
             <h2>How to Use This Tool</h2>
             <p>
-                VORP (Value Over Replacement Player) measures a player's true value by comparing their fantasy output to a "replacement-level" player—the kind of player you could find on the waiver wire.
+                VORP (Value Over Replacement Player) measures a player's true value by comparing them to a "replacement-level" player from the waiver wire. Use the controls below to set the replacement baseline for each position. The main table will rank all players by their VORP.
             </p>
-            <ol>
-                <li><strong>Set Replacement Levels:</strong> In the boxes below, enter the rank for the replacement player at each position. For a 10-team league, defaults like QB11, RB22, WR32, and TE11 are a good start.</li>
-                <li><strong>Analyze the Rankings:</strong> The table will instantly update. A higher VORP score means a player gives you a bigger weekly advantage over your opponents.</li>
-                <li><strong>Experiment:</strong> Change the numbers to see how player values shift based on position scarcity. For example, increasing the TE number to TE15 will make elite TEs even more valuable.</li>
-            </ol>
         </div>
 
         <div class="vorp-controls">
-            <div class="control-group">
-                <label for="qb-level">QB Level</label>
-                <input type="number" id="qb-level" value="11">
+            <div class="control-group"><label for="qb-level">QB Level</label><input type="number" id="qb-level" value="11"></div>
+            <div class="control-group"><label for="rb-level">RB Level</label><input type="number" id="rb-level" value="22"></div>
+            <div class="control-group"><label for="wr-level">WR Level</label><input type="number" id="wr-level" value="32"></div>
+            <div class="control-group"><label for="te-level">TE Level</label><input type="number" id="te-level" value="11"></div>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2>Player Comparison</h2>
+            <div class="comparison-controls">
+                <div class="search-group">
+                    <label for="player1-search">Player 1</label>
+                    <input type="text" id="player1-search" list="player-list" placeholder="Search for a player...">
+                </div>
+                <div class="search-group">
+                    <label for="player2-search">Player 2</label>
+                    <input type="text" id="player2-search" list="player-list" placeholder="Search for a player...">
+                </div>
+                <button id="compare-btn" class="btn" style="align-self: flex-end;">Compare</button>
             </div>
-            <div class="control-group">
-                <label for="rb-level">RB Level</label>
-                <input type="number" id="rb-level" value="22">
-            </div>
-            <div class="control-group">
-                <label for="wr-level">WR Level</label>
-                <input type="number" id="wr-level" value="32">
-            </div>
-            <div class="control-group">
-                <label for="te-level">TE Level</label>
-                <input type="number" id="te-level" value="11">
-            </div>
+            <div id="comparison-results">
+                </div>
+            <datalist id="player-list"></datalist>
         </div>
 
         <div class="card">
-            <h2>VORP Rankings</h2>
+            <h2>Overall VORP Rankings</h2>
             <table id="vorp-table">
                 <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player</th>
-                        <th>Team</th>
-                        <th>Pos</th>
-                        <th>PPG</th>
-                        <th>VORP</th>
-                    </tr>
+                    <tr><th>Rank</th><th>Player</th><th>Team</th><th>Pos</th><th>PPG</th><th>VORP</th></tr>
                 </thead>
                 <tbody id="vorp-table-body">
                     </tbody>
