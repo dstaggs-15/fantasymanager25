@@ -33,6 +33,11 @@ jobs:
         run: |
           python analysis/player_points.py
 
+        - name: Build Start/Sit scores
+        run: |
+          python analysis/start_sit_calculator.py
+
+
       - name: Commit artifacts
         run: |
           git config user.name "github-actions[bot]"
