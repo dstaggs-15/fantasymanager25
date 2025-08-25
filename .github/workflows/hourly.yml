@@ -1,47 +1,46 @@
-name: Build Player Points (League-Scoring)
+# .github/workflows/main_pipeline.yml
+
+name: Fantasy Football Data Pipeline
 
 on:
-  workflow_dispatch:
+  # Runs on a schedule (every day at 10:00 AM UTC)
   schedule:
-    - cron: "15 9 * * 4"   # Thu 09:15 UTC
+    - cron: '0 10 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  build-points:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # Step 1: Check out your repository code
+      - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.10'
 
-      - name: Install deps
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # Step 3: Install the required Python libraries
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
 
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+      # Step 4: Run the main data collection script
+      - name: Get Latest NFL Data
+        run: python pipeline/get_nfl_data.py
+      
+      # Step 5 (NEW): Run the VORP analysis script
+      - name: Calculate Player PPG for VORP
+        run: python analysis/vorp_calculator.py
 
-      - name: Get NFL data
-        run: |
-          python pipeline/get_nfl_data.py
-
-      - name: Build league-scored points
-        run: |
-          python analysis/player_points.py
-
-        - name: Build Start/Sit scores
-        run: |
-          python analysis/start_sit_calculator.py
-
-
-      - name: Commit artifacts
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/analysis/*.json
-          git commit -m "Update league-scored points" || echo "No changes"
-          git push
+      # Step 6: Commit the new data files back to the repository
+      - name: Commit Data Files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📊 Data Update: Refresh NFL player and analysis data"
+          file_pattern: 'docs/data/*.csv docs/data/analysis/*.json'
+          commit_user_name: "GitHub Actions Bot"
+          commit_user_email: "actions@github.com"
+          commit_author: "GitHub Actions Bot <actions@github.com>"
