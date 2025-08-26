@@ -3,39 +3,39 @@
 name: Fantasy Football Data Pipeline
 
 on:
-  # Runs on a schedule (every day at 10:00 AM UTC)
   schedule:
     - cron: '0 10 * * *'
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Check out your repository code
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      # Step 3: Install the required Python libraries
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      # Step 4: Run the main data collection script
       - name: Get Latest NFL Data
         run: python pipeline/get_nfl_data.py
       
-      # Step 5 (NEW): Run the VORP analysis script
+      # --- NEW DIAGNOSTIC STEP ---
+      - name: List files after data collection
+        run: ls -R docs/data
+
       - name: Calculate Player PPG for VORP
         run: python analysis/vorp_calculator.py
 
-      # Step 6: Commit the new data files back to the repository
+      # --- NEW DIAGNOSTIC STEP ---
+      - name: List files after PPG calculation
+        run: ls -R docs/data
+
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
