@@ -25,14 +25,21 @@ jobs:
       - name: Get Latest NFL Data
         run: python pipeline/get_nfl_data.py
       
-      # --- NEW DIAGNOSTIC STEP ---
+      # --- NEW: Verify that the master data file was created ---
+      - name: Verify Data File Creation
+        run: |
+          if [ ! -f docs/data/master_data.csv ]; then
+            echo "CRITICAL ERROR: master_data.csv was not created by the previous step."
+            exit 1
+          fi
+          echo "master_data.csv created successfully."
+
       - name: List files after data collection
         run: ls -R docs/data
 
       - name: Calculate Player PPG for VORP
         run: python analysis/vorp_calculator.py
 
-      # --- NEW DIAGNOSTIC STEP ---
       - name: List files after PPG calculation
         run: ls -R docs/data
 
