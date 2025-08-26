@@ -1,3 +1,4 @@
 nfl-data-py
 pandas
 requests
+pyarrow
