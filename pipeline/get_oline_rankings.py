@@ -4,16 +4,18 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import sys
-import re
 
 def scrape_oline_rankings():
     """
     Scrapes the latest offensive line rankings from a FantasyPros article
-    and saves them to a CSV file.
+    by targeting the specific table in the HTML.
     """
     print("\n--- Starting O-Line Rankings Scraper ---")
+
     url = "https://www.fantasypros.com/2025/07/nfl-offensive-line-rankings-fantasy-football/"
-    headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36' }
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
     output_path = os.path.join('docs', 'data', 'raw', 'oline_rankings.csv')
 
     try:
@@ -23,16 +25,15 @@ def scrape_oline_rankings():
         
         soup = BeautifulSoup(response.content, 'html.parser')
         
-        print("Parsing the article content...")
+        print("Parsing the data table...")
         
-        # CORRECTED: FantasyPros articles use a div with a class like 'main-content'
-        article_content = soup.find('div', class_='main-content')
-        if not article_content:
-            print("❌ ERROR: Could not find the main article content block. The website structure may have changed.")
+        # DEFINITIVE FIX: Find the table using the class 'mobile-table' from your screenshot.
+        table = soup.find('table', class_='mobile-table')
+        if not table:
+            print("❌ ERROR: Could not find the table with class 'mobile-table'. The website structure may have changed.")
             sys.exit(1)
             
-        headings = article_content.find_all(['h3', 'h4']) # Search for h3 or h4 tags
-        
+        rows = table.find_all('tr')
         team_data = []
         fp_name_to_abbr_map = {
             'ARIZONA CARDINALS': 'ARI', 'ATLANTA FALCONS': 'ATL', 'BALTIMORE RAVENS': 'BAL', 'BUFFALO BILLS': 'BUF', 
@@ -45,18 +46,17 @@ def scrape_oline_rankings():
             'SEATTLE SEAHAWKS': 'SEA', 'TAMPA BAY BUCCANEERS': 'TB', 'TENNESSEE TITANS': 'TEN', 'WASHINGTON COMMANDERS': 'WAS'
         }
 
-        for h in headings:
-            text = h.get_text(strip=True).upper()
-            match = re.match(r'(\d+)\.\s+([A-Z\s]+)', text)
-            if match:
-                rank = int(match.group(1))
-                team_name_fp = match.group(2).strip()
+        for row in rows[1:]: # Skip header row
+            cols = row.find_all('td')
+            if len(cols) == 2:
+                rank = int(cols[0].get_text(strip=True))
+                team_name_fp = cols[1].get_text(strip=True).upper()
                 team_abbr = fp_name_to_abbr_map.get(team_name_fp)
                 if team_abbr:
                     team_data.append({'team': team_abbr, 'rank': rank})
 
         if not team_data:
-            print("❌ ERROR: No team data could be extracted from heading tags. The article structure may have changed.")
+            print("❌ ERROR: No team data could be extracted from the table rows.")
             sys.exit(1)
 
         df = pd.DataFrame(team_data).sort_values(by='rank')
