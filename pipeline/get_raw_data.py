@@ -33,18 +33,26 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # Download Roster/Player Information (Reliable Method)
-    try:
-        print("Downloading player roster information...")
-        # CORRECTED: Using a more stable function to get player info.
-        seasonal_df = nfl.import_seasonal_data(years=YEARS, s_type='REG')
+    # Download Roster/Player Information (Reliable Method with error handling)
+    all_seasonal_data = []
+    print("Downloading player roster information...")
+    for year in YEARS:
+        try:
+            seasonal_df = nfl.import_seasonal_data(years=[year], s_type='REG')
+            all_seasonal_data.append(seasonal_df)
+        except HTTPError:
+            print(f"  -> INFO: Seasonal/Roster data for {year} not available. Skipping.")
+            
+    if all_seasonal_data:
+        roster_df = pd.concat(all_seasonal_data, ignore_index=True)
         roster_cols = ['player_id', 'player_display_name', 'position', 'team_abbr']
-        master_list = seasonal_df[roster_cols].drop_duplicates(subset='player_id', keep='first')
+        master_list = roster_df[roster_cols].drop_duplicates(subset='player_id', keep='first')
         master_list.rename(columns={'team_abbr': 'recent_team'}, inplace=True)
         master_list.to_csv(roster_output_path, index=False)
         print("✅ Successfully saved Player Master List.")
-    except Exception as e:
-        print(f"❌ ERROR: Failed to download roster data. Reason: {e}")
+    else:
+        print("❌ ERROR: No roster data could be downloaded.")
+
 
     # Download Schedule
     try:
