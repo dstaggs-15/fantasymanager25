@@ -1,5 +1,4 @@
 pandas
-requests
+nfl-data-py==0.3.3
 pyarrow
-nfl-data-py>=0.4.0
 fastparquet
