@@ -3,6 +3,7 @@ import pandas as pd
 import nfl_data_py as nfl
 import os
 import datetime
+from urllib.error import HTTPError
 
 def get_raw_data():
     """
@@ -24,21 +25,32 @@ def get_raw_data():
 
     print(f"Attempting to fetch data for seasons: {YEARS}")
 
-    # --- 2. Download Weekly Player Stats ---
-    try:
-        print("Downloading weekly player stats...")
-        # CORRECTED: Removed the unexpected 'engine' argument.
-        weekly_df = nfl.import_weekly_data(years=YEARS)
+    # --- 2. Download Weekly Player Stats (with robust error handling for each year) ---
+    all_weekly_data = []
+    print("Downloading weekly player stats...")
+    for year in YEARS:
+        try:
+            print(f"  -> Fetching weekly data for {year}...")
+            yearly_df = nfl.import_weekly_data(years=[year])
+            all_weekly_data.append(yearly_df)
+        except HTTPError:
+            print(f"  -> INFO: Weekly data for {year} not available yet. Skipping.")
+        except Exception as e:
+            print(f"  -> ❌ ERROR: An unexpected error occurred for year {year}: {e}. Skipping.")
+
+    if all_weekly_data:
+        weekly_df = pd.concat(all_weekly_data, ignore_index=True)
         weekly_df.to_csv(weekly_output_path, index=False)
         print(f"✅ Successfully saved raw weekly stats to: {weekly_output_path}")
-    except Exception as e:
-        print(f"❌ ERROR: Failed to download or save weekly stats. Reason: {e}")
+    else:
+        print("❌ CRITICAL: No weekly data could be downloaded.")
+
 
     # --- 3. Download Roster/Player Information (Our "Player Master List") ---
     try:
         print("Downloading player roster information to create Player Master List...")
-        # CORRECTED: Changed function name from import_rosters to import_roster_data.
-        roster_df = nfl.import_roster_data(years=YEARS)
+        # CORRECTED: Changed function name to the correct one: import_rosters.
+        roster_df = nfl.import_rosters(years=YEARS)
         
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
