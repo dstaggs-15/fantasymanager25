@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start/Sit Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .player-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .search-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .search-group label {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        .search-group input {
+            padding: 0.5rem;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            color: var(--color-text-primary);
+            border-radius: 4px;
+            font-family: var(--font-family-main);
+            font-size: 1rem;
+        }
+        #results-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .player-card {
+            padding: 1.5rem;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .player-card h3 { color: var(--color-primary); }
+        .matchup-rank { font-weight: 700; }
+        .matchup-good { color: #28a745; } /* Green */
+        .matchup-avg { color: #ffc107; } /* Yellow */
+        .matchup-bad { color: #dc3545; } /* Red */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Start/Sit Assistant</h1>
+        
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2>How to Use This Tool</h2>
+            <p>
+                Select two or more players to compare for the upcoming week. The tool will analyze their average performance (PPG) and their opponent's defensive ranking against their position to help you make the best lineup decision.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2 id="week-title">Comparing Players for Week X</h2>
+            <div class="player-inputs">
+                <div class="search-group">
+                    <label for="player1">Player 1</label>
+                    <input type="text" id="player1" list="player-list" placeholder="Search for player...">
+                </div>
+                <div class="search-group">
+                    <label for="player2">Player 2</label>
+                    <input type="text" id="player2" list="player-list" placeholder="Search for player...">
+                </div>
+                <div class="search-group">
+                    <label for="player3">Player 3 (Optional)</label>
+                    <input type="text" id="player3" list="player-list" placeholder="Search for player...">
+                </div>
+                <div class="search-group">
+                    <label for="player4">Player 4 (Optional)</label>
+                    <input type="text" id="player4" list="player-list" placeholder="Search for player...">
+                </div>
+            </div>
+            <button id="compare-btn" class="btn">Analyze Matchups</button>
+            <datalist id="player-list"></datalist>
+
+            <div id="results-container">
+                </div>
+        </div>
+    </div>
+
+    <script src="start-sit.js"></script>
+</body>
+</html>
