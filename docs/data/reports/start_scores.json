@@ -35,7 +35,7 @@
             "Talent (PPG)": 10.0,
             "Matchup": 0.3,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -61,7 +61,7 @@
             "Talent (PPG)": 9.4,
             "Matchup": 9.7,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -87,7 +87,7 @@
             "Talent (PPG)": 9.2,
             "Matchup": 5.8,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -113,7 +113,7 @@
             "Talent (PPG)": 10.0,
             "Matchup": 2.3,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -126,7 +126,7 @@
             "Talent (PPG)": 9.0,
             "Matchup": 0.6,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -152,7 +152,7 @@
             "Talent (PPG)": 9.4,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -165,7 +165,7 @@
             "Talent (PPG)": 8.2,
             "Matchup": 9.4,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -178,7 +178,7 @@
             "Talent (PPG)": 8.1,
             "Matchup": 1.9,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -217,7 +217,7 @@
             "Talent (PPG)": 7.9,
             "Matchup": 6.8,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -230,7 +230,7 @@
             "Talent (PPG)": 7.9,
             "Matchup": 4.2,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -269,7 +269,7 @@
             "Talent (PPG)": 8.5,
             "Matchup": 7.4,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -295,7 +295,7 @@
             "Talent (PPG)": 7.6,
             "Matchup": 3.9,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -321,7 +321,7 @@
             "Talent (PPG)": 7.4,
             "Matchup": 6.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -334,7 +334,7 @@
             "Talent (PPG)": 8.1,
             "Matchup": 4.8,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -347,7 +347,7 @@
             "Talent (PPG)": 7.3,
             "Matchup": 1.6,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -360,7 +360,7 @@
             "Talent (PPG)": 7.3,
             "Matchup": 1.3,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -373,7 +373,7 @@
             "Talent (PPG)": 7.2,
             "Matchup": 5.2,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -386,7 +386,7 @@
             "Talent (PPG)": 7.9,
             "Matchup": 2.3,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -412,7 +412,7 @@
             "Talent (PPG)": 7.7,
             "Matchup": 9.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -425,7 +425,7 @@
             "Talent (PPG)": 7.7,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -451,7 +451,7 @@
             "Talent (PPG)": 7.7,
             "Matchup": 1.3,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -464,7 +464,7 @@
             "Talent (PPG)": 6.9,
             "Matchup": 2.3,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -503,7 +503,7 @@
             "Talent (PPG)": 6.9,
             "Matchup": 2.6,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -516,7 +516,7 @@
             "Talent (PPG)": 7.6,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -529,7 +529,7 @@
             "Talent (PPG)": 7.6,
             "Matchup": 2.6,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -542,7 +542,7 @@
             "Talent (PPG)": 7.5,
             "Matchup": 7.4,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -555,7 +555,7 @@
             "Talent (PPG)": 6.7,
             "Matchup": 9.7,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -594,7 +594,7 @@
             "Talent (PPG)": 7.3,
             "Matchup": 1.9,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -620,7 +620,7 @@
             "Talent (PPG)": 7.1,
             "Matchup": 9.0,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -633,7 +633,7 @@
             "Talent (PPG)": 7.1,
             "Matchup": 6.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -646,7 +646,7 @@
             "Talent (PPG)": 6.4,
             "Matchup": 7.1,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -659,7 +659,7 @@
             "Talent (PPG)": 6.3,
             "Matchup": 3.2,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -724,7 +724,7 @@
             "Talent (PPG)": 6.9,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -750,7 +750,7 @@
             "Talent (PPG)": 6.9,
             "Matchup": 6.8,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -763,7 +763,7 @@
             "Talent (PPG)": 6.2,
             "Matchup": 1.0,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -776,7 +776,7 @@
             "Talent (PPG)": 6.1,
             "Matchup": 8.7,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -815,7 +815,7 @@
             "Talent (PPG)": 10.0,
             "Matchup": 9.7,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -828,7 +828,7 @@
             "Talent (PPG)": 10.0,
             "Matchup": 0.3,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -841,7 +841,7 @@
             "Talent (PPG)": 6.6,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -854,7 +854,7 @@
             "Talent (PPG)": 9.9,
             "Matchup": 1.3,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -893,7 +893,7 @@
             "Talent (PPG)": 6.5,
             "Matchup": 4.5,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -919,7 +919,7 @@
             "Talent (PPG)": 6.5,
             "Matchup": 3.5,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -932,7 +932,7 @@
             "Talent (PPG)": 6.4,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -958,7 +958,7 @@
             "Talent (PPG)": 6.4,
             "Matchup": 8.1,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -971,7 +971,7 @@
             "Talent (PPG)": 5.8,
             "Matchup": 2.9,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -984,7 +984,7 @@
             "Talent (PPG)": 5.8,
             "Matchup": 4.8,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -997,7 +997,7 @@
             "Talent (PPG)": 6.3,
             "Matchup": 1.9,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1010,7 +1010,7 @@
             "Talent (PPG)": 5.6,
             "Matchup": 10.0,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1023,7 +1023,7 @@
             "Talent (PPG)": 9.1,
             "Matchup": 4.2,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1036,7 +1036,7 @@
             "Talent (PPG)": 6.1,
             "Matchup": 4.2,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1062,7 +1062,7 @@
             "Talent (PPG)": 5.5,
             "Matchup": 3.2,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1075,7 +1075,7 @@
             "Talent (PPG)": 6.1,
             "Matchup": 4.8,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1101,7 +1101,7 @@
             "Talent (PPG)": 6.0,
             "Matchup": 3.9,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1127,7 +1127,7 @@
             "Talent (PPG)": 6.0,
             "Matchup": 4.5,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1140,7 +1140,7 @@
             "Talent (PPG)": 6.0,
             "Matchup": 10.0,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1153,7 +1153,7 @@
             "Talent (PPG)": 5.4,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1166,7 +1166,7 @@
             "Talent (PPG)": 5.9,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1179,7 +1179,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 1.6,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1192,7 +1192,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 8.1,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1205,7 +1205,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 7.4,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1218,7 +1218,7 @@
             "Talent (PPG)": 5.2,
             "Matchup": 6.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1231,7 +1231,7 @@
             "Talent (PPG)": 5.7,
             "Matchup": 1.3,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1244,7 +1244,7 @@
             "Talent (PPG)": 5.7,
             "Matchup": 7.7,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1257,7 +1257,7 @@
             "Talent (PPG)": 5.2,
             "Matchup": 8.4,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1270,7 +1270,7 @@
             "Talent (PPG)": 5.7,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1296,7 +1296,7 @@
             "Talent (PPG)": 8.5,
             "Matchup": 8.7,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1309,7 +1309,7 @@
             "Talent (PPG)": 5.7,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1335,7 +1335,7 @@
             "Talent (PPG)": 8.3,
             "Matchup": 10.0,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1348,7 +1348,7 @@
             "Talent (PPG)": 5.6,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1361,7 +1361,7 @@
             "Talent (PPG)": 5.5,
             "Matchup": 1.6,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1387,7 +1387,7 @@
             "Talent (PPG)": 5.4,
             "Matchup": 8.1,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1400,7 +1400,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 7.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1413,7 +1413,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 0.3,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1426,7 +1426,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 0.0,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1452,7 +1452,7 @@
             "Talent (PPG)": 5.3,
             "Matchup": 10.0,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1478,7 +1478,7 @@
             "Talent (PPG)": 7.9,
             "Matchup": 6.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1491,7 +1491,7 @@
             "Talent (PPG)": 5.2,
             "Matchup": 9.0,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1530,7 +1530,7 @@
             "Talent (PPG)": 5.1,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1543,7 +1543,7 @@
             "Talent (PPG)": 5.0,
             "Matchup": 0.6,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1556,7 +1556,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 2.3,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1569,7 +1569,7 @@
             "Talent (PPG)": 5.0,
             "Matchup": 1.0,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1608,7 +1608,7 @@
             "Talent (PPG)": 4.9,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1621,7 +1621,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 8.4,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1634,7 +1634,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 2.6,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1647,7 +1647,7 @@
             "Talent (PPG)": 7.2,
             "Matchup": 8.1,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1660,7 +1660,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 3.9,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1673,7 +1673,7 @@
             "Talent (PPG)": 7.1,
             "Matchup": 1.0,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1686,7 +1686,7 @@
             "Talent (PPG)": 4.7,
             "Matchup": 0.3,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1699,7 +1699,7 @@
             "Talent (PPG)": 4.2,
             "Matchup": 3.5,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1712,7 +1712,7 @@
             "Talent (PPG)": 7.0,
             "Matchup": 3.2,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1725,7 +1725,7 @@
             "Talent (PPG)": 6.9,
             "Matchup": 1.9,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1738,7 +1738,7 @@
             "Talent (PPG)": 4.6,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1751,7 +1751,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 9.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1777,7 +1777,7 @@
             "Talent (PPG)": 4.1,
             "Matchup": 5.5,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1790,7 +1790,7 @@
             "Talent (PPG)": 6.7,
             "Matchup": 2.3,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1803,7 +1803,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 3.5,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1829,7 +1829,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 1.6,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1842,7 +1842,7 @@
             "Talent (PPG)": 4.0,
             "Matchup": 3.5,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1868,7 +1868,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1881,7 +1881,7 @@
             "Talent (PPG)": 4.0,
             "Matchup": 4.8,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1894,7 +1894,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 0.6,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1907,7 +1907,7 @@
             "Talent (PPG)": 4.0,
             "Matchup": 0.0,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1920,7 +1920,7 @@
             "Talent (PPG)": 4.3,
             "Matchup": 7.7,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1933,7 +1933,7 @@
             "Talent (PPG)": 3.9,
             "Matchup": 9.0,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1946,7 +1946,7 @@
             "Talent (PPG)": 4.3,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1972,7 +1972,7 @@
             "Talent (PPG)": 4.3,
             "Matchup": 7.4,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1985,7 +1985,7 @@
             "Talent (PPG)": 6.4,
             "Matchup": 5.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -1998,7 +1998,7 @@
             "Talent (PPG)": 4.3,
             "Matchup": 1.6,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2011,7 +2011,7 @@
             "Talent (PPG)": 6.3,
             "Matchup": 7.7,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2024,7 +2024,7 @@
             "Talent (PPG)": 6.3,
             "Matchup": 1.6,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2037,7 +2037,7 @@
             "Talent (PPG)": 4.2,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2063,7 +2063,7 @@
             "Talent (PPG)": 6.2,
             "Matchup": 3.9,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2076,7 +2076,7 @@
             "Talent (PPG)": 6.1,
             "Matchup": 4.8,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2089,7 +2089,7 @@
             "Talent (PPG)": 3.7,
             "Matchup": 8.1,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2115,7 +2115,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 5.5,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2128,7 +2128,7 @@
             "Talent (PPG)": 4.0,
             "Matchup": 3.9,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2141,7 +2141,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 5.8,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2154,7 +2154,7 @@
             "Talent (PPG)": 5.9,
             "Matchup": 7.4,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2167,7 +2167,7 @@
             "Talent (PPG)": 3.9,
             "Matchup": 3.9,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2180,7 +2180,7 @@
             "Talent (PPG)": 3.9,
             "Matchup": 3.2,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2193,7 +2193,7 @@
             "Talent (PPG)": 5.8,
             "Matchup": 2.6,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2206,7 +2206,7 @@
             "Talent (PPG)": 3.8,
             "Matchup": 6.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2219,7 +2219,7 @@
             "Talent (PPG)": 3.8,
             "Matchup": 4.2,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2232,7 +2232,7 @@
             "Talent (PPG)": 3.8,
             "Matchup": 10.0,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2245,7 +2245,7 @@
             "Talent (PPG)": 3.8,
             "Matchup": 2.6,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2258,7 +2258,7 @@
             "Talent (PPG)": 5.6,
             "Matchup": 1.0,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2284,7 +2284,7 @@
             "Talent (PPG)": 3.7,
             "Matchup": 9.0,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2297,7 +2297,7 @@
             "Talent (PPG)": 5.4,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2310,7 +2310,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2323,7 +2323,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 0.6,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2336,7 +2336,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2349,7 +2349,7 @@
             "Talent (PPG)": 3.5,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2362,7 +2362,7 @@
             "Talent (PPG)": 5.2,
             "Matchup": 4.2,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2375,7 +2375,7 @@
             "Talent (PPG)": 3.5,
             "Matchup": 4.2,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2401,7 +2401,7 @@
             "Talent (PPG)": 3.4,
             "Matchup": 3.2,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2414,7 +2414,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 0.6,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2427,7 +2427,7 @@
             "Talent (PPG)": 3.4,
             "Matchup": 6.8,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2440,7 +2440,7 @@
             "Talent (PPG)": 3.4,
             "Matchup": 1.0,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2466,7 +2466,7 @@
             "Talent (PPG)": 3.3,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2492,7 +2492,7 @@
             "Talent (PPG)": 3.3,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2505,7 +2505,7 @@
             "Talent (PPG)": 3.3,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2518,7 +2518,7 @@
             "Talent (PPG)": 3.3,
             "Matchup": 1.9,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2531,7 +2531,7 @@
             "Talent (PPG)": 3.3,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2544,7 +2544,7 @@
             "Talent (PPG)": 2.9,
             "Matchup": 7.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2557,7 +2557,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 9.4,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2570,7 +2570,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 7.1,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2583,7 +2583,7 @@
             "Talent (PPG)": 2.9,
             "Matchup": 6.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2596,7 +2596,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 9.0,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2609,7 +2609,7 @@
             "Talent (PPG)": 4.8,
             "Matchup": 0.6,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2635,7 +2635,7 @@
             "Talent (PPG)": 2.9,
             "Matchup": 6.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2648,7 +2648,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 6.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2661,7 +2661,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 8.1,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2687,7 +2687,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2700,7 +2700,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2713,7 +2713,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2726,7 +2726,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 2.6,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2739,7 +2739,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2752,7 +2752,7 @@
             "Talent (PPG)": 3.1,
             "Matchup": 6.8,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2765,7 +2765,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 2.6,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2778,7 +2778,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 3.5,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2791,7 +2791,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2804,7 +2804,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 9.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2817,7 +2817,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 2.9,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2830,7 +2830,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 7.4,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2843,7 +2843,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 4.2,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2856,7 +2856,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 2.3,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2869,7 +2869,7 @@
             "Talent (PPG)": 4.5,
             "Matchup": 8.4,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2882,7 +2882,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 1.3,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2895,7 +2895,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 5.2,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2908,7 +2908,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 3.9,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2921,7 +2921,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 5.2,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2934,7 +2934,7 @@
             "Talent (PPG)": 4.4,
             "Matchup": 4.2,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2960,7 +2960,7 @@
             "Talent (PPG)": 2.6,
             "Matchup": 0.0,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2973,7 +2973,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 0.0,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -2999,7 +2999,7 @@
             "Talent (PPG)": 4.2,
             "Matchup": 5.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3012,7 +3012,7 @@
             "Talent (PPG)": 4.2,
             "Matchup": 6.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3025,7 +3025,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3038,7 +3038,7 @@
             "Talent (PPG)": 4.2,
             "Matchup": 7.4,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3051,7 +3051,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3077,7 +3077,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 7.4,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3090,7 +3090,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3103,7 +3103,7 @@
             "Talent (PPG)": 2.4,
             "Matchup": 1.3,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3116,7 +3116,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3155,7 +3155,7 @@
             "Talent (PPG)": 2.7,
             "Matchup": 6.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3168,7 +3168,7 @@
             "Talent (PPG)": 2.6,
             "Matchup": 6.8,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3194,7 +3194,7 @@
             "Talent (PPG)": 2.6,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3207,7 +3207,7 @@
             "Talent (PPG)": 2.5,
             "Matchup": 4.8,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3246,7 +3246,7 @@
             "Talent (PPG)": 3.7,
             "Matchup": 5.8,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3272,7 +3272,7 @@
             "Talent (PPG)": 2.5,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3298,7 +3298,7 @@
             "Talent (PPG)": 2.4,
             "Matchup": 4.8,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3311,7 +3311,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 10.0,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3324,7 +3324,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 9.4,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3337,7 +3337,7 @@
             "Talent (PPG)": 3.6,
             "Matchup": 0.6,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3350,7 +3350,7 @@
             "Talent (PPG)": 2.4,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3363,7 +3363,7 @@
             "Talent (PPG)": 3.5,
             "Matchup": 1.6,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3376,7 +3376,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 6.8,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3389,7 +3389,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 3.2,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3402,7 +3402,7 @@
             "Talent (PPG)": 3.5,
             "Matchup": 2.9,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3415,7 +3415,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 2.9,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3428,7 +3428,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 1.0,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3441,7 +3441,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 0.6,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3480,7 +3480,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 9.0,
             "O-Line": 8.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3506,7 +3506,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3519,7 +3519,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3532,7 +3532,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 7.7,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3545,7 +3545,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3558,7 +3558,7 @@
             "Talent (PPG)": 1.9,
             "Matchup": 8.4,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3584,7 +3584,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3597,7 +3597,7 @@
             "Talent (PPG)": 3.0,
             "Matchup": 5.8,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3623,7 +3623,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3649,7 +3649,7 @@
             "Talent (PPG)": 1.8,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3662,7 +3662,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3688,7 +3688,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 8.4,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3701,7 +3701,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3714,7 +3714,7 @@
             "Talent (PPG)": 2.9,
             "Matchup": 2.6,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3727,7 +3727,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 0.0,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3740,7 +3740,7 @@
             "Talent (PPG)": 1.8,
             "Matchup": 6.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3753,7 +3753,7 @@
             "Talent (PPG)": 2.9,
             "Matchup": 3.2,
             "O-Line": 4.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3779,7 +3779,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 3.9,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3792,7 +3792,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 2.9,
             "O-Line": 3.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3818,7 +3818,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 1.9,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3831,7 +3831,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 1.6,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3844,7 +3844,7 @@
             "Talent (PPG)": 1.9,
             "Matchup": 3.5,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3857,7 +3857,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 2.3,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3883,7 +3883,7 @@
             "Talent (PPG)": 2.8,
             "Matchup": 3.5,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3896,7 +3896,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 3.5,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3930,12 +3930,12 @@
         "position": "FB",
         "team": "SF",
         "opponent": "SEA",
-        "start_score": 7.9,
+        "start_score": 7.1,
         "breakdown": {
             "Talent (PPG)": 10.0,
             "Matchup": 5.0,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 5.0
         }
     },
     {
@@ -3974,7 +3974,7 @@
             "Talent (PPG)": 1.6,
             "Matchup": 0.3,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -3987,7 +3987,7 @@
             "Talent (PPG)": 1.6,
             "Matchup": 5.5,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4000,7 +4000,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 7.7,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4013,7 +4013,7 @@
             "Talent (PPG)": 2.6,
             "Matchup": 1.0,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4039,7 +4039,7 @@
             "Talent (PPG)": 2.5,
             "Matchup": 6.1,
             "O-Line": 10.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4052,7 +4052,7 @@
             "Talent (PPG)": 2.5,
             "Matchup": 5.2,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4078,7 +4078,7 @@
             "Talent (PPG)": 2.5,
             "Matchup": 3.5,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4091,7 +4091,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 5.5,
             "O-Line": 6.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4169,7 +4169,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 4.5,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4182,7 +4182,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 0.3,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4208,7 +4208,7 @@
             "Talent (PPG)": 1.4,
             "Matchup": 9.7,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4216,12 +4216,12 @@
         "position": "FB",
         "team": "MIA",
         "opponent": "IND",
-        "start_score": 6.8,
+        "start_score": 6.0,
         "breakdown": {
             "Talent (PPG)": 8.6,
             "Matchup": 5.0,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 5.0
         }
     },
     {
@@ -4247,7 +4247,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4260,7 +4260,7 @@
             "Talent (PPG)": 1.4,
             "Matchup": 3.9,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4273,7 +4273,7 @@
             "Talent (PPG)": 2.3,
             "Matchup": 1.6,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4299,7 +4299,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4312,7 +4312,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 5.5,
             "O-Line": 0.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4338,7 +4338,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 4.5,
             "O-Line": 4.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4351,7 +4351,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 7.4,
             "O-Line": 7.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4364,7 +4364,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 1.3,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4377,7 +4377,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 0.3,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4390,7 +4390,7 @@
             "Talent (PPG)": 2.2,
             "Matchup": 8.1,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4403,7 +4403,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 8.7,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4416,7 +4416,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 1.6,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4429,7 +4429,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 9.4,
             "O-Line": 6.1,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4442,7 +4442,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4468,7 +4468,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 8.1,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4481,7 +4481,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 7.4,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4507,7 +4507,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 9.0,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4520,7 +4520,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 0.3,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4533,7 +4533,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 2.6,
             "O-Line": 5.2,
-            "Efficiency": 7.8
+            "Efficiency": 8.2
         }
     },
     {
@@ -4546,7 +4546,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 4.8,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4559,7 +4559,7 @@
             "Talent (PPG)": 2.1,
             "Matchup": 9.7,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4572,7 +4572,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 1.6,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4585,7 +4585,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 0.0,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4598,7 +4598,7 @@
             "Talent (PPG)": 1.4,
             "Matchup": 10.0,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4611,7 +4611,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 0.0,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4637,7 +4637,7 @@
             "Talent (PPG)": 2.0,
             "Matchup": 4.8,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4663,7 +4663,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 0.0,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4754,7 +4754,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 3.2,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4793,7 +4793,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 0.0,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4832,7 +4832,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 1.0,
             "O-Line": 9.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4853,12 +4853,12 @@
         "position": "FB",
         "team": "MIN",
         "opponent": "CHI",
-        "start_score": 6.1,
+        "start_score": 5.4,
         "breakdown": {
             "Talent (PPG)": 6.8,
             "Matchup": 5.0,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 5.0
         }
     },
     {
@@ -4871,7 +4871,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4923,7 +4923,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 8.1,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4936,7 +4936,7 @@
             "Talent (PPG)": 1.7,
             "Matchup": 6.8,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -4949,7 +4949,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 1.3,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5027,7 +5027,7 @@
             "Talent (PPG)": 1.6,
             "Matchup": 4.8,
             "O-Line": 0.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5118,7 +5118,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 3.5,
             "O-Line": 4.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5131,7 +5131,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 9.4,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5157,7 +5157,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5183,7 +5183,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 8.1,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5196,7 +5196,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 0.0,
             "O-Line": 8.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5209,7 +5209,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 5.2,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5222,7 +5222,7 @@
             "Talent (PPG)": 1.5,
             "Matchup": 6.8,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5248,7 +5248,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 8.7,
             "O-Line": 1.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5300,7 +5300,7 @@
             "Talent (PPG)": 0.9,
             "Matchup": 1.6,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5313,7 +5313,7 @@
             "Talent (PPG)": 1.4,
             "Matchup": 7.1,
             "O-Line": 4.5,
-            "Efficiency": 9.4
+            "Efficiency": 9.5
         }
     },
     {
@@ -5326,7 +5326,7 @@
             "Talent (PPG)": 0.9,
             "Matchup": 3.2,
             "O-Line": 1.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5352,7 +5352,7 @@
             "Talent (PPG)": 0.9,
             "Matchup": 6.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5365,7 +5365,7 @@
             "Talent (PPG)": 0.9,
             "Matchup": 1.3,
             "O-Line": 2.6,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5373,12 +5373,12 @@
         "position": "FB",
         "team": "BAL",
         "opponent": "BUF",
-        "start_score": 6.5,
+        "start_score": 5.7,
         "breakdown": {
             "Talent (PPG)": 5.1,
             "Matchup": 5.0,
             "O-Line": 9.7,
-            "Efficiency": 10
+            "Efficiency": 5.0
         }
     },
     {
@@ -5391,7 +5391,7 @@
             "Talent (PPG)": 1.3,
             "Matchup": 2.9,
             "O-Line": 3.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5456,7 +5456,7 @@
             "Talent (PPG)": 0.8,
             "Matchup": 3.9,
             "O-Line": 5.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5469,7 +5469,7 @@
             "Talent (PPG)": 0.7,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5495,7 +5495,7 @@
             "Talent (PPG)": 1.2,
             "Matchup": 5.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5521,7 +5521,7 @@
             "Talent (PPG)": 0.8,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5547,7 +5547,7 @@
             "Talent (PPG)": 0.7,
             "Matchup": 5.2,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5560,7 +5560,7 @@
             "Talent (PPG)": 1.1,
             "Matchup": 0.6,
             "O-Line": 2.9,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5586,7 +5586,7 @@
             "Talent (PPG)": 1.1,
             "Matchup": 1.9,
             "O-Line": 6.8,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5599,7 +5599,7 @@
             "Talent (PPG)": 0.7,
             "Matchup": 7.1,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5625,7 +5625,7 @@
             "Talent (PPG)": 0.7,
             "Matchup": 0.6,
             "O-Line": 0.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5638,7 +5638,7 @@
             "Talent (PPG)": 1.0,
             "Matchup": 3.9,
             "O-Line": 9.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5703,7 +5703,7 @@
             "Talent (PPG)": 0.6,
             "Matchup": 9.7,
             "O-Line": 3.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5729,7 +5729,7 @@
             "Talent (PPG)": 0.6,
             "Matchup": 1.9,
             "O-Line": 1.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5755,7 +5755,7 @@
             "Talent (PPG)": 0.8,
             "Matchup": 5.5,
             "O-Line": 7.4,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5794,7 +5794,7 @@
             "Talent (PPG)": 0.8,
             "Matchup": 5.8,
             "O-Line": 7.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5807,7 +5807,7 @@
             "Talent (PPG)": 0.8,
             "Matchup": 4.5,
             "O-Line": 1.0,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5846,7 +5846,7 @@
             "Talent (PPG)": 0.5,
             "Matchup": 2.3,
             "O-Line": 5.2,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5859,7 +5859,7 @@
             "Talent (PPG)": 0.5,
             "Matchup": 4.8,
             "O-Line": 8.7,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5872,7 +5872,7 @@
             "Talent (PPG)": 0.7,
             "Matchup": 8.7,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -5898,7 +5898,7 @@
             "Talent (PPG)": 0.6,
             "Matchup": 6.8,
             "O-Line": 5.5,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
@@ -6041,7 +6041,7 @@
             "Talent (PPG)": 0.0,
             "Matchup": 5.8,
             "O-Line": 2.3,
-            "Efficiency": 10
+            "Efficiency": 10.0
         }
     },
     {
