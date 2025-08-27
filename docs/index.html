@@ -1,38 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fantasy Football Data Hub</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-border);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            background: -webkit-linear-gradient(45deg, var(--color-primary), var(--color-text-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 1rem auto 0;
+            color: var(--color-text-secondary);
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .tool-card {
+            /* Inherits from the .card style in style.css */
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+        .tool-card:hover {
+            /* Inherits hover effect from style.css */
+            border-color: var(--color-primary);
+        }
+        .tool-card h2 {
+            font-size: 1.75rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .tool-card p {
+            color: var(--color-text-secondary);
+            flex-grow: 1; /* Pushes the link to the bottom */
+        }
+        .card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .card-link:after {
+            content: ' →';
+        }
+    </style>
 </head>
 <body>
-    <header><h1>Fantasy Football Data Hub</h1></header>
-    <main>
-        <p>This site contains automatically updated data and analysis for the "Rock or Bust V" fantasy football league.</p>
-        
-        <h2>Analysis Tools</h2>
-        <div class="tool-grid">
-            <a href="dashboard.html" class="tool-button">
-                <h3>📊 Dashboard</h3>
-                <p>Visual charts for VORP and weekly matchups.</p>
+    <div class="container">
+        <div class="hero">
+            <h1>Fantasy Football Data Hub</h1>
+            <p>Automatically updated data and analysis for the "Rock or Bust V" fantasy football league.</p>
+        </div>
+
+        <div class="tools-grid">
+            
+            <a href="dashboard.html" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">📊</span> Dashboard</h2>
+                <p>Visual charts for VORP, weekly matchups, and defensive rankings.</p>
+                <span class="card-link">View Dashboard</span>
             </a>
-            <a href="matchup.html" class="tool-button">
-                <h3>🎯 Matchup Analyzer</h3>
-                <p>Get data-driven start/sit advice for all players.</p>
+            
+            <a href="start-sit.html" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">🎯</span> Matchup Analyzer</h2>
+                <p>Get data-driven start/sit advice for all players based on their weekly opponent.</p>
+                <span class="card-link">Analyze Matchups</span>
             </a>
-            <a href="consistency.html" class="tool-button">
-                <h3>📈 Consistency Ratings</h3>
-                <p>Analyze player volatility and boom/bust potential.</p>
+
+            <a href="vorp.html" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">🚀</span> VORP Rankings</h2>
+                <p>Identify the most valuable players by position to dominate your draft.</p>
+                <span class="card-link">See Rankings</span>
             </a>
-            <a href="vorp.html" class="tool-button">
-                <h3>🚀 VORP Rankings</h3>
-                <p>Identify the most valuable players by position for your draft.</p>
-            <a href="waiver.html" class="tool-button">
-                <h3>🔍 Waiver Wire</h3>
-                <p>Find the top performers from the most recent week.</p>
-           </div>
-    </main>
+
+            <a href="#" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">📈</span> Consistency Ratings</h2>
+                <p>Analyze player volatility and boom/bust potential to build a reliable roster.</p>
+                <span class="card-link">Coming Soon</span>
+            </a>
+
+            <a href="#" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">🔍</span> Waiver Wire</h2>
+                <p>Find the top performers from the most recent week to claim on the waiver wire.</p>
+                <span class="card-link">Coming Soon</span>
+            </a>
+
+        </div>
+    </div>
 </body>
 </html>
