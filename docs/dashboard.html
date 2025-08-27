@@ -1,122 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>FantasyManager · Dashboard</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
-  <!-- Chart.js (no build step needed) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    :root { --card-bg:#121212; --card-br:#2b2b2b; --muted:#9aa3af; }
-    body { padding:20px; }
-    .hdr { display:flex; align-items:baseline; gap:14px; margin-bottom:16px; }
-    .meta { color:var(--muted); font-size:.95rem; }
-    .grid { display:grid; gap:14px; grid-template-columns: repeat(12, 1fr); }
-    .card { background:var(--card-bg); border:1px solid var(--card-br); border-radius:14px; padding:16px; }
-    .span-12{ grid-column: span 12; } .span-8{ grid-column: span 8; }
-    .span-6{ grid-column: span 6; } .span-4{ grid-column: span 4; }
-    .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    .pill { display:inline-block; padding:.2rem .6rem; border-radius:999px; background:#232323; border:1px solid #333; color:#ddd; }
-    .help { color:var(--muted); font-size:.95rem; line-height:1.4; }
-    .small { font-size:.9rem; }
-    .heatmap { display:grid; grid-template-columns: repeat(7, 1fr); gap:6px; }
-    .cell { height:16px; border-radius:4px; }
-    .legend { display:flex; align-items:center; gap:6px; }
-    .legend .box { width:14px; height:14px; border-radius:3px; border:1px solid #333; }
-    @media (max-width: 980px) {
-      .span-8, .span-6, .span-4 { grid-column: span 12; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        .dashboard-card {
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .card-header h3 { margin-bottom: 0; }
+        .chart-container {
+            position: relative;
+            flex-grow: 1;
+        }
+    </style>
 </head>
 <body>
-  <header class="hdr">
-    <h1>Dashboard</h1>
-    <div id="lastUpdated" class="meta">loading…</div>
-  </header>
+    <div class="container">
+        <h1>Dashboard</h1>
 
-  <section class="grid">
-    <!-- THIS WEEK: Top 10 by points (bar) + position picker -->
-    <div class="card span-8">
-      <div class="row">
-        <h2 class="m0">This Week · Top 10 by Points</h2>
-        <div class="pill small">League scoring applied (PPR, 1D bonuses, yardage)</div>
-        <label class="pill small">Position&nbsp;
-          <select id="posSelect">
-            <option>RB</option><option>WR</option><option>TE</option><option>QB</option>
-          </select>
-        </label>
-      </div>
-      <canvas id="barTop10" height="130"></canvas>
-      <p class="help">What this shows: the **latest finished week’s** top players at the selected position, scored with your exact ESPN rules. Use it as a quick pulse check of who actually delivered last week.</p>
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>This Week - Top 10</h3>
+                    <select id="top-10-pos-filter" class="btn">
+                        <option value="RB">RB</option>
+                        <option value="WR">WR</option>
+                        <option value="QB">QB</option>
+                        <option value="TE">TE</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="top-10-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Team Points Share</h3>
+                    <select id="team-share-filter" class="btn"></select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="team-share-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Consistency vs. Production</h3>
+                     <select id="consistency-pos-filter" class="btn">
+                        <option value="ALL">ALL</option>
+                        <option value="RB">RB</option>
+                        <option value="WR">WR</option>
+                        <option value="QB">QB</option>
+                        <option value="TE">TE</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="consistency-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Player Trend (Last 8 Games)</h3>
+                    <input type="text" id="player-trend-search" list="player-list" placeholder="Search for player...">
+                </div>
+                 <datalist id="player-list"></datalist>
+                <div class="chart-container">
+                    <canvas id="player-trend-chart"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- TEAM SHARE donut -->
-    <div class="card span-4">
-      <div class="row">
-        <h2>Team Points Share</h2>
-        <label class="pill small">Team&nbsp;<select id="teamSelect"></select></label>
-      </div>
-      <canvas id="donutTeamShare" height="180"></canvas>
-      <p class="help">How to read: breakdown of that team’s **fantasy points (last week)** by position (QB/RB/WR/TE/K/DST). It’s a quick way to see if a WR room is concentrated or spread out.</p>
-    </div>
-
-    <!-- HOT HAND list (week vs L4) -->
-    <div class="card span-6">
-      <h2>Hot Hand (Last Week vs 4‑wk Avg)</h2>
-      <div id="hotList" class="small">loading…</div>
-      <p class="help">Players who **outperformed** their own 4‑week average last week. Green = heating up, red = cooling off.</p>
-    </div>
-
-    <!-- CONSISTENCY scatter -->
-    <div class="card span-6">
-      <div class="row">
-        <h2>Consistency vs Production</h2>
-        <label class="pill small">Position&nbsp;
-          <select id="posScatter">
-            <option>RB</option><option>WR</option><option>TE</option><option>QB</option>
-          </select>
-        </label>
-      </div>
-      <canvas id="scatterCons" height="140"></canvas>
-      <p class="help">X‑axis = **Avg fantasy points** this season to date; Y‑axis = **stdev** (lower is steadier). Bottom‑right = high‑scoring and consistent.</p>
-    </div>
-
-    <!-- PLAYER TREND line -->
-    <div class="card span-8">
-      <div class="row">
-        <h2>Player Trend (last 8 games)</h2>
-        <label class="pill small">Player&nbsp;<input id="playerInput" list="playersList" placeholder="Type a name…" /></label>
-        <datalist id="playersList"></datalist>
-      </div>
-      <canvas id="linePlayer" height="140"></canvas>
-      <p class="help">Game‑by‑game fantasy points with a 4‑game rolling average overlay.</p>
-    </div>
-
-    <!-- SIMPLE HEATMAP (top 12 from last week across previous 6 weeks) -->
-    <div class="card span-4">
-      <h2>Mini Heatmap · Last 6 Games</h2>
-      <div id="heatmap" class="heatmap"></div>
-      <div class="legend help" style="margin-top:8px;">
-        <span class="box" style="background:#1f2937"></span> low
-        <span class="box" style="background:#0ea5e9"></span> med
-        <span class="box" style="background:#10b981"></span> high
-      </div>
-      <p class="help">Top 12 scorers from the latest week; each row is a player, each cell is a recent game. Dark = low, green = high.</p>
-    </div>
-
-    <!-- HOW TO READ -->
-    <div class="card span-12">
-      <h2>How to read this page</h2>
-      <ul class="help">
-        <li><b>All numbers</b> use your league’s scoring (PPR, 1-point rushing 1D, 0.5 receiving 1D, yardage bonuses, etc.).</li>
-        <li><b>Top 10 by Points</b> is descriptive of last week — pair it with the Trend and Consistency views for actionable start/sit choices.</li>
-        <li><b>Team Share</b> highlights whether a team funnels fantasy production to one position or spreads it around.</li>
-        <li><b>Next upgrades</b> you’ll see here soon: weekly <em>projections</em>, a Start/Sit comparator, Streamers, and a Playoff matchup heatmap.</li>
-      </ul>
-    </div>
-  </section>
-
-  <script src="dashboard.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
