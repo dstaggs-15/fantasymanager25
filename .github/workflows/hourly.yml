@@ -14,7 +14,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          # We need to fetch all history for git pull to work correctly
           fetch-depth: 0
 
       - name: Set up Python
@@ -25,23 +24,29 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Data Collection & Analysis
+      - name: Run Data Collection
+        run: python pipeline/get_raw_data.py
+      
+      - name: Run All Analysis Scripts
         run: |
-          python pipeline/get_raw_data.py
-          python pipeline/get_oline_rankings.py
+          python analysis/generate_oline_rankings.py # This is our new "homegrown" script
           python pipeline/calculate_fantasy_points.py
           python analysis/vorp_analyzer.py
           python analysis/matchup_analyzer.py
           python analysis/consistency_analyzer.py
           python analysis/composite_score_generator.py
       
-      # --- NEW STEP TO PREVENT PUSH ERRORS ---
+      - name: Verify Key Data Files
+        run: |
+          if [ ! -f docs/data/raw/players_master.csv ]; then echo "CRITICAL ERROR: players_master.csv was not created."; exit 1; fi
+          if [ ! -f docs/data/raw/oline_rankings.csv ]; then echo "CRITICAL ERROR: oline_rankings.csv was not created."; exit 1; fi
+      
       - name: Sync with Remote Branch
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git pull --rebase
-      
+
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
