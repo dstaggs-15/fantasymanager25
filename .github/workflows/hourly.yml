@@ -4,8 +4,8 @@ name: Fantasy Football Data Pipeline
 
 on:
   schedule:
-    - cron: '0 10 * * *' # Runs daily at 10:00 AM UTC
-  workflow_dispatch: # Allows manual runs
+    - cron: '0 10 * * *'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -28,15 +28,17 @@ jobs:
       - name: Run Step B - Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
-      # --- NEW: Run the first analysis script ---
       - name: Run Step C - VORP & Consistency Analysis
         run: python analysis/vorp_analyzer.py
+
+      # --- NEW: Run the matchup analysis script ---
+      - name: Run Step D - Matchup Analysis
+        run: python analysis/matchup_analyzer.py
 
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "📊 Data Update: Refresh data and generate new VORP report"
-          # Update the pattern to include our new JSON report
+          commit_message: "📊 Data Update: Refresh data and generate new reports"
           file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
