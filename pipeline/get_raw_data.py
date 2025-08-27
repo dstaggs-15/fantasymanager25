@@ -14,12 +14,10 @@ def get_raw_data():
 
     # --- 1. Define Years and Output Paths ---
     current_year = datetime.date.today().year
-    # Fetch last 4 completed seasons plus the current season for a 5-year historical window.
-    # In August 2025, this will be 2021, 2022, 2023, 2024, 2025.
     YEARS = list(range(current_year - 4, current_year + 1))
     
     output_dir = os.path.join('docs', 'data', 'raw')
-    os.makedirs(output_dir, exist_ok=True) # Create the directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
     
     weekly_output_path = os.path.join(output_dir, 'weekly_stats_raw.csv')
     roster_output_path = os.path.join(output_dir, 'players_master.csv')
@@ -29,8 +27,8 @@ def get_raw_data():
     # --- 2. Download Weekly Player Stats ---
     try:
         print("Downloading weekly player stats...")
-        # We explicitly add the necessary parquet engines to ensure this works.
-        weekly_df = nfl.import_weekly_data(years=YEARS, engine='pyarrow')
+        # CORRECTED: Removed the unexpected 'engine' argument.
+        weekly_df = nfl.import_weekly_data(years=YEARS)
         weekly_df.to_csv(weekly_output_path, index=False)
         print(f"✅ Successfully saved raw weekly stats to: {weekly_output_path}")
     except Exception as e:
@@ -39,10 +37,9 @@ def get_raw_data():
     # --- 3. Download Roster/Player Information (Our "Player Master List") ---
     try:
         print("Downloading player roster information to create Player Master List...")
-        roster_df = nfl.import_rosters(years=YEARS)
+        # CORRECTED: Changed function name from import_rosters to import_roster_data.
+        roster_df = nfl.import_roster_data(years=YEARS)
         
-        # We only need a clean list of players, so we'll drop duplicates
-        # based on the player ID, keeping the most recent entry.
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
         
