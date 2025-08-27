@@ -28,6 +28,15 @@ jobs:
       - name: Run Step A2 - Scrape O-Line Rankings
         run: python pipeline/get_oline_rankings.py
       
+      # --- NEW: Verify O-Line file was created ---
+      - name: Verify O-Line File Creation
+        run: |
+          if [ ! -f docs/data/raw/oline_rankings.csv ]; then
+            echo "CRITICAL ERROR: oline_rankings.csv was not created by the scraper."
+            exit 1
+          fi
+          echo "oline_rankings.csv created successfully."
+      
       - name: Run Step B - Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
@@ -40,7 +49,6 @@ jobs:
       - name: Run Step E - Consistency Analysis
         run: python analysis/consistency_analyzer.py
 
-      # --- NEW: Run the final score generator ---
       - name: Run Step F - Generate Composite Start Scores
         run: python analysis/composite_score_generator.py
 
