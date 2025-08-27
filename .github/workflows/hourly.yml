@@ -19,31 +19,22 @@ jobs:
         with:
           python-version: '3.10'
 
-      # NEW: Install Google Chrome for Selenium
-      - name: Install Google Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Step A1 - Get Raw NFL Data
-        run: python pipeline/get_raw_data.py
-      
-      - name: Run Step A2 - Scrape O-Line Rankings
-        run: python pipeline/get_oline_rankings.py
+      - name: Run Data Collection Scripts
+        run: |
+          python pipeline/get_raw_data.py
+          python pipeline/get_oline_rankings.py
       
       - name: Verify Data Files
         run: |
           if [ ! -f docs/data/raw/players_master.csv ]; then echo "CRITICAL ERROR: players_master.csv was not created."; exit 1; fi
           if [ ! -f docs/data/raw/oline_rankings.csv ]; then echo "CRITICAL ERROR: oline_rankings.csv was not created."; exit 1; fi
       
-      - name: Run Step B - Calculate Fantasy Points
-        run: python pipeline/calculate_fantasy_points.py
-
       - name: Run Analysis Scripts
         run: |
+          python pipeline/calculate_fantasy_points.py
           python analysis/vorp_analyzer.py
           python analysis/matchup_analyzer.py
           python analysis/consistency_analyzer.py
