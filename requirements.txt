@@ -4,4 +4,3 @@ pyarrow
 fastparquet
 requests
 beautifulsoup4
-selenium
