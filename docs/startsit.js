@@ -1,115 +1,91 @@
-/* Start/Sit comparator UI
-   Inputs:
-   - ./data/analysis/start_sit_report.json  // built by start_sit_calculator.py
-   - ./data/analysis/players.json           // from player_points.py
-*/
-async function j(p){ return fetch(p, {cache:'no-store'}).then(r=>r.json()); }
+document.addEventListener('DOMContentLoaded', async () => {
+    // --- DOM REFERENCES ---
+    const playerInputs = [
+        document.getElementById('player1'),
+        document.getElementById('player2'),
+        document.getElementById('player3'),
+    ];
+    const compareBtn = document.getElementById('compare-btn');
+    const resultsContainer = document.getElementById('results-container');
+    const playerDatalist = document.getElementById('player-list');
 
-let REPORT={}, PLAYERS={};
-let latestKey = "";
+    // --- GLOBAL DATA STORE ---
+    let START_SCORE_DATA = [];
 
-function parseKey(k){ const m=/(\d+)-W(\d+)/.exec(k)||[]; return {season:+m[1], week:+m[2]}; }
-function sortKeys(ks){
-  return ks.slice().sort((a,b)=>{
-    const A=parseKey(a), B=parseKey(b);
-    return A.season===B.season ? A.week-B.week : A.season-B.season;
-  });
-}
+    // --- INITIALIZATION ---
+    async function initialize() {
+        try {
+            const response = await fetch('./data/reports/start_scores.json');
+            if (!response.ok) throw new Error('Failed to fetch Start Score data');
+            START_SCORE_DATA = await response.json();
+            
+            // Populate autocomplete
+            START_SCORE_DATA.sort((a, b) => a.player_display_name.localeCompare(b.player_display_name));
+            const fragment = document.createDocumentFragment();
+            START_SCORE_DATA.forEach(player => {
+                const option = document.createElement('option');
+                option.value = player.player_display_name;
+                fragment.appendChild(option);
+            });
+            playerDatalist.appendChild(fragment);
 
-(async function init(){
-  REPORT = await j('./data/analysis/start_sit_report.json').catch(()=> ({}));
-  PLAYERS = await j('./data/analysis/players.json').catch(()=> ({}));
-  const keys = sortKeys(Object.keys(REPORT));
-  latestKey = keys[keys.length-1] || '';
-  document.getElementById('meta').textContent = latestKey ? `Data: ${latestKey}` : 'No data found';
+            console.log("Start Score data loaded and ready.");
+        } catch (error) {
+            console.error("Initialization failed:", error);
+            resultsContainer.innerHTML = `<p>Error loading analysis data. Please ensure the workflow has run successfully.</p>`;
+        }
+    }
 
-  // build datalist
-  const dl = document.getElementById('playersList');
-  const seen = new Set();
-  if(latestKey && REPORT[latestKey]){
-    Object.entries(REPORT[latestKey]).forEach(([pid,p])=>{
-      const nm = p.player || (PLAYERS[pid]?.name) || '';
-      if(!nm || seen.has(nm)) return;
-      const o=document.createElement('option'); o.value=nm; dl.appendChild(o);
-      seen.add(nm);
-    });
-  } else {
-    // fallback to players.json if report empty
-    Object.values(PLAYERS).forEach(p=>{
-      const o=document.createElement('option'); o.value=p.name; dl.appendChild(o);
-    });
-  }
+    // --- CORE LOGIC ---
+    function analyzePlayers() {
+        resultsContainer.innerHTML = ''; // Clear previous results
 
-  document.getElementById('go').onclick = compare;
-})();
+        const selectedPlayerNames = playerInputs
+            .map(input => input.value)
+            .filter(name => name.trim() !== '');
 
-function findByNameLatest(name){
-  name = (name||'').toLowerCase().trim();
-  if(!latestKey || !REPORT[latestKey]) return null;
-  let best = null;
-  for(const [pid, p] of Object.entries(REPORT[latestKey])){
-    const nm = (p.player || PLAYERS[pid]?.name || '').toLowerCase();
-    if(nm === name || (name && nm.includes(name))) { best = {pid, ...p}; break; }
-  }
-  return best;
-}
+        if (selectedPlayerNames.length === 0) return;
 
-let radarA, radarB;
+        selectedPlayerNames.forEach(playerName => {
+            const playerData = START_SCORE_DATA.find(p => p.player_display_name === playerName);
+            renderCard(playerData, playerName);
+        });
+    }
 
-function compare(){
-  const aName = document.getElementById('p1').value;
-  const bName = document.getElementById('p2').value;
-  const A = findByNameLatest(aName);
-  const B = findByNameLatest(bName);
+    // --- RENDERING ---
+    function renderCard(playerData, playerName) {
+        const card = document.createElement('div');
+        card.className = 'player-card';
 
-  const result = document.getElementById('result');
-  const headline = document.getElementById('headline');
+        if (!playerData) {
+            card.innerHTML = `<h3>${playerName}</h3><p class="matchup-bad">Player not found in analysis data.</p>`;
+            resultsContainer.appendChild(card);
+            return;
+        }
 
-  if(!A || !B){
-    result.style.display = 'block';
-    headline.innerHTML = '⚠ Could not find one or both players in the latest week.';
-    document.getElementById('aName').textContent = aName||'—';
-    document.getElementById('bName').textContent = bName||'—';
-    document.getElementById('aMeta').textContent = '';
-    document.getElementById('bMeta').textContent = '';
-    return;
-  }
+        let breakdownHTML = '<ul class="breakdown-list">';
+        if (typeof playerData.breakdown === 'object') {
+            for (const [key, value] of Object.entries(playerData.breakdown)) {
+                breakdownHTML += `<li><span>${key}</span><strong>${value} / 10</strong></li>`;
+            }
+        } else {
+            breakdownHTML += `<li>${playerData.breakdown}</li>`;
+        }
+        breakdownHTML += '</ul>';
 
-  const winner = A.score >= B.score ? 'A' : 'B';
-  const diff = Math.abs(A.score - B.score).toFixed(1);
-  const wName = winner==='A' ? (A.player||aName) : (B.player||bName);
-  headline.innerHTML = `Recommend: <span class="${winner==='A'?'winner':'loser'}">${wName}</span> (by +${diff})`;
+        card.innerHTML = `
+            <h3>
+                ${playerData.player_display_name}
+                <span class="score-display">${playerData.start_score}</span>
+            </h3>
+            <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+                ${playerData.position} | ${playerData.team} ${playerData.opponent ? `vs. ${playerData.opponent}` : ''}
+            </p>
+            ${breakdownHTML}
+        `;
+        resultsContainer.appendChild(card);
+    }
 
-  // Names + meta
-  document.getElementById('aName').textContent = `${A.player||aName} · ${A.pos} · ${A.team} vs ${A.opp} · Score ${A.score}`;
-  document.getElementById('bName').textContent = `${B.player||bName} · ${B.pos} · ${B.team} vs ${B.opp} · Score ${B.score}`;
-  document.getElementById('aMeta').textContent = explain(A.components);
-  document.getElementById('bMeta').textContent = explain(B.components);
-
-  // Radar charts
-  const labels = ['usage','eff','oline','opp','env','cons'];
-  const ctxA = document.getElementById('aRadar').getContext('2d');
-  const ctxB = document.getElementById('bRadar').getContext('2d');
-  radarA && radarA.destroy(); radarB && radarB.destroy();
-
-  const toPct = c => labels.map(k=> Math.round(100*(c[k] ?? 0.5)));
-
-  radarA = new Chart(ctxA, {
-    type:'radar',
-    data:{ labels: labels.map(x=>x.toUpperCase()), datasets:[{ label:'Components', data: toPct(A.components) }]},
-    options:{ scales:{ r:{ suggestedMin:0, suggestedMax:100 }}, plugins:{legend:{display:false}} }
-  });
-  radarB = new Chart(ctxB, {
-    type:'radar',
-    data:{ labels: labels.map(x=>x.toUpperCase()), datasets:[{ label:'Components', data: toPct(B.components) }]},
-    options:{ scales:{ r:{ suggestedMin:0, suggestedMax:100 }}, plugins:{legend:{display:false}} }
-  });
-
-  result.style.display = 'block';
-}
-
-function explain(c){
-  // Return top 3 components by strength as readable text
-  const entries = Object.entries(c||{}).sort((a,b)=> b[1]-a[1]).slice(0,3);
-  return 'Top drivers: ' + entries.map(([k,v])=> `${k.toUpperCase()} ${Math.round(v*100)}%`).join(' • ');
-}
+    initialize();
+    compareBtn.addEventListener('click', analyzePlayers);
+});
