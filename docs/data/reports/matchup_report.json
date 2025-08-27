@@ -1,0 +1,650 @@
+{
+    "QB": [
+        {
+            "team": "KC",
+            "points_allowed": 20.43709677419355,
+            "rank": 1
+        },
+        {
+            "team": "DET",
+            "points_allowed": 20.131176470588237,
+            "rank": 2
+        },
+        {
+            "team": "TB",
+            "points_allowed": 19.264204545454547,
+            "rank": 3
+        },
+        {
+            "team": "ARI",
+            "points_allowed": 19.094303797468356,
+            "rank": 4
+        },
+        {
+            "team": "ATL",
+            "points_allowed": 18.86845238095238,
+            "rank": 5
+        },
+        {
+            "team": "MIA",
+            "points_allowed": 18.6575,
+            "rank": 6
+        },
+        {
+            "team": "JAX",
+            "points_allowed": 18.489080459770115,
+            "rank": 7
+        },
+        {
+            "team": "LV",
+            "points_allowed": 18.457594936708862,
+            "rank": 8
+        },
+        {
+            "team": "SEA",
+            "points_allowed": 18.451875,
+            "rank": 9
+        },
+        {
+            "team": "WAS",
+            "points_allowed": 18.385393258426966,
+            "rank": 10
+        },
+        {
+            "team": "CIN",
+            "points_allowed": 18.28125,
+            "rank": 11
+        },
+        {
+            "team": "TEN",
+            "points_allowed": 18.164197530864197,
+            "rank": 12
+        },
+        {
+            "team": "MIN",
+            "points_allowed": 18.13855421686747,
+            "rank": 13
+        },
+        {
+            "team": "PIT",
+            "points_allowed": 18.09125,
+            "rank": 14
+        },
+        {
+            "team": "LAC",
+            "points_allowed": 18.05432098765432,
+            "rank": 15
+        },
+        {
+            "team": "IND",
+            "points_allowed": 17.712048192771082,
+            "rank": 16
+        },
+        {
+            "team": "GB",
+            "points_allowed": 17.3109756097561,
+            "rank": 17
+        },
+        {
+            "team": "PHI",
+            "points_allowed": 16.87578947368421,
+            "rank": 18
+        },
+        {
+            "team": "LA",
+            "points_allowed": 16.780434782608694,
+            "rank": 19
+        },
+        {
+            "team": "HOU",
+            "points_allowed": 16.575,
+            "rank": 20
+        },
+        {
+            "team": "NYG",
+            "points_allowed": 16.389772727272728,
+            "rank": 21
+        },
+        {
+            "team": "NO",
+            "points_allowed": 16.369753086419752,
+            "rank": 22
+        },
+        {
+            "team": "DAL",
+            "points_allowed": 16.28586956521739,
+            "rank": 23
+        },
+        {
+            "team": "BAL",
+            "points_allowed": 16.232417582417582,
+            "rank": 24
+        },
+        {
+            "team": "CAR",
+            "points_allowed": 15.934482758620689,
+            "rank": 25
+        },
+        {
+            "team": "CHI",
+            "points_allowed": 15.842441860465117,
+            "rank": 26
+        },
+        {
+            "team": "NE",
+            "points_allowed": 15.697058823529412,
+            "rank": 27
+        },
+        {
+            "team": "DEN",
+            "points_allowed": 15.595402298850574,
+            "rank": 28
+        },
+        {
+            "team": "BUF",
+            "points_allowed": 15.541208791208792,
+            "rank": 29
+        },
+        {
+            "team": "SF",
+            "points_allowed": 15.485416666666666,
+            "rank": 30
+        },
+        {
+            "team": "CLE",
+            "points_allowed": 14.99034090909091,
+            "rank": 31
+        },
+        {
+            "team": "NYJ",
+            "points_allowed": 14.958988764044943,
+            "rank": 32
+        }
+    ],
+    "RB": [
+        {
+            "team": "SEA",
+            "points_allowed": 13.258139534883721,
+            "rank": 1
+        },
+        {
+            "team": "GB",
+            "points_allowed": 12.661635220125786,
+            "rank": 2
+        },
+        {
+            "team": "ARI",
+            "points_allowed": 12.375714285714286,
+            "rank": 3
+        },
+        {
+            "team": "CAR",
+            "points_allowed": 12.28372093023256,
+            "rank": 4
+        },
+        {
+            "team": "CHI",
+            "points_allowed": 12.241954022988505,
+            "rank": 5
+        },
+        {
+            "team": "NYG",
+            "points_allowed": 12.228248587570622,
+            "rank": 6
+        },
+        {
+            "team": "NYJ",
+            "points_allowed": 12.01494252873563,
+            "rank": 7
+        },
+        {
+            "team": "WAS",
+            "points_allowed": 11.964285714285714,
+            "rank": 8
+        },
+        {
+            "team": "LV",
+            "points_allowed": 11.77912087912088,
+            "rank": 9
+        },
+        {
+            "team": "PIT",
+            "points_allowed": 11.75906432748538,
+            "rank": 10
+        },
+        {
+            "team": "HOU",
+            "points_allowed": 11.675401069518717,
+            "rank": 11
+        },
+        {
+            "team": "LAC",
+            "points_allowed": 11.643502824858757,
+            "rank": 12
+        },
+        {
+            "team": "JAX",
+            "points_allowed": 11.625842696629213,
+            "rank": 13
+        },
+        {
+            "team": "BUF",
+            "points_allowed": 11.35879120879121,
+            "rank": 14
+        },
+        {
+            "team": "CIN",
+            "points_allowed": 11.33611111111111,
+            "rank": 15
+        },
+        {
+            "team": "IND",
+            "points_allowed": 11.32865168539326,
+            "rank": 16
+        },
+        {
+            "team": "DEN",
+            "points_allowed": 11.21173184357542,
+            "rank": 17
+        },
+        {
+            "team": "MIN",
+            "points_allowed": 11.094186046511629,
+            "rank": 18
+        },
+        {
+            "team": "DET",
+            "points_allowed": 11.02202380952381,
+            "rank": 19
+        },
+        {
+            "team": "LA",
+            "points_allowed": 11.013483146067417,
+            "rank": 20
+        },
+        {
+            "team": "NE",
+            "points_allowed": 10.916763005780346,
+            "rank": 21
+        },
+        {
+            "team": "ATL",
+            "points_allowed": 10.826857142857143,
+            "rank": 22
+        },
+        {
+            "team": "PHI",
+            "points_allowed": 10.527748691099477,
+            "rank": 23
+        },
+        {
+            "team": "CLE",
+            "points_allowed": 10.357627118644068,
+            "rank": 24
+        },
+        {
+            "team": "SF",
+            "points_allowed": 10.341052631578947,
+            "rank": 25
+        },
+        {
+            "team": "MIA",
+            "points_allowed": 10.253977272727273,
+            "rank": 26
+        },
+        {
+            "team": "NO",
+            "points_allowed": 10.17183908045977,
+            "rank": 27
+        },
+        {
+            "team": "BAL",
+            "points_allowed": 10.129943502824858,
+            "rank": 28
+        },
+        {
+            "team": "KC",
+            "points_allowed": 10.101724137931035,
+            "rank": 29
+        },
+        {
+            "team": "TB",
+            "points_allowed": 10.030386740331492,
+            "rank": 30
+        },
+        {
+            "team": "DAL",
+            "points_allowed": 9.928877005347594,
+            "rank": 31
+        },
+        {
+            "team": "TEN",
+            "points_allowed": 9.799137931034483,
+            "rank": 32
+        }
+    ],
+    "TE": [
+        {
+            "team": "CIN",
+            "points_allowed": 8.254109589041095,
+            "rank": 1
+        },
+        {
+            "team": "SEA",
+            "points_allowed": 8.075806451612904,
+            "rank": 2
+        },
+        {
+            "team": "PHI",
+            "points_allowed": 7.702777777777778,
+            "rank": 3
+        },
+        {
+            "team": "TB",
+            "points_allowed": 7.618543046357616,
+            "rank": 4
+        },
+        {
+            "team": "IND",
+            "points_allowed": 7.494285714285715,
+            "rank": 5
+        },
+        {
+            "team": "LA",
+            "points_allowed": 7.483687943262412,
+            "rank": 6
+        },
+        {
+            "team": "GB",
+            "points_allowed": 7.426515151515151,
+            "rank": 7
+        },
+        {
+            "team": "ATL",
+            "points_allowed": 7.245925925925926,
+            "rank": 8
+        },
+        {
+            "team": "LV",
+            "points_allowed": 7.1755102040816325,
+            "rank": 9
+        },
+        {
+            "team": "PIT",
+            "points_allowed": 7.1457746478873245,
+            "rank": 10
+        },
+        {
+            "team": "MIA",
+            "points_allowed": 7.042,
+            "rank": 11
+        },
+        {
+            "team": "LAC",
+            "points_allowed": 7.006028368794326,
+            "rank": 12
+        },
+        {
+            "team": "BAL",
+            "points_allowed": 6.9587412587412585,
+            "rank": 13
+        },
+        {
+            "team": "JAX",
+            "points_allowed": 6.937908496732026,
+            "rank": 14
+        },
+        {
+            "team": "CAR",
+            "points_allowed": 6.921875,
+            "rank": 15
+        },
+        {
+            "team": "WAS",
+            "points_allowed": 6.842063492063493,
+            "rank": 16
+        },
+        {
+            "team": "NYJ",
+            "points_allowed": 6.811888111888112,
+            "rank": 17
+        },
+        {
+            "team": "MIN",
+            "points_allowed": 6.809923664122137,
+            "rank": 18
+        },
+        {
+            "team": "ARI",
+            "points_allowed": 6.805555555555555,
+            "rank": 19
+        },
+        {
+            "team": "DET",
+            "points_allowed": 6.774657534246575,
+            "rank": 20
+        },
+        {
+            "team": "DEN",
+            "points_allowed": 6.72551724137931,
+            "rank": 21
+        },
+        {
+            "team": "HOU",
+            "points_allowed": 6.71225806451613,
+            "rank": 22
+        },
+        {
+            "team": "KC",
+            "points_allowed": 6.667515923566879,
+            "rank": 23
+        },
+        {
+            "team": "CLE",
+            "points_allowed": 6.624615384615385,
+            "rank": 24
+        },
+        {
+            "team": "DAL",
+            "points_allowed": 6.409022556390977,
+            "rank": 25
+        },
+        {
+            "team": "NYG",
+            "points_allowed": 6.313986013986014,
+            "rank": 26
+        },
+        {
+            "team": "CHI",
+            "points_allowed": 6.307954545454545,
+            "rank": 27
+        },
+        {
+            "team": "NO",
+            "points_allowed": 6.178225806451613,
+            "rank": 28
+        },
+        {
+            "team": "BUF",
+            "points_allowed": 6.053691275167785,
+            "rank": 29
+        },
+        {
+            "team": "SF",
+            "points_allowed": 5.943046357615894,
+            "rank": 30
+        },
+        {
+            "team": "NE",
+            "points_allowed": 5.706569343065693,
+            "rank": 31
+        },
+        {
+            "team": "TEN",
+            "points_allowed": 5.682068965517241,
+            "rank": 32
+        }
+    ],
+    "WR": [
+        {
+            "team": "MIN",
+            "points_allowed": 10.766040955631398,
+            "rank": 1
+        },
+        {
+            "team": "WAS",
+            "points_allowed": 10.679664179104478,
+            "rank": 2
+        },
+        {
+            "team": "DET",
+            "points_allowed": 10.507142857142856,
+            "rank": 3
+        },
+        {
+            "team": "TB",
+            "points_allowed": 10.091694915254237,
+            "rank": 4
+        },
+        {
+            "team": "LA",
+            "points_allowed": 10.088620689655173,
+            "rank": 5
+        },
+        {
+            "team": "TEN",
+            "points_allowed": 9.867931034482758,
+            "rank": 6
+        },
+        {
+            "team": "SF",
+            "points_allowed": 9.807377049180328,
+            "rank": 7
+        },
+        {
+            "team": "ARI",
+            "points_allowed": 9.778759398496241,
+            "rank": 8
+        },
+        {
+            "team": "ATL",
+            "points_allowed": 9.766914498141265,
+            "rank": 9
+        },
+        {
+            "team": "JAX",
+            "points_allowed": 9.702313167259787,
+            "rank": 10
+        },
+        {
+            "team": "NYG",
+            "points_allowed": 9.60886524822695,
+            "rank": 11
+        },
+        {
+            "team": "CAR",
+            "points_allowed": 9.576515151515151,
+            "rank": 12
+        },
+        {
+            "team": "BAL",
+            "points_allowed": 9.518791946308724,
+            "rank": 13
+        },
+        {
+            "team": "IND",
+            "points_allowed": 9.513688212927756,
+            "rank": 14
+        },
+        {
+            "team": "LAC",
+            "points_allowed": 9.500922509225092,
+            "rank": 15
+        },
+        {
+            "team": "KC",
+            "points_allowed": 9.379483282674771,
+            "rank": 16
+        },
+        {
+            "team": "GB",
+            "points_allowed": 9.340760869565218,
+            "rank": 17
+        },
+        {
+            "team": "DAL",
+            "points_allowed": 9.327364864864865,
+            "rank": 18
+        },
+        {
+            "team": "CIN",
+            "points_allowed": 9.275925925925925,
+            "rank": 19
+        },
+        {
+            "team": "SEA",
+            "points_allowed": 9.242153284671533,
+            "rank": 20
+        },
+        {
+            "team": "PIT",
+            "points_allowed": 9.22695035460993,
+            "rank": 21
+        },
+        {
+            "team": "LV",
+            "points_allowed": 9.226865671641791,
+            "rank": 22
+        },
+        {
+            "team": "HOU",
+            "points_allowed": 9.107042253521128,
+            "rank": 23
+        },
+        {
+            "team": "PHI",
+            "points_allowed": 9.079588607594937,
+            "rank": 24
+        },
+        {
+            "team": "CLE",
+            "points_allowed": 9.038951310861423,
+            "rank": 25
+        },
+        {
+            "team": "NE",
+            "points_allowed": 9.007374100719424,
+            "rank": 26
+        },
+        {
+            "team": "MIA",
+            "points_allowed": 8.958135593220339,
+            "rank": 27
+        },
+        {
+            "team": "CHI",
+            "points_allowed": 8.952909090909092,
+            "rank": 28
+        },
+        {
+            "team": "NO",
+            "points_allowed": 8.928368794326241,
+            "rank": 29
+        },
+        {
+            "team": "DEN",
+            "points_allowed": 8.596428571428572,
+            "rank": 30
+        },
+        {
+            "team": "BUF",
+            "points_allowed": 8.570607028753994,
+            "rank": 31
+        },
+        {
+            "team": "NYJ",
+            "points_allowed": 8.003584905660377,
+            "rank": 32
+        }
+    ]
+}
