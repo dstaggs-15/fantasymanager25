@@ -1,66 +1,92 @@
+# analysis/consistency_analyzer.py
 import pandas as pd
-import os
 import json
-import sys # Add sys import
-# ... (imports)
+import os
+import sys
+import numpy as np
 
-# --- Configuration ---
-# THE FIX: Ensure all scripts read from and write to the 'docs' folder
-DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
-OUTPUT_DIR = os.path.join('docs', 'data', 'analysis')
+def analyze_consistency():
+    """
+    Analyzes player performance to calculate consistency metrics like standard
+    deviation, ceiling games, and floor games.
+    """
+    print("\n--- Starting Consistency Analysis ---")
 
-# ... (the rest of each script is unchanged)
-# Add the project's root directory to the Python path
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.insert(0, project_root)
+    # --- 1. Define File Paths ---
+    processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
+    reports_dir = os.path.join('docs', 'data', 'reports')
+    os.makedirs(reports_dir, exist_ok=True)
+    output_path = os.path.join(reports_dir, 'consistency_report.json')
 
-from pipeline.utils import calculate_fantasy_points
-
-DATA_FILE = os.path.join('docs', 'data', 'analysis', 'nfl_data.csv')
-OUTPUT_DIR = 'docs/data/analysis'
-ANALYSIS_SEASONS = [2024, 2023, 2022]
-MIN_GAMES_PLAYED = 8
-
-def main():
-    print("--- Starting Consistency Analyzer ---")
+    # --- 2. Load Processed Data ---
     try:
-        df = pd.read_csv(DATA_FILE, low_memory=False)
+        df = pd.read_csv(processed_data_path)
+        print(f"Successfully loaded processed data from: {processed_data_path}")
     except FileNotFoundError:
-        print(f"❌ ERROR: Data file not found.")
-        return
+        print(f"❌ CRITICAL ERROR: Processed data file not found at '{processed_data_path}'.")
+        sys.exit(1)
 
-    df = calculate_fantasy_points(df)
-    analysis_df = df[df['season'].isin(ANALYSIS_SEASONS)].copy()
-    player_groups = analysis_df.groupby(['player_id', 'player_display_name', 'position'])
+    # --- 3. Determine Most Recent Completed Season ---
+    latest_season = df['season'].max()
+    if df[df['season'] == latest_season]['week'].max() < 4:
+        latest_season = latest_season - 1
+    
+    print(f"Analyzing player consistency for the {latest_season} season.")
+    df_season = df[df['season'] == latest_season].copy()
 
-    player_stats = player_groups.agg(
-        games_played=('week', 'count'),
-        mean_ppg=('fantasy_points_custom', 'mean'),
-        std_dev_ppg=('fantasy_points_custom', 'std'),
-        ceiling_ppg=('fantasy_points_custom', lambda x: x.quantile(0.9)),
-        floor_ppg=('fantasy_points_custom', lambda x: x.quantile(0.1))
-    ).reset_index()
+    # --- 4. Calculate Consistency Metrics for Each Player ---
+    player_ids = df_season['player_id'].unique()
+    consistency_data = []
 
-    thresholds = {'QB': 15, 'RB': 10, 'WR': 10, 'TE': 8}
-    def get_consistency(group):
-        pos = group['position'].iloc[0]
-        threshold = thresholds.get(pos, 0)
-        if threshold == 0: return 0
-        good_games = (group['fantasy_points_custom'] >= threshold).sum()
-        total_games = len(group)
-        return (good_games / total_games) * 100 if total_games > 0 else 0
+    for player_id in player_ids:
+        player_df = df_season[df_season['player_id'] == player_id].copy()
+        
+        games_played = len(player_df)
+        if games_played < 5: # Only analyze players with a decent sample size
+            continue
 
-    consistency = player_groups.apply(get_consistency).reset_index(name='consistency_pct')
-    final_df = pd.merge(player_stats, consistency, on=['player_id', 'player_display_name', 'position'])
-    final_df = final_df[final_df['games_played'] >= MIN_GAMES_PLAYED]
-    final_df = final_df.sort_values(by=['position', 'consistency_pct', 'mean_ppg'], ascending=[True, False, False])
+        player_info = player_df.iloc[0]
+        
+        # Core Metrics
+        avg_points = player_df['fantasy_points'].mean()
+        std_dev = player_df['fantasy_points'].std()
+        
+        # Ceiling, Floor, and Bust Rates
+        ceiling_threshold = np.percentile(player_df['fantasy_points'], 75) # Top 25% score
+        floor_threshold = np.percentile(player_df['fantasy_points'], 25) # Bottom 25% score
+        
+        ceiling_games = player_df[player_df['fantasy_points'] >= ceiling_threshold]
+        floor_games = player_df[player_df['fantasy_points'] <= floor_threshold]
+        
+        avg_ceiling = ceiling_games['fantasy_points'].mean()
+        avg_floor = floor_games['fantasy_points'].mean()
+        
+        # "Good" games vs "Bust" games
+        good_game_threshold = avg_points * 1.2 # Scored 20% above their average
+        bust_game_threshold = avg_points * 0.8 # Scored 20% below their average
+        
+        good_games_pct = (len(player_df[player_df['fantasy_points'] > good_game_threshold]) / games_played) * 100
+        bust_games_pct = (len(player_df[player_df['fantasy_points'] < bust_game_threshold]) / games_played) * 100
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    output_path = os.path.join(OUTPUT_DIR, 'consistency_report.json')
-    report = {'analysis_seasons': ANALYSIS_SEASONS, 'players': final_df.round(2).to_dict('records')}
+        consistency_data.append({
+            'player_display_name': player_info['player_display_name'],
+            'position': player_info['position'],
+            'recent_team': player_info['recent_team'],
+            'games_played': games_played,
+            'ppg': round(avg_points, 2),
+            'std_dev': round(std_dev, 2),
+            'avg_ceiling': round(avg_ceiling, 2),
+            'avg_floor': round(avg_floor, 2),
+            'good_games_pct': round(good_games_pct, 1),
+            'bust_games_pct': round(bust_games_pct, 1)
+        })
+
+    # Sort by PPG by default
+    consistency_data.sort(key=lambda x: x['ppg'], reverse=True)
+
+    # --- 5. Save the Report ---
     with open(output_path, 'w') as f:
-        json.dump(report, f, indent=2)
-    print(f"✅ Consistency analysis report saved to {output_path}")
+        json.dump(consistency_data, f, indent=4)
 
-if __name__ == '__main__':
-    main()
+    print(f"✅ Successfully created consistency analysis report at: {output_path}")
+    print("--- Consistency Analysis Finished
