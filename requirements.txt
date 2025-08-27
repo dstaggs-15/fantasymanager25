@@ -1,4 +1,5 @@
-nfl-data-py
 pandas
 requests
 pyarrow
+nfl-data-py>=0.4.0
+fastparquet
