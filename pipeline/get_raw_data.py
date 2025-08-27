@@ -6,60 +6,48 @@ import datetime
 from urllib.error import HTTPError
 
 def get_raw_data():
-    """
-    Downloads raw NFL data (weekly stats, player rosters, and schedules) for the last five seasons
-    and saves them to separate CSV files in the 'docs/data/raw/' directory.
-    """
-    print("--- Phase 1, Step 1: Starting Raw Data Collection ---")
-
+    print("--- Starting Raw Data Collection ---")
     current_year = datetime.date.today().year
     YEARS = list(range(current_year - 4, current_year + 1))
-    
     output_dir = os.path.join('docs', 'data', 'raw')
     os.makedirs(output_dir, exist_ok=True)
-    
     weekly_output_path = os.path.join(output_dir, 'weekly_stats_raw.csv')
     roster_output_path = os.path.join(output_dir, 'players_master.csv')
     schedule_output_path = os.path.join(output_dir, 'schedule_raw.csv')
 
-    print(f"Attempting to fetch data for seasons: {YEARS}")
-
-    # --- Download Weekly Player Stats ---
+    # Download Weekly Stats
     all_weekly_data = []
-    print("Downloading weekly player stats...")
+    print(f"Downloading weekly player stats for {YEARS}...")
     for year in YEARS:
         try:
             yearly_df = nfl.import_weekly_data(years=[year])
             all_weekly_data.append(yearly_df)
         except HTTPError:
-            print(f"  -> INFO: Weekly data for {year} not available yet. Skipping.")
-
+            print(f"  -> INFO: Weekly data for {year} not available. Skipping.")
     if all_weekly_data:
         weekly_df = pd.concat(all_weekly_data, ignore_index=True)
         weekly_df.to_csv(weekly_output_path, index=False)
-        print(f"✅ Successfully saved raw weekly stats to: {weekly_output_path}")
+        print("✅ Successfully saved raw weekly stats.")
 
-    # --- Download Roster/Player Information ---
+    # Download Roster/Player Information
     try:
         print("Downloading player roster information...")
-        # This is the correct function name for the library version we are installing.
         roster_df = nfl.import_roster_data(years=YEARS)
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
         master_list.to_csv(roster_output_path, index=False)
-        print(f"✅ Successfully saved Player Master List to: {roster_output_path}")
+        print("✅ Successfully saved Player Master List.")
     except Exception as e:
-        print(f"❌ ERROR: Failed to download or save roster data. Reason: {e}")
+        print(f"❌ ERROR: Failed to download roster data. Reason: {e}")
 
-    # --- Download Schedule Information ---
+    # Download Schedule
     try:
         print("Downloading schedule information...")
         schedule_df = nfl.import_schedules(years=YEARS)
         schedule_df.to_csv(schedule_output_path, index=False)
-        print(f"✅ Successfully saved raw schedule data to: {schedule_output_path}")
+        print("✅ Successfully saved raw schedule data.")
     except Exception as e:
-        print(f"❌ ERROR: Failed to download or save schedule data. Reason: {e}")
-
+        print(f"❌ ERROR: Failed to download schedule data. Reason: {e}")
     print("--- Raw Data Collection Finished ---")
 
 if __name__ == '__main__':
