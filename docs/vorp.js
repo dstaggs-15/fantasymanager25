@@ -6,23 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const teLevelInput = document.getElementById('te-level');
     const tableBody = document.getElementById('vorp-table-body');
     
-    // --- NEW DOM REFERENCES FOR COMPARISON TOOL ---
     const player1Input = document.getElementById('player1-search');
     const player2Input = document.getElementById('player2-search');
     const compareBtn = document.getElementById('compare-btn');
     const comparisonResultsDiv = document.getElementById('comparison-results');
+    const comparisonContainer = document.getElementById('comparison-results-container');
     const playerDatalist = document.getElementById('player-list');
 
     // --- GLOBAL VARIABLES ---
-    let allPlayers = []; // Raw data from JSON
-    let playersWithVorp = []; // Data after VORP calculation
+    let allPlayers = []; 
+    let playersWithVorp = [];
 
-    // --- NEW: FUNCTION TO POPULATE AUTOCOMPLETE ---
+    // --- FUNCTION TO POPULATE AUTOCOMPLETE ---
     const populateDatalist = () => {
         const fragment = document.createDocumentFragment();
         allPlayers.forEach(player => {
             const option = document.createElement('option');
-            option.value = player.player_name;
+            option.value = player.player_display_name;
             fragment.appendChild(option);
         });
         playerDatalist.appendChild(fragment);
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
             replacementScores[pos] = (replacementIndex >= 0 && replacementIndex < posPlayers.length) ? posPlayers[replacementIndex].ppg : 0;
         }
         
-        // Calculate VORP and store it in our global variable
         playersWithVorp = allPlayers.map(player => ({
             ...player,
             vorp: (player.ppg - (replacementScores[player.position] || 0)).toFixed(2),
@@ -54,90 +53,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
         playersWithVorp.sort((a, b) => b.vorp - a.vorp);
 
-        // Render the main table
         tableBody.innerHTML = '';
         playersWithVorp.forEach((player, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${index + 1}</td>
-                <td>${player.player_name}</td>
-                <td>${player.team}</td>
+                <td>${player.player_display_name}</td>
                 <td>${player.position}</td>
+                <td>${player.recent_team}</td>
                 <td>${player.ppg}</td>
+                <td>${player.consistency}</td>
                 <td><strong>${player.vorp}</strong></td>
             `;
             tableBody.appendChild(row);
         });
     };
 
-    // --- NEW: FUNCTION TO HANDLE PLAYER COMPARISON ---
+    // --- FUNCTION TO HANDLE PLAYER COMPARISON ---
     const handleComparison = () => {
         const name1 = player1Input.value;
         const name2 = player2Input.value;
 
-        if (!name1 || !name2) {
-            comparisonResultsDiv.innerHTML = `<p>Please select two players to compare.</p>`;
+        if (!name1 && !name2) {
+            comparisonContainer.style.display = 'none';
             return;
         }
-
-        const player1 = playersWithVorp.find(p => p.player_name === name1);
-        const player2 = playersWithVorp.find(p => p.player_name === name2);
+        
+        comparisonContainer.style.display = 'block';
+        const player1 = playersWithVorp.find(p => p.player_display_name === name1);
+        const player2 = playersWithVorp.find(p => p.player_display_name === name2);
 
         let resultsHTML = '';
         
-        if (player1) {
-            resultsHTML += `
+        const renderPlayerCard = (player) => {
+            if (!player) return `<div class="player-card"><p>Player not found.</p></div>`;
+            return `
                 <div class="player-card">
-                    <h3>${player1.player_name}</h3>
-                    <p><strong>Team:</strong> ${player1.team}</p>
-                    <p><strong>Position:</strong> ${player1.position}</p>
-                    <p><strong>PPG:</strong> ${player1.ppg}</p>
-                    <p><strong>VORP:</strong> ${player1.vorp}</p>
+                    <h3>${player.player_display_name}</h3>
+                    <p><strong>Team:</strong> ${player.recent_team} | <strong>Pos:</strong> ${player.position}</p>
+                    <p><strong>PPG:</strong> ${player.ppg}</p>
+                    <p><strong>VORP:</strong> ${player.vorp}</p>
+                    <p><strong>Consistency (Std Dev):</strong> ${player.consistency}</p>
+                    <p><strong>Games Played:</strong> ${player.games_played}</p>
                 </div>
             `;
-        } else {
-            resultsHTML += `<div class="player-card"><p>Could not find player: ${name1}</p></div>`;
-        }
+        };
 
-        if (player2) {
-            resultsHTML += `
-                <div class="player-card">
-                    <h3>${player2.player_name}</h3>
-                    <p><strong>Team:</strong> ${player2.team}</p>
-                    <p><strong>Position:</strong> ${player2.position}</p>
-                    <p><strong>PPG:</strong> ${player2.ppg}</p>
-                    <p><strong>VORP:</strong> ${player2.vorp}</p>
-                </div>
-            `;
-        } else {
-            resultsHTML += `<div class="player-card"><p>Could not find player: ${name2}</p></div>`;
-        }
-
+        resultsHTML += renderPlayerCard(player1);
+        resultsHTML += renderPlayerCard(player2);
         comparisonResultsDiv.innerHTML = resultsHTML;
     };
 
     // --- DATA FETCHING ---
     const fetchData = async () => {
         try {
-            const response = await fetch('./data/analysis/player_ppg.json');
+            const response = await fetch('./data/reports/vorp_report.json');
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             allPlayers = await response.json();
             
-            populateDatalist(); // Populate the autocomplete options
-            calculateAndRenderVorp(); // Initial calculation and render
+            populateDatalist();
+            calculateAndRenderVorp();
             
         } catch (error) {
-            console.error('Error fetching player data:', error);
-            tableBody.innerHTML = `<tr><td colspan="6">Could not load player data. Make sure you have run the analysis/vorp_calculator.py script.</td></tr>`;
+            console.error('Error fetching VORP data:', error);
+            tableBody.innerHTML = `<tr><td colspan="7">Could not load VORP report. Check if the file exists and the workflow ran correctly.</td></tr>`;
         }
     };
 
     // --- EVENT LISTENERS ---
-    qbLevelInput.addEventListener('change', calculateAndRenderVorp);
-    rbLevelInput.addEventListener('change', calculateAndRenderVorp);
-    wrLevelInput.addEventListener('change', calculateAndRenderVorp);
-    teLevelInput.addEventListener('change', calculateAndRenderVorp);
-    compareBtn.addEventListener('click', handleComparison); // Add listener for the compare button
+    [qbLevelInput, rbLevelInput, wrLevelInput, teLevelInput].forEach(input => {
+        input.addEventListener('change', calculateAndRenderVorp);
+    });
+    compareBtn.addEventListener('click', handleComparison);
 
     // --- INITIALIZATION ---
     fetchData();
