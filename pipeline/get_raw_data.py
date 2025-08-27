@@ -42,8 +42,8 @@ def get_raw_data():
     # --- Download Roster/Player Information ---
     try:
         print("Downloading player roster information...")
-        # CORRECTED: Using the older, more stable function name 'import_rosters'.
-        roster_df = nfl.import_rosters(years=YEARS)
+        # This is the correct function name for the library version we are installing.
+        roster_df = nfl.import_roster_data(years=YEARS)
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
         master_list.to_csv(roster_output_path, index=False)
