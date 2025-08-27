@@ -20,7 +20,7 @@ def get_raw_data():
     
     weekly_output_path = os.path.join(output_dir, 'weekly_stats_raw.csv')
     roster_output_path = os.path.join(output_dir, 'players_master.csv')
-    schedule_output_path = os.path.join(output_dir, 'schedule_raw.csv') # New file path
+    schedule_output_path = os.path.join(output_dir, 'schedule_raw.csv')
 
     print(f"Attempting to fetch data for seasons: {YEARS}")
 
@@ -33,8 +33,6 @@ def get_raw_data():
             all_weekly_data.append(yearly_df)
         except HTTPError:
             print(f"  -> INFO: Weekly data for {year} not available yet. Skipping.")
-        except Exception as e:
-            print(f"  -> ❌ ERROR: An unexpected error occurred for year {year}: {e}. Skipping.")
 
     if all_weekly_data:
         weekly_df = pd.concat(all_weekly_data, ignore_index=True)
@@ -44,7 +42,8 @@ def get_raw_data():
     # --- Download Roster/Player Information ---
     try:
         print("Downloading player roster information...")
-        roster_df = nfl.import_roster_data(years=YEARS)
+        # CORRECTED: The definitive function name is import_rosters.
+        roster_df = nfl.import_rosters(years=YEARS)
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
         master_list.to_csv(roster_output_path, index=False)
@@ -52,7 +51,7 @@ def get_raw_data():
     except Exception as e:
         print(f"❌ ERROR: Failed to download or save roster data. Reason: {e}")
 
-    # --- NEW: Download Schedule Information ---
+    # --- Download Schedule Information ---
     try:
         print("Downloading schedule information...")
         schedule_df = nfl.import_schedules(years=YEARS)
@@ -63,5 +62,4 @@ def get_raw_data():
 
     print("--- Raw Data Collection Finished ---")
 
-if __name__ == '__main__':
-    get_raw_data()
+if __name__ ==
