@@ -25,12 +25,18 @@
     <div class="container">
         <h1>Start/Sit Assistant</h1>
         <div class="card" style="margin-bottom: 2rem;">
-            <h2>How to Use This Tool</h2>
-            <p>Select players to compare. The tool will generate a weighted <strong>"Start Score"</strong> for each player based on their talent, weekly matchup, and offensive line quality. A higher score indicates a better start for the upcoming week.</p>
+            <h2>How the "Start Score" is Calculated</h2>
+            <p>The <strong>Start Score</strong> is a weighted average of four key factors to provide a comprehensive recommendation for the upcoming week. A higher score is better.</p>
+            <ul>
+                <li><strong>Talent (40%):</strong> A player's season-long Points Per Game (PPG).</li>
+                <li><strong>Matchup (30%):</strong> The defensive ranking of their opponent against their position.</li>
+                <li><strong>O-Line (15%):</strong> The rank of the player's offensive line.</li>
+                <li><strong>Efficiency (15%):</strong> A player's Yards Per Touch (for RB/WR/TE) or TD Rate (for QB).</li>
+            </ul>
         </div>
 
         <div class="card">
-            <h2 id="week-title">Comparing Players</h2>
+            <h2>Compare Players</h2>
             <div class="player-inputs">
                 <div class="search-group"><label for="player1">Player 1</label><input type="text" id="player1" list="player-list" placeholder="Search..."></div>
                 <div class="search-group"><label for="player2">Player 2</label><input type="text" id="player2" list="player-list" placeholder="Search..."></div>
