@@ -4,15 +4,17 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import sys
+import re
 
 def scrape_oline_rankings():
     """
-    Scrapes the latest offensive line unit rankings from Pro Football Focus (PFF)
+    Scrapes the latest offensive line rankings from a PFF article
     and saves them to a CSV file.
     """
     print("\n--- Starting O-Line Rankings Scraper ---")
 
-    url = "https://www.pff.com/nfl/grades/unit/offensive-line" 
+    # CORRECTED URL provided by you
+    url = "https://www.pff.com/news/nfl-2025-nfl-offensive-line-rankings"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
@@ -25,40 +27,45 @@ def scrape_oline_rankings():
         
         soup = BeautifulSoup(response.content, 'html.parser')
         
-        table = soup.find('table')
-        if not table:
-            print("❌ ERROR: Could not find the data table on the page. The website structure may have changed.")
-            sys.exit(1)
-
-        print("Parsing the data table...")
-        rows = table.find_all('tr')
+        print("Parsing the article content...")
+        
+        headings = soup.find_all('h3')
+        
         team_data = []
-        pff_to_nfl_map = {
-            'ARZ': 'ARI', 'BLT': 'BAL', 'CLV': 'CLE', 'HST': 'HOU', 
-            'LA': 'LAR', 'LV': 'LV', 'SD': 'LAC', 'SF': 'SF', 'TB': 'TB',
-            'GB': 'GB', 'KC': 'KC', 'IND': 'IND', 'DAL': 'DAL', 'NO': 'NO',
-            'NE': 'NE', 'NYJ': 'NYJ', 'WSH': 'WAS', 'ATL': 'ATL', 'CAR': 'CAR',
-            'CHI': 'CHI', 'CIN': 'CIN', 'BUF': 'BUF', 'DEN': 'DEN', 'DET': 'DET',
-            'JAX': 'JAC', 'MIA': 'MIA', 'MIN': 'MIN', 'NYG': 'NYG', 'PHI': 'PHI',
-            'PIT': 'PIT', 'SEA': 'SEA', 'TEN': 'TEN'
+        # PFF uses full team names in articles, so we'll map them to our abbreviations
+        pff_name_to_abbr_map = {
+            'ARIZONA CARDINALS': 'ARI', 'ATLANTA FALCONS': 'ATL', 'BALTIMORE RAVENS': 'BAL',
+            'BUFFALO BILLS': 'BUF', 'CAROLINA PANTHERS': 'CAR', 'CHICAGO BEARS': 'CHI',
+            'CINCINNATI BENGALS': 'CIN', 'CLEVELAND BROWNS': 'CLE', 'DALLAS COWBOYS': 'DAL',
+            'DENVER BRONCOS': 'DEN', 'DETROIT LIONS': 'DET', 'GREEN BAY PACKERS': 'GB',
+            'HOUSTON TEXANS': 'HOU', 'INDIANAPOLIS COLTS': 'IND', 'JACKSONVILLE JAGUARS': 'JAC',
+            'KANSAS CITY CHIEFS': 'KC', 'LAS VEGAS RAIDERS': 'LV', 'LOS ANGELES CHARGERS': 'LAC',
+            'LOS ANGELES RAMS': 'LAR', 'MIAMI DOLPHINS': 'MIA', 'MINNESOTA VIKINGS': 'MIN',
+            'NEW ENGLAND PATRIOTS': 'NE', 'NEW ORLEANS SAINTS': 'NO', 'NEW YORK GIANTS': 'NYG',
+            'NEW YORK JETS': 'NYJ', 'PHILADELPHIA EAGLES': 'PHI', 'PITTSBURGH STEELERS': 'PIT',
+            'SAN FRANCISCO 49ERS': 'SF', 'SEATTLE SEAHAWKS': 'SEA', 'TAMPA BAY BUCCANEERS': 'TB',
+            'TENNESSEE TITANS': 'TEN', 'WASHINGTON COMMANDERS': 'WAS'
         }
 
-        for row in rows[1:]: # Skip header
-            cols = row.find_all('td')
-            if len(cols) > 1:
-                team_abbr_pff = cols[0].get_text(strip=True)
-                team_abbr_nfl = pff_to_nfl_map.get(team_abbr_pff, team_abbr_pff)
-                team_data.append(team_abbr_nfl)
+        for h in headings:
+            text = h.get_text(strip=True).upper()
+            match = re.match(r'(\d+)\.\s+([A-Z\s]+)', text)
+            if match:
+                rank = int(match.group(1))
+                team_name_pff = match.group(2).strip()
+                
+                team_abbr = pff_name_to_abbr_map.get(team_name_pff)
+                if team_abbr:
+                    team_data.append({'team': team_abbr, 'rank': rank})
 
         if not team_data:
-            print("❌ ERROR: No team data could be extracted.")
+            print("❌ ERROR: No team data could be extracted. The article structure may have changed.")
             sys.exit(1)
 
-        df = pd.DataFrame({'team': team_data})
-        df['rank'] = df.index + 1
+        df = pd.DataFrame(team_data)
+        df.sort_values(by='rank', inplace=True)
         
         df.to_csv(output_path, index=False)
-        # CORRECTED: Added the closing quote and parenthesis.
         print(f"✅ Successfully scraped and saved O-line rankings to: {output_path}")
 
     except Exception as e:
