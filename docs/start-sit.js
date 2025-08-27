@@ -12,157 +12,98 @@ document.addEventListener('DOMContentLoaded', async () => {
     const weekTitle = document.getElementById('week-title');
 
     // --- GLOBAL DATA STORE ---
-    let VORP_DATA = [];
-    let MATCHUP_DATA = {};
-    let SCHEDULE_DATA = [];
-
-    // --- DATA FETCHING ---
-    async function fetchData(url) {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`Failed to fetch ${url}`);
-        // Check content type to decide how to parse
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-            return response.json();
-        }
-        return response.text();
-    }
-    
-    // Using PapaParse to handle CSV in the browser. Add this to your main HTML if not already there.
-    // We'll add a script tag to the HTML to load this library from a CDN.
-    function parseCsv(csvText) {
-        return new Promise(resolve => {
-            Papa.parse(csvText, {
-                header: true,
-                skipEmptyLines: true,
-                complete: (results) => resolve(results.data),
-            });
-        });
-    }
+    let START_SCORE_DATA = [];
 
     // --- INITIALIZATION ---
     async function initialize() {
         try {
-            // Fetch all data sources in parallel
-            const [vorp, matchups, scheduleCsv] = await Promise.all([
-                fetchData('./data/reports/vorp_report.json'),
-                fetchData('./data/reports/matchup_report.json'),
-                fetchData('./data/raw/schedule_raw.csv')
-            ]);
+            const response = await fetch('./data/reports/start_scores.json');
+            if (!response.ok) {
+                // Throw an error if the file is not found (404) or there's another issue.
+                throw new Error(`Failed to fetch Start Score data. Status: ${response.status}`);
+            }
+            START_SCORE_DATA = await response.json();
             
-            VORP_DATA = vorp;
-            MATCHUP_DATA = matchups;
-            SCHEDULE_DATA = await parseCsv(scheduleCsv);
+            if (START_SCORE_DATA.length === 0) {
+                // Handle case where the file is empty.
+                throw new Error("Start Score data is empty. The analysis script may have failed.");
+            }
 
-            // Populate autocomplete
+            // Populate autocomplete list
+            START_SCORE_DATA.sort((a, b) => a.player_display_name.localeCompare(b.player_display_name));
             const fragment = document.createDocumentFragment();
-            VORP_DATA.forEach(player => {
+            START_SCORE_DATA.forEach(player => {
                 const option = document.createElement('option');
                 option.value = player.player_display_name;
                 fragment.appendChild(option);
             });
             playerDatalist.appendChild(fragment);
 
-            console.log("All data loaded and ready.");
+            console.log("Start Score data loaded and ready.");
 
         } catch (error) {
             console.error("Initialization failed:", error);
-            resultsContainer.innerHTML = `<p>Error loading essential data. The tool may not work correctly.</p>`;
+            // Display a user-friendly error message on the page itself.
+            resultsContainer.innerHTML = `<div class="card"><h3 style="color: #dc3545;">Error Loading Data</h3><p>Could not load the 'start_scores.json' report. Please go to the 'Actions' tab on GitHub and run the workflow to generate the latest analysis data.</p></div>`;
         }
     }
 
     // --- CORE LOGIC ---
-    function analyzeMatchups() {
+    function analyzePlayers() {
         resultsContainer.innerHTML = ''; // Clear previous results
 
         const selectedPlayerNames = playerInputs
             .map(input => input.value)
             .filter(name => name.trim() !== '');
 
-        if (selectedPlayerNames.length === 0) return;
-
-        // Find the current/upcoming week
-        const latestSeason = Math.max(...SCHEDULE_DATA.map(g => parseInt(g.season)));
-        const gamesPlayed = SCHEDULE_DATA.filter(g => g.result !== null && g.season == latestSeason);
-        const currentWeek = gamesPlayed.length > 0 ? Math.max(...gamesPlayed.map(g => parseInt(g.week))) + 1 : 1;
-        weekTitle.textContent = `Comparing Players for Week ${currentWeek}`;
+        if (selectedPlayerNames.length === 0) {
+            return; // Do nothing if no players are entered
+        }
 
         selectedPlayerNames.forEach(playerName => {
-            const playerData = VORP_DATA.find(p => p.player_display_name === playerName);
-            if (!playerData) {
-                renderCard({ name: playerName, error: "Player not found in VORP data." });
-                return;
-            }
-
-            const playerTeam = playerData.recent_team;
-            const upcomingGame = SCHEDULE_DATA.find(g => 
-                g.season == latestSeason && 
-                g.week == currentWeek && 
-                (g.home_team === playerTeam || g.away_team === playerTeam)
-            );
-
-            if (!upcomingGame) {
-                renderCard({ name: playerName, ppg: playerData.ppg, opponent: "BYE" });
-                return;
-            }
-
-            const opponent = upcomingGame.home_team === playerTeam ? upcomingGame.away_team : upcomingGame.home_team;
-            const matchup = MATCHUP_DATA[playerData.position]?.find(m => m.team === opponent);
-
-            renderCard({
-                name: playerName,
-                ppg: playerData.ppg,
-                team: playerTeam,
-                opponent: opponent,
-                matchupRank: matchup?.rank,
-                pointsAllowed: matchup?.points_allowed
-            });
+            const playerData = START_SCORE_DATA.find(p => p.player_display_name === playerName);
+            renderCard(playerData, playerName);
         });
     }
 
     // --- RENDERING ---
-    function renderCard(data) {
+    function renderCard(playerData, playerName) {
         const card = document.createElement('div');
         card.className = 'player-card';
 
-        if (data.error) {
-            card.innerHTML = `<h3>${data.name}</h3><p class="matchup-bad">${data.error}</p>`;
+        if (!playerData) {
+            card.innerHTML = `<h3>${playerName}</h3><p style="color: #ffc107;">Player not found in the latest analysis report.</p>`;
             resultsContainer.appendChild(card);
             return;
         }
-        
-        let matchupHTML = '<p><strong>Matchup:</strong> vs. ' + data.opponent + '</p>';
-        if (data.opponent === 'BYE') {
-            matchupHTML = `<p class="matchup-avg"><strong>On Bye Week</strong></p>`;
-        } else if (data.matchupRank) {
-            let rankClass = 'matchup-avg';
-            if (data.matchupRank <= 10) rankClass = 'matchup-good'; // Top 10 easiest
-            if (data.matchupRank >= 23) rankClass = 'matchup-bad'; // Bottom 10 hardest
 
-            matchupHTML += `<p><strong>Defensive Rank:</strong> 
-                <span class="matchup-rank ${rankClass}">
-                    ${data.matchupRank} / 32
-                </span>
-            </p>`;
+        let breakdownHTML = '<ul class="breakdown-list">';
+        if (typeof playerData.breakdown === 'object') {
+            for (const [key, value] of Object.entries(playerData.breakdown)) {
+                breakdownHTML += `<li><span>${key}</span><strong>${value} / 10</strong></li>`;
+            }
         } else {
-            matchupHTML += `<p>Matchup data not available.</p>`;
+            breakdownHTML += `<li>${playerData.breakdown}</li>`;
         }
+        breakdownHTML += '</ul>';
 
         card.innerHTML = `
-            <h3>${data.name}</h3>
-            <p><strong>Team:</strong> ${data.team}</p>
-            <p><strong>PPG:</strong> ${data.ppg}</p>
-            <hr style="border-color: var(--color-border); margin: 1rem 0;">
-            ${matchupHTML}
+            <h3>
+                ${playerData.player_display_name}
+                <span class="score-display">${playerData.start_score}</span>
+            </h3>
+            <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
+                ${playerData.position} | ${playerData.team} ${playerData.opponent ? `vs. ${playerData.opponent}` : ''}
+            </p>
+            ${breakdownHTML}
         `;
         resultsContainer.appendChild(card);
     }
-
-    // Add PapaParse script to the page
-    const papaScript = document.createElement('script');
-    papaScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js';
-    papaScript.onload = initialize; // Initialize everything after the library is loaded
-    document.head.appendChild(papaScript);
-
-    compareBtn.addEventListener('click', analyzeMatchups);
+    
+    // Check if the button exists before adding listener
+    if(compareBtn) {
+        compareBtn.addEventListener('click', analyzePlayers);
+    }
+    
+    initialize();
 });
