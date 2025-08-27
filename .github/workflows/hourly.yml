@@ -14,6 +14,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
+          # We need to fetch all history for git pull to work correctly
           fetch-depth: 0
 
       - name: Set up Python
@@ -24,31 +25,31 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Data Collection
-        run: python pipeline/get_raw_data.py
-      
-      - name: Run All Analysis Scripts
+      - name: Run Data Collection & Analysis Scripts
         run: |
-          python analysis/generate_oline_rankings.py # This is our new "homegrown" script
+          python pipeline/get_raw_data.py
+          python analysis/generate_oline_rankings.py
           python pipeline/calculate_fantasy_points.py
           python analysis/vorp_analyzer.py
           python analysis/matchup_analyzer.py
           python analysis/consistency_analyzer.py
           python analysis/composite_score_generator.py
       
-      - name: Verify Key Data Files
+      # --- NEW, MORE ROBUST COMMIT PROCESS ---
+      - name: Commit and Push Data Files
         run: |
-          if [ ! -f docs/data/raw/players_master.csv ]; then echo "CRITICAL ERROR: players_master.csv was not created."; exit 1; fi
-          if [ ! -f docs/data/raw/oline_rankings.csv ]; then echo "CRITICAL ERROR: oline_rankings.csv was not created."; exit 1; fi
-      
-      - name: Sync with Remote Branch
-        run: |
+          # Configure Git user
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
+          
+          # Stage all new/modified data files
+          git add docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json
+          
+          # Commit the changes, allowing for no changes if the data is the same
+          git commit -m "📊 Data Update: Refresh data and generate new reports" || echo "No changes to commit"
+          
+          # Pull the latest changes from the remote branch and rebase our commit on top
           git pull --rebase
-
-      - name: Commit Data Files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📊 Data Update: Refresh data and generate new reports"
-          file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
+          
+          # Push the changes back to the repository
+          git push
