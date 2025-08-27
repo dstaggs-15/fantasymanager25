@@ -22,8 +22,12 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Step A - Get Raw NFL Data
+      - name: Run Step A1 - Get Raw NFL Data
         run: python pipeline/get_raw_data.py
+      
+      # --- NEW: Run the O-Line Scraper ---
+      - name: Run Step A2 - Scrape O-Line Rankings
+        run: python pipeline/get_oline_rankings.py
       
       - name: Run Step B - Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
@@ -31,9 +35,11 @@ jobs:
       - name: Run Step C - VORP & Consistency Analysis
         run: python analysis/vorp_analyzer.py
 
-      # --- NEW: Run the matchup analysis script ---
       - name: Run Step D - Matchup Analysis
         run: python analysis/matchup_analyzer.py
+      
+      - name: Run Step E - Consistency Analysis
+        run: python analysis/consistency_analyzer.py
 
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
