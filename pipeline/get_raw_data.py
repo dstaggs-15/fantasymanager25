@@ -49,7 +49,7 @@ def get_raw_data():
     # --- 3. Download Roster/Player Information (Our "Player Master List") ---
     try:
         print("Downloading player roster information to create Player Master List...")
-        # CORRECTED: Using the definitive function name for modern library versions.
+        # Using the correct function name for the library version we are installing.
         roster_df = nfl.import_roster_data(years=YEARS)
         
         roster_df.sort_values(by='season', ascending=False, inplace=True)
