@@ -25,8 +25,8 @@ def scrape_oline_rankings():
         
         print("Parsing the article content...")
         
-        # CORRECTED: Look for the main content div and parse heading tags within it.
-        article_content = soup.find('div', class_='entry-content')
+        # CORRECTED: FantasyPros articles use a div with a class like 'main-content'
+        article_content = soup.find('div', class_='main-content')
         if not article_content:
             print("❌ ERROR: Could not find the main article content block. The website structure may have changed.")
             sys.exit(1)
