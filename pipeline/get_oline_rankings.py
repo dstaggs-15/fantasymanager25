@@ -28,13 +28,9 @@ def scrape_oline_rankings():
         
         print("Parsing the article content...")
         
-        article_content = soup.find('div', class_='entry-content')
-        if not article_content:
-            print("❌ ERROR: Could not find the main article content block with class 'entry-content'.")
-            sys.exit(1)
-            
-        # CORRECTED: FantasyPros articles list rankings in <h4> tags.
-        headings = article_content.find_all('h4')
+        # DEFINITIVE FIX: Search the entire document for <h4> tags, which are used for rankings in these articles.
+        # This is more robust than looking for a specific container div.
+        headings = soup.find_all('h4')
         
         team_data = []
         fp_name_to_abbr_map = {
@@ -47,7 +43,7 @@ def scrape_oline_rankings():
             'LOS ANGELES RAMS': 'LAR', 'MIAMI DOLPHINS': 'MIA', 'MINNESOTA VIKINGS': 'MIN',
             'NEW ENGLAND PATRIOTS': 'NE', 'NEW ORLEANS SAINTS': 'NO', 'NEW YORK GIANTS': 'NYG',
             'NEW YORK JETS': 'NYJ', 'PHILADELPHIA EAGLES': 'PHI', 'PITTSBURGH STEELERS': 'PIT',
-            'SAN FRANCISCO 49ERS': 'SF', 'SEATTLE SEAHAWKS': 'SEA', 'TAMPA BAY BUCCANEERS': 'TB',
+            'SAN FRANCISCO 4ERS': 'SF', 'SEATTLE SEAHAWKS': 'SEA', 'TAMPA BAY BUCCANEERS': 'TB',
             'TENNESSEE TITANS': 'TEN', 'WASHINGTON COMMANDERS': 'WAS'
         }
 
@@ -58,6 +54,9 @@ def scrape_oline_rankings():
                 rank = int(match.group(1))
                 team_name_fp = match.group(2).strip()
                 
+                # A common variation is "SAN FRANCISCO 49ERS", so we'll handle that.
+                if "49ERS" in team_name_fp: team_name_fp = "SAN FRANCISCO 49ERS"
+
                 team_abbr = fp_name_to_abbr_map.get(team_name_fp)
                 if team_abbr:
                     team_data.append({'team': team_abbr, 'rank': rank})
