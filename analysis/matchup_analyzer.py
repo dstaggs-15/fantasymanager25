@@ -29,34 +29,40 @@ def analyze_matchups():
         sys.exit(1)
 
     # --- 3. Determine Opponent for Each Player Game ---
-    # Select only necessary columns from the schedule
     df_schedule_slim = df_schedule[['season', 'week', 'away_team', 'home_team']].copy()
     
-    # Create a mapping of each team to its opponent for every game
     home_opponents = df_schedule_slim.rename(columns={'home_team': 'team', 'away_team': 'opponent'})
     away_opponents = df_schedule_slim.rename(columns={'away_team': 'team', 'home_team': 'opponent'})
     opponent_map = pd.concat([home_opponents, away_opponents])
 
-    # Merge this opponent map into our main stats dataframe
-    df_merged = pd.merge(df_stats, opponent_map, on=['season', 'week'], left_on='recent_team', right_on='team', how='left')
+    # --- CORRECTED MERGE OPERATION ---
+    # Merge the opponent map into our main stats dataframe using the correct syntax.
+    # We join on three columns: season, week, and the player's team.
+    df_merged = pd.merge(
+        df_stats,
+        opponent_map,
+        how='left',
+        left_on=['season', 'week', 'recent_team'],
+        right_on=['season', 'week', 'team']
+    )
 
     # --- 4. Calculate Fantasy Points Allowed by each Defense ---
-    # Group by the opponent and position to find the average points allowed
     points_allowed = df_merged.groupby(['opponent', 'position'])['fantasy_points'].mean().reset_index()
     points_allowed.rename(columns={'opponent': 'team', 'fantasy_points': 'points_allowed'}, inplace=True)
     
     print("Calculating average fantasy points allowed by each defense...")
 
     # --- 5. Rank the Defenses ---
-    # A higher rank means an easier matchup (more points allowed)
     points_allowed['rank'] = points_allowed.groupby('position')['points_allowed'].rank(ascending=False, method='first').astype(int)
     points_allowed.sort_values(by=['position', 'rank'], inplace=True)
 
     # --- 6. Format for JSON and Save ---
     report = {}
     for pos in points_allowed['position'].unique():
-        pos_df = points_allowed[points_allowed['position'] == pos]
-        report[pos] = pos_df[['team', 'points_allowed', 'rank']].to_dict(orient='records')
+        # Filter for relevant positions
+        if pos in ['QB', 'RB', 'WR', 'TE']:
+            pos_df = points_allowed[points_allowed['position'] == pos]
+            report[pos] = pos_df[['team', 'points_allowed', 'rank']].to_dict(orient='records')
 
     with open(output_path, 'w') as f:
         json.dump(report, f, indent=4)
