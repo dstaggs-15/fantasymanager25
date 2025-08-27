@@ -42,7 +42,6 @@ def get_raw_data():
     # --- Download Roster/Player Information ---
     try:
         print("Downloading player roster information...")
-        # CORRECTED: The definitive function name is import_rosters.
         roster_df = nfl.import_rosters(years=YEARS)
         roster_df.sort_values(by='season', ascending=False, inplace=True)
         master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
@@ -62,4 +61,6 @@ def get_raw_data():
 
     print("--- Raw Data Collection Finished ---")
 
-if __name__ ==
+# --- CORRECTED LINE ---
+if __name__ == '__main__':
+    get_raw_data()
