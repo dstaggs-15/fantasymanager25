@@ -6,6 +6,10 @@ import datetime
 from urllib.error import HTTPError
 
 def get_raw_data():
+    """
+    Downloads raw NFL data (weekly stats, player rosters, and schedules) for the last five seasons
+    and saves them to separate CSV files in the 'docs/data/raw/' directory.
+    """
     print("--- Starting Raw Data Collection ---")
     current_year = datetime.date.today().year
     YEARS = list(range(current_year - 4, current_year + 1))
@@ -29,12 +33,14 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # Download Roster/Player Information
+    # Download Roster/Player Information (Reliable Method)
     try:
         print("Downloading player roster information...")
-        roster_df = nfl.import_roster_data(years=YEARS)
-        roster_df.sort_values(by='season', ascending=False, inplace=True)
-        master_list = roster_df.drop_duplicates(subset='player_id', keep='first')
+        # CORRECTED: Using a more stable function to get player info.
+        seasonal_df = nfl.import_seasonal_data(years=YEARS, s_type='REG')
+        roster_cols = ['player_id', 'player_display_name', 'position', 'team_abbr']
+        master_list = seasonal_df[roster_cols].drop_duplicates(subset='player_id', keep='first')
+        master_list.rename(columns={'team_abbr': 'recent_team'}, inplace=True)
         master_list.to_csv(roster_output_path, index=False)
         print("✅ Successfully saved Player Master List.")
     except Exception as e:
