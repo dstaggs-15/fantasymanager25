@@ -4,6 +4,7 @@ import nfl_data_py as nfl
 import os
 import datetime
 from urllib.error import HTTPError
+import sys
 
 def get_raw_data():
     """
@@ -38,16 +39,31 @@ def get_raw_data():
     print("Downloading player roster information...")
     for year in YEARS:
         try:
-            seasonal_df = nfl.import_seasonal_data(years=[year], s_type='REG')
-            all_seasonal_data.append(seasonal_df)
+            seasonal_df_year = nfl.import_seasonal_data(years=[year], s_type='REG')
+            all_seasonal_data.append(seasonal_df_year)
         except HTTPError:
             print(f"  -> INFO: Seasonal/Roster data for {year} not available. Skipping.")
             
     if all_seasonal_data:
         roster_df = pd.concat(all_seasonal_data, ignore_index=True)
-        roster_cols = ['player_id', 'player_display_name', 'position', 'team_abbr']
-        master_list = roster_df[roster_cols].drop_duplicates(subset='player_id', keep='first')
-        master_list.rename(columns={'team_abbr': 'recent_team'}, inplace=True)
+        
+        # --- DEFINITIVE FIX FOR KEYERROR ---
+        # The library uses 'player_name' and 'team' instead of what we had before.
+        desired_roster_cols = ['player_id', 'player_name', 'position', 'team']
+        
+        # This makes the script robust: only select columns that actually exist in the dataframe
+        cols_to_select = [col for col in desired_roster_cols if col in roster_df.columns]
+        
+        if 'player_id' not in cols_to_select:
+             print("❌ CRITICAL ERROR: 'player_id' not found in seasonal data. Cannot create master list.")
+             sys.exit(1)
+
+        master_list = roster_df[cols_to_select].drop_duplicates(subset='player_id', keep='first')
+        
+        # Rename 'team' to 'recent_team' for consistency with our other data files
+        if 'team' in master_list.columns:
+            master_list.rename(columns={'team': 'recent_team'}, inplace=True)
+        
         master_list.to_csv(roster_output_path, index=False)
         print("✅ Successfully saved Player Master List.")
     else:
