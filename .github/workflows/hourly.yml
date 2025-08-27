@@ -19,6 +19,12 @@ jobs:
         with:
           python-version: '3.10'
 
+      # NEW: Install Google Chrome for Selenium
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
@@ -28,29 +34,20 @@ jobs:
       - name: Run Step A2 - Scrape O-Line Rankings
         run: python pipeline/get_oline_rankings.py
       
-      # --- NEW: Verify O-Line file was created ---
-      - name: Verify O-Line File Creation
+      - name: Verify Data Files
         run: |
-          if [ ! -f docs/data/raw/oline_rankings.csv ]; then
-            echo "CRITICAL ERROR: oline_rankings.csv was not created by the scraper."
-            exit 1
-          fi
-          echo "oline_rankings.csv created successfully."
+          if [ ! -f docs/data/raw/players_master.csv ]; then echo "CRITICAL ERROR: players_master.csv was not created."; exit 1; fi
+          if [ ! -f docs/data/raw/oline_rankings.csv ]; then echo "CRITICAL ERROR: oline_rankings.csv was not created."; exit 1; fi
       
       - name: Run Step B - Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
-      - name: Run Step C - VORP & Consistency Analysis
-        run: python analysis/vorp_analyzer.py
-
-      - name: Run Step D - Matchup Analysis
-        run: python analysis/matchup_analyzer.py
-      
-      - name: Run Step E - Consistency Analysis
-        run: python analysis/consistency_analyzer.py
-
-      - name: Run Step F - Generate Composite Start Scores
-        run: python analysis/composite_score_generator.py
+      - name: Run Analysis Scripts
+        run: |
+          python analysis/vorp_analyzer.py
+          python analysis/matchup_analyzer.py
+          python analysis/consistency_analyzer.py
+          python analysis/composite_score_generator.py
 
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -58,5 +55,3 @@ jobs:
           commit_message: "📊 Data Update: Refresh data and generate new reports"
           file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
           commit_user_name: "GitHub Actions Bot"
-          commit_user_email: "actions@github.com"
-          commit_author: "GitHub Actions Bot <actions@github.com>"
