@@ -25,19 +25,20 @@ jobs:
       - name: Run Data Collection
         run: python pipeline/get_raw_data.py
       
-      - name: Run Analysis Scripts
+      - name: Run All Analysis Scripts
         run: |
-          python analysis/generate_oline_rankings.py # New script replaces the scraper
+          python analysis/generate_oline_rankings.py
           python pipeline/calculate_fantasy_points.py
           python analysis/vorp_analyzer.py
           python analysis/matchup_analyzer.py
           python analysis/consistency_analyzer.py
           python analysis/composite_score_generator.py
       
-      - name: Verify Data Files
+      - name: Verify Key Data Files
         run: |
           if [ ! -f docs/data/raw/players_master.csv ]; then echo "CRITICAL ERROR: players_master.csv was not created."; exit 1; fi
           if [ ! -f docs/data/raw/oline_rankings.csv ]; then echo "CRITICAL ERROR: oline_rankings.csv was not created."; exit 1; fi
+          if [ ! -f docs/data/reports/start_scores.json ]; then echo "CRITICAL ERROR: start_scores.json was not created."; exit 1; fi
       
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
