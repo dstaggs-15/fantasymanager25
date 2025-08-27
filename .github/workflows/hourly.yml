@@ -28,11 +28,16 @@ jobs:
       - name: Run Step B - Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
+      # --- NEW: Run the first analysis script ---
+      - name: Run Step C - VORP & Consistency Analysis
+        run: python analysis/vorp_analyzer.py
+
       - name: Commit Data Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "📊 Data Update: Refresh raw and processed NFL data"
-          file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv'
+          commit_message: "📊 Data Update: Refresh data and generate new VORP report"
+          # Update the pattern to include our new JSON report
+          file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
           commit_user_name: "GitHub Actions Bot"
           commit_user_email: "actions@github.com"
           commit_author: "GitHub Actions Bot <actions@github.com>"
