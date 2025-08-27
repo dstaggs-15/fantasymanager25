@@ -5,6 +5,10 @@ import os
 import sys
 
 def generate_start_score():
+    """
+    Combines multiple weighted factors to create a single "Start Score" for each player.
+    NEW 4-FACTOR MODEL: Talent (PPG), Matchup, O-Line, Efficiency.
+    """
     print("\n--- Starting 4-Factor 'Start Score' Generation ---")
 
     # --- 1. Define File Paths ---
@@ -43,8 +47,10 @@ def generate_start_score():
     # --- 4. Calculate Scores for Each Player ---
     start_scores = []
     
-    # Get player IDs into the VORP report
+    # Get player IDs into the VORP report for efficient lookups
     df_vorp = pd.merge(df_vorp, df_processed[['player_display_name', 'player_id']].drop_duplicates(), on='player_display_name', how='left')
+    df_vorp.dropna(subset=['player_id'], inplace=True)
+
 
     for index, player in df_vorp.iterrows():
         player_name = player['player_display_name']
@@ -67,7 +73,7 @@ def generate_start_score():
         opponent = matchup_info.iloc[0]['opponent']
 
         # --- Factor 2: Weekly Matchup ---
-        matchup_rank = 16.5 # Default to average
+        matchup_rank = 16.5 # Default to average matchup
         if player_pos in matchup_data and any(team['team'] == opponent for team in matchup_data[player_pos]):
             matchup_rank = [team['rank'] for team in matchup_data[player_pos] if team['team'] == opponent][0]
         matchup_score = ((32 - matchup_rank) / 31) * 10
@@ -79,12 +85,13 @@ def generate_start_score():
         
         # --- Factor 4: Player Efficiency ---
         player_seasonal_stats = df_processed[df_processed['player_id'] == player_id].sum()
-        efficiency_score = 5.0 # Default
+        efficiency_score = 5.0 # Default to average
         touches = player_seasonal_stats.get('rushing_attempts', 0) + player_seasonal_stats.get('receptions', 0)
         yards = player_seasonal_stats.get('rushing_yards', 0) + player_seasonal_stats.get('receiving_yards', 0)
-        if touches > 20: # Min touches for meaningful data
+        if touches > 20: # Minimum touches for a meaningful sample
             ypt = yards / touches
-            norm_val = 8.0 if player_pos in ['WR', 'TE'] else 5.5 # Normalization values for YPT
+            # Normalize against a benchmark value for yards per touch
+            norm_val = 8.0 if player_pos in ['WR', 'TE'] else 5.5
             efficiency_score = min(10, (ypt / norm_val) * 10)
 
         # --- Final Weighted Score ---
