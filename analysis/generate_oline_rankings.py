@@ -9,13 +9,12 @@ def generate_oline_rankings():
     """
     Generates its own O-line rankings by analyzing play-by-play data from the
     most recent completed NFL season. It creates a composite score based on
-    run blocking (yards before contact) and pass blocking (sack rate).
+    run blocking (EPA per rush) and pass blocking (sack rate).
     """
     print("\n--- Starting 'Homegrown' O-Line Rankings Generation ---")
 
     # --- 1. Define Season and Output Path ---
     current_year = datetime.date.today().year
-    # Analyze the most recent fully completed season
     LATEST_SEASON = current_year - 1 if datetime.date.today().month < 9 else current_year
     
     print(f"Analyzing play-by-play data for the {LATEST_SEASON} season...")
@@ -23,22 +22,21 @@ def generate_oline_rankings():
 
     try:
         # --- 2. Download Play-by-Play Data ---
-        # This is a large dataset but contains the rich detail we need
         pbp_df = nfl.import_pbp_data(years=[LATEST_SEASON])
         print("✅ Successfully downloaded play-by-play data.")
 
-        # --- 3. Calculate Run Blocking Grade (Yards Before Contact) ---
-        print("Calculating run blocking grades...")
-        run_plays = pbp_df[pbp_df['play_type'] == 'run'].copy()
-        # Group by the offensive team (posteam) and calculate the average
-        run_blocking = run_plays.groupby('posteam')['yards_before_contact'].mean().reset_index()
-        run_blocking.rename(columns={'posteam': 'team', 'yards_before_contact': 'avg_ybco'}, inplace=True)
-        # Rank teams: higher avg_ybco is better (rank 1)
-        run_blocking['run_rank'] = run_blocking['avg_ybco'].rank(ascending=False, method='first').astype(int)
+        # --- 3. Calculate Run Blocking Grade (EPA per Rush) ---
+        print("Calculating run blocking grades using EPA per Rush...")
+        run_plays = pbp_df[(pbp_df['play_type'] == 'run') & (pbp_df['epa'].notna())].copy()
+        # Group by the offensive team (posteam) and calculate the average EPA on run plays
+        run_blocking = run_plays.groupby('posteam')['epa'].mean().reset_index()
+        run_blocking.rename(columns={'posteam': 'team', 'epa': 'avg_run_epa'}, inplace=True)
+        # Rank teams: higher avg_run_epa is better (rank 1)
+        run_blocking['run_rank'] = run_blocking['avg_run_epa'].rank(ascending=False, method='first').astype(int)
 
         # --- 4. Calculate Pass Blocking Grade (Sack Rate) ---
         print("Calculating pass blocking grades...")
-        pass_plays = pbp_df[pbp_df['play_type'] == 'pass'].copy()
+        pass_plays = pbp_df[(pbp_df['play_type'] == 'pass') & (pbp_df['sack'].notna())].copy()
         pass_blocking = pass_plays.groupby('posteam').agg(
             pass_attempts=('play_id', 'count'),
             sacks=('sack', 'sum')
@@ -50,13 +48,10 @@ def generate_oline_rankings():
 
         # --- 5. Create Composite Score and Final Ranking ---
         print("Generating composite scores and final rankings...")
-        # Merge the two ranking dataframes
         df_merged = pd.merge(run_blocking[['team', 'run_rank']], pass_blocking[['team', 'pass_rank']], on='team')
         
-        # Weight them 50/50 for a final score
         df_merged['composite_score'] = (df_merged['run_rank'] * 0.5) + (df_merged['pass_rank'] * 0.5)
         
-        # The final rank is based on the lowest composite score
         df_merged['rank'] = df_merged['composite_score'].rank(ascending=True, method='first').astype(int)
         
         final_rankings = df_merged[['team', 'rank']].sort_values(by='rank').copy()
