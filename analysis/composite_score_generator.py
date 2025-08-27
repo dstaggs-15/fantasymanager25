@@ -7,7 +7,7 @@ import sys
 def generate_start_score():
     """
     Combines multiple weighted factors to create a single "Start Score" for each player.
-    NEW 4-FACTOR MODEL: Talent (PPG), Matchup, O-Line, Efficiency.
+    FINAL 4-FACTOR MODEL: With highly detailed, position-specific Efficiency calculation.
     """
     print("\n--- Starting 4-Factor 'Start Score' Generation ---")
 
@@ -47,10 +47,8 @@ def generate_start_score():
     # --- 4. Calculate Scores for Each Player ---
     start_scores = []
     
-    # Get player IDs into the VORP report for efficient lookups
     df_vorp = pd.merge(df_vorp, df_processed[['player_display_name', 'player_id']].drop_duplicates(), on='player_display_name', how='left')
     df_vorp.dropna(subset=['player_id'], inplace=True)
-
 
     for index, player in df_vorp.iterrows():
         player_name = player['player_display_name']
@@ -64,16 +62,13 @@ def generate_start_score():
 
         matchup_info = upcoming_matchups[upcoming_matchups['team'] == player_team]
         if matchup_info.empty:
-            start_scores.append({
-                'player_display_name': player_name, 'position': player_pos, 'team': player_team,
-                'start_score': 0, 'opponent': 'BYE', 'breakdown': 'On Bye Week'
-            })
+            start_scores.append({ 'player_display_name': player_name, 'start_score': 0, 'breakdown': 'On Bye Week' })
             continue
         
         opponent = matchup_info.iloc[0]['opponent']
 
         # --- Factor 2: Weekly Matchup ---
-        matchup_rank = 16.5 # Default to average matchup
+        matchup_rank = 16.5
         if player_pos in matchup_data and any(team['team'] == opponent for team in matchup_data[player_pos]):
             matchup_rank = [team['rank'] for team in matchup_data[player_pos] if team['team'] == opponent][0]
         matchup_score = ((32 - matchup_rank) / 31) * 10
@@ -83,17 +78,54 @@ def generate_start_score():
         oline_rank = oline_rank_row.iloc[0]['rank'] if not oline_rank_row.empty else 16.5
         oline_score = ((32 - oline_rank) / 31) * 10
         
-        # --- Factor 4: Player Efficiency ---
-        player_seasonal_stats = df_processed[df_processed['player_id'] == player_id].sum()
+        # --- Factor 4: Player Efficiency (Position-Specific Logic) ---
+        player_history = df_processed[df_processed['player_id'] == player_id]
+        player_seasonal_stats = player_history.sum()
+        games_played = len(player_history)
         efficiency_score = 5.0 # Default to average
-        touches = player_seasonal_stats.get('rushing_attempts', 0) + player_seasonal_stats.get('receptions', 0)
-        yards = player_seasonal_stats.get('rushing_yards', 0) + player_seasonal_stats.get('receiving_yards', 0)
-        if touches > 20: # Minimum touches for a meaningful sample
-            ypt = yards / touches
-            # Normalize against a benchmark value for yards per touch
-            norm_val = 8.0 if player_pos in ['WR', 'TE'] else 5.5
-            efficiency_score = min(10, (ypt / norm_val) * 10)
 
+        if player_pos == 'QB':
+            pass_attempts = player_seasonal_stats.get('passing_attempts', 0)
+            if pass_attempts > 50:
+                # TD Rate (Positive)
+                td_rate = (player_seasonal_stats.get('passing_tds', 0) / pass_attempts) * 100
+                td_score = min(10, (td_rate / 6.0) * 10) # Normalize vs 6%
+                # Yards Per Attempt (Positive)
+                yards_per_attempt = player_seasonal_stats.get('passing_yards', 0) / pass_attempts
+                yard_score = min(10, (yards_per_attempt / 8.5) * 10) # Normalize vs 8.5 Y/A
+                # Interception Rate (Negative)
+                int_rate = (player_seasonal_stats.get('interceptions', 0) / pass_attempts) * 100
+                int_score = 10 - min(10, (int_rate / 3.0) * 10) # Normalize vs 3%
+                # Fumble Rate (Negative)
+                fumbles = player_seasonal_stats.get('fumbles_lost', 0)
+                fumble_per_game = fumbles / games_played if games_played > 0 else 0
+                fumble_score = 10 - min(10, (fumble_per_game / 0.5) * 10) # Normalize vs 0.5 fumbles/game
+                
+                # Weighted average of QB efficiency components
+                efficiency_score = (td_score * 0.4) + (yard_score * 0.3) + (int_score * 0.2) + (fumble_score * 0.1)
+
+        elif player_pos in ['RB', 'WR', 'TE']:
+            rushes = player_seasonal_stats.get('rushing_attempts', 0)
+            receptions = player_seasonal_stats.get('receptions', 0)
+            touches = rushes + receptions
+            fumbles = player_seasonal_stats.get('fumbles_lost', 0)
+
+            if touches > 20:
+                # Yards Per Touch Score (Positive)
+                rush_yards = player_seasonal_stats.get('rushing_yards', 0)
+                rec_yards = player_seasonal_stats.get('receiving_yards', 0)
+                total_yards = rush_yards + rec_yards
+                ypt = total_yards / touches
+                norm_val = 8.0 if player_pos in ['WR', 'TE'] else 5.5
+                ypt_score = min(10, (ypt / norm_val) * 10)
+
+                # Fumble Rate Score (Negative)
+                fumble_rate = (fumbles / touches) * 100
+                fumble_score = 10 - min(10, (fumble_rate / 2.0) * 10) # Normalize vs a 2% fumble rate
+
+                # Weighted average of skill position components
+                efficiency_score = (ypt_score * 0.85) + (fumble_score * 0.15)
+        
         # --- Final Weighted Score ---
         weights = {'talent': 0.40, 'matchup': 0.30, 'oline': 0.15, 'efficiency': 0.15}
         final_score = (talent_score * weights['talent']) + (matchup_score * weights['matchup']) + \
