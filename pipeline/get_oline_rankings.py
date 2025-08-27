@@ -1,36 +1,38 @@
 # pipeline/get_oline_rankings.py
 import pandas as pd
-import requests
 from bs4 import BeautifulSoup
 import os
 import sys
+import time
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 def scrape_oline_rankings():
-    """
-    Scrapes the latest offensive line rankings from a FantasyPros article
-    by targeting the specific table in the HTML.
-    """
-    print("\n--- Starting O-Line Rankings Scraper ---")
-
+    print("\n--- Starting O-Line Rankings Scraper (Selenium Mode) ---")
     url = "https://www.fantasypros.com/2025/07/nfl-offensive-line-rankings-fantasy-football/"
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
     output_path = os.path.join('docs', 'data', 'raw', 'oline_rankings.csv')
+
+    # Setup headless Chrome browser for GitHub Actions
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    
+    driver = webdriver.Chrome(options=chrome_options)
 
     try:
         print(f"Fetching data from {url}...")
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()
+        driver.get(url)
+        # Wait for the page's JavaScript to load the content
+        time.sleep(5) 
         
-        soup = BeautifulSoup(response.content, 'html.parser')
+        page_source = driver.page_source
+        soup = BeautifulSoup(page_source, 'html.parser')
         
         print("Parsing the data table...")
-        
-        # DEFINITIVE FIX: Find the table using the class 'mobile-table' from your screenshot.
         table = soup.find('table', class_='mobile-table')
         if not table:
-            print("❌ ERROR: Could not find the table with class 'mobile-table'. The website structure may have changed.")
+            print("❌ ERROR: Could not find the table with class 'mobile-table' after loading the page.")
             sys.exit(1)
             
         rows = table.find_all('tr')
@@ -66,6 +68,9 @@ def scrape_oline_rankings():
     except Exception as e:
         print(f"❌ ERROR: An unexpected error occurred. Reason: {e}")
         sys.exit(1)
+    finally:
+        # Important to quit the browser session
+        driver.quit()
 
 if __name__ == '__main__':
     scrape_oline_rankings()
