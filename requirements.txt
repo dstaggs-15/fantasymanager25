@@ -2,3 +2,5 @@ pandas
 nfl-data-py==0.3.3
 pyarrow
 fastparquet
+requests
+beautifulsoup4
