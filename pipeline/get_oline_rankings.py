@@ -8,13 +8,13 @@ import re
 
 def scrape_oline_rankings():
     """
-    Scrapes the latest offensive line rankings from a PFF article
+    Scrapes the latest offensive line rankings from a FantasyPros article
     and saves them to a CSV file.
     """
     print("\n--- Starting O-Line Rankings Scraper ---")
 
-    # CORRECTED URL provided by you
-    url = "https://www.pff.com/news/nfl-2025-nfl-offensive-line-rankings"
+    # New URL for the FantasyPros rankings article
+    url = "https://www.fantasypros.com/2025/07/nfl-offensive-line-rankings-fantasy-football/"
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
@@ -29,11 +29,17 @@ def scrape_oline_rankings():
         
         print("Parsing the article content...")
         
-        headings = soup.find_all('h3')
+        # FantasyPros articles often use a div with a class like 'entry-content'
+        article_content = soup.find('div', class_='entry-content')
+        if not article_content:
+            print("❌ ERROR: Could not find the main article content block.")
+            sys.exit(1)
+            
+        # The rankings are in paragraphs with strong tags, e.g., <p><strong>1. Philadelphia Eagles</strong></p>
+        paragraphs = article_content.find_all('p')
         
         team_data = []
-        # PFF uses full team names in articles, so we'll map them to our abbreviations
-        pff_name_to_abbr_map = {
+        fp_name_to_abbr_map = {
             'ARIZONA CARDINALS': 'ARI', 'ATLANTA FALCONS': 'ATL', 'BALTIMORE RAVENS': 'BAL',
             'BUFFALO BILLS': 'BUF', 'CAROLINA PANTHERS': 'CAR', 'CHICAGO BEARS': 'CHI',
             'CINCINNATI BENGALS': 'CIN', 'CLEVELAND BROWNS': 'CLE', 'DALLAS COWBOYS': 'DAL',
@@ -47,16 +53,19 @@ def scrape_oline_rankings():
             'TENNESSEE TITANS': 'TEN', 'WASHINGTON COMMANDERS': 'WAS'
         }
 
-        for h in headings:
-            text = h.get_text(strip=True).upper()
-            match = re.match(r'(\d+)\.\s+([A-Z\s]+)', text)
-            if match:
-                rank = int(match.group(1))
-                team_name_pff = match.group(2).strip()
-                
-                team_abbr = pff_name_to_abbr_map.get(team_name_pff)
-                if team_abbr:
-                    team_data.append({'team': team_abbr, 'rank': rank})
+        for p in paragraphs:
+            strong_tag = p.find('strong')
+            if strong_tag:
+                text = strong_tag.get_text(strip=True).upper()
+                # Use regex to find patterns like "1. PHILADELPHIA EAGLES"
+                match = re.match(r'(\d+)\.\s+([A-Z\s]+)', text)
+                if match:
+                    rank = int(match.group(1))
+                    team_name_fp = match.group(2).strip()
+                    
+                    team_abbr = fp_name_to_abbr_map.get(team_name_fp)
+                    if team_abbr:
+                        team_data.append({'team': team_abbr, 'rank': rank})
 
         if not team_data:
             print("❌ ERROR: No team data could be extracted. The article structure may have changed.")
