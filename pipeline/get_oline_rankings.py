@@ -12,7 +12,6 @@ def scrape_oline_rankings():
     """
     print("\n--- Starting O-Line Rankings Scraper ---")
 
-    # Using a more direct URL for unit grades
     url = "https://www.pff.com/nfl/grades/unit/offensive-line" 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
@@ -34,7 +33,6 @@ def scrape_oline_rankings():
         print("Parsing the data table...")
         rows = table.find_all('tr')
         team_data = []
-        # PFF uses 3-letter abbreviations. We'll map them to the abbreviations nfl-data-py uses.
         pff_to_nfl_map = {
             'ARZ': 'ARI', 'BLT': 'BAL', 'CLV': 'CLE', 'HST': 'HOU', 
             'LA': 'LAR', 'LV': 'LV', 'SD': 'LAC', 'SF': 'SF', 'TB': 'TB',
@@ -49,7 +47,7 @@ def scrape_oline_rankings():
             cols = row.find_all('td')
             if len(cols) > 1:
                 team_abbr_pff = cols[0].get_text(strip=True)
-                team_abbr_nfl = pff_to_nfl_map.get(team_abbr_pff, team_abbr_pff) # Convert to our standard abbreviation
+                team_abbr_nfl = pff_to_nfl_map.get(team_abbr_pff, team_abbr_pff)
                 team_data.append(team_abbr_nfl)
 
         if not team_data:
@@ -60,4 +58,12 @@ def scrape_oline_rankings():
         df['rank'] = df.index + 1
         
         df.to_csv(output_path, index=False)
-        print(f"✅ Successfully scraped and saved O-line rankings to:
+        # CORRECTED: Added the closing quote and parenthesis.
+        print(f"✅ Successfully scraped and saved O-line rankings to: {output_path}")
+
+    except Exception as e:
+        print(f"❌ ERROR: An unexpected error occurred. Reason: {e}")
+        sys.exit(1)
+
+if __name__ == '__main__':
+    scrape_oline_rankings()
