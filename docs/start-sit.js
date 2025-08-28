@@ -48,6 +48,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             resultsContainer.appendChild(card);
             return;
         }
+
+        // --- NEW: Dynamically build the stats breakdown ---
+        let statsHTML = '<ul class="breakdown-list">';
+        if (playerData.stats && typeof playerData.stats === 'object') {
+            for (const [key, value] of Object.entries(playerData.stats)) {
+                statsHTML += `<li><span>${key}</span><strong>${value}</strong></li>`;
+            }
+        }
+        statsHTML += '</ul>';
+
         let breakdownHTML = '<ul class="breakdown-list">';
         if (typeof playerData.breakdown === 'object') {
             for (const [key, value] of Object.entries(playerData.breakdown)) {
@@ -57,11 +67,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             breakdownHTML += `<li>${playerData.breakdown}</li>`;
         }
         breakdownHTML += '</ul>';
+
         card.innerHTML = `
             <h3>${playerData.player_display_name}<span class="score-display">${playerData.start_score}</span></h3>
             <p style="color: var(--color-text-secondary); margin-bottom: 1rem;">
                 ${playerData.position} | ${playerData.team} ${playerData.opponent ? `vs. ${playerData.opponent}` : ''}
-            </p>${breakdownHTML}`;
+            </p>
+            <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text-primary);">Season Averages</h4>
+            ${statsHTML}
+            <h4 style="margin-top: 1.5rem; margin-bottom: 0.5rem; color: var(--color-text-primary);">Score Breakdown</h4>
+            ${breakdownHTML}`;
         resultsContainer.appendChild(card);
     }
     initialize();
