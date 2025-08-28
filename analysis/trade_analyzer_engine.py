@@ -33,11 +33,16 @@ def generate_trade_report():
         sys.exit(1)
 
     # --- MERGE AND PREPARE MASTER DATAFRAME ---
-    # CORRECTED: Standardize all merges on 'player_display_name'
-    df = pd.merge(df_vorp, df_ros[['player_display_name', 'rank']], on='player_display_name', how='left')
+    # Standardize all merges on 'player_display_name'
+    df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
+    
+    # CORRECTED: The master player list uses 'player_name', not 'player_display_name'.
+    # We will merge on the correct column name and then standardize it.
+    df_players.rename(columns={'player_name': 'player_display_name'}, inplace=True)
     df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
+    
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
     df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
