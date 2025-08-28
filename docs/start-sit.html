@@ -42,11 +42,11 @@
                     <p>The <strong>Start Score</strong> is a comprehensive rating from 0-10 that provides a data-driven recommendation for the upcoming week. It is a weighted average of four key factors, each normalized to a 0-10 scale.</p>
                     
                     <h4>1. Player Talent (40% Weight)</h4>
-                    <p>This measures a player's baseline skill and typical production. It's calculated using their season-long <strong>Points Per Game (PPG)</strong>. To turn PPG into a 0-10 score, we normalize it against the top-performing player at their same position. This means the #1 PPG player at a position gets a 10, and everyone else is scored relative to them.</p>
+                    <p>This measures a player's baseline skill. It's calculated using their season-long <strong>Points Per Game (PPG)</strong> and is normalized against the top-performing player at their same position. This means the #1 PPG player at a position gets a 10, and everyone else is scored relative to them.</p>
                     <p><code>Talent Score = (Player's PPG / Max PPG at Position) * 10</code></p>
                     
                     <h4>2. Weekly Matchup (30% Weight)</h4>
-                    <p>This grades the difficulty of the opponent. It's based on our defensive rankings, which calculate how many fantasy points each NFL defense allows to each position (1st = easiest, 32nd = hardest). A better matchup results in a higher score.</p>
+                    <p>This grades the difficulty of the opponent. It's based on our defensive rankings, which calculate how many fantasy points each NFL team allows to each position (1st = easiest, 32nd = hardest). A better matchup results in a higher score.</p>
                     <p><code>Matchup Score = ((32 - Opponent's Rank) / 31) * 10</code></p>
                     
                     <h4>3. Offensive Line (15% Weight)</h4>
@@ -56,14 +56,19 @@
                     <h4>4. Efficiency (15% Weight)</h4>
                     <p>This measures how effective a player is with their opportunities and how well they protect the ball. The calculation is specific to the player's position:</p>
                     <ul>
-                        <li><strong>For QBs:</strong> A weighted score combining Touchdown Rate (positive), Yards Per Attempt (positive), Interception Rate (negative), and Fumble Rate (negative).</li>
-                        <li><strong>For RBs:</strong> A weighted score combining Yards Per Carry and Yards Per Reception.</li>
-                        <li><strong>For WRs & TEs:</strong> A score based purely on their Yards Per Reception.</li>
+                        <li><strong>For QBs:</strong> A weighted score combining Touchdown Rate, Yards Per Attempt, Interception Rate (negative), and Fumble Rate (negative).</li>
+                        <li><strong>For RBs, WRs & TEs:</strong> A weighted score combining Yards Per Touch (positive) and Fumble Rate (negative).</li>
                     </ul>
-                    <p>Each component is normalized against an "elite" benchmark (e.g., 5.5 Yards Per Carry for an RB) to generate the final 0-10 score.</p>
-                    
+                    <p>Each component is normalized against an "elite" benchmark to generate the final 0-10 score.</p>
+
                     <hr style="border-color: var(--color-border); margin: 1.5rem 0;">
-                    <p>These four scores are then combined using their weights to produce the final <strong>Start Score</strong> you see on the player cards.</p>
+                    <h4>The Weighting Rationale</h4>
+                    <p>The weights are assigned based on their general importance to fantasy production:</p>
+                    <ul>
+                        <li><strong>Talent (40%):</strong> The highest weight is given to a player's proven ability to score points. Elite players can often overcome bad situations. This is the strongest predictor of performance.</li>
+                        <li><strong>Matchup (30%):</strong> The most important *weekly variable*. An elite matchup can elevate an average player, while a terrible matchup can limit a great one.</li>
+                        <li><strong>O-Line & Efficiency (15% each):</strong> These are critical "context" and "tie-breaker" metrics. They add crucial nuance to separate players who may have similar talent and matchups. A great O-line provides a higher ceiling, while high efficiency shows a player makes the most of their opportunities.</li>
+                    </ul>
                 </div>
             </details>
         </div>
