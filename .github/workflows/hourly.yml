@@ -14,42 +14,35 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          # We need to fetch all history for git pull to work correctly
           fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+      
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Data Collection & Analysis Scripts
+      - name: Run Data Collection Scripts
         run: |
           python pipeline/get_raw_data.py
-          python analysis/generate_oline_rankings.py
-          python pipeline/calculate_fantasy_points.py
-          python analysis/vorp_analyzer.py
-          python analysis/matchup_analyzer.py
-          python analysis/consistency_analyzer.py
-          python analysis/composite_score_generator.py
+          python pipeline/get_oline_rankings.py
+          python pipeline/get_ros_projections.py # NEW SCRIPT
       
-      # --- NEW, MORE ROBUST COMMIT PROCESS ---
-      - name: Commit and Push Data Files
+      - name: Run Analysis Scripts
         run: |
-          # Configure Git user
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          
-          # Stage all new/modified data files
-          git add docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json
-          
-          # Commit the changes, allowing for no changes if the data is the same
-          git commit -m "📊 Data Update: Refresh data and generate new reports" || echo "No changes to commit"
-          
-          # Pull the latest changes from the remote branch and rebase our commit on top
-          git pull --rebase
-          
-          # Push the changes back to the repository
-          git push
+          python pipeline/calculate_fantasy_points.py
+          # ... other analysis scripts will go here later ...
+
+      - name: Commit Data Files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📊 Data Update: Refresh data and generate new reports"
+          file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
+          commit_user_name: "GitHub Actions Bot"
