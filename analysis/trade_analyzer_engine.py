@@ -33,11 +33,13 @@ def generate_trade_report():
         sys.exit(1)
 
     # --- MERGE AND PREPARE MASTER DATAFRAME ---
-    # DEFINITIVE FIX: All merges now use the single, standardized 'player_display_name' column.
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
-    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
+    
+    # DEFINITIVE FIX: Explicitly merge using the different column names from each file.
+    # This tells pandas to join where 'player_display_name' (from the left df) matches 'player_name' (from the right df).
+    df = pd.merge(df, df_players[['player_name', 'birth_date']], left_on='player_display_name', right_on='player_name', how='left')
     
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
