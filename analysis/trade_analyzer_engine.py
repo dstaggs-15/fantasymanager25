@@ -6,9 +6,13 @@ import sys
 import datetime
 
 def generate_trade_report():
+    """
+    Generates a comprehensive trade report by running all players through the
+    advanced 8-Factor Model using only self-contained data.
+    """
     print("\n--- Starting 8-Factor Trade Analyzer Engine (Self-Contained) ---")
 
-    ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json') 
+    ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json')
     vorp_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
     consistency_path = os.path.join('docs', 'data', 'reports', 'consistency_report.json')
     start_score_path = os.path.join('docs', 'data', 'reports', 'start_scores.json')
@@ -28,19 +32,22 @@ def generate_trade_report():
         print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
         sys.exit(1)
 
-    df = pd.merge(df_vorp, df_ros[['player_name', 'rank']], on='player_name', how='left')
+    # --- MERGE AND PREPARE MASTER DATAFRAME ---
+    # CORRECTED: Standardize all merges on 'player_display_name'
+    df = pd.merge(df_vorp, df_ros[['player_display_name', 'rank']], on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
     df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
-    df['birth_date'] = pd.to_datetime(df['birth_date'])
+    df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
     df['age'] = (datetime.datetime.now() - df['birth_date']).dt.days / 365.25
     
     team_offense = df_processed.groupby('recent_team')['fantasy_points'].sum().reset_index()
     team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
     df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
 
+    # --- RUN THE 8-FACTOR MODEL ---
     trade_values = []
     for index, player in df.iterrows():
         pos = player['position']
