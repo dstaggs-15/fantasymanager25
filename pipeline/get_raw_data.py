@@ -33,26 +33,27 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # Download Roster/Player Information (Reliable Method)
-    try:
-        print("Downloading player roster information...")
-        seasonal_df = nfl.import_seasonal_data(years=YEARS, s_type='REG')
+    # Download Roster/Player Information (with robust year-by-year error handling)
+    all_seasonal_data = []
+    print("Downloading player roster information...")
+    for year in YEARS:
+        try:
+            seasonal_df_year = nfl.import_seasonal_data(years=[year], s_type='REG')
+            all_seasonal_data.append(seasonal_df_year)
+        except HTTPError:
+            print(f"  -> INFO: Seasonal/Roster data for {year} not available. Skipping.")
+            
+    if all_seasonal_data:
+        roster_df = pd.concat(all_seasonal_data, ignore_index=True)
         # Use the actual columns available in this dataset
         roster_cols = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
-        
-        # Defensive check to ensure all columns exist before proceeding
-        cols_to_select = [col for col in roster_cols if col in seasonal_df.columns]
-        
-        master_list = seasonal_df[cols_to_select].drop_duplicates(subset='player_id', keep='first')
+        cols_to_select = [col for col in roster_cols if col in roster_df.columns]
+        master_list = roster_df[cols_to_select].drop_duplicates(subset='player_id', keep='first')
         master_list.rename(columns={'team_abbr': 'recent_team'}, inplace=True)
-        
-        # Add a print statement to show the final columns for debugging
-        print(f"Player Master List columns being saved: {master_list.columns.tolist()}")
-        
         master_list.to_csv(roster_output_path, index=False)
         print("✅ Successfully saved Player Master List.")
-    except Exception as e:
-        print(f"❌ ERROR: Failed to download roster data. Reason: {e}")
+    else:
+        print("❌ ERROR: No roster data could be downloaded.")
 
     # Download Schedule
     try:
