@@ -1,145 +1,89 @@
-# analysis/composite_score_generator.py
 import pandas as pd
 import json
 import os
-import sys
 
-def generate_start_score():
+# --- Configuration ---
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPORTS_DIR = os.path.join(BASE_DIR, 'data', 'reports')
+CURRENT_SEASON = 2025 # Projecting for the upcoming season
+CURRENT_WEEK = 1
+
+def generate_start_scores():
     """
-    Generates a definitive 4-Factor "Start Score" for each player, now including
-    key seasonal stats for display on the frontend.
+    Generates the 4-Factor 'Start Score' for the upcoming week by ingesting
+    VORP, Matchup, and O-Line reports.
     """
-    print("\n--- Starting Final 4-Factor 'Start Score' Generation ---")
+    print("--- Starting Final 4-Factor 'Start Score' Generation ---")
 
-    # (File paths and data loading remain the same as before)
-    vorp_report_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
-    matchup_report_path = os.path.join('docs', 'data', 'reports', 'matchup_report.json')
-    oline_rankings_path = os.path.join('docs', 'data', 'raw', 'oline_rankings.csv')
-    schedule_path = os.path.join('docs', 'data', 'raw', 'schedule_raw.csv')
-    processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
-    output_path = os.path.join('docs', 'data', 'reports', 'start_scores.json')
-
+    # Load prerequisite reports
     try:
-        df_vorp = pd.DataFrame(json.load(open(vorp_report_path)))
-        matchup_data = json.load(open(matchup_report_path))
-        df_oline = pd.read_csv(oline_rankings_path)
-        df_schedule = pd.read_csv(schedule_path)
-        df_processed = pd.read_csv(processed_data_path)
-        print("✅ Successfully loaded all data sources.")
-    except FileNotFoundError as e:
-        print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
-        sys.exit(1)
-
-    # (Prep for Analysis remains the same)
-    latest_season = df_schedule['season'].max()
-    games_played_df = df_schedule[(df_schedule['season'] == latest_season) & (df_schedule['result'].notna())]
-    last_week_played = games_played_df['week'].max() if not games_played_df.empty else 0
-    upcoming_week = int(last_week_played + 1)
-    print(f"Generating scores for Season {latest_season}, Week {upcoming_week}")
-    upcoming_games = df_schedule[(df_schedule['season'] == latest_season) & (df_schedule['week'] == upcoming_week)]
-    home_teams = upcoming_games[['home_team', 'away_team']].rename(columns={'home_team': 'team', 'away_team': 'opponent'})
-    away_teams = upcoming_games[['away_team', 'home_team']].rename(columns={'away_team': 'team', 'home_team': 'opponent'})
-    upcoming_matchups = pd.concat([home_teams, away_teams])
-
-    start_scores = []
-    df_vorp = pd.merge(df_vorp, df_processed[['player_display_name', 'player_id']].drop_duplicates(), on='player_display_name', how='left')
-    df_vorp.dropna(subset=['player_id'], inplace=True)
-
-    for index, player in df_vorp.iterrows():
-        # (Factor calculations remain the same)
-        player_name = player['player_display_name']
-        player_team = player['recent_team']
-        player_pos = player['position']
-        player_id = player['player_id']
+        vorp_df = pd.read_json(os.path.join(REPORTS_DIR, 'vorp_analyzer_report.json'))
+        matchup_df = pd.read_json(os.path.join(REPORTS_DIR, 'matchup_report.json'))
+        oline_df = pd.read_json(os.path.join(REPORTS_DIR, 'oline_rankings.json')) # Assuming oline script saves a JSON report
+        schedule_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'raw', 'schedule_raw.csv'))
+    except Exception as e:
+        print(f"❌ Error loading a source file: {e}. Aborting.")
+        return
         
-        max_ppg = df_vorp[df_vorp['position'] == player_pos]['ppg'].max()
-        talent_score = (player['ppg'] / max_ppg) * 10 if max_ppg > 0 else 0
+    print("✅ Successfully loaded all data sources.")
 
-        matchup_info = upcoming_matchups[upcoming_matchups['team'] == player_team]
-        if matchup_info.empty:
-            start_scores.append({'player_display_name': player_name, 'start_score': 0, 'breakdown': 'On Bye Week'})
-            continue
-        
-        opponent = matchup_info.iloc[0]['opponent']
+    # Filter schedule for the upcoming week
+    weekly_schedule = schedule_df[(schedule_df['season'] == CURRENT_SEASON) & (schedule_df['week'] == CURRENT_WEEK)]
+    
+    # Map opponent for each team
+    opponent_map = {}
+    for index, row in weekly_schedule.iterrows():
+        opponent_map[row['home_team']] = row['away_team']
+        opponent_map[row['away_team']] = row['home_team']
 
-        matchup_rank = 16.5
-        if player_pos in matchup_data and any(team['team'] == opponent for team in matchup_data[player_pos]):
-            matchup_rank = [team['rank'] for team in matchup_data[player_pos] if team['team'] == opponent][0]
-        matchup_score = ((32 - matchup_rank) / 31) * 10
+    vorp_df['opponent'] = vorp_df['team'].map(opponent_map)
+    
+    # 1. Player Talent Score (40%)
+    max_ppg = vorp_df.groupby('position')['ppg'].transform('max')
+    vorp_df['talent_score'] = 10 * (vorp_df['ppg'] / max_ppg)
 
-        oline_rank_row = df_oline[df_oline['team'] == player_team]
-        oline_rank = oline_rank_row.iloc[0]['rank'] if not oline_rank_row.empty else 16.5
-        oline_score = ((32 - oline_rank) / 31) * 10
-        
-        player_history = df_processed[df_processed['player_id'] == player_id]
-        player_seasonal_stats = player_history.sum()
-        games_played = len(player_history)
-        efficiency_score = 5.0
+    # 2. Weekly Matchup Score (30%)
+    # Merge matchup ranks onto the main dataframe
+    merged_df = pd.merge(vorp_df, matchup_df, left_on=['opponent', 'position'], right_on=['team', 'position'], how='left', suffixes=('', '_matchup'))
+    merged_df['matchup_rank'].fillna(16, inplace=True) # Neutral rank for missing data
+    merged_df['matchup_score'] = 10 * ((32 - merged_df['matchup_rank']) / 31)
 
-        if player_pos == 'RB':
-            # --- THIS BLOCK IS NOW CORRECTLY INDENTED ---
-            rushes = player_seasonal_stats.get('rushing_attempts', 0)
-            receptions = player_seasonal_stats.get('receptions', 0)
-            touches = rushes + receptions
-            if touches > 40:
-                rush_yards = player_seasonal_stats.get('rushing_yards', 0)
-                rec_yards = player_seasonal_stats.get('receiving_yards', 0)
-                
-                ypc = rush_yards / rushes if rushes > 0 else 0
-                ypr = rec_yards / receptions if receptions > 0 else 0
+    # 3. Offensive Line Score (15%)
+    # Merge O-line ranks
+    merged_df = pd.merge(merged_df, oline_df, left_on='team', right_on='team', how='left')
+    merged_df['oline_rank'].fillna(16, inplace=True) # Neutral rank
+    merged_df['oline_score'] = 10 * ((32 - merged_df['oline_rank']) / 31)
 
-                rush_efficiency = min(10, (ypc / 5.5) * 10)
-                rec_efficiency = min(10, (ypr / 9.5) * 10)
-                
-                rush_weight = rushes / touches
-                rec_weight = receptions / touches
-                efficiency_score = (rush_efficiency * rush_weight) + (rec_efficiency * rec_weight)
-        
-        elif player_pos in ['WR', 'TE']:
-            receptions = player_seasonal_stats.get('receptions', 0)
-            if receptions > 30:
-                rec_yards = player_seasonal_stats.get('receiving_yards', 0)
-                ypr = rec_yards / receptions
-                
-                norm_val = 14.0 if player_pos == 'WR' else 11.5
-                efficiency_score = min(10, (ypr / norm_val) * 10)
+    # 4. Efficiency Score (15%) - Using VORP as a proxy for overall efficiency
+    max_vorp = merged_df.groupby('position')['vorp'].transform('max')
+    min_vorp = merged_df.groupby('position')['vorp'].transform('min')
+    merged_df['efficiency_score'] = 10 * (merged_df['vorp'] - min_vorp) / (max_vorp - min_vorp)
 
-        weights = {'talent': 0.40, 'matchup': 0.30, 'oline': 0.15, 'efficiency': 0.15}
-        final_score = (talent_score * weights['talent']) + (matchup_score * weights['matchup']) + \
-                      (oline_score * weights['oline']) + (efficiency_score * weights['efficiency'])
+    # Handle NaNs that might have appeared
+    score_cols = ['talent_score', 'matchup_score', 'oline_score', 'efficiency_score']
+    merged_df[score_cols] = merged_df[score_cols].fillna(0)
+    
+    # Calculate Final Weighted 'Start Score'
+    merged_df['start_score'] = (
+        merged_df['talent_score'] * 0.40 +
+        merged_df['matchup_score'] * 0.30 +
+        merged_df['oline_score'] * 0.15 +
+        merged_df['efficiency_score'] * 0.15
+    ).round(2)
+    
+    print(f"Generating scores for Season {CURRENT_SEASON}, Week {CURRENT_WEEK}")
+    
+    # Prepare final report
+    final_report = merged_df[['player_id', 'player_name', 'position', 'team', 'start_score']]
 
-        stats_breakdown = {}
-        if games_played > 0:
-            if player_pos == 'QB':
-                stats_breakdown['Pass Yds/G'] = round(player_seasonal_stats.get('passing_yards', 0) / games_played, 1)
-                stats_breakdown['Pass TDs'] = int(player_seasonal_stats.get('passing_tds', 0))
-                stats_breakdown['INTs'] = int(player_seasonal_stats.get('interceptions', 0))
-            elif player_pos == 'RB':
-                stats_breakdown['Rush Yds/G'] = round(player_seasonal_stats.get('rushing_yards', 0) / games_played, 1)
-                stats_breakdown['Rec/G'] = round(player_seasonal_stats.get('receptions', 0) / games_played, 1)
-                total_tds = player_seasonal_stats.get('rushing_tds', 0) + player_seasonal_stats.get('receiving_tds', 0)
-                stats_breakdown['Total TDs'] = int(total_tds)
-            elif player_pos in ['WR', 'TE']:
-                stats_breakdown['Rec Yds/G'] = round(player_seasonal_stats.get('receiving_yards', 0) / games_played, 1)
-                stats_breakdown['Rec/G'] = round(player_seasonal_stats.get('receptions', 0) / games_played, 1)
-                stats_breakdown['Total TDs'] = int(player_seasonal_stats.get('receiving_tds', 0))
+    # --- FIX: Save the report with the correct filename ---
+    output_path = os.path.join(REPORTS_DIR, 'start_score_report.json')
 
-        start_scores.append({
-            'player_display_name': player_name, 'position': player_pos, 'team': player_team, 'opponent': opponent,
-            'start_score': round(final_score, 1),
-            'breakdown': {
-                'Talent (PPG)': round(talent_score, 1),
-                'Matchup': round(matchup_score, 1),
-                'O-Line': round(oline_score, 1),
-                'Efficiency': round(efficiency_score, 1)
-            },
-            'stats': stats_breakdown
-        })
-        
+    report_json = final_report.to_dict(orient='records')
     with open(output_path, 'w') as f:
-        json.dump(start_scores, f, indent=4)
-        
+        json.dump(report_json, f, indent=4)
+
     print(f"✅ Successfully created final Start Score report at: {output_path}")
 
 if __name__ == '__main__':
-    generate_start_score()
+    generate_start_scores()
