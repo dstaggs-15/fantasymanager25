@@ -12,6 +12,7 @@ def generate_trade_report():
     """
     print("\n--- Starting 8-Factor Trade Analyzer Engine (Self-Contained) ---")
 
+    # --- 1. Define File Paths ---
     ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json')
     vorp_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
     consistency_path = os.path.join('docs', 'data', 'reports', 'consistency_report.json')
@@ -20,6 +21,7 @@ def generate_trade_report():
     processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
     output_path = os.path.join('docs', 'data', 'reports', 'trade_report.json')
 
+    # --- 2. Load All Data Sources ---
     try:
         df_ros = pd.DataFrame(json.load(open(ros_path)))
         df_vorp = pd.DataFrame(json.load(open(vorp_path)))
@@ -32,17 +34,17 @@ def generate_trade_report():
         print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
         sys.exit(1)
 
-    # --- MERGE AND PREPARE MASTER DATAFRAME ---
+    # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
+    # DEFINITIVE FIX: All merges now use the single, standardized 'player_display_name' column.
+    # This is simpler and more robust than previous attempts.
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
-    
-    # DEFINITIVE FIX: Explicitly merge using the different column names from each file.
-    # This tells pandas to join where 'player_display_name' (from the left df) matches 'player_name' (from the right df).
-    df = pd.merge(df, df_players[['player_name', 'birth_date']], left_on='player_display_name', right_on='player_name', how='left')
+    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
     
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
+    # --- 4. Calculate Additional Metrics ---
     df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
     df['age'] = (datetime.datetime.now() - df['birth_date']).dt.days / 365.25
     
@@ -50,7 +52,7 @@ def generate_trade_report():
     team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
     df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
 
-    # --- RUN THE 8-FACTOR MODEL ---
+    # --- 5. Run the 8-Factor Model ---
     trade_values = []
     for index, player in df.iterrows():
         pos = player['position']
