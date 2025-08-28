@@ -21,21 +21,41 @@
         .result-box h4 { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .result-box .value { font-size: 2rem; font-weight: 700; }
         .result-box .grade { font-size: 3rem; font-weight: 700; color: var(--color-primary); }
-        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; }
+        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; transition: background-color 0.2s ease; }
+        details[open] { background-color: var(--color-background); }
         summary { font-weight: 600; cursor: pointer; color: var(--color-primary); font-size: 1.25rem; }
         .explanation-content { margin-top: 1.5rem; }
+        .explanation-content h4 { color: var(--color-text-primary); margin-top: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
         .player-stats-table { width: 100%; margin-top: 1.5rem; text-align: left; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Trade Analyzer</h1>
+
+        <!-- In-depth Explanation Dropdown -->
         <div class="card" style="margin-bottom: 2rem;">
             <details>
-                </details>
+                <summary>How The Trade Analyzer Works</summary>
+                <div class="explanation-content">
+                    <p>This tool evaluates a trade from two perspectives to create a final <strong>Trade Grade</strong>. It assesses both the long-term and short-term impact of the deal.</p>
+                    
+                    <h4>1. Season-Long Value (70% of Grade)</h4>
+                    <p>This is calculated using <strong>VORP (Value Over Replacement Player)</strong>. VORP is the best metric for season-long value because it measures how much better a player is than a readily available waiver-wire player at the same position. A high total VORP indicates a stronger roster for the rest of the season.</p>
+                    
+                    <h4>2. Immediate Impact (30% of Grade)</h4>
+                    <p>This is calculated using the weekly <strong>Start Score</strong>. This score tells you who is getting the more immediately startable assets for the upcoming week's matchup, factoring in talent, opponent, and O-line quality.</p>
+                    
+                    <hr style="border-color: var(--color-border); margin: 1.5rem 0;">
+                    
+                    <h4>The Final Grade</h4>
+                    <p>The final grade (A+ to F) is a weighted average of the VORP and Start Score totals being exchanged. It provides a holistic view of the trade, helping you decide if you're winning the deal both now and for the future.</p>
+                </div>
+            </details>
         </div>
 
         <div class="trade-grid">
+            <!-- Team A -->
             <div class="card trade-side" id="side-a">
                 <h2>Team A Receives</h2>
                 <div class="card-header">
@@ -45,6 +65,7 @@
                 <div id="players-a-container"></div>
             </div>
 
+            <!-- Team B -->
             <div class="card trade-side" id="side-b">
                 <h2>Team B Receives</h2>
                 <div class="card-header">
@@ -57,6 +78,7 @@
 
         <datalist id="player-list"></datalist>
 
+        <!-- Results Section -->
         <div class="card" style="margin-top: 2rem;">
             <h2>Trade Results</h2>
             <div class="results-grid">
