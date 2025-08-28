@@ -4,12 +4,17 @@ name: Fantasy Football Data Pipeline
 
 on:
   schedule:
-    - cron: '0 10 * * *'
-  workflow_dispatch:
+    - cron: '0 10 * * *' # Runs daily at 10:00 UTC
+  workflow_dispatch: # Allows manual runs from the Actions tab
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    
+    # REQUIRED: Add write permissions for the job to push changes back to the repo
+    permissions:
+      contents: write
+      
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -38,11 +43,14 @@ jobs:
           python analysis/composite_score_generator.py
           python analysis/trade_analyzer_engine.py
       
+      # CORRECTED: Final step to commit the generated data files
       - name: Commit and Push Data Files
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json
-          git commit -m "📊 Data Update: Refresh data and generate new reports" || echo "No changes to commit"
+          # CORRECTED: Use the correct paths for the data directories
+          git add data/raw/*.csv data/processed/*.csv data/reports/*.json
+          # Commit only if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "📊 Data Update: Refresh data and generate new reports"
           git pull --rebase
           git push
