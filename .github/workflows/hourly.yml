@@ -32,7 +32,6 @@ jobs:
         run: python pipeline/get_raw_data.py
 
       - name: 5. Run -> Calculate Fantasy Points (CRITICAL STEP)
-        id: calculate_points
         run: python pipeline/calculate_fantasy_points.py
 
       - name: 6. Run -> Generate O-Line Rankings
@@ -62,8 +61,6 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/reports/*.json
-          git add data/processed/*.csv
-          git add data/raw/*.csv
+          git add data/
           git commit -m "📊 Automated daily data and report update" || echo "No changes to commit"
           git push
