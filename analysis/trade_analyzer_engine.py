@@ -38,10 +38,8 @@ def generate_trade_report():
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
     
-    # CORRECTED: The master player list uses 'player_name', not 'player_display_name'.
-    # We will merge on the correct column name and then standardize it.
-    df_players.rename(columns={'player_name': 'player_display_name'}, inplace=True)
-    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
+    # DEFINITIVE FIX: Merge using the correct column names from each file
+    df = pd.merge(df, df_players[['player_name', 'birth_date']], left_on='player_display_name', right_on='player_name', how='left')
     
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
