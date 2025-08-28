@@ -1,100 +1,149 @@
-# analysis/trade_analyzer_engine.py
-import pandas as pd
 import json
+import pandas as pd
+from datetime import datetime
 import os
-import sys
-import datetime
 
-def generate_trade_report():
-    """
-    Generates a comprehensive trade report. This version is rewritten to remove
-    the dependency on the 'position' column to prevent KeyErrors.
-    """
-    print("\n--- Starting 8-Factor Trade Analyzer Engine (Rewritten) ---")
+# --- Constants & Configuration ---
 
-    # --- 1. Define File Paths ---
-    ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json')
-    vorp_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
-    players_master_path = os.path.join('docs', 'data', 'raw', 'players_master.csv')
-    processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
-    output_path = os.path.join('docs', 'data', 'reports', 'trade_report.json')
+# Define the weights for the 8-Factor Trade Value Model
+# Source: Project Brief, Section 5
+TRADE_VALUE_WEIGHTS = {
+    'ros_projections': 0.30,
+    'proven_production': 0.15,
+    'player_tier': 0.15,
+    'weekly_upside': 0.10,
+    'roster_consistency': 0.10,
+    'player_efficiency': 0.05,
+    'player_age': 0.05,
+    'team_offense': 0.05
+}
 
-    # --- 2. Load and Validate Data Sources ---
+# Define file paths based on the project structure
+# Source: Project Brief, Section 3
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+REPORTS_DIR = os.path.join(BASE_DIR, 'data', 'reports')
+
+# --- Helper Functions ---
+
+def load_json_report(filename):
+    """Loads a JSON report into a pandas DataFrame, handling potential file errors."""
+    path = os.path.join(REPORTS_DIR, filename)
     try:
-        df_ros = pd.DataFrame(json.load(open(ros_path)))
-        df_vorp = pd.DataFrame(json.load(open(vorp_path)))
-        df_players = pd.read_csv(players_master_path)
-        df_processed = pd.read_csv(processed_data_path)
-        print("✅ Successfully loaded all data sources.")
-    except FileNotFoundError as e:
-        print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
-        sys.exit(1)
+        df = pd.read_json(path)
+        print(f"Successfully loaded {filename}")
+        return df
+    except Exception as e:
+        print(f"Error loading {path}: {e}. Returning empty DataFrame.")
+        return pd.DataFrame()
 
-    # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
-    # Merge data sources, ensuring player_display_name is the key
-    df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
-    df = pd.merge(df, df_players[['player_display_name', 'age']], on='player_display_name', how='left', suffixes=('', '_player'))
+def normalize_score(series, ascending=True):
+    """Normalizes a pandas Series to a 0-100 scale, handling cases with no variance."""
+    if series.max() == series.min():
+        return pd.Series([50] * len(series), index=series.index) # Return neutral score if all values are the same
+    if ascending:
+        return 100 * (series - series.min()) / (series.max() - series.min())
+    else:
+        return 100 * (series.max() - series) / (series.max() - series.min())
 
-    df.rename(columns={'rank': 'ros_rank'}, inplace=True)
+def get_player_tier_score(ros_rank):
+    """Assigns a score based on a player's ROS rank tier."""
+    if pd.isna(ros_rank) or ros_rank == 0: return 0
+    if ros_rank <= 12: return 100
+    elif ros_rank <= 24: return 85
+    elif ros_rank <= 48: return 70
+    elif ros_rank <= 72: return 50
+    else: return 30
 
-    # --- 4. Calculate Additional Metrics ---
-    team_offense = df_processed.groupby('recent_team')['fantasy_points'].sum().reset_index()
-    team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
-    df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
+def calculate_age(birthdate_str):
+    """Calculates player age from a birthdate string."""
+    if pd.isna(birthdate_str): return 30 # Default age for missing data
+    try:
+        birthdate = datetime.strptime(str(birthdate_str), '%Y-%m-%d')
+        today = datetime.now()
+        return today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+    except (ValueError, TypeError):
+        return 30 # Default age for malformed data
 
-    # --- 5. Run the 7-Factor Model (No Position Dependency) ---
-    trade_values = []
+# --- Main Engine Logic ---
+
+def generate_trade_value_report():
+    """Calculates the 8-Factor Trade Value for every player and saves a JSON report."""
+    print("🚀 Starting the 8-Factor Trade Value engine...")
+
+    # 1. Load all required data sources
+    ros_projections = load_json_report('ros_projections.json')
+    vorp_data = load_json_report('vorp_analyzer_report.json')
+    start_scores = load_json_report('start_score_report.json')
     
-    # Pre-calculate max values across all players
-    max_ppg_overall = df['ppg'].max()
-    max_std_overall = df['consistency'].max()
-    max_vorp_overall = df['vorp'].max()
+    if vorp_data.empty:
+        print("❌ Critical error: vorp_analyzer_report.json is missing or empty. This is the base file. Aborting.")
+        return
 
-    for index, player in df.iterrows():
-        # Get position for display, but don't use it in calculations
-        pos_display = player.get('position', 'N/A')
-
-        ros_score = ((300 - player['ros_rank']) / 299) * 10 if pd.notna(player['ros_rank']) else 2.0
-        ppg_score = (player['ppg'] / max_ppg_overall) * 10 if max_ppg_overall > 0 else 0
-        
-        if pd.notna(player['ros_rank']):
-            if player['ros_rank'] <= 15: tier_score = 10
-            elif player['ros_rank'] <= 30: tier_score = 9
-            elif player['ros_rank'] <= 60: tier_score = 8
-            elif player['ros_rank'] <= 90: tier_score = 7
-            else: tier_score = 6
-        else: tier_score = 5
-
-        start_score = ppg_score # Use talent score as proxy for weekly upside
-        consistency_score = (1 - (player['consistency'] / max_std_overall)) * 10 if pd.notna(player['consistency']) and max_std_overall > 0 else 5.0
-        efficiency_score = (player['vorp'] / max_vorp_overall) * 10 if max_vorp_overall > 0 else 0
-        offense_score = ((32 - player['team_offense_rank']) / 31) * 10 if pd.notna(player['team_offense_rank']) else 5.0
-
-        weights = {'ros': 0.35, 'ppg': 0.20, 'tier': 0.15, 'start': 0.10, 'consistency': 0.10, 'efficiency': 0.05, 'offense': 0.05}
-        final_value = (ros_score * weights['ros']) + (ppg_score * weights['ppg']) + (tier_score * weights['tier']) + \
-                      (start_score * weights['start']) + (consistency_score * weights['consistency']) + \
-                      (efficiency_score * weights['efficiency']) + (offense_score * weights['offense'])
-
-        trade_values.append({
-            'player_name': player['player_display_name'],
-            'position': pos_display,
-            'team': player['recent_team'],
-            'trade_value': round(final_value * 10, 1),
-            'breakdown': {
-                'ROS Projection': round(ros_score, 1),
-                'Proven Production': round(ppg_score, 1),
-                'Player Tier': round(tier_score, 1),
-                'Weekly Upside': round(start_score, 1),
-                'Consistency': round(consistency_score, 1),
-                'Efficiency': round(efficiency_score, 1),
-                'Team Offense': round(offense_score, 1)
-            }
-        })
+    # 2. **CRITICAL FIX**: Merge data robustly, ensuring key columns are preserved.
+    # We use 'vorp_data' as the primary source of player info (name, position, team, etc.)
+    # and merge other data into it. This prevents the 'position' column from disappearing.
+    master_df = vorp_data.copy()
     
-    with open(output_path, 'w') as f:
-        json.dump(trade_values, f, indent=4)
-        
-    print(f"✅ Successfully created 7-Factor Trade Report at: {output_path}")
+    # Merge ROS projections if available
+    if not ros_projections.empty:
+        master_df = pd.merge(master_df, ros_projections[['player_id', 'ros_projection', 'ros_rank']], on='player_id', how='left')
+    else:
+        master_df['ros_projection'] = 0
+        master_df['ros_rank'] = 999
 
+    # Merge Start Scores if available
+    if not start_scores.empty:
+        master_df = pd.merge(master_df, start_scores[['player_id', 'start_score']], on='player_id', how='left')
+    else:
+        master_df['start_score'] = 0
+
+    # Fill any remaining NaN values in numeric columns with 0
+    numeric_cols = master_df.select_dtypes(include='number').columns
+    master_df[numeric_cols] = master_df[numeric_cols].fillna(0)
+    
+    print(f"📊 Successfully merged data for {len(master_df)} players.")
+    
+    # 3. Calculate the 8 Factor Scores using vectorized operations (no loops needed)
+    master_df['ros_score'] = normalize_score(master_df['ros_projection'])
+    master_df['production_score'] = normalize_score(master_df['ppg'])
+    master_df['tier_score'] = master_df['ros_rank'].apply(get_player_tier_score)
+    master_df['upside_score'] = master_df['start_score'] * 10
+    master_df['consistency_score'] = normalize_score(master_df['std_dev'], ascending=False)
+    master_df['efficiency_score'] = normalize_score(master_df['vorp'])
+    master_df['age'] = master_df['birth_date'].apply(calculate_age)
+    master_df['age_score'] = normalize_score(master_df['age'], ascending=False)
+    
+    team_offense_score = normalize_score(master_df.groupby('team')['ppg'].transform('mean'))
+    master_df['offense_score'] = team_offense_score.fillna(50)
+
+    print("✅ Calculated all 8 factor scores.")
+
+    # 4. Calculate the Final Weighted "Trade Value"
+    master_df['trade_value'] = (
+        master_df['ros_score'] * TRADE_VALUE_WEIGHTS['ros_projections'] +
+        master_df['production_score'] * TRADE_VALUE_WEIGHTS['proven_production'] +
+        master_df['tier_score'] * TRADE_VALUE_WEIGHTS['player_tier'] +
+        master_df['upside_score'] * TRADE_VALUE_WEIGHTS['weekly_upside'] +
+        master_df['consistency_score'] * TRADE_VALUE_WEIGHTS['roster_consistency'] +
+        master_df['efficiency_score'] * TRADE_VALUE_WEIGHTS['player_efficiency'] +
+        master_df['age_score'] * TRADE_VALUE_WEIGHTS['player_age'] +
+        master_df['offense_score'] * TRADE_VALUE_WEIGHTS['team_offense']
+    ).round(1)
+
+    # 5. Prepare and Save the Final Report
+    output_columns = [
+        'player_id', 'player_name', 'position', 'team', 'trade_value',
+        'ros_score', 'production_score', 'tier_score', 'upside_score', 
+        'consistency_score', 'efficiency_score', 'age_score', 'offense_score'
+    ]
+    final_report = master_df[output_columns].sort_values(by='trade_value', ascending=False)
+    
+    output_path = os.path.join(REPORTS_DIR, 'trade_value_report.json')
+    final_report.to_json(output_path, orient='records', indent=4)
+        
+    print(f"💾 Successfully generated and saved Trade Value Report!")
+    print(f"Location: {output_path}")
+
+# --- Script Execution ---
 if __name__ == '__main__':
-    generate_trade_report()
+    generate_trade_value_report()
