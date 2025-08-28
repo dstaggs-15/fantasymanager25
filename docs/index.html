@@ -35,13 +35,11 @@
             gap: 2rem;
         }
         .tool-card {
-            /* Inherits from the .card style in style.css */
             display: flex;
             flex-direction: column;
             text-decoration: none;
         }
         .tool-card:hover {
-            /* Inherits hover effect from style.css */
             border-color: var(--color-primary);
         }
         .tool-card h2 {
@@ -54,7 +52,7 @@
         }
         .tool-card p {
             color: var(--color-text-secondary);
-            flex-grow: 1; /* Pushes the link to the bottom */
+            flex-grow: 1;
         }
         .card-link {
             display: inline-block;
@@ -84,8 +82,8 @@
             </a>
             
             <a href="start-sit.html" class="card tool-card">
-                <h2><span style="font-size: 1.5em;">🎯</span> Matchup Analyzer</h2>
-                <p>Get data-driven start/sit advice for all players based on their weekly opponent.</p>
+                <h2><span style="font-size: 1.5em;">🎯</span> Start/Sit Assistant</h2>
+                <p>Get a data-driven "Start Score" to help with your weekly lineup decisions.</p>
                 <span class="card-link">Analyze Matchups</span>
             </a>
 
@@ -95,10 +93,17 @@
                 <span class="card-link">See Rankings</span>
             </a>
 
-            <a href="#" class="card tool-card">
+            <!-- NEW: Link to Trade Analyzer -->
+            <a href="trade-analyzer.html" class="card tool-card">
+                <h2><span style="font-size: 1.5em;">🤝</span> Trade Analyzer</h2>
+                <p>Evaluate trades based on season-long value (VORP) and immediate impact.</p>
+                <span class="card-link">Analyze a Trade</span>
+            </a>
+
+            <a href="consistency.html" class="card tool-card">
                 <h2><span style="font-size: 1.5em;">📈</span> Consistency Ratings</h2>
                 <p>Analyze player volatility and boom/bust potential to build a reliable roster.</p>
-                <span class="card-link">Coming Soon</span>
+                <span class="card-link">View Ratings</span>
             </a>
 
             <a href="#" class="card tool-card">
