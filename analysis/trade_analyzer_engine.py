@@ -35,8 +35,7 @@ def generate_trade_report():
         sys.exit(1)
 
     # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
-    # DEFINITIVE FIX: All merges now use the single, standardized 'player_display_name' column.
-    # This is simpler and more robust than previous attempts.
+    # With the new robust get_raw_data.py, we can trust the column names.
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
