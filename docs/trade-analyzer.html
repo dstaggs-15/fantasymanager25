@@ -17,29 +17,48 @@
         .result-box { text-align: center; }
         .result-box h4 { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .result-box .grade { font-size: 3rem; font-weight: 700; color: var(--color-primary); }
-        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; }
+        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; transition: background-color 0.2s ease; }
+        details[open] { background-color: var(--color-background); }
         summary { font-weight: 600; cursor: pointer; color: var(--color-primary); font-size: 1.25rem; }
         .explanation-content { margin-top: 1.5rem; }
-        .breakdown-table { width: 100%; margin-top: 1.5rem; }
-        .breakdown-table td { padding: 0.5rem 0; }
-        .breakdown-table td:last-child { text-align: right; font-weight: 600; }
+        .explanation-content h4 { color: var(--color-text-primary); margin-top: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+        .explanation-content p { color: var(--color-text-secondary); }
+        .explanation-content strong { color: var(--color-text-primary); }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Trade Analyzer</h1>
+
+        <!-- NEW: In-depth collapsible explanation -->
         <div class="card" style="margin-bottom: 2rem;">
             <details>
                 <summary>How The Trade Grade is Calculated</summary>
                 <div class="explanation-content">
-                    <p>The final grade is based on a comprehensive <strong>8-Factor Model</strong> that evaluates each player's total value.</p>
-                    <!-- Detailed explanation can be added here -->
+                    <p>The final <strong>Trade Grade</strong> is a comprehensive evaluation based on a <strong>7-Factor Model</strong>. Each factor is scored on a 0-10 scale and then combined in a weighted average to produce a final score from 0-100, which is then converted to a letter grade.</p>
+                    
+                    <h4>Core Value Factors</h4>
+                    <p>These factors make up the bulk of the grade and measure a player's raw fantasy value.</p>
+                    <ul>
+                        <li><strong>ROS Projection (30% Weight):</strong> The most important factor. This is our "homegrown" Rest-of-Season projection, calculated from a weighted average of a player's recent performance. It measures a player's expected future value.</li>
+                        <li><strong>Proven Production (20% Weight):</strong> This grounds the projections in reality by looking at a player's season-long <strong>Points Per Game (PPG)</strong>.</li>
+                        <li><strong>Player Tier (15% Weight):</strong> This grades a player based on their ROS projection rank, sorting them into tiers (e.g., Elite, Great, Good). Acquiring a higher-tier player provides more value.</li>
+                    </ul>
+
+                    <h4>Contextual & Roster-Fit Factors</h4>
+                    <p>These factors add crucial context beyond a simple point projection.</p>
+                    <ul>
+                        <li><strong>Weekly Upside (10% Weight):</strong> Measures immediate impact using the weekly <strong>Start Score</strong>.</li>
+                        <li><strong>Consistency (10% Weight):</strong> Uses a player's <strong>Standard Deviation</strong> to measure volatility. Acquiring a more consistent (lower Std Dev) player improves this score.</li>
+                        <li><strong>Efficiency (10% Weight):</strong> An advanced metric that measures a player's effectiveness with their opportunities (e.g., Yards Per Touch, TD Rate).</li>
+                        <li><strong>Team Offense (5% Weight):</strong> Grades the quality of a player's offensive environment. Players on high-scoring teams have more opportunities to score.</li>
+                    </ul>
                 </div>
             </details>
         </div>
 
         <div class="trade-grid">
-            <!-- Team A -->
+            <!-- Team A & B input sections -->
             <div class="card trade-side" id="side-a">
                 <h2>Team A Receives</h2>
                 <div class="card-header">
@@ -48,8 +67,6 @@
                 </div>
                 <div id="players-a-container"></div>
             </div>
-
-            <!-- Team B -->
             <div class="card trade-side" id="side-b">
                 <h2>Team B Receives</h2>
                 <div class="card-header">
@@ -69,7 +86,6 @@
                 <div class="result-box"><h4>Team A Grade</h4><p id="grade-a" class="grade">-</p></div>
                 <div class="result-box"><h4>Team B Grade</h4><p id="grade-b" class="grade">-</p></div>
             </div>
-            <!-- 8-Factor Breakdown -->
             <div class="trade-grid" style="margin-top: 2rem;">
                 <div id="breakdown-a"></div>
                 <div id="breakdown-b"></div>
@@ -77,7 +93,6 @@
         </div>
     </div>
 
-    <!-- This script tag correctly links to the external JavaScript file -->
     <script src="trade-analyzer.js"></script>
 </body>
 </html>
