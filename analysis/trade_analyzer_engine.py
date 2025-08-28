@@ -12,7 +12,7 @@ def generate_trade_report():
     """
     print("\n--- Starting 8-Factor Trade Analyzer Engine (Self-Contained) ---")
 
-    # --- 1. Define File Paths ---
+    # File paths
     ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json')
     vorp_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
     consistency_path = os.path.join('docs', 'data', 'reports', 'consistency_report.json')
@@ -21,7 +21,6 @@ def generate_trade_report():
     processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
     output_path = os.path.join('docs', 'data', 'reports', 'trade_report.json')
 
-    # --- 2. Load All Data Sources ---
     try:
         df_ros = pd.DataFrame(json.load(open(ros_path)))
         df_vorp = pd.DataFrame(json.load(open(vorp_path)))
@@ -34,25 +33,29 @@ def generate_trade_report():
         print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
         sys.exit(1)
 
-    # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
-    # With standardized column names, these merges are now simple and reliable.
+    # Merge all data sources using the standardized 'player_display_name'
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
-    df = pd.merge(df, df_players[['player_display_name', 'age']], on='player_display_name', how='left')
+    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
     
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
-    # --- 4. Calculate Additional Metrics ---
+    # Calculate Age from birth_date
+    df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
+    df['age'] = (datetime.datetime.now() - df['birth_date']).dt.days / 365.25
+    
+    # Calculate Team Offense Potency
     team_offense = df_processed.groupby('recent_team')['fantasy_points'].sum().reset_index()
     team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
     df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
 
-    # --- 5. Run the 8-Factor Model ---
+    # Run the 8-Factor Model
     trade_values = []
     for index, player in df.iterrows():
         pos = player['position']
         
+        # Calculate scores for each of the 8 factors
         ros_score = ((300 - player['ros_rank']) / 299) * 10 if pd.notna(player['ros_rank']) else 2.0
         max_ppg = df[df['position'] == pos]['ppg'].max()
         ppg_score = (player['ppg'] / max_ppg) * 10 if max_ppg > 0 else 0
@@ -73,6 +76,7 @@ def generate_trade_report():
         age_score = 10 - min(10, (max(0, player['age'] - 23) / 10) * 10) if pd.notna(player['age']) else 5.0
         offense_score = ((32 - player['team_offense_rank']) / 31) * 10 if pd.notna(player['team_offense_rank']) else 5.0
 
+        # Calculate final weighted value
         weights = {'ros': 0.30, 'ppg': 0.15, 'tier': 0.15, 'start': 0.10, 'consistency': 0.10, 'efficiency': 0.05, 'age': 0.05, 'offense': 0.05}
         final_value = (ros_score * weights['ros']) + (ppg_score * weights['ppg']) + (tier_score * weights['tier']) + \
                       (start_score * weights['start']) + (consistency_score * weights['consistency']) + (efficiency_score * weights['efficiency']) + \
