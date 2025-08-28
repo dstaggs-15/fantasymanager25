@@ -21,38 +21,25 @@
         .result-box h4 { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
         .result-box .value { font-size: 2rem; font-weight: 700; }
         .result-box .grade { font-size: 3rem; font-weight: 700; color: var(--color-primary); }
-        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; transition: background-color 0.2s ease; }
-        details[open] { background-color: var(--color-background); }
+        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; }
         summary { font-weight: 600; cursor: pointer; color: var(--color-primary); font-size: 1.25rem; }
         .explanation-content { margin-top: 1.5rem; }
-        .explanation-content h4 { color: var(--color-text-primary); margin-top: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
+        .player-stats-table { width: 100%; margin-top: 1.5rem; text-align: left; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Trade Analyzer</h1>
-
         <div class="card" style="margin-bottom: 2rem;">
             <details>
-                <summary>How The Trade Analyzer Works</summary>
-                <div class="explanation-content">
-                    <p>This tool evaluates a trade from two perspectives to create a final <strong>Trade Grade</strong>.</p>
-                    <h4>1. Season-Long Value (70% of Grade)</h4>
-                    <p>This is calculated using <strong>VORP (Value Over Replacement Player)</strong>. VORP measures a player's total value over the entire season compared to a waiver-wire level player. A high total VORP indicates a stronger roster for the long haul.</p>
-                    <h4>2. Immediate Impact (30% of Grade)</h4>
-                    <p>This is calculated using the weekly <strong>Start Score</strong>. This score tells you who is getting the more immediately startable assets for the upcoming week's matchup.</p>
-                    <p>The final grade combines these factors to provide a holistic view of the trade, balancing long-term and short-term impact.</p>
-                </div>
-            </details>
+                </details>
         </div>
 
         <div class="trade-grid">
             <div class="card trade-side" id="side-a">
                 <h2>Team A Receives</h2>
                 <div class="card-header">
-                    <div class="search-group">
-                        <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player...">
-                    </div>
+                    <div class="search-group"><input type="text" id="player-search-a" list="player-list" placeholder="Search..."></div>
                     <button id="add-player-a" class="btn">Add</button>
                 </div>
                 <div id="players-a-container"></div>
@@ -61,9 +48,7 @@
             <div class="card trade-side" id="side-b">
                 <h2>Team B Receives</h2>
                 <div class="card-header">
-                    <div class="search-group">
-                        <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player...">
-                    </div>
+                    <div class="search-group"><input type="text" id="player-search-b" list="player-list" placeholder="Search..."></div>
                     <button id="add-player-b" class="btn">Add</button>
                 </div>
                 <div id="players-b-container"></div>
@@ -75,14 +60,17 @@
         <div class="card" style="margin-top: 2rem;">
             <h2>Trade Results</h2>
             <div class="results-grid">
-                <div class="result-box"><h4_>Team A Grade</h4><p id="grade-a" class="grade">-</p></div>
-                <div class="result-box"><h4_>Team B Grade</h4><p id="grade-b" class="grade">-</p></div>
-                <div class="result-box"><h4_>VORP Total</h4><p id="vorp-a" class="value">0.0</p></div>
-                <div class="result-box"><h4_>VORP Total</h4><p id="vorp-b" class="value">0.0</p></div>
+                <div class="result-box"><h4>Team A Grade</h4><p id="grade-a" class="grade">-</p></div>
+                <div class="result-box"><h4>Team B Grade</h4><p id="grade-b" class="grade">-</p></div>
+                <div class="result-box"><h4>VORP Total</h4><p id="vorp-a" class="value">0.0</p></div>
+                <div class="result-box"><h4>VORP Total</h4><p id="vorp-b" class="value">0.0</p></div>
+                <div class="result-box"><h4>Start Score Total</h4><p id="start-score-a" class="value">0.0</p></div>
+                <div class="result-box"><h4>Start Score Total</h4><p id="start-score-b" class="value">0.0</p></div>
             </div>
-            <div style="margin-top: 2rem; height: 300px;">
-                <canvas id="player-comparison-chart"></canvas>
+            <div style="margin-top: 2rem; height: 250px;">
+                <canvas id="trade-chart"></canvas>
             </div>
+            <div id="player-stats-container" style="margin-top: 2rem;"></div>
         </div>
     </div>
 
