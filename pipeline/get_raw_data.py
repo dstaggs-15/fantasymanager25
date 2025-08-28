@@ -7,8 +7,8 @@ import sys
 
 def get_raw_data():
     """
-    Downloads raw NFL data. This version uses the definitive nfl.import_players()
-    to create a stable master player list.
+    Downloads raw NFL data. This version is rewritten from scratch to be fully
+    resilient to changes in the source data's column names.
     """
     print("--- Starting Raw Data Collection ---")
     current_year = datetime.date.today().year
@@ -33,20 +33,39 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # --- Download Player Master List (Definitive Method) ---
+    # --- Download Player Master List (Definitive, Robust Method) ---
     try:
         print("Downloading master player list...")
-        # Use the stable import_players() function
         players_df = nfl.import_players()
         
-        # Select and rename columns to our standard format
-        cols_to_keep = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
-        master_list = players_df[cols_to_keep].copy()
+        # For debugging, let's see what columns we actually get
+        print(f"DEBUG: Columns available in players data: {players_df.columns.tolist()}")
+
+        # Define our standard names and potential aliases from the library
+        column_map = {
+            'player_display_name': ['player_display_name', 'player_name', 'name'],
+            'player_id': ['player_id'],
+            'position': ['position', 'pos'],
+            'recent_team': ['team_abbr', 'team'],
+            'birth_date': ['birth_date']
+        }
+
+        master_list = pd.DataFrame()
+        found_cols = {}
+
+        for standard_name, potential_aliases in column_map.items():
+            for alias in potential_aliases:
+                if alias in players_df.columns:
+                    master_list[standard_name] = players_df[alias]
+                    found_cols[standard_name] = alias
+                    break # Move to the next standard name once an alias is found
         
-        master_list.rename(columns={
-            'team_abbr': 'recent_team',
-            'player_name': 'player_display_name'
-        }, inplace=True)
+        print(f"INFO: Mapped columns as follows: {found_cols}")
+        
+        # Validate that we found the critical columns
+        if 'player_id' not in master_list.columns or 'player_display_name' not in master_list.columns:
+            print("❌ CRITICAL ERROR: Could not find required 'player_id' or a valid player name column.")
+            sys.exit(1)
         
         master_list.to_csv(roster_output_path, index=False)
         print(f"✅ Successfully saved Player Master List with columns: {master_list.columns.tolist()}")
