@@ -7,17 +7,16 @@ import datetime
 
 def generate_trade_report():
     """
-    Generates a comprehensive trade report by running all players through the
-    advanced 8-Factor Model using only self-contained data.
+    Generates a comprehensive trade report using a 7-Factor Model that does
+    not require the problematic player master list.
     """
-    print("\n--- Starting 8-Factor Trade Analyzer Engine (Self-Contained) ---")
+    print("\n--- Starting 7-Factor Trade Analyzer Engine (Rewritten) ---")
 
     # --- 1. Define File Paths ---
     ros_path = os.path.join('docs', 'data', 'reports', 'ros_projections.json')
     vorp_path = os.path.join('docs', 'data', 'reports', 'vorp_report.json')
     consistency_path = os.path.join('docs', 'data', 'reports', 'consistency_report.json')
     start_score_path = os.path.join('docs', 'data', 'reports', 'start_scores.json')
-    players_master_path = os.path.join('docs', 'data', 'raw', 'players_master.csv')
     processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
     output_path = os.path.join('docs', 'data', 'reports', 'trade_report.json')
 
@@ -27,7 +26,6 @@ def generate_trade_report():
         df_vorp = pd.DataFrame(json.load(open(vorp_path)))
         df_consistency = pd.DataFrame(json.load(open(consistency_path)))
         df_start_score = pd.DataFrame(json.load(open(start_score_path)))
-        df_players = pd.read_csv(players_master_path)
         df_processed = pd.read_csv(processed_data_path)
         print("✅ Successfully loaded all data sources.")
     except FileNotFoundError as e:
@@ -35,23 +33,17 @@ def generate_trade_report():
         sys.exit(1)
 
     # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
-    # With standardized column names, these merges are now simple and reliable.
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
-    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
-    
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
     # --- 4. Calculate Additional Metrics ---
-    df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
-    df['age'] = (datetime.datetime.now() - df['birth_date']).dt.days / 365.25
-    
     team_offense = df_processed.groupby('recent_team')['fantasy_points'].sum().reset_index()
     team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
     df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
 
-    # --- 5. Run the 8-Factor Model ---
+    # --- 5. Run the 7-Factor Model (Age factor removed) ---
     trade_values = []
     for index, player in df.iterrows():
         pos = player['position']
@@ -73,13 +65,12 @@ def generate_trade_report():
         consistency_score = (1 - (player['std_dev'] / max_std)) * 10 if pd.notna(player['std_dev']) and max_std > 0 else 5.0
         max_vorp = df[df['position'] == pos]['vorp'].max()
         efficiency_score = (player['vorp'] / max_vorp) * 10 if max_vorp > 0 else 0
-        age_score = 10 - min(10, (max(0, player['age'] - 23) / 10) * 10) if pd.notna(player['age']) else 5.0
         offense_score = ((32 - player['team_offense_rank']) / 31) * 10 if pd.notna(player['team_offense_rank']) else 5.0
 
-        weights = {'ros': 0.30, 'ppg': 0.15, 'tier': 0.15, 'start': 0.10, 'consistency': 0.10, 'efficiency': 0.05, 'age': 0.05, 'offense': 0.05}
+        weights = {'ros': 0.30, 'ppg': 0.20, 'tier': 0.15, 'start': 0.10, 'consistency': 0.10, 'efficiency': 0.10, 'offense': 0.05}
         final_value = (ros_score * weights['ros']) + (ppg_score * weights['ppg']) + (tier_score * weights['tier']) + \
-                      (start_score * weights['start']) + (consistency_score * weights['consistency']) + (efficiency_score * weights['efficiency']) + \
-                      (age_score * weights['age']) + (offense_score * weights['offense'])
+                      (start_score * weights['start']) + (consistency_score * weights['consistency']) + \
+                      (efficiency_score * weights['efficiency']) + (offense_score * weights['offense'])
 
         trade_values.append({
             'player_name': player['player_display_name'],
@@ -93,7 +84,6 @@ def generate_trade_report():
                 'Weekly Upside': round(start_score, 1),
                 'Consistency': round(consistency_score, 1),
                 'Efficiency': round(efficiency_score, 1),
-                'Age': round(age_score, 1),
                 'Team Offense': round(offense_score, 1)
             }
         })
@@ -101,7 +91,7 @@ def generate_trade_report():
     with open(output_path, 'w') as f:
         json.dump(trade_values, f, indent=4)
         
-    print(f"✅ Successfully created 8-Factor Trade Report at: {output_path}")
+    print(f"✅ Successfully created 7-Factor Trade Report at: {output_path}")
 
 if __name__ == '__main__':
     generate_trade_report()
