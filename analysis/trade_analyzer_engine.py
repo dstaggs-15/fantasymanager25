@@ -88,7 +88,7 @@ def generate_trade_report():
                 'Team Offense': round(offense_score, 1)
             }
         })
-    
+     
     with open(output_path, 'w') as f:
         json.dump(trade_values, f, indent=4)
         
