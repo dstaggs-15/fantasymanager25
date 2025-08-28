@@ -22,9 +22,7 @@ jobs:
           python-version: '3.10'
       
       - name: Install Google Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
 
       - name: Install Dependencies
         run: pip install -r requirements.txt
@@ -32,17 +30,23 @@ jobs:
       - name: Run Data Collection Scripts
         run: |
           python pipeline/get_raw_data.py
-          python pipeline/get_oline_rankings.py
-          python pipeline/get_ros_projections.py # NEW SCRIPT
+          python analysis/generate_oline_rankings.py # Using our homegrown rankings
+          python pipeline/get_ros_projections.py
       
       - name: Run Analysis Scripts
         run: |
           python pipeline/calculate_fantasy_points.py
-          # ... other analysis scripts will go here later ...
+          python analysis/vorp_analyzer.py
+          python analysis/matchup_analyzer.py
+          python analysis/consistency_analyzer.py
+          python analysis/composite_score_generator.py
+          python analysis/trade_analyzer_engine.py # NEW SCRIPT
 
       - name: Commit Data Files
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "📊 Data Update: Refresh data and generate new reports"
-          file_pattern: 'docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json'
-          commit_user_name: "GitHub Actions Bot"
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add docs/data/raw/*.csv docs/data/processed/*.csv docs/data/reports/*.json
+          git commit -m "📊 Data Update: Refresh data and generate new reports" || echo "No changes to commit"
+          git pull --rebase
+          git push
