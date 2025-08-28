@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .trade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .trade-side .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .trade-side .search-group { flex-grow: 1; }
+        .player-chip { display: flex; justify-content: space-between; align-items: center; background-color: var(--color-background); padding: 0.5rem 1rem; border-radius: 6px; margin-bottom: 0.5rem; border: 1px solid var(--color-border); }
+        .player-chip button { background: none; border: none; color: #dc3545; font-size: 1.2rem; cursor: pointer; }
+        .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .result-box { text-align: center; }
+        .result-box h4 { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
+        .result-box .value { font-size: 2rem; font-weight: 700; }
+        .result-box .grade { font-size: 3rem; font-weight: 700; color: var(--color-primary); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Trade Analyzer</h1>
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2>How This Tool Works</h2>
+            <p>Add players to each side of the trade to get a data-driven analysis. The tool evaluates the trade based on two key areas:</p>
+            <ul>
+                <li><strong>Season-Long Value:</strong> Calculated using each player's <strong>VORP</strong> (Value Over Replacement Player).</li>
+                <li><strong>Immediate Impact:</strong> Calculated using each player's weekly <strong>Start Score</strong>.</li>
+            </ul>
+            <p>A final <strong>Trade Grade</strong> combines these factors to give you a holistic view of the deal.</p>
+        </div>
+
+        <div class="trade-grid">
+            <div class="card trade-side" id="side-a">
+                <h2>Team A Receives</h2>
+                <div class="card-header">
+                    <div class="search-group">
+                        <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player...">
+                    </div>
+                    <button id="add-player-a" class="btn">Add</button>
+                </div>
+                <div id="players-a-container"></div>
+            </div>
+
+            <div class="card trade-side" id="side-b">
+                <h2>Team B Receives</h2>
+                <div class="card-header">
+                    <div class="search-group">
+                        <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player...">
+                    </div>
+                    <button id="add-player-b" class="btn">Add</button>
+                </div>
+                <div id="players-b-container"></div>
+            </div>
+        </div>
+
+        <datalist id="player-list"></datalist>
+
+        <div class="card" style="margin-top: 2rem;">
+            <h2>Trade Results</h2>
+            <div class="results-grid">
+                <div class="result-box">
+                    <h4>Team A Grade</h4>
+                    <p id="grade-a" class="grade">-</p>
+                </div>
+                <div class="result-box">
+                    <h4>Team B Grade</h4>
+                    <p id="grade-b" class="grade">-</p>
+                </div>
+                <div class="result-box">
+                    <h4>VORP Total</h4>
+                    <p id="vorp-a" class="value">0.0</p>
+                </div>
+                 <div class="result-box">
+                    <h4>VORP Total</h4>
+                    <p id="vorp-b" class="value">0.0</p>
+                </div>
+                <div class="result-box">
+                    <h4>Start Score Total</h4>
+                    <p id="start-score-a" class="value">0.0</p>
+                </div>
+                 <div class="result-box">
+                    <h4>Start Score Total</h4>
+                    <p id="start-score-b" class="value">0.0</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; height: 250px;">
+                <canvas id="trade-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="trade-analyzer.js"></script>
+</body>
+</html>
