@@ -7,8 +7,8 @@ import sys
 
 def get_raw_data():
     """
-    Downloads raw NFL data and saves it. This version fetches age directly and
-    standardizes all player name columns to 'player_display_name' at the source.
+    Downloads raw NFL data. This version uses the definitive nfl.import_players()
+    to create a stable master player list.
     """
     print("--- Starting Raw Data Collection ---")
     current_year = datetime.date.today().year
@@ -33,27 +33,15 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # --- Download Roster/Player Information ---
-    all_seasonal_data = []
-    print("Downloading player roster information...")
-    for year in YEARS:
-        try:
-            seasonal_df_year = nfl.import_seasonal_data(years=[year], s_type='REG')
-            all_seasonal_data.append(seasonal_df_year)
-        except Exception:
-            print(f"  -> INFO: Seasonal/Roster data for {year} not available. Skipping.")
-            
-    if all_seasonal_data:
-        roster_df = pd.concat(all_seasonal_data, ignore_index=True)
+    # --- Download Player Master List (Definitive Method) ---
+    try:
+        print("Downloading master player list...")
+        # Use the stable import_players() function
+        players_df = nfl.import_players()
         
-        # DEFINITIVE FIX: Use 'age' directly and standardize 'player_name'.
-        required_cols = ['player_id', 'player_name', 'position', 'team_abbr', 'age']
-        missing_cols = [col for col in required_cols if col not in roster_df.columns]
-        if missing_cols:
-            print(f"❌ CRITICAL ERROR: The downloaded seasonal data is missing required columns: {missing_cols}")
-            sys.exit(1)
-
-        master_list = roster_df[required_cols].drop_duplicates(subset='player_id', keep='first').copy()
+        # Select and rename columns to our standard format
+        cols_to_keep = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
+        master_list = players_df[cols_to_keep].copy()
         
         master_list.rename(columns={
             'team_abbr': 'recent_team',
@@ -62,8 +50,8 @@ def get_raw_data():
         
         master_list.to_csv(roster_output_path, index=False)
         print(f"✅ Successfully saved Player Master List with columns: {master_list.columns.tolist()}")
-    else:
-        print("❌ ERROR: No roster data could be downloaded.")
+    except Exception as e:
+        print(f"❌ CRITICAL ERROR: Failed to create Player Master List. Reason: {e}")
         sys.exit(1)
 
     # --- Download Schedule ---
