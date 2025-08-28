@@ -2,12 +2,12 @@
 import pandas as pd
 import os
 import sys
-import json # <--- THIS LINE WAS MISSING
+import json
 
 def generate_ros_projections():
     """
     Generates our own Rest-of-Season (ROS) projections by calculating a weighted
-    average of a player's recent performance (last 4, 8, and 16 games).
+    average of a player's recent performance.
     """
     print("\n--- Starting 'Homegrown' ROS Projection Generation ---")
 
@@ -37,7 +37,7 @@ def generate_ros_projections():
         
         player_info = player_df.iloc[-1]
         player_projections.append({
-            'player_name': player_info['player_display_name'],
+            'player_display_name': player_info['player_display_name'], # CORRECTED COLUMN NAME
             'position': player_info['position'],
             'team': player_info['recent_team'],
             'ros_projected_ppg': round(weighted_ppg, 2)
