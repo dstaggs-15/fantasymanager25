@@ -8,48 +8,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .trade-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .trade-side .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-        .trade-side .search-group { flex-grow: 1; }
-        .player-chip { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 0.5rem; border: 1px solid var(--color-border); color: white; font-weight: 500;}
-        .player-chip button { background: none; border: none; color: white; opacity: 0.7; font-size: 1.2rem; cursor: pointer; transition: opacity 0.2s; }
-        .player-chip button:hover { opacity: 1; }
+        .player-chip { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 0.5rem; color: white; font-weight: 500;}
+        .player-chip button { background: none; border: none; color: white; opacity: 0.7; font-size: 1.2rem; cursor: pointer; }
         .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: center;}
         .result-box { text-align: center; }
         .result-box h4 { color: var(--color-text-secondary); margin-bottom: 0.5rem; }
-        .result-box .value { font-size: 2rem; font-weight: 700; }
         .result-box .grade { font-size: 3rem; font-weight: 700; color: var(--color-primary); }
-        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; transition: background-color 0.2s ease; }
-        details[open] { background-color: var(--color-background); }
+        details { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 1rem; margin-bottom: 1rem; }
         summary { font-weight: 600; cursor: pointer; color: var(--color-primary); font-size: 1.25rem; }
         .explanation-content { margin-top: 1.5rem; }
-        .explanation-content h4 { color: var(--color-text-primary); margin-top: 1.5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.5rem; }
-        .player-stats-table { width: 100%; margin-top: 1.5rem; text-align: left; }
+        .breakdown-table { width: 100%; margin-top: 1.5rem; }
+        .breakdown-table td { padding: 0.5rem 0; }
+        .breakdown-table td:last-child { text-align: right; font-weight: 600; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Trade Analyzer</h1>
-
-        <!-- In-depth Explanation Dropdown -->
         <div class="card" style="margin-bottom: 2rem;">
             <details>
-                <summary>How The Trade Analyzer Works</summary>
+                <summary>How The Trade Grade is Calculated</summary>
                 <div class="explanation-content">
-                    <p>This tool evaluates a trade from two perspectives to create a final <strong>Trade Grade</strong>. It assesses both the long-term and short-term impact of the deal.</p>
-                    
-                    <h4>1. Season-Long Value (70% of Grade)</h4>
-                    <p>This is calculated using <strong>VORP (Value Over Replacement Player)</strong>. VORP is the best metric for season-long value because it measures how much better a player is than a readily available waiver-wire player at the same position. A high total VORP indicates a stronger roster for the rest of the season.</p>
-                    
-                    <h4>2. Immediate Impact (30% of Grade)</h4>
-                    <p>This is calculated using the weekly <strong>Start Score</strong>. This score tells you who is getting the more immediately startable assets for the upcoming week's matchup, factoring in talent, opponent, and O-line quality.</p>
-                    
-                    <hr style="border-color: var(--color-border); margin: 1.5rem 0;">
-                    
-                    <h4>The Final Grade</h4>
-                    <p>The final grade (A+ to F) is a weighted average of the VORP and Start Score totals being exchanged. It provides a holistic view of the trade, helping you decide if you're winning the deal both now and for the future.</p>
+                    <p>The final grade is based on a comprehensive <strong>8-Factor Model</strong> that evaluates each player's total value.</p>
+                    <!-- Detailed explanation content can be added here -->
                 </div>
             </details>
         </div>
@@ -59,7 +43,7 @@
             <div class="card trade-side" id="side-a">
                 <h2>Team A Receives</h2>
                 <div class="card-header">
-                    <div class="search-group"><input type="text" id="player-search-a" list="player-list" placeholder="Search..."></div>
+                    <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player..." class="search-group">
                     <button id="add-player-a" class="btn">Add</button>
                 </div>
                 <div id="players-a-container"></div>
@@ -69,7 +53,7 @@
             <div class="card trade-side" id="side-b">
                 <h2>Team B Receives</h2>
                 <div class="card-header">
-                    <div class="search-group"><input type="text" id="player-search-b" list="player-list" placeholder="Search..."></div>
+                    <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player..." class="search-group">
                     <button id="add-player-b" class="btn">Add</button>
                 </div>
                 <div id="players-b-container"></div>
@@ -79,20 +63,17 @@
         <datalist id="player-list"></datalist>
 
         <!-- Results Section -->
-        <div class="card" style="margin-top: 2rem;">
+        <div id="trade-results-container" class="card" style="margin-top: 2rem; display: none;">
             <h2>Trade Results</h2>
             <div class="results-grid">
                 <div class="result-box"><h4>Team A Grade</h4><p id="grade-a" class="grade">-</p></div>
                 <div class="result-box"><h4>Team B Grade</h4><p id="grade-b" class="grade">-</p></div>
-                <div class="result-box"><h4>VORP Total</h4><p id="vorp-a" class="value">0.0</p></div>
-                <div class="result-box"><h4>VORP Total</h4><p id="vorp-b" class="value">0.0</p></div>
-                <div class="result-box"><h4>Start Score Total</h4><p id="start-score-a" class="value">0.0</p></div>
-                <div class="result-box"><h4>Start Score Total</h4><p id="start-score-b" class="value">0.0</p></div>
             </div>
-            <div style="margin-top: 2rem; height: 250px;">
-                <canvas id="trade-chart"></canvas>
+            <!-- NEW: 8-Factor Breakdown -->
+            <div class="trade-grid" style="margin-top: 2rem;">
+                <div id="breakdown-a"></div>
+                <div id="breakdown-b"></div>
             </div>
-            <div id="player-stats-container" style="margin-top: 2rem;"></div>
         </div>
     </div>
 
