@@ -45,11 +45,13 @@ def get_raw_data():
             
     if all_seasonal_data:
         roster_df = pd.concat(all_seasonal_data, ignore_index=True)
-        # Use the actual columns available in this dataset
         roster_cols = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
         cols_to_select = [col for col in roster_cols if col in roster_df.columns]
         master_list = roster_df[cols_to_select].drop_duplicates(subset='player_id', keep='first')
-        master_list.rename(columns={'team_abbr': 'recent_team'}, inplace=True)
+        
+        # DEFINITIVE FIX: Standardize column names at the source.
+        master_list.rename(columns={'team_abbr': 'recent_team', 'player_name': 'player_display_name'}, inplace=True)
+        
         master_list.to_csv(roster_output_path, index=False)
         print("✅ Successfully saved Player Master List.")
     else:
