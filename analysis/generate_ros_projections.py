@@ -2,6 +2,7 @@
 import pandas as pd
 import os
 import sys
+import json # <--- THIS LINE WAS MISSING
 
 def generate_ros_projections():
     """
@@ -15,6 +16,7 @@ def generate_ros_projections():
 
     try:
         df = pd.read_csv(processed_data_path)
+        print("✅ Successfully loaded processed data.")
     except FileNotFoundError:
         print(f"❌ CRITICAL ERROR: Processed data file not found.")
         sys.exit(1)
