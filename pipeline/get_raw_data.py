@@ -4,11 +4,12 @@ import nfl_data_py as nfl
 import os
 import datetime
 from urllib.error import HTTPError
+import sys
 
 def get_raw_data():
     """
-    Downloads raw NFL data (weekly stats, player rosters, and schedules) for the last five seasons
-    and saves them to separate CSV files in the 'docs/data/raw/' directory.
+    Downloads raw NFL data and saves it. This version standardizes all player
+    name columns to 'player_display_name' at the source to prevent downstream errors.
     """
     print("--- Starting Raw Data Collection ---")
     current_year = datetime.date.today().year
@@ -19,7 +20,7 @@ def get_raw_data():
     roster_output_path = os.path.join(output_dir, 'players_master.csv')
     schedule_output_path = os.path.join(output_dir, 'schedule_raw.csv')
 
-    # Download Weekly Stats
+    # --- Download Weekly Stats ---
     all_weekly_data = []
     print(f"Downloading weekly player stats for {YEARS}...")
     for year in YEARS:
@@ -33,7 +34,7 @@ def get_raw_data():
         weekly_df.to_csv(weekly_output_path, index=False)
         print("✅ Successfully saved raw weekly stats.")
 
-    # Download Roster/Player Information (with robust year-by-year error handling)
+    # --- Download Roster/Player Information (with robust year-by-year error handling) ---
     all_seasonal_data = []
     print("Downloading player roster information...")
     for year in YEARS:
@@ -45,19 +46,26 @@ def get_raw_data():
             
     if all_seasonal_data:
         roster_df = pd.concat(all_seasonal_data, ignore_index=True)
-        roster_cols = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
-        cols_to_select = [col for col in roster_cols if col in roster_df.columns]
-        master_list = roster_df[cols_to_select].drop_duplicates(subset='player_id', keep='first')
         
         # DEFINITIVE FIX: Standardize column names at the source.
-        master_list.rename(columns={'team_abbr': 'recent_team', 'player_name': 'player_display_name'}, inplace=True)
+        # The library provides 'player_name', we will rename it to 'player_display_name'
+        # to match all other data sources in our project.
+        roster_cols = ['player_id', 'player_name', 'position', 'team_abbr', 'birth_date']
+        cols_to_select = [col for col in roster_cols if col in roster_df.columns]
+        master_list = roster_df[cols_to_select].drop_duplicates(subset='player_id', keep='first').copy()
+        
+        master_list.rename(columns={
+            'team_abbr': 'recent_team',
+            'player_name': 'player_display_name'
+        }, inplace=True)
         
         master_list.to_csv(roster_output_path, index=False)
-        print("✅ Successfully saved Player Master List.")
+        print("✅ Successfully saved Player Master List with standardized column names.")
     else:
         print("❌ ERROR: No roster data could be downloaded.")
+        sys.exit(1) # Exit if this critical file fails
 
-    # Download Schedule
+    # --- Download Schedule ---
     try:
         print("Downloading schedule information...")
         schedule_df = nfl.import_schedules(years=YEARS)
