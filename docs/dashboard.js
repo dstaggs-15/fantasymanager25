@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         borderWidth: 1
                     }]
                 },
-                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
+                options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
         };
         filter.addEventListener('change', updateChart);
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const ctx = document.getElementById('team-share-chart').getContext('2d');
         const filter = document.getElementById('team-share-filter');
 
-        // Populate team dropdown
         const teams = [...new Set(PROCESSED_DATA.map(d => d.recent_team))].sort();
         teams.forEach(team => {
             const option = document.createElement('option');
@@ -84,14 +83,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     labels: Object.keys(pointsByPos),
                     datasets: [{
                         data: Object.values(pointsByPos),
-                        backgroundColor: ['#238636', '#38a649', '#42c055', '#68d477'],
+                        // CORRECTED: Higher contrast color palette
+                        backgroundColor: ['#1c6b2b', '#238636', '#38a649', '#68d477'],
+                        borderColor: '#161B22',
+                        borderWidth: 3
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } }
             });
         };
         filter.addEventListener('change', updateChart);
-        filter.value = teams[0]; // Set a default value
+        filter.value = teams[0];
         updateChart();
     };
 
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         backgroundColor: 'rgba(35, 134, 54, 0.6)'
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false, scales: { x: { title: { display: true, text: 'Production (PPG)' } }, y: { title: { display: true, text: 'Volatility (Std Dev)' } } } }
+                options: { responsive: true, maintainAspectRatio: false, scales: { x: { title: { display: true, text: 'Production (PPG)' } }, y: { title: { display: true, text: 'Volatility (Std Dev)' } } }, plugins: { legend: { display: false } } }
             });
         };
         filter.addEventListener('change', updateChart);
@@ -126,7 +128,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const ctx = document.getElementById('player-trend-chart').getContext('2d');
         const searchInput = document.getElementById('player-trend-search');
 
-        // Populate datalist for search
         const playerNames = [...new Set(VORP_DATA.map(p => p.player_display_name))].sort();
         const playerList = document.getElementById('player-list');
         playerNames.forEach(name => {
@@ -140,10 +141,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const playerData = PROCESSED_DATA
                 .filter(d => d.player_display_name === playerName)
                 .sort((a, b) => (a.season * 100 + a.week) - (b.season * 100 + b.week))
-                .slice(-8); // Last 8 games
+                .slice(-8);
 
             if (CHART_INSTANCES.playerTrend) CHART_INSTANCES.playerTrend.destroy();
-            if (playerData.length === 0) return;
+            if (playerData.length === 0 && playerName.trim() !== '') {
+                 // You can optionally add a "no data" message here
+                return;
+            }
 
             CHART_INSTANCES.playerTrend = new Chart(ctx, {
                 type: 'line',
@@ -156,7 +160,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         tension: 0.1
                     }]
                 },
-                options: { responsive: true, maintainAspectRatio: false }
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
             });
         };
         searchInput.addEventListener('change', updateChart);
@@ -173,7 +177,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             PROCESSED_DATA = await parseCsv(processedCsv);
             VORP_DATA = vorp;
             
-            // Setup all charts now that data is loaded
             setupTop10Chart();
             setupTeamShareChart();
             setupConsistencyChart();
