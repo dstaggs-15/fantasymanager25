@@ -67,6 +67,7 @@ def generate_trade_report():
         efficiency_score = (player['vorp'] / max_vorp) * 10 if max_vorp > 0 else 0
         offense_score = ((32 - player['team_offense_rank']) / 31) * 10 if pd.notna(player['team_offense_rank']) else 5.0
 
+        # Re-distribute weights from the removed Age factor
         weights = {'ros': 0.30, 'ppg': 0.20, 'tier': 0.15, 'start': 0.10, 'consistency': 0.10, 'efficiency': 0.10, 'offense': 0.05}
         final_value = (ros_score * weights['ros']) + (ppg_score * weights['ppg']) + (tier_score * weights['tier']) + \
                       (start_score * weights['start']) + (consistency_score * weights['consistency']) + \
