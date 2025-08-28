@@ -77,15 +77,37 @@ def generate_start_score():
         efficiency_score = 5.0
 
         if player_pos == 'RB':
-            # ... (efficiency logic is the same)
+            # --- THIS BLOCK IS NOW CORRECTLY INDENTED ---
+            rushes = player_seasonal_stats.get('rushing_attempts', 0)
+            receptions = player_seasonal_stats.get('receptions', 0)
+            touches = rushes + receptions
+            if touches > 40:
+                rush_yards = player_seasonal_stats.get('rushing_yards', 0)
+                rec_yards = player_seasonal_stats.get('receiving_yards', 0)
+                
+                ypc = rush_yards / rushes if rushes > 0 else 0
+                ypr = rec_yards / receptions if receptions > 0 else 0
+
+                rush_efficiency = min(10, (ypc / 5.5) * 10)
+                rec_efficiency = min(10, (ypr / 9.5) * 10)
+                
+                rush_weight = rushes / touches
+                rec_weight = receptions / touches
+                efficiency_score = (rush_efficiency * rush_weight) + (rec_efficiency * rec_weight)
+        
         elif player_pos in ['WR', 'TE']:
-            # ... (efficiency logic is the same)
+            receptions = player_seasonal_stats.get('receptions', 0)
+            if receptions > 30:
+                rec_yards = player_seasonal_stats.get('receiving_yards', 0)
+                ypr = rec_yards / receptions
+                
+                norm_val = 14.0 if player_pos == 'WR' else 11.5
+                efficiency_score = min(10, (ypr / norm_val) * 10)
 
         weights = {'talent': 0.40, 'matchup': 0.30, 'oline': 0.15, 'efficiency': 0.15}
         final_score = (talent_score * weights['talent']) + (matchup_score * weights['matchup']) + \
                       (oline_score * weights['oline']) + (efficiency_score * weights['efficiency'])
 
-        # --- NEW: Calculate and add key seasonal stats ---
         stats_breakdown = {}
         if games_played > 0:
             if player_pos == 'QB':
@@ -111,7 +133,7 @@ def generate_start_score():
                 'O-Line': round(oline_score, 1),
                 'Efficiency': round(efficiency_score, 1)
             },
-            'stats': stats_breakdown # Add the new stats object
+            'stats': stats_breakdown
         })
         
     with open(output_path, 'w') as f:
