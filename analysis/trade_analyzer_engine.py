@@ -35,18 +35,15 @@ def generate_trade_report():
         sys.exit(1)
 
     # --- 3. MERGE AND PREPARE MASTER DATAFRAME ---
-    # With the new robust get_raw_data.py, we can trust the column names.
+    # With standardized column names, these merges are now simple and reliable.
     df = pd.merge(df_vorp, df_ros, on='player_display_name', how='left')
     df = pd.merge(df, df_consistency[['player_display_name', 'std_dev']], on='player_display_name', how='left')
     df = pd.merge(df, df_start_score[['player_display_name', 'start_score']], on='player_display_name', how='left')
-    df = pd.merge(df, df_players[['player_display_name', 'birth_date']], on='player_display_name', how='left')
+    df = pd.merge(df, df_players[['player_display_name', 'age']], on='player_display_name', how='left')
     
     df.rename(columns={'rank': 'ros_rank'}, inplace=True)
 
     # --- 4. Calculate Additional Metrics ---
-    df['birth_date'] = pd.to_datetime(df['birth_date'], errors='coerce')
-    df['age'] = (datetime.datetime.now() - df['birth_date']).dt.days / 365.25
-    
     team_offense = df_processed.groupby('recent_team')['fantasy_points'].sum().reset_index()
     team_offense['team_offense_rank'] = team_offense['fantasy_points'].rank(ascending=False, method='first')
     df = pd.merge(df, team_offense[['recent_team', 'team_offense_rank']], on='recent_team', how='left')
