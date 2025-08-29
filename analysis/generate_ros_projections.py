@@ -28,15 +28,12 @@ def generate_ros_projections():
         return
 
     # --- 2. Establish Performance Baseline ---
-    
-    # --- FIX: Use the correct column name 'recent_team' from the source data ---
     player_info_cols = ['player_id', 'player_name', 'position', 'recent_team']
     if not all(col in df_weekly.columns for col in player_info_cols):
         print(f"❌ Error: Input file is missing required columns. Needed: {player_info_cols}")
         return
         
     player_info = df_weekly[player_info_cols].drop_duplicates(subset=['player_id'])
-    # Rename 'recent_team' to 'team' for consistency across the project
     player_info.rename(columns={'recent_team': 'team'}, inplace=True)
     
     df_weekly.sort_values(by=['player_id', 'season', 'week'], inplace=True)
@@ -59,7 +56,9 @@ def generate_ros_projections():
         pos = player['position']
         
         team_schedule = df_future_schedule[(df_future_schedule['home_team'] == team) | (df_future_schedule['away_team'] == team)]
-        bye_week_df = df_schedule[(df_schedule['game_type'] == 'BYE') & (df_schedule['team'] == team)]
+        
+        # --- FIX: Look for the team in the 'home_team' column for bye weeks ---
+        bye_week_df = df_schedule[(df_schedule['game_type'] == 'BYE') & (df_schedule['home_team'] == team)]
         bye_week = bye_week_df['week'].max() if not bye_week_df.empty else 0
 
         opponents = []
