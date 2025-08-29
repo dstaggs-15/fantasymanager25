@@ -1,0 +1,4402 @@
+[
+    {
+        "player_id": "00-0023459",
+        "player_name": "A.Rodgers",
+        "position": "QB",
+        "team": "NYJ",
+        "games_played": 17,
+        "ppg": 15.09,
+        "std_dev": 6.74,
+        "vorp": 14.48
+    },
+    {
+        "player_id": "00-0026158",
+        "player_name": "J.Flacco",
+        "position": "QB",
+        "team": "IND",
+        "games_played": 7,
+        "ppg": 15.29,
+        "std_dev": 7.0,
+        "vorp": 7.35
+    },
+    {
+        "player_id": "00-0026300",
+        "player_name": "J.Johnson",
+        "position": "QB",
+        "team": "BAL",
+        "games_played": 4,
+        "ppg": 0.2,
+        "std_dev": 0.32,
+        "vorp": -56.18
+    },
+    {
+        "player_id": "00-0026498",
+        "player_name": "M.Stafford",
+        "position": "QB",
+        "team": "LA",
+        "games_played": 18,
+        "ppg": 14.24,
+        "std_dev": 6.78,
+        "vorp": -0.04
+    },
+    {
+        "player_id": "00-0027973",
+        "player_name": "A.Dalton",
+        "position": "QB",
+        "team": "CAR",
+        "games_played": 6,
+        "ppg": 9.83,
+        "std_dev": 10.07,
+        "vorp": -26.49
+    },
+    {
+        "player_id": "00-0029263",
+        "player_name": "R.Wilson",
+        "position": "QB",
+        "team": "PIT",
+        "games_played": 12,
+        "ppg": 16.68,
+        "std_dev": 5.7,
+        "vorp": 29.29
+    },
+    {
+        "player_id": "00-0029604",
+        "player_name": "K.Cousins",
+        "position": "QB",
+        "team": "ATL",
+        "games_played": 14,
+        "ppg": 12.88,
+        "std_dev": 9.23,
+        "vorp": -19.05
+    },
+    {
+        "player_id": "00-0029892",
+        "player_name": "K.Juszczyk",
+        "position": "FB",
+        "team": "SF",
+        "games_played": 14,
+        "ppg": 4.26,
+        "std_dev": 3.83,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0030035",
+        "player_name": "A.Thielen",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 10,
+        "ppg": 13.95,
+        "std_dev": 7.64,
+        "vorp": 40.48
+    },
+    {
+        "player_id": "00-0030061",
+        "player_name": "Z.Ertz",
+        "position": "TE",
+        "team": "WAS",
+        "games_played": 20,
+        "ppg": 10.64,
+        "std_dev": 6.55,
+        "vorp": 98.79
+    },
+    {
+        "player_id": "00-0030279",
+        "player_name": "K.Allen",
+        "position": "WR",
+        "team": "CHI",
+        "games_played": 15,
+        "ppg": 12.29,
+        "std_dev": 8.63,
+        "vorp": 35.86
+    },
+    {
+        "player_id": "00-0030431",
+        "player_name": "R.Woods",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 13,
+        "ppg": 3.42,
+        "std_dev": 1.83,
+        "vorp": -84.23
+    },
+    {
+        "player_id": "00-0030506",
+        "player_name": "T.Kelce",
+        "position": "TE",
+        "team": "KC",
+        "games_played": 19,
+        "ppg": 12.31,
+        "std_dev": 7.84,
+        "vorp": 125.5
+    },
+    {
+        "player_id": "00-0030564",
+        "player_name": "D.Hopkins",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 19,
+        "ppg": 8.36,
+        "std_dev": 7.18,
+        "vorp": -29.25
+    },
+    {
+        "player_id": "00-0030565",
+        "player_name": "G.Smith",
+        "position": "QB",
+        "team": "SEA",
+        "games_played": 17,
+        "ppg": 15.65,
+        "std_dev": 6.01,
+        "vorp": 23.9
+    },
+    {
+        "player_id": "00-0030578",
+        "player_name": "C.Patterson",
+        "position": "RB",
+        "team": "PIT",
+        "games_played": 13,
+        "ppg": 3.04,
+        "std_dev": 3.58,
+        "vorp": -98.7
+    },
+    {
+        "player_id": "00-0031235",
+        "player_name": "O.Beckham",
+        "position": "WR",
+        "team": "MIA",
+        "games_played": 8,
+        "ppg": 1.81,
+        "std_dev": 1.83,
+        "vorp": -64.72
+    },
+    {
+        "player_id": "00-0031236",
+        "player_name": "B.Cooks",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 10,
+        "ppg": 6.96,
+        "std_dev": 3.75,
+        "vorp": -29.42
+    },
+    {
+        "player_id": "00-0031280",
+        "player_name": "D.Carr",
+        "position": "QB",
+        "team": "NO",
+        "games_played": 10,
+        "ppg": 14.89,
+        "std_dev": 5.28,
+        "vorp": 6.49
+    },
+    {
+        "player_id": "00-0031381",
+        "player_name": "D.Adams",
+        "position": "WR",
+        "team": "LV",
+        "games_played": 14,
+        "ppg": 17.09,
+        "std_dev": 9.62,
+        "vorp": 100.66
+    },
+    {
+        "player_id": "00-0031408",
+        "player_name": "M.Evans",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 15,
+        "ppg": 17.51,
+        "std_dev": 9.74,
+        "vorp": 114.06
+    },
+    {
+        "player_id": "00-0031428",
+        "player_name": "A.Robinson",
+        "position": "WR",
+        "team": "DET",
+        "games_played": 6,
+        "ppg": 1.0,
+        "std_dev": 1.26,
+        "vorp": -53.41
+    },
+    {
+        "player_id": "00-0031484",
+        "player_name": "C.Manhertz",
+        "position": "TE",
+        "team": "NYG",
+        "games_played": 4,
+        "ppg": 3.0,
+        "std_dev": 3.02,
+        "vorp": -10.82
+    },
+    {
+        "player_id": "00-0031503",
+        "player_name": "J.Winston",
+        "position": "QB",
+        "team": "CLE",
+        "games_played": 11,
+        "ppg": 11.56,
+        "std_dev": 11.45,
+        "vorp": -29.51
+    },
+    {
+        "player_id": "00-0031544",
+        "player_name": "A.Cooper",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 16,
+        "ppg": 8.3,
+        "std_dev": 7.22,
+        "vorp": -25.64
+    },
+    {
+        "player_id": "00-0031549",
+        "player_name": "N.Agholor",
+        "position": "WR",
+        "team": "BAL",
+        "games_played": 15,
+        "ppg": 3.51,
+        "std_dev": 3.34,
+        "vorp": -95.94
+    },
+    {
+        "player_id": "00-0031585",
+        "player_name": "M.Pruitt",
+        "position": "TE",
+        "team": "PIT",
+        "games_played": 6,
+        "ppg": 2.67,
+        "std_dev": 2.57,
+        "vorp": -18.23
+    },
+    {
+        "player_id": "00-0031588",
+        "player_name": "S.Diggs",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 8,
+        "ppg": 15.24,
+        "std_dev": 5.66,
+        "vorp": 42.7
+    },
+    {
+        "player_id": "00-0031595",
+        "player_name": "M.Burton",
+        "position": "FB",
+        "team": "DEN",
+        "games_played": 11,
+        "ppg": 2.66,
+        "std_dev": 3.24,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0031687",
+        "player_name": "R.Mostert",
+        "position": "RB",
+        "team": "MIA",
+        "games_played": 12,
+        "ppg": 6.24,
+        "std_dev": 4.56,
+        "vorp": -52.66
+    },
+    {
+        "player_id": "00-0031690",
+        "player_name": "E.Tomlinson",
+        "position": "TE",
+        "team": "LAC",
+        "games_played": 4,
+        "ppg": 0.72,
+        "std_dev": 0.86,
+        "vorp": -19.92
+    },
+    {
+        "player_id": "00-0031763",
+        "player_name": "D.Carter",
+        "position": "WR",
+        "team": "CHI",
+        "games_played": 5,
+        "ppg": 3.24,
+        "std_dev": 2.27,
+        "vorp": -33.31
+    },
+    {
+        "player_id": "00-0031800",
+        "player_name": "T.Heinicke",
+        "position": "QB",
+        "team": "LAC",
+        "games_played": 4,
+        "ppg": 0.78,
+        "std_dev": 0.44,
+        "vorp": -53.84
+    },
+    {
+        "player_id": "00-0031941",
+        "player_name": "J.Crowder",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 6,
+        "ppg": 5.68,
+        "std_dev": 5.17,
+        "vorp": -25.31
+    },
+    {
+        "player_id": "00-0032104",
+        "player_name": "A.Abdullah",
+        "position": "RB",
+        "team": "LV",
+        "games_played": 13,
+        "ppg": 9.78,
+        "std_dev": 7.1,
+        "vorp": -11.0
+    },
+    {
+        "player_id": "00-0032128",
+        "player_name": "C.Conley",
+        "position": "WR",
+        "team": "SF",
+        "games_played": 7,
+        "ppg": 1.94,
+        "std_dev": 3.62,
+        "vorp": -55.72
+    },
+    {
+        "player_id": "00-0032211",
+        "player_name": "T.Lockett",
+        "position": "WR",
+        "team": "SEA",
+        "games_played": 17,
+        "ppg": 7.12,
+        "std_dev": 4.96,
+        "vorp": -47.34
+    },
+    {
+        "player_id": "00-0032268",
+        "player_name": "M.Mariota",
+        "position": "QB",
+        "team": "WAS",
+        "games_played": 5,
+        "ppg": 9.17,
+        "std_dev": 12.67,
+        "vorp": -25.35
+    },
+    {
+        "player_id": "00-0032385",
+        "player_name": "S.Shepard",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 13,
+        "ppg": 6.02,
+        "std_dev": 3.15,
+        "vorp": -50.43
+    },
+    {
+        "player_id": "00-0032392",
+        "player_name": "A.Hooper",
+        "position": "TE",
+        "team": "NE",
+        "games_played": 17,
+        "ppg": 6.51,
+        "std_dev": 4.25,
+        "vorp": 13.61
+    },
+    {
+        "player_id": "00-0032394",
+        "player_name": "N.Vannett",
+        "position": "TE",
+        "team": "TEN",
+        "games_played": 12,
+        "ppg": 4.04,
+        "std_dev": 3.75,
+        "vorp": -19.97
+    },
+    {
+        "player_id": "00-0032464",
+        "player_name": "K.Raymond",
+        "position": "WR",
+        "team": "DET",
+        "games_played": 11,
+        "ppg": 5.2,
+        "std_dev": 4.45,
+        "vorp": -51.73
+    },
+    {
+        "player_id": "00-0032764",
+        "player_name": "D.Henry",
+        "position": "RB",
+        "team": "BAL",
+        "games_played": 19,
+        "ppg": 20.18,
+        "std_dev": 8.16,
+        "vorp": 181.42
+    },
+    {
+        "player_id": "00-0032775",
+        "player_name": "D.Robinson",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 19,
+        "ppg": 7.22,
+        "std_dev": 7.0,
+        "vorp": -50.95
+    },
+    {
+        "player_id": "00-0032918",
+        "player_name": "C.Ham",
+        "position": "FB",
+        "team": "MIN",
+        "games_played": 6,
+        "ppg": 2.88,
+        "std_dev": 2.36,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0033009",
+        "player_name": "T.Boyd",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 15,
+        "ppg": 5.22,
+        "std_dev": 2.71,
+        "vorp": -70.24
+    },
+    {
+        "player_id": "00-0033040",
+        "player_name": "T.Hill",
+        "position": "WR",
+        "team": "MIA",
+        "games_played": 17,
+        "ppg": 12.84,
+        "std_dev": 7.47,
+        "vorp": 49.86
+    },
+    {
+        "player_id": "00-0033045",
+        "player_name": "E.Elliott",
+        "position": "RB",
+        "team": "DAL",
+        "games_played": 15,
+        "ppg": 3.97,
+        "std_dev": 3.75,
+        "vorp": -99.96
+    },
+    {
+        "player_id": "00-0033077",
+        "player_name": "D.Prescott",
+        "position": "QB",
+        "team": "DAL",
+        "games_played": 8,
+        "ppg": 14.82,
+        "std_dev": 7.56,
+        "vorp": 4.59
+    },
+    {
+        "player_id": "00-0033090",
+        "player_name": "H.Henry",
+        "position": "TE",
+        "team": "NE",
+        "games_played": 16,
+        "ppg": 9.09,
+        "std_dev": 5.79,
+        "vorp": 54.11
+    },
+    {
+        "player_id": "00-0033106",
+        "player_name": "J.Goff",
+        "position": "QB",
+        "team": "DET",
+        "games_played": 18,
+        "ppg": 18.54,
+        "std_dev": 9.51,
+        "vorp": 77.34
+    },
+    {
+        "player_id": "00-0033110",
+        "player_name": "T.Higbee",
+        "position": "TE",
+        "team": "LA",
+        "games_played": 5,
+        "ppg": 11.16,
+        "std_dev": 6.12,
+        "vorp": 27.27
+    },
+    {
+        "player_id": "00-0033119",
+        "player_name": "J.Brissett",
+        "position": "QB",
+        "team": "NE",
+        "games_played": 7,
+        "ppg": 6.46,
+        "std_dev": 3.56,
+        "vorp": -54.45
+    },
+    {
+        "player_id": "00-0033217",
+        "player_name": "M.Alie-Cox",
+        "position": "TE",
+        "team": "IND",
+        "games_played": 12,
+        "ppg": 2.72,
+        "std_dev": 3.76,
+        "vorp": -35.77
+    },
+    {
+        "player_id": "00-0033246",
+        "player_name": "J.Mundt",
+        "position": "TE",
+        "team": "MIN",
+        "games_played": 14,
+        "ppg": 3.57,
+        "std_dev": 2.76,
+        "vorp": -29.88
+    },
+    {
+        "player_id": "00-0033280",
+        "player_name": "C.McCaffrey",
+        "position": "RB",
+        "team": "SF",
+        "games_played": 4,
+        "ppg": 12.45,
+        "std_dev": 3.82,
+        "vorp": 7.28
+    },
+    {
+        "player_id": "00-0033282",
+        "player_name": "C.Samuel",
+        "position": "WR",
+        "team": "BUF",
+        "games_played": 17,
+        "ppg": 5.28,
+        "std_dev": 5.3,
+        "vorp": -78.54
+    },
+    {
+        "player_id": "00-0033288",
+        "player_name": "G.Kittle",
+        "position": "TE",
+        "team": "SF",
+        "games_played": 15,
+        "ppg": 15.77,
+        "std_dev": 6.86,
+        "vorp": 151.02
+    },
+    {
+        "player_id": "00-0033293",
+        "player_name": "A.Jones",
+        "position": "RB",
+        "team": "MIN",
+        "games_played": 18,
+        "ppg": 14.26,
+        "std_dev": 5.44,
+        "vorp": 65.25
+    },
+    {
+        "player_id": "00-0033307",
+        "player_name": "K.Bourne",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 12,
+        "ppg": 5.42,
+        "std_dev": 4.7,
+        "vorp": -53.73
+    },
+    {
+        "player_id": "00-0033319",
+        "player_name": "N.Mullens",
+        "position": "QB",
+        "team": "MIN",
+        "games_played": 4,
+        "ppg": 0.33,
+        "std_dev": 0.53,
+        "vorp": -55.64
+    },
+    {
+        "player_id": "00-0033357",
+        "player_name": "T.Hill",
+        "position": "TE",
+        "team": "NO",
+        "games_played": 8,
+        "ppg": 13.04,
+        "std_dev": 13.14,
+        "vorp": 58.7
+    },
+    {
+        "player_id": "00-0033375",
+        "player_name": "T.Patrick",
+        "position": "WR",
+        "team": "DET",
+        "games_played": 16,
+        "ppg": 5.85,
+        "std_dev": 5.78,
+        "vorp": -64.84
+    },
+    {
+        "player_id": "00-0033376",
+        "player_name": "P.Ricard",
+        "position": "FB",
+        "team": "BAL",
+        "games_played": 5,
+        "ppg": 2.24,
+        "std_dev": 3.01,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0033439",
+        "player_name": "P.Brown",
+        "position": "TE",
+        "team": "SEA",
+        "games_played": 8,
+        "ppg": 1.81,
+        "std_dev": 1.13,
+        "vorp": -31.14
+    },
+    {
+        "player_id": "00-0033526",
+        "player_name": "S.Perine",
+        "position": "RB",
+        "team": "KC",
+        "games_played": 20,
+        "ppg": 4.24,
+        "std_dev": 3.06,
+        "vorp": -127.71
+    },
+    {
+        "player_id": "00-0033536",
+        "player_name": "M.Williams",
+        "position": "WR",
+        "team": "NYJ",
+        "games_played": 14,
+        "ppg": 4.39,
+        "std_dev": 3.28,
+        "vorp": -77.13
+    },
+    {
+        "player_id": "00-0033537",
+        "player_name": "D.Watson",
+        "position": "QB",
+        "team": "CLE",
+        "games_played": 7,
+        "ppg": 11.53,
+        "std_dev": 4.4,
+        "vorp": -18.97
+    },
+    {
+        "player_id": "00-0033553",
+        "player_name": "J.Conner",
+        "position": "RB",
+        "team": "ARI",
+        "games_played": 16,
+        "ppg": 15.74,
+        "std_dev": 7.72,
+        "vorp": 81.71
+    },
+    {
+        "player_id": "00-0033555",
+        "player_name": "M.Hollins",
+        "position": "WR",
+        "team": "BUF",
+        "games_played": 19,
+        "ppg": 6.33,
+        "std_dev": 5.19,
+        "vorp": -67.95
+    },
+    {
+        "player_id": "00-0033576",
+        "player_name": "E.Saubert",
+        "position": "TE",
+        "team": "SF",
+        "games_played": 8,
+        "ppg": 3.34,
+        "std_dev": 2.89,
+        "vorp": -18.94
+    },
+    {
+        "player_id": "00-0033589",
+        "player_name": "D.Moore",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 14,
+        "ppg": 6.08,
+        "std_dev": 5.1,
+        "vorp": -53.53
+    },
+    {
+        "player_id": "00-0033591",
+        "player_name": "N.Brown",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 11,
+        "ppg": 7.85,
+        "std_dev": 4.45,
+        "vorp": -22.63
+    },
+    {
+        "player_id": "00-0033662",
+        "player_name": "C.Rush",
+        "position": "QB",
+        "team": "DAL",
+        "games_played": 12,
+        "ppg": 9.46,
+        "std_dev": 7.66,
+        "vorp": -57.33
+    },
+    {
+        "player_id": "00-0033699",
+        "player_name": "A.Ekeler",
+        "position": "RB",
+        "team": "WAS",
+        "games_played": 15,
+        "ppg": 10.77,
+        "std_dev": 4.6,
+        "vorp": 2.14
+    },
+    {
+        "player_id": "00-0033854",
+        "player_name": "D.Ogunbowale",
+        "position": "RB",
+        "team": "HOU",
+        "games_played": 17,
+        "ppg": 3.44,
+        "std_dev": 4.64,
+        "vorp": -122.32
+    },
+    {
+        "player_id": "00-0033857",
+        "player_name": "J.Smith-Schuster",
+        "position": "WR",
+        "team": "KC",
+        "games_played": 14,
+        "ppg": 4.62,
+        "std_dev": 5.43,
+        "vorp": -73.93
+    },
+    {
+        "player_id": "00-0033858",
+        "player_name": "J.Smith",
+        "position": "TE",
+        "team": "MIA",
+        "games_played": 17,
+        "ppg": 13.19,
+        "std_dev": 8.25,
+        "vorp": 127.31
+    },
+    {
+        "player_id": "00-0033869",
+        "player_name": "M.Trubisky",
+        "position": "QB",
+        "team": "BUF",
+        "games_played": 9,
+        "ppg": 1.66,
+        "std_dev": 3.62,
+        "vorp": -113.21
+    },
+    {
+        "player_id": "00-0033873",
+        "player_name": "P.Mahomes",
+        "position": "QB",
+        "team": "KC",
+        "games_played": 19,
+        "ppg": 18.23,
+        "std_dev": 5.7,
+        "vorp": 75.8
+    },
+    {
+        "player_id": "00-0033881",
+        "player_name": "E.Engram",
+        "position": "TE",
+        "team": "JAX",
+        "games_played": 9,
+        "ppg": 9.94,
+        "std_dev": 5.06,
+        "vorp": 38.15
+    },
+    {
+        "player_id": "00-0033885",
+        "player_name": "D.Njoku",
+        "position": "TE",
+        "team": "CLE",
+        "games_played": 11,
+        "ppg": 13.14,
+        "std_dev": 8.04,
+        "vorp": 81.74
+    },
+    {
+        "player_id": "00-0033891",
+        "player_name": "Z.Jones",
+        "position": "WR",
+        "team": "ARI",
+        "games_played": 6,
+        "ppg": 2.73,
+        "std_dev": 3.04,
+        "vorp": -43.01
+    },
+    {
+        "player_id": "00-0033895",
+        "player_name": "G.Everett",
+        "position": "TE",
+        "team": "CHI",
+        "games_played": 9,
+        "ppg": 1.29,
+        "std_dev": 1.34,
+        "vorp": -39.75
+    },
+    {
+        "player_id": "00-0033897",
+        "player_name": "J.Mixon",
+        "position": "RB",
+        "team": "HOU",
+        "games_played": 16,
+        "ppg": 17.34,
+        "std_dev": 9.11,
+        "vorp": 107.31
+    },
+    {
+        "player_id": "00-0033906",
+        "player_name": "A.Kamara",
+        "position": "RB",
+        "team": "NO",
+        "games_played": 14,
+        "ppg": 18.95,
+        "std_dev": 8.8,
+        "vorp": 116.47
+    },
+    {
+        "player_id": "00-0033908",
+        "player_name": "C.Kupp",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 14,
+        "ppg": 13.57,
+        "std_dev": 9.91,
+        "vorp": 51.37
+    },
+    {
+        "player_id": "00-0033921",
+        "player_name": "C.Godwin",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 7,
+        "ppg": 19.69,
+        "std_dev": 8.54,
+        "vorp": 68.48
+    },
+    {
+        "player_id": "00-0033923",
+        "player_name": "K.Hunt",
+        "position": "RB",
+        "team": "KC",
+        "games_played": 16,
+        "ppg": 11.46,
+        "std_dev": 6.1,
+        "vorp": 13.31
+    },
+    {
+        "player_id": "00-0033925",
+        "player_name": "D.Foreman",
+        "position": "RB",
+        "team": "CLE",
+        "games_played": 10,
+        "ppg": 3.46,
+        "std_dev": 2.7,
+        "vorp": -71.7
+    },
+    {
+        "player_id": "00-0033943",
+        "player_name": "J.Reynolds",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 8,
+        "ppg": 4.8,
+        "std_dev": 5.08,
+        "vorp": -40.82
+    },
+    {
+        "player_id": "00-0033948",
+        "player_name": "J.Williams",
+        "position": "RB",
+        "team": "NO",
+        "games_played": 13,
+        "ppg": 2.85,
+        "std_dev": 3.08,
+        "vorp": -101.1
+    },
+    {
+        "player_id": "00-0033955",
+        "player_name": "J.McNichols",
+        "position": "RB",
+        "team": "WAS",
+        "games_played": 16,
+        "ppg": 4.29,
+        "std_dev": 5.2,
+        "vorp": -101.39
+    },
+    {
+        "player_id": "00-0034054",
+        "player_name": "R.Cracraft",
+        "position": "WR",
+        "team": "MIA",
+        "games_played": 4,
+        "ppg": 3.4,
+        "std_dev": 2.97,
+        "vorp": -26.01
+    },
+    {
+        "player_id": "00-0034115",
+        "player_name": "J.Wilson",
+        "position": "RB",
+        "team": "MIA",
+        "games_played": 7,
+        "ppg": 1.51,
+        "std_dev": 1.24,
+        "vorp": -63.81
+    },
+    {
+        "player_id": "00-0034159",
+        "player_name": "W.Dissly",
+        "position": "TE",
+        "team": "LAC",
+        "games_played": 16,
+        "ppg": 7.11,
+        "std_dev": 5.22,
+        "vorp": 22.41
+    },
+    {
+        "player_id": "00-0034184",
+        "player_name": "G.Edwards",
+        "position": "RB",
+        "team": "LAC",
+        "games_played": 12,
+        "ppg": 5.52,
+        "std_dev": 5.22,
+        "vorp": -61.27
+    },
+    {
+        "player_id": "00-0034208",
+        "player_name": "M.Boone",
+        "position": "RB",
+        "team": "CAR",
+        "games_played": 5,
+        "ppg": 1.18,
+        "std_dev": 0.93,
+        "vorp": -47.25
+    },
+    {
+        "player_id": "00-0034270",
+        "player_name": "T.Conklin",
+        "position": "TE",
+        "team": "NYJ",
+        "games_played": 16,
+        "ppg": 7.49,
+        "std_dev": 5.61,
+        "vorp": 28.61
+    },
+    {
+        "player_id": "00-0034272",
+        "player_name": "M.Valdes-Scantling",
+        "position": "WR",
+        "team": "BUF",
+        "games_played": 13,
+        "ppg": 6.5,
+        "std_dev": 7.9,
+        "vorp": -44.23
+    },
+    {
+        "player_id": "00-0034348",
+        "player_name": "C.Sutton",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 17,
+        "ppg": 14.99,
+        "std_dev": 6.49,
+        "vorp": 86.46
+    },
+    {
+        "player_id": "00-0034351",
+        "player_name": "D.Goedert",
+        "position": "TE",
+        "team": "PHI",
+        "games_played": 14,
+        "ppg": 10.67,
+        "std_dev": 6.4,
+        "vorp": 69.52
+    },
+    {
+        "player_id": "00-0034364",
+        "player_name": "J.Akins",
+        "position": "TE",
+        "team": "CLE",
+        "games_played": 16,
+        "ppg": 5.69,
+        "std_dev": 4.79,
+        "vorp": -0.29
+    },
+    {
+        "player_id": "00-0034383",
+        "player_name": "D.Schultz",
+        "position": "TE",
+        "team": "HOU",
+        "games_played": 19,
+        "ppg": 6.99,
+        "std_dev": 3.96,
+        "vorp": 24.4
+    },
+    {
+        "player_id": "00-0034386",
+        "player_name": "J.Watson",
+        "position": "WR",
+        "team": "KC",
+        "games_played": 17,
+        "ppg": 3.7,
+        "std_dev": 3.63,
+        "vorp": -105.44
+    },
+    {
+        "player_id": "00-0034407",
+        "player_name": "R.McCloud",
+        "position": "WR",
+        "team": "ATL",
+        "games_played": 17,
+        "ppg": 8.5,
+        "std_dev": 4.26,
+        "vorp": -23.84
+    },
+    {
+        "player_id": "00-0034418",
+        "player_name": "C.Wilson",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 10,
+        "ppg": 5.19,
+        "std_dev": 4.61,
+        "vorp": -47.08
+    },
+    {
+        "player_id": "00-0034487",
+        "player_name": "T.Sherfield",
+        "position": "WR",
+        "team": "MIN",
+        "games_played": 9,
+        "ppg": 2.79,
+        "std_dev": 2.01,
+        "vorp": -64.02
+    },
+    {
+        "player_id": "00-0034521",
+        "player_name": "A.Lazard",
+        "position": "WR",
+        "team": "NYJ",
+        "games_played": 12,
+        "ppg": 10.5,
+        "std_dev": 8.67,
+        "vorp": 7.17
+    },
+    {
+        "player_id": "00-0034613",
+        "player_name": "T.Hudson",
+        "position": "TE",
+        "team": "CIN",
+        "games_played": 9,
+        "ppg": 4.5,
+        "std_dev": 4.78,
+        "vorp": -10.85
+    },
+    {
+        "player_id": "00-0034646",
+        "player_name": "B.Powell",
+        "position": "WR",
+        "team": "MIN",
+        "games_played": 7,
+        "ppg": 2.01,
+        "std_dev": 1.07,
+        "vorp": -55.22
+    },
+    {
+        "player_id": "00-0034753",
+        "player_name": "M.Andrews",
+        "position": "TE",
+        "team": "BAL",
+        "games_played": 19,
+        "ppg": 10.81,
+        "std_dev": 6.37,
+        "vorp": 97.0
+    },
+    {
+        "player_id": "00-0034771",
+        "player_name": "M.Rudolph",
+        "position": "QB",
+        "team": "TEN",
+        "games_played": 8,
+        "ppg": 11.98,
+        "std_dev": 5.99,
+        "vorp": -18.13
+    },
+    {
+        "player_id": "00-0034775",
+        "player_name": "C.Kirk",
+        "position": "WR",
+        "team": "JAX",
+        "games_played": 8,
+        "ppg": 8.86,
+        "std_dev": 6.45,
+        "vorp": -8.32
+    },
+    {
+        "player_id": "00-0034777",
+        "player_name": "D.Chark",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 5,
+        "ppg": 3.02,
+        "std_dev": 2.86,
+        "vorp": -34.41
+    },
+    {
+        "player_id": "00-0034791",
+        "player_name": "N.Chubb",
+        "position": "RB",
+        "team": "CLE",
+        "games_played": 8,
+        "ppg": 8.16,
+        "std_dev": 5.35,
+        "vorp": -19.74
+    },
+    {
+        "player_id": "00-0034796",
+        "player_name": "L.Jackson",
+        "position": "QB",
+        "team": "BAL",
+        "games_played": 19,
+        "ppg": 25.34,
+        "std_dev": 6.43,
+        "vorp": 210.96
+    },
+    {
+        "player_id": "00-0034798",
+        "player_name": "D.Smythe",
+        "position": "TE",
+        "team": "MIA",
+        "games_played": 13,
+        "ppg": 1.1,
+        "std_dev": 0.78,
+        "vorp": -59.87
+    },
+    {
+        "player_id": "00-0034827",
+        "player_name": "D.Moore",
+        "position": "WR",
+        "team": "CHI",
+        "games_played": 17,
+        "ppg": 14.01,
+        "std_dev": 7.05,
+        "vorp": 69.76
+    },
+    {
+        "player_id": "00-0034829",
+        "player_name": "M.Gesicki",
+        "position": "TE",
+        "team": "CIN",
+        "games_played": 16,
+        "ppg": 8.97,
+        "std_dev": 7.47,
+        "vorp": 52.21
+    },
+    {
+        "player_id": "00-0034830",
+        "player_name": "H.Hurst",
+        "position": "TE",
+        "team": "LAC",
+        "games_played": 7,
+        "ppg": 2.19,
+        "std_dev": 1.71,
+        "vorp": -24.64
+    },
+    {
+        "player_id": "00-0034837",
+        "player_name": "C.Ridley",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 17,
+        "ppg": 11.84,
+        "std_dev": 7.64,
+        "vorp": 32.86
+    },
+    {
+        "player_id": "00-0034844",
+        "player_name": "S.Barkley",
+        "position": "RB",
+        "team": "PHI",
+        "games_played": 20,
+        "ppg": 22.58,
+        "std_dev": 11.45,
+        "vorp": 239.09
+    },
+    {
+        "player_id": "00-0034854",
+        "player_name": "K.Hodge",
+        "position": "WR",
+        "team": "ATL",
+        "games_played": 6,
+        "ppg": 4.35,
+        "std_dev": 5.27,
+        "vorp": -33.31
+    },
+    {
+        "player_id": "00-0034855",
+        "player_name": "B.Mayfield",
+        "position": "QB",
+        "team": "TB",
+        "games_played": 18,
+        "ppg": 21.42,
+        "std_dev": 7.11,
+        "vorp": 129.16
+    },
+    {
+        "player_id": "00-0034857",
+        "player_name": "J.Allen",
+        "position": "QB",
+        "team": "BUF",
+        "games_played": 19,
+        "ppg": 23.07,
+        "std_dev": 10.48,
+        "vorp": 167.7
+    },
+    {
+        "player_id": "00-0034860",
+        "player_name": "D.Pettis",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 8,
+        "ppg": 3.75,
+        "std_dev": 3.08,
+        "vorp": -49.22
+    },
+    {
+        "player_id": "00-0034869",
+        "player_name": "S.Darnold",
+        "position": "QB",
+        "team": "MIN",
+        "games_played": 18,
+        "ppg": 18.31,
+        "std_dev": 7.4,
+        "vorp": 73.32
+    },
+    {
+        "player_id": "00-0034960",
+        "player_name": "J.Meyers",
+        "position": "WR",
+        "team": "LV",
+        "games_played": 15,
+        "ppg": 14.4,
+        "std_dev": 5.97,
+        "vorp": 67.46
+    },
+    {
+        "player_id": "00-0034972",
+        "player_name": "A.Mattison",
+        "position": "RB",
+        "team": "LV",
+        "games_played": 14,
+        "ppg": 9.81,
+        "std_dev": 4.87,
+        "vorp": -11.43
+    },
+    {
+        "player_id": "00-0034975",
+        "player_name": "J.Hill",
+        "position": "RB",
+        "team": "BAL",
+        "games_played": 17,
+        "ppg": 8.66,
+        "std_dev": 5.83,
+        "vorp": -33.42
+    },
+    {
+        "player_id": "00-0034981",
+        "player_name": "F.Moreau",
+        "position": "TE",
+        "team": "NO",
+        "games_played": 15,
+        "ppg": 6.89,
+        "std_dev": 4.72,
+        "vorp": 17.72
+    },
+    {
+        "player_id": "00-0035021",
+        "player_name": "A.Dulin",
+        "position": "WR",
+        "team": "IND",
+        "games_played": 9,
+        "ppg": 2.13,
+        "std_dev": 3.93,
+        "vorp": -69.92
+    },
+    {
+        "player_id": "00-0035125",
+        "player_name": "A.Ingold",
+        "position": "FB",
+        "team": "MIA",
+        "games_played": 9,
+        "ppg": 3.14,
+        "std_dev": 2.2,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0035140",
+        "player_name": "M.Hardman",
+        "position": "WR",
+        "team": "KC",
+        "games_played": 7,
+        "ppg": 4.74,
+        "std_dev": 4.04,
+        "vorp": -36.12
+    },
+    {
+        "player_id": "00-0035208",
+        "player_name": "O.Zaccheaus",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 18,
+        "ppg": 6.99,
+        "std_dev": 6.87,
+        "vorp": -52.34
+    },
+    {
+        "player_id": "00-0035216",
+        "player_name": "D.Johnson",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 12,
+        "ppg": 7.61,
+        "std_dev": 9.21,
+        "vorp": -27.53
+    },
+    {
+        "player_id": "00-0035228",
+        "player_name": "K.Murray",
+        "position": "QB",
+        "team": "ARI",
+        "games_played": 17,
+        "ppg": 17.84,
+        "std_dev": 6.9,
+        "vorp": 61.14
+    },
+    {
+        "player_id": "00-0035229",
+        "player_name": "T.Hockenson",
+        "position": "TE",
+        "team": "MIN",
+        "games_played": 11,
+        "ppg": 9.45,
+        "std_dev": 5.6,
+        "vorp": 41.14
+    },
+    {
+        "player_id": "00-0035243",
+        "player_name": "M.Sanders",
+        "position": "RB",
+        "team": "CAR",
+        "games_played": 11,
+        "ppg": 7.03,
+        "std_dev": 7.48,
+        "vorp": -39.63
+    },
+    {
+        "player_id": "00-0035249",
+        "player_name": "J.Oliver",
+        "position": "TE",
+        "team": "MIN",
+        "games_played": 12,
+        "ppg": 5.61,
+        "std_dev": 5.09,
+        "vorp": -1.17
+    },
+    {
+        "player_id": "00-0035250",
+        "player_name": "D.Singletary",
+        "position": "RB",
+        "team": "NYG",
+        "games_played": 15,
+        "ppg": 6.71,
+        "std_dev": 5.92,
+        "vorp": -58.86
+    },
+    {
+        "player_id": "00-0035261",
+        "player_name": "T.Pollard",
+        "position": "RB",
+        "team": "TEN",
+        "games_played": 16,
+        "ppg": 12.67,
+        "std_dev": 5.49,
+        "vorp": 32.61
+    },
+    {
+        "player_id": "00-0035289",
+        "player_name": "G.Minshew",
+        "position": "QB",
+        "team": "LV",
+        "games_played": 10,
+        "ppg": 10.23,
+        "std_dev": 5.61,
+        "vorp": -40.09
+    },
+    {
+        "player_id": "00-0035298",
+        "player_name": "S.Miller",
+        "position": "WR",
+        "team": "PIT",
+        "games_played": 4,
+        "ppg": 2.97,
+        "std_dev": 3.5,
+        "vorp": -27.71
+    },
+    {
+        "player_id": "00-0035341",
+        "player_name": "T.Irwin",
+        "position": "WR",
+        "team": "CIN",
+        "games_played": 4,
+        "ppg": 1.12,
+        "std_dev": 0.75,
+        "vorp": -35.11
+    },
+    {
+        "player_id": "00-0035406",
+        "player_name": "L.Humphrey",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 14,
+        "ppg": 4.74,
+        "std_dev": 4.34,
+        "vorp": -72.33
+    },
+    {
+        "player_id": "00-0035500",
+        "player_name": "G.Dortch",
+        "position": "WR",
+        "team": "ARI",
+        "games_played": 17,
+        "ppg": 5.43,
+        "std_dev": 5.25,
+        "vorp": -76.04
+    },
+    {
+        "player_id": "00-0035535",
+        "player_name": "D.Slayton",
+        "position": "WR",
+        "team": "NYG",
+        "games_played": 16,
+        "ppg": 6.88,
+        "std_dev": 6.7,
+        "vorp": -48.44
+    },
+    {
+        "player_id": "00-0035537",
+        "player_name": "T.Johnson",
+        "position": "RB",
+        "team": "BUF",
+        "games_played": 20,
+        "ppg": 5.72,
+        "std_dev": 5.08,
+        "vorp": -98.11
+    },
+    {
+        "player_id": "00-0035567",
+        "player_name": "C.Reynolds",
+        "position": "RB",
+        "team": "DET",
+        "games_played": 7,
+        "ppg": 2.99,
+        "std_dev": 2.8,
+        "vorp": -53.51
+    },
+    {
+        "player_id": "00-0035594",
+        "player_name": "T.Homer",
+        "position": "RB",
+        "team": "CHI",
+        "games_played": 4,
+        "ppg": 1.6,
+        "std_dev": 1.68,
+        "vorp": -36.12
+    },
+    {
+        "player_id": "00-0035628",
+        "player_name": "D.Johnson",
+        "position": "RB",
+        "team": "JAX",
+        "games_played": 12,
+        "ppg": 2.99,
+        "std_dev": 2.83,
+        "vorp": -91.66
+    },
+    {
+        "player_id": "00-0035631",
+        "player_name": "D.Sample",
+        "position": "TE",
+        "team": "CIN",
+        "games_played": 11,
+        "ppg": 3.32,
+        "std_dev": 3.22,
+        "vorp": -26.26
+    },
+    {
+        "player_id": "00-0035639",
+        "player_name": "P.Campbell",
+        "position": "WR",
+        "team": "PHI",
+        "games_played": 4,
+        "ppg": 3.75,
+        "std_dev": 5.52,
+        "vorp": -24.61
+    },
+    {
+        "player_id": "00-0035640",
+        "player_name": "D.Metcalf",
+        "position": "WR",
+        "team": "SEA",
+        "games_played": 15,
+        "ppg": 13.01,
+        "std_dev": 6.48,
+        "vorp": 46.66
+    },
+    {
+        "player_id": "00-0035644",
+        "player_name": "N.Fant",
+        "position": "TE",
+        "team": "SEA",
+        "games_played": 14,
+        "ppg": 7.43,
+        "std_dev": 4.23,
+        "vorp": 24.12
+    },
+    {
+        "player_id": "00-0035659",
+        "player_name": "T.McLaurin",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 20,
+        "ppg": 16.23,
+        "std_dev": 7.32,
+        "vorp": 126.45
+    },
+    {
+        "player_id": "00-0035662",
+        "player_name": "M.Brown",
+        "position": "WR",
+        "team": "KC",
+        "games_played": 5,
+        "ppg": 5.62,
+        "std_dev": 3.9,
+        "vorp": -21.41
+    },
+    {
+        "player_id": "00-0035676",
+        "player_name": "A.Brown",
+        "position": "WR",
+        "team": "PHI",
+        "games_played": 17,
+        "ppg": 15.13,
+        "std_dev": 7.56,
+        "vorp": 88.86
+    },
+    {
+        "player_id": "00-0035685",
+        "player_name": "D.Montgomery",
+        "position": "RB",
+        "team": "DET",
+        "games_played": 15,
+        "ppg": 15.15,
+        "std_dev": 5.44,
+        "vorp": 67.86
+    },
+    {
+        "player_id": "00-0035689",
+        "player_name": "D.Knox",
+        "position": "TE",
+        "team": "BUF",
+        "games_played": 17,
+        "ppg": 3.98,
+        "std_dev": 2.76,
+        "vorp": -29.39
+    },
+    {
+        "player_id": "00-0035700",
+        "player_name": "J.Jacobs",
+        "position": "RB",
+        "team": "GB",
+        "games_played": 18,
+        "ppg": 17.79,
+        "std_dev": 6.26,
+        "vorp": 128.85
+    },
+    {
+        "player_id": "00-0035704",
+        "player_name": "D.Lock",
+        "position": "QB",
+        "team": "NYG",
+        "games_played": 7,
+        "ppg": 11.73,
+        "std_dev": 11.58,
+        "vorp": -17.55
+    },
+    {
+        "player_id": "00-0035710",
+        "player_name": "D.Jones",
+        "position": "QB",
+        "team": "NYG",
+        "games_played": 10,
+        "ppg": 13.93,
+        "std_dev": 7.22,
+        "vorp": -3.11
+    },
+    {
+        "player_id": "00-0035719",
+        "player_name": "D.Samuel",
+        "position": "WR",
+        "team": "SF",
+        "games_played": 14,
+        "ppg": 11.11,
+        "std_dev": 7.09,
+        "vorp": 16.97
+    },
+    {
+        "player_id": "00-0035806",
+        "player_name": "J.Hasty",
+        "position": "RB",
+        "team": "NE",
+        "games_played": 9,
+        "ppg": 3.2,
+        "std_dev": 4.88,
+        "vorp": -66.87
+    },
+    {
+        "player_id": "00-0035973",
+        "player_name": "P.Taylor",
+        "position": "RB",
+        "team": "SF",
+        "games_played": 5,
+        "ppg": 5.96,
+        "std_dev": 4.84,
+        "vorp": -23.35
+    },
+    {
+        "player_id": "00-0035993",
+        "player_name": "T.Huntley",
+        "position": "QB",
+        "team": "MIA",
+        "games_played": 5,
+        "ppg": 12.93,
+        "std_dev": 6.83,
+        "vorp": -6.55
+    },
+    {
+        "player_id": "00-0036040",
+        "player_name": "J.Johnson",
+        "position": "TE",
+        "team": "NO",
+        "games_played": 15,
+        "ppg": 8.19,
+        "std_dev": 3.9,
+        "vorp": 37.22
+    },
+    {
+        "player_id": "00-0036139",
+        "player_name": "R.Dowdle",
+        "position": "RB",
+        "team": "DAL",
+        "games_played": 16,
+        "ppg": 12.61,
+        "std_dev": 5.28,
+        "vorp": 31.71
+    },
+    {
+        "player_id": "00-0036158",
+        "player_name": "J.Dobbins",
+        "position": "RB",
+        "team": "LAC",
+        "games_played": 14,
+        "ppg": 13.89,
+        "std_dev": 6.5,
+        "vorp": 45.57
+    },
+    {
+        "player_id": "00-0036182",
+        "player_name": "N.Westbrook-Ikhine",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 13,
+        "ppg": 10.44,
+        "std_dev": 5.74,
+        "vorp": 6.97
+    },
+    {
+        "player_id": "00-0036196",
+        "player_name": "G.Davis",
+        "position": "WR",
+        "team": "JAX",
+        "games_played": 9,
+        "ppg": 6.21,
+        "std_dev": 6.42,
+        "vorp": -33.22
+    },
+    {
+        "player_id": "00-0036212",
+        "player_name": "T.Tagovailoa",
+        "position": "QB",
+        "team": "MIA",
+        "games_played": 11,
+        "ppg": 16.51,
+        "std_dev": 7.5,
+        "vorp": 24.93
+    },
+    {
+        "player_id": "00-0036223",
+        "player_name": "J.Taylor",
+        "position": "RB",
+        "team": "IND",
+        "games_played": 14,
+        "ppg": 17.62,
+        "std_dev": 9.66,
+        "vorp": 97.87
+    },
+    {
+        "player_id": "00-0036232",
+        "player_name": "H.Bryant",
+        "position": "TE",
+        "team": "LV",
+        "games_played": 5,
+        "ppg": 3.52,
+        "std_dev": 2.05,
+        "vorp": -10.93
+    },
+    {
+        "player_id": "00-0036244",
+        "player_name": "C.Parkinson",
+        "position": "TE",
+        "team": "LA",
+        "games_played": 17,
+        "ppg": 4.56,
+        "std_dev": 3.51,
+        "vorp": -19.39
+    },
+    {
+        "player_id": "00-0036251",
+        "player_name": "Z.Moss",
+        "position": "RB",
+        "team": "CIN",
+        "games_played": 8,
+        "ppg": 10.49,
+        "std_dev": 6.34,
+        "vorp": -1.14
+    },
+    {
+        "player_id": "00-0036252",
+        "player_name": "M.Pittman",
+        "position": "WR",
+        "team": "IND",
+        "games_played": 16,
+        "ppg": 10.49,
+        "std_dev": 6.14,
+        "vorp": 9.36
+    },
+    {
+        "player_id": "00-0036259",
+        "player_name": "J.Jennings",
+        "position": "WR",
+        "team": "SF",
+        "games_played": 15,
+        "ppg": 14.03,
+        "std_dev": 11.43,
+        "vorp": 61.96
+    },
+    {
+        "player_id": "00-0036261",
+        "player_name": "B.Aiyuk",
+        "position": "WR",
+        "team": "SF",
+        "games_played": 7,
+        "ppg": 8.91,
+        "std_dev": 6.38,
+        "vorp": -6.92
+    },
+    {
+        "player_id": "00-0036264",
+        "player_name": "J.Love",
+        "position": "QB",
+        "team": "GB",
+        "games_played": 16,
+        "ppg": 14.46,
+        "std_dev": 6.91,
+        "vorp": 3.48
+    },
+    {
+        "player_id": "00-0036268",
+        "player_name": "L.Shenault",
+        "position": "WR",
+        "team": "SEA",
+        "games_played": 6,
+        "ppg": 1.45,
+        "std_dev": 0.94,
+        "vorp": -50.71
+    },
+    {
+        "player_id": "00-0036275",
+        "player_name": "D.Swift",
+        "position": "RB",
+        "team": "CHI",
+        "games_played": 17,
+        "ppg": 12.5,
+        "std_dev": 6.92,
+        "vorp": 31.78
+    },
+    {
+        "player_id": "00-0036290",
+        "player_name": "C.Kmet",
+        "position": "TE",
+        "team": "CHI",
+        "games_played": 14,
+        "ppg": 8.46,
+        "std_dev": 7.69,
+        "vorp": 38.52
+    },
+    {
+        "player_id": "00-0036309",
+        "player_name": "D.Mooney",
+        "position": "WR",
+        "team": "ATL",
+        "games_played": 16,
+        "ppg": 12.08,
+        "std_dev": 8.25,
+        "vorp": 34.76
+    },
+    {
+        "player_id": "00-0036322",
+        "player_name": "J.Jefferson",
+        "position": "WR",
+        "team": "MIN",
+        "games_played": 18,
+        "ppg": 18.24,
+        "std_dev": 7.77,
+        "vorp": 150.04
+    },
+    {
+        "player_id": "00-0036328",
+        "player_name": "A.Gibson",
+        "position": "RB",
+        "team": "NE",
+        "games_played": 17,
+        "ppg": 6.08,
+        "std_dev": 3.63,
+        "vorp": -77.32
+    },
+    {
+        "player_id": "00-0036331",
+        "player_name": "D.Duvernay",
+        "position": "WR",
+        "team": "JAX",
+        "games_played": 10,
+        "ppg": 1.92,
+        "std_dev": 2.31,
+        "vorp": -79.82
+    },
+    {
+        "player_id": "00-0036345",
+        "player_name": "K.Osborn",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 6,
+        "ppg": 3.12,
+        "std_dev": 4.12,
+        "vorp": -40.71
+    },
+    {
+        "player_id": "00-0036355",
+        "player_name": "J.Herbert",
+        "position": "QB",
+        "team": "LAC",
+        "games_played": 18,
+        "ppg": 16.06,
+        "std_dev": 6.54,
+        "vorp": 32.74
+    },
+    {
+        "player_id": "00-0036358",
+        "player_name": "C.Lamb",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 15,
+        "ppg": 17.56,
+        "std_dev": 8.27,
+        "vorp": 114.86
+    },
+    {
+        "player_id": "00-0036387",
+        "player_name": "J.Reagor",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 7,
+        "ppg": 2.39,
+        "std_dev": 2.39,
+        "vorp": -52.62
+    },
+    {
+        "player_id": "00-0036389",
+        "player_name": "J.Hurts",
+        "position": "QB",
+        "team": "PHI",
+        "games_played": 19,
+        "ppg": 22.19,
+        "std_dev": 7.83,
+        "vorp": 150.98
+    },
+    {
+        "player_id": "00-0036407",
+        "player_name": "J.Jeudy",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 17,
+        "ppg": 13.94,
+        "std_dev": 9.32,
+        "vorp": 68.56
+    },
+    {
+        "player_id": "00-0036410",
+        "player_name": "T.Higgins",
+        "position": "WR",
+        "team": "CIN",
+        "games_played": 12,
+        "ppg": 18.68,
+        "std_dev": 10.8,
+        "vorp": 105.27
+    },
+    {
+        "player_id": "00-0036414",
+        "player_name": "C.Akers",
+        "position": "RB",
+        "team": "HOU",
+        "games_played": 16,
+        "ppg": 6.19,
+        "std_dev": 3.98,
+        "vorp": -70.99
+    },
+    {
+        "player_id": "00-0036415",
+        "player_name": "V.Jefferson",
+        "position": "WR",
+        "team": "PIT",
+        "games_played": 16,
+        "ppg": 4.71,
+        "std_dev": 3.75,
+        "vorp": -83.14
+    },
+    {
+        "player_id": "00-0036422",
+        "player_name": "A.Trautman",
+        "position": "TE",
+        "team": "DEN",
+        "games_played": 14,
+        "ppg": 3.21,
+        "std_dev": 5.12,
+        "vorp": -34.88
+    },
+    {
+        "player_id": "00-0036425",
+        "player_name": "D.Dallas",
+        "position": "RB",
+        "team": "ARI",
+        "games_played": 7,
+        "ppg": 2.14,
+        "std_dev": 2.5,
+        "vorp": -59.41
+    },
+    {
+        "player_id": "00-0036427",
+        "player_name": "T.Johnson",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 11,
+        "ppg": 5.55,
+        "std_dev": 4.77,
+        "vorp": -47.83
+    },
+    {
+        "player_id": "00-0036429",
+        "player_name": "C.Woerner",
+        "position": "TE",
+        "team": "ATL",
+        "games_played": 8,
+        "ppg": 1.45,
+        "std_dev": 1.0,
+        "vorp": -34.04
+    },
+    {
+        "player_id": "00-0036442",
+        "player_name": "J.Burrow",
+        "position": "QB",
+        "team": "CIN",
+        "games_played": 17,
+        "ppg": 22.52,
+        "std_dev": 8.23,
+        "vorp": 140.72
+    },
+    {
+        "player_id": "00-0036510",
+        "player_name": "K.Yeboah",
+        "position": "TE",
+        "team": "NYJ",
+        "games_played": 6,
+        "ppg": 2.62,
+        "std_dev": 3.08,
+        "vorp": -18.53
+    },
+    {
+        "player_id": "00-0036527",
+        "player_name": "D.Turner",
+        "position": "WR",
+        "team": "LV",
+        "games_played": 10,
+        "ppg": 4.71,
+        "std_dev": 3.71,
+        "vorp": -51.92
+    },
+    {
+        "player_id": "00-0036550",
+        "player_name": "R.Bateman",
+        "position": "WR",
+        "team": "BAL",
+        "games_played": 18,
+        "ppg": 11.2,
+        "std_dev": 6.48,
+        "vorp": 23.36
+    },
+    {
+        "player_id": "00-0036554",
+        "player_name": "N.Collins",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 14,
+        "ppg": 17.78,
+        "std_dev": 6.95,
+        "vorp": 110.27
+    },
+    {
+        "player_id": "00-0036555",
+        "player_name": "C.Hubbard",
+        "position": "RB",
+        "team": "CAR",
+        "games_played": 15,
+        "ppg": 16.37,
+        "std_dev": 8.98,
+        "vorp": 86.14
+    },
+    {
+        "player_id": "00-0036590",
+        "player_name": "Q.Morris",
+        "position": "TE",
+        "team": "BUF",
+        "games_played": 5,
+        "ppg": 2.92,
+        "std_dev": 3.16,
+        "vorp": -13.93
+    },
+    {
+        "player_id": "00-0036613",
+        "player_name": "J.Waddle",
+        "position": "WR",
+        "team": "MIA",
+        "games_played": 15,
+        "ppg": 9.71,
+        "std_dev": 6.91,
+        "vorp": -2.94
+    },
+    {
+        "player_id": "00-0036626",
+        "player_name": "D.Brown",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 18,
+        "ppg": 6.24,
+        "std_dev": 5.4,
+        "vorp": -65.94
+    },
+    {
+        "player_id": "00-0036628",
+        "player_name": "J.Bates",
+        "position": "TE",
+        "team": "WAS",
+        "games_played": 13,
+        "ppg": 1.73,
+        "std_dev": 1.35,
+        "vorp": -51.67
+    },
+    {
+        "player_id": "00-0036630",
+        "player_name": "T.Wallace",
+        "position": "WR",
+        "team": "BAL",
+        "games_played": 10,
+        "ppg": 4.31,
+        "std_dev": 5.86,
+        "vorp": -55.92
+    },
+    {
+        "player_id": "00-0036637",
+        "player_name": "N.Gray",
+        "position": "TE",
+        "team": "KC",
+        "games_played": 18,
+        "ppg": 6.6,
+        "std_dev": 6.05,
+        "vorp": 16.1
+    },
+    {
+        "player_id": "00-0036646",
+        "player_name": "S.Fehoko",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 5,
+        "ppg": 3.32,
+        "std_dev": 3.51,
+        "vorp": -32.91
+    },
+    {
+        "player_id": "00-0036727",
+        "player_name": "A.Prentice",
+        "position": "FB",
+        "team": "NO",
+        "games_played": 4,
+        "ppg": 0.0,
+        "std_dev": 0.0,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0036754",
+        "player_name": "B.Wright",
+        "position": "TE",
+        "team": "DET",
+        "games_played": 10,
+        "ppg": 3.5,
+        "std_dev": 3.12,
+        "vorp": -22.06
+    },
+    {
+        "player_id": "00-0036849",
+        "player_name": "T.Atwell",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 16,
+        "ppg": 6.36,
+        "std_dev": 4.2,
+        "vorp": -56.74
+    },
+    {
+        "player_id": "00-0036862",
+        "player_name": "B.Skowronek",
+        "position": "WR",
+        "team": "PIT",
+        "games_played": 4,
+        "ppg": 2.98,
+        "std_dev": 1.29,
+        "vorp": -27.71
+    },
+    {
+        "player_id": "00-0036875",
+        "player_name": "R.Stevenson",
+        "position": "RB",
+        "team": "NE",
+        "games_played": 15,
+        "ppg": 11.86,
+        "std_dev": 7.56,
+        "vorp": 18.44
+    },
+    {
+        "player_id": "00-0036876",
+        "player_name": "K.Granson",
+        "position": "TE",
+        "team": "IND",
+        "games_played": 14,
+        "ppg": 2.3,
+        "std_dev": 2.54,
+        "vorp": -47.68
+    },
+    {
+        "player_id": "00-0036887",
+        "player_name": "L.Farrell",
+        "position": "TE",
+        "team": "JAX",
+        "games_played": 10,
+        "ppg": 1.87,
+        "std_dev": 1.4,
+        "vorp": -38.35
+    },
+    {
+        "player_id": "00-0036893",
+        "player_name": "N.Harris",
+        "position": "RB",
+        "team": "PIT",
+        "games_played": 18,
+        "ppg": 11.86,
+        "std_dev": 5.38,
+        "vorp": 22.05
+    },
+    {
+        "player_id": "00-0036894",
+        "player_name": "P.Freiermuth",
+        "position": "TE",
+        "team": "PIT",
+        "games_played": 18,
+        "ppg": 9.82,
+        "std_dev": 5.51,
+        "vorp": 74.1
+    },
+    {
+        "player_id": "00-0036898",
+        "player_name": "D.Mills",
+        "position": "QB",
+        "team": "HOU",
+        "games_played": 4,
+        "ppg": 2.4,
+        "std_dev": 2.93,
+        "vorp": -47.38
+    },
+    {
+        "player_id": "00-0036900",
+        "player_name": "J.Chase",
+        "position": "WR",
+        "team": "CIN",
+        "games_played": 17,
+        "ppg": 23.71,
+        "std_dev": 12.87,
+        "vorp": 234.66
+    },
+    {
+        "player_id": "00-0036906",
+        "player_name": "K.Herbert",
+        "position": "RB",
+        "team": "CHI",
+        "games_played": 8,
+        "ppg": 3.94,
+        "std_dev": 5.33,
+        "vorp": -53.54
+    },
+    {
+        "player_id": "00-0036912",
+        "player_name": "D.Smith",
+        "position": "WR",
+        "team": "PHI",
+        "games_played": 17,
+        "ppg": 14.14,
+        "std_dev": 8.03,
+        "vorp": 72.06
+    },
+    {
+        "player_id": "00-0036919",
+        "player_name": "K.Gainwell",
+        "position": "RB",
+        "team": "PHI",
+        "games_played": 20,
+        "ppg": 3.62,
+        "std_dev": 2.52,
+        "vorp": -140.21
+    },
+    {
+        "player_id": "00-0036945",
+        "player_name": "J.Fields",
+        "position": "QB",
+        "team": "PIT",
+        "games_played": 11,
+        "ppg": 11.01,
+        "std_dev": 11.21,
+        "vorp": -35.51
+    },
+    {
+        "player_id": "00-0036955",
+        "player_name": "T.Marshall",
+        "position": "WR",
+        "team": "LV",
+        "games_played": 5,
+        "ppg": 1.42,
+        "std_dev": 1.57,
+        "vorp": -42.41
+    },
+    {
+        "player_id": "00-0036963",
+        "player_name": "A.St. Brown",
+        "position": "WR",
+        "team": "DET",
+        "games_played": 18,
+        "ppg": 18.88,
+        "std_dev": 9.12,
+        "vorp": 161.64
+    },
+    {
+        "player_id": "00-0036970",
+        "player_name": "K.Pitts",
+        "position": "TE",
+        "team": "ATL",
+        "games_played": 17,
+        "ppg": 7.72,
+        "std_dev": 6.82,
+        "vorp": 34.21
+    },
+    {
+        "player_id": "00-0036971",
+        "player_name": "T.Lawrence",
+        "position": "QB",
+        "team": "JAX",
+        "games_played": 10,
+        "ppg": 14.17,
+        "std_dev": 6.77,
+        "vorp": -0.71
+    },
+    {
+        "player_id": "00-0036972",
+        "player_name": "M.Jones",
+        "position": "QB",
+        "team": "JAX",
+        "games_played": 10,
+        "ppg": 9.81,
+        "std_dev": 7.12,
+        "vorp": -44.33
+    },
+    {
+        "player_id": "00-0036973",
+        "player_name": "T.Etienne",
+        "position": "RB",
+        "team": "JAX",
+        "games_played": 15,
+        "ppg": 8.81,
+        "std_dev": 4.05,
+        "vorp": -27.26
+    },
+    {
+        "player_id": "00-0036980",
+        "player_name": "E.Moore",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 17,
+        "ppg": 7.11,
+        "std_dev": 5.89,
+        "vorp": -47.44
+    },
+    {
+        "player_id": "00-0036984",
+        "player_name": "T.Sermon",
+        "position": "RB",
+        "team": "IND",
+        "games_played": 14,
+        "ppg": 3.84,
+        "std_dev": 4.56,
+        "vorp": -95.03
+    },
+    {
+        "player_id": "00-0036988",
+        "player_name": "J.Palmer",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 15,
+        "ppg": 6.89,
+        "std_dev": 3.71,
+        "vorp": -45.14
+    },
+    {
+        "player_id": "00-0036997",
+        "player_name": "J.Williams",
+        "position": "RB",
+        "team": "DEN",
+        "games_played": 18,
+        "ppg": 9.34,
+        "std_dev": 6.24,
+        "vorp": -23.15
+    },
+    {
+        "player_id": "00-0037004",
+        "player_name": "H.Long",
+        "position": "TE",
+        "team": "LA",
+        "games_played": 8,
+        "ppg": 1.91,
+        "std_dev": 1.45,
+        "vorp": -30.34
+    },
+    {
+        "player_id": "00-0037005",
+        "player_name": "T.Tremble",
+        "position": "TE",
+        "team": "CAR",
+        "games_played": 10,
+        "ppg": 5.84,
+        "std_dev": 3.71,
+        "vorp": 1.35
+    },
+    {
+        "player_id": "00-0037012",
+        "player_name": "T.Lance",
+        "position": "QB",
+        "team": "DAL",
+        "games_played": 4,
+        "ppg": 3.18,
+        "std_dev": 6.13,
+        "vorp": -44.22
+    },
+    {
+        "player_id": "00-0037085",
+        "player_name": "T.Badie",
+        "position": "RB",
+        "team": "DEN",
+        "games_played": 4,
+        "ppg": 3.05,
+        "std_dev": 2.76,
+        "vorp": -30.32
+    },
+    {
+        "player_id": "00-0037086",
+        "player_name": "G.Calcaterra",
+        "position": "TE",
+        "team": "PHI",
+        "games_played": 14,
+        "ppg": 4.37,
+        "std_dev": 3.68,
+        "vorp": -18.68
+    },
+    {
+        "player_id": "00-0037091",
+        "player_name": "B.Melton",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 12,
+        "ppg": 2.09,
+        "std_dev": 1.63,
+        "vorp": -93.73
+    },
+    {
+        "player_id": "00-0037120",
+        "player_name": "T.Goodson",
+        "position": "RB",
+        "team": "IND",
+        "games_played": 9,
+        "ppg": 4.93,
+        "std_dev": 4.72,
+        "vorp": -51.27
+    },
+    {
+        "player_id": "00-0037197",
+        "player_name": "I.Pacheco",
+        "position": "RB",
+        "team": "KC",
+        "games_played": 10,
+        "ppg": 6.53,
+        "std_dev": 5.36,
+        "vorp": -41.0
+    },
+    {
+        "player_id": "00-0037228",
+        "player_name": "J.Warren",
+        "position": "RB",
+        "team": "PIT",
+        "games_played": 16,
+        "ppg": 8.29,
+        "std_dev": 4.67,
+        "vorp": -37.49
+    },
+    {
+        "player_id": "00-0037231",
+        "player_name": "K.Austin",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 8,
+        "ppg": 3.38,
+        "std_dev": 1.93,
+        "vorp": -52.22
+    },
+    {
+        "player_id": "00-0037238",
+        "player_name": "D.London",
+        "position": "WR",
+        "team": "ATL",
+        "games_played": 17,
+        "ppg": 16.52,
+        "std_dev": 9.03,
+        "vorp": 112.46
+    },
+    {
+        "player_id": "00-0037239",
+        "player_name": "C.Olave",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 8,
+        "ppg": 9.84,
+        "std_dev": 8.18,
+        "vorp": -0.52
+    },
+    {
+        "player_id": "00-0037240",
+        "player_name": "J.Williams",
+        "position": "WR",
+        "team": "DET",
+        "games_played": 16,
+        "ppg": 14.08,
+        "std_dev": 7.66,
+        "vorp": 66.76
+    },
+    {
+        "player_id": "00-0037247",
+        "player_name": "G.Pickens",
+        "position": "WR",
+        "team": "PIT",
+        "games_played": 15,
+        "ppg": 12.41,
+        "std_dev": 6.38,
+        "vorp": 37.56
+    },
+    {
+        "player_id": "00-0037248",
+        "player_name": "J.Cook",
+        "position": "RB",
+        "team": "BUF",
+        "games_played": 19,
+        "ppg": 17.07,
+        "std_dev": 7.86,
+        "vorp": 122.32
+    },
+    {
+        "player_id": "00-0037256",
+        "player_name": "R.White",
+        "position": "RB",
+        "team": "TB",
+        "games_played": 16,
+        "ppg": 13.07,
+        "std_dev": 7.29,
+        "vorp": 39.01
+    },
+    {
+        "player_id": "00-0037258",
+        "player_name": "D.Pierce",
+        "position": "RB",
+        "team": "HOU",
+        "games_played": 11,
+        "ppg": 4.18,
+        "std_dev": 7.68,
+        "vorp": -70.93
+    },
+    {
+        "player_id": "00-0037261",
+        "player_name": "K.Shakir",
+        "position": "WR",
+        "team": "BUF",
+        "games_played": 18,
+        "ppg": 12.11,
+        "std_dev": 5.07,
+        "vorp": 39.66
+    },
+    {
+        "player_id": "00-0037263",
+        "player_name": "T.Allgeier",
+        "position": "RB",
+        "team": "ATL",
+        "games_played": 17,
+        "ppg": 6.13,
+        "std_dev": 4.31,
+        "vorp": -76.52
+    },
+    {
+        "player_id": "00-0037267",
+        "player_name": "J.Ford",
+        "position": "RB",
+        "team": "CLE",
+        "games_played": 14,
+        "ppg": 9.57,
+        "std_dev": 7.06,
+        "vorp": -14.83
+    },
+    {
+        "player_id": "00-0037276",
+        "player_name": "T.Chandler",
+        "position": "RB",
+        "team": "MIN",
+        "games_played": 10,
+        "ppg": 2.84,
+        "std_dev": 3.06,
+        "vorp": -77.9
+    },
+    {
+        "player_id": "00-0037291",
+        "player_name": "J.Nailor",
+        "position": "WR",
+        "team": "MIN",
+        "games_played": 16,
+        "ppg": 6.96,
+        "std_dev": 5.4,
+        "vorp": -47.14
+    },
+    {
+        "player_id": "00-0037292",
+        "player_name": "A.Ogletree",
+        "position": "TE",
+        "team": "IND",
+        "games_played": 11,
+        "ppg": 2.35,
+        "std_dev": 2.49,
+        "vorp": -36.86
+    },
+    {
+        "player_id": "00-0037300",
+        "player_name": "M.Woods",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 5,
+        "ppg": 2.7,
+        "std_dev": 2.77,
+        "vorp": -36.01
+    },
+    {
+        "player_id": "00-0037304",
+        "player_name": "C.Heyward",
+        "position": "TE",
+        "team": "PIT",
+        "games_played": 5,
+        "ppg": 3.2,
+        "std_dev": 3.98,
+        "vorp": -12.53
+    },
+    {
+        "player_id": "00-0037475",
+        "player_name": "S.Smartt",
+        "position": "TE",
+        "team": "LAC",
+        "games_played": 7,
+        "ppg": 5.26,
+        "std_dev": 3.24,
+        "vorp": -3.14
+    },
+    {
+        "player_id": "00-0037487",
+        "player_name": "D.Thompkins",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 4,
+        "ppg": 1.67,
+        "std_dev": 1.92,
+        "vorp": -32.91
+    },
+    {
+        "player_id": "00-0037509",
+        "player_name": "S.McCormick",
+        "position": "RB",
+        "team": "LV",
+        "games_played": 4,
+        "ppg": 6.8,
+        "std_dev": 3.52,
+        "vorp": -15.32
+    },
+    {
+        "player_id": "00-0037525",
+        "player_name": "J.Mason",
+        "position": "RB",
+        "team": "SF",
+        "games_played": 12,
+        "ppg": 9.75,
+        "std_dev": 7.97,
+        "vorp": -10.57
+    },
+    {
+        "player_id": "00-0037539",
+        "player_name": "L.Krull",
+        "position": "TE",
+        "team": "DEN",
+        "games_played": 11,
+        "ppg": 3.22,
+        "std_dev": 2.14,
+        "vorp": -27.36
+    },
+    {
+        "player_id": "00-0037545",
+        "player_name": "R.Shaheed",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 6,
+        "ppg": 12.63,
+        "std_dev": 9.05,
+        "vorp": 16.39
+    },
+    {
+        "player_id": "00-0037557",
+        "player_name": "R.Rivers",
+        "position": "RB",
+        "team": "LA",
+        "games_played": 6,
+        "ppg": 3.18,
+        "std_dev": 4.47,
+        "vorp": -44.68
+    },
+    {
+        "player_id": "00-0037569",
+        "player_name": "P.Hendershot",
+        "position": "TE",
+        "team": "KC",
+        "games_played": 4,
+        "ppg": 2.52,
+        "std_dev": 1.33,
+        "vorp": -12.72
+    },
+    {
+        "player_id": "00-0037594",
+        "player_name": "J.Chestnut",
+        "position": "RB",
+        "team": "TEN",
+        "games_played": 7,
+        "ppg": 1.9,
+        "std_dev": 1.14,
+        "vorp": -61.11
+    },
+    {
+        "player_id": "00-0037614",
+        "player_name": "J.Metchie",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 12,
+        "ppg": 5.64,
+        "std_dev": 4.82,
+        "vorp": -51.13
+    },
+    {
+        "player_id": "00-0037617",
+        "player_name": "H.Haskins",
+        "position": "RB",
+        "team": "LAC",
+        "games_played": 12,
+        "ppg": 2.94,
+        "std_dev": 4.18,
+        "vorp": -92.27
+    },
+    {
+        "player_id": "00-0037654",
+        "player_name": "T.Fisk",
+        "position": "TE",
+        "team": "LAC",
+        "games_played": 8,
+        "ppg": 1.68,
+        "std_dev": 0.48,
+        "vorp": -32.24
+    },
+    {
+        "player_id": "00-0037664",
+        "player_name": "A.Pierce",
+        "position": "WR",
+        "team": "IND",
+        "games_played": 16,
+        "ppg": 10.09,
+        "std_dev": 8.31,
+        "vorp": 2.96
+    },
+    {
+        "player_id": "00-0037666",
+        "player_name": "J.Tolbert",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 17,
+        "ppg": 8.94,
+        "std_dev": 5.25,
+        "vorp": -16.34
+    },
+    {
+        "player_id": "00-0037740",
+        "player_name": "G.Wilson",
+        "position": "WR",
+        "team": "NYJ",
+        "games_played": 17,
+        "ppg": 14.94,
+        "std_dev": 7.23,
+        "vorp": 85.56
+    },
+    {
+        "player_id": "00-0037741",
+        "player_name": "J.Dotson",
+        "position": "WR",
+        "team": "PHI",
+        "games_played": 16,
+        "ppg": 3.51,
+        "std_dev": 4.1,
+        "vorp": -102.24
+    },
+    {
+        "player_id": "00-0037742",
+        "player_name": "T.Burks",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 5,
+        "ppg": 1.5,
+        "std_dev": 0.91,
+        "vorp": -42.01
+    },
+    {
+        "player_id": "00-0037744",
+        "player_name": "T.McBride",
+        "position": "TE",
+        "team": "ARI",
+        "games_played": 16,
+        "ppg": 15.24,
+        "std_dev": 7.13,
+        "vorp": 152.51
+    },
+    {
+        "player_id": "00-0037746",
+        "player_name": "B.Robinson",
+        "position": "RB",
+        "team": "WAS",
+        "games_played": 17,
+        "ppg": 11.46,
+        "std_dev": 5.69,
+        "vorp": 14.18
+    },
+    {
+        "player_id": "00-0037801",
+        "player_name": "K.Turpin",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 15,
+        "ppg": 6.28,
+        "std_dev": 4.82,
+        "vorp": -54.34
+    },
+    {
+        "player_id": "00-0037805",
+        "player_name": "J.Ruckert",
+        "position": "TE",
+        "team": "NYJ",
+        "games_played": 13,
+        "ppg": 2.19,
+        "std_dev": 1.37,
+        "vorp": -45.67
+    },
+    {
+        "player_id": "00-0037809",
+        "player_name": "C.Okonkwo",
+        "position": "TE",
+        "team": "TEN",
+        "games_played": 16,
+        "ppg": 7.1,
+        "std_dev": 4.76,
+        "vorp": 22.31
+    },
+    {
+        "player_id": "00-0037816",
+        "player_name": "R.Doubs",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 14,
+        "ppg": 9.53,
+        "std_dev": 5.84,
+        "vorp": -5.23
+    },
+    {
+        "player_id": "00-0037834",
+        "player_name": "B.Purdy",
+        "position": "QB",
+        "team": "SF",
+        "games_played": 15,
+        "ppg": 18.19,
+        "std_dev": 8.0,
+        "vorp": 59.24
+    },
+    {
+        "player_id": "00-0037837",
+        "player_name": "C.Austin",
+        "position": "WR",
+        "team": "PIT",
+        "games_played": 18,
+        "ppg": 6.57,
+        "std_dev": 5.96,
+        "vorp": -59.94
+    },
+    {
+        "player_id": "00-0037838",
+        "player_name": "I.Likely",
+        "position": "TE",
+        "team": "BAL",
+        "games_played": 17,
+        "ppg": 8.9,
+        "std_dev": 6.76,
+        "vorp": 54.31
+    },
+    {
+        "player_id": "00-0037840",
+        "player_name": "K.Williams",
+        "position": "RB",
+        "team": "LA",
+        "games_played": 18,
+        "ppg": 17.1,
+        "std_dev": 5.51,
+        "vorp": 116.45
+    },
+    {
+        "player_id": "00-0038040",
+        "player_name": "Z.White",
+        "position": "RB",
+        "team": "LV",
+        "games_played": 8,
+        "ppg": 4.16,
+        "std_dev": 2.71,
+        "vorp": -51.74
+    },
+    {
+        "player_id": "00-0038041",
+        "player_name": "J.Ferguson",
+        "position": "TE",
+        "team": "DAL",
+        "games_played": 14,
+        "ppg": 7.74,
+        "std_dev": 4.4,
+        "vorp": 28.52
+    },
+    {
+        "player_id": "00-0038046",
+        "player_name": "C.Kolar",
+        "position": "TE",
+        "team": "BAL",
+        "games_played": 7,
+        "ppg": 4.04,
+        "std_dev": 5.18,
+        "vorp": -11.64
+    },
+    {
+        "player_id": "00-0038098",
+        "player_name": "P.Strong",
+        "position": "RB",
+        "team": "CLE",
+        "games_played": 11,
+        "ppg": 3.2,
+        "std_dev": 3.12,
+        "vorp": -81.73
+    },
+    {
+        "player_id": "00-0038102",
+        "player_name": "K.Pickett",
+        "position": "QB",
+        "team": "PHI",
+        "games_played": 7,
+        "ppg": 3.49,
+        "std_dev": 6.49,
+        "vorp": -75.25
+    },
+    {
+        "player_id": "00-0038104",
+        "player_name": "T.Thornton",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 4,
+        "ppg": 2.17,
+        "std_dev": 2.53,
+        "vorp": -30.91
+    },
+    {
+        "player_id": "00-0038115",
+        "player_name": "D.Bellinger",
+        "position": "TE",
+        "team": "NYG",
+        "games_played": 7,
+        "ppg": 3.79,
+        "std_dev": 3.06,
+        "vorp": -13.44
+    },
+    {
+        "player_id": "00-0038117",
+        "player_name": "W.Robinson",
+        "position": "WR",
+        "team": "NYG",
+        "games_played": 17,
+        "ppg": 10.75,
+        "std_dev": 4.38,
+        "vorp": 14.36
+    },
+    {
+        "player_id": "00-0038120",
+        "player_name": "B.Hall",
+        "position": "RB",
+        "team": "NYJ",
+        "games_played": 16,
+        "ppg": 15.06,
+        "std_dev": 8.03,
+        "vorp": 70.81
+    },
+    {
+        "player_id": "00-0038122",
+        "player_name": "D.Ridder",
+        "position": "QB",
+        "team": "LV",
+        "games_played": 5,
+        "ppg": 5.18,
+        "std_dev": 4.12,
+        "vorp": -45.29
+    },
+    {
+        "player_id": "00-0038124",
+        "player_name": "C.Watson",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 14,
+        "ppg": 7.52,
+        "std_dev": 6.22,
+        "vorp": -33.33
+    },
+    {
+        "player_id": "00-0038128",
+        "player_name": "M.Willis",
+        "position": "QB",
+        "team": "GB",
+        "games_played": 6,
+        "ppg": 8.97,
+        "std_dev": 9.35,
+        "vorp": -31.65
+    },
+    {
+        "player_id": "00-0038129",
+        "player_name": "C.Otton",
+        "position": "TE",
+        "team": "TB",
+        "games_played": 15,
+        "ppg": 9.85,
+        "std_dev": 7.86,
+        "vorp": 62.22
+    },
+    {
+        "player_id": "00-0038134",
+        "player_name": "K.Walker",
+        "position": "RB",
+        "team": "SEA",
+        "games_played": 11,
+        "ppg": 16.47,
+        "std_dev": 7.49,
+        "vorp": 64.27
+    },
+    {
+        "player_id": "00-0038393",
+        "player_name": "D.Wicks",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 18,
+        "ppg": 6.47,
+        "std_dev": 6.31,
+        "vorp": -61.84
+    },
+    {
+        "player_id": "00-0038394",
+        "player_name": "W.Mallory",
+        "position": "TE",
+        "team": "IND",
+        "games_played": 7,
+        "ppg": 0.99,
+        "std_dev": 0.93,
+        "vorp": -33.04
+    },
+    {
+        "player_id": "00-0038396",
+        "player_name": "E.Gray",
+        "position": "RB",
+        "team": "NYG",
+        "games_played": 10,
+        "ppg": 2.13,
+        "std_dev": 2.37,
+        "vorp": -85.0
+    },
+    {
+        "player_id": "00-0038416",
+        "player_name": "T.Bagent",
+        "position": "QB",
+        "team": "CHI",
+        "games_played": 4,
+        "ppg": -0.06,
+        "std_dev": 0.33,
+        "vorp": -57.22
+    },
+    {
+        "player_id": "00-0038465",
+        "player_name": "M.Heath",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 6,
+        "ppg": 5.28,
+        "std_dev": 3.65,
+        "vorp": -27.71
+    },
+    {
+        "player_id": "00-0038496",
+        "player_name": "X.Gipson",
+        "position": "WR",
+        "team": "NYJ",
+        "games_played": 7,
+        "ppg": 2.34,
+        "std_dev": 2.44,
+        "vorp": -52.92
+    },
+    {
+        "player_id": "00-0038542",
+        "player_name": "B.Robinson",
+        "position": "RB",
+        "team": "ATL",
+        "games_played": 17,
+        "ppg": 19.98,
+        "std_dev": 6.65,
+        "vorp": 158.98
+    },
+    {
+        "player_id": "00-0038543",
+        "player_name": "J.Smith-Njigba",
+        "position": "WR",
+        "team": "SEA",
+        "games_played": 17,
+        "ppg": 14.88,
+        "std_dev": 8.8,
+        "vorp": 84.66
+    },
+    {
+        "player_id": "00-0038544",
+        "player_name": "Q.Johnston",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 16,
+        "ppg": 10.92,
+        "std_dev": 8.9,
+        "vorp": 16.26
+    },
+    {
+        "player_id": "00-0038547",
+        "player_name": "L.Schoonmaker",
+        "position": "TE",
+        "team": "DAL",
+        "games_played": 10,
+        "ppg": 5.71,
+        "std_dev": 5.07,
+        "vorp": 0.05
+    },
+    {
+        "player_id": "00-0038551",
+        "player_name": "K.Miller",
+        "position": "RB",
+        "team": "NO",
+        "games_played": 6,
+        "ppg": 4.85,
+        "std_dev": 2.61,
+        "vorp": -34.68
+    },
+    {
+        "player_id": "00-0038555",
+        "player_name": "T.Bigsby",
+        "position": "RB",
+        "team": "JAX",
+        "games_played": 15,
+        "ppg": 8.73,
+        "std_dev": 7.77,
+        "vorp": -28.46
+    },
+    {
+        "player_id": "00-0038558",
+        "player_name": "D.Washington",
+        "position": "TE",
+        "team": "PIT",
+        "games_played": 14,
+        "ppg": 3.35,
+        "std_dev": 2.44,
+        "vorp": -32.98
+    },
+    {
+        "player_id": "00-0038559",
+        "player_name": "M.Wilson",
+        "position": "WR",
+        "team": "ARI",
+        "games_played": 16,
+        "ppg": 7.91,
+        "std_dev": 4.36,
+        "vorp": -31.94
+    },
+    {
+        "player_id": "00-0038563",
+        "player_name": "T.Tucker",
+        "position": "WR",
+        "team": "LV",
+        "games_played": 17,
+        "ppg": 7.61,
+        "std_dev": 5.98,
+        "vorp": -39.04
+    },
+    {
+        "player_id": "00-0038573",
+        "player_name": "D.Davis",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 12,
+        "ppg": 3.43,
+        "std_dev": 3.5,
+        "vorp": -77.63
+    },
+    {
+        "player_id": "00-0038579",
+        "player_name": "A.O'Connell",
+        "position": "QB",
+        "team": "LV",
+        "games_played": 9,
+        "ppg": 10.83,
+        "std_dev": 6.74,
+        "vorp": -30.69
+    },
+    {
+        "player_id": "00-0038582",
+        "player_name": "C.Tune",
+        "position": "QB",
+        "team": "ARI",
+        "games_played": 5,
+        "ppg": -0.02,
+        "std_dev": 0.35,
+        "vorp": -71.29
+    },
+    {
+        "player_id": "00-0038583",
+        "player_name": "D.Thompson-Robinson",
+        "position": "QB",
+        "team": "CLE",
+        "games_played": 6,
+        "ppg": 2.97,
+        "std_dev": 3.06,
+        "vorp": -67.65
+    },
+    {
+        "player_id": "00-0038589",
+        "player_name": "J.Whyle",
+        "position": "TE",
+        "team": "TEN",
+        "games_played": 14,
+        "ppg": 4.2,
+        "std_dev": 4.11,
+        "vorp": -21.08
+    },
+    {
+        "player_id": "00-0038597",
+        "player_name": "C.Brown",
+        "position": "RB",
+        "team": "CIN",
+        "games_played": 16,
+        "ppg": 15.94,
+        "std_dev": 7.65,
+        "vorp": 84.91
+    },
+    {
+        "player_id": "00-0038606",
+        "player_name": "P.Washington",
+        "position": "WR",
+        "team": "JAX",
+        "games_played": 13,
+        "ppg": 6.85,
+        "std_dev": 6.23,
+        "vorp": -39.73
+    },
+    {
+        "player_id": "00-0038608",
+        "player_name": "K.Boutte",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 15,
+        "ppg": 7.99,
+        "std_dev": 6.88,
+        "vorp": -28.64
+    },
+    {
+        "player_id": "00-0038611",
+        "player_name": "C.Rodriguez",
+        "position": "RB",
+        "team": "WAS",
+        "games_played": 6,
+        "ppg": 5.25,
+        "std_dev": 6.25,
+        "vorp": -32.28
+    },
+    {
+        "player_id": "00-0038614",
+        "player_name": "S.Matlock",
+        "position": "FB",
+        "team": "LAC",
+        "games_played": 5,
+        "ppg": 1.36,
+        "std_dev": 0.82,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0038618",
+        "player_name": "X.Hutchinson",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 16,
+        "ppg": 2.33,
+        "std_dev": 2.48,
+        "vorp": -121.14
+    },
+    {
+        "player_id": "00-0038619",
+        "player_name": "A.Iosivas",
+        "position": "WR",
+        "team": "CIN",
+        "games_played": 17,
+        "ppg": 7.05,
+        "std_dev": 4.99,
+        "vorp": -48.44
+    },
+    {
+        "player_id": "00-0038621",
+        "player_name": "D.Douglas",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 16,
+        "ppg": 9.23,
+        "std_dev": 4.96,
+        "vorp": -10.74
+    },
+    {
+        "player_id": "00-0038622",
+        "player_name": "D.Vaughn",
+        "position": "RB",
+        "team": "DAL",
+        "games_played": 5,
+        "ppg": 2.36,
+        "std_dev": 1.21,
+        "vorp": -41.35
+    },
+    {
+        "player_id": "00-0038636",
+        "player_name": "K.McIntosh",
+        "position": "RB",
+        "team": "SEA",
+        "games_played": 7,
+        "ppg": 3.2,
+        "std_dev": 2.35,
+        "vorp": -52.01
+    },
+    {
+        "player_id": "00-0038640",
+        "player_name": "J.Brooks",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 12,
+        "ppg": 2.97,
+        "std_dev": 2.3,
+        "vorp": -83.13
+    },
+    {
+        "player_id": "00-0038678",
+        "player_name": "J.Mims",
+        "position": "RB",
+        "team": "NO",
+        "games_played": 7,
+        "ppg": 3.73,
+        "std_dev": 2.73,
+        "vorp": -48.31
+    },
+    {
+        "player_id": "00-0038685",
+        "player_name": "C.Brooks",
+        "position": "RB",
+        "team": "GB",
+        "games_played": 12,
+        "ppg": 3.76,
+        "std_dev": 2.7,
+        "vorp": -82.46
+    },
+    {
+        "player_id": "00-0038705",
+        "player_name": "E.Demercado",
+        "position": "RB",
+        "team": "ARI",
+        "games_played": 13,
+        "ppg": 4.21,
+        "std_dev": 4.62,
+        "vorp": -83.5
+    },
+    {
+        "player_id": "00-0038710",
+        "player_name": "B.Whiteheart",
+        "position": "TE",
+        "team": "CLE",
+        "games_played": 7,
+        "ppg": 2.44,
+        "std_dev": 3.74,
+        "vorp": -22.84
+    },
+    {
+        "player_id": "00-0038720",
+        "player_name": "J.Hill",
+        "position": "TE",
+        "team": "MIA",
+        "games_played": 11,
+        "ppg": 2.0,
+        "std_dev": 1.76,
+        "vorp": -40.76
+    },
+    {
+        "player_id": "00-0038738",
+        "player_name": "H.Luepke",
+        "position": "FB",
+        "team": "DAL",
+        "games_played": 13,
+        "ppg": 2.07,
+        "std_dev": 1.9,
+        "vorp": 0.0
+    },
+    {
+        "player_id": "00-0038752",
+        "player_name": "J.Bobo",
+        "position": "WR",
+        "team": "SEA",
+        "games_played": 11,
+        "ppg": 2.7,
+        "std_dev": 2.33,
+        "vorp": -79.23
+    },
+    {
+        "player_id": "00-0038783",
+        "player_name": "N.Adkins",
+        "position": "TE",
+        "team": "DEN",
+        "games_played": 12,
+        "ppg": 3.62,
+        "std_dev": 2.99,
+        "vorp": -24.97
+    },
+    {
+        "player_id": "00-0038794",
+        "player_name": "J.McLaughlin",
+        "position": "RB",
+        "team": "DEN",
+        "games_played": 17,
+        "ppg": 5.88,
+        "std_dev": 3.68,
+        "vorp": -80.72
+    },
+    {
+        "player_id": "00-0038797",
+        "player_name": "E.Wilson",
+        "position": "RB",
+        "team": "GB",
+        "games_played": 18,
+        "ppg": 5.55,
+        "std_dev": 5.02,
+        "vorp": -91.45
+    },
+    {
+        "player_id": "00-0038809",
+        "player_name": "B.Sims",
+        "position": "TE",
+        "team": "GB",
+        "games_played": 4,
+        "ppg": 2.05,
+        "std_dev": 2.56,
+        "vorp": -14.62
+    },
+    {
+        "player_id": "00-0038821",
+        "player_name": "R.Jarrett",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 6,
+        "ppg": 3.57,
+        "std_dev": 2.71,
+        "vorp": -38.01
+    },
+    {
+        "player_id": "00-0038824",
+        "player_name": "R.Miller",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 8,
+        "ppg": 4.6,
+        "std_dev": 2.82,
+        "vorp": -42.42
+    },
+    {
+        "player_id": "00-0038933",
+        "player_name": "D.Kincaid",
+        "position": "TE",
+        "team": "BUF",
+        "games_played": 16,
+        "ppg": 7.12,
+        "std_dev": 3.52,
+        "vorp": 22.61
+    },
+    {
+        "player_id": "00-0038935",
+        "player_name": "B.Strange",
+        "position": "TE",
+        "team": "JAX",
+        "games_played": 14,
+        "ppg": 6.65,
+        "std_dev": 5.17,
+        "vorp": 13.22
+    },
+    {
+        "player_id": "00-0038938",
+        "player_name": "J.Hyatt",
+        "position": "WR",
+        "team": "NYG",
+        "games_played": 10,
+        "ppg": 1.42,
+        "std_dev": 2.5,
+        "vorp": -84.82
+    },
+    {
+        "player_id": "00-0038951",
+        "player_name": "S.Tucker",
+        "position": "RB",
+        "team": "TB",
+        "games_played": 11,
+        "ppg": 6.25,
+        "std_dev": 9.51,
+        "vorp": -48.23
+    },
+    {
+        "player_id": "00-0038976",
+        "player_name": "M.Mims",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 17,
+        "ppg": 7.81,
+        "std_dev": 8.71,
+        "vorp": -35.54
+    },
+    {
+        "player_id": "00-0038977",
+        "player_name": "T.Dell",
+        "position": "WR",
+        "team": "HOU",
+        "games_played": 14,
+        "ppg": 10.0,
+        "std_dev": 6.41,
+        "vorp": 1.37
+    },
+    {
+        "player_id": "00-0038979",
+        "player_name": "C.Tillman",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 9,
+        "ppg": 8.93,
+        "std_dev": 10.27,
+        "vorp": -8.72
+    },
+    {
+        "player_id": "00-0038994",
+        "player_name": "J.Addison",
+        "position": "WR",
+        "team": "MIN",
+        "games_played": 16,
+        "ppg": 13.65,
+        "std_dev": 10.25,
+        "vorp": 59.96
+    },
+    {
+        "player_id": "00-0038996",
+        "player_name": "T.Kraft",
+        "position": "TE",
+        "team": "GB",
+        "games_played": 18,
+        "ppg": 9.55,
+        "std_dev": 6.04,
+        "vorp": 69.2
+    },
+    {
+        "player_id": "00-0038997",
+        "player_name": "J.Downs",
+        "position": "WR",
+        "team": "IND",
+        "games_played": 14,
+        "ppg": 13.01,
+        "std_dev": 7.04,
+        "vorp": 43.57
+    },
+    {
+        "player_id": "00-0038998",
+        "player_name": "J.Haener",
+        "position": "QB",
+        "team": "NO",
+        "games_played": 8,
+        "ppg": 1.66,
+        "std_dev": 2.59,
+        "vorp": -100.69
+    },
+    {
+        "player_id": "00-0039021",
+        "player_name": "R.Johnson",
+        "position": "RB",
+        "team": "CHI",
+        "games_played": 12,
+        "ppg": 6.45,
+        "std_dev": 4.44,
+        "vorp": -50.17
+    },
+    {
+        "player_id": "00-0039032",
+        "player_name": "T.Spears",
+        "position": "RB",
+        "team": "TEN",
+        "games_played": 12,
+        "ppg": 9.47,
+        "std_dev": 8.1,
+        "vorp": -13.97
+    },
+    {
+        "player_id": "00-0039040",
+        "player_name": "D.Achane",
+        "position": "RB",
+        "team": "MIA",
+        "games_played": 17,
+        "ppg": 17.64,
+        "std_dev": 9.23,
+        "vorp": 119.18
+    },
+    {
+        "player_id": "00-0039041",
+        "player_name": "E.Higgins",
+        "position": "TE",
+        "team": "ARI",
+        "games_played": 14,
+        "ppg": 3.51,
+        "std_dev": 2.4,
+        "vorp": -30.68
+    },
+    {
+        "player_id": "00-0039050",
+        "player_name": "P.Durham",
+        "position": "TE",
+        "team": "TB",
+        "games_played": 5,
+        "ppg": 6.9,
+        "std_dev": 4.1,
+        "vorp": 5.97
+    },
+    {
+        "player_id": "00-0039052",
+        "player_name": "T.Palmer",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 10,
+        "ppg": 3.52,
+        "std_dev": 3.52,
+        "vorp": -63.82
+    },
+    {
+        "player_id": "00-0039062",
+        "player_name": "J.Mingo",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 14,
+        "ppg": 2.44,
+        "std_dev": 2.39,
+        "vorp": -104.43
+    },
+    {
+        "player_id": "00-0039064",
+        "player_name": "Z.Flowers",
+        "position": "WR",
+        "team": "BAL",
+        "games_played": 17,
+        "ppg": 12.32,
+        "std_dev": 7.85,
+        "vorp": 41.16
+    },
+    {
+        "player_id": "00-0039065",
+        "player_name": "S.LaPorta",
+        "position": "TE",
+        "team": "DET",
+        "games_played": 17,
+        "ppg": 11.28,
+        "std_dev": 5.39,
+        "vorp": 94.71
+    },
+    {
+        "player_id": "00-0039066",
+        "player_name": "M.Mayer",
+        "position": "TE",
+        "team": "LV",
+        "games_played": 11,
+        "ppg": 3.33,
+        "std_dev": 3.78,
+        "vorp": -26.16
+    },
+    {
+        "player_id": "00-0039074",
+        "player_name": "D.Allen",
+        "position": "TE",
+        "team": "LA",
+        "games_played": 7,
+        "ppg": 2.6,
+        "std_dev": 3.97,
+        "vorp": -21.74
+    },
+    {
+        "player_id": "00-0039075",
+        "player_name": "P.Nacua",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 13,
+        "ppg": 17.88,
+        "std_dev": 9.52,
+        "vorp": 103.67
+    },
+    {
+        "player_id": "00-0039139",
+        "player_name": "J.Gibbs",
+        "position": "RB",
+        "team": "DET",
+        "games_played": 18,
+        "ppg": 21.8,
+        "std_dev": 9.45,
+        "vorp": 201.05
+    },
+    {
+        "player_id": "00-0039144",
+        "player_name": "L.Musgrave",
+        "position": "TE",
+        "team": "GB",
+        "games_played": 7,
+        "ppg": 1.64,
+        "std_dev": 1.54,
+        "vorp": -28.44
+    },
+    {
+        "player_id": "00-0039146",
+        "player_name": "J.Reed",
+        "position": "WR",
+        "team": "GB",
+        "games_played": 18,
+        "ppg": 11.53,
+        "std_dev": 8.49,
+        "vorp": 29.36
+    },
+    {
+        "player_id": "00-0039150",
+        "player_name": "B.Young",
+        "position": "QB",
+        "team": "CAR",
+        "games_played": 14,
+        "ppg": 14.22,
+        "std_dev": 9.97,
+        "vorp": -0.35
+    },
+    {
+        "player_id": "00-0039152",
+        "player_name": "W.Levis",
+        "position": "QB",
+        "team": "TEN",
+        "games_played": 12,
+        "ppg": 10.83,
+        "std_dev": 7.0,
+        "vorp": -40.95
+    },
+    {
+        "player_id": "00-0039163",
+        "player_name": "C.Stroud",
+        "position": "QB",
+        "team": "HOU",
+        "games_played": 19,
+        "ppg": 13.68,
+        "std_dev": 4.78,
+        "vorp": -10.72
+    },
+    {
+        "player_id": "00-0039164",
+        "player_name": "A.Richardson",
+        "position": "QB",
+        "team": "IND",
+        "games_played": 11,
+        "ppg": 15.21,
+        "std_dev": 8.0,
+        "vorp": 10.71
+    },
+    {
+        "player_id": "00-0039165",
+        "player_name": "Z.Charbonnet",
+        "position": "RB",
+        "team": "SEA",
+        "games_played": 17,
+        "ppg": 10.81,
+        "std_dev": 9.47,
+        "vorp": 2.98
+    },
+    {
+        "player_id": "00-0039236",
+        "player_name": "J.Wilson",
+        "position": "WR",
+        "team": "PHI",
+        "games_played": 10,
+        "ppg": 1.48,
+        "std_dev": 2.73,
+        "vorp": -84.22
+    },
+    {
+        "player_id": "00-0039325",
+        "player_name": "C.Steele",
+        "position": "RB",
+        "team": "KC",
+        "games_played": 12,
+        "ppg": 2.32,
+        "std_dev": 2.24,
+        "vorp": -99.67
+    },
+    {
+        "player_id": "00-0039337",
+        "player_name": "M.Nabers",
+        "position": "WR",
+        "team": "NYG",
+        "games_played": 15,
+        "ppg": 18.11,
+        "std_dev": 8.06,
+        "vorp": 123.06
+    },
+    {
+        "player_id": "00-0039338",
+        "player_name": "B.Bowers",
+        "position": "TE",
+        "team": "LV",
+        "games_played": 17,
+        "ppg": 15.45,
+        "std_dev": 7.89,
+        "vorp": 165.71
+    },
+    {
+        "player_id": "00-0039342",
+        "player_name": "X.Legette",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 15,
+        "ppg": 8.34,
+        "std_dev": 4.75,
+        "vorp": -23.44
+    },
+    {
+        "player_id": "00-0039355",
+        "player_name": "L.McCaffrey",
+        "position": "WR",
+        "team": "WAS",
+        "games_played": 13,
+        "ppg": 2.68,
+        "std_dev": 2.1,
+        "vorp": -93.93
+    },
+    {
+        "player_id": "00-0039356",
+        "player_name": "J.Sanders",
+        "position": "TE",
+        "team": "CAR",
+        "games_played": 15,
+        "ppg": 4.88,
+        "std_dev": 4.45,
+        "vorp": -12.38
+    },
+    {
+        "player_id": "00-0039359",
+        "player_name": "C.Stover",
+        "position": "TE",
+        "team": "HOU",
+        "games_played": 14,
+        "ppg": 2.94,
+        "std_dev": 3.12,
+        "vorp": -38.78
+    },
+    {
+        "player_id": "00-0039361",
+        "player_name": "B.Irving",
+        "position": "RB",
+        "team": "TB",
+        "games_played": 18,
+        "ppg": 14.59,
+        "std_dev": 7.26,
+        "vorp": 71.35
+    },
+    {
+        "player_id": "00-0039363",
+        "player_name": "I.Guerendo",
+        "position": "RB",
+        "team": "SF",
+        "games_played": 13,
+        "ppg": 7.4,
+        "std_dev": 8.58,
+        "vorp": -42.0
+    },
+    {
+        "player_id": "00-0039364",
+        "player_name": "S.Vaki",
+        "position": "RB",
+        "team": "DET",
+        "games_played": 4,
+        "ppg": 2.02,
+        "std_dev": 1.63,
+        "vorp": -34.42
+    },
+    {
+        "player_id": "00-0039373",
+        "player_name": "A.Estime",
+        "position": "RB",
+        "team": "DEN",
+        "games_played": 13,
+        "ppg": 3.9,
+        "std_dev": 3.21,
+        "vorp": -87.5
+    },
+    {
+        "player_id": "00-0039376",
+        "player_name": "S.Rattler",
+        "position": "QB",
+        "team": "NO",
+        "games_played": 7,
+        "ppg": 10.47,
+        "std_dev": 3.2,
+        "vorp": -26.41
+    },
+    {
+        "player_id": "00-0039379",
+        "player_name": "J.Thrash",
+        "position": "WR",
+        "team": "CLE",
+        "games_played": 6,
+        "ppg": 0.87,
+        "std_dev": 1.38,
+        "vorp": -54.21
+    },
+    {
+        "player_id": "00-0039384",
+        "player_name": "T.Tracy",
+        "position": "RB",
+        "team": "NYG",
+        "games_played": 17,
+        "ppg": 10.96,
+        "std_dev": 7.16,
+        "vorp": 5.58
+    },
+    {
+        "player_id": "00-0039386",
+        "player_name": "B.Means",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 4,
+        "ppg": 6.7,
+        "std_dev": 6.5,
+        "vorp": -12.81
+    },
+    {
+        "player_id": "00-0039391",
+        "player_name": "K.Vidal",
+        "position": "RB",
+        "team": "LAC",
+        "games_played": 9,
+        "ppg": 3.63,
+        "std_dev": 3.69,
+        "vorp": -62.97
+    },
+    {
+        "player_id": "00-0039410",
+        "player_name": "R.Flournoy",
+        "position": "WR",
+        "team": "DAL",
+        "games_played": 7,
+        "ppg": 2.89,
+        "std_dev": 2.26,
+        "vorp": -49.12
+    },
+    {
+        "player_id": "00-0039424",
+        "player_name": "D.Vele",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 14,
+        "ppg": 7.61,
+        "std_dev": 5.41,
+        "vorp": -32.13
+    },
+    {
+        "player_id": "00-0039491",
+        "player_name": "J.Coker",
+        "position": "WR",
+        "team": "CAR",
+        "games_played": 11,
+        "ppg": 8.41,
+        "std_dev": 6.71,
+        "vorp": -16.37
+    },
+    {
+        "player_id": "00-0039530",
+        "player_name": "B.Spann-Ford",
+        "position": "TE",
+        "team": "DAL",
+        "games_played": 6,
+        "ppg": 2.97,
+        "std_dev": 3.2,
+        "vorp": -16.43
+    },
+    {
+        "player_id": "00-0039623",
+        "player_name": "M.Tipton",
+        "position": "WR",
+        "team": "NO",
+        "games_played": 9,
+        "ppg": 2.66,
+        "std_dev": 3.18,
+        "vorp": -65.22
+    },
+    {
+        "player_id": "00-0039631",
+        "player_name": "C.Grandy",
+        "position": "TE",
+        "team": "CIN",
+        "games_played": 4,
+        "ppg": 1.95,
+        "std_dev": 0.92,
+        "vorp": -15.02
+    },
+    {
+        "player_id": "00-0039650",
+        "player_name": "B.Oliver",
+        "position": "WR",
+        "team": "TEN",
+        "games_played": 5,
+        "ppg": 3.1,
+        "std_dev": 1.14,
+        "vorp": -34.01
+    },
+    {
+        "player_id": "00-0039732",
+        "player_name": "B.Nix",
+        "position": "QB",
+        "team": "DEN",
+        "games_played": 18,
+        "ppg": 18.4,
+        "std_dev": 7.33,
+        "vorp": 74.92
+    },
+    {
+        "player_id": "00-0039737",
+        "player_name": "T.Reiman",
+        "position": "TE",
+        "team": "ARI",
+        "games_played": 5,
+        "ppg": 1.94,
+        "std_dev": 0.68,
+        "vorp": -18.83
+    },
+    {
+        "player_id": "00-0039738",
+        "player_name": "B.Corum",
+        "position": "RB",
+        "team": "LA",
+        "games_played": 14,
+        "ppg": 2.39,
+        "std_dev": 1.61,
+        "vorp": -115.33
+    },
+    {
+        "player_id": "00-0039746",
+        "player_name": "W.Shipley",
+        "position": "RB",
+        "team": "PHI",
+        "games_played": 6,
+        "ppg": 4.9,
+        "std_dev": 5.87,
+        "vorp": -34.38
+    },
+    {
+        "player_id": "00-0039751",
+        "player_name": "J.Whittington",
+        "position": "WR",
+        "team": "LA",
+        "games_played": 7,
+        "ppg": 7.81,
+        "std_dev": 5.73,
+        "vorp": -14.62
+    },
+    {
+        "player_id": "00-0039793",
+        "player_name": "A.Barner",
+        "position": "TE",
+        "team": "SEA",
+        "games_played": 14,
+        "ppg": 5.61,
+        "std_dev": 3.98,
+        "vorp": -1.38
+    },
+    {
+        "player_id": "00-0039794",
+        "player_name": "B.Allen",
+        "position": "RB",
+        "team": "NYJ",
+        "games_played": 17,
+        "ppg": 5.01,
+        "std_dev": 5.08,
+        "vorp": -95.52
+    },
+    {
+        "player_id": "00-0039796",
+        "player_name": "R.Ali",
+        "position": "RB",
+        "team": "BAL",
+        "games_played": 4,
+        "ppg": 0.78,
+        "std_dev": 1.63,
+        "vorp": -39.42
+    },
+    {
+        "player_id": "00-0039798",
+        "player_name": "I.Davis",
+        "position": "RB",
+        "team": "NYJ",
+        "games_played": 9,
+        "ppg": 5.1,
+        "std_dev": 5.32,
+        "vorp": -49.77
+    },
+    {
+        "player_id": "00-0039810",
+        "player_name": "J.Burton",
+        "position": "WR",
+        "team": "CIN",
+        "games_played": 4,
+        "ppg": 3.68,
+        "std_dev": 2.01,
+        "vorp": -24.91
+    },
+    {
+        "player_id": "00-0039814",
+        "player_name": "E.All",
+        "position": "TE",
+        "team": "CIN",
+        "games_played": 8,
+        "ppg": 4.47,
+        "std_dev": 2.41,
+        "vorp": -9.84
+    },
+    {
+        "player_id": "00-0039847",
+        "player_name": "T.Johnson",
+        "position": "TE",
+        "team": "NYG",
+        "games_played": 10,
+        "ppg": 6.81,
+        "std_dev": 3.95,
+        "vorp": 11.04
+    },
+    {
+        "player_id": "00-0039849",
+        "player_name": "M.Harrison",
+        "position": "WR",
+        "team": "ARI",
+        "games_played": 17,
+        "ppg": 11.68,
+        "std_dev": 7.97,
+        "vorp": 30.16
+    },
+    {
+        "player_id": "00-0039851",
+        "player_name": "D.Maye",
+        "position": "QB",
+        "team": "NE",
+        "games_played": 13,
+        "ppg": 14.24,
+        "std_dev": 6.83,
+        "vorp": 0.01
+    },
+    {
+        "player_id": "00-0039853",
+        "player_name": "J.Baker",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 4,
+        "ppg": 0.55,
+        "std_dev": 1.1,
+        "vorp": -37.41
+    },
+    {
+        "player_id": "00-0039855",
+        "player_name": "J.McMillan",
+        "position": "WR",
+        "team": "TB",
+        "games_played": 14,
+        "ppg": 10.11,
+        "std_dev": 8.11,
+        "vorp": 2.87
+    },
+    {
+        "player_id": "00-0039868",
+        "player_name": "T.Franklin",
+        "position": "WR",
+        "team": "DEN",
+        "games_played": 17,
+        "ppg": 4.74,
+        "std_dev": 3.95,
+        "vorp": -87.84
+    },
+    {
+        "player_id": "00-0039874",
+        "player_name": "J.Wright",
+        "position": "RB",
+        "team": "MIA",
+        "games_played": 13,
+        "ppg": 2.21,
+        "std_dev": 2.29,
+        "vorp": -109.5
+    },
+    {
+        "player_id": "00-0039875",
+        "player_name": "R.Davis",
+        "position": "RB",
+        "team": "BUF",
+        "games_played": 19,
+        "ppg": 6.62,
+        "std_dev": 6.1,
+        "vorp": -76.28
+    },
+    {
+        "player_id": "00-0039880",
+        "player_name": "M.Washington",
+        "position": "WR",
+        "team": "MIA",
+        "games_played": 12,
+        "ppg": 4.73,
+        "std_dev": 3.7,
+        "vorp": -62.03
+    },
+    {
+        "player_id": "00-0039890",
+        "player_name": "A.Mitchell",
+        "position": "WR",
+        "team": "IND",
+        "games_played": 17,
+        "ppg": 3.28,
+        "std_dev": 3.56,
+        "vorp": -112.58
+    },
+    {
+        "player_id": "00-0039893",
+        "player_name": "B.Thomas",
+        "position": "WR",
+        "team": "JAX",
+        "games_played": 17,
+        "ppg": 16.47,
+        "std_dev": 8.18,
+        "vorp": 111.66
+    },
+    {
+        "player_id": "00-0039894",
+        "player_name": "X.Worthy",
+        "position": "WR",
+        "team": "KC",
+        "games_played": 19,
+        "ppg": 13.35,
+        "std_dev": 8.97,
+        "vorp": 65.55
+    },
+    {
+        "player_id": "00-0039901",
+        "player_name": "K.Coleman",
+        "position": "WR",
+        "team": "BUF",
+        "games_played": 16,
+        "ppg": 7.17,
+        "std_dev": 5.4,
+        "vorp": -43.74
+    },
+    {
+        "player_id": "00-0039907",
+        "player_name": "J.Polk",
+        "position": "WR",
+        "team": "NE",
+        "games_played": 13,
+        "ppg": 2.52,
+        "std_dev": 3.08,
+        "vorp": -96.03
+    },
+    {
+        "player_id": "00-0039910",
+        "player_name": "J.Daniels",
+        "position": "QB",
+        "team": "WAS",
+        "games_played": 20,
+        "ppg": 21.01,
+        "std_dev": 8.47,
+        "vorp": 135.38
+    },
+    {
+        "player_id": "00-0039912",
+        "player_name": "B.Sinnott",
+        "position": "TE",
+        "team": "WAS",
+        "games_played": 5,
+        "ppg": 3.42,
+        "std_dev": 2.99,
+        "vorp": -11.43
+    },
+    {
+        "player_id": "00-0039915",
+        "player_name": "L.McConkey",
+        "position": "WR",
+        "team": "LAC",
+        "games_played": 17,
+        "ppg": 16.09,
+        "std_dev": 8.45,
+        "vorp": 105.26
+    },
+    {
+        "player_id": "00-0039916",
+        "player_name": "R.Pearsall",
+        "position": "WR",
+        "team": "SF",
+        "games_played": 10,
+        "ppg": 9.35,
+        "std_dev": 9.64,
+        "vorp": -5.52
+    },
+    {
+        "player_id": "00-0039917",
+        "player_name": "M.Penix",
+        "position": "QB",
+        "team": "ATL",
+        "games_played": 5,
+        "ppg": 8.82,
+        "std_dev": 10.04,
+        "vorp": -27.11
+    },
+    {
+        "player_id": "00-0039918",
+        "player_name": "C.Williams",
+        "position": "QB",
+        "team": "CHI",
+        "games_played": 17,
+        "ppg": 15.21,
+        "std_dev": 7.89,
+        "vorp": 16.44
+    },
+    {
+        "player_id": "00-0039919",
+        "player_name": "R.Odunze",
+        "position": "WR",
+        "team": "CHI",
+        "games_played": 17,
+        "ppg": 8.64,
+        "std_dev": 6.24,
+        "vorp": -21.44
+    },
+    {
+        "player_id": "00-0039920",
+        "player_name": "M.Corley",
+        "position": "WR",
+        "team": "NYJ",
+        "games_played": 5,
+        "ppg": 1.44,
+        "std_dev": 0.48,
+        "vorp": -42.31
+    },
+    {
+        "player_id": "00-0039921",
+        "player_name": "T.Benson",
+        "position": "RB",
+        "team": "ARI",
+        "games_played": 12,
+        "ppg": 3.92,
+        "std_dev": 3.76,
+        "vorp": -80.57
+    }
+]
