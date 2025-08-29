@@ -22,22 +22,10 @@ def generate_ros_projections():
         df_weekly = pd.read_csv(PROCESSED_DATA_PATH)
         df_schedule = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
         
-        # --- FIX: Manually load and flatten the nested matchup.json file ---
+        # --- FIX: Load the matchup report directly into a DataFrame ---
+        # The file is now a simple, flat list of records, so we can read it in one line.
         matchup_path = os.path.join(REPORTS_DIR, 'matchup_report.json')
-        with open(matchup_path, 'r') as f:
-            nested_matchup_data = json.load(f)
-        
-        flat_matchup_list = []
-        # Iterate through each position (e.g., 'QB', 'RB') in the JSON
-        for position, teams in nested_matchup_data.items():
-            # Iterate through the list of teams for that position
-            for team_data in teams:
-                team_data['position'] = position # Add the position to each team's dictionary
-                flat_matchup_list.append(team_data)
-        
-        # Convert the flattened list of dictionaries into a DataFrame
-        df_matchups = pd.DataFrame(flat_matchup_list)
-        df_matchups.rename(columns={'rank': 'matchup_rank'}, inplace=True) # Rename for clarity
+        df_matchups = pd.read_json(matchup_path)
         
         print("✅ Successfully loaded all data sources (weekly, schedule, matchups).")
     except FileNotFoundError as e:
