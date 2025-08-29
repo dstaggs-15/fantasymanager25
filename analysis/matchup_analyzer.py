@@ -1,71 +1,51 @@
-# analysis/matchup_analyzer.py
 import pandas as pd
 import json
 import os
-import sys
+
+# --- Configuration ---
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROCESSED_DATA_PATH = os.path.join(BASE_DIR, 'docs', 'data', 'processed', 'weekly_data_processed.csv')
+RAW_DATA_DIR = os.path.join(BASE_DIR, 'docs', 'data', 'raw')
+REPORTS_DIR = os.path.join(BASE_DIR, 'docs', 'data', 'reports')
 
 def analyze_matchups():
     """
-    Analyzes historical data to determine how many fantasy points each NFL team's
-    defense allows to each position. Ranks defenses from easiest (most points allowed)
-    to hardest (fewest points allowed).
+    Analyzes points allowed by each defense to each offensive position and saves a flat report.
     """
-    print("\n--- Starting Matchup Analysis ---")
-
-    # --- 1. Define File Paths ---
-    processed_data_path = os.path.join('docs', 'data', 'processed', 'weekly_data_processed.csv')
-    schedule_path = os.path.join('docs', 'data', 'raw', 'schedule_raw.csv')
-    reports_dir = os.path.join('docs', 'data', 'reports')
-    os.makedirs(reports_dir, exist_ok=True)
-    output_path = os.path.join(reports_dir, 'matchup_report.json')
-
-    # --- 2. Load Data ---
+    print("--- Starting Matchup Analysis ---")
     try:
-        df_stats = pd.read_csv(processed_data_path)
-        df_schedule = pd.read_csv(schedule_path)
+        df_weekly = pd.read_csv(PROCESSED_DATA_PATH)
+        df_schedule = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
         print("Successfully loaded processed stats and schedule data.")
     except FileNotFoundError as e:
-        print(f"❌ CRITICAL ERROR: Could not find a required data file. {e}")
-        sys.exit(1)
+        print(f"❌ Error loading data: {e}. Aborting.")
+        return
 
-    # --- 3. Determine Opponent for Each Player Game ---
-    df_schedule_slim = df_schedule[['season', 'week', 'away_team', 'home_team']].copy()
+    # Determine opponent for each player in each game
+    opponent_map = {}
+    for _, row in df_schedule.iterrows():
+        game_key_home = f"{row['season']}_{row['week']}_{row['home_team']}"
+        game_key_away = f"{row['season']}_{row['week']}_{row['away_team']}"
+        opponent_map[game_key_home] = row['away_team']
+        opponent_map[game_key_away] = row['home_team']
     
-    home_opponents = df_schedule_slim.rename(columns={'home_team': 'team', 'away_team': 'opponent'})
-    away_opponents = df_schedule_slim.rename(columns={'away_team': 'team', 'home_team': 'opponent'})
-    opponent_map = pd.concat([home_opponents, away_opponents])
-
-    # --- CORRECTED MERGE OPERATION ---
-    # Merge the opponent map into our main stats dataframe using the correct syntax.
-    # We join on three columns: season, week, and the player's team.
-    df_merged = pd.merge(
-        df_stats,
-        opponent_map,
-        how='left',
-        left_on=['season', 'week', 'recent_team'],
-        right_on=['season', 'week', 'team']
-    )
-
-    # --- 4. Calculate Fantasy Points Allowed by each Defense ---
-    points_allowed = df_merged.groupby(['opponent', 'position'])['fantasy_points'].mean().reset_index()
-    points_allowed.rename(columns={'opponent': 'team', 'fantasy_points': 'points_allowed'}, inplace=True)
+    df_weekly['game_key'] = df_weekly['season'].astype(str) + '_' + df_weekly['week'].astype(str) + '_' + df_weekly['recent_team']
+    df_weekly['opponent'] = df_weekly['game_key'].map(opponent_map)
     
-    print("Calculating average fantasy points allowed by each defense...")
+    # Calculate average points allowed by each defense (opponent) to each position
+    df_matchups = df_weekly.groupby(['opponent', 'position'])['fantasy_points'].mean().reset_index()
+    
+    # Rank defenses: A higher rank (closer to 1) means they allow MORE points (an easier matchup)
+    df_matchups['matchup_rank'] = df_matchups.groupby('position')['fantasy_points'].rank(ascending=False, method='dense')
+    
+    # Rename 'opponent' to 'team' for consistency
+    df_matchups.rename(columns={'opponent': 'team'}, inplace=True)
 
-    # --- 5. Rank the Defenses ---
-    points_allowed['rank'] = points_allowed.groupby('position')['points_allowed'].rank(ascending=False, method='first').astype(int)
-    points_allowed.sort_values(by=['position', 'rank'], inplace=True)
-
-    # --- 6. Format for JSON and Save ---
-    report = {}
-    for pos in points_allowed['position'].unique():
-        # Filter for relevant positions
-        if pos in ['QB', 'RB', 'WR', 'TE']:
-            pos_df = points_allowed[points_allowed['position'] == pos]
-            report[pos] = pos_df[['team', 'points_allowed', 'rank']].to_dict(orient='records')
-
-    with open(output_path, 'w') as f:
-        json.dump(report, f, indent=4)
+    # Prepare and save the final, simple, flat report
+    report_df = df_matchups[['team', 'position', 'matchup_rank']].dropna()
+    
+    output_path = os.path.join(REPORTS_DIR, 'matchup_report.json')
+    report_df.to_json(output_path, orient='records', indent=4)
 
     print(f"✅ Successfully created matchup analysis report at: {output_path}")
     print("--- Matchup Analysis Finished ---")
