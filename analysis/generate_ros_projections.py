@@ -17,7 +17,7 @@ def generate_ros_projections():
     """
     print("--- Starting Advanced 'Homegrown' ROS Projection Generation ---")
     
-    # --- 1. Load All Necessary Data ---
+    # Load All Necessary Data
     try:
         df_weekly = pd.read_csv(PROCESSED_DATA_PATH)
         df_schedule = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
@@ -27,7 +27,7 @@ def generate_ros_projections():
         print(f"❌ Error: A required data file was not found. {e}. Aborting.")
         return
 
-    # --- 2. Establish Performance Baseline ---
+    # Establish Performance Baseline
     player_info_cols = ['player_id', 'player_name', 'position', 'recent_team']
     if not all(col in df_weekly.columns for col in player_info_cols):
         print(f"❌ Error: Input file is missing required columns. Needed: {player_info_cols}")
@@ -46,7 +46,7 @@ def generate_ros_projections():
         latest_stats['last_8_games_avg'].fillna(0) * 0.40
     ).round(2)
 
-    # --- 3. Analyze Future Schedule and Bye Week ---
+    # Analyze Future Schedule and Bye Week
     last_completed_week = df_weekly['week'].max()
     df_future_schedule = df_schedule[df_schedule['week'] > last_completed_week]
     
@@ -57,7 +57,6 @@ def generate_ros_projections():
         
         team_schedule = df_future_schedule[(df_future_schedule['home_team'] == team) | (df_future_schedule['away_team'] == team)]
         
-        # --- FIX: Look for the team in the 'home_team' column for bye weeks ---
         bye_week_df = df_schedule[(df_schedule['game_type'] == 'BYE') & (df_schedule['home_team'] == team)]
         bye_week = bye_week_df['week'].max() if not bye_week_df.empty else 0
 
@@ -69,7 +68,7 @@ def generate_ros_projections():
         if last_completed_week < bye_week <= TOTAL_WEEKS:
             games_remaining -= 1
 
-        # --- 4. Calculate Strength of Schedule (SOS) Modifier ---
+        # Calculate Strength of Schedule (SOS) Modifier
         avg_opponent_rank = df_matchups[df_matchups['team'].isin(opponents) & (df_matchups['position'] == pos)]['matchup_rank'].mean()
         
         sos_modifier = 1 + ((16.5 - avg_opponent_rank) * 0.015) if not pd.isna(avg_opponent_rank) else 1.0
@@ -82,7 +81,7 @@ def generate_ros_projections():
 
     df_futures = pd.DataFrame(player_futures)
 
-    # --- 5. Calculate Final ROS Projection ---
+    # Calculate Final ROS Projection
     final_df = pd.merge(latest_stats, df_futures, on='player_id')
     final_df = pd.merge(player_info, final_df, on='player_id', suffixes=('', '_y'))
 
@@ -91,7 +90,7 @@ def generate_ros_projections():
     
     final_df['ros_rank'] = final_df.groupby('position')['ros_total_points'].rank(method='dense', ascending=False)
     
-    # --- 6. Save the Report ---
+    # Save the Report
     report_df = final_df[['player_id', 'player_name', 'position', 'team', 'ros_total_points', 'ros_rank']].sort_values(by='ros_total_points', ascending=False)
     report_df.rename(columns={'ros_total_points': 'ros_projection'}, inplace=True)
     
