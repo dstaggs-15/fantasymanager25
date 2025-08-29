@@ -1,65 +1,81 @@
-<main>
-    <h1>Trade Analyzer</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Analyzer - Fantasy Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1>Trade Analyzer</h1>
 
-    <div class="card" style="margin-bottom: 2rem;">
-        <details>
-            <summary>How The 8-Factor Trade Grade is Calculated</summary>
-            <div class="explanation-content">
-                <p>The final grade is determined by calculating a <strong>Trade Value</strong> (0-100) for each player based on a weighted average of eight distinct factors. The total value of all players on each side of the trade is compared to determine the final letter grade.</p>
-                
-                <h4>Core Value Factors (60%)</h4>
-                <ul>
-                    <li><strong>ROS Projections (30%):</strong> Our homegrown Rest-of-Season projection. This is the most heavily weighted factor as it measures a player's expected future value for the remainder of the season.</li>
-                    <li><strong>Proven Production (15%):</strong> A player's historical Points Per Game (PPG). This grounds the projection in historical reality and measures a player's reliable floor.</li>
-                    <li><strong>Player Tier (15%):</strong> A grade based on a player's rank within their position, sorting them into tiers (Elite, Great, etc.). Acquiring higher-tier players provides more value.</li>
-                </ul>
-
-                <h4>Contextual & Roster-Fit Factors (40%)</h4>
-                <ul>
-                    <li><strong>Weekly Upside (10%):</strong> Uses the 4-Factor "Start Score" for the upcoming week to measure a player's immediate impact and short-term value.</li>
-                    <li><strong>Roster Consistency (10%):</strong> A measure of volatility using Standard Deviation. A lower Std Dev (more consistent player) results in a higher score.</li>
-                    <li><strong>Player Efficiency (5%):</strong> An advanced metric using VORP (Value Over Replacement Player) as a proxy for overall efficiency and impact.</li>
-                    <li><strong>Player Age (5%):</strong> A score that rewards younger players, who have more long-term and dynasty value.</li>
-                    <li><strong>Team Offense (5%):</strong> A grade for the quality of the player's offensive environment. Players on high-scoring teams have more opportunities.</li>
-                </ul>
+            <div class="card" style="margin-bottom: 2rem;">
+                <details>
+                    <summary>How The 8-Factor Trade Grade is Calculated</summary>
+                    <div class="explanation-content">
+                        <p>The final grade is determined by calculating a <strong>Trade Value</strong> (0-100) for each player based on a weighted average of eight distinct factors. The total value of all players on each side of the trade is compared to determine the final letter grade.</p>
+                        <h4>Core Value Factors (60%)</h4>
+                        <ul>
+                            <li><strong>ROS Projections (30%):</strong> Our homegrown Rest-of-Season projection, measuring a player's expected future value.</li>
+                            <li><strong>Proven Production (15%):</strong> A player's historical Points Per Game (PPG), measuring their reliable floor.</li>
+                            <li><strong>Player Tier (15%):</strong> A grade based on a player's rank within their position (Elite, Great, etc.).</li>
+                        </ul>
+                        <h4>Contextual & Roster-Fit Factors (40%)</h4>
+                        <ul>
+                            <li><strong>Weekly Upside (10%):</strong> Uses the "Start Score" for the upcoming week to measure immediate impact.</li>
+                            <li><strong>Roster Consistency (10%):</strong> Measures volatility using Standard Deviation.</li>
+                            <li><strong>Player Efficiency (5%):</strong> An advanced metric using VORP (Value Over Replacement Player).</li>
+                            <li><strong>Player Age (5%):</strong> Rewards younger players with more long-term value.</li>
+                            <li><strong>Team Offense (5%):</strong> Grades the quality of the player's offensive environment.</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
-        </details>
+
+            <div class="trade-interface">
+                <div class="trade-side">
+                    <h3>Team A Receives</h3>
+                    <div class="search-container">
+                        <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player...">
+                        <button id="add-player-a" class="btn">Add</button>
+                    </div>
+                    <div id="players-a-container" class="player-cards-container"></div>
+                </div>
+                <div class="trade-side">
+                    <h3>Team B Receives</h3>
+                    <div class="search-container">
+                        <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player...">
+                        <button id="add-player-b" class="btn">Add</button>
+                    </div>
+                    <div id="players-b-container" class="player-cards-container"></div>
+                </div>
+            </div>
+
+            <datalist id="player-list"></datalist>
+
+            <div id="trade-results-container" class="card" style="margin-top: 2rem; display: none;">
+                <h2>Trade Results</h2>
+                <div class="results-grid">
+                    <div class="result-box">
+                        <h4>Team A Grade</h4>
+                        <p id="grade-a" class="grade">-</p>
+                        <p id="value-a" class="total-value">Total Value: --</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>Team B Grade</h4>
+                        <p id="grade-b" class="grade">-</p>
+                        <p id="value-b" class="total-value">Total Value: --</p>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <div class="trade-interface">
-        <div class="trade-side">
-            <h3>Team A Receives</h3>
-            <div class="search-container">
-                <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player...">
-                <button id="add-player-a" class="btn">Add</button>
-            </div>
-            <div id="players-a-container" class="player-cards-container"></div>
-        </div>
-        <div class="trade-side">
-            <h3>Team B Receives</h3>
-            <div class="search-container">
-                <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player...">
-                <button id="add-player-b" class="btn">Add</button>
-            </div>
-            <div id="players-b-container" class="player-cards-container"></div>
-        </div>
-    </div>
-
-    <datalist id="player-list"></datalist>
-
-    <div id="trade-results-container" class="card" style="margin-top: 2rem; display: none;">
-        <h2>Trade Results</h2>
-        <div class="results-grid">
-            <div class="result-box">
-                <h4>Team A Grade</h4>
-                <p id="grade-a" class="grade">-</p>
-                <p id="value-a" class="total-value">Total Value: --</p>
-            </div>
-            <div class="result-box">
-                <h4>Team B Grade</h4>
-                <p id="grade-b" class="grade">-</p>
-                <p id="value-b" class="total-value">Total Value: --</p>
-            </div>
-        </div>
-    </div>
-</main>
+    <script src="trade-analyzer.js" defer></script>
+</body>
+</html>
