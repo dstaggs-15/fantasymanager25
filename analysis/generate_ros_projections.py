@@ -17,17 +17,34 @@ def generate_ros_projections():
     """
     print("--- Starting Advanced 'Homegrown' ROS Projection Generation ---")
     
-    # Load All Necessary Data
+    # --- 1. Load All Necessary Data ---
     try:
         df_weekly = pd.read_csv(PROCESSED_DATA_PATH)
         df_schedule = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
-        df_matchups = pd.read_json(os.path.join(REPORTS_DIR, 'matchup_report.json'))
+        
+        # --- FIX: Manually load and flatten the nested matchup.json file ---
+        matchup_path = os.path.join(REPORTS_DIR, 'matchup_report.json')
+        with open(matchup_path, 'r') as f:
+            nested_matchup_data = json.load(f)
+        
+        flat_matchup_list = []
+        # Iterate through each position (e.g., 'QB', 'RB') in the JSON
+        for position, teams in nested_matchup_data.items():
+            # Iterate through the list of teams for that position
+            for team_data in teams:
+                team_data['position'] = position # Add the position to each team's dictionary
+                flat_matchup_list.append(team_data)
+        
+        # Convert the flattened list of dictionaries into a DataFrame
+        df_matchups = pd.DataFrame(flat_matchup_list)
+        df_matchups.rename(columns={'rank': 'matchup_rank'}, inplace=True) # Rename for clarity
+        
         print("✅ Successfully loaded all data sources (weekly, schedule, matchups).")
     except FileNotFoundError as e:
         print(f"❌ Error: A required data file was not found. {e}. Aborting.")
         return
 
-    # Establish Performance Baseline
+    # --- 2. Establish Performance Baseline ---
     player_info_cols = ['player_id', 'player_name', 'position', 'recent_team']
     if not all(col in df_weekly.columns for col in player_info_cols):
         print(f"❌ Error: Input file is missing required columns. Needed: {player_info_cols}")
@@ -46,7 +63,7 @@ def generate_ros_projections():
         latest_stats['last_8_games_avg'].fillna(0) * 0.40
     ).round(2)
 
-    # Analyze Future Schedule and Bye Week
+    # --- 3. Analyze Future Schedule and Bye Week ---
     last_completed_week = df_weekly['week'].max()
     df_future_schedule = df_schedule[df_schedule['week'] > last_completed_week]
     
@@ -68,8 +85,8 @@ def generate_ros_projections():
         if last_completed_week < bye_week <= TOTAL_WEEKS:
             games_remaining -= 1
 
-        # Calculate Strength of Schedule (SOS) Modifier
-        avg_opponent_rank = df_matchups[df_matchups['team'].isin(opponents) & (df_matchups['position'] == pos)]['matchup_rank'].mean()
+        # --- 4. Calculate Strength of Schedule (SOS) Modifier ---
+        avg_opponent_rank = df_matchups[(df_matchups['team'].isin(opponents)) & (df_matchups['position'] == pos)]['matchup_rank'].mean()
         
         sos_modifier = 1 + ((16.5 - avg_opponent_rank) * 0.015) if not pd.isna(avg_opponent_rank) else 1.0
 
@@ -81,7 +98,7 @@ def generate_ros_projections():
 
     df_futures = pd.DataFrame(player_futures)
 
-    # Calculate Final ROS Projection
+    # --- 5. Calculate Final ROS Projection ---
     final_df = pd.merge(latest_stats, df_futures, on='player_id')
     final_df = pd.merge(player_info, final_df, on='player_id', suffixes=('', '_y'))
 
@@ -90,7 +107,7 @@ def generate_ros_projections():
     
     final_df['ros_rank'] = final_df.groupby('position')['ros_total_points'].rank(method='dense', ascending=False)
     
-    # Save the Report
+    # --- 6. Save the Report ---
     report_df = final_df[['player_id', 'player_name', 'position', 'team', 'ros_total_points', 'ros_rank']].sort_values(by='ros_total_points', ascending=False)
     report_df.rename(columns={'ros_total_points': 'ros_projection'}, inplace=True)
     
