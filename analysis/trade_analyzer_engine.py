@@ -3,8 +3,9 @@ import pandas as pd
 from datetime import datetime
 import os
 
+# --- FIX: Renamed 'proven_production' to 'production' to match the score column ---
 TRADE_VALUE_WEIGHTS = {
-    'ros_projections': 0.30, 'proven_production': 0.15, 'player_tier': 0.15,
+    'ros_projections': 0.30, 'production': 0.15, 'player_tier': 0.15,
     'weekly_upside': 0.10, 'roster_consistency': 0.10, 'player_efficiency': 0.05,
     'player_age': 0.05, 'team_offense': 0.05
 }
@@ -48,8 +49,11 @@ def generate_trade_value_report():
     if not start_scores.empty: master_df = pd.merge(master_df, start_scores[['player_id', 'start_score']], on='player_id', how='left')
     else: master_df['start_score'] = 0
     
-    master_df.select_dtypes(include='number').fillna(0, inplace=True)
+    # Fill any remaining NaNs in numeric columns with 0
+    numeric_cols = master_df.select_dtypes(include='number').columns
+    master_df[numeric_cols] = master_df[numeric_cols].fillna(0)
     
+    # Calculate all the individual factor scores
     master_df['ros_score'] = normalize_score(master_df['ros_projection'])
     master_df['production_score'] = normalize_score(master_df['ppg'])
     master_df['tier_score'] = master_df['ros_rank'].apply(get_player_tier_score)
@@ -59,7 +63,17 @@ def generate_trade_value_report():
     master_df['age_score'] = 0 # Placeholder as age data is not used
     master_df['offense_score'] = normalize_score(master_df.groupby('team')['ppg'].transform('mean')).fillna(50)
 
-    master_df['trade_value'] = sum(master_df[f_name.replace('_projections', '_score')] * weight for f_name, weight in TRADE_VALUE_WEIGHTS.items()).round(1)
+    # --- FIX: More explicit and readable calculation for the final trade value ---
+    master_df['trade_value'] = (
+        master_df['ros_score'] * TRADE_VALUE_WEIGHTS['ros_projections'] +
+        master_df['production_score'] * TRADE_VALUE_WEIGHTS['production'] +
+        master_df['tier_score'] * TRADE_VALUE_WEIGHTS['player_tier'] +
+        master_df['upside_score'] * TRADE_VALUE_WEIGHTS['weekly_upside'] +
+        master_df['consistency_score'] * TRADE_VALUE_WEIGHTS['roster_consistency'] +
+        master_df['efficiency_score'] * TRADE_VALUE_WEIGHTS['player_efficiency'] +
+        master_df['age_score'] * TRADE_VALUE_WEIGHTS['player_age'] +
+        master_df['offense_score'] * TRADE_VALUE_WEIGHTS['team_offense']
+    ).round(1)
     
     output_cols = ['player_id', 'player_name', 'position', 'team', 'trade_value']
     final_report = master_df[output_cols].sort_values(by='trade_value', ascending=False)
