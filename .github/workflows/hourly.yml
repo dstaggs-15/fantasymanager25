@@ -1,10 +1,7 @@
 name: Fantasy Football Data Pipeline
 
 on:
-  # Allows you to run this workflow manually from the Actions tab on GitHub
   workflow_dispatch:
-
-  # Runs the workflow automatically every day at 8:00 AM UTC
   schedule:
     - cron: '0 8 * * *'
 
@@ -26,35 +23,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # --- PHASE 1: DATA COLLECTION & PROCESSING ---
-      # These must run first to create the foundational data files.
+      # --- SCRIPT EXECUTION IN CORRECT ORDER ---
 
       - name: 4. Run -> Get Raw Data
         run: python pipeline/get_raw_data.py
 
-      - name: 5. Run -> Calculate Fantasy Points (CRITICAL STEP)
+      - name: 5. Run -> Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
-
-      # --- PHASE 2: INDIVIDUAL ANALYSIS REPORTS ---
-      # These scripts all depend on the files created in Phase 1.
 
       - name: 6. Run -> Generate O-Line Rankings
         run: python analysis/generate_oline_rankings.py
-        
-      - name: 7. Run -> Matchup Analysis
-        run: python analysis/matchup_analyzer.py
+
+      - name: 7. Run -> Generate ROS Projections
+        run: python analysis/generate_ros_projections.py
 
       - name: 8. Run -> VORP Analysis
         run: python analysis/vorp_analyzer.py
 
       - name: 9. Run -> Consistency Analysis
         run: python analysis/consistency_analyzer.py
-
-      - name: 10. Run -> Generate ROS Projections
-        run: python analysis/generate_ros_projections.py
-
-      # --- PHASE 3: SYNTHESIZING ENGINE SCRIPTS ---
-      # These scripts combine the reports from Phase 2 and MUST run last.
+        
+      - name: 10. Run -> Matchup Analysis
+        run: python analysis/matchup_analyzer.py
 
       - name: 11. Run -> Generate 'Start Scores'
         run: python analysis/composite_score_generator.py
@@ -62,14 +52,12 @@ jobs:
       - name: 12. Run -> Generate 'Trade Values' (FINAL SCRIPT)
         run: python analysis/trade_analyzer_engine.py
 
-      # --- PHASE 4: COMMIT DATA ---
-      # This step saves all the new data and reports back to your repository.
+      # --- COMMIT DATA BACK TO REPO ---
       
       - name: 13. Commit and push data files
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add data/
-          git add docs/data/
           git commit -m "📊 Automated daily data and report update" || echo "No changes to commit"
           git push
