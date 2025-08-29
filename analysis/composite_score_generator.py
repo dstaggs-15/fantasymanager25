@@ -4,8 +4,10 @@ import os
 
 # --- Configuration ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-REPORTS_DIR = os.path.join(BASE_DIR, 'data', 'reports')
-CURRENT_SEASON = 2025 # Projecting for the upcoming season
+# --- FIX: Corrected the path to point to the 'docs' directory ---
+REPORTS_DIR = os.path.join(BASE_DIR, 'docs', 'data', 'reports')
+RAW_DATA_DIR = os.path.join(BASE_DIR, 'docs', 'data', 'raw')
+CURRENT_SEASON = 2025
 CURRENT_WEEK = 1
 
 def generate_start_scores():
@@ -15,12 +17,13 @@ def generate_start_scores():
     """
     print("--- Starting Final 4-Factor 'Start Score' Generation ---")
 
-    # Load prerequisite reports
+    # Load prerequisite reports from the correct 'docs/data/reports' path
     try:
         vorp_df = pd.read_json(os.path.join(REPORTS_DIR, 'vorp_analyzer_report.json'))
         matchup_df = pd.read_json(os.path.join(REPORTS_DIR, 'matchup_report.json'))
-        oline_df = pd.read_json(os.path.join(REPORTS_DIR, 'oline_rankings.json')) # Assuming oline script saves a JSON report
-        schedule_df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'raw', 'schedule_raw.csv'))
+        # Assuming oline rankings are in a CSV in the raw folder as per logs
+        oline_df = pd.read_csv(os.path.join(RAW_DATA_DIR, 'oline_rankings.csv'))
+        schedule_df = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
     except Exception as e:
         print(f"❌ Error loading a source file: {e}. Aborting.")
         return
@@ -43,21 +46,20 @@ def generate_start_scores():
     vorp_df['talent_score'] = 10 * (vorp_df['ppg'] / max_ppg)
 
     # 2. Weekly Matchup Score (30%)
-    # Merge matchup ranks onto the main dataframe
     merged_df = pd.merge(vorp_df, matchup_df, left_on=['opponent', 'position'], right_on=['team', 'position'], how='left', suffixes=('', '_matchup'))
     merged_df['matchup_rank'].fillna(16, inplace=True) # Neutral rank for missing data
     merged_df['matchup_score'] = 10 * ((32 - merged_df['matchup_rank']) / 31)
 
     # 3. Offensive Line Score (15%)
-    # Merge O-line ranks
     merged_df = pd.merge(merged_df, oline_df, left_on='team', right_on='team', how='left')
-    merged_df['oline_rank'].fillna(16, inplace=True) # Neutral rank
-    merged_df['oline_score'] = 10 * ((32 - merged_df['oline_rank']) / 31)
+    merged_df['rank'].fillna(16, inplace=True) # Neutral rank
+    merged_df['oline_score'] = 10 * ((32 - merged_df['rank']) / 31)
 
-    # 4. Efficiency Score (15%) - Using VORP as a proxy for overall efficiency
+    # 4. Efficiency Score (15%) - Using VORP as a proxy
     max_vorp = merged_df.groupby('position')['vorp'].transform('max')
     min_vorp = merged_df.groupby('position')['vorp'].transform('min')
-    merged_df['efficiency_score'] = 10 * (merged_df['vorp'] - min_vorp) / (max_vorp - min_vorp)
+    # Add a small epsilon to avoid division by zero if all VORPs are the same
+    merged_df['efficiency_score'] = 10 * (merged_df['vorp'] - min_vorp) / ((max_vorp - min_vorp) + 1e-6)
 
     # Handle NaNs that might have appeared
     score_cols = ['talent_score', 'matchup_score', 'oline_score', 'efficiency_score']
@@ -74,14 +76,11 @@ def generate_start_scores():
     print(f"Generating scores for Season {CURRENT_SEASON}, Week {CURRENT_WEEK}")
     
     # Prepare final report
-    final_report = merged_df[['player_id', 'player_name', 'position', 'team', 'start_score']]
+    final_report = merged_df[['player_id', 'player_name', 'position', 'team_x', 'start_score']]
+    final_report.rename(columns={'team_x': 'team'}, inplace=True)
 
-    # --- FIX: Save the report with the correct filename ---
     output_path = os.path.join(REPORTS_DIR, 'start_score_report.json')
-
-    report_json = final_report.to_dict(orient='records')
-    with open(output_path, 'w') as f:
-        json.dump(report_json, f, indent=4)
+    final_report.to_json(output_path, orient='records', indent=4)
 
     print(f"✅ Successfully created final Start Score report at: {output_path}")
 
