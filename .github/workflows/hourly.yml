@@ -1,10 +1,7 @@
 name: Fantasy Football Data Pipeline
 
 on:
-  # Allows you to run this workflow manually from the Actions tab on GitHub
   workflow_dispatch:
-
-  # Runs the workflow automatically every day at 8:00 AM UTC
   schedule:
     - cron: '0 8 * * *'
 
@@ -31,7 +28,7 @@ jobs:
       - name: 4. Run -> Get Raw Data
         run: python pipeline/get_raw_data.py
 
-      - name: 5. Run -> Calculate Fantasy Points (CRITICAL STEP)
+      - name: 5. Run -> Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
       - name: 6. Run -> Generate O-Line Rankings
@@ -40,10 +37,10 @@ jobs:
       - name: 7. Run -> Generate ROS Projections
         run: python analysis/generate_ros_projections.py
 
-      - name: 8. Run -> VORP & Core Consistency Analysis
+      - name: 8. Run -> VORP Analysis
         run: python analysis/vorp_analyzer.py
 
-      - name: 9. Run -> Standalone Consistency Analysis
+      - name: 9. Run -> Consistency Analysis
         run: python analysis/consistency_analyzer.py
         
       - name: 10. Run -> Matchup Analysis
