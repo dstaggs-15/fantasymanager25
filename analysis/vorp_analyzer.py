@@ -6,7 +6,7 @@ import os
 # --- Configuration ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROCESSED_DATA_PATH = os.path.join(BASE_DIR, 'docs', 'data', 'processed', 'weekly_data_processed.csv')
-REPORTS_DIR = os.path.join(BASE_DIR, 'data', 'reports')
+REPORTS_DIR = os.path.join(BASE_DIR, 'docs', 'data', 'reports')
 CURRENT_SEASON = 2024 # Assuming this is the season being analyzed
 
 def analyze_vorp_and_consistency():
@@ -37,8 +37,11 @@ def analyze_vorp_and_consistency():
     player_stats = player_stats[player_stats['games_played'] >= 4]
     player_stats['std_dev'] = player_stats['std_dev'].fillna(0) # Fill NaN for players with no variance
 
-    # Get player metadata (name, position, team, etc.)
-    player_info = df_season[['player_id', 'player_name', 'position', 'team', 'birth_date']].drop_duplicates(subset='player_id')
+    # --- FIX: Use correct column 'recent_team' and remove 'birth_date' ---
+    player_info_cols = ['player_id', 'player_name', 'position', 'recent_team']
+    player_info = df_season[player_info_cols].drop_duplicates(subset='player_id')
+    # Rename 'recent_team' to 'team' for consistency with other reports
+    player_info.rename(columns={'recent_team': 'team'}, inplace=True)
     
     # Merge stats with info
     final_stats = pd.merge(player_info, player_stats, on='player_id')
@@ -54,7 +57,7 @@ def analyze_vorp_and_consistency():
 
     def calculate_vorp(row):
         pos = row['position']
-        if pos in replacement_levels:
+        if pos in replacement_levels and not pd.isna(replacement_levels[pos]):
             replacement_ppg = replacement_levels[pos]
             return (row['ppg'] - replacement_ppg) * row['games_played']
         return 0
@@ -65,7 +68,6 @@ def analyze_vorp_and_consistency():
     numeric_cols = ['ppg', 'std_dev', 'vorp']
     final_stats[numeric_cols] = final_stats[numeric_cols].round(2)
 
-    # --- FIX: Save the report with the correct filename ---
     output_path = os.path.join(REPORTS_DIR, 'vorp_analyzer_report.json')
     
     report_json = final_stats.to_dict(orient='records')
