@@ -4,7 +4,7 @@ import os
 
 # --- Configuration ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROCESSED_DATA_PATH = os.path.join(BASE_DIR, 'data', 'processed', 'weekly_data_processed.csv')
+PROCESSED_DATA_PATH = os.path.join(BASE_DIR, 'docs', 'data', 'processed', 'weekly_data_processed.csv')
 REPORTS_DIR = os.path.join(BASE_DIR, 'data', 'reports')
 
 def generate_ros_projections():
