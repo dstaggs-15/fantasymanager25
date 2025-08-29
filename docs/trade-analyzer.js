@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
     // --- TEAM COLORS MAP ---
     const TEAM_COLORS = {
-        'ARI': { bg: '#97233F', text: '#FFFFFF' }, 'ATL': { bg: '#A71930', text: '#FFFFFF' }, 'BAL': { bg: '#241773', text: '#FFFFFF' },
-        'BUF': { bg: '#00338D', text: '#FFFFFF' }, 'CAR': { bg: '#0085CA', text: '#000000' }, 'CHI': { bg: '#0B162A', text: '#E64100' },
-        'CIN': { bg: '#FB4F14', text: '#000000' }, 'CLE': { bg: '#311D00', text: '#FF3C00' }, 'DAL': { bg: '#041E42', text: '#FFFFFF' },
-        'DEN': { bg: '#FB4F14', text: '#002244' }, 'DET': { bg: '#0076B6', text: '#FFFFFF' }, 'GB': { bg: '#203731', text: '#FFB612' },
-        'HOU': { bg: '#03202F', text: '#A71930' }, 'IND': { bg: '#002C5F', text: '#FFFFFF' }, 'JAX': { bg: '#006778', text: '#FFFFFF' },
+        'ARI': { bg: '#97233F', text: '#FFFFFF' }, 'ATL': { bg: '#A71930', text: '#000000' }, 'BAL': { bg: '#241773', text: '#9E7C0C' },
+        'BUF': { bg: '#00338D', text: '#C60C30' }, 'CAR': { bg: '#0085CA', text: '#101820' }, 'CHI': { bg: '#0B162A', text: '#C83803' },
+        'CIN': { bg: '#FB4F14', text: '#000000' }, 'CLE': { bg: '#311D00', text: '#FF3C00' }, 'DAL': { bg: '#041E42', text: '#869397' },
+        'DEN': { bg: '#FB4F14', text: '#002244' }, 'DET': { bg: '#0076B6', text: '#B0B7BC' }, 'GB': { bg: '#203731', text: '#FFB612' },
+        'HOU': { bg: '#03202F', text: '#A71930' }, 'IND': { bg: '#002C5F', text: '#A2AAAD' }, 'JAX': { bg: '#101820', text: '#006778' },
         'KC': { bg: '#E31837', text: '#FFB81C' }, 'LV': { bg: '#000000', text: '#A5ACAF' }, 'LAC': { bg: '#0080C6', text: '#FFC20E' },
-        'LAR': { bg: '#003594', text: '#FFD100' }, 'MIA': { bg: '#008E97', text: '#F26A24' }, 'MIN': { bg: '#4F2683', text: '#FFC62F' },
+        'LAR': { bg: '#003594', text: '#FFD100' }, 'MIA': { bg: '#008E97', text: '#FC4C02' }, 'MIN': { bg: '#4F2683', text: '#FFC62F' },
         'NE': { bg: '#002244', text: '#C60C30' }, 'NO': { bg: '#D3BC8D', text: '#101820' }, 'NYG': { bg: '#0B2265', text: '#A71930' },
         'NYJ': { bg: '#125740', text: '#FFFFFF' }, 'PHI': { bg: '#004C54', text: '#A5ACAF' }, 'PIT': { bg: '#101820', text: '#FFB612' },
         'SF': { bg: '#AA0000', text: '#B3995D' }, 'SEA': { bg: '#002244', text: '#69BE28' }, 'TB': { bg: '#D50A0A', text: '#343434' },
@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     let ALL_PLAYER_DATA = [];
     let trade = { a: [], b: [] };
 
-    // --- DOM REFERENCES (matches your provided HTML) ---
     const playerDatalist = document.getElementById('player-list');
     const addPlayerBtnA = document.getElementById('add-player-a');
     const addPlayerBtnB = document.getElementById('add-player-b');
@@ -27,11 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const playersContainerB = document.getElementById('players-b-container');
     const gradeAEl = document.getElementById('grade-a');
     const gradeBEl = document.getElementById('grade-b');
+    // --- UPDATED: Get references to the new value elements ---
+    const valueAEl = document.getElementById('value-a');
+    const valueBEl = document.getElementById('value-b');
     const resultsContainer = document.getElementById('trade-results-container');
-    const breakdownAEl = document.getElementById('breakdown-a');
-    const breakdownBEl = document.getElementById('breakdown-b');
     
-    // --- FIX: Fetch and merge all three data sources ---
     async function initialize() {
         try {
             const [tradeValueRes, vorpRes, rosRes] = await Promise.all([
@@ -39,18 +38,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 fetch('./data/reports/vorp_analyzer_report.json'),
                 fetch('./data/reports/ros_projections.json')
             ]);
-
-            if (!tradeValueRes.ok || !vorpRes.ok || !rosRes.ok) {
-                throw new Error('One or more data files failed to load.');
-            }
-
+            if (!tradeValueRes.ok || !vorpRes.ok || !rosRes.ok) throw new Error('One or more data files failed to load.');
+            
             const tradeValues = await tradeValueRes.json();
             const vorpData = await vorpRes.json();
             const rosData = await rosRes.json();
             
             ALL_PLAYER_DATA = mergeData(tradeValues, vorpData, rosData);
             
-            // Populate the datalist for autocomplete search
             const fragment = document.createDocumentFragment();
             ALL_PLAYER_DATA.forEach(p => {
                 const option = document.createElement('option');
@@ -58,34 +53,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 fragment.appendChild(option);
             });
             playerDatalist.appendChild(fragment);
-
         } catch (error) {
             console.error("Failed to initialize trade analyzer:", error);
-            resultsContainer.innerHTML = '<p style="text-align: center; width: 100%;">Error loading trade data. Please ensure the workflow has run successfully.</p>';
-            resultsContainer.style.display = 'block';
         }
     }
 
     function mergeData(tradeValues, vorpData, rosData) {
         const playerMap = new Map();
-
-        // Use VORP data as the base
         vorpData.forEach(p => playerMap.set(p.player_id, p));
-
-        // Merge ROS data
-        rosData.forEach(p => {
-            if (playerMap.has(p.player_id)) {
-                playerMap.set(p.player_id, { ...playerMap.get(p.player_id), ...p });
-            }
-        });
-
-        // Merge Trade Value data
-        tradeValues.forEach(p => {
-            if (playerMap.has(p.player_id)) {
-                playerMap.set(p.player_id, { ...playerMap.get(p.player_id), ...p });
-            }
-        });
-        
+        rosData.forEach(p => { if (playerMap.has(p.player_id)) playerMap.set(p.player_id, { ...playerMap.get(p.player_id), ...p }); });
+        tradeValues.forEach(p => { if (playerMap.has(p.player_id)) playerMap.set(p.player_id, { ...playerMap.get(p.player_id), ...p }); });
         return Array.from(playerMap.values());
     }
 
@@ -127,12 +104,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         gradeAEl.textContent = getTradeGrade(percentageA);
         gradeBEl.textContent = getTradeGrade(percentageB);
         
-        // Render the total value breakdowns
-        renderBreakdown('a', breakdownAEl, totalValueA);
-        renderBreakdown('b', breakdownBEl, totalValueB);
+        // --- UPDATED: Display the total value inside the grade box ---
+        valueAEl.textContent = `Total Value: ${totalValueA.toFixed(1)}`;
+        valueBEl.textContent = `Total Value: ${totalValueB.toFixed(1)}`;
     }
 
-    // --- FIX: New function to render detailed player cards ---
     function renderPlayerCards() {
         playersContainerA.innerHTML = '';
         playersContainerB.innerHTML = '';
@@ -140,14 +116,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             const container = side === 'a' ? playersContainerA : playersContainerB;
             trade[side].forEach(p => {
                 const colors = TEAM_COLORS[p.team] || TEAM_COLORS['DEFAULT'];
+                // --- UPDATED: Player card header now uses team colors ---
                 container.innerHTML += `
-                    <div class="player-card" style="border-left-color: ${colors.bg};">
-                        <div class="card-header">
+                    <div class="player-card">
+                        <div class="card-header" style="background-color: ${colors.bg}; color: ${colors.text};">
                             <div>
                                 <span class="player-name">${p.player_name}</span>
                                 <span class="player-info">${p.position} - ${p.team}</span>
                             </div>
-                            <button class="remove-btn" data-side="${side}" data-name="${p.player_name}">&times;</button>
+                            <button class="remove-btn" style="color: ${colors.text};" data-side="${side}" data-name="${p.player_name}">&times;</button>
                         </div>
                         <div class="card-body">
                             <div class="stat-box">
@@ -163,7 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <span class="stat-label">ROS Proj.</span>
                             </div>
                         </div>
-                        <div class="card-footer" style="background-color: ${colors.bg}; color: ${colors.text};">
+                        <div class="card-footer">
                             <span>Trade Value</span>
                             <span>${(p.trade_value || 0).toFixed(1)}</span>
                         </div>
@@ -171,10 +148,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 `;
             });
         });
-    }
-    
-    function renderBreakdown(side, element, totalValue) {
-        element.innerHTML = `<h4>Total Value: ${totalValue.toFixed(1)}</h4>`;
     }
     
     // Event Listeners
