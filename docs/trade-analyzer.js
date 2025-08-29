@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         'SF': { bg: '#AA0000', text: '#B3995D' }, 'SEA': { bg: '#002244', text: '#69BE28' }, 'TB': { bg: '#D50A0A', text: '#343434' },
         'TEN': { bg: '#0C2340', text: '#4B92DB' }, 'WAS': { bg: '#5A1414', text: '#FFB612' }, 'DEFAULT': { bg: '#333333', text: '#FFFFFF'}
     };
-    
+     
     let ALL_PLAYER_DATA = [];
     let trade = { a: [], b: [] };
 
