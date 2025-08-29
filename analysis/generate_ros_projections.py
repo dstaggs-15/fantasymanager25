@@ -28,7 +28,16 @@ def generate_ros_projections():
         return
 
     # --- 2. Establish Performance Baseline ---
-    player_info = df_weekly[['player_id', 'player_name', 'position', 'team']].drop_duplicates(subset=['player_id'])
+    
+    # --- FIX: Use the correct column name 'recent_team' from the source data ---
+    player_info_cols = ['player_id', 'player_name', 'position', 'recent_team']
+    if not all(col in df_weekly.columns for col in player_info_cols):
+        print(f"❌ Error: Input file is missing required columns. Needed: {player_info_cols}")
+        return
+        
+    player_info = df_weekly[player_info_cols].drop_duplicates(subset=['player_id'])
+    # Rename 'recent_team' to 'team' for consistency across the project
+    player_info.rename(columns={'recent_team': 'team'}, inplace=True)
     
     df_weekly.sort_values(by=['player_id', 'season', 'week'], inplace=True)
     df_weekly['last_4_games_avg'] = df_weekly.groupby('player_id')['fantasy_points'].transform(lambda x: x.rolling(4, min_periods=2).mean())
@@ -36,7 +45,7 @@ def generate_ros_projections():
     latest_stats = df_weekly.loc[df_weekly.groupby('player_id')['week'].idxmax()].copy()
 
     latest_stats['baseline_ppg'] = (
-        latest_stats['last_4_games_avg'].fillna(0) * 0.60 + # Heavier weight on most recent performance
+        latest_stats['last_4_games_avg'].fillna(0) * 0.60 +
         latest_stats['last_8_games_avg'].fillna(0) * 0.40
     ).round(2)
 
@@ -49,11 +58,10 @@ def generate_ros_projections():
         team = player['team']
         pos = player['position']
         
-        # Find remaining games and bye week
         team_schedule = df_future_schedule[(df_future_schedule['home_team'] == team) | (df_future_schedule['away_team'] == team)]
-        bye_week = df_schedule[df_schedule['game_type'] == 'BYE']['week'].max() if team in df_schedule[df_schedule['game_type'] == 'BYE']['team'].values else 0
+        bye_week_df = df_schedule[(df_schedule['game_type'] == 'BYE') & (df_schedule['team'] == team)]
+        bye_week = bye_week_df['week'].max() if not bye_week_df.empty else 0
 
-        # Find opponents
         opponents = []
         for _, game in team_schedule.iterrows():
             opponents.append(game['away_team'] if game['home_team'] == team else game['home_team'])
@@ -65,8 +73,6 @@ def generate_ros_projections():
         # --- 4. Calculate Strength of Schedule (SOS) Modifier ---
         avg_opponent_rank = df_matchups[df_matchups['team'].isin(opponents) & (df_matchups['position'] == pos)]['matchup_rank'].mean()
         
-        # Create a modifier: 16.5 is the league average rank. Facing easier teams (rank < 16.5) gives a bonus.
-        # The 0.015 factor controls the strength of the adjustment.
         sos_modifier = 1 + ((16.5 - avg_opponent_rank) * 0.015) if not pd.isna(avg_opponent_rank) else 1.0
 
         player_futures.append({
@@ -84,12 +90,11 @@ def generate_ros_projections():
     final_df['ros_projection_ppg'] = final_df['baseline_ppg'] * final_df['sos_modifier']
     final_df['ros_total_points'] = (final_df['ros_projection_ppg'] * final_df['games_remaining']).round(2)
     
-    # Create final ranks
     final_df['ros_rank'] = final_df.groupby('position')['ros_total_points'].rank(method='dense', ascending=False)
     
     # --- 6. Save the Report ---
     report_df = final_df[['player_id', 'player_name', 'position', 'team', 'ros_total_points', 'ros_rank']].sort_values(by='ros_total_points', ascending=False)
-    report_df.rename(columns={'ros_total_points': 'ros_projection'}, inplace=True) # Use original column name for consistency
+    report_df.rename(columns={'ros_total_points': 'ros_projection'}, inplace=True)
     
     output_path = os.path.join(REPORTS_DIR, 'ros_projections.json')
     report_df.to_json(output_path, orient='records', indent=4)
