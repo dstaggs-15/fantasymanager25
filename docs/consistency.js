@@ -1,71 +1,99 @@
-document.addEventListener('DOMContentLoaded', async () => {
-    // --- DOM REFERENCES ---
+document.addEventListener('DOMContentLoaded', () => {
     const tableBody = document.getElementById('consistency-table-body');
-    const searchInput = document.getElementById('player-search');
-
-    // --- GLOBAL DATA STORE ---
-    let ALL_PLAYERS_DATA = [];
-
-    // --- FUNCTION TO RENDER THE TABLE ---
-    const renderTable = (players) => {
-        tableBody.innerHTML = ''; // Clear existing rows
-
-        if (players.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="9">No players found.</td></tr>';
-            return;
-        }
-
-        const fragment = document.createDocumentFragment();
-        players.forEach(player => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${player.player_display_name}</td>
-                <td>${player.position}</td>
-                <td>${player.recent_team}</td>
-                <td>${player.ppg.toFixed(2)}</td>
-                <td>${player.std_dev.toFixed(2)}</td>
-                <td>${player.avg_ceiling.toFixed(2)}</td>
-                <td>${player.avg_floor.toFixed(2)}</td>
-                <td>${player.good_games_pct.toFixed(1)}%</td>
-                <td>${player.bust_games_pct.toFixed(1)}%</td>
-            `;
-            fragment.appendChild(row);
-        });
-        tableBody.appendChild(fragment);
+    const headers = document.querySelectorAll('th[data-sort]');
+    let playerData = [];
+    let currentSort = {
+        column: 'ppg', // Default sort is PPG
+        ascending: false // Default direction is descending
     };
 
-    // --- INITIALIZATION AND DATA FETCHING ---
-    async function initialize() {
+    /**
+     * Fetches player data from the JSON report.
+     */
+    async function fetchData() {
         try {
-            const response = await fetch('./data/reports/consistency_report.json');
-            if (!response.ok) throw new Error('Failed to fetch consistency data');
-            
-            ALL_PLAYERS_DATA = await response.json();
-            
-            // Initial render of the full table
-            renderTable(ALL_PLAYERS_DATA);
-
+            const response = await fetch('./docs/data/reports/consistency_report.json');
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.statusText}`);
+            }
+            playerData = await response.json();
+            renderTable(); // Initial render
         } catch (error) {
-            console.error("Initialization failed:", error);
-            tableBody.innerHTML = `<tr><td colspan="9">Error loading data. Please ensure the workflow has run successfully.</td></tr>`;
+            console.error('Error fetching consistency data:', error);
+            tableBody.innerHTML = `<tr><td colspan="9">Error loading player data.</td></tr>`;
         }
     }
 
-    // --- EVENT LISTENER FOR SEARCH INPUT ---
-    searchInput.addEventListener('keyup', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        
-        if (!searchTerm) {
-            renderTable(ALL_PLAYERS_DATA); // If search is empty, show all players
-            return;
-        }
+    /**
+     * Sorts the global playerData array based on the currentSort state.
+     */
+    function sortData() {
+        const { column, ascending } = currentSort;
+        playerData.sort((a, b) => {
+            let valA = a[column];
+            let valB = b[column];
 
-        const filteredPlayers = ALL_PLAYERS_DATA.filter(player => 
-            player.player_display_name.toLowerCase().includes(searchTerm)
-        );
+            if (valA == null) return 1;
+            if (valB == null) return -1;
+
+            if (typeof valA === 'string') {
+                return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            } else {
+                return ascending ? valA - valB : valB - valA;
+            }
+        });
+    }
+
+    /**
+     * Clears and re-renders the table with the current player data.
+     */
+    function renderTable() {
+        sortData();
+        tableBody.innerHTML = ''; 
         
-        renderTable(filteredPlayers);
+        playerData.forEach(player => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${player.player_name}</td>
+                <td>${player.position}</td>
+                <td>${player.team}</td>
+                <td>${(player.ppg || 0).toFixed(2)}</td>
+                <td>${(player.std_dev || 0).toFixed(2)}</td>
+                <td>${(player.ceiling || 0).toFixed(2)}</td>
+                <td>${(player.floor || 0).toFixed(2)}</td>
+                <td>${((player.good_pct || 0) * 100).toFixed(1)}%</td>
+                <td>${((player.bust_pct || 0) * 100).toFixed(1)}%</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        headers.forEach(header => {
+            header.classList.remove('sort-asc', 'sort-desc');
+            if (header.dataset.sort === currentSort.column) {
+                header.classList.add(currentSort.ascending ? 'sort-asc' : 'sort-desc');
+            }
+        });
+    }
+
+    // Add click event listeners to all sortable table headers
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const sortColumn = header.dataset.sort;
+            
+            if (currentSort.column === sortColumn) {
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                currentSort.column = sortColumn;
+                // Default to descending for numeric stats, ascending for text
+                const isTextColumn = ['player_name', 'position', 'team'].includes(sortColumn);
+                // Std Dev is the only stat where lower is better, so default it to ascending
+                const isLowerBetter = sortColumn === 'std_dev';
+                currentSort.ascending = isTextColumn || isLowerBetter;
+            }
+            renderTable();
+        });
     });
 
-    initialize();
+    // Initial data load
+    fetchData();
 });
