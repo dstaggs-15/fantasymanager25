@@ -26,54 +26,58 @@ def calculate_start_scores():
         matchup_df = pd.read_json(os.path.join(REPORTS_DIR, 'matchup_report.json'))
         oline_df = pd.read_csv(os.path.join(RAW_DATA_DIR, 'oline_rankings.csv'))
         schedule_df = pd.read_csv(os.path.join(RAW_DATA_DIR, 'schedule_raw.csv'))
-        # Load processed data for efficiency calculation
         processed_df = pd.read_csv(PROCESSED_DATA_PATH)
         print("✅ Successfully loaded all data sources.")
     except Exception as e:
         print(f"❌ Error loading a source file: {e}. Aborting.")
         return
         
-    # --- FIX: Calculate QB and Skill Position Efficiency ---
-    # Filter for relevant positions and stats
+    # --- FIX: Dynamically handle available stat columns for efficiency calculation ---
     pos_to_keep = ['QB', 'RB', 'WR', 'TE']
-    player_season_stats = processed_df[processed_df['position'].isin(pos_to_keep)].groupby('player_id').agg({
-        'passing_att': 'sum', 'passing_tds': 'sum', 'interceptions': 'sum',
-        'carries': 'sum', 'rushing_tds': 'sum',
-        'receptions': 'sum', 'receiving_tds': 'sum',
-        'fumbles_lost': 'sum'
-    }).reset_index()
+    
+    # Define all possible columns we might need for aggregation
+    possible_cols = [
+        'attempts', 'passing_tds', 'interceptions',
+        'carries', 'rushing_tds',
+        'receptions', 'receiving_tds',
+        'fumbles_lost'
+    ]
+    # Find which of these columns actually exist in our data
+    existing_cols = [col for col in possible_cols if col in processed_df.columns]
+    
+    # Create the aggregation dictionary using only the columns that exist
+    agg_dict = {col: 'sum' for col in existing_cols}
+    
+    player_season_stats = processed_df[processed_df['position'].isin(pos_to_keep)].groupby('player_id').agg(agg_dict).reset_index()
 
-    # QB Efficiency Calculation
-    qbs = player_season_stats[player_season_stats['passing_att'] > 50].copy() # Min 50 attempts
-    qbs['td_rate'] = qbs['passing_tds'] / qbs['passing_att']
-    qbs['int_rate'] = qbs['interceptions'] / qbs['passing_att']
-    # Normalize and combine. Higher TD rate is good, lower INT rate is good.
+    # Ensure all possible columns exist in the aggregated df, filling missing ones with 0
+    for col in possible_cols:
+        if col not in player_season_stats.columns:
+            player_season_stats[col] = 0
+
+    # QB Efficiency Calculation (uses 'attempts' instead of 'passing_att')
+    qbs = player_season_stats[player_season_stats['attempts'] > 50].copy()
+    qbs['td_rate'] = qbs['passing_tds'] / qbs['attempts']
+    qbs['int_rate'] = qbs['interceptions'] / qbs['attempts']
     qbs['efficiency_score'] = (normalize_score(qbs['td_rate']) - normalize_score(qbs['int_rate']) + 10) / 2
     
     # RB/WR/TE Efficiency Calculation
-    skill_players = player_season_stats[player_season_stats['carries'] + player_season_stats['receptions'] > 20].copy() # Min 20 touches
+    skill_players = player_season_stats[player_season_stats['carries'] + player_season_stats['receptions'] > 20].copy()
     skill_players['total_touches'] = skill_players['carries'] + skill_players['receptions']
     skill_players['total_tds'] = skill_players['rushing_tds'] + skill_players['receiving_tds']
     skill_players['td_per_touch'] = skill_players['total_tds'] / skill_players['total_touches']
     skill_players['efficiency_score'] = normalize_score(skill_players['td_per_touch'])
 
-    # Combine efficiency scores
-    efficiency_scores = pd.concat([
-        qbs[['player_id', 'efficiency_score']],
-        skill_players[['player_id', 'efficiency_score']]
-    ])
+    efficiency_scores = pd.concat([qbs[['player_id', 'efficiency_score']], skill_players[['player_id', 'efficiency_score']]])
     
-    # Merge efficiency scores into the main dataframe
     base_df = pd.merge(vorp_df, efficiency_scores, on='player_id', how='left')
-    base_df['efficiency_score'].fillna(5.0, inplace=True) # Default for low-volume players
+    base_df['efficiency_score'].fillna(5.0, inplace=True)
 
-    # Filter schedule for the upcoming week
     weekly_schedule = schedule_df[(schedule_df['season'] == CURRENT_SEASON) & (schedule_df['week'] == CURRENT_WEEK)]
     opponent_map = {row['home_team']: row['away_team'] for _, row in weekly_schedule.iterrows()}
     opponent_map.update({row['away_team']: row['home_team'] for _, row in weekly_schedule.iterrows()})
     base_df['opponent'] = base_df['team'].map(opponent_map)
     
-    # Calculate Talent, Matchup, and O-Line Scores
     max_ppg = base_df.groupby('position')['ppg'].transform('max')
     base_df['talent_score'] = 10 * (base_df['ppg'] / max_ppg)
     
@@ -86,9 +90,8 @@ def calculate_start_scores():
     merged_df['oline_score'] = 10 * ((32 - merged_df['rank']) / 31)
     
     score_cols = ['talent_score', 'matchup_score', 'oline_score', 'efficiency_score']
-    merged_df[score_cols] = merged_df[score_cols].fillna(5.0) # Neutral default
+    merged_df[score_cols] = merged_df[score_cols].fillna(5.0)
     
-    # Calculate Final Weighted 'Start Score'
     merged_df['start_score'] = (
         merged_df['talent_score'] * 0.40 +
         merged_df['matchup_score'] * 0.30 +
