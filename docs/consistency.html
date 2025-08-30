@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consistency Ratings</title>
+    <title>Consistency Ratings - Fantasy Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,38 +11,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Consistency Ratings</h1>
-
-        <div class="card" style="margin-bottom: 2rem;">
-            <h2>How to Use This Tool</h2>
-            <p>This tool helps you understand player volatility. A low <strong>Std Dev</strong> means a player is consistent, while a high number indicates a "boom-or-bust" player. <strong>Ceiling</strong> and <strong>Floor</strong> show a player's average score in their best and worst games, respectively.</p>
-        </div>
-
-        <div class="card">
-            <div style="margin-bottom: 1.5rem;">
-                <input type="text" id="player-search" placeholder="Search for a player...">
+        <main>
+            <h1>Consistency Ratings</h1>
+            <p>Analyze player volatility to understand their weekly floor and ceiling. A lower Standard Deviation (Std Dev) indicates a more consistent player. Click any column header to sort the data.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="player_name">Player</th>
+                            <th data-sort="position">Pos</th>
+                            <th data-sort="team">Team</th>
+                            <th data-sort="ppg">PPG</th>
+                            <th data-sort="std_dev">Std Dev</th>
+                            <th data-sort="ceiling">Ceiling</th>
+                            <th data-sort="floor">Floor</th>
+                            <th data-sort="good_pct">Good %</th>
+                            <th data-sort="bust_pct">Bust %</th>
+                        </tr>
+                    </thead>
+                    <tbody id="consistency-table-body">
+                        </tbody>
+                </table>
             </div>
-
-            <table id="consistency-table">
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Pos</th>
-                        <th>Team</th>
-                        <th>PPG</th>
-                        <th>Std Dev</th>
-                        <th>Ceiling</th>
-                        <th>Floor</th>
-                        <th>Good %</th>
-                        <th>Bust %</th>
-                    </tr>
-                </thead>
-                <tbody id="consistency-table-body">
-                    </tbody>
-            </table>
-        </div>
+        </main>
     </div>
 
-    <script src="consistency.js"></script>
+    <script src="consistency.js" defer></script>
 </body>
 </html>
