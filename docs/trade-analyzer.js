@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         'SF': { bg: '#AA0000', text: '#B3995D' }, 'SEA': { bg: '#002244', text: '#69BE28' }, 'TB': { bg: '#D50A0A', text: '#343434' },
         'TEN': { bg: '#0C2340', text: '#4B92DB' }, 'WAS': { bg: '#5A1414', text: '#FFB612' }, 'DEFAULT': { bg: '#333333', text: '#FFFFFF'}
     };
-     
+    
     let ALL_PLAYER_DATA = [];
     let trade = { a: [], b: [] };
 
@@ -34,13 +34,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     async function initialize() {
         try {
+            // --- FIX: Removed '/docs' from the file paths ---
             const [tradeValueRes, vorpRes, rosRes] = await Promise.all([
-                fetch('./docs/data/reports/trade_value_report.json'),
-                fetch('./docs/data/reports/vorp_analyzer_report.json'),
-                fetch('./docs/data/reports/ros_projections.json')
+                fetch('./data/reports/trade_value_report.json'),
+                fetch('./data/reports/vorp_analyzer_report.json'),
+                fetch('./data/reports/ros_projections.json')
             ]);
-            if (!tradeValueRes.ok || !vorpRes.ok || !rosRes.ok) throw new Error('One or more data files failed to load.');
-            
+
+            if (!tradeValueRes.ok || !vorpRes.ok || !rosRes.ok) {
+                let errorStatus = `Trade: ${tradeValueRes.status}, VORP: ${vorpRes.status}, ROS: ${rosRes.status}`;
+                throw new Error(`One or more data files failed to load. Statuses: ${errorStatus}`);
+            }
+
             const tradeValues = await tradeValueRes.json();
             const vorpData = await vorpRes.json();
             const rosData = await rosRes.json();
@@ -54,9 +59,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 fragment.appendChild(option);
             });
             playerDatalist.appendChild(fragment);
+
         } catch (error) {
             console.error("Failed to initialize trade analyzer:", error);
-            document.querySelector('.container').innerHTML = `<h1>Trade Analyzer</h1><div class="card error-card"><p>Error loading trade data. Please ensure the backend workflow has run successfully and all report files exist in the <code>/docs/data/reports/</code> directory.</p></div>`;
+            document.querySelector('.container').innerHTML = `<h1>Trade Analyzer</h1><div class="card error-card"><p>Error loading trade data. Please ensure the backend workflow has run successfully and all report files exist.</p></div>`;
         }
     }
 
