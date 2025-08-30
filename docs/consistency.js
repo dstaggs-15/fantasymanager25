@@ -3,30 +3,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const headers = document.querySelectorAll('th[data-sort]');
     let playerData = [];
     let currentSort = {
-        column: 'ppg', // Default sort is PPG
-        ascending: false // Default direction is descending
+        column: 'ppg',
+        ascending: false
     };
 
-    /**
-     * Fetches player data from the JSON report.
-     */
     async function fetchData() {
         try {
-            const response = await fetch('./docs/data/reports/consistency_report.json');
+            // --- FIX: Removed '/docs' from the file path ---
+            const response = await fetch('./data/reports/consistency_report.json');
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
             }
             playerData = await response.json();
-            renderTable(); // Initial render
+            renderTable();
         } catch (error) {
             console.error('Error fetching consistency data:', error);
             tableBody.innerHTML = `<tr><td colspan="9">Error loading player data.</td></tr>`;
         }
     }
 
-    /**
-     * Sorts the global playerData array based on the currentSort state.
-     */
     function sortData() {
         const { column, ascending } = currentSort;
         playerData.sort((a, b) => {
@@ -44,9 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /**
-     * Clears and re-renders the table with the current player data.
-     */
     function renderTable() {
         sortData();
         tableBody.innerHTML = ''; 
@@ -75,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Add click event listeners to all sortable table headers
     headers.forEach(header => {
         header.addEventListener('click', () => {
             const sortColumn = header.dataset.sort;
@@ -84,9 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentSort.ascending = !currentSort.ascending;
             } else {
                 currentSort.column = sortColumn;
-                // Default to descending for numeric stats, ascending for text
                 const isTextColumn = ['player_name', 'position', 'team'].includes(sortColumn);
-                // Std Dev is the only stat where lower is better, so default it to ascending
                 const isLowerBetter = sortColumn === 'std_dev';
                 currentSort.ascending = isTextColumn || isLowerBetter;
             }
@@ -94,6 +83,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initial data load
     fetchData();
 });
