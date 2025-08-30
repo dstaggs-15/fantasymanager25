@@ -4,41 +4,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerData = [];
     let currentSort = {
         column: 'vorp',
-        ascending: false // Default sort is VORP, descending
+        ascending: false 
     };
 
-    /**
-     * Fetches player data from the JSON report.
-     */
     async function fetchData() {
         try {
-            const response = await fetch('./docs/data/reports/vorp_analyzer_report.json');
+            // --- FIX: Removed '/docs' from the file path ---
+            const response = await fetch('./data/reports/vorp_analyzer_report.json');
             if (!response.ok) {
                 throw new Error(`Network response was not ok: ${response.statusText}`);
             }
             playerData = await response.json();
-            renderTable(); // Initial render
+            renderTable();
         } catch (error) {
             console.error('Error fetching VORP data:', error);
             tableBody.innerHTML = `<tr><td colspan="6">Error loading player data.</td></tr>`;
         }
     }
 
-    /**
-     * Sorts the global playerData array based on the currentSort state.
-     */
     function sortData() {
         const { column, ascending } = currentSort;
-
         playerData.sort((a, b) => {
             let valA = a[column];
             let valB = b[column];
 
-            // Handle case where data might be missing
             if (valA == null) return 1;
             if (valB == null) return -1;
 
-            // Handle numeric vs. string sorting
             if (typeof valA === 'string') {
                 return ascending ? valA.localeCompare(valB) : valB.localeCompare(valA);
             } else {
@@ -47,14 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /**
-     * Clears and re-renders the table with the current player data.
-     */
     function renderTable() {
-        // Sort the data before rendering
         sortData();
-        
-        // Clear existing table rows
         tableBody.innerHTML = ''; 
         
         playerData.forEach(player => {
@@ -70,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tableBody.appendChild(row);
         });
 
-        // Update header styles to show current sort indicator
         headers.forEach(header => {
             header.classList.remove('sort-asc', 'sort-desc');
             if (header.dataset.sort === currentSort.column) {
@@ -79,25 +64,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Add click event listeners to all sortable table headers
     headers.forEach(header => {
         header.addEventListener('click', () => {
             const sortColumn = header.dataset.sort;
             
             if (currentSort.column === sortColumn) {
-                // If clicking the same column, just reverse the direction
                 currentSort.ascending = !currentSort.ascending;
             } else {
-                // If clicking a new column, set it as the sort column
                 currentSort.column = sortColumn;
-                // Default to descending for numeric stats, ascending for text
                 currentSort.ascending = ['player_name', 'position', 'team'].includes(sortColumn);
             }
-            // Re-render the table with the new sort order
             renderTable();
         });
     });
 
-    // Initial data load when the page is ready
     fetchData();
 });
