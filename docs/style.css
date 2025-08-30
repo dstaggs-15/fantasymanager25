@@ -157,3 +157,20 @@ tbody tr:last-child td {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
 }
+
+/* --- Recommendation Pill Styles --- */
+.recommendation-pill {
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+}
+
+.rec-must-start { background-color: #28a745; } /* Green */
+.rec-strong-start { background-color: #1a7d32; } /* Darker Green */
+.rec-good-flex { background-color: #ffc107; color: #1a1a1a } /* Yellow */
+.rec-risky-flex { background-color: #fd7e14; } /* Orange */
+.rec-sit { background-color: #dc3545; } /* Red */
