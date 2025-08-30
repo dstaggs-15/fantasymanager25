@@ -1,7 +1,10 @@
 name: Fantasy Football Data Pipeline
 
 on:
+  # Allows you to run this workflow manually from the Actions tab on GitHub
   workflow_dispatch:
+
+  # Runs the workflow automatically every day at 8:00 AM UTC
   schedule:
     - cron: '0 8 * * *'
 
@@ -27,7 +30,7 @@ jobs:
       - name: 4. Run -> Get Raw Data
         run: python pipeline/get_raw_data.py
 
-      - name: 5. Run -> Calculate Fantasy Points (CRITICAL STEP)
+      - name: 5. Run -> Calculate Fantasy Points
         run: python pipeline/calculate_fantasy_points.py
 
       # --- PHASE 2: INDIVIDUAL ANALYSIS REPORTS ---
@@ -58,6 +61,16 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Add all new/changed files in the data directories
           git add docs/data/
+          
+          # Commit the changes, or echo a message if there are no changes
           git commit -m "📊 Automated daily data and report update" || echo "No changes to commit"
+          
+          # Pull the latest changes from GitHub before pushing
+          # --rebase will cleanly place your new commit on top of any other recent commits
+          git pull --rebase
+          
+          # Now, push your updated history
           git push
