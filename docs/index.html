@@ -3,128 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trade Analyzer - Fantasy Manager</title>
+    <title>Fantasy Manager - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Adds a bit of extra styling for the detailed explanation section */
-        .explanation-highlight {
-            background-color: rgba(220, 53, 69, 0.05);
-            border: 1px solid var(--color-error);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            margin: 1.5rem 0;
-        }
-        .explanation-highlight h5 {
-            color: var(--color-error);
-            font-size: 1.1rem;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
         <main>
-            <h1>Trade Analyzer</h1>
+            <h1>Fantasy Football Data Hub</h1>
+            <p class="subtitle">A suite of custom, data-driven analysis tools to dominate your league.</p>
 
-            <!-- UPDATED: In-depth collapsible explanation -->
-            <div class="card" style="margin-bottom: 2rem;">
-                <details>
-                    <summary>A Deep Dive: How All Scoring is Calculated</summary>
-                    <div class="explanation-content">
-                        <p>This tool provides a holistic view of a player's worth by analyzing them through multiple lenses. Below is a detailed breakdown of every metric you see on the player cards and how the final trade grade is determined.</p>
-                        
-                        <h4>The Core Metrics Explained</h4>
-                        <ul>
-                            <li><strong>PPG (Points Per Game):</strong> This is a player's average fantasy points scored per game over the current season. It's the most straightforward measure of their historical performance and provides a reliable baseline of what they've already accomplished.</li>
-                            <li><strong>VORP (Value Over Replacement Player):</strong> This advanced metric measures a player's true positional advantage. It calculates how many more points a player scores than a "replacement-level" player—a widely available waiver-wire option at the same position. A high VORP means the player provides a significant weekly edge over the competition.</li>
-                            <li><strong>ROS Projection (Rest-of-Season Projection):</strong> This is a forward-looking estimate of a player's total fantasy points for the remaining games of the season. It's calculated by taking a weighted average of their recent performance (giving more importance to the last 4 games than the last 8) and adjusting it based on the difficulty of their future opponents (Strength of Schedule).</li>
-                        </ul>
-
-                        <div class="explanation-highlight">
-                            <h5>Why is a ROS Projection Negative?</h5>
-                            <p>You may occasionally see a negative ROS Projection (e.g., -66.6). This is not an error; it's the model's data-driven assessment of a player who has performed very poorly in recent games. Here's how it happens:</p>
-                            <ol>
-                                <li>A player can score negative points in a single game due to turnovers (interceptions, fumbles lost) that outweigh their yardage points. This is most common for quarterbacks.</li>
-                                <li>If a player has a string of these negative-scoring games, their weighted average PPG can become negative.</li>
-                                <li>The model multiplies this negative PPG by the number of games remaining, resulting in a negative total projection.</li>
-                            </ol>
-                            <p>A negative ROS Projection is the model's way of flagging a player as a significant liability based on their current performance trend.</p>
-                        </div>
-
-                        <h4>Deconstructing the 8-Factor Trade Value Model</h4>
-                        <p>The <strong>Trade Value (0-100)</strong> is the ultimate score, combining eight distinct factors into a single, comprehensive number. It's the engine behind the final grade.</p>
-                        
-                        <h5>Core Value Factors (60% Weight)</h5>
-                        <ul>
-                            <li><strong>ROS Projection (30%):</strong> The most important factor. It measures a player's expected future value and is critical for determining who will help you win down the stretch.</li>
-                            <li><strong>Proven Production (15%):</strong> A player's historical PPG. This grounds the projection in a reliable, historical floor, ensuring past performance is respected.</li>
-                            <li><strong>Player Tier (15%):</strong> A grade based on a player's rank within their position. Acquiring an "Elite" Top-12 player provides far more value than acquiring a "Serviceable" player, and this factor accounts for that.</li>
-                        </ul>
-
-                        <h5>Contextual & Roster-Fit Factors (40% Weight)</h5>
-                        <ul>
-                            <li><strong>Weekly Upside (10%):</strong> Uses the 4-Factor "Start Score" for the upcoming week. This measures a player's immediate impact and is crucial for teams that need to win now.</li>
-                            <li><strong>Roster Consistency (10%):</strong> A measure of volatility using Standard Deviation. A player with a lower Std Dev is more predictable week-to-week and receives a higher score.</li>
-                            <li><strong>Player Efficiency (5%):</strong> An advanced metric using VORP as a proxy. It rewards players who are highly effective with their opportunities, not just those who get a lot of volume.</li>
-                            <li><strong>Player Age (5%):</strong> Rewards younger players who have more long-term value. While less important in redraft leagues, it helps break ties and identify future stars.</li>
-                            <li><strong>Team Offense (5%):</strong> A grade for the quality of the player's offensive environment. Players on high-scoring teams have more opportunities for touchdowns and yards.</li>
-                        </ul>
-
-                        <h4>How the Final Grade is Calculated</h4>
-                        <p>The final letter grade is determined by comparing the total <strong>Trade Value</strong> of the players on each side of the deal.</p>
-                        <ol>
-                            <li>The total Trade Value for all players Team A receives is calculated.</li>
-                            <li>The total Trade Value for all players Team B receives is calculated.</li>
-                            <li>These two totals are added together to get the combined value of all assets in the trade.</li>
-                            <li>A percentage of that total value is calculated for each team. The final letter grade is assigned based on this percentage, indicating which team is getting the better end of the deal.</li>
-                        </ol>
-                    </div>
-                </details>
-            </div>
-
-            <!-- Trade Interface and Results sections remain below -->
-            <div class="trade-interface">
-                <div class="trade-side">
-                    <h3>Team A Receives</h3>
-                    <div class="search-container">
-                        <input type="text" id="player-search-a" list="player-list" placeholder="Search for a player...">
-                        <button id="add-player-a" class="btn">Add</button>
-                    </div>
-                    <div id="players-a-container" class="player-cards-container"></div>
-                </div>
-                <div class="trade-side">
-                    <h3>Team B Receives</h3>
-                    <div class="search-container">
-                        <input type="text" id="player-search-b" list="player-list" placeholder="Search for a player...">
-                        <button id="add-player-b" class="btn">Add</button>
-                    </div>
-                    <div id="players-b-container" class="player-cards-container"></div>
-                </div>
-            </div>
-
-            <datalist id="player-list"></datalist>
-
-            <div id="trade-results-container" class="card" style="margin-top: 2rem; display: none;">
-                <h2>Trade Results</h2>
-                <div class="results-grid">
-                    <div class="result-box">
-                        <h4>Team A Grade</h4>
-                        <p id="grade-a" class="grade">-</p>
-                        <p id="value-a" class="total-value">Total Value: --</p>
-                    </div>
-                    <div class="result-box">
-                        <h4>Team B Grade</h4>
-                        <p id="grade-b" class="grade">-</p>
-                        <p id="value-b" class="total-value">Total Value: --</p>
-                    </div>
-                    <div id="trade-summary-box"></div>
-                </div>
+            <div class="tool-grid">
+                <a href="start-sit.html" class="tool-card">
+                    <h3>Start/Sit Assistant</h3>
+                    <p>Compare players using the 4-Factor Start Score to make the best weekly lineup decisions.</p>
+                </a>
+                <a href="trade-analyzer.html" class="tool-card">
+                    <h3>Trade Analyzer</h3>
+                    <p>Evaluate trades using the 8-Factor Trade Grade model to ensure you always get the best value.</p>
+                </a>
+                <a href="vorp.html" class="tool-card">
+                    <h3>VORP Rankings</h3>
+                    <p>Identify true positional advantage with Value Over Replacement Player analysis.</p>
+                </a>
+                <a href="consistency.html" class="tool-card">
+                    <h3>Consistency Ratings</h3>
+                    <p>Analyze player volatility to find reliable performers and high-upside plays.</p>
+                </a>
+                 <a href="dashboard.html" class="tool-card">
+                    <h3>Dashboard</h3>
+                    <p>Visualize team and player data with interactive charts and graphs.</p>
+                </a>
+                <a href="#" class="tool-card coming-soon">
+                    <h3>Waiver Wire</h3>
+                    <p>Discover the top weekly waiver wire pickups before your leaguemates do. (Coming Soon)</p>
+                </a>
             </div>
         </main>
     </div>
-
-    <script src="trade-analyzer.js" defer></script>
 </body>
 </html>
