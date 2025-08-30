@@ -1,122 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive VORP Calculator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Additional styles specific to this page */
-        .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+document.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.getElementById('vorp-table-body');
+    const headers = document.querySelectorAll('th[data-sort]');
+    let playerData = [];
+    let currentSort = {
+        column: 'vorp',
+        ascending: false
+    };
+
+    // Fetches the data from the VORP report
+    async function fetchData() {
+        try {
+            const response = await fetch('./docs/data/reports/vorp_analyzer_report.json');
+            if (!response.ok) throw new Error('Network response was not ok');
+            playerData = await response.json();
+            renderTable();
+        } catch (error) {
+            console.error('Error fetching VORP data:', error);
+            tableBody.innerHTML = `<tr><td colspan="6">Error loading data.</td></tr>`;
         }
-        .vorp-controls, .comparison-controls {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .control-group, .search-group {
-            display: flex;
-            flex-direction: column;
-        }
-        .control-group label, .search-group label {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 0.25rem;
-        }
-        .control-group input { width: 80px; }
-        .search-group input { width: 250px; }
-        .control-group input, .search-group input {
-            padding: 0.5rem;
-            background-color: var(--color-background);
-            border: 1px solid var(--color-border);
-            color: var(--color-text-primary);
-            border-radius: 4px;
-            font-family: var(--font-family-main);
-            font-size: 1rem;
-        }
-        #comparison-results {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-        .player-card {
-            flex: 1;
-            padding: 1.5rem;
-            background-color: var(--color-background);
-            border: 1px solid var(--color-border);
-            border-radius: var(--border-radius);
-        }
-        .player-card h3 { color: var(--color-primary); }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>VORP & Player Analysis</h1>
+    }
+
+    // Sorts the player data based on the current sort column and direction
+    function sortData() {
+        const { column, ascending } = currentSort;
+        playerData.sort((a, b) => {
+            let valA = a[column];
+            let valB = b[column];
+
+            // Handle numeric vs. string sorting
+            if (typeof valA === 'string') {
+                valA = valA.toLowerCase();
+                valB = valB.toLowerCase();
+            }
+            
+            if (valA < valB) return ascending ? -1 : 1;
+            if (valA > valB) return ascending ? 1 : -1;
+            return 0;
+        });
+    }
+
+    // Renders the table with the current (potentially sorted) data
+    function renderTable() {
+        sortData();
+        tableBody.innerHTML = ''; // Clear existing table
         
-        <div class="card" style="margin-bottom: 2rem;">
-            <h2>How to Use This Tool</h2>
-            <p>
-                <strong>VORP (Value Over Replacement Player)</strong> measures a player's true value by comparing them to a "replacement-level" player (the best player likely available on the waiver wire). A higher VORP means a bigger weekly advantage.
-            </p>
-            <ol>
-                <li><strong>Set Replacement Levels:</strong> Use the input boxes to define the rank of the replacement player for each position. For a 10-team league, defaults are QB11, RB22, WR32, and TE11.</li>
-                <li><strong>Compare Players:</strong> Use the search bars to select any two players for a side-by-side comparison of their stats.</li>
-                <li><strong>Analyze Rankings:</strong> The main table ranks all players by their VORP, based on the levels you set.</li>
-            </ol>
-        </div>
+        playerData.forEach(player => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${player.player_name}</td>
+                <td>${player.position}</td>
+                <td>${player.team}</td>
+                <td>${player.ppg.toFixed(2)}</td>
+                <td>${player.std_dev.toFixed(2)}</td>
+                <td>${player.vorp.toFixed(2)}</td>
+            `;
+            tableBody.appendChild(row);
+        });
 
-        <div class="controls-grid">
-            <div class="card">
-                <h3>Replacement Levels</h3>
-                <div class="vorp-controls">
-                    <div class="control-group"><label for="qb-level">QB</label><input type="number" id="qb-level" value="11"></div>
-                    <div class="control-group"><label for="rb-level">RB</label><input type="number" id="rb-level" value="22"></div>
-                    <div class="control-group"><label for="wr-level">WR</label><input type="number" id="wr-level" value="32"></div>
-                    <div class="control-group"><label for="te-level">TE</label><input type="number" id="te-level" value="11"></div>
-                </div>
-            </div>
+        // Update header styles to show current sort
+        headers.forEach(header => {
+            header.classList.remove('sort-asc', 'sort-desc');
+            if (header.dataset.sort === currentSort.column) {
+                header.classList.add(currentSort.ascending ? 'sort-asc' : 'sort-desc');
+            }
+        });
+    }
 
-            <div class="card">
-                <h3>Player Comparison</h3>
-                <div class="comparison-controls">
-                    <div class="search-group">
-                        <label for="player1-search">Player 1</label>
-                        <input type="text" id="player1-search" list="player-list" placeholder="Search...">
-                    </div>
-                    <div class="search-group">
-                        <label for="player2-search">Player 2</label>
-                        <input type="text" id="player2-search" list="player-list" placeholder="Search...">
-                    </div>
-                    <button id="compare-btn" class="btn" style="align-self: flex-end;">Compare</button>
-                </div>
-                <datalist id="player-list"></datalist>
-            </div>
-        </div>
-        
-        <div id="comparison-results-container" class="card" style="display: none;">
-            <div id="comparison-results"></div>
-        </div>
+    // Add click event listeners to all sortable headers
+    headers.forEach(header => {
+        header.addEventListener('click', () => {
+            const sortColumn = header.dataset.sort;
+            
+            if (currentSort.column === sortColumn) {
+                // If clicking the same column, reverse the sort direction
+                currentSort.ascending = !currentSort.ascending;
+            } else {
+                // If clicking a new column, set it as the sort column
+                currentSort.column = sortColumn;
+                // Default to descending for numeric stats, ascending for text
+                currentSort.ascending = ['player_name', 'position', 'team'].includes(sortColumn);
+            }
+            renderTable();
+        });
+    });
 
-        <div class="card">
-            <h2>Overall VORP Rankings</h2>
-            <table id="vorp-table">
-                <thead>
-                    <tr><th>Rank</th><th>Player</th><th>Pos</th><th>Team</th><th>PPG</th><th>Consistency (Std Dev)</th><th>VORP</th></tr>
-                </thead>
-                <tbody id="vorp-table-body">
-                    </tbody>
-            </table>
-        </div>
-    </div>
-
-    <script src="vorp.js"></script>
-</body>
-</html>
+    // Initial data load
+    fetchData();
+});
