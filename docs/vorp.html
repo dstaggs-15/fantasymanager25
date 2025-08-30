@@ -1,89 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const tableBody = document.getElementById('vorp-table-body');
-    const headers = document.querySelectorAll('th[data-sort]');
-    let playerData = [];
-    let currentSort = {
-        column: 'vorp',
-        ascending: false
-    };
-
-    // Fetches the data from the VORP report
-    async function fetchData() {
-        try {
-            const response = await fetch('./docs/data/reports/vorp_analyzer_report.json');
-            if (!response.ok) throw new Error('Network response was not ok');
-            playerData = await response.json();
-            renderTable();
-        } catch (error) {
-            console.error('Error fetching VORP data:', error);
-            tableBody.innerHTML = `<tr><td colspan="6">Error loading data.</td></tr>`;
-        }
-    }
-
-    // Sorts the player data based on the current sort column and direction
-    function sortData() {
-        const { column, ascending } = currentSort;
-        playerData.sort((a, b) => {
-            let valA = a[column];
-            let valB = b[column];
-
-            // Handle numeric vs. string sorting
-            if (typeof valA === 'string') {
-                valA = valA.toLowerCase();
-                valB = valB.toLowerCase();
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORP & Player Analysis - Fantasy Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <main>
+            <h1>VORP & Player Analysis</h1>
+            <p>Value Over Replacement Player (VORP) measures a player's value relative to a baseline "replacement-level" player at the same position. Higher VORP indicates a greater positional advantage. Click any column header to sort the data.</p>
             
-            if (valA < valB) return ascending ? -1 : 1;
-            if (valA > valB) return ascending ? 1 : -1;
-            return 0;
-        });
-    }
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="player_name">Player</th>
+                            <th data-sort="position">Pos</th>
+                            <th data-sort="team">Team</th>
+                            <th data-sort="ppg">PPG</th>
+                            <th data-sort="std_dev">Std Dev</th>
+                            <th data-sort="vorp">VORP</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vorp-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
 
-    // Renders the table with the current (potentially sorted) data
-    function renderTable() {
-        sortData();
-        tableBody.innerHTML = ''; // Clear existing table
-        
-        playerData.forEach(player => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${player.player_name}</td>
-                <td>${player.position}</td>
-                <td>${player.team}</td>
-                <td>${player.ppg.toFixed(2)}</td>
-                <td>${player.std_dev.toFixed(2)}</td>
-                <td>${player.vorp.toFixed(2)}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-
-        // Update header styles to show current sort
-        headers.forEach(header => {
-            header.classList.remove('sort-asc', 'sort-desc');
-            if (header.dataset.sort === currentSort.column) {
-                header.classList.add(currentSort.ascending ? 'sort-asc' : 'sort-desc');
-            }
-        });
-    }
-
-    // Add click event listeners to all sortable headers
-    headers.forEach(header => {
-        header.addEventListener('click', () => {
-            const sortColumn = header.dataset.sort;
-            
-            if (currentSort.column === sortColumn) {
-                // If clicking the same column, reverse the sort direction
-                currentSort.ascending = !currentSort.ascending;
-            } else {
-                // If clicking a new column, set it as the sort column
-                currentSort.column = sortColumn;
-                // Default to descending for numeric stats, ascending for text
-                currentSort.ascending = ['player_name', 'position', 'team'].includes(sortColumn);
-            }
-            renderTable();
-        });
-    });
-
-    // Initial data load
-    fetchData();
-});
+    <script src="vorp.js" defer></script>
+</body>
+</html>
