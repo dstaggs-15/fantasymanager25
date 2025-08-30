@@ -19,19 +19,21 @@
                     <summary>How The 8-Factor Trade Grade is Calculated</summary>
                     <div class="explanation-content">
                         <p>The final grade is determined by calculating a <strong>Trade Value</strong> (0-100) for each player based on a weighted average of eight distinct factors. The total value of all players on each side of the trade is compared to determine the final letter grade.</p>
+                        
                         <h4>Core Value Factors (60%)</h4>
                         <ul>
-                            <li><strong>ROS Projections (30%):</strong> Our homegrown Rest-of-Season projection, measuring a player's expected future value.</li>
-                            <li><strong>Proven Production (15%):</strong> A player's historical Points Per Game (PPG), measuring their reliable floor.</li>
-                            <li><strong>Player Tier (15%):</strong> A grade based on a player's rank within their position (Elite, Great, etc.).</li>
+                            <li><strong>ROS Projections (30%):</strong> Our homegrown Rest-of-Season projection. This is the most heavily weighted factor as it measures a player's expected future value for the remainder of the season.</li>
+                            <li><strong>Proven Production (15%):</strong> A player's historical Points Per Game (PPG). This grounds the projection in historical reality and measures a player's reliable floor.</li>
+                            <li><strong>Player Tier (15%):</strong> A grade based on a player's rank within their position, sorting them into tiers (Elite, Great, etc.). Acquiring higher-tier players provides more value.</li>
                         </ul>
+
                         <h4>Contextual & Roster-Fit Factors (40%)</h4>
                         <ul>
-                            <li><strong>Weekly Upside (10%):</strong> Uses the "Start Score" for the upcoming week to measure immediate impact.</li>
-                            <li><strong>Roster Consistency (10%):</strong> Measures volatility using Standard Deviation.</li>
-                            <li><strong>Player Efficiency (5%):</strong> An advanced metric using VORP (Value Over Replacement Player).</li>
-                            <li><strong>Player Age (5%):</strong> Rewards younger players with more long-term value.</li>
-                            <li><strong>Team Offense (5%):</strong> Grades the quality of the player's offensive environment.</li>
+                            <li><strong>Weekly Upside (10%):</strong> Uses the 4-Factor "Start Score" for the upcoming week to measure a player's immediate impact and short-term value.</li>
+                            <li><strong>Roster Consistency (10%):</strong> A measure of volatility using Standard Deviation. A lower Std Dev (more consistent player) results in a higher score.</li>
+                            <li><strong>Player Efficiency (5%):</strong> An advanced metric using VORP (Value Over Replacement Player) as a proxy for overall efficiency and impact.</li>
+                            <li><strong>Player Age (5%):</strong> A score that rewards younger players, who have more long-term and dynasty value.</li>
+                            <li><strong>Team Offense (5%):</strong> A grade for the quality of the player's offensive environment. Players on high-scoring teams have more opportunities.</li>
                         </ul>
                     </div>
                 </details>
@@ -71,6 +73,7 @@
                         <p id="grade-b" class="grade">-</p>
                         <p id="value-b" class="total-value">Total Value: --</p>
                     </div>
+                    <div id="trade-summary-box"></div>
                 </div>
             </div>
         </main>
