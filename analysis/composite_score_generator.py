@@ -38,11 +38,11 @@ def calculate_start_scores():
         if col not in player_season_stats.columns: player_season_stats[col] = 0
 
     qbs = player_season_stats[player_season_stats['attempts'] > 50].copy()
-    if not qbs.empty:
+    if not qbs.empty and qbs['attempts'].sum() > 0:
         qbs['efficiency_score'] = (normalize_score(qbs['passing_tds'] / qbs['attempts']) - normalize_score(qbs['interceptions'] / qbs['attempts']) + 10) / 2
     
     skill_players = player_season_stats[(player_season_stats['carries'] + player_season_stats['receptions']) > 20].copy()
-    if not skill_players.empty:
+    if not skill_players.empty and (skill_players['carries'] + skill_players['receptions']).sum() > 0:
         skill_players['efficiency_score'] = normalize_score((skill_players['rushing_tds'] + skill_players['receiving_tds']) / (skill_players['carries'] + skill_players['receptions']))
 
     efficiency_scores = pd.concat([qbs[['player_id', 'efficiency_score']] if not qbs.empty else pd.DataFrame(), skill_players[['player_id', 'efficiency_score']] if not skill_players.empty else pd.DataFrame()])
@@ -76,7 +76,7 @@ def calculate_start_scores():
         merged_df['efficiency_score'] * 0.15
     ).round(2)
     
-    # This now includes all the individual component scores
+    # This now includes all the individual component scores in the final output
     final_report_cols = ['player_id', 'player_name', 'position', 'team_player', 'start_score', 'talent_score', 'matchup_score', 'oline_score', 'efficiency_score']
     final_report = merged_df[final_report_cols]
     final_report.rename(columns={'team_player': 'team'}, inplace=True)
