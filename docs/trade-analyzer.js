@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // --- TEAM COLORS MAP ---
+    // --- Official NFL Team Colors ---
     const TEAM_COLORS = {
         'ARI': { bg: '#97233F', text: '#FFFFFF' }, 'ATL': { bg: '#A71930', text: '#000000' }, 'BAL': { bg: '#241773', text: '#9E7C0C' },
         'BUF': { bg: '#00338D', text: '#C60C30' }, 'CAR': { bg: '#0085CA', text: '#101820' }, 'CHI': { bg: '#0B162A', text: '#C83803' },
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let ALL_PLAYER_DATA = [];
     let trade = { a: [], b: [] };
 
+    // DOM References
     const playerDatalist = document.getElementById('player-list');
     const addPlayerBtnA = document.getElementById('add-player-a');
     const addPlayerBtnB = document.getElementById('add-player-b');
@@ -26,17 +27,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const playersContainerB = document.getElementById('players-b-container');
     const gradeAEl = document.getElementById('grade-a');
     const gradeBEl = document.getElementById('grade-b');
-    // --- UPDATED: Get references to the new value elements ---
     const valueAEl = document.getElementById('value-a');
     const valueBEl = document.getElementById('value-b');
     const resultsContainer = document.getElementById('trade-results-container');
-    
+    const tradeSummaryBox = document.getElementById('trade-summary-box');
+
     async function initialize() {
         try {
             const [tradeValueRes, vorpRes, rosRes] = await Promise.all([
-                fetch('./data/reports/trade_value_report.json'),
-                fetch('./data/reports/vorp_analyzer_report.json'),
-                fetch('./data/reports/ros_projections.json')
+                fetch('./docs/data/reports/trade_value_report.json'),
+                fetch('./docs/data/reports/vorp_analyzer_report.json'),
+                fetch('./docs/data/reports/ros_projections.json')
             ]);
             if (!tradeValueRes.ok || !vorpRes.ok || !rosRes.ok) throw new Error('One or more data files failed to load.');
             
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             playerDatalist.appendChild(fragment);
         } catch (error) {
             console.error("Failed to initialize trade analyzer:", error);
+            document.querySelector('.container').innerHTML = `<h1>Trade Analyzer</h1><div class="card error-card"><p>Error loading trade data. Please ensure the backend workflow has run successfully and all report files exist in the <code>/docs/data/reports/</code> directory.</p></div>`;
         }
     }
 
@@ -94,8 +96,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         resultsContainer.style.display = 'block';
 
-        const totalValueA = trade.a.reduce((sum, p) => sum + p.trade_value, 0);
-        const totalValueB = trade.b.reduce((sum, p) => sum + p.trade_value, 0);
+        const totalValueA = trade.a.reduce((sum, p) => sum + (p.trade_value || 0), 0);
+        const totalValueB = trade.b.reduce((sum, p) => sum + (p.trade_value || 0), 0);
         const totalTradeValue = totalValueA + totalValueB;
 
         const percentageA = totalTradeValue > 0 ? (totalValueA / totalTradeValue) * 100 : 50;
@@ -104,9 +106,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         gradeAEl.textContent = getTradeGrade(percentageA);
         gradeBEl.textContent = getTradeGrade(percentageB);
         
-        // --- UPDATED: Display the total value inside the grade box ---
         valueAEl.textContent = `Total Value: ${totalValueA.toFixed(1)}`;
         valueBEl.textContent = `Total Value: ${totalValueB.toFixed(1)}`;
+
+        renderTradeSummary(totalValueA, totalValueB);
     }
 
     function renderPlayerCards() {
@@ -116,7 +119,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             const container = side === 'a' ? playersContainerA : playersContainerB;
             trade[side].forEach(p => {
                 const colors = TEAM_COLORS[p.team] || TEAM_COLORS['DEFAULT'];
-                // --- UPDATED: Player card header now uses team colors ---
                 container.innerHTML += `
                     <div class="player-card">
                         <div class="card-header" style="background-color: ${colors.bg}; color: ${colors.text};">
@@ -150,6 +152,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
     
+    function renderTradeSummary(valueA, valueB) {
+        const difference = valueA - valueB;
+        let text = '';
+        let className = '';
+
+        if (Math.abs(difference) < 2.0) {
+            text = 'This is a fair and balanced trade.';
+            className = 'summary-even';
+        } else if (difference > 0) {
+            text = `Team A wins this trade by +${difference.toFixed(1)} value.`;
+            className = 'summary-win';
+        } else {
+            text = `Team B wins this trade by +${Math.abs(difference).toFixed(1)} value.`;
+            className = 'summary-loss';
+        }
+        tradeSummaryBox.innerHTML = `<div class="trade-summary ${className}">${text}</div>`;
+    }
+
     // Event Listeners
     addPlayerBtnA.addEventListener('click', () => { addPlayer('a', searchInputA.value); searchInputA.value = ''; });
     addPlayerBtnB.addEventListener('click', () => { addPlayer('b', searchInputB.value); searchInputB.value = ''; });
