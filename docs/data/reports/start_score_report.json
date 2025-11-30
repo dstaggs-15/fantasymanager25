@@ -312,10 +312,10 @@
         "player_name":"M.Evans",
         "position":"WR",
         "team":"TB",
-        "start_score":7.34,
+        "start_score":7.38,
         "talent_score":7.39,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":6.94
     },
     {
@@ -543,10 +543,10 @@
         "player_name":"S.Shepard",
         "position":"WR",
         "team":"TB",
-        "start_score":4.65,
+        "start_score":4.7,
         "talent_score":2.54,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":1.98
     },
     {
@@ -774,10 +774,10 @@
         "player_name":"C.Samuel",
         "position":"WR",
         "team":"BUF",
-        "start_score":4.04,
+        "start_score":4.09,
         "talent_score":2.23,
         "matchup_score":5.48,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":2.91
     },
     {
@@ -939,10 +939,10 @@
         "player_name":"M.Hollins",
         "position":"WR",
         "team":"BUF",
-        "start_score":4.59,
+        "start_score":4.64,
         "talent_score":2.67,
         "matchup_score":5.48,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":5.43
     },
     {
@@ -1049,10 +1049,10 @@
         "player_name":"M.Trubisky",
         "position":"QB",
         "team":"BUF",
-        "start_score":3.05,
+        "start_score":3.09,
         "talent_score":0.66,
         "matchup_score":3.23,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":4.99
     },
     {
@@ -1060,10 +1060,10 @@
         "player_name":"M.Trubisky",
         "position":"QB",
         "team":"BUF",
-        "start_score":2.83,
+        "start_score":2.87,
         "talent_score":0.66,
         "matchup_score":3.23,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":3.52
     },
     {
@@ -1093,10 +1093,10 @@
         "player_name":"E.Engram",
         "position":"TE",
         "team":"JAX",
-        "start_score":5.65,
+        "start_score":5.56,
         "talent_score":6.3,
         "matchup_score":5.48,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":2.2
     },
     {
@@ -1170,10 +1170,10 @@
         "player_name":"C.Godwin",
         "position":"WR",
         "team":"TB",
-        "start_score":7.03,
+        "start_score":7.08,
         "talent_score":8.3,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":2.47
     },
     {
@@ -1302,10 +1302,10 @@
         "player_name":"M.Valdes-Scantling",
         "position":"WR",
         "team":"BUF",
-        "start_score":4.58,
+        "start_score":4.63,
         "talent_score":2.74,
         "matchup_score":5.48,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":5.2
     },
     {
@@ -1467,10 +1467,10 @@
         "player_name":"C.Kirk",
         "position":"WR",
         "team":"JAX",
-        "start_score":5.02,
+        "start_score":4.92,
         "talent_score":3.74,
         "matchup_score":6.13,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":3.47
     },
     {
@@ -1599,10 +1599,10 @@
         "player_name":"B.Mayfield",
         "position":"QB",
         "team":"TB",
-        "start_score":8.25,
+        "start_score":8.3,
         "talent_score":8.45,
         "matchup_score":8.71,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":7.63
     },
     {
@@ -1610,10 +1610,10 @@
         "player_name":"B.Mayfield",
         "position":"QB",
         "team":"TB",
-        "start_score":7.33,
+        "start_score":7.38,
         "talent_score":8.45,
         "matchup_score":8.71,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":1.49
     },
     {
@@ -1621,10 +1621,10 @@
         "player_name":"J.Allen",
         "position":"QB",
         "team":"BUF",
-        "start_score":6.92,
+        "start_score":6.97,
         "talent_score":9.1,
         "matchup_score":3.23,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":8.32
     },
     {
@@ -1632,10 +1632,10 @@
         "player_name":"J.Allen",
         "position":"QB",
         "team":"BUF",
-        "start_score":6.32,
+        "start_score":6.36,
         "talent_score":9.1,
         "matchup_score":3.23,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":4.28
     },
     {
@@ -1929,10 +1929,10 @@
         "player_name":"T.Johnson",
         "position":"RB",
         "team":"BUF",
-        "start_score":2.86,
+        "start_score":2.91,
         "talent_score":2.53,
         "matchup_score":1.61,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":2.01
     },
     {
@@ -1962,10 +1962,10 @@
         "player_name":"D.Johnson",
         "position":"RB",
         "team":"JAX",
-        "start_score":4.31,
+        "start_score":4.21,
         "talent_score":1.32,
         "matchup_score":8.39,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":0.68
     },
     {
@@ -2061,10 +2061,10 @@
         "player_name":"D.Knox",
         "position":"TE",
         "team":"BUF",
-        "start_score":4.93,
+        "start_score":4.98,
         "talent_score":2.52,
         "matchup_score":6.13,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":6.79
     },
     {
@@ -2226,10 +2226,10 @@
         "player_name":"G.Davis",
         "position":"WR",
         "team":"JAX",
-        "start_score":5.3,
+        "start_score":5.21,
         "talent_score":2.62,
         "matchup_score":6.13,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":8.38
     },
     {
@@ -2424,10 +2424,10 @@
         "player_name":"D.Duvernay",
         "position":"WR",
         "team":"JAX",
-        "start_score":3.73,
+        "start_score":3.63,
         "talent_score":0.81,
         "matchup_score":6.13,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":2.68
     },
     {
@@ -2677,10 +2677,10 @@
         "player_name":"Q.Morris",
         "position":"TE",
         "team":"BUF",
-        "start_score":4.39,
+        "start_score":4.44,
         "talent_score":1.85,
         "matchup_score":6.13,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":5.0
     },
     {
@@ -2820,10 +2820,10 @@
         "player_name":"L.Farrell",
         "position":"TE",
         "team":"JAX",
-        "start_score":3.28,
+        "start_score":3.18,
         "talent_score":1.19,
         "matchup_score":5.48,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":0.0
     },
     {
@@ -2974,10 +2974,10 @@
         "player_name":"T.Lawrence",
         "position":"QB",
         "team":"JAX",
-        "start_score":5.2,
+        "start_score":5.11,
         "talent_score":5.59,
         "matchup_score":2.9,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":6.23
     },
     {
@@ -2985,10 +2985,10 @@
         "player_name":"T.Lawrence",
         "position":"QB",
         "team":"JAX",
-        "start_score":4.71,
+        "start_score":4.62,
         "talent_score":5.59,
         "matchup_score":2.9,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":2.98
     },
     {
@@ -2996,10 +2996,10 @@
         "player_name":"M.Jones",
         "position":"QB",
         "team":"JAX",
-        "start_score":4.45,
+        "start_score":4.35,
         "talent_score":3.87,
         "matchup_score":2.9,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":5.81
     },
     {
@@ -3007,10 +3007,10 @@
         "player_name":"M.Jones",
         "position":"QB",
         "team":"JAX",
-        "start_score":3.68,
+        "start_score":3.58,
         "talent_score":3.87,
         "matchup_score":2.9,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":0.68
     },
     {
@@ -3018,10 +3018,10 @@
         "player_name":"T.Etienne",
         "position":"RB",
         "team":"JAX",
-        "start_score":5.43,
+        "start_score":5.33,
         "talent_score":3.9,
         "matchup_score":8.39,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":1.25
     },
     {
@@ -3238,10 +3238,10 @@
         "player_name":"J.Cook",
         "position":"RB",
         "team":"BUF",
-        "start_score":4.88,
+        "start_score":4.93,
         "talent_score":7.56,
         "matchup_score":1.61,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":2.07
     },
     {
@@ -3249,10 +3249,10 @@
         "player_name":"R.White",
         "position":"RB",
         "team":"TB",
-        "start_score":4.62,
+        "start_score":4.66,
         "talent_score":5.79,
         "matchup_score":3.23,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":1.46
     },
     {
@@ -3271,10 +3271,10 @@
         "player_name":"K.Shakir",
         "position":"WR",
         "team":"BUF",
-        "start_score":5.17,
+        "start_score":5.22,
         "talent_score":5.11,
         "matchup_score":5.48,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":2.8
     },
     {
@@ -3832,10 +3832,10 @@
         "player_name":"C.Otton",
         "position":"TE",
         "team":"TB",
-        "start_score":6.43,
+        "start_score":6.47,
         "talent_score":6.25,
         "matchup_score":7.74,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":3.27
     },
     {
@@ -3986,10 +3986,10 @@
         "player_name":"T.Bigsby",
         "position":"RB",
         "team":"JAX",
-        "start_score":5.52,
+        "start_score":5.43,
         "talent_score":3.87,
         "matchup_score":8.39,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":1.99
     },
     {
@@ -4118,10 +4118,10 @@
         "player_name":"P.Washington",
         "position":"WR",
         "team":"JAX",
-        "start_score":4.94,
+        "start_score":4.84,
         "talent_score":2.89,
         "matchup_score":6.13,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":5.21
     },
     {
@@ -4349,10 +4349,10 @@
         "player_name":"R.Jarrett",
         "position":"WR",
         "team":"TB",
-        "start_score":4.69,
+        "start_score":4.74,
         "talent_score":1.51,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":5.0
     },
     {
@@ -4360,10 +4360,10 @@
         "player_name":"R.Miller",
         "position":"WR",
         "team":"TB",
-        "start_score":4.86,
+        "start_score":4.91,
         "talent_score":1.94,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":5.0
     },
     {
@@ -4371,10 +4371,10 @@
         "player_name":"D.Kincaid",
         "position":"TE",
         "team":"BUF",
-        "start_score":4.99,
+        "start_score":5.04,
         "talent_score":4.51,
         "matchup_score":6.13,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":1.91
     },
     {
@@ -4382,10 +4382,10 @@
         "player_name":"B.Strange",
         "position":"TE",
         "team":"JAX",
-        "start_score":4.99,
+        "start_score":4.9,
         "talent_score":4.22,
         "matchup_score":5.48,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":3.33
     },
     {
@@ -4404,10 +4404,10 @@
         "player_name":"S.Tucker",
         "position":"RB",
         "team":"TB",
-        "start_score":3.49,
+        "start_score":3.53,
         "talent_score":2.77,
         "matchup_score":3.23,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":1.97
     },
     {
@@ -4536,10 +4536,10 @@
         "player_name":"P.Durham",
         "position":"TE",
         "team":"TB",
-        "start_score":5.94,
+        "start_score":5.98,
         "talent_score":4.38,
         "matchup_score":7.74,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":5.0
     },
     {
@@ -4547,10 +4547,10 @@
         "player_name":"T.Palmer",
         "position":"WR",
         "team":"TB",
-        "start_score":4.58,
+        "start_score":4.63,
         "talent_score":1.48,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":4.31
     },
     {
@@ -4844,10 +4844,10 @@
         "player_name":"B.Irving",
         "position":"RB",
         "team":"TB",
-        "start_score":4.91,
+        "start_score":4.96,
         "talent_score":6.46,
         "matchup_score":3.23,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":1.65
     },
     {
@@ -5207,10 +5207,10 @@
         "player_name":"J.McMillan",
         "position":"WR",
         "team":"TB",
-        "start_score":6.44,
+        "start_score":6.49,
         "talent_score":4.26,
         "matchup_score":7.42,
-        "oline_score":7.42,
+        "oline_score":7.74,
         "efficiency_score":9.3
     },
     {
@@ -5240,10 +5240,10 @@
         "player_name":"R.Davis",
         "position":"RB",
         "team":"BUF",
-        "start_score":3.1,
+        "start_score":3.15,
         "talent_score":2.93,
         "matchup_score":1.61,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":2.55
     },
     {
@@ -5273,10 +5273,10 @@
         "player_name":"B.Thomas",
         "position":"WR",
         "team":"JAX",
-        "start_score":6.59,
+        "start_score":6.49,
         "talent_score":6.95,
         "matchup_score":6.13,
-        "oline_score":7.74,
+        "oline_score":7.1,
         "efficiency_score":5.38
     },
     {
@@ -5295,10 +5295,10 @@
         "player_name":"K.Coleman",
         "position":"WR",
         "team":"BUF",
-        "start_score":4.83,
+        "start_score":4.87,
         "talent_score":3.02,
         "matchup_score":5.48,
-        "oline_score":7.1,
+        "oline_score":7.42,
         "efficiency_score":6.06
     },
     {
