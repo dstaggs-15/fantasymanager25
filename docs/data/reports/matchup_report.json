@@ -7,412 +7,372 @@
     {
         "team":"ARI",
         "position":"FB",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"ARI",
-        "position":"FS",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"ARI",
-        "position":"P",
-        "matchup_rank":20.0
-    },
-    {
-        "team":"ARI",
-        "position":"QB",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"ARI",
-        "position":"RB",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"ARI",
-        "position":"TE",
-        "matchup_rank":19.0
-    },
-    {
-        "team":"ARI",
-        "position":"WR",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"ATL",
-        "position":"CB",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"ATL",
-        "position":"FB",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"ATL",
-        "position":"FS",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"ATL",
-        "position":"P",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"ATL",
-        "position":"QB",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"ATL",
-        "position":"RB",
-        "matchup_rank":22.0
-    },
-    {
-        "team":"ATL",
-        "position":"T",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"ATL",
-        "position":"TE",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"ATL",
-        "position":"WR",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"BAL",
-        "position":"FB",
-        "matchup_rank":11.0
-    },
-    {
-        "team":"BAL",
-        "position":"G",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"BAL",
-        "position":"QB",
-        "matchup_rank":22.0
-    },
-    {
-        "team":"BAL",
-        "position":"RB",
-        "matchup_rank":27.0
-    },
-    {
-        "team":"BAL",
-        "position":"TE",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"BAL",
-        "position":"WR",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"BUF",
-        "position":"CB",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"BUF",
-        "position":"FB",
-        "matchup_rank":25.0
-    },
-    {
-        "team":"BUF",
-        "position":"FS",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"BUF",
-        "position":"G",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"BUF",
-        "position":"ILB",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"BUF",
-        "position":"P",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"BUF",
-        "position":"QB",
-        "matchup_rank":30.0
-    },
-    {
-        "team":"BUF",
-        "position":"RB",
-        "matchup_rank":16.0
-    },
-    {
-        "team":"BUF",
-        "position":"SS",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"BUF",
-        "position":"T",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"BUF",
-        "position":"TE",
-        "matchup_rank":30.0
-    },
-    {
-        "team":"BUF",
-        "position":"WR",
-        "matchup_rank":31.0
-    },
-    {
-        "team":"CAR",
-        "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"CAR",
-        "position":"FB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"CAR",
-        "position":"ILB",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"CAR",
-        "position":"P",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"CAR",
-        "position":"QB",
-        "matchup_rank":23.0
-    },
-    {
-        "team":"CAR",
-        "position":"RB",
         "matchup_rank":6.0
     },
     {
-        "team":"CAR",
-        "position":"TE",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"CAR",
-        "position":"WR",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"CHI",
-        "position":"FB",
-        "matchup_rank":23.0
-    },
-    {
-        "team":"CHI",
-        "position":"OLB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"CHI",
+        "team":"ARI",
         "position":"P",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"CHI",
-        "position":"QB",
-        "matchup_rank":25.0
-    },
-    {
-        "team":"CHI",
-        "position":"RB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"CHI",
-        "position":"SS",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"CHI",
-        "position":"T",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"CHI",
-        "position":"TE",
-        "matchup_rank":27.0
-    },
-    {
-        "team":"CHI",
-        "position":"WR",
-        "matchup_rank":27.0
-    },
-    {
-        "team":"CIN",
-        "position":"CB",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"CIN",
-        "position":"FB",
-        "matchup_rank":31.0
-    },
-    {
-        "team":"CIN",
-        "position":"P",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"CIN",
-        "position":"QB",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"CIN",
-        "position":"RB",
-        "matchup_rank":15.0
-    },
-    {
-        "team":"CIN",
-        "position":"T",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"CIN",
-        "position":"TE",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"CIN",
-        "position":"WR",
-        "matchup_rank":20.0
-    },
-    {
-        "team":"CLE",
-        "position":"FB",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"CLE",
-        "position":"K",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"CLE",
-        "position":"P",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"CLE",
-        "position":"QB",
-        "matchup_rank":31.0
-    },
-    {
-        "team":"CLE",
-        "position":"RB",
-        "matchup_rank":23.0
-    },
-    {
-        "team":"CLE",
-        "position":"SS",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"CLE",
-        "position":"T",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"CLE",
-        "position":"TE",
-        "matchup_rank":24.0
-    },
-    {
-        "team":"CLE",
-        "position":"WR",
-        "matchup_rank":25.0
-    },
-    {
-        "team":"DAL",
-        "position":"CB",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"DAL",
-        "position":"FB",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"DAL",
-        "position":"FS",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"DAL",
-        "position":"ILB",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"DAL",
-        "position":"OLB",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"DAL",
-        "position":"P",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"DAL",
-        "position":"QB",
-        "matchup_rank":24.0
-    },
-    {
-        "team":"DAL",
-        "position":"RB",
-        "matchup_rank":32.0
-    },
-    {
-        "team":"DAL",
-        "position":"SS",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"DAL",
-        "position":"T",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"DAL",
-        "position":"TE",
-        "matchup_rank":25.0
-    },
-    {
-        "team":"DAL",
-        "position":"WR",
         "matchup_rank":17.0
     },
     {
+        "team":"ARI",
+        "position":"QB",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"ARI",
+        "position":"RB",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"ARI",
+        "position":"TE",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"ARI",
+        "position":"WR",
+        "matchup_rank":19.0
+    },
+    {
+        "team":"ATL",
+        "position":"CB",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"ATL",
+        "position":"FB",
+        "matchup_rank":21.0
+    },
+    {
+        "team":"ATL",
+        "position":"FS",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"ATL",
+        "position":"P",
+        "matchup_rank":11.0
+    },
+    {
+        "team":"ATL",
+        "position":"QB",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"ATL",
+        "position":"RB",
+        "matchup_rank":27.0
+    },
+    {
+        "team":"ATL",
+        "position":"TE",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"ATL",
+        "position":"WR",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"BAL",
+        "position":"FB",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"BAL",
+        "position":"G",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"BAL",
+        "position":"QB",
+        "matchup_rank":27.0
+    },
+    {
+        "team":"BAL",
+        "position":"RB",
+        "matchup_rank":26.0
+    },
+    {
+        "team":"BAL",
+        "position":"TE",
+        "matchup_rank":18.0
+    },
+    {
+        "team":"BAL",
+        "position":"WR",
+        "matchup_rank":25.0
+    },
+    {
+        "team":"BUF",
+        "position":"CB",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"BUF",
+        "position":"FB",
+        "matchup_rank":23.0
+    },
+    {
+        "team":"BUF",
+        "position":"FS",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"BUF",
+        "position":"G",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"BUF",
+        "position":"P",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"BUF",
+        "position":"QB",
+        "matchup_rank":25.0
+    },
+    {
+        "team":"BUF",
+        "position":"RB",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"BUF",
+        "position":"SS",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"BUF",
+        "position":"T",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"BUF",
+        "position":"TE",
+        "matchup_rank":30.0
+    },
+    {
+        "team":"BUF",
+        "position":"WR",
+        "matchup_rank":28.0
+    },
+    {
+        "team":"CAR",
+        "position":"FB",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"CAR",
+        "position":"ILB",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"CAR",
+        "position":"P",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"CAR",
+        "position":"QB",
+        "matchup_rank":22.0
+    },
+    {
+        "team":"CAR",
+        "position":"RB",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"CAR",
+        "position":"TE",
+        "matchup_rank":16.0
+    },
+    {
+        "team":"CAR",
+        "position":"WR",
+        "matchup_rank":13.0
+    },
+    {
+        "team":"CHI",
+        "position":"FB",
+        "matchup_rank":13.0
+    },
+    {
+        "team":"CHI",
+        "position":"OLB",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"CHI",
+        "position":"P",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"CHI",
+        "position":"QB",
+        "matchup_rank":28.0
+    },
+    {
+        "team":"CHI",
+        "position":"RB",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"CHI",
+        "position":"SS",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"CHI",
+        "position":"T",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"CHI",
+        "position":"TE",
+        "matchup_rank":21.0
+    },
+    {
+        "team":"CHI",
+        "position":"WR",
+        "matchup_rank":31.0
+    },
+    {
+        "team":"CIN",
+        "position":"CB",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"CIN",
+        "position":"FB",
+        "matchup_rank":32.0
+    },
+    {
+        "team":"CIN",
+        "position":"P",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"CIN",
+        "position":"QB",
+        "matchup_rank":11.0
+    },
+    {
+        "team":"CIN",
+        "position":"RB",
+        "matchup_rank":15.0
+    },
+    {
+        "team":"CIN",
+        "position":"T",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"CIN",
+        "position":"TE",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"CIN",
+        "position":"WR",
+        "matchup_rank":24.0
+    },
+    {
+        "team":"CLE",
+        "position":"FB",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"CLE",
+        "position":"P",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"CLE",
+        "position":"QB",
+        "matchup_rank":29.0
+    },
+    {
+        "team":"CLE",
+        "position":"RB",
+        "matchup_rank":25.0
+    },
+    {
+        "team":"CLE",
+        "position":"TE",
+        "matchup_rank":23.0
+    },
+    {
+        "team":"CLE",
+        "position":"WR",
+        "matchup_rank":21.0
+    },
+    {
+        "team":"DAL",
+        "position":"CB",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"DAL",
+        "position":"FB",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"DAL",
+        "position":"ILB",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"DAL",
+        "position":"OLB",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"DAL",
+        "position":"P",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"DAL",
+        "position":"QB",
+        "matchup_rank":20.0
+    },
+    {
+        "team":"DAL",
+        "position":"RB",
+        "matchup_rank":31.0
+    },
+    {
+        "team":"DAL",
+        "position":"SS",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"DAL",
+        "position":"T",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"DAL",
+        "position":"TE",
+        "matchup_rank":28.0
+    },
+    {
+        "team":"DAL",
+        "position":"WR",
+        "matchup_rank":10.0
+    },
+    {
         "team":"DEN",
         "position":"FB",
-        "matchup_rank":19.0
+        "matchup_rank":20.0
     },
     {
         "team":"DEN",
         "position":"FS",
-        "matchup_rank":8.0
+        "matchup_rank":5.0
     },
     {
         "team":"DEN",
@@ -432,27 +392,22 @@
     {
         "team":"DEN",
         "position":"QB",
-        "matchup_rank":27.0
+        "matchup_rank":30.0
     },
     {
         "team":"DEN",
         "position":"RB",
-        "matchup_rank":17.0
-    },
-    {
-        "team":"DEN",
-        "position":"SS",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"DEN",
-        "position":"T",
         "matchup_rank":9.0
     },
     {
         "team":"DEN",
+        "position":"SS",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"DEN",
         "position":"TE",
-        "matchup_rank":21.0
+        "matchup_rank":7.0
     },
     {
         "team":"DEN",
@@ -462,7 +417,7 @@
     {
         "team":"DET",
         "position":"FB",
-        "matchup_rank":4.0
+        "matchup_rank":1.0
     },
     {
         "team":"DET",
@@ -472,42 +427,37 @@
     {
         "team":"DET",
         "position":"RB",
-        "matchup_rank":19.0
+        "matchup_rank":23.0
     },
     {
         "team":"DET",
         "position":"T",
-        "matchup_rank":10.0
+        "matchup_rank":7.0
     },
     {
         "team":"DET",
         "position":"TE",
-        "matchup_rank":17.0
+        "matchup_rank":24.0
     },
     {
         "team":"DET",
         "position":"WR",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"GB",
-        "position":"C",
         "matchup_rank":2.0
     },
     {
         "team":"GB",
         "position":"CB",
-        "matchup_rank":9.0
+        "matchup_rank":7.0
     },
     {
         "team":"GB",
         "position":"FB",
-        "matchup_rank":15.0
+        "matchup_rank":24.0
     },
     {
         "team":"GB",
         "position":"FS",
-        "matchup_rank":8.0
+        "matchup_rank":5.0
     },
     {
         "team":"GB",
@@ -522,12 +472,12 @@
     {
         "team":"GB",
         "position":"P",
-        "matchup_rank":16.0
+        "matchup_rank":14.0
     },
     {
         "team":"GB",
         "position":"QB",
-        "matchup_rank":17.0
+        "matchup_rank":18.0
     },
     {
         "team":"GB",
@@ -536,48 +486,38 @@
     },
     {
         "team":"GB",
-        "position":"SS",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"GB",
         "position":"TE",
-        "matchup_rank":6.0
+        "matchup_rank":13.0
     },
     {
         "team":"GB",
         "position":"WR",
-        "matchup_rank":18.0
+        "matchup_rank":17.0
     },
     {
         "team":"HOU",
         "position":"FB",
-        "matchup_rank":20.0
+        "matchup_rank":31.0
     },
     {
         "team":"HOU",
         "position":"FS",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"HOU",
-        "position":"ILB",
-        "matchup_rank":3.0
+        "matchup_rank":2.0
     },
     {
         "team":"HOU",
         "position":"P",
-        "matchup_rank":19.0
+        "matchup_rank":15.0
     },
     {
         "team":"HOU",
         "position":"QB",
-        "matchup_rank":21.0
+        "matchup_rank":24.0
     },
     {
         "team":"HOU",
         "position":"RB",
-        "matchup_rank":12.0
+        "matchup_rank":14.0
     },
     {
         "team":"HOU",
@@ -587,42 +527,37 @@
     {
         "team":"HOU",
         "position":"WR",
-        "matchup_rank":24.0
+        "matchup_rank":26.0
     },
     {
         "team":"IND",
         "position":"FB",
-        "matchup_rank":14.0
+        "matchup_rank":11.0
     },
     {
         "team":"IND",
         "position":"P",
-        "matchup_rank":18.0
-    },
-    {
-        "team":"IND",
-        "position":"QB",
         "matchup_rank":16.0
     },
     {
         "team":"IND",
-        "position":"RB",
-        "matchup_rank":14.0
+        "position":"QB",
+        "matchup_rank":13.0
     },
     {
         "team":"IND",
-        "position":"TE",
+        "position":"RB",
         "matchup_rank":7.0
     },
     {
         "team":"IND",
-        "position":"WR",
-        "matchup_rank":14.0
+        "position":"TE",
+        "matchup_rank":10.0
     },
     {
-        "team":"JAX",
-        "position":"CB",
-        "matchup_rank":9.0
+        "team":"IND",
+        "position":"WR",
+        "matchup_rank":12.0
     },
     {
         "team":"JAX",
@@ -636,11 +571,6 @@
     },
     {
         "team":"JAX",
-        "position":"OLB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"JAX",
         "position":"P",
         "matchup_rank":12.0
     },
@@ -652,7 +582,7 @@
     {
         "team":"JAX",
         "position":"RB",
-        "matchup_rank":11.0
+        "matchup_rank":10.0
     },
     {
         "team":"JAX",
@@ -662,42 +592,42 @@
     {
         "team":"JAX",
         "position":"T",
-        "matchup_rank":7.0
+        "matchup_rank":5.0
     },
     {
         "team":"JAX",
         "position":"TE",
-        "matchup_rank":14.0
+        "matchup_rank":12.0
     },
     {
         "team":"JAX",
         "position":"WR",
+        "matchup_rank":11.0
+    },
+    {
+        "team":"KC",
+        "position":"FB",
+        "matchup_rank":14.0
+    },
+    {
+        "team":"KC",
+        "position":"OLB",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"KC",
+        "position":"P",
         "matchup_rank":10.0
     },
     {
         "team":"KC",
-        "position":"FB",
-        "matchup_rank":24.0
-    },
-    {
-        "team":"KC",
-        "position":"OLB",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"KC",
-        "position":"P",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"KC",
         "position":"QB",
         "matchup_rank":2.0
     },
     {
         "team":"KC",
         "position":"RB",
-        "matchup_rank":30.0
+        "matchup_rank":32.0
     },
     {
         "team":"KC",
@@ -707,574 +637,494 @@
     {
         "team":"KC",
         "position":"TE",
-        "matchup_rank":23.0
-    },
-    {
-        "team":"KC",
-        "position":"WR",
-        "matchup_rank":16.0
-    },
-    {
-        "team":"LA",
-        "position":"CB",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"LA",
-        "position":"FB",
-        "matchup_rank":21.0
-    },
-    {
-        "team":"LA",
-        "position":"FS",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"LA",
-        "position":"ILB",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"LA",
-        "position":"OLB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"LA",
-        "position":"P",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"LA",
-        "position":"QB",
-        "matchup_rank":19.0
-    },
-    {
-        "team":"LA",
-        "position":"RB",
-        "matchup_rank":20.0
-    },
-    {
-        "team":"LA",
-        "position":"T",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"LA",
-        "position":"TE",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"LA",
-        "position":"WR",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"LAC",
-        "position":"CB",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"LAC",
-        "position":"FB",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"LAC",
-        "position":"P",
         "matchup_rank":15.0
     },
     {
-        "team":"LAC",
-        "position":"QB",
-        "matchup_rank":12.0
-    },
-    {
-        "team":"LAC",
-        "position":"RB",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"LAC",
-        "position":"TE",
-        "matchup_rank":12.0
-    },
-    {
-        "team":"LAC",
-        "position":"WR",
-        "matchup_rank":12.0
-    },
-    {
-        "team":"LV",
-        "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"LV",
-        "position":"FB",
-        "matchup_rank":29.0
-    },
-    {
-        "team":"LV",
-        "position":"P",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"LV",
-        "position":"QB",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"LV",
-        "position":"RB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"LV",
-        "position":"TE",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"LV",
-        "position":"WR",
-        "matchup_rank":21.0
-    },
-    {
-        "team":"MIA",
-        "position":"FB",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"MIA",
-        "position":"FS",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"MIA",
-        "position":"P",
-        "matchup_rank":11.0
-    },
-    {
-        "team":"MIA",
-        "position":"QB",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"MIA",
-        "position":"RB",
-        "matchup_rank":26.0
-    },
-    {
-        "team":"MIA",
-        "position":"SS",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"MIA",
-        "position":"TE",
-        "matchup_rank":11.0
-    },
-    {
-        "team":"MIA",
-        "position":"WR",
-        "matchup_rank":29.0
-    },
-    {
-        "team":"MIN",
-        "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"MIN",
-        "position":"FB",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"MIN",
-        "position":"FS",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"MIN",
-        "position":"OLB",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"MIN",
-        "position":"QB",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"MIN",
-        "position":"RB",
-        "matchup_rank":18.0
-    },
-    {
-        "team":"MIN",
-        "position":"SS",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"MIN",
-        "position":"T",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"MIN",
-        "position":"TE",
-        "matchup_rank":20.0
-    },
-    {
-        "team":"MIN",
-        "position":"WR",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"NE",
-        "position":"DE",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"NE",
-        "position":"FB",
-        "matchup_rank":17.0
-    },
-    {
-        "team":"NE",
-        "position":"OLB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"NE",
-        "position":"P",
-        "matchup_rank":14.0
-    },
-    {
-        "team":"NE",
-        "position":"QB",
-        "matchup_rank":28.0
-    },
-    {
-        "team":"NE",
-        "position":"RB",
-        "matchup_rank":21.0
-    },
-    {
-        "team":"NE",
-        "position":"T",
-        "matchup_rank":5.0
-    },
-    {
-        "team":"NE",
-        "position":"TE",
-        "matchup_rank":31.0
-    },
-    {
-        "team":"NE",
-        "position":"WR",
-        "matchup_rank":26.0
-    },
-    {
-        "team":"NO",
-        "position":"CB",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"NO",
-        "position":"FB",
-        "matchup_rank":28.0
-    },
-    {
-        "team":"NO",
-        "position":"FS",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"NO",
-        "position":"P",
-        "matchup_rank":17.0
-    },
-    {
-        "team":"NO",
-        "position":"QB",
-        "matchup_rank":26.0
-    },
-    {
-        "team":"NO",
-        "position":"RB",
-        "matchup_rank":28.0
-    },
-    {
-        "team":"NO",
-        "position":"TE",
-        "matchup_rank":28.0
-    },
-    {
-        "team":"NO",
-        "position":"WR",
-        "matchup_rank":28.0
-    },
-    {
-        "team":"NYG",
-        "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"NYG",
-        "position":"FB",
-        "matchup_rank":22.0
-    },
-    {
-        "team":"NYG",
-        "position":"QB",
-        "matchup_rank":20.0
-    },
-    {
-        "team":"NYG",
-        "position":"RB",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"NYG",
-        "position":"T",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"NYG",
-        "position":"TE",
-        "matchup_rank":26.0
-    },
-    {
-        "team":"NYG",
-        "position":"WR",
-        "matchup_rank":11.0
-    },
-    {
-        "team":"NYJ",
-        "position":"C",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"NYJ",
-        "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"NYJ",
-        "position":"DE",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"NYJ",
-        "position":"FB",
-        "matchup_rank":16.0
-    },
-    {
-        "team":"NYJ",
-        "position":"FS",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"NYJ",
-        "position":"QB",
-        "matchup_rank":32.0
-    },
-    {
-        "team":"NYJ",
-        "position":"RB",
-        "matchup_rank":7.0
-    },
-    {
-        "team":"NYJ",
-        "position":"SS",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"NYJ",
-        "position":"TE",
-        "matchup_rank":18.0
-    },
-    {
-        "team":"NYJ",
-        "position":"WR",
-        "matchup_rank":32.0
-    },
-    {
-        "team":"PHI",
-        "position":"FB",
-        "matchup_rank":12.0
-    },
-    {
-        "team":"PHI",
-        "position":"FS",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"PHI",
-        "position":"ILB",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"PHI",
-        "position":"P",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"PHI",
-        "position":"QB",
-        "matchup_rank":18.0
-    },
-    {
-        "team":"PHI",
-        "position":"RB",
-        "matchup_rank":24.0
-    },
-    {
-        "team":"PHI",
-        "position":"SS",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"PHI",
-        "position":"TE",
-        "matchup_rank":4.0
-    },
-    {
-        "team":"PHI",
+        "team":"KC",
         "position":"WR",
         "matchup_rank":23.0
     },
     {
-        "team":"PIT",
+        "team":"LA",
+        "position":"CB",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"LA",
         "position":"FB",
-        "matchup_rank":30.0
+        "matchup_rank":16.0
     },
     {
-        "team":"PIT",
-        "position":"FS",
-        "matchup_rank":8.0
+        "team":"LA",
+        "position":"ILB",
+        "matchup_rank":5.0
     },
     {
-        "team":"PIT",
-        "position":"G",
-        "matchup_rank":1.0
+        "team":"LA",
+        "position":"OLB",
+        "matchup_rank":4.0
     },
     {
-        "team":"PIT",
+        "team":"LA",
         "position":"P",
-        "matchup_rank":15.0
+        "matchup_rank":5.0
     },
     {
-        "team":"PIT",
+        "team":"LA",
         "position":"QB",
         "matchup_rank":14.0
     },
     {
-        "team":"PIT",
+        "team":"LA",
         "position":"RB",
-        "matchup_rank":10.0
+        "matchup_rank":17.0
     },
     {
-        "team":"PIT",
-        "position":"TE",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"PIT",
-        "position":"WR",
-        "matchup_rank":19.0
-    },
-    {
-        "team":"SEA",
-        "position":"FB",
-        "matchup_rank":2.0
-    },
-    {
-        "team":"SEA",
-        "position":"G",
-        "matchup_rank":3.0
-    },
-    {
-        "team":"SEA",
-        "position":"P",
-        "matchup_rank":13.0
-    },
-    {
-        "team":"SEA",
-        "position":"QB",
-        "matchup_rank":10.0
-    },
-    {
-        "team":"SEA",
-        "position":"RB",
-        "matchup_rank":1.0
-    },
-    {
-        "team":"SEA",
+        "team":"LA",
         "position":"T",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"SEA",
-        "position":"TE",
         "matchup_rank":2.0
     },
     {
-        "team":"SEA",
-        "position":"WR",
-        "matchup_rank":22.0
+        "team":"LA",
+        "position":"TE",
+        "matchup_rank":4.0
     },
     {
-        "team":"SF",
-        "position":"CB",
+        "team":"LA",
+        "position":"WR",
         "matchup_rank":5.0
     },
     {
-        "team":"SF",
+        "team":"LAC",
         "position":"FB",
-        "matchup_rank":28.0
+        "matchup_rank":17.0
     },
     {
-        "team":"SF",
-        "position":"ILB",
-        "matchup_rank":6.0
-    },
-    {
-        "team":"SF",
-        "position":"P",
-        "matchup_rank":8.0
-    },
-    {
-        "team":"SF",
+        "team":"LAC",
         "position":"QB",
-        "matchup_rank":29.0
+        "matchup_rank":7.0
     },
     {
-        "team":"SF",
+        "team":"LAC",
         "position":"RB",
+        "matchup_rank":16.0
+    },
+    {
+        "team":"LAC",
+        "position":"TE",
         "matchup_rank":25.0
     },
     {
-        "team":"SF",
+        "team":"LAC",
+        "position":"WR",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"LV",
+        "position":"FB",
+        "matchup_rank":30.0
+    },
+    {
+        "team":"LV",
+        "position":"P",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"LV",
+        "position":"QB",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"LV",
+        "position":"RB",
+        "matchup_rank":11.0
+    },
+    {
+        "team":"LV",
+        "position":"TE",
+        "matchup_rank":17.0
+    },
+    {
+        "team":"LV",
+        "position":"WR",
+        "matchup_rank":22.0
+    },
+    {
+        "team":"MIA",
+        "position":"FB",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"MIA",
+        "position":"FS",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"MIA",
+        "position":"P",
+        "matchup_rank":9.0
+    },
+    {
+        "team":"MIA",
+        "position":"QB",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"MIA",
+        "position":"RB",
+        "matchup_rank":21.0
+    },
+    {
+        "team":"MIA",
         "position":"SS",
         "matchup_rank":8.0
     },
     {
-        "team":"SF",
+        "team":"MIA",
+        "position":"TE",
+        "matchup_rank":9.0
+    },
+    {
+        "team":"MIA",
+        "position":"WR",
+        "matchup_rank":29.0
+    },
+    {
+        "team":"MIN",
+        "position":"CB",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"MIN",
+        "position":"FB",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"MIN",
+        "position":"FS",
+        "matchup_rank":1.0
+    },
+    {
+        "team":"MIN",
+        "position":"OLB",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"MIN",
+        "position":"QB",
+        "matchup_rank":16.0
+    },
+    {
+        "team":"MIN",
+        "position":"RB",
+        "matchup_rank":18.0
+    },
+    {
+        "team":"MIN",
+        "position":"SS",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"MIN",
+        "position":"T",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"MIN",
+        "position":"TE",
+        "matchup_rank":14.0
+    },
+    {
+        "team":"MIN",
+        "position":"WR",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"NE",
+        "position":"DE",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"NE",
+        "position":"FB",
+        "matchup_rank":10.0
+    },
+    {
+        "team":"NE",
+        "position":"P",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"NE",
+        "position":"QB",
+        "matchup_rank":23.0
+    },
+    {
+        "team":"NE",
+        "position":"RB",
+        "matchup_rank":24.0
+    },
+    {
+        "team":"NE",
         "position":"TE",
         "matchup_rank":29.0
     },
     {
-        "team":"SF",
+        "team":"NE",
         "position":"WR",
+        "matchup_rank":20.0
+    },
+    {
+        "team":"NO",
+        "position":"CB",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"NO",
+        "position":"FB",
+        "matchup_rank":28.0
+    },
+    {
+        "team":"NO",
+        "position":"FS",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"NO",
+        "position":"P",
+        "matchup_rank":13.0
+    },
+    {
+        "team":"NO",
+        "position":"QB",
+        "matchup_rank":26.0
+    },
+    {
+        "team":"NO",
+        "position":"RB",
+        "matchup_rank":19.0
+    },
+    {
+        "team":"NO",
+        "position":"TE",
+        "matchup_rank":26.0
+    },
+    {
+        "team":"NO",
+        "position":"WR",
+        "matchup_rank":27.0
+    },
+    {
+        "team":"NYG",
+        "position":"CB",
         "matchup_rank":7.0
     },
     {
-        "team":"TB",
+        "team":"NYG",
         "position":"FB",
         "matchup_rank":27.0
     },
     {
+        "team":"NYG",
+        "position":"QB",
+        "matchup_rank":19.0
+    },
+    {
+        "team":"NYG",
+        "position":"RB",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"NYG",
+        "position":"TE",
+        "matchup_rank":27.0
+    },
+    {
+        "team":"NYG",
+        "position":"WR",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"NYJ",
+        "position":"CB",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"NYJ",
+        "position":"FB",
+        "matchup_rank":15.0
+    },
+    {
+        "team":"NYJ",
+        "position":"QB",
+        "matchup_rank":32.0
+    },
+    {
+        "team":"NYJ",
+        "position":"RB",
+        "matchup_rank":20.0
+    },
+    {
+        "team":"NYJ",
+        "position":"TE",
+        "matchup_rank":20.0
+    },
+    {
+        "team":"NYJ",
+        "position":"WR",
+        "matchup_rank":32.0
+    },
+    {
+        "team":"PHI",
+        "position":"FB",
+        "matchup_rank":22.0
+    },
+    {
+        "team":"PHI",
+        "position":"FS",
+        "matchup_rank":5.0
+    },
+    {
+        "team":"PHI",
+        "position":"ILB",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"PHI",
+        "position":"P",
+        "matchup_rank":8.0
+    },
+    {
+        "team":"PHI",
+        "position":"QB",
+        "matchup_rank":21.0
+    },
+    {
+        "team":"PHI",
+        "position":"RB",
+        "matchup_rank":28.0
+    },
+    {
+        "team":"PHI",
+        "position":"SS",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"PHI",
+        "position":"TE",
+        "matchup_rank":11.0
+    },
+    {
+        "team":"PHI",
+        "position":"WR",
+        "matchup_rank":15.0
+    },
+    {
+        "team":"PIT",
+        "position":"FB",
+        "matchup_rank":29.0
+    },
+    {
+        "team":"PIT",
+        "position":"QB",
+        "matchup_rank":17.0
+    },
+    {
+        "team":"PIT",
+        "position":"RB",
+        "matchup_rank":13.0
+    },
+    {
+        "team":"PIT",
+        "position":"TE",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"PIT",
+        "position":"WR",
+        "matchup_rank":16.0
+    },
+    {
+        "team":"SEA",
+        "position":"FB",
+        "matchup_rank":4.0
+    },
+    {
+        "team":"SEA",
+        "position":"G",
+        "matchup_rank":2.0
+    },
+    {
+        "team":"SEA",
+        "position":"P",
+        "matchup_rank":10.0
+    },
+    {
+        "team":"SEA",
+        "position":"QB",
+        "matchup_rank":12.0
+    },
+    {
+        "team":"SEA",
+        "position":"RB",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"SEA",
+        "position":"TE",
+        "matchup_rank":3.0
+    },
+    {
+        "team":"SEA",
+        "position":"WR",
+        "matchup_rank":18.0
+    },
+    {
+        "team":"SF",
+        "position":"CB",
+        "matchup_rank":7.0
+    },
+    {
+        "team":"SF",
+        "position":"FB",
+        "matchup_rank":26.0
+    },
+    {
+        "team":"SF",
+        "position":"ILB",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"SF",
+        "position":"QB",
+        "matchup_rank":31.0
+    },
+    {
+        "team":"SF",
+        "position":"RB",
+        "matchup_rank":22.0
+    },
+    {
+        "team":"SF",
+        "position":"SS",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"SF",
+        "position":"TE",
+        "matchup_rank":31.0
+    },
+    {
+        "team":"SF",
+        "position":"WR",
+        "matchup_rank":9.0
+    },
+    {
+        "team":"TB",
+        "position":"FB",
+        "matchup_rank":25.0
+    },
+    {
         "team":"TB",
         "position":"ILB",
         "matchup_rank":3.0
@@ -1282,27 +1132,22 @@
     {
         "team":"TB",
         "position":"P",
-        "matchup_rank":6.0
+        "matchup_rank":7.0
     },
     {
         "team":"TB",
         "position":"QB",
-        "matchup_rank":4.0
+        "matchup_rank":3.0
     },
     {
         "team":"TB",
         "position":"RB",
-        "matchup_rank":29.0
-    },
-    {
-        "team":"TB",
-        "position":"T",
-        "matchup_rank":4.0
+        "matchup_rank":30.0
     },
     {
         "team":"TB",
         "position":"TE",
-        "matchup_rank":3.0
+        "matchup_rank":2.0
     },
     {
         "team":"TB",
@@ -1317,7 +1162,7 @@
     {
         "team":"TEN",
         "position":"FB",
-        "matchup_rank":5.0
+        "matchup_rank":9.0
     },
     {
         "team":"TEN",
@@ -1327,22 +1172,22 @@
     {
         "team":"TEN",
         "position":"QB",
-        "matchup_rank":11.0
+        "matchup_rank":10.0
     },
     {
         "team":"TEN",
         "position":"RB",
-        "matchup_rank":31.0
+        "matchup_rank":29.0
     },
     {
         "team":"TEN",
         "position":"SS",
-        "matchup_rank":9.0
+        "matchup_rank":7.0
     },
     {
         "team":"TEN",
         "position":"T",
-        "matchup_rank":10.0
+        "matchup_rank":7.0
     },
     {
         "team":"TEN",
@@ -1352,37 +1197,32 @@
     {
         "team":"TEN",
         "position":"WR",
-        "matchup_rank":6.0
+        "matchup_rank":14.0
     },
     {
         "team":"WAS",
         "position":"CB",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"WAS",
-        "position":"DT",
-        "matchup_rank":2.0
+        "matchup_rank":7.0
     },
     {
         "team":"WAS",
         "position":"FB",
-        "matchup_rank":26.0
+        "matchup_rank":19.0
     },
     {
         "team":"WAS",
         "position":"FS",
-        "matchup_rank":8.0
+        "matchup_rank":5.0
     },
     {
         "team":"WAS",
         "position":"P",
-        "matchup_rank":15.0
+        "matchup_rank":12.0
     },
     {
         "team":"WAS",
         "position":"QB",
-        "matchup_rank":7.0
+        "matchup_rank":15.0
     },
     {
         "team":"WAS",
@@ -1392,21 +1232,21 @@
     {
         "team":"WAS",
         "position":"SS",
-        "matchup_rank":9.0
-    },
-    {
-        "team":"WAS",
-        "position":"T",
         "matchup_rank":7.0
     },
     {
         "team":"WAS",
+        "position":"T",
+        "matchup_rank":6.0
+    },
+    {
+        "team":"WAS",
         "position":"TE",
-        "matchup_rank":16.0
+        "matchup_rank":19.0
     },
     {
         "team":"WAS",
         "position":"WR",
-        "matchup_rank":2.0
+        "matchup_rank":1.0
     }
 ]
