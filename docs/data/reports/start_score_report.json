@@ -48,10 +48,10 @@
         "player_name":"J.Johnson",
         "position":"QB",
         "team":"BAL",
-        "start_score":2.23,
+        "start_score":2.28,
         "talent_score":0.08,
         "matchup_score":2.26,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.0
     },
     {
@@ -378,10 +378,10 @@
         "player_name":"N.Agholor",
         "position":"WR",
         "team":"BAL",
-        "start_score":2.57,
+        "start_score":2.62,
         "talent_score":1.48,
         "matchup_score":1.29,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.46
     },
     {
@@ -554,10 +554,10 @@
         "player_name":"A.Hooper",
         "position":"TE",
         "team":"NE",
-        "start_score":4.27,
+        "start_score":4.22,
         "talent_score":4.13,
         "matchup_score":4.84,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":2.3
     },
     {
@@ -587,10 +587,10 @@
         "player_name":"D.Henry",
         "position":"RB",
         "team":"BAL",
-        "start_score":6.61,
+        "start_score":6.66,
         "talent_score":8.94,
         "matchup_score":6.45,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":2.18
     },
     {
@@ -675,10 +675,10 @@
         "player_name":"H.Henry",
         "position":"TE",
         "team":"NE",
-        "start_score":5.09,
+        "start_score":5.04,
         "talent_score":5.76,
         "matchup_score":4.84,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":3.42
     },
     {
@@ -719,10 +719,10 @@
         "player_name":"J.Brissett",
         "position":"QB",
         "team":"NE",
-        "start_score":5.17,
+        "start_score":5.12,
         "talent_score":2.55,
         "matchup_score":7.74,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":6.72
     },
     {
@@ -730,10 +730,10 @@
         "player_name":"J.Brissett",
         "position":"QB",
         "team":"NE",
-        "start_score":4.39,
+        "start_score":4.34,
         "talent_score":2.55,
         "matchup_score":7.74,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":1.52
     },
     {
@@ -807,10 +807,10 @@
         "player_name":"K.Bourne",
         "position":"WR",
         "team":"NE",
-        "start_score":3.13,
+        "start_score":3.08,
         "talent_score":2.29,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":2.83
     },
     {
@@ -851,10 +851,10 @@
         "player_name":"P.Ricard",
         "position":"FB",
         "team":"BAL",
-        "start_score":4.5,
+        "start_score":4.55,
         "talent_score":5.26,
         "matchup_score":2.9,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.0
     },
     {
@@ -1423,10 +1423,10 @@
         "player_name":"M.Andrews",
         "position":"TE",
         "team":"BAL",
-        "start_score":4.55,
+        "start_score":4.6,
         "talent_score":6.85,
         "matchup_score":0.65,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.61
     },
     {
@@ -1489,10 +1489,10 @@
         "player_name":"L.Jackson",
         "position":"QB",
         "team":"BAL",
-        "start_score":6.83,
+        "start_score":6.88,
         "talent_score":10.0,
         "matchup_score":2.26,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":9.18
     },
     {
@@ -1500,10 +1500,10 @@
         "player_name":"L.Jackson",
         "position":"QB",
         "team":"BAL",
-        "start_score":5.7,
+        "start_score":5.74,
         "talent_score":10.0,
         "matchup_score":2.26,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":1.62
     },
     {
@@ -1687,10 +1687,10 @@
         "player_name":"J.Hill",
         "position":"RB",
         "team":"BAL",
-        "start_score":4.47,
+        "start_score":4.52,
         "talent_score":3.84,
         "matchup_score":6.45,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":1.51
     },
     {
@@ -2127,10 +2127,10 @@
         "player_name":"J.Hasty",
         "position":"RB",
         "team":"NE",
-        "start_score":3.72,
+        "start_score":3.68,
         "talent_score":1.42,
         "matchup_score":6.77,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":2.02
     },
     {
@@ -2402,10 +2402,10 @@
         "player_name":"A.Gibson",
         "position":"RB",
         "team":"NE",
-        "start_score":4.08,
+        "start_score":4.03,
         "talent_score":2.69,
         "matchup_score":6.77,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":1.02
     },
     {
@@ -2424,10 +2424,10 @@
         "player_name":"K.Osborn",
         "position":"WR",
         "team":"NE",
-        "start_score":2.96,
+        "start_score":2.91,
         "talent_score":1.32,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":4.25
     },
     {
@@ -2633,10 +2633,10 @@
         "player_name":"R.Bateman",
         "position":"WR",
         "team":"BAL",
-        "start_score":4.09,
+        "start_score":4.14,
         "talent_score":4.72,
         "matchup_score":1.29,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":6.93
     },
     {
@@ -2710,10 +2710,10 @@
         "player_name":"T.Wallace",
         "position":"WR",
         "team":"BAL",
-        "start_score":2.64,
+        "start_score":2.69,
         "talent_score":1.82,
         "matchup_score":1.29,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.0
     },
     {
@@ -2787,10 +2787,10 @@
         "player_name":"R.Stevenson",
         "position":"RB",
         "team":"NE",
-        "start_score":5.15,
+        "start_score":5.1,
         "talent_score":5.25,
         "matchup_score":6.77,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":1.29
     },
     {
@@ -3634,10 +3634,10 @@
         "player_name":"I.Likely",
         "position":"TE",
         "team":"BAL",
-        "start_score":4.25,
+        "start_score":4.3,
         "talent_score":5.64,
         "matchup_score":0.65,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":6.86
     },
     {
@@ -3678,10 +3678,10 @@
         "player_name":"C.Kolar",
         "position":"TE",
         "team":"BAL",
-        "start_score":2.69,
+        "start_score":2.74,
         "talent_score":2.56,
         "matchup_score":0.65,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":4.64
     },
     {
@@ -3722,10 +3722,10 @@
         "player_name":"T.Thornton",
         "position":"WR",
         "team":"NE",
-        "start_score":2.67,
+        "start_score":2.62,
         "talent_score":0.92,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":3.4
     },
     {
@@ -4118,10 +4118,10 @@
         "player_name":"K.Boutte",
         "position":"WR",
         "team":"NE",
-        "start_score":3.65,
+        "start_score":3.6,
         "talent_score":3.37,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":3.4
     },
     {
@@ -4173,10 +4173,10 @@
         "player_name":"D.Douglas",
         "position":"WR",
         "team":"NE",
-        "start_score":3.53,
+        "start_score":3.48,
         "talent_score":3.89,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":1.21
     },
     {
@@ -4558,10 +4558,10 @@
         "player_name":"Z.Flowers",
         "position":"WR",
         "team":"BAL",
-        "start_score":3.71,
+        "start_score":3.76,
         "talent_score":5.2,
         "matchup_score":1.29,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":3.13
     },
     {
@@ -5097,10 +5097,10 @@
         "player_name":"R.Ali",
         "position":"RB",
         "team":"BAL",
-        "start_score":3.6,
+        "start_score":3.65,
         "talent_score":0.35,
         "matchup_score":6.45,
-        "oline_score":5.16,
+        "oline_score":5.48,
         "efficiency_score":5.0
     },
     {
@@ -5163,10 +5163,10 @@
         "player_name":"D.Maye",
         "position":"QB",
         "team":"NE",
-        "start_score":6.32,
+        "start_score":6.28,
         "talent_score":5.62,
         "matchup_score":7.74,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":6.21
     },
     {
@@ -5174,10 +5174,10 @@
         "player_name":"D.Maye",
         "position":"QB",
         "team":"NE",
-        "start_score":5.68,
+        "start_score":5.63,
         "talent_score":5.62,
         "matchup_score":7.74,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":1.89
     },
     {
@@ -5185,10 +5185,10 @@
         "player_name":"J.Baker",
         "position":"WR",
         "team":"NE",
-        "start_score":2.63,
+        "start_score":2.58,
         "talent_score":0.23,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":5.0
     },
     {
@@ -5295,10 +5295,10 @@
         "player_name":"J.Polk",
         "position":"WR",
         "team":"NE",
-        "start_score":2.96,
+        "start_score":2.92,
         "talent_score":1.06,
         "matchup_score":3.23,
-        "oline_score":5.48,
+        "oline_score":5.16,
         "efficiency_score":5.0
     },
     {
