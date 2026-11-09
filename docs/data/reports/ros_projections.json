@@ -40,66 +40,210 @@
         "ros_rank":3.0
     },
     {
-        "player_id":"00-0037055",
-        "player_name":"L.McCutcheon",
-        "position":"WR",
-        "team":"LA",
+        "player_id":"00-0036563",
+        "player_name":"D.Lenoir",
+        "position":"CB",
+        "team":"SF",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037077",
-        "player_name":"S.Howell",
-        "position":"QB",
-        "team":"WAS",
-        "ros_projection":0.0,
-        "ros_rank":3.0
-    },
-    {
-        "player_id":"00-0037348",
-        "player_name":"T.Conner",
-        "position":"WR",
-        "team":"MIA",
+        "player_id":"00-0035133",
+        "player_name":"K.Nixon",
+        "position":"CB",
+        "team":"GB",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037276",
-        "player_name":"T.Chandler",
-        "position":"RB",
-        "team":"MIN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034335",
-        "player_name":"M.Allen",
+        "player_id":"00-0034490",
+        "player_name":"E.Turner",
         "position":"ILB",
-        "team":"PIT",
+        "team":"ARI",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038092",
-        "player_name":"E.Ezukanma",
-        "position":"WR",
-        "team":"MIA",
+        "player_id":"00-0037207",
+        "player_name":"M.Caliendo",
+        "position":"G",
+        "team":"KC",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037708",
-        "player_name":"M.Alexander",
+        "player_id":"00-0037129",
+        "player_name":"J.Blackwell",
+        "position":"CB",
+        "team":"CHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034575",
+        "player_name":"D.Wells",
+        "position":"TE",
+        "team":"TB",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035164",
+        "player_name":"C.Thompson",
         "position":"WR",
+        "team":"SEA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036990",
+        "player_name":"D.Deablo",
+        "position":"MLB",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035632",
+        "player_name":"A.Hooker",
+        "position":"FS",
+        "team":"TEN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032496",
+        "player_name":"M.Farley",
+        "position":"FS",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037284",
+        "player_name":"M.Araiza",
+        "position":"P",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0035643",
+        "player_name":"J.Simmons",
+        "position":"DT",
+        "team":"TEN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036183",
+        "player_name":"K.Wilkerson",
+        "position":"WR",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036037",
+        "player_name":"S.Franklin",
+        "position":"SS",
+        "team":"CAR",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035688",
+        "player_name":"T.Pipkins",
+        "position":"T",
+        "team":"LAC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0033367",
+        "player_name":"C.Board",
+        "position":"WR",
+        "team":"TEN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035859",
+        "player_name":"B.Gillikin",
+        "position":"P",
+        "team":"ARI",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0036124",
+        "player_name":"K.Dorsey",
+        "position":"CB",
         "team":"DET",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037112",
-        "player_name":"J.Tonges",
-        "position":"TE",
-        "team":"CHI",
+        "player_id":"00-0036132",
+        "player_name":"B.Bredeson",
+        "position":"G",
+        "team":"NYG",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035795",
+        "player_name":"J.Pierre",
+        "position":"CB",
+        "team":"PIT",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0033481",
+        "player_name":"M.Kemp",
+        "position":"WR",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037243",
+        "player_name":"T.Smith",
+        "position":"G",
+        "team":"DAL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0033057",
+        "player_name":"J.Conklin",
+        "position":"T",
+        "team":"CLE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037287",
+        "player_name":"V.Lowe",
+        "position":"T",
+        "team":"NE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035602",
+        "player_name":"A.Bachman",
+        "position":"WR",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035272",
+        "player_name":"A.Van Ginkel",
+        "position":"OLB",
+        "team":"MIA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -112,30 +256,6 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038147",
-        "player_name":"D.Baldwin",
-        "position":"WR",
-        "team":"CLE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038149",
-        "player_name":"J.Ali",
-        "position":"WR",
-        "team":"ATL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0027114",
-        "player_name":"T.Morstead",
-        "position":"P",
-        "team":"NYJ",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
         "player_id":"00-0033729",
         "player_name":"C.Johnston",
         "position":"P",
@@ -144,10 +264,34 @@
         "ros_rank":4.0
     },
     {
+        "player_id":"00-0032437",
+        "player_name":"K.Grugier-Hill",
+        "position":"ILB",
+        "team":"ARI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
         "player_id":"00-0033863",
         "player_name":"D.Skipper",
         "position":"T",
         "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0038489",
+        "player_name":"B.VanSumeren",
+        "position":"FB",
+        "team":"PHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0038477",
+        "player_name":"B.Ford-Wheaton",
+        "position":"WR",
+        "team":"NYG",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -160,34 +304,154 @@
         "ros_rank":4.0
     },
     {
-        "player_id":"00-0029764",
-        "player_name":"C.Davis",
+        "player_id":"00-0038123",
+        "player_name":"D.Belton",
+        "position":"SS",
+        "team":"NYG",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032780",
+        "player_name":"J.Howard",
+        "position":"RB",
+        "team":"NO",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032807",
+        "player_name":"C.Fejedelem",
+        "position":"SS",
+        "team":"MIA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035156",
+        "player_name":"J.Fox",
+        "position":"P",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0037524",
+        "player_name":"T.Martin",
+        "position":"WR",
+        "team":"TEN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032958",
+        "player_name":"W.Parks",
         "position":"FS",
+        "team":"NYJ",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037491",
+        "player_name":"J.Russell",
+        "position":"ILB",
+        "team":"TB",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034438",
+        "player_name":"L.Woodside",
+        "position":"QB",
+        "team":"ATL",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0037450",
+        "player_name":"T.McAllister",
+        "position":"RB",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037422",
+        "player_name":"K.Pryor",
+        "position":"WR",
+        "team":"CIN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037324",
+        "player_name":"C.Oladokun",
+        "position":"QB",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0036254",
+        "player_name":"C.Johnson",
+        "position":"WR",
+        "team":"CHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0033550",
+        "player_name":"D.Webb",
+        "position":"QB",
+        "team":"NYG",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0035280",
+        "player_name":"J.Bailey",
+        "position":"P",
+        "team":"MIA",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0038519",
+        "player_name":"N.Remigio",
+        "position":"WR",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0038911",
+        "player_name":"M.Cunningham",
+        "position":"WR",
         "team":"NE",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039617",
-        "player_name":"J.Kibodi",
+        "player_id":"00-0038891",
+        "player_name":"S.Jackson",
+        "position":"WR",
+        "team":"CIN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0038862",
+        "player_name":"E.Dotson",
         "position":"RB",
-        "team":"CLE",
+        "team":"LAC",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037393",
-        "player_name":"J.Domann",
-        "position":"OLB",
-        "team":"IND",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037306",
-        "player_name":"J.FitzPatrick",
-        "position":"TE",
-        "team":"ATL",
+        "player_id":"00-0034726",
+        "player_name":"D.Leavitt",
+        "position":"SS",
+        "team":"GB",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -200,6 +464,22 @@
         "ros_rank":1.0
     },
     {
+        "player_id":"00-0034676",
+        "player_name":"J.Washington",
+        "position":"WR",
+        "team":"DAL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034614",
+        "player_name":"G.Igwebuike",
+        "position":"RB",
+        "team":"SEA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
         "player_id":"00-0037410",
         "player_name":"J.Corbin",
         "position":"RB",
@@ -208,10 +488,34 @@
         "ros_rank":1.0
     },
     {
+        "player_id":"00-0038678",
+        "player_name":"J.Mims",
+        "position":"RB",
+        "team":"NO",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034578",
+        "player_name":"R.Bonnafon",
+        "position":"RB",
+        "team":"WAS",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
         "player_id":"00-0037420",
         "player_name":"K.Lassiter",
         "position":"WR",
         "team":"CIN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034496",
+        "player_name":"S.Chandler",
+        "position":"SS",
+        "team":"CAR",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -240,6 +544,166 @@
         "ros_rank":4.0
     },
     {
+        "player_id":"00-0034177",
+        "player_name":"T.Boyle",
+        "position":"QB",
+        "team":"CHI",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0038397",
+        "player_name":"E.Hull",
+        "position":"RB",
+        "team":"IND",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034366",
+        "player_name":"K.Coutee",
+        "position":"WR",
+        "team":"IND",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0038490",
+        "player_name":"T.Zentner",
+        "position":"P",
+        "team":"TEN",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0034360",
+        "player_name":"L.Carter",
+        "position":"OLB",
+        "team":"ATL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034355",
+        "player_name":"M.Stewart",
+        "position":"SS",
+        "team":"HOU",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037306",
+        "player_name":"J.FitzPatrick",
+        "position":"TE",
+        "team":"ATL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037289",
+        "player_name":"M.Rodriguez",
+        "position":"ILB",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037156",
+        "player_name":"I.Charles",
+        "position":"WR",
+        "team":"NYJ",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036504",
+        "player_name":"B.Echols",
+        "position":"CB",
+        "team":"NYJ",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035190",
+        "player_name":"A.Cole",
+        "position":"P",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0034974",
+        "player_name":"J.Love",
+        "position":"SS",
+        "team":"SEA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036287",
+        "player_name":"N.Igbinoghene",
+        "position":"CB",
+        "team":"DAL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036427",
+        "player_name":"T.Johnson",
+        "position":"WR",
+        "team":"LA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034834",
+        "player_name":"S.Hubbard",
+        "position":"DE",
+        "team":"CIN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0033633",
+        "player_name":"T.Gentry",
+        "position":"WR",
+        "team":"BUF",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034571",
+        "player_name":"T.Scott",
+        "position":"T",
+        "team":"WAS",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034488",
+        "player_name":"T.Thomas",
+        "position":"CB",
+        "team":"TB",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034485",
+        "player_name":"J.Owens",
+        "position":"SS",
+        "team":"CHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036648",
+        "player_name":"N.Niemann",
+        "position":"ILB",
+        "team":"LAC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
         "player_id":"00-0036982",
         "player_name":"C.Golston",
         "position":"DE",
@@ -248,42 +712,282 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0036669",
-        "player_name":"K.Hill",
-        "position":"RB",
-        "team":"GB",
+        "player_id":"00-0036672",
+        "player_name":"G.Stuard",
+        "position":"MLB",
+        "team":"IND",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0030533",
-        "player_name":"M.Barkley",
-        "position":"QB",
-        "team":"JAX",
+        "player_id":"00-0033460",
+        "player_name":"J.Ross",
+        "position":"WR",
+        "team":"PHI",
         "ros_projection":0.0,
-        "ros_rank":3.0
+        "ros_rank":1.0
     },
     {
-        "player_id":"00-0036457",
-        "player_name":"T.Williams",
+        "player_id":"00-0032399",
+        "player_name":"M.Killebrew",
+        "position":"SS",
+        "team":"PIT",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032381",
+        "player_name":"T.Decker",
+        "position":"T",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036860",
+        "player_name":"J.Funk",
         "position":"RB",
+        "team":"IND",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0031357",
+        "player_name":"C.Goodwin",
+        "position":"CB",
+        "team":"DAL",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0031299",
+        "player_name":"J.Matthews",
+        "position":"TE",
+        "team":"CAR",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036888",
+        "player_name":"D.Hamlin",
+        "position":"SS",
+        "team":"BUF",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0028899",
+        "player_name":"R.McLeod",
+        "position":"FS",
+        "team":"CLE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035277",
+        "player_name":"M.Jackson",
+        "position":"CB",
+        "team":"SEA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0034335",
+        "player_name":"M.Allen",
+        "position":"ILB",
+        "team":"PIT",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0032257",
+        "player_name":"D.Johnson",
+        "position":"RB",
+        "team":"BUF",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039614",
+        "player_name":"J.Jackson",
+        "position":"WR",
+        "team":"NO",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039611",
+        "player_name":"M.Hayball",
+        "position":"P",
+        "team":"NO",
+        "ros_projection":0.0,
+        "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0039603",
+        "player_name":"B.Brooks",
+        "position":"RB",
+        "team":"HOU",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036005",
+        "player_name":"N.Togiai",
+        "position":"TE",
+        "team":"PHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039816",
+        "player_name":"A.Gould",
+        "position":"WR",
+        "team":"IND",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037276",
+        "player_name":"T.Chandler",
+        "position":"RB",
+        "team":"MIN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039573",
+        "player_name":"B.Watson",
+        "position":"RB",
+        "team":"DEN",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035308",
+        "player_name":"T.Sweeney",
+        "position":"TE",
+        "team":"BUF",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039521",
+        "player_name":"X.Weaver",
+        "position":"WR",
         "team":"ARI",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0037004",
-        "player_name":"H.Long",
+        "player_id":"00-0039458",
+        "player_name":"B.Bates",
         "position":"TE",
+        "team":"CLE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039451",
+        "player_name":"I.Williams",
+        "position":"WR",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035891",
+        "player_name":"C.White",
+        "position":"WR",
+        "team":"PIT",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0027948",
+        "player_name":"B.Gabbert",
+        "position":"QB",
+        "team":"TB",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0039407",
+        "player_name":"D.Laube",
+        "position":"RB",
+        "team":"LV",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039824",
+        "player_name":"J.Wiley",
+        "position":"TE",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039398",
+        "player_name":"J.Milton",
+        "position":"QB",
+        "team":"NE",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0039825",
+        "player_name":"J.Hicks",
+        "position":"SS",
+        "team":"KC",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036277",
+        "player_name":"Q.Cephus",
+        "position":"WR",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036059",
+        "player_name":"T.Mabry",
+        "position":"TE",
+        "team":"SEA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036096",
+        "player_name":"J.Taylor",
+        "position":"RB",
+        "team":"NE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037348",
+        "player_name":"T.Conner",
+        "position":"WR",
         "team":"MIA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0036951",
-        "player_name":"F.Darby",
-        "position":"WR",
-        "team":"ATL",
+        "player_id":"00-0039617",
+        "player_name":"J.Kibodi",
+        "position":"RB",
+        "team":"CLE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0028292",
+        "player_name":"N.Bellore",
+        "position":"ILB",
+        "team":"SEA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -304,188 +1008,28 @@
         "ros_rank":3.0
     },
     {
-        "player_id":"00-0036880",
-        "player_name":"P.Sewell",
-        "position":"T",
-        "team":"DET",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036858",
-        "player_name":"J.Camp",
+        "player_id":"00-0036951",
+        "player_name":"F.Darby",
         "position":"WR",
-        "team":"HOU",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036755",
-        "player_name":"J.Patterson",
-        "position":"RB",
-        "team":"WAS",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034177",
-        "player_name":"T.Boyle",
-        "position":"QB",
-        "team":"CHI",
-        "ros_projection":0.0,
-        "ros_rank":3.0
-    },
-    {
-        "player_id":"00-0036692",
-        "player_name":"M.Forristall",
-        "position":"TE",
-        "team":"CLE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035457",
-        "player_name":"T.Johnson",
-        "position":"WR",
-        "team":"HOU",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038981",
-        "player_name":"W.Morris",
-        "position":"T",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039316",
-        "player_name":"B.Cupp",
-        "position":"TE",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038643",
-        "player_name":"B.Willis",
-        "position":"TE",
-        "team":"SF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038679",
-        "player_name":"T.Shavers",
-        "position":"WR",
-        "team":"BUF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039573",
-        "player_name":"B.Watson",
-        "position":"RB",
-        "team":"DEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039692",
-        "player_name":"D.Pettus",
-        "position":"FS",
-        "team":"NE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039703",
-        "player_name":"C.Schrader",
-        "position":"RB",
-        "team":"LA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039731",
-        "player_name":"J.Latham",
-        "position":"T",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034438",
-        "player_name":"L.Woodside",
-        "position":"QB",
         "team":"ATL",
         "ros_projection":0.0,
-        "ros_rank":3.0
+        "ros_rank":1.0
     },
     {
-        "player_id":"00-0039611",
-        "player_name":"M.Hayball",
-        "position":"P",
-        "team":"NO",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
-        "player_id":"00-0039614",
-        "player_name":"J.Jackson",
-        "position":"WR",
-        "team":"NO",
+        "player_id":"00-0037004",
+        "player_name":"H.Long",
+        "position":"TE",
+        "team":"MIA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039521",
-        "player_name":"X.Weaver",
+        "player_id":"00-0037055",
+        "player_name":"L.McCutcheon",
         "position":"WR",
-        "team":"ARI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035891",
-        "player_name":"C.White",
-        "position":"WR",
-        "team":"PIT",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035752",
-        "player_name":"C.Streveler",
-        "position":"QB",
-        "team":"NYJ",
-        "ros_projection":0.0,
-        "ros_rank":3.0
-    },
-    {
-        "player_id":"00-0035609",
-        "player_name":"J.Gervase",
-        "position":"ILB",
         "team":"LA",
         "ros_projection":0.0,
         "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036277",
-        "player_name":"Q.Cephus",
-        "position":"WR",
-        "team":"DET",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036226",
-        "player_name":"J.Eason",
-        "position":"QB",
-        "team":"CAR",
-        "ros_projection":0.0,
-        "ros_rank":3.0
     },
     {
         "player_id":"00-0036228",
@@ -496,52 +1040,12 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0036059",
-        "player_name":"T.Mabry",
-        "position":"TE",
-        "team":"SEA",
+        "player_id":"00-0039731",
+        "player_name":"J.Latham",
+        "position":"T",
+        "team":"TEN",
         "ros_projection":0.0,
         "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039603",
-        "player_name":"B.Brooks",
-        "position":"RB",
-        "team":"HOU",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034490",
-        "player_name":"E.Turner",
-        "position":"ILB",
-        "team":"ARI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034575",
-        "player_name":"D.Wells",
-        "position":"TE",
-        "team":"TB",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033633",
-        "player_name":"T.Gentry",
-        "position":"WR",
-        "team":"BUF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033550",
-        "player_name":"D.Webb",
-        "position":"QB",
-        "team":"NYG",
-        "ros_projection":0.0,
-        "ros_rank":3.0
     },
     {
         "player_id":"00-0029664",
@@ -560,34 +1064,42 @@
         "ros_rank":4.0
     },
     {
-        "player_id":"00-0028292",
-        "player_name":"N.Bellore",
-        "position":"ILB",
-        "team":"SEA",
+        "player_id":"00-0039703",
+        "player_name":"C.Schrader",
+        "position":"RB",
+        "team":"LA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0027948",
-        "player_name":"B.Gabbert",
+        "player_id":"00-0039692",
+        "player_name":"D.Pettus",
+        "position":"FS",
+        "team":"NE",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036226",
+        "player_name":"J.Eason",
         "position":"QB",
-        "team":"TB",
+        "team":"CAR",
         "ros_projection":0.0,
         "ros_rank":3.0
     },
     {
-        "player_id":"00-0022824",
-        "player_name":"A.Lee",
-        "position":"P",
-        "team":"ARI",
+        "player_id":"00-0037077",
+        "player_name":"S.Howell",
+        "position":"QB",
+        "team":"WAS",
         "ros_projection":0.0,
-        "ros_rank":4.0
+        "ros_rank":3.0
     },
     {
-        "player_id":"00-0035432",
-        "player_name":"J.Moore",
-        "position":"WR",
-        "team":"LAC",
+        "player_id":"00-0030074",
+        "player_name":"D.Bakhtiari",
+        "position":"T",
+        "team":"GB",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -600,218 +1112,90 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039816",
-        "player_name":"A.Gould",
+        "player_id":"00-0037112",
+        "player_name":"J.Tonges",
+        "position":"TE",
+        "team":"CHI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0035752",
+        "player_name":"C.Streveler",
+        "position":"QB",
+        "team":"NYJ",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0036858",
+        "player_name":"J.Camp",
         "position":"WR",
+        "team":"HOU",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036880",
+        "player_name":"P.Sewell",
+        "position":"T",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037393",
+        "player_name":"J.Domann",
+        "position":"OLB",
         "team":"IND",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039824",
-        "player_name":"J.Wiley",
-        "position":"TE",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039825",
-        "player_name":"J.Hicks",
-        "position":"SS",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035399",
-        "player_name":"S.Morgan",
-        "position":"WR",
-        "team":"CIN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035272",
-        "player_name":"A.Van Ginkel",
-        "position":"OLB",
-        "team":"MIA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035277",
-        "player_name":"M.Jackson",
-        "position":"CB",
-        "team":"SEA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035308",
-        "player_name":"T.Sweeney",
-        "position":"TE",
-        "team":"BUF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035133",
-        "player_name":"K.Nixon",
-        "position":"CB",
+        "player_id":"00-0036669",
+        "player_name":"K.Hill",
+        "position":"RB",
         "team":"GB",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0035621",
-        "player_name":"N.Webster",
+        "player_id":"00-0038147",
+        "player_name":"D.Baldwin",
         "position":"WR",
-        "team":"CHI",
+        "team":"CLE",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0035156",
-        "player_name":"J.Fox",
-        "position":"P",
-        "team":"DET",
+        "player_id":"00-0038149",
+        "player_name":"J.Ali",
+        "position":"WR",
+        "team":"ATL",
         "ros_projection":0.0,
-        "ros_rank":4.0
+        "ros_rank":1.0
     },
     {
-        "player_id":"00-0034571",
-        "player_name":"T.Scott",
+        "player_id":"00-0038981",
+        "player_name":"W.Morris",
         "position":"T",
-        "team":"WAS",
+        "team":"KC",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0034834",
-        "player_name":"S.Hubbard",
-        "position":"DE",
-        "team":"CIN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034974",
-        "player_name":"J.Love",
-        "position":"SS",
-        "team":"SEA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035190",
-        "player_name":"A.Cole",
+        "player_id":"00-0027114",
+        "player_name":"T.Morstead",
         "position":"P",
-        "team":"LV",
+        "team":"NYJ",
         "ros_projection":0.0,
         "ros_rank":4.0
     },
     {
-        "player_id":"00-0037243",
-        "player_name":"T.Smith",
-        "position":"G",
-        "team":"DAL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037284",
-        "player_name":"M.Araiza",
-        "position":"P",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
-        "player_id":"00-0037287",
-        "player_name":"V.Lowe",
-        "position":"T",
-        "team":"NE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037324",
-        "player_name":"C.Oladokun",
-        "position":"QB",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":3.0
-    },
-    {
-        "player_id":"00-0037422",
-        "player_name":"K.Pryor",
-        "position":"WR",
-        "team":"CIN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036427",
-        "player_name":"T.Johnson",
-        "position":"WR",
-        "team":"LA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036183",
-        "player_name":"K.Wilkerson",
-        "position":"WR",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037450",
-        "player_name":"T.McAllister",
-        "position":"RB",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037491",
-        "player_name":"J.Russell",
-        "position":"ILB",
-        "team":"TB",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037524",
-        "player_name":"T.Martin",
-        "position":"WR",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038123",
-        "player_name":"D.Belton",
-        "position":"SS",
-        "team":"NYG",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037129",
-        "player_name":"J.Blackwell",
-        "position":"CB",
-        "team":"CHI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037207",
-        "player_name":"M.Caliendo",
-        "position":"G",
-        "team":"KC",
+        "player_id":"00-0038643",
+        "player_name":"B.Willis",
+        "position":"TE",
+        "team":"SF",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -824,34 +1208,34 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038477",
-        "player_name":"B.Ford-Wheaton",
+        "player_id":"00-0035399",
+        "player_name":"S.Morgan",
         "position":"WR",
-        "team":"NYG",
+        "team":"CIN",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038489",
-        "player_name":"B.VanSumeren",
-        "position":"FB",
-        "team":"PHI",
+        "player_id":"00-0035457",
+        "player_name":"T.Johnson",
+        "position":"WR",
+        "team":"HOU",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0036037",
-        "player_name":"S.Franklin",
-        "position":"SS",
-        "team":"CAR",
+        "player_id":"00-0022824",
+        "player_name":"A.Lee",
+        "position":"P",
+        "team":"ARI",
         "ros_projection":0.0,
-        "ros_rank":1.0
+        "ros_rank":4.0
     },
     {
-        "player_id":"00-0036005",
-        "player_name":"N.Togiai",
-        "position":"TE",
-        "team":"PHI",
+        "player_id":"00-0038840",
+        "player_name":"B.Tremayne",
+        "position":"WR",
+        "team":"WAS",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -864,98 +1248,74 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038840",
-        "player_name":"B.Tremayne",
+        "player_id":"00-0038679",
+        "player_name":"T.Shavers",
         "position":"WR",
-        "team":"WAS",
+        "team":"BUF",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039398",
-        "player_name":"J.Milton",
-        "position":"QB",
-        "team":"NE",
-        "ros_projection":0.0,
-        "ros_rank":3.0
-    },
-    {
-        "player_id":"00-0039407",
-        "player_name":"D.Laube",
-        "position":"RB",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0030074",
-        "player_name":"D.Bakhtiari",
-        "position":"T",
-        "team":"GB",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0039451",
-        "player_name":"I.Williams",
+        "player_id":"00-0035432",
+        "player_name":"J.Moore",
         "position":"WR",
-        "team":"DET",
+        "team":"LAC",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0039458",
-        "player_name":"B.Bates",
+        "player_id":"00-0036692",
+        "player_name":"M.Forristall",
         "position":"TE",
         "team":"CLE",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0036096",
-        "player_name":"J.Taylor",
-        "position":"RB",
-        "team":"NE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034488",
-        "player_name":"T.Thomas",
-        "position":"CB",
-        "team":"TB",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034614",
-        "player_name":"G.Igwebuike",
-        "position":"RB",
-        "team":"SEA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034355",
-        "player_name":"M.Stewart",
-        "position":"SS",
-        "team":"HOU",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034360",
-        "player_name":"L.Carter",
-        "position":"OLB",
-        "team":"ATL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034366",
-        "player_name":"K.Coutee",
+        "player_id":"00-0038092",
+        "player_name":"E.Ezukanma",
         "position":"WR",
-        "team":"IND",
+        "team":"MIA",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0036755",
+        "player_name":"J.Patterson",
+        "position":"RB",
+        "team":"WAS",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0030533",
+        "player_name":"M.Barkley",
+        "position":"QB",
+        "team":"JAX",
+        "ros_projection":0.0,
+        "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0036457",
+        "player_name":"T.Williams",
+        "position":"RB",
+        "team":"ARI",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0037708",
+        "player_name":"M.Alexander",
+        "position":"WR",
+        "team":"DET",
+        "ros_projection":0.0,
+        "ros_rank":1.0
+    },
+    {
+        "player_id":"00-0039316",
+        "player_name":"B.Cupp",
+        "position":"TE",
+        "team":"KC",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -968,386 +1328,26 @@
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0034676",
-        "player_name":"J.Washington",
-        "position":"WR",
-        "team":"DAL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034726",
-        "player_name":"D.Leavitt",
-        "position":"SS",
-        "team":"GB",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034496",
-        "player_name":"S.Chandler",
-        "position":"SS",
-        "team":"CAR",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036563",
-        "player_name":"D.Lenoir",
-        "position":"CB",
-        "team":"SF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036990",
-        "player_name":"D.Deablo",
-        "position":"MLB",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034578",
-        "player_name":"R.Bonnafon",
-        "position":"RB",
-        "team":"WAS",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0034485",
-        "player_name":"J.Owens",
-        "position":"SS",
-        "team":"CHI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036132",
-        "player_name":"B.Bredeson",
-        "position":"G",
-        "team":"NYG",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036254",
-        "player_name":"C.Johnson",
-        "position":"WR",
-        "team":"CHI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036287",
-        "player_name":"N.Igbinoghene",
-        "position":"CB",
-        "team":"DAL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035164",
-        "player_name":"C.Thompson",
-        "position":"WR",
-        "team":"SEA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035632",
-        "player_name":"A.Hooker",
+        "player_id":"00-0029764",
+        "player_name":"C.Davis",
         "position":"FS",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035643",
-        "player_name":"J.Simmons",
-        "position":"DT",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035688",
-        "player_name":"T.Pipkins",
-        "position":"T",
-        "team":"LAC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036504",
-        "player_name":"B.Echols",
-        "position":"CB",
-        "team":"NYJ",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038519",
-        "player_name":"N.Remigio",
-        "position":"WR",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036672",
-        "player_name":"G.Stuard",
-        "position":"MLB",
-        "team":"IND",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036860",
-        "player_name":"J.Funk",
-        "position":"RB",
-        "team":"IND",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036888",
-        "player_name":"D.Hamlin",
-        "position":"SS",
-        "team":"BUF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035859",
-        "player_name":"B.Gillikin",
-        "position":"P",
-        "team":"ARI",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
-        "player_id":"00-0036124",
-        "player_name":"K.Dorsey",
-        "position":"CB",
-        "team":"DET",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037156",
-        "player_name":"I.Charles",
-        "position":"WR",
-        "team":"NYJ",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0037289",
-        "player_name":"M.Rodriguez",
-        "position":"ILB",
-        "team":"DET",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033367",
-        "player_name":"C.Board",
-        "position":"WR",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033481",
-        "player_name":"M.Kemp",
-        "position":"WR",
-        "team":"KC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033057",
-        "player_name":"J.Conklin",
-        "position":"T",
-        "team":"CLE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0036648",
-        "player_name":"N.Niemann",
-        "position":"ILB",
-        "team":"LAC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038911",
-        "player_name":"M.Cunningham",
-        "position":"WR",
         "team":"NE",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038678",
-        "player_name":"J.Mims",
-        "position":"RB",
-        "team":"NO",
+        "player_id":"00-0035621",
+        "player_name":"N.Webster",
+        "position":"WR",
+        "team":"CHI",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
     {
-        "player_id":"00-0038397",
-        "player_name":"E.Hull",
-        "position":"RB",
-        "team":"IND",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038490",
-        "player_name":"T.Zentner",
-        "position":"P",
-        "team":"TEN",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
-        "player_id":"00-0032807",
-        "player_name":"C.Fejedelem",
-        "position":"SS",
-        "team":"MIA",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032437",
-        "player_name":"K.Grugier-Hill",
+        "player_id":"00-0035609",
+        "player_name":"J.Gervase",
         "position":"ILB",
-        "team":"ARI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032496",
-        "player_name":"M.Farley",
-        "position":"FS",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032257",
-        "player_name":"D.Johnson",
-        "position":"RB",
-        "team":"BUF",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038862",
-        "player_name":"E.Dotson",
-        "position":"RB",
-        "team":"LAC",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0033460",
-        "player_name":"J.Ross",
-        "position":"WR",
-        "team":"PHI",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0028899",
-        "player_name":"R.McLeod",
-        "position":"FS",
-        "team":"CLE",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0031299",
-        "player_name":"J.Matthews",
-        "position":"TE",
-        "team":"CAR",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0031357",
-        "player_name":"C.Goodwin",
-        "position":"CB",
-        "team":"DAL",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032958",
-        "player_name":"W.Parks",
-        "position":"FS",
-        "team":"NYJ",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032780",
-        "player_name":"J.Howard",
-        "position":"RB",
-        "team":"NO",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035280",
-        "player_name":"J.Bailey",
-        "position":"P",
-        "team":"MIA",
-        "ros_projection":0.0,
-        "ros_rank":4.0
-    },
-    {
-        "player_id":"00-0035602",
-        "player_name":"A.Bachman",
-        "position":"WR",
-        "team":"LV",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0035795",
-        "player_name":"J.Pierre",
-        "position":"CB",
-        "team":"PIT",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032381",
-        "player_name":"T.Decker",
-        "position":"T",
-        "team":"DET",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0032399",
-        "player_name":"M.Killebrew",
-        "position":"SS",
-        "team":"PIT",
-        "ros_projection":0.0,
-        "ros_rank":1.0
-    },
-    {
-        "player_id":"00-0038891",
-        "player_name":"S.Jackson",
-        "position":"WR",
-        "team":"CIN",
+        "team":"LA",
         "ros_projection":0.0,
         "ros_rank":1.0
     },
@@ -1424,18 +1424,18 @@
         "ros_rank":2.0
     },
     {
-        "player_id":"00-0035184",
-        "player_name":"D.Ozigbo",
-        "position":"RB",
-        "team":"DEN",
-        "ros_projection":-1.36,
-        "ros_rank":2.0
-    },
-    {
         "player_id":"00-0037609",
         "player_name":"A.Shampklin",
         "position":"RB",
         "team":"PIT",
+        "ros_projection":-1.36,
+        "ros_rank":2.0
+    },
+    {
+        "player_id":"00-0035184",
+        "player_name":"D.Ozigbo",
+        "position":"RB",
+        "team":"DEN",
         "ros_projection":-1.36,
         "ros_rank":2.0
     },
@@ -1448,20 +1448,20 @@
         "ros_rank":3.0
     },
     {
-        "player_id":"00-0038627",
-        "player_name":"A.Green",
-        "position":"WR",
-        "team":"DET",
-        "ros_projection":-1.44,
-        "ros_rank":4.0
-    },
-    {
         "player_id":"00-0036313",
         "player_name":"B.Mann",
         "position":"P",
         "team":"NYJ",
         "ros_projection":-1.44,
         "ros_rank":9.0
+    },
+    {
+        "player_id":"00-0038627",
+        "player_name":"A.Green",
+        "position":"WR",
+        "team":"DET",
+        "ros_projection":-1.44,
+        "ros_rank":4.0
     },
     {
         "player_id":"00-0032943",
@@ -1520,20 +1520,20 @@
         "ros_rank":4.0
     },
     {
-        "player_id":"00-0039136",
-        "player_name":"Z.Evans",
-        "position":"RB",
-        "team":"LA",
-        "ros_projection":-1.92,
-        "ros_rank":3.0
-    },
-    {
         "player_id":"00-0039648",
         "player_name":"D.Martin-Robinson",
         "position":"TE",
         "team":"TEN",
         "ros_projection":-1.92,
         "ros_rank":4.0
+    },
+    {
+        "player_id":"00-0039136",
+        "player_name":"Z.Evans",
+        "position":"RB",
+        "team":"LA",
+        "ros_projection":-1.92,
+        "ros_rank":3.0
     },
     {
         "player_id":"00-0036194",
@@ -1544,18 +1544,18 @@
         "ros_rank":5.0
     },
     {
-        "player_id":"00-0039543",
-        "player_name":"R.Keyton",
-        "position":"WR",
-        "team":"LV",
-        "ros_projection":-2.04,
-        "ros_rank":6.0
-    },
-    {
         "player_id":"00-0036825",
         "player_name":"F.Franks",
         "position":"TE",
         "team":"ATL",
+        "ros_projection":-2.04,
+        "ros_rank":6.0
+    },
+    {
+        "player_id":"00-0039543",
+        "player_name":"R.Keyton",
+        "position":"WR",
+        "team":"LV",
         "ros_projection":-2.04,
         "ros_rank":6.0
     },
@@ -1576,6 +1576,14 @@
         "ros_rank":6.0
     },
     {
+        "player_id":"00-0037272",
+        "player_name":"M.Washington",
+        "position":"WR",
+        "team":"DEN",
+        "ros_projection":-2.16,
+        "ros_rank":7.0
+    },
+    {
         "player_id":"00-0038550",
         "player_name":"H.Hooker",
         "position":"QB",
@@ -1590,14 +1598,6 @@
         "team":"LV",
         "ros_projection":-2.16,
         "ros_rank":5.0
-    },
-    {
-        "player_id":"00-0037272",
-        "player_name":"M.Washington",
-        "position":"WR",
-        "team":"DEN",
-        "ros_projection":-2.16,
-        "ros_rank":7.0
     },
     {
         "player_id":"00-0037805",
@@ -1616,14 +1616,6 @@
         "ros_rank":8.0
     },
     {
-        "player_id":"00-0034171",
-        "player_name":"J.Cabinda",
-        "position":"FB",
-        "team":"DET",
-        "ros_projection":-2.28,
-        "ros_rank":2.0
-    },
-    {
         "player_id":"00-0039299",
         "player_name":"G.Holani",
         "position":"RB",
@@ -1632,12 +1624,20 @@
         "ros_rank":6.0
     },
     {
-        "player_id":"00-0036654",
-        "player_name":"D.Felton",
-        "position":"RB",
-        "team":"CLE",
+        "player_id":"00-0034171",
+        "player_name":"J.Cabinda",
+        "position":"FB",
+        "team":"DET",
+        "ros_projection":-2.28,
+        "ros_rank":2.0
+    },
+    {
+        "player_id":"00-0035099",
+        "player_name":"K.Blasingame",
+        "position":"FB",
+        "team":"CHI",
         "ros_projection":-2.4,
-        "ros_rank":7.0
+        "ros_rank":3.0
     },
     {
         "player_id":"00-0038040",
@@ -1648,12 +1648,12 @@
         "ros_rank":7.0
     },
     {
-        "player_id":"00-0035099",
-        "player_name":"K.Blasingame",
-        "position":"FB",
-        "team":"CHI",
+        "player_id":"00-0036654",
+        "player_name":"D.Felton",
+        "position":"RB",
+        "team":"CLE",
         "ros_projection":-2.4,
-        "ros_rank":3.0
+        "ros_rank":7.0
     },
     {
         "player_id":"00-0037828",
@@ -1696,6 +1696,14 @@
         "ros_rank":4.0
     },
     {
+        "player_id":"00-0039394",
+        "player_name":"C.Washington",
+        "position":"WR",
+        "team":"ATL",
+        "ros_projection":-2.88,
+        "ros_rank":11.0
+    },
+    {
         "player_id":"00-0034401",
         "player_name":"M.White",
         "position":"QB",
@@ -1710,14 +1718,6 @@
         "team":"ARI",
         "ros_projection":-2.88,
         "ros_rank":8.0
-    },
-    {
-        "player_id":"00-0039394",
-        "player_name":"C.Washington",
-        "position":"WR",
-        "team":"ATL",
-        "ros_projection":-2.88,
-        "ros_rank":11.0
     },
     {
         "player_id":"00-0033292",
@@ -1744,12 +1744,28 @@
         "ros_rank":14.0
     },
     {
+        "player_id":"00-0035715",
+        "player_name":"D.Gore",
+        "position":"RB",
+        "team":"WAS",
+        "ros_projection":-3.12,
+        "ros_rank":9.0
+    },
+    {
         "player_id":"00-0036527",
         "player_name":"D.Turner",
         "position":"WR",
         "team":"LV",
         "ros_projection":-3.12,
         "ros_rank":15.0
+    },
+    {
+        "player_id":"00-0030108",
+        "player_name":"R.Griffin",
+        "position":"TE",
+        "team":"CHI",
+        "ros_projection":-3.12,
+        "ros_rank":9.0
     },
     {
         "player_id":"00-0033798",
@@ -1768,20 +1784,12 @@
         "ros_rank":9.0
     },
     {
-        "player_id":"00-0030108",
-        "player_name":"R.Griffin",
-        "position":"TE",
-        "team":"CHI",
-        "ros_projection":-3.12,
-        "ros_rank":9.0
-    },
-    {
-        "player_id":"00-0035715",
-        "player_name":"D.Gore",
+        "player_id":"00-0032063",
+        "player_name":"M.Davis",
         "position":"RB",
-        "team":"WAS",
-        "ros_projection":-3.12,
-        "ros_rank":9.0
+        "team":"BAL",
+        "ros_projection":-3.2,
+        "ros_rank":10.0
     },
     {
         "player_id":"00-0037456",
@@ -1796,14 +1804,6 @@
         "player_name":"J.Bell",
         "position":"TE",
         "team":"NE",
-        "ros_projection":-3.2,
-        "ros_rank":10.0
-    },
-    {
-        "player_id":"00-0032063",
-        "player_name":"M.Davis",
-        "position":"RB",
-        "team":"BAL",
         "ros_projection":-3.2,
         "ros_rank":10.0
     },
@@ -1824,20 +1824,20 @@
         "ros_rank":17.0
     },
     {
-        "player_id":"00-0033296",
-        "player_name":"A.Armah",
-        "position":"RB",
-        "team":"WAS",
-        "ros_projection":-3.44,
-        "ros_rank":11.0
-    },
-    {
         "player_id":"00-0026197",
         "player_name":"C.Henne",
         "position":"QB",
         "team":"KC",
         "ros_projection":-3.44,
         "ros_rank":9.0
+    },
+    {
+        "player_id":"00-0033296",
+        "player_name":"A.Armah",
+        "position":"RB",
+        "team":"WAS",
+        "ros_projection":-3.44,
+        "ros_rank":11.0
     },
     {
         "player_id":"00-0036176",
@@ -1880,20 +1880,20 @@
         "ros_rank":7.0
     },
     {
-        "player_id":"00-0038507",
-        "player_name":"G.DuBose",
-        "position":"WR",
-        "team":"MIA",
-        "ros_projection":-3.72,
-        "ros_rank":19.0
-    },
-    {
         "player_id":"00-0036032",
         "player_name":"S.McKeon",
         "position":"TE",
         "team":"DAL",
         "ros_projection":-3.72,
         "ros_rank":11.0
+    },
+    {
+        "player_id":"00-0038507",
+        "player_name":"G.DuBose",
+        "position":"WR",
+        "team":"MIA",
+        "ros_projection":-3.72,
+        "ros_rank":19.0
     },
     {
         "player_id":"00-0036439",
@@ -1920,6 +1920,14 @@
         "ros_rank":13.0
     },
     {
+        "player_id":"00-0036841",
+        "player_name":"A.Trammell",
+        "position":"WR",
+        "team":"LA",
+        "ros_projection":-3.96,
+        "ros_rank":21.0
+    },
+    {
         "player_id":"00-0039757",
         "player_name":"T.Jennings",
         "position":"RB",
@@ -1932,14 +1940,6 @@
         "player_name":"M.Taylor",
         "position":"WR",
         "team":"NYJ",
-        "ros_projection":-3.96,
-        "ros_rank":21.0
-    },
-    {
-        "player_id":"00-0036841",
-        "player_name":"A.Trammell",
-        "position":"WR",
-        "team":"LA",
         "ros_projection":-3.96,
         "ros_rank":21.0
     },
@@ -1968,20 +1968,20 @@
         "ros_rank":24.0
     },
     {
-        "player_id":"00-0037570",
-        "player_name":"D.Houston",
-        "position":"WR",
-        "team":"DAL",
-        "ros_projection":-4.32,
-        "ros_rank":25.0
-    },
-    {
         "player_id":"00-0038738",
         "player_name":"H.Luepke",
         "position":"FB",
         "team":"DAL",
         "ros_projection":-4.32,
         "ros_rank":8.0
+    },
+    {
+        "player_id":"00-0037570",
+        "player_name":"D.Houston",
+        "position":"WR",
+        "team":"DAL",
+        "ros_projection":-4.32,
+        "ros_rank":25.0
     },
     {
         "player_id":"00-0035259",
@@ -1992,12 +1992,12 @@
         "ros_rank":12.0
     },
     {
-        "player_id":"00-0032141",
-        "player_name":"G.Swaim",
-        "position":"TE",
-        "team":"TEN",
+        "player_id":"00-0036842",
+        "player_name":"K.Nwangwu",
+        "position":"RB",
+        "team":"MIN",
         "ros_projection":-4.4,
-        "ros_rank":12.0
+        "ros_rank":15.0
     },
     {
         "player_id":"00-0032450",
@@ -2008,12 +2008,12 @@
         "ros_rank":15.0
     },
     {
-        "player_id":"00-0036842",
-        "player_name":"K.Nwangwu",
-        "position":"RB",
-        "team":"MIN",
+        "player_id":"00-0032141",
+        "player_name":"G.Swaim",
+        "position":"TE",
+        "team":"TEN",
         "ros_projection":-4.4,
-        "ros_rank":15.0
+        "ros_rank":12.0
     },
     {
         "player_id":"00-0037355",
@@ -2080,14 +2080,6 @@
         "ros_rank":30.0
     },
     {
-        "player_id":"00-0038598",
-        "player_name":"J.Hall",
-        "position":"QB",
-        "team":"MIN",
-        "ros_projection":-4.88,
-        "ros_rank":11.0
-    },
-    {
         "player_id":"00-0035645",
         "player_name":"G.Olszewski",
         "position":"WR",
@@ -2096,12 +2088,12 @@
         "ros_rank":31.0
     },
     {
-        "player_id":"00-0038555",
-        "player_name":"T.Bigsby",
-        "position":"RB",
-        "team":"JAX",
-        "ros_projection":-4.92,
-        "ros_rank":17.0
+        "player_id":"00-0038598",
+        "player_name":"J.Hall",
+        "position":"QB",
+        "team":"MIN",
+        "ros_projection":-4.88,
+        "ros_rank":11.0
     },
     {
         "player_id":"00-0033111",
@@ -2110,6 +2102,14 @@
         "team":"ARI",
         "ros_projection":-4.92,
         "ros_rank":32.0
+    },
+    {
+        "player_id":"00-0038555",
+        "player_name":"T.Bigsby",
+        "position":"RB",
+        "team":"JAX",
+        "ros_projection":-4.92,
+        "ros_rank":17.0
     },
     {
         "player_id":"00-0038359",
@@ -2136,20 +2136,20 @@
         "ros_rank":12.0
     },
     {
-        "player_id":"00-0034208",
-        "player_name":"M.Boone",
-        "position":"RB",
-        "team":"DEN",
-        "ros_projection":-5.2,
-        "ros_rank":19.0
-    },
-    {
         "player_id":"00-0026544",
         "player_name":"C.Daniel",
         "position":"QB",
         "team":"LAC",
         "ros_projection":-5.2,
         "ros_rank":13.0
+    },
+    {
+        "player_id":"00-0034208",
+        "player_name":"M.Boone",
+        "position":"RB",
+        "team":"DEN",
+        "ros_projection":-5.2,
+        "ros_rank":19.0
     },
     {
         "player_id":"00-0036250",
@@ -2168,18 +2168,18 @@
         "ros_rank":20.0
     },
     {
-        "player_id":"00-0035976",
-        "player_name":"D.Chisena",
-        "position":"WR",
-        "team":"CAR",
-        "ros_projection":-5.36,
-        "ros_rank":34.0
-    },
-    {
         "player_id":"00-0037300",
         "player_name":"M.Woods",
         "position":"WR",
         "team":"CLE",
+        "ros_projection":-5.36,
+        "ros_rank":34.0
+    },
+    {
+        "player_id":"00-0035976",
+        "player_name":"D.Chisena",
+        "position":"WR",
+        "team":"CAR",
         "ros_projection":-5.36,
         "ros_rank":34.0
     },
@@ -2224,20 +2224,20 @@
         "ros_rank":17.0
     },
     {
-        "player_id":"00-0036429",
-        "player_name":"C.Woerner",
-        "position":"TE",
-        "team":"SF",
-        "ros_projection":-5.72,
-        "ros_rank":18.0
-    },
-    {
         "player_id":"00-0038582",
         "player_name":"C.Tune",
         "position":"QB",
         "team":"ARI",
         "ros_projection":-5.72,
         "ros_rank":14.0
+    },
+    {
+        "player_id":"00-0036429",
+        "player_name":"C.Woerner",
+        "position":"TE",
+        "team":"SF",
+        "ros_projection":-5.72,
+        "ros_rank":18.0
     },
     {
         "player_id":"00-0031558",
@@ -2312,20 +2312,20 @@
         "ros_rank":23.0
     },
     {
-        "player_id":"00-0039236",
-        "player_name":"J.Wilson",
-        "position":"WR",
-        "team":"PHI",
-        "ros_projection":-6.2,
-        "ros_rank":36.0
-    },
-    {
         "player_id":"00-0037311",
         "player_name":"K.Kieft",
         "position":"TE",
         "team":"TB",
         "ros_projection":-6.2,
         "ros_rank":24.0
+    },
+    {
+        "player_id":"00-0039236",
+        "player_name":"J.Wilson",
+        "position":"WR",
+        "team":"PHI",
+        "ros_projection":-6.2,
+        "ros_rank":36.0
     },
     {
         "player_id":"00-0038614",
@@ -2360,20 +2360,20 @@
         "ros_rank":25.0
     },
     {
-        "player_id":"00-0034104",
-        "player_name":"C.Sims",
-        "position":"WR",
-        "team":"WAS",
-        "ros_projection":-6.4,
-        "ros_rank":38.0
-    },
-    {
         "player_id":"00-0038998",
         "player_name":"J.Haener",
         "position":"QB",
         "team":"NO",
         "ros_projection":-6.4,
         "ros_rank":15.0
+    },
+    {
+        "player_id":"00-0034104",
+        "player_name":"C.Sims",
+        "position":"WR",
+        "team":"WAS",
+        "ros_projection":-6.4,
+        "ros_rank":38.0
     },
     {
         "player_id":"00-0036652",
@@ -2416,20 +2416,20 @@
         "ros_rank":26.0
     },
     {
-        "player_id":"00-0033958",
-        "player_name":"N.Peterman",
-        "position":"QB",
-        "team":"CHI",
-        "ros_projection":-6.6,
-        "ros_rank":16.0
-    },
-    {
         "player_id":"00-0035327",
         "player_name":"C.Moore",
         "position":"FS",
         "team":"DET",
         "ros_projection":-6.6,
         "ros_rank":3.0
+    },
+    {
+        "player_id":"00-0033958",
+        "player_name":"N.Peterman",
+        "position":"QB",
+        "team":"CHI",
+        "ros_projection":-6.6,
+        "ros_rank":16.0
     },
     {
         "player_id":"00-0039355",
@@ -2480,14 +2480,6 @@
         "ros_rank":42.0
     },
     {
-        "player_id":"00-0034286",
-        "player_name":"R.James",
-        "position":"WR",
-        "team":"NYG",
-        "ros_projection":-6.88,
-        "ros_rank":43.0
-    },
-    {
         "player_id":"00-0036620",
         "player_name":"D.Eskridge",
         "position":"WR",
@@ -2496,10 +2488,18 @@
         "ros_rank":43.0
     },
     {
-        "player_id":"00-0038752",
-        "player_name":"J.Bobo",
+        "player_id":"00-0034286",
+        "player_name":"R.James",
         "position":"WR",
-        "team":"SEA",
+        "team":"NYG",
+        "ros_projection":-6.88,
+        "ros_rank":43.0
+    },
+    {
+        "player_id":"00-0032200",
+        "player_name":"T.Montgomery",
+        "position":"WR",
+        "team":"NE",
         "ros_projection":-6.92,
         "ros_rank":44.0
     },
@@ -2512,10 +2512,10 @@
         "ros_rank":10.0
     },
     {
-        "player_id":"00-0032200",
-        "player_name":"T.Montgomery",
+        "player_id":"00-0038752",
+        "player_name":"J.Bobo",
         "position":"WR",
-        "team":"NE",
+        "team":"SEA",
         "ros_projection":-6.92,
         "ros_rank":44.0
     },
@@ -2640,20 +2640,20 @@
         "ros_rank":13.0
     },
     {
-        "player_id":"00-0039631",
-        "player_name":"C.Grandy",
-        "position":"TE",
-        "team":"CIN",
-        "ros_projection":-7.8,
-        "ros_rank":32.0
-    },
-    {
         "player_id":"00-0037093",
         "player_name":"D.Young",
         "position":"WR",
         "team":"SEA",
         "ros_projection":-7.8,
         "ros_rank":49.0
+    },
+    {
+        "player_id":"00-0039631",
+        "player_name":"C.Grandy",
+        "position":"TE",
+        "team":"CIN",
+        "ros_projection":-7.8,
+        "ros_rank":32.0
     },
     {
         "player_id":"00-0032436",
@@ -2664,20 +2664,20 @@
         "ros_rank":17.0
     },
     {
-        "player_id":"00-0035572",
-        "player_name":"P.Hesse",
-        "position":"TE",
-        "team":"ATL",
-        "ros_projection":-8.0,
-        "ros_rank":33.0
-    },
-    {
         "player_id":"00-0036497",
         "player_name":"T.Jones",
         "position":"WR",
         "team":"JAX",
         "ros_projection":-8.0,
         "ros_rank":50.0
+    },
+    {
+        "player_id":"00-0036887",
+        "player_name":"L.Farrell",
+        "position":"TE",
+        "team":"JAX",
+        "ros_projection":-8.0,
+        "ros_rank":33.0
     },
     {
         "player_id":"00-0033455",
@@ -2688,10 +2688,10 @@
         "ros_rank":33.0
     },
     {
-        "player_id":"00-0036887",
-        "player_name":"L.Farrell",
+        "player_id":"00-0035572",
+        "player_name":"P.Hesse",
         "position":"TE",
-        "team":"JAX",
+        "team":"ATL",
         "ros_projection":-8.0,
         "ros_rank":33.0
     },
@@ -2808,18 +2808,18 @@
         "ros_rank":56.0
     },
     {
-        "player_id":"00-0035876",
-        "player_name":"A.Baccellia",
-        "position":"WR",
-        "team":"ARI",
-        "ros_projection":-8.64,
-        "ros_rank":56.0
-    },
-    {
         "player_id":"00-0036271",
         "player_name":"Q.Watkins",
         "position":"WR",
         "team":"PHI",
+        "ros_projection":-8.64,
+        "ros_rank":56.0
+    },
+    {
+        "player_id":"00-0035876",
+        "player_name":"A.Baccellia",
+        "position":"WR",
+        "team":"ARI",
         "ros_projection":-8.64,
         "ros_rank":56.0
     },
@@ -2832,14 +2832,6 @@
         "ros_rank":36.0
     },
     {
-        "player_id":"00-0038547",
-        "player_name":"L.Schoonmaker",
-        "position":"TE",
-        "team":"DAL",
-        "ros_projection":-8.72,
-        "ros_rank":37.0
-    },
-    {
         "player_id":"00-0037265",
         "player_name":"S.Conner",
         "position":"RB",
@@ -2848,18 +2840,26 @@
         "ros_rank":37.0
     },
     {
-        "player_id":"00-0035973",
-        "player_name":"P.Taylor",
-        "position":"RB",
-        "team":"GB",
-        "ros_projection":-8.76,
-        "ros_rank":38.0
+        "player_id":"00-0038547",
+        "player_name":"L.Schoonmaker",
+        "position":"TE",
+        "team":"DAL",
+        "ros_projection":-8.72,
+        "ros_rank":37.0
     },
     {
         "player_id":"00-0036543",
         "player_name":"S.Brown",
         "position":"RB",
         "team":"CAR",
+        "ros_projection":-8.76,
+        "ros_rank":38.0
+    },
+    {
+        "player_id":"00-0035973",
+        "player_name":"P.Taylor",
+        "position":"RB",
+        "team":"GB",
         "ros_projection":-8.76,
         "ros_rank":38.0
     },
@@ -2872,18 +2872,18 @@
         "ros_rank":38.0
     },
     {
-        "player_id":"00-0036810",
-        "player_name":"C.Johnson",
-        "position":"WR",
-        "team":"SEA",
-        "ros_projection":-8.8,
-        "ros_rank":57.0
-    },
-    {
         "player_id":"00-0033572",
         "player_name":"J.Agnew",
         "position":"WR",
         "team":"JAX",
+        "ros_projection":-8.8,
+        "ros_rank":57.0
+    },
+    {
+        "player_id":"00-0036810",
+        "player_name":"C.Johnson",
+        "position":"WR",
+        "team":"SEA",
         "ros_projection":-8.8,
         "ros_rank":57.0
     },
@@ -2936,20 +2936,20 @@
         "ros_rank":59.0
     },
     {
-        "player_id":"00-0032434",
-        "player_name":"B.Allen",
-        "position":"QB",
-        "team":"CIN",
-        "ros_projection":-9.12,
-        "ros_rank":19.0
-    },
-    {
         "player_id":"00-0032062",
         "player_name":"B.Bell",
         "position":"TE",
         "team":"KC",
         "ros_projection":-9.12,
         "ros_rank":39.0
+    },
+    {
+        "player_id":"00-0032434",
+        "player_name":"B.Allen",
+        "position":"QB",
+        "team":"CIN",
+        "ros_projection":-9.12,
+        "ros_rank":19.0
     },
     {
         "player_id":"00-0036450",
@@ -3080,14 +3080,6 @@
         "ros_rank":43.0
     },
     {
-        "player_id":"00-0037132",
-        "player_name":"B.Covey",
-        "position":"WR",
-        "team":"PHI",
-        "ros_projection":-9.84,
-        "ros_rank":66.0
-    },
-    {
         "player_id":"00-0036862",
         "player_name":"B.Skowronek",
         "position":"WR",
@@ -3102,6 +3094,14 @@
         "team":"DEN",
         "ros_projection":-9.84,
         "ros_rank":45.0
+    },
+    {
+        "player_id":"00-0037132",
+        "player_name":"B.Covey",
+        "position":"WR",
+        "team":"PHI",
+        "ros_projection":-9.84,
+        "ros_rank":66.0
     },
     {
         "player_id":"00-0037078",
@@ -3128,18 +3128,18 @@
         "ros_rank":46.0
     },
     {
-        "player_id":"00-0033439",
-        "player_name":"P.Brown",
-        "position":"TE",
-        "team":"HOU",
-        "ros_projection":-10.0,
-        "ros_rank":47.0
-    },
-    {
         "player_id":"00-0037304",
         "player_name":"C.Heyward",
         "position":"TE",
         "team":"PIT",
+        "ros_projection":-10.0,
+        "ros_rank":47.0
+    },
+    {
+        "player_id":"00-0033439",
+        "player_name":"P.Brown",
+        "position":"TE",
+        "team":"HOU",
         "ros_projection":-10.0,
         "ros_rank":47.0
     },
@@ -3184,18 +3184,18 @@
         "ros_rank":48.0
     },
     {
-        "player_id":"00-0039890",
-        "player_name":"A.Mitchell",
-        "position":"WR",
-        "team":"IND",
-        "ros_projection":-10.16,
-        "ros_rank":69.0
-    },
-    {
         "player_id":"00-0039365",
         "player_name":"J.Cowing",
         "position":"WR",
         "team":"SF",
+        "ros_projection":-10.16,
+        "ros_rank":69.0
+    },
+    {
+        "player_id":"00-0039890",
+        "player_name":"A.Mitchell",
+        "position":"WR",
+        "team":"IND",
         "ros_projection":-10.16,
         "ros_rank":69.0
     },
@@ -3224,6 +3224,14 @@
         "ros_rank":50.0
     },
     {
+        "player_id":"00-0031787",
+        "player_name":"J.Kumerow",
+        "position":"WR",
+        "team":"BUF",
+        "ros_projection":-10.4,
+        "ros_rank":70.0
+    },
+    {
         "player_id":"00-0038622",
         "player_name":"D.Vaughn",
         "position":"RB",
@@ -3236,14 +3244,6 @@
         "player_name":"M.Bandy",
         "position":"WR",
         "team":"LAC",
-        "ros_projection":-10.4,
-        "ros_rank":70.0
-    },
-    {
-        "player_id":"00-0031787",
-        "player_name":"J.Kumerow",
-        "position":"WR",
-        "team":"BUF",
         "ros_projection":-10.4,
         "ros_rank":70.0
     },
@@ -3264,20 +3264,20 @@
         "ros_rank":46.0
     },
     {
-        "player_id":"00-0039912",
-        "player_name":"B.Sinnott",
-        "position":"TE",
-        "team":"WAS",
-        "ros_projection":-10.56,
-        "ros_rank":52.0
-    },
-    {
         "player_id":"00-0035359",
         "player_name":"D.Sills",
         "position":"WR",
         "team":"NYG",
         "ros_projection":-10.56,
         "ros_rank":71.0
+    },
+    {
+        "player_id":"00-0039912",
+        "player_name":"B.Sinnott",
+        "position":"TE",
+        "team":"WAS",
+        "ros_projection":-10.56,
+        "ros_rank":52.0
     },
     {
         "player_id":"00-0036671",
@@ -3304,20 +3304,20 @@
         "ros_rank":54.0
     },
     {
-        "player_id":"00-0037168",
-        "player_name":"A.Rogers",
-        "position":"TE",
-        "team":"WAS",
-        "ros_projection":-10.88,
-        "ros_rank":55.0
-    },
-    {
         "player_id":"00-0034301",
         "player_name":"D.Williams",
         "position":"RB",
         "team":"ARI",
         "ros_projection":-10.88,
         "ros_rank":47.0
+    },
+    {
+        "player_id":"00-0037168",
+        "player_name":"A.Rogers",
+        "position":"TE",
+        "team":"WAS",
+        "ros_projection":-10.88,
+        "ros_rank":55.0
     },
     {
         "player_id":"00-0036255",
@@ -3344,20 +3344,20 @@
         "ros_rank":56.0
     },
     {
-        "player_id":"00-0034816",
-        "player_name":"R.Jones",
-        "position":"RB",
-        "team":"KC",
-        "ros_projection":-11.04,
-        "ros_rank":48.0
-    },
-    {
         "player_id":"00-0036332",
         "player_name":"J.Deguara",
         "position":"TE",
         "team":"GB",
         "ros_projection":-11.04,
         "ros_rank":57.0
+    },
+    {
+        "player_id":"00-0034816",
+        "player_name":"R.Jones",
+        "position":"RB",
+        "team":"KC",
+        "ros_projection":-11.04,
+        "ros_rank":48.0
     },
     {
         "player_id":"00-0032187",
@@ -3552,14 +3552,6 @@
         "ros_rank":24.0
     },
     {
-        "player_id":"00-0035414",
-        "player_name":"J.Guyton",
-        "position":"WR",
-        "team":"LAC",
-        "ros_projection":-12.32,
-        "ros_rank":82.0
-    },
-    {
         "player_id":"00-0034646",
         "player_name":"B.Powell",
         "position":"WR",
@@ -3568,10 +3560,18 @@
         "ros_rank":82.0
     },
     {
-        "player_id":"00-0036422",
-        "player_name":"A.Trautman",
+        "player_id":"00-0035414",
+        "player_name":"J.Guyton",
+        "position":"WR",
+        "team":"LAC",
+        "ros_projection":-12.32,
+        "ros_rank":82.0
+    },
+    {
+        "player_id":"00-0039066",
+        "player_name":"M.Mayer",
         "position":"TE",
-        "team":"NO",
+        "team":"LV",
         "ros_projection":-12.48,
         "ros_rank":62.0
     },
@@ -3584,10 +3584,10 @@
         "ros_rank":56.0
     },
     {
-        "player_id":"00-0039066",
-        "player_name":"M.Mayer",
+        "player_id":"00-0036422",
+        "player_name":"A.Trautman",
         "position":"TE",
-        "team":"LV",
+        "team":"NO",
         "ros_projection":-12.48,
         "ros_rank":62.0
     },
@@ -3596,14 +3596,6 @@
         "player_name":"G.Ricci",
         "position":"TE",
         "team":"CAR",
-        "ros_projection":-12.56,
-        "ros_rank":63.0
-    },
-    {
-        "player_id":"00-0036741",
-        "player_name":"J.Stoll",
-        "position":"TE",
-        "team":"PHI",
         "ros_projection":-12.56,
         "ros_rank":63.0
     },
@@ -3622,6 +3614,14 @@
         "team":"NYG",
         "ros_projection":-12.56,
         "ros_rank":83.0
+    },
+    {
+        "player_id":"00-0036741",
+        "player_name":"J.Stoll",
+        "position":"TE",
+        "team":"PHI",
+        "ros_projection":-12.56,
+        "ros_rank":63.0
     },
     {
         "player_id":"00-0039356",
@@ -3648,18 +3648,18 @@
         "ros_rank":58.0
     },
     {
-        "player_id":"00-0039623",
-        "player_name":"M.Tipton",
-        "position":"WR",
-        "team":"NO",
-        "ros_projection":-12.8,
-        "ros_rank":84.0
-    },
-    {
         "player_id":"00-0032951",
         "player_name":"L.Treadwell",
         "position":"WR",
         "team":"SEA",
+        "ros_projection":-12.8,
+        "ros_rank":84.0
+    },
+    {
+        "player_id":"00-0039623",
+        "player_name":"M.Tipton",
+        "position":"WR",
+        "team":"NO",
         "ros_projection":-12.8,
         "ros_rank":84.0
     },
@@ -3816,14 +3816,6 @@
         "ros_rank":93.0
     },
     {
-        "player_id":"00-0035939",
-        "player_name":"B.Perkins",
-        "position":"QB",
-        "team":"LA",
-        "ros_projection":-14.04,
-        "ros_rank":25.0
-    },
-    {
         "player_id":"00-0034407",
         "player_name":"R.McCloud",
         "position":"WR",
@@ -3832,12 +3824,12 @@
         "ros_rank":94.0
     },
     {
-        "player_id":"00-0034860",
-        "player_name":"D.Pettis",
-        "position":"WR",
-        "team":"CHI",
-        "ros_projection":-14.16,
-        "ros_rank":95.0
+        "player_id":"00-0035939",
+        "player_name":"B.Perkins",
+        "position":"QB",
+        "team":"LA",
+        "ros_projection":-14.04,
+        "ros_rank":25.0
     },
     {
         "player_id":"00-0039747",
@@ -3848,18 +3840,26 @@
         "ros_rank":95.0
     },
     {
-        "player_id":"00-0033955",
-        "player_name":"J.McNichols",
-        "position":"RB",
-        "team":"WAS",
-        "ros_projection":-14.24,
-        "ros_rank":62.0
+        "player_id":"00-0034860",
+        "player_name":"D.Pettis",
+        "position":"WR",
+        "team":"CHI",
+        "ros_projection":-14.16,
+        "ros_rank":95.0
     },
     {
         "player_id":"00-0037085",
         "player_name":"T.Badie",
         "position":"RB",
         "team":"DEN",
+        "ros_projection":-14.24,
+        "ros_rank":62.0
+    },
+    {
+        "player_id":"00-0033955",
+        "player_name":"J.McNichols",
+        "position":"RB",
+        "team":"WAS",
         "ros_projection":-14.24,
         "ros_rank":62.0
     },
@@ -3872,14 +3872,6 @@
         "ros_rank":63.0
     },
     {
-        "player_id":"00-0038951",
-        "player_name":"S.Tucker",
-        "position":"RB",
-        "team":"TB",
-        "ros_projection":-14.32,
-        "ros_rank":64.0
-    },
-    {
         "player_id":"00-0036646",
         "player_name":"S.Fehoko",
         "position":"WR",
@@ -3888,12 +3880,12 @@
         "ros_rank":96.0
     },
     {
-        "player_id":"00-0038389",
-        "player_name":"I.Abanikanda",
+        "player_id":"00-0038951",
+        "player_name":"S.Tucker",
         "position":"RB",
-        "team":"NYJ",
-        "ros_projection":-14.36,
-        "ros_rank":65.0
+        "team":"TB",
+        "ros_projection":-14.32,
+        "ros_rank":64.0
     },
     {
         "player_id":"00-0037012",
@@ -3902,6 +3894,14 @@
         "team":"SF",
         "ros_projection":-14.36,
         "ros_rank":26.0
+    },
+    {
+        "player_id":"00-0038389",
+        "player_name":"I.Abanikanda",
+        "position":"RB",
+        "team":"NYJ",
+        "ros_projection":-14.36,
+        "ros_rank":65.0
     },
     {
         "player_id":"00-0037837",
@@ -3928,14 +3928,6 @@
         "ros_rank":98.0
     },
     {
-        "player_id":"00-0039810",
-        "player_name":"J.Burton",
-        "position":"WR",
-        "team":"CIN",
-        "ros_projection":-14.72,
-        "ros_rank":99.0
-    },
-    {
         "player_id":"00-0039814",
         "player_name":"E.All",
         "position":"TE",
@@ -3950,6 +3942,14 @@
         "team":"IND",
         "ros_projection":-14.72,
         "ros_rank":66.0
+    },
+    {
+        "player_id":"00-0039810",
+        "player_name":"J.Burton",
+        "position":"WR",
+        "team":"CIN",
+        "ros_projection":-14.72,
+        "ros_rank":99.0
     },
     {
         "player_id":"00-0037475",
@@ -3976,20 +3976,20 @@
         "ros_rank":101.0
     },
     {
-        "player_id":"00-0035217",
-        "player_name":"B.Snell",
-        "position":"RB",
-        "team":"PIT",
-        "ros_projection":-14.96,
-        "ros_rank":67.0
-    },
-    {
         "player_id":"00-0035631",
         "player_name":"D.Sample",
         "position":"TE",
         "team":"CIN",
         "ros_projection":-14.96,
         "ros_rank":73.0
+    },
+    {
+        "player_id":"00-0035217",
+        "player_name":"B.Snell",
+        "position":"RB",
+        "team":"PIT",
+        "ros_projection":-14.96,
+        "ros_rank":67.0
     },
     {
         "player_id":"00-0033536",
@@ -4152,20 +4152,20 @@
         "ros_rank":17.0
     },
     {
-        "player_id":"00-0037666",
-        "player_name":"J.Tolbert",
-        "position":"WR",
-        "team":"DAL",
-        "ros_projection":-16.8,
-        "ros_rank":112.0
-    },
-    {
         "player_id":"00-0036269",
         "player_name":"L.Perine",
         "position":"RB",
         "team":"KC",
         "ros_projection":-16.8,
         "ros_rank":73.0
+    },
+    {
+        "player_id":"00-0037666",
+        "player_name":"J.Tolbert",
+        "position":"WR",
+        "team":"DAL",
+        "ros_projection":-16.8,
+        "ros_rank":112.0
     },
     {
         "player_id":"00-0028002",
@@ -4256,12 +4256,12 @@
         "ros_rank":118.0
     },
     {
-        "player_id":"00-0038046",
-        "player_name":"C.Kolar",
-        "position":"TE",
-        "team":"BAL",
+        "player_id":"00-0033871",
+        "player_name":"C.Davis",
+        "position":"WR",
+        "team":"NYJ",
         "ros_projection":-17.4,
-        "ros_rank":78.0
+        "ros_rank":119.0
     },
     {
         "player_id":"00-0036020",
@@ -4272,12 +4272,12 @@
         "ros_rank":76.0
     },
     {
-        "player_id":"00-0033871",
-        "player_name":"C.Davis",
-        "position":"WR",
-        "team":"NYJ",
+        "player_id":"00-0038046",
+        "player_name":"C.Kolar",
+        "position":"TE",
+        "team":"BAL",
         "ros_projection":-17.4,
-        "ros_rank":119.0
+        "ros_rank":78.0
     },
     {
         "player_id":"00-0034440",
@@ -4320,18 +4320,18 @@
         "ros_rank":27.0
     },
     {
-        "player_id":"00-0032128",
-        "player_name":"C.Conley",
-        "position":"WR",
-        "team":"HOU",
-        "ros_projection":-17.68,
-        "ros_rank":121.0
-    },
-    {
         "player_id":"00-0036268",
         "player_name":"L.Shenault",
         "position":"WR",
         "team":"CAR",
+        "ros_projection":-17.68,
+        "ros_rank":121.0
+    },
+    {
+        "player_id":"00-0032128",
+        "player_name":"C.Conley",
+        "position":"WR",
+        "team":"HOU",
         "ros_projection":-17.68,
         "ros_rank":121.0
     },
@@ -4384,10 +4384,10 @@
         "ros_rank":29.0
     },
     {
-        "player_id":"00-0034297",
-        "player_name":"B.Pringle",
+        "player_id":"00-0034777",
+        "player_name":"D.Chark",
         "position":"WR",
-        "team":"CHI",
+        "team":"DET",
         "ros_projection":-18.4,
         "ros_rank":124.0
     },
@@ -4400,10 +4400,10 @@
         "ros_rank":80.0
     },
     {
-        "player_id":"00-0034777",
-        "player_name":"D.Chark",
+        "player_id":"00-0034297",
+        "player_name":"B.Pringle",
         "position":"WR",
-        "team":"DET",
+        "team":"CHI",
         "ros_projection":-18.4,
         "ros_rank":124.0
     },
@@ -4432,20 +4432,20 @@
         "ros_rank":126.0
     },
     {
-        "player_id":"00-0027966",
-        "player_name":"M.Ingram",
-        "position":"RB",
-        "team":"NO",
-        "ros_projection":-18.52,
-        "ros_rank":80.0
-    },
-    {
         "player_id":"00-0033589",
         "player_name":"D.Moore",
         "position":"WR",
         "team":"TB",
         "ros_projection":-18.52,
         "ros_rank":127.0
+    },
+    {
+        "player_id":"00-0027966",
+        "player_name":"M.Ingram",
+        "position":"RB",
+        "team":"NO",
+        "ros_projection":-18.52,
+        "ros_rank":80.0
     },
     {
         "player_id":"00-0030431",
@@ -4520,20 +4520,20 @@
         "ros_rank":82.0
     },
     {
-        "player_id":"00-0038685",
-        "player_name":"C.Brooks",
-        "position":"RB",
-        "team":"MIA",
-        "ros_projection":-19.08,
-        "ros_rank":83.0
-    },
-    {
         "player_id":"00-0031690",
         "player_name":"E.Tomlinson",
         "position":"TE",
         "team":"DEN",
         "ros_projection":-19.08,
         "ros_rank":82.0
+    },
+    {
+        "player_id":"00-0038685",
+        "player_name":"C.Brooks",
+        "position":"RB",
+        "team":"MIA",
+        "ros_projection":-19.08,
+        "ros_rank":83.0
     },
     {
         "player_id":"00-0036635",
@@ -4592,14 +4592,6 @@
         "ros_rank":132.0
     },
     {
-        "player_id":"00-0034955",
-        "player_name":"B.Rypien",
-        "position":"QB",
-        "team":"DEN",
-        "ros_projection":-20.0,
-        "ros_rank":31.0
-    },
-    {
         "player_id":"00-0037755",
         "player_name":"J.Woods",
         "position":"TE",
@@ -4608,12 +4600,12 @@
         "ros_rank":87.0
     },
     {
-        "player_id":"00-0036326",
-        "player_name":"C.Claypool",
-        "position":"WR",
-        "team":"PIT",
-        "ros_projection":-20.08,
-        "ros_rank":133.0
+        "player_id":"00-0034955",
+        "player_name":"B.Rypien",
+        "position":"QB",
+        "team":"DEN",
+        "ros_projection":-20.0,
+        "ros_rank":31.0
     },
     {
         "player_id":"00-0036145",
@@ -4624,12 +4616,12 @@
         "ros_rank":88.0
     },
     {
-        "player_id":"00-0038102",
-        "player_name":"K.Pickett",
-        "position":"QB",
+        "player_id":"00-0036326",
+        "player_name":"C.Claypool",
+        "position":"WR",
         "team":"PIT",
-        "ros_projection":-20.12,
-        "ros_rank":32.0
+        "ros_projection":-20.08,
+        "ros_rank":133.0
     },
     {
         "player_id":"00-0029608",
@@ -4638,6 +4630,22 @@
         "team":"DAL",
         "ros_projection":-20.12,
         "ros_rank":134.0
+    },
+    {
+        "player_id":"00-0038102",
+        "player_name":"K.Pickett",
+        "position":"QB",
+        "team":"PIT",
+        "ros_projection":-20.12,
+        "ros_rank":32.0
+    },
+    {
+        "player_id":"00-0034899",
+        "player_name":"J.Wolford",
+        "position":"QB",
+        "team":"LA",
+        "ros_projection":-20.16,
+        "ros_rank":33.0
     },
     {
         "player_id":"00-0030564",
@@ -4654,14 +4662,6 @@
         "team":"NO",
         "ros_projection":-20.16,
         "ros_rank":85.0
-    },
-    {
-        "player_id":"00-0034899",
-        "player_name":"J.Wolford",
-        "position":"QB",
-        "team":"LA",
-        "ros_projection":-20.16,
-        "ros_rank":33.0
     },
     {
         "player_id":"00-0029000",
@@ -4808,18 +4808,18 @@
         "ros_rank":91.0
     },
     {
-        "player_id":"00-0033757",
-        "player_name":"R.Tonyan",
-        "position":"TE",
-        "team":"GB",
-        "ros_projection":-21.6,
-        "ros_rank":90.0
-    },
-    {
         "player_id":"00-0038115",
         "player_name":"D.Bellinger",
         "position":"TE",
         "team":"NYG",
+        "ros_projection":-21.6,
+        "ros_rank":90.0
+    },
+    {
+        "player_id":"00-0033757",
+        "player_name":"R.Tonyan",
+        "position":"TE",
+        "team":"GB",
         "ros_projection":-21.6,
         "ros_rank":90.0
     },
@@ -4840,20 +4840,20 @@
         "ros_rank":146.0
     },
     {
-        "player_id":"00-0036906",
-        "player_name":"K.Herbert",
-        "position":"RB",
-        "team":"CHI",
-        "ros_projection":-21.84,
-        "ros_rank":92.0
-    },
-    {
         "player_id":"00-0036988",
         "player_name":"J.Palmer",
         "position":"WR",
         "team":"LAC",
         "ros_projection":-21.84,
         "ros_rank":147.0
+    },
+    {
+        "player_id":"00-0036906",
+        "player_name":"K.Herbert",
+        "position":"RB",
+        "team":"CHI",
+        "ros_projection":-21.84,
+        "ros_rank":92.0
     },
     {
         "player_id":"00-0033725",
@@ -5000,18 +5000,18 @@
         "ros_rank":93.0
     },
     {
-        "player_id":"00-0039041",
-        "player_name":"E.Higgins",
-        "position":"TE",
-        "team":"ARI",
-        "ros_projection":-23.52,
-        "ros_rank":94.0
-    },
-    {
         "player_id":"00-0034613",
         "player_name":"T.Hudson",
         "position":"TE",
         "team":"NYG",
+        "ros_projection":-23.52,
+        "ros_rank":94.0
+    },
+    {
+        "player_id":"00-0039041",
+        "player_name":"E.Higgins",
+        "position":"TE",
+        "team":"ARI",
         "ros_projection":-23.52,
         "ros_rank":94.0
     },
@@ -5088,20 +5088,20 @@
         "ros_rank":104.0
     },
     {
-        "player_id":"00-0035040",
-        "player_name":"D.Blough",
-        "position":"QB",
-        "team":"ARI",
-        "ros_projection":-24.68,
-        "ros_rank":35.0
-    },
-    {
         "player_id":"00-0038597",
         "player_name":"C.Brown",
         "position":"RB",
         "team":"CIN",
         "ros_projection":-24.68,
         "ros_rank":105.0
+    },
+    {
+        "player_id":"00-0035040",
+        "player_name":"D.Blough",
+        "position":"QB",
+        "team":"ARI",
+        "ros_projection":-24.68,
+        "ros_rank":35.0
     },
     {
         "player_id":"00-0039746",
@@ -5152,6 +5152,14 @@
         "ros_rank":97.0
     },
     {
+        "player_id":"00-0032398",
+        "player_name":"C.Moore",
+        "position":"WR",
+        "team":"HOU",
+        "ros_projection":-25.44,
+        "ros_rank":157.0
+    },
+    {
         "player_id":"00-0039875",
         "player_name":"R.Davis",
         "position":"RB",
@@ -5168,12 +5176,12 @@
         "ros_rank":98.0
     },
     {
-        "player_id":"00-0032398",
-        "player_name":"C.Moore",
-        "position":"WR",
-        "team":"HOU",
-        "ros_projection":-25.44,
-        "ros_rank":157.0
+        "player_id":"00-0035644",
+        "player_name":"N.Fant",
+        "position":"TE",
+        "team":"SEA",
+        "ros_projection":-25.6,
+        "ros_rank":99.0
     },
     {
         "player_id":"00-0031544",
@@ -5182,14 +5190,6 @@
         "team":"CLE",
         "ros_projection":-25.6,
         "ros_rank":158.0
-    },
-    {
-        "player_id":"00-0035644",
-        "player_name":"N.Fant",
-        "position":"TE",
-        "team":"SEA",
-        "ros_projection":-25.6,
-        "ros_rank":99.0
     },
     {
         "player_id":"00-0031549",
@@ -5296,6 +5296,14 @@
         "ros_rank":37.0
     },
     {
+        "player_id":"00-0032134",
+        "player_name":"C.Uzomah",
+        "position":"TE",
+        "team":"NYJ",
+        "ros_projection":-26.8,
+        "ros_rank":102.0
+    },
+    {
         "player_id":"00-0035140",
         "player_name":"M.Hardman",
         "position":"WR",
@@ -5310,14 +5318,6 @@
         "team":"NO",
         "ros_projection":-26.8,
         "ros_rank":164.0
-    },
-    {
-        "player_id":"00-0032134",
-        "player_name":"C.Uzomah",
-        "position":"TE",
-        "team":"NYJ",
-        "ros_projection":-26.8,
-        "ros_rank":102.0
     },
     {
         "player_id":"00-0039793",
@@ -5336,20 +5336,20 @@
         "ros_rank":104.0
     },
     {
-        "player_id":"00-0033555",
-        "player_name":"M.Hollins",
-        "position":"WR",
-        "team":"LV",
-        "ros_projection":-26.96,
-        "ros_rank":165.0
-    },
-    {
         "player_id":"00-0035657",
         "player_name":"D.Harris",
         "position":"RB",
         "team":"NE",
         "ros_projection":-26.96,
         "ros_rank":115.0
+    },
+    {
+        "player_id":"00-0033555",
+        "player_name":"M.Hollins",
+        "position":"WR",
+        "team":"LV",
+        "ros_projection":-26.96,
+        "ros_rank":165.0
     },
     {
         "player_id":"00-0031345",
@@ -5432,14 +5432,6 @@
         "ros_rank":107.0
     },
     {
-        "player_id":"00-0038935",
-        "player_name":"B.Strange",
-        "position":"TE",
-        "team":"JAX",
-        "ros_projection":-28.32,
-        "ros_rank":108.0
-    },
-    {
         "player_id":"00-0039919",
         "player_name":"R.Odunze",
         "position":"WR",
@@ -5448,12 +5440,12 @@
         "ros_rank":168.0
     },
     {
-        "player_id":"00-0033908",
-        "player_name":"C.Kupp",
-        "position":"WR",
-        "team":"LA",
-        "ros_projection":-28.4,
-        "ros_rank":169.0
+        "player_id":"00-0038935",
+        "player_name":"B.Strange",
+        "position":"TE",
+        "team":"JAX",
+        "ros_projection":-28.32,
+        "ros_rank":108.0
     },
     {
         "player_id":"00-0034159",
@@ -5464,12 +5456,12 @@
         "ros_rank":109.0
     },
     {
-        "player_id":"00-0039144",
-        "player_name":"L.Musgrave",
-        "position":"TE",
-        "team":"GB",
-        "ros_projection":-28.48,
-        "ros_rank":110.0
+        "player_id":"00-0033908",
+        "player_name":"C.Kupp",
+        "position":"WR",
+        "team":"LA",
+        "ros_projection":-28.4,
+        "ros_rank":169.0
     },
     {
         "player_id":"00-0034414",
@@ -5480,6 +5472,14 @@
         "ros_rank":119.0
     },
     {
+        "player_id":"00-0039144",
+        "player_name":"L.Musgrave",
+        "position":"TE",
+        "team":"GB",
+        "ros_projection":-28.48,
+        "ros_rank":110.0
+    },
+    {
         "player_id":"00-0034184",
         "player_name":"G.Edwards",
         "position":"RB",
@@ -5488,18 +5488,18 @@
         "ros_rank":120.0
     },
     {
-        "player_id":"00-0032765",
-        "player_name":"M.Thomas",
-        "position":"WR",
-        "team":"NO",
-        "ros_projection":-28.8,
-        "ros_rank":170.0
-    },
-    {
         "player_id":"00-0030035",
         "player_name":"A.Thielen",
         "position":"WR",
         "team":"MIN",
+        "ros_projection":-28.8,
+        "ros_rank":170.0
+    },
+    {
+        "player_id":"00-0032765",
+        "player_name":"M.Thomas",
+        "position":"WR",
+        "team":"NO",
         "ros_projection":-28.8,
         "ros_rank":170.0
     },
@@ -5512,18 +5512,18 @@
         "ros_rank":171.0
     },
     {
-        "player_id":"00-0038997",
-        "player_name":"J.Downs",
-        "position":"WR",
-        "team":"IND",
-        "ros_projection":-29.12,
-        "ros_rank":172.0
-    },
-    {
         "player_id":"00-0038619",
         "player_name":"A.Iosivas",
         "position":"WR",
         "team":"CIN",
+        "ros_projection":-29.12,
+        "ros_rank":172.0
+    },
+    {
+        "player_id":"00-0038997",
+        "player_name":"J.Downs",
+        "position":"WR",
+        "team":"IND",
         "ros_projection":-29.12,
         "ros_rank":172.0
     },
@@ -5592,20 +5592,20 @@
         "ros_rank":122.0
     },
     {
-        "player_id":"00-0033949",
-        "player_name":"J.Dobbs",
-        "position":"QB",
-        "team":"TEN",
-        "ros_projection":-29.8,
-        "ros_rank":40.0
-    },
-    {
         "player_id":"00-0033118",
         "player_name":"K.Drake",
         "position":"RB",
         "team":"BAL",
         "ros_projection":-29.8,
         "ros_rank":123.0
+    },
+    {
+        "player_id":"00-0033949",
+        "player_name":"J.Dobbs",
+        "position":"QB",
+        "team":"TEN",
+        "ros_projection":-29.8,
+        "ros_rank":40.0
     },
     {
         "player_id":"00-0038454",
@@ -5616,18 +5616,18 @@
         "ros_rank":124.0
     },
     {
-        "player_id":"00-0032543",
-        "player_name":"A.Erickson",
-        "position":"WR",
-        "team":"LAC",
-        "ros_projection":-30.08,
-        "ros_rank":178.0
-    },
-    {
         "player_id":"00-0036980",
         "player_name":"E.Moore",
         "position":"WR",
         "team":"NYJ",
+        "ros_projection":-30.08,
+        "ros_rank":178.0
+    },
+    {
+        "player_id":"00-0032543",
+        "player_name":"A.Erickson",
+        "position":"WR",
+        "team":"LAC",
         "ros_projection":-30.08,
         "ros_rank":178.0
     },
@@ -5696,20 +5696,20 @@
         "ros_rank":183.0
     },
     {
-        "player_id":"00-0036259",
-        "player_name":"J.Jennings",
-        "position":"WR",
-        "team":"SF",
-        "ros_projection":-32.08,
-        "ros_rank":184.0
-    },
-    {
         "player_id":"00-0037809",
         "player_name":"C.Okonkwo",
         "position":"TE",
         "team":"TEN",
         "ros_projection":-32.08,
         "ros_rank":112.0
+    },
+    {
+        "player_id":"00-0036259",
+        "player_name":"J.Jennings",
+        "position":"WR",
+        "team":"SF",
+        "ros_projection":-32.08,
+        "ros_rank":184.0
     },
     {
         "player_id":"00-0038621",
@@ -5744,20 +5744,20 @@
         "ros_rank":113.0
     },
     {
-        "player_id":"00-0039021",
-        "player_name":"R.Johnson",
-        "position":"RB",
-        "team":"CHI",
-        "ros_projection":-32.8,
-        "ros_rank":128.0
-    },
-    {
         "player_id":"00-0038996",
         "player_name":"T.Kraft",
         "position":"TE",
         "team":"GB",
         "ros_projection":-32.8,
         "ros_rank":114.0
+    },
+    {
+        "player_id":"00-0039021",
+        "player_name":"R.Johnson",
+        "position":"RB",
+        "team":"CHI",
+        "ros_projection":-32.8,
+        "ros_rank":128.0
     },
     {
         "player_id":"00-0027688",
@@ -6208,20 +6208,20 @@
         "ros_rank":202.0
     },
     {
-        "player_id":"00-0036261",
-        "player_name":"B.Aiyuk",
-        "position":"WR",
-        "team":"SF",
-        "ros_projection":-41.72,
-        "ros_rank":203.0
-    },
-    {
         "player_id":"00-0036275",
         "player_name":"D.Swift",
         "position":"RB",
         "team":"DET",
         "ros_projection":-41.72,
         "ros_rank":145.0
+    },
+    {
+        "player_id":"00-0036261",
+        "player_name":"B.Aiyuk",
+        "position":"WR",
+        "team":"SF",
+        "ros_projection":-41.72,
+        "ros_rank":203.0
     },
     {
         "player_id":"00-0036290",
@@ -6320,20 +6320,20 @@
         "ros_rank":125.0
     },
     {
-        "player_id":"00-0038544",
-        "player_name":"Q.Johnston",
-        "position":"WR",
-        "team":"LAC",
-        "ros_projection":-43.88,
-        "ros_rank":208.0
-    },
-    {
         "player_id":"00-0039384",
         "player_name":"T.Tracy",
         "position":"RB",
         "team":"NYG",
         "ros_projection":-43.88,
         "ros_rank":148.0
+    },
+    {
+        "player_id":"00-0038544",
+        "player_name":"Q.Johnston",
+        "position":"WR",
+        "team":"LAC",
+        "ros_projection":-43.88,
+        "ros_rank":208.0
     },
     {
         "player_id":"00-0036410",
@@ -6344,20 +6344,20 @@
         "ros_rank":209.0
     },
     {
-        "player_id":"00-0031610",
-        "player_name":"D.Waller",
-        "position":"TE",
-        "team":"LV",
-        "ros_projection":-44.16,
-        "ros_rank":126.0
-    },
-    {
         "player_id":"00-0035719",
         "player_name":"D.Samuel",
         "position":"WR",
         "team":"SF",
         "ros_projection":-44.16,
         "ros_rank":210.0
+    },
+    {
+        "player_id":"00-0031610",
+        "player_name":"D.Waller",
+        "position":"TE",
+        "team":"LV",
+        "ros_projection":-44.16,
+        "ros_rank":126.0
     },
     {
         "player_id":"00-0038393",
@@ -6384,20 +6384,20 @@
         "ros_rank":213.0
     },
     {
-        "player_id":"00-0028118",
-        "player_name":"T.Taylor",
-        "position":"QB",
-        "team":"NYG",
-        "ros_projection":-45.2,
-        "ros_rank":59.0
-    },
-    {
         "player_id":"00-0037228",
         "player_name":"J.Warren",
         "position":"RB",
         "team":"PIT",
         "ros_projection":-45.2,
         "ros_rank":149.0
+    },
+    {
+        "player_id":"00-0028118",
+        "player_name":"T.Taylor",
+        "position":"QB",
+        "team":"NYG",
+        "ros_projection":-45.2,
+        "ros_rank":59.0
     },
     {
         "player_id":"00-0037239",
@@ -6528,20 +6528,20 @@
         "ros_rank":153.0
     },
     {
-        "player_id":"00-0036158",
-        "player_name":"J.Dobbins",
-        "position":"RB",
-        "team":"BAL",
-        "ros_projection":-48.84,
-        "ros_rank":154.0
-    },
-    {
         "player_id":"00-0032211",
         "player_name":"T.Lockett",
         "position":"WR",
         "team":"SEA",
         "ros_projection":-48.84,
         "ros_rank":220.0
+    },
+    {
+        "player_id":"00-0036158",
+        "player_name":"J.Dobbins",
+        "position":"RB",
+        "team":"BAL",
+        "ros_projection":-48.84,
+        "ros_rank":154.0
     },
     {
         "player_id":"00-0033948",
@@ -6568,14 +6568,6 @@
         "ros_rank":221.0
     },
     {
-        "player_id":"00-0037197",
-        "player_name":"I.Pacheco",
-        "position":"RB",
-        "team":"KC",
-        "ros_projection":-49.68,
-        "ros_rank":157.0
-    },
-    {
         "player_id":"00-0038608",
         "player_name":"K.Boutte",
         "position":"WR",
@@ -6590,6 +6582,14 @@
         "team":"PIT",
         "ros_projection":-49.68,
         "ros_rank":222.0
+    },
+    {
+        "player_id":"00-0037197",
+        "player_name":"I.Pacheco",
+        "position":"RB",
+        "team":"KC",
+        "ros_projection":-49.68,
+        "ros_rank":157.0
     },
     {
         "player_id":"00-0036613",
@@ -6736,18 +6736,18 @@
         "ros_rank":66.0
     },
     {
-        "player_id":"00-0035676",
-        "player_name":"A.Brown",
-        "position":"WR",
-        "team":"PHI",
-        "ros_projection":-53.68,
-        "ros_rank":231.0
-    },
-    {
         "player_id":"00-0036252",
         "player_name":"M.Pittman",
         "position":"WR",
         "team":"IND",
+        "ros_projection":-53.68,
+        "ros_rank":231.0
+    },
+    {
+        "player_id":"00-0035676",
+        "player_name":"A.Brown",
+        "position":"WR",
+        "team":"PHI",
         "ros_projection":-53.68,
         "ros_rank":231.0
     },
@@ -7088,20 +7088,20 @@
         "ros_rank":80.0
     },
     {
-        "player_id":"00-0037840",
-        "player_name":"K.Williams",
-        "position":"RB",
-        "team":"LA",
-        "ros_projection":-66.32,
-        "ros_rank":170.0
-    },
-    {
         "player_id":"00-0036407",
         "player_name":"J.Jeudy",
         "position":"WR",
         "team":"DEN",
         "ros_projection":-66.32,
         "ros_rank":249.0
+    },
+    {
+        "player_id":"00-0037840",
+        "player_name":"K.Williams",
+        "position":"RB",
+        "team":"LA",
+        "ros_projection":-66.32,
+        "ros_rank":170.0
     },
     {
         "player_id":"00-0029263",
