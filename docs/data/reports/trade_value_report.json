@@ -67,7 +67,7 @@
         "player_name":"T.Bigsby",
         "position":"RB",
         "team":"JAX",
-        "trade_value":59.7
+        "trade_value":59.8
     },
     {
         "player_id":"00-0033288",
@@ -102,7 +102,7 @@
         "player_name":"D.Johnson",
         "position":"RB",
         "team":"JAX",
-        "trade_value":58.4
+        "trade_value":58.5
     },
     {
         "player_id":"00-0033576",
@@ -217,13 +217,6 @@
         "trade_value":56.2
     },
     {
-        "player_id":"00-0039355",
-        "player_name":"L.McCaffrey",
-        "position":"WR",
-        "team":"WAS",
-        "trade_value":55.9
-    },
-    {
         "player_id":"00-0039050",
         "player_name":"P.Durham",
         "position":"TE",
@@ -231,24 +224,31 @@
         "trade_value":55.9
     },
     {
-        "player_id":"00-0032394",
-        "player_name":"N.Vannett",
-        "position":"TE",
-        "team":"TEN",
-        "trade_value":55.7
-    },
-    {
-        "player_id":"00-0033319",
-        "player_name":"N.Mullens",
-        "position":"QB",
-        "team":"MIN",
-        "trade_value":55.6
+        "player_id":"00-0039355",
+        "player_name":"L.McCaffrey",
+        "position":"WR",
+        "team":"WAS",
+        "trade_value":55.9
     },
     {
         "player_id":"00-0036628",
         "player_name":"J.Bates",
         "position":"TE",
         "team":"WAS",
+        "trade_value":55.7
+    },
+    {
+        "player_id":"00-0032394",
+        "player_name":"N.Vannett",
+        "position":"TE",
+        "team":"TEN",
+        "trade_value":55.6
+    },
+    {
+        "player_id":"00-0033319",
+        "player_name":"N.Mullens",
+        "position":"QB",
+        "team":"MIN",
         "trade_value":55.6
     },
     {
@@ -273,18 +273,18 @@
         "trade_value":55.3
     },
     {
-        "player_id":"00-0037292",
-        "player_name":"A.Ogletree",
-        "position":"TE",
-        "team":"IND",
-        "trade_value":55.2
-    },
-    {
         "player_id":"00-0037487",
         "player_name":"D.Thompkins",
         "position":"WR",
         "team":"CAR",
         "trade_value":55.2
+    },
+    {
+        "player_id":"00-0037292",
+        "player_name":"A.Ogletree",
+        "position":"TE",
+        "team":"IND",
+        "trade_value":55.1
     },
     {
         "player_id":"00-0038583",
@@ -294,13 +294,6 @@
         "trade_value":54.9
     },
     {
-        "player_id":"00-0039738",
-        "player_name":"B.Corum",
-        "position":"RB",
-        "team":"LA",
-        "trade_value":54.7
-    },
-    {
         "player_id":"00-0039907",
         "player_name":"J.Polk",
         "position":"WR",
@@ -308,11 +301,11 @@
         "trade_value":54.7
     },
     {
-        "player_id":"00-0038583",
-        "player_name":"D.Thompson-Robinson",
-        "position":"QB",
-        "team":"CLE",
-        "trade_value":54.6
+        "player_id":"00-0039738",
+        "player_name":"B.Corum",
+        "position":"RB",
+        "team":"LA",
+        "trade_value":54.7
     },
     {
         "player_id":"00-0039920",
@@ -322,11 +315,11 @@
         "trade_value":54.6
     },
     {
-        "player_id":"00-0039236",
-        "player_name":"J.Wilson",
-        "position":"WR",
-        "team":"PHI",
-        "trade_value":54.5
+        "player_id":"00-0038583",
+        "player_name":"D.Thompson-Robinson",
+        "position":"QB",
+        "team":"CLE",
+        "trade_value":54.6
     },
     {
         "player_id":"00-0033526",
@@ -336,11 +329,18 @@
         "trade_value":54.5
     },
     {
+        "player_id":"00-0039236",
+        "player_name":"J.Wilson",
+        "position":"WR",
+        "team":"PHI",
+        "trade_value":54.5
+    },
+    {
         "player_id":"00-0033217",
         "player_name":"M.Alie-Cox",
         "position":"TE",
         "team":"IND",
-        "trade_value":54.3
+        "trade_value":54.2
     },
     {
         "player_id":"00-0033869",
@@ -357,13 +357,6 @@
         "trade_value":54.0
     },
     {
-        "player_id":"00-0033246",
-        "player_name":"J.Mundt",
-        "position":"TE",
-        "team":"MIN",
-        "trade_value":53.9
-    },
-    {
         "player_id":"00-0038720",
         "player_name":"J.Hill",
         "position":"TE",
@@ -378,10 +371,24 @@
         "trade_value":53.9
     },
     {
+        "player_id":"00-0033246",
+        "player_name":"J.Mundt",
+        "position":"TE",
+        "team":"MIN",
+        "trade_value":53.9
+    },
+    {
         "player_id":"00-0038396",
         "player_name":"E.Gray",
         "position":"RB",
         "team":"NYG",
+        "trade_value":53.8
+    },
+    {
+        "player_id":"00-0036887",
+        "player_name":"L.Farrell",
+        "position":"TE",
+        "team":"JAX",
         "trade_value":53.8
     },
     {
@@ -392,25 +399,18 @@
         "trade_value":53.7
     },
     {
-        "player_id":"00-0036887",
-        "player_name":"L.Farrell",
-        "position":"TE",
-        "team":"JAX",
-        "trade_value":53.7
+        "player_id":"00-0039062",
+        "player_name":"J.Mingo",
+        "position":"WR",
+        "team":"CAR",
+        "trade_value":53.6
     },
     {
         "player_id":"00-0038597",
         "player_name":"C.Brown",
         "position":"RB",
         "team":"CIN",
-        "trade_value":53.6
-    },
-    {
-        "player_id":"00-0039062",
-        "player_name":"J.Mingo",
-        "position":"WR",
-        "team":"CAR",
-        "trade_value":53.6
+        "trade_value":53.5
     },
     {
         "player_id":"00-0039737",
@@ -483,13 +483,6 @@
         "trade_value":52.4
     },
     {
-        "player_id":"00-0035298",
-        "player_name":"S.Miller",
-        "position":"WR",
-        "team":"PIT",
-        "trade_value":52.1
-    },
-    {
         "player_id":"00-0038809",
         "player_name":"B.Sims",
         "position":"TE",
@@ -497,10 +490,10 @@
         "trade_value":52.1
     },
     {
-        "player_id":"00-0036984",
-        "player_name":"T.Sermon",
-        "position":"RB",
-        "team":"IND",
+        "player_id":"00-0035298",
+        "player_name":"S.Miller",
+        "position":"WR",
+        "team":"PIT",
         "trade_value":52.1
     },
     {
@@ -518,11 +511,18 @@
         "trade_value":52.0
     },
     {
+        "player_id":"00-0036984",
+        "player_name":"T.Sermon",
+        "position":"RB",
+        "team":"IND",
+        "trade_value":52.0
+    },
+    {
         "player_id":"00-0036898",
         "player_name":"D.Mills",
         "position":"QB",
         "team":"HOU",
-        "trade_value":51.9
+        "trade_value":52.0
     },
     {
         "player_id":"00-0033439",
@@ -543,7 +543,7 @@
         "player_name":"D.Ogunbowale",
         "position":"RB",
         "team":"HOU",
-        "trade_value":51.7
+        "trade_value":51.8
     },
     {
         "player_id":"00-0035289",
@@ -553,13 +553,6 @@
         "trade_value":51.6
     },
     {
-        "player_id":"00-0035289",
-        "player_name":"G.Minshew",
-        "position":"QB",
-        "team":"LV",
-        "trade_value":51.2
-    },
-    {
         "player_id":"00-0036182",
         "player_name":"N.Westbrook-Ikhine",
         "position":"WR",
@@ -567,10 +560,10 @@
         "trade_value":51.2
     },
     {
-        "player_id":"00-0033119",
-        "player_name":"J.Brissett",
+        "player_id":"00-0035289",
+        "player_name":"G.Minshew",
         "position":"QB",
-        "team":"NE",
+        "team":"LV",
         "trade_value":51.2
     },
     {
@@ -578,6 +571,13 @@
         "player_name":"R.Jarrett",
         "position":"WR",
         "team":"TB",
+        "trade_value":51.2
+    },
+    {
+        "player_id":"00-0033119",
+        "player_name":"J.Brissett",
+        "position":"QB",
+        "team":"NE",
         "trade_value":51.2
     },
     {
@@ -602,17 +602,17 @@
         "trade_value":50.9
     },
     {
-        "player_id":"00-0037525",
-        "player_name":"J.Mason",
-        "position":"RB",
-        "team":"SF",
-        "trade_value":50.8
-    },
-    {
         "player_id":"00-0037012",
         "player_name":"T.Lance",
         "position":"QB",
         "team":"DAL",
+        "trade_value":50.8
+    },
+    {
+        "player_id":"00-0037525",
+        "player_name":"J.Mason",
+        "position":"RB",
+        "team":"SF",
         "trade_value":50.8
     },
     {
@@ -623,17 +623,17 @@
         "trade_value":50.5
     },
     {
-        "player_id":"00-0037012",
-        "player_name":"T.Lance",
-        "position":"QB",
-        "team":"DAL",
-        "trade_value":50.4
-    },
-    {
         "player_id":"00-0038933",
         "player_name":"D.Kincaid",
         "position":"TE",
         "team":"BUF",
+        "trade_value":50.4
+    },
+    {
+        "player_id":"00-0037012",
+        "player_name":"T.Lance",
+        "position":"QB",
+        "team":"DAL",
         "trade_value":50.4
     },
     {
@@ -665,13 +665,6 @@
         "trade_value":49.9
     },
     {
-        "player_id":"00-0036550",
-        "player_name":"R.Bateman",
-        "position":"WR",
-        "team":"BAL",
-        "trade_value":49.8
-    },
-    {
         "player_id":"00-0038102",
         "player_name":"K.Pickett",
         "position":"QB",
@@ -679,11 +672,11 @@
         "trade_value":49.8
     },
     {
-        "player_id":"00-0039810",
-        "player_name":"J.Burton",
+        "player_id":"00-0036550",
+        "player_name":"R.Bateman",
         "position":"WR",
-        "team":"CIN",
-        "trade_value":49.7
+        "team":"BAL",
+        "trade_value":49.8
     },
     {
         "player_id":"00-0035685",
@@ -693,10 +686,17 @@
         "trade_value":49.6
     },
     {
-        "player_id":"00-0034829",
-        "player_name":"M.Gesicki",
-        "position":"TE",
+        "player_id":"00-0039810",
+        "player_name":"J.Burton",
+        "position":"WR",
         "team":"CIN",
+        "trade_value":49.6
+    },
+    {
+        "player_id":"00-0034981",
+        "player_name":"F.Moreau",
+        "position":"TE",
+        "team":"NO",
         "trade_value":49.5
     },
     {
@@ -707,17 +707,17 @@
         "trade_value":49.5
     },
     {
-        "player_id":"00-0034981",
-        "player_name":"F.Moreau",
-        "position":"TE",
-        "team":"NO",
-        "trade_value":49.5
-    },
-    {
         "player_id":"00-0033591",
         "player_name":"N.Brown",
         "position":"WR",
         "team":"WAS",
+        "trade_value":49.4
+    },
+    {
+        "player_id":"00-0034829",
+        "player_name":"M.Gesicki",
+        "position":"TE",
+        "team":"CIN",
         "trade_value":49.4
     },
     {
@@ -742,17 +742,17 @@
         "trade_value":49.0
     },
     {
-        "player_id":"00-0037005",
-        "player_name":"T.Tremble",
-        "position":"TE",
-        "team":"CAR",
-        "trade_value":48.6
-    },
-    {
         "player_id":"00-0036970",
         "player_name":"K.Pitts",
         "position":"TE",
         "team":"ATL",
+        "trade_value":48.6
+    },
+    {
+        "player_id":"00-0037005",
+        "player_name":"T.Tremble",
+        "position":"TE",
+        "team":"CAR",
         "trade_value":48.6
     },
     {
@@ -770,13 +770,6 @@
         "trade_value":48.5
     },
     {
-        "player_id":"00-0038128",
-        "player_name":"M.Willis",
-        "position":"QB",
-        "team":"GB",
-        "trade_value":48.2
-    },
-    {
         "player_id":"00-0039356",
         "player_name":"J.Sanders",
         "position":"TE",
@@ -791,17 +784,17 @@
         "trade_value":48.2
     },
     {
-        "player_id":"00-0034753",
-        "player_name":"M.Andrews",
-        "position":"TE",
-        "team":"BAL",
-        "trade_value":48.1
+        "player_id":"00-0038128",
+        "player_name":"M.Willis",
+        "position":"QB",
+        "team":"GB",
+        "trade_value":48.2
     },
     {
-        "player_id":"00-0039912",
-        "player_name":"B.Sinnott",
-        "position":"TE",
-        "team":"WAS",
+        "player_id":"00-0030035",
+        "player_name":"A.Thielen",
+        "position":"WR",
+        "team":"CAR",
         "trade_value":48.1
     },
     {
@@ -812,10 +805,17 @@
         "trade_value":48.1
     },
     {
-        "player_id":"00-0030035",
-        "player_name":"A.Thielen",
-        "position":"WR",
-        "team":"CAR",
+        "player_id":"00-0039912",
+        "player_name":"B.Sinnott",
+        "position":"TE",
+        "team":"WAS",
+        "trade_value":48.1
+    },
+    {
+        "player_id":"00-0034753",
+        "player_name":"M.Andrews",
+        "position":"TE",
+        "team":"BAL",
         "trade_value":48.1
     },
     {
@@ -824,6 +824,13 @@
         "position":"RB",
         "team":"CAR",
         "trade_value":48.0
+    },
+    {
+        "player_id":"00-0039359",
+        "player_name":"C.Stover",
+        "position":"TE",
+        "team":"HOU",
+        "trade_value":47.9
     },
     {
         "player_id":"00-0039901",
@@ -840,18 +847,11 @@
         "trade_value":47.8
     },
     {
-        "player_id":"00-0039359",
-        "player_name":"C.Stover",
-        "position":"TE",
-        "team":"HOU",
-        "trade_value":47.8
-    },
-    {
         "player_id":"00-0035631",
         "player_name":"D.Sample",
         "position":"TE",
         "team":"CIN",
-        "trade_value":47.8
+        "trade_value":47.7
     },
     {
         "player_id":"00-0033375",
@@ -861,17 +861,17 @@
         "trade_value":47.7
     },
     {
+        "player_id":"00-0031484",
+        "player_name":"C.Manhertz",
+        "position":"TE",
+        "team":"NYG",
+        "trade_value":47.6
+    },
+    {
         "player_id":"00-0038640",
         "player_name":"J.Brooks",
         "position":"WR",
         "team":"DAL",
-        "trade_value":47.6
-    },
-    {
-        "player_id":"00-0033906",
-        "player_name":"A.Kamara",
-        "position":"RB",
-        "team":"NO",
         "trade_value":47.6
     },
     {
@@ -882,17 +882,17 @@
         "trade_value":47.6
     },
     {
-        "player_id":"00-0031484",
-        "player_name":"C.Manhertz",
-        "position":"TE",
-        "team":"NYG",
+        "player_id":"00-0033906",
+        "player_name":"A.Kamara",
+        "position":"RB",
+        "team":"NO",
         "trade_value":47.6
     },
     {
-        "player_id":"00-0035567",
-        "player_name":"C.Reynolds",
+        "player_id":"00-0032104",
+        "player_name":"A.Abdullah",
         "position":"RB",
-        "team":"DET",
+        "team":"LV",
         "trade_value":47.5
     },
     {
@@ -903,31 +903,17 @@
         "trade_value":47.5
     },
     {
-        "player_id":"00-0032104",
-        "player_name":"A.Abdullah",
+        "player_id":"00-0035567",
+        "player_name":"C.Reynolds",
         "position":"RB",
-        "team":"LV",
+        "team":"DET",
         "trade_value":47.5
-    },
-    {
-        "player_id":"00-0034972",
-        "player_name":"A.Mattison",
-        "position":"RB",
-        "team":"LV",
-        "trade_value":47.3
     },
     {
         "player_id":"00-0031428",
         "player_name":"A.Robinson",
         "position":"WR",
         "team":"DET",
-        "trade_value":47.3
-    },
-    {
-        "player_id":"00-0036590",
-        "player_name":"Q.Morris",
-        "position":"TE",
-        "team":"BUF",
         "trade_value":47.3
     },
     {
@@ -938,13 +924,6 @@
         "trade_value":47.3
     },
     {
-        "player_id":"00-0034855",
-        "player_name":"B.Mayfield",
-        "position":"QB",
-        "team":"TB",
-        "trade_value":47.3
-    },
-    {
         "player_id":"00-0037231",
         "player_name":"K.Austin",
         "position":"WR",
@@ -952,10 +931,31 @@
         "trade_value":47.3
     },
     {
-        "player_id":"00-0039650",
-        "player_name":"B.Oliver",
-        "position":"WR",
-        "team":"TEN",
+        "player_id":"00-0037746",
+        "player_name":"B.Robinson",
+        "position":"RB",
+        "team":"WAS",
+        "trade_value":47.3
+    },
+    {
+        "player_id":"00-0036590",
+        "player_name":"Q.Morris",
+        "position":"TE",
+        "team":"BUF",
+        "trade_value":47.3
+    },
+    {
+        "player_id":"00-0034972",
+        "player_name":"A.Mattison",
+        "position":"RB",
+        "team":"LV",
+        "trade_value":47.3
+    },
+    {
+        "player_id":"00-0034855",
+        "player_name":"B.Mayfield",
+        "position":"QB",
+        "team":"TB",
         "trade_value":47.3
     },
     {
@@ -966,17 +966,17 @@
         "trade_value":47.2
     },
     {
-        "player_id":"00-0037746",
-        "player_name":"B.Robinson",
-        "position":"RB",
-        "team":"WAS",
-        "trade_value":47.2
-    },
-    {
         "player_id":"00-0032464",
         "player_name":"K.Raymond",
         "position":"WR",
         "team":"DET",
+        "trade_value":47.2
+    },
+    {
+        "player_id":"00-0039650",
+        "player_name":"B.Oliver",
+        "position":"WR",
+        "team":"TEN",
         "trade_value":47.2
     },
     {
@@ -987,17 +987,17 @@
         "trade_value":47.2
     },
     {
-        "player_id":"00-0039530",
-        "player_name":"B.Spann-Ford",
-        "position":"TE",
-        "team":"DAL",
-        "trade_value":47.1
-    },
-    {
         "player_id":"00-0035662",
         "player_name":"M.Brown",
         "position":"WR",
         "team":"KC",
+        "trade_value":47.1
+    },
+    {
+        "player_id":"00-0039530",
+        "player_name":"B.Spann-Ford",
+        "position":"TE",
+        "team":"DAL",
         "trade_value":47.1
     },
     {
@@ -1015,10 +1015,10 @@
         "trade_value":47.0
     },
     {
-        "player_id":"00-0034386",
-        "player_name":"J.Watson",
-        "position":"WR",
-        "team":"KC",
+        "player_id":"00-0038129",
+        "player_name":"C.Otton",
+        "position":"TE",
+        "team":"TB",
         "trade_value":46.9
     },
     {
@@ -1029,10 +1029,10 @@
         "trade_value":46.9
     },
     {
-        "player_id":"00-0038129",
-        "player_name":"C.Otton",
-        "position":"TE",
-        "team":"TB",
+        "player_id":"00-0034386",
+        "player_name":"J.Watson",
+        "position":"WR",
+        "team":"KC",
         "trade_value":46.9
     },
     {
@@ -1050,6 +1050,13 @@
         "trade_value":46.7
     },
     {
+        "player_id":"00-0036331",
+        "player_name":"D.Duvernay",
+        "position":"WR",
+        "team":"JAX",
+        "trade_value":46.7
+    },
+    {
         "player_id":"00-0036849",
         "player_name":"T.Atwell",
         "position":"WR",
@@ -1057,17 +1064,10 @@
         "trade_value":46.6
     },
     {
-        "player_id":"00-0036331",
-        "player_name":"D.Duvernay",
-        "position":"WR",
-        "team":"JAX",
-        "trade_value":46.6
-    },
-    {
-        "player_id":"00-0038636",
-        "player_name":"K.McIntosh",
+        "player_id":"00-0033955",
+        "player_name":"J.McNichols",
         "position":"RB",
-        "team":"SEA",
+        "team":"WAS",
         "trade_value":46.5
     },
     {
@@ -1085,25 +1085,11 @@
         "trade_value":46.5
     },
     {
-        "player_id":"00-0033955",
-        "player_name":"J.McNichols",
+        "player_id":"00-0038636",
+        "player_name":"K.McIntosh",
         "position":"RB",
-        "team":"WAS",
+        "team":"SEA",
         "trade_value":46.5
-    },
-    {
-        "player_id":"00-0036442",
-        "player_name":"J.Burrow",
-        "position":"QB",
-        "team":"CIN",
-        "trade_value":46.5
-    },
-    {
-        "player_id":"00-0038618",
-        "player_name":"X.Hutchinson",
-        "position":"WR",
-        "team":"HOU",
-        "trade_value":46.4
     },
     {
         "player_id":"00-0035261",
@@ -1120,11 +1106,32 @@
         "trade_value":46.4
     },
     {
+        "player_id":"00-0036442",
+        "player_name":"J.Burrow",
+        "position":"QB",
+        "team":"CIN",
+        "trade_value":46.4
+    },
+    {
+        "player_id":"00-0038618",
+        "player_name":"X.Hutchinson",
+        "position":"WR",
+        "team":"HOU",
+        "trade_value":46.4
+    },
+    {
+        "player_id":"00-0033589",
+        "player_name":"D.Moore",
+        "position":"WR",
+        "team":"CAR",
+        "trade_value":46.2
+    },
+    {
         "player_id":"00-0037120",
         "player_name":"T.Goodson",
         "position":"RB",
         "team":"IND",
-        "trade_value":46.3
+        "trade_value":46.2
     },
     {
         "player_id":"00-0034270",
@@ -1134,10 +1141,10 @@
         "trade_value":46.2
     },
     {
-        "player_id":"00-0033589",
-        "player_name":"D.Moore",
+        "player_id":"00-0038606",
+        "player_name":"P.Washington",
         "position":"WR",
-        "team":"CAR",
+        "team":"JAX",
         "trade_value":46.2
     },
     {
@@ -1148,13 +1155,6 @@
         "trade_value":46.2
     },
     {
-        "player_id":"00-0038606",
-        "player_name":"P.Washington",
-        "position":"WR",
-        "team":"JAX",
-        "trade_value":46.1
-    },
-    {
         "player_id":"00-0039376",
         "player_name":"S.Rattler",
         "position":"QB",
@@ -1162,17 +1162,17 @@
         "trade_value":46.1
     },
     {
-        "player_id":"00-0031763",
-        "player_name":"D.Carter",
-        "position":"WR",
-        "team":"CHI",
-        "trade_value":46.0
-    },
-    {
         "player_id":"00-0037539",
         "player_name":"L.Krull",
         "position":"TE",
         "team":"DEN",
+        "trade_value":46.0
+    },
+    {
+        "player_id":"00-0031763",
+        "player_name":"D.Carter",
+        "position":"WR",
+        "team":"CHI",
         "trade_value":46.0
     },
     {
@@ -1183,13 +1183,6 @@
         "trade_value":46.0
     },
     {
-        "player_id":"00-0038997",
-        "player_name":"J.Downs",
-        "position":"WR",
-        "team":"IND",
-        "trade_value":46.0
-    },
-    {
         "player_id":"00-0032128",
         "player_name":"C.Conley",
         "position":"WR",
@@ -1197,24 +1190,10 @@
         "trade_value":46.0
     },
     {
-        "player_id":"00-0038938",
-        "player_name":"J.Hyatt",
-        "position":"WR",
-        "team":"NYG",
-        "trade_value":45.9
-    },
-    {
-        "player_id":"00-0038996",
-        "player_name":"T.Kraft",
+        "player_id":"00-0035644",
+        "player_name":"N.Fant",
         "position":"TE",
-        "team":"GB",
-        "trade_value":45.9
-    },
-    {
-        "player_id":"00-0034418",
-        "player_name":"C.Wilson",
-        "position":"WR",
-        "team":"NO",
+        "team":"SEA",
         "trade_value":45.9
     },
     {
@@ -1225,10 +1204,17 @@
         "trade_value":45.9
     },
     {
-        "player_id":"00-0039342",
-        "player_name":"X.Legette",
+        "player_id":"00-0038996",
+        "player_name":"T.Kraft",
+        "position":"TE",
+        "team":"GB",
+        "trade_value":45.9
+    },
+    {
+        "player_id":"00-0038938",
+        "player_name":"J.Hyatt",
         "position":"WR",
-        "team":"CAR",
+        "team":"NYG",
         "trade_value":45.9
     },
     {
@@ -1239,11 +1225,39 @@
         "trade_value":45.9
     },
     {
-        "player_id":"00-0035644",
-        "player_name":"N.Fant",
-        "position":"TE",
-        "team":"SEA",
+        "player_id":"00-0039342",
+        "player_name":"X.Legette",
+        "position":"WR",
+        "team":"CAR",
         "trade_value":45.9
+    },
+    {
+        "player_id":"00-0034418",
+        "player_name":"C.Wilson",
+        "position":"WR",
+        "team":"NO",
+        "trade_value":45.9
+    },
+    {
+        "player_id":"00-0038997",
+        "player_name":"J.Downs",
+        "position":"WR",
+        "team":"IND",
+        "trade_value":45.9
+    },
+    {
+        "player_id":"00-0037557",
+        "player_name":"R.Rivers",
+        "position":"RB",
+        "team":"LA",
+        "trade_value":45.8
+    },
+    {
+        "player_id":"00-0033908",
+        "player_name":"C.Kupp",
+        "position":"WR",
+        "team":"LA",
+        "trade_value":45.8
     },
     {
         "player_id":"00-0037085",
@@ -1260,25 +1274,18 @@
         "trade_value":45.8
     },
     {
-        "player_id":"00-0037557",
-        "player_name":"R.Rivers",
-        "position":"RB",
-        "team":"LA",
-        "trade_value":45.8
+        "player_id":"00-0038543",
+        "player_name":"J.Smith-Njigba",
+        "position":"WR",
+        "team":"SEA",
+        "trade_value":45.7
     },
     {
-        "player_id":"00-0037664",
-        "player_name":"A.Pierce",
+        "player_id":"00-0030431",
+        "player_name":"R.Woods",
         "position":"WR",
-        "team":"IND",
-        "trade_value":45.8
-    },
-    {
-        "player_id":"00-0033908",
-        "player_name":"C.Kupp",
-        "position":"WR",
-        "team":"LA",
-        "trade_value":45.8
+        "team":"HOU",
+        "trade_value":45.7
     },
     {
         "player_id":"00-0038619",
@@ -1288,18 +1295,11 @@
         "trade_value":45.7
     },
     {
-        "player_id":"00-0038543",
-        "player_name":"J.Smith-Njigba",
+        "player_id":"00-0037664",
+        "player_name":"A.Pierce",
         "position":"WR",
-        "team":"SEA",
+        "team":"IND",
         "trade_value":45.7
-    },
-    {
-        "player_id":"00-0036442",
-        "player_name":"J.Burrow",
-        "position":"QB",
-        "team":"CIN",
-        "trade_value":45.6
     },
     {
         "player_id":"00-0036268",
@@ -1309,31 +1309,31 @@
         "trade_value":45.6
     },
     {
-        "player_id":"00-0036251",
-        "player_name":"Z.Moss",
-        "position":"RB",
+        "player_id":"00-0036442",
+        "player_name":"J.Burrow",
+        "position":"QB",
         "team":"CIN",
         "trade_value":45.6
-    },
-    {
-        "player_id":"00-0030431",
-        "player_name":"R.Woods",
-        "position":"WR",
-        "team":"HOU",
-        "trade_value":45.6
-    },
-    {
-        "player_id":"00-0039150",
-        "player_name":"B.Young",
-        "position":"QB",
-        "team":"CAR",
-        "trade_value":45.5
     },
     {
         "player_id":"00-0036212",
         "player_name":"T.Tagovailoa",
         "position":"QB",
         "team":"MIA",
+        "trade_value":45.5
+    },
+    {
+        "player_id":"00-0036251",
+        "player_name":"Z.Moss",
+        "position":"RB",
+        "team":"CIN",
+        "trade_value":45.5
+    },
+    {
+        "player_id":"00-0039150",
+        "player_name":"B.Young",
+        "position":"QB",
+        "team":"CAR",
         "trade_value":45.5
     },
     {
@@ -1351,13 +1351,6 @@
         "trade_value":45.4
     },
     {
-        "player_id":"00-0035341",
-        "player_name":"T.Irwin",
-        "position":"WR",
-        "team":"CIN",
-        "trade_value":45.4
-    },
-    {
         "player_id":"00-0038797",
         "player_name":"E.Wilson",
         "position":"RB",
@@ -1369,6 +1362,13 @@
         "player_name":"T.Sherfield",
         "position":"WR",
         "team":"MIN",
+        "trade_value":45.3
+    },
+    {
+        "player_id":"00-0035341",
+        "player_name":"T.Irwin",
+        "position":"WR",
+        "team":"CIN",
         "trade_value":45.3
     },
     {
@@ -1386,17 +1386,17 @@
         "trade_value":45.2
     },
     {
-        "player_id":"00-0036232",
-        "player_name":"H.Bryant",
-        "position":"TE",
-        "team":"LV",
-        "trade_value":45.2
-    },
-    {
         "player_id":"00-0038046",
         "player_name":"C.Kolar",
         "position":"TE",
         "team":"BAL",
+        "trade_value":45.2
+    },
+    {
+        "player_id":"00-0036232",
+        "player_name":"H.Bryant",
+        "position":"TE",
+        "team":"LV",
         "trade_value":45.2
     },
     {
@@ -1414,13 +1414,6 @@
         "trade_value":45.1
     },
     {
-        "player_id":"00-0033536",
-        "player_name":"M.Williams",
-        "position":"WR",
-        "team":"NYJ",
-        "trade_value":45.0
-    },
-    {
         "player_id":"00-0032392",
         "player_name":"A.Hooper",
         "position":"TE",
@@ -1433,6 +1426,34 @@
         "position":"QB",
         "team":"SF",
         "trade_value":45.0
+    },
+    {
+        "player_id":"00-0033536",
+        "player_name":"M.Williams",
+        "position":"WR",
+        "team":"NYJ",
+        "trade_value":45.0
+    },
+    {
+        "player_id":"00-0036414",
+        "player_name":"C.Akers",
+        "position":"RB",
+        "team":"HOU",
+        "trade_value":45.0
+    },
+    {
+        "player_id":"00-0038935",
+        "player_name":"B.Strange",
+        "position":"TE",
+        "team":"JAX",
+        "trade_value":45.0
+    },
+    {
+        "player_id":"00-0034613",
+        "player_name":"T.Hudson",
+        "position":"TE",
+        "team":"CIN",
+        "trade_value":44.9
     },
     {
         "player_id":"00-0039066",
@@ -1449,34 +1470,6 @@
         "trade_value":44.9
     },
     {
-        "player_id":"00-0038935",
-        "player_name":"B.Strange",
-        "position":"TE",
-        "team":"JAX",
-        "trade_value":44.9
-    },
-    {
-        "player_id":"00-0034613",
-        "player_name":"T.Hudson",
-        "position":"TE",
-        "team":"CIN",
-        "trade_value":44.9
-    },
-    {
-        "player_id":"00-0036414",
-        "player_name":"C.Akers",
-        "position":"RB",
-        "team":"HOU",
-        "trade_value":44.9
-    },
-    {
-        "player_id":"00-0037837",
-        "player_name":"C.Austin",
-        "position":"WR",
-        "team":"PIT",
-        "trade_value":44.8
-    },
-    {
         "player_id":"00-0037509",
         "player_name":"S.McCormick",
         "position":"RB",
@@ -1491,6 +1484,13 @@
         "trade_value":44.8
     },
     {
+        "player_id":"00-0037837",
+        "player_name":"C.Austin",
+        "position":"WR",
+        "team":"PIT",
+        "trade_value":44.8
+    },
+    {
         "player_id":"00-0037809",
         "player_name":"C.Okonkwo",
         "position":"TE",
@@ -1498,17 +1498,17 @@
         "trade_value":44.7
     },
     {
-        "player_id":"00-0038098",
-        "player_name":"P.Strong",
-        "position":"RB",
-        "team":"CLE",
-        "trade_value":44.7
-    },
-    {
         "player_id":"00-0036040",
         "player_name":"J.Johnson",
         "position":"TE",
         "team":"NO",
+        "trade_value":44.7
+    },
+    {
+        "player_id":"00-0038098",
+        "player_name":"P.Strong",
+        "position":"RB",
+        "team":"CLE",
         "trade_value":44.7
     },
     {
@@ -1533,24 +1533,24 @@
         "trade_value":44.6
     },
     {
+        "player_id":"00-0039798",
+        "player_name":"I.Davis",
+        "position":"RB",
+        "team":"NYJ",
+        "trade_value":44.4
+    },
+    {
         "player_id":"00-0039890",
         "player_name":"A.Mitchell",
         "position":"WR",
         "team":"IND",
-        "trade_value":44.5
+        "trade_value":44.4
     },
     {
         "player_id":"00-0035140",
         "player_name":"M.Hardman",
         "position":"WR",
         "team":"KC",
-        "trade_value":44.4
-    },
-    {
-        "player_id":"00-0039798",
-        "player_name":"I.Davis",
-        "position":"RB",
-        "team":"NYJ",
         "trade_value":44.4
     },
     {
@@ -1561,10 +1561,10 @@
         "trade_value":44.4
     },
     {
-        "player_id":"00-0036212",
-        "player_name":"T.Tagovailoa",
-        "position":"QB",
-        "team":"MIA",
+        "player_id":"00-0039919",
+        "player_name":"R.Odunze",
+        "position":"WR",
+        "team":"CHI",
         "trade_value":44.3
     },
     {
@@ -1582,18 +1582,11 @@
         "trade_value":44.3
     },
     {
-        "player_id":"00-0039919",
-        "player_name":"R.Odunze",
-        "position":"WR",
-        "team":"CHI",
+        "player_id":"00-0036212",
+        "player_name":"T.Tagovailoa",
+        "position":"QB",
+        "team":"MIA",
         "trade_value":44.3
-    },
-    {
-        "player_id":"00-0039165",
-        "player_name":"Z.Charbonnet",
-        "position":"RB",
-        "team":"SEA",
-        "trade_value":44.2
     },
     {
         "player_id":"00-0039065",
@@ -1603,11 +1596,11 @@
         "trade_value":44.2
     },
     {
-        "player_id":"00-0036876",
-        "player_name":"K.Granson",
-        "position":"TE",
-        "team":"IND",
-        "trade_value":44.1
+        "player_id":"00-0039165",
+        "player_name":"Z.Charbonnet",
+        "position":"RB",
+        "team":"SEA",
+        "trade_value":44.2
     },
     {
         "player_id":"00-0038685",
@@ -1617,17 +1610,10 @@
         "trade_value":44.1
     },
     {
-        "player_id":"00-0038589",
-        "player_name":"J.Whyle",
+        "player_id":"00-0038115",
+        "player_name":"D.Bellinger",
         "position":"TE",
-        "team":"TEN",
-        "trade_value":44.0
-    },
-    {
-        "player_id":"00-0035993",
-        "player_name":"T.Huntley",
-        "position":"QB",
-        "team":"MIA",
+        "team":"NYG",
         "trade_value":44.0
     },
     {
@@ -1638,24 +1624,38 @@
         "trade_value":44.0
     },
     {
-        "player_id":"00-0038115",
-        "player_name":"D.Bellinger",
-        "position":"TE",
-        "team":"NYG",
+        "player_id":"00-0035993",
+        "player_name":"T.Huntley",
+        "position":"QB",
+        "team":"MIA",
         "trade_value":44.0
     },
     {
-        "player_id":"00-0038794",
-        "player_name":"J.McLaughlin",
-        "position":"RB",
-        "team":"DEN",
-        "trade_value":43.9
+        "player_id":"00-0038589",
+        "player_name":"J.Whyle",
+        "position":"TE",
+        "team":"TEN",
+        "trade_value":44.0
+    },
+    {
+        "player_id":"00-0036876",
+        "player_name":"K.Granson",
+        "position":"TE",
+        "team":"IND",
+        "trade_value":44.0
     },
     {
         "player_id":"00-0038117",
         "player_name":"W.Robinson",
         "position":"WR",
         "team":"NYG",
+        "trade_value":43.9
+    },
+    {
+        "player_id":"00-0038794",
+        "player_name":"J.McLaughlin",
+        "position":"RB",
+        "team":"DEN",
         "trade_value":43.9
     },
     {
@@ -1666,18 +1666,18 @@
         "trade_value":43.8
     },
     {
+        "player_id":"00-0033897",
+        "player_name":"J.Mixon",
+        "position":"RB",
+        "team":"HOU",
+        "trade_value":43.7
+    },
+    {
         "player_id":"00-0038134",
         "player_name":"K.Walker",
         "position":"RB",
         "team":"SEA",
         "trade_value":43.7
-    },
-    {
-        "player_id":"00-0037614",
-        "player_name":"J.Metchie",
-        "position":"WR",
-        "team":"HOU",
-        "trade_value":43.6
     },
     {
         "player_id":"00-0037261",
@@ -1694,39 +1694,18 @@
         "trade_value":43.6
     },
     {
-        "player_id":"00-0033897",
-        "player_name":"J.Mixon",
-        "position":"RB",
+        "player_id":"00-0037614",
+        "player_name":"J.Metchie",
+        "position":"WR",
         "team":"HOU",
         "trade_value":43.6
-    },
-    {
-        "player_id":"00-0036422",
-        "player_name":"A.Trautman",
-        "position":"TE",
-        "team":"DEN",
-        "trade_value":43.5
-    },
-    {
-        "player_id":"00-0038394",
-        "player_name":"W.Mallory",
-        "position":"TE",
-        "team":"IND",
-        "trade_value":43.5
     },
     {
         "player_id":"00-0038611",
         "player_name":"C.Rodriguez",
         "position":"RB",
         "team":"WAS",
-        "trade_value":43.5
-    },
-    {
-        "player_id":"00-0039868",
-        "player_name":"T.Franklin",
-        "position":"WR",
-        "team":"DEN",
-        "trade_value":43.5
+        "trade_value":43.6
     },
     {
         "player_id":"00-0039793",
@@ -1743,6 +1722,20 @@
         "trade_value":43.5
     },
     {
+        "player_id":"00-0036422",
+        "player_name":"A.Trautman",
+        "position":"TE",
+        "team":"DEN",
+        "trade_value":43.5
+    },
+    {
+        "player_id":"00-0039868",
+        "player_name":"T.Franklin",
+        "position":"WR",
+        "team":"DEN",
+        "trade_value":43.5
+    },
+    {
         "player_id":"00-0031235",
         "player_name":"O.Beckham",
         "position":"WR",
@@ -1750,10 +1743,17 @@
         "trade_value":43.4
     },
     {
-        "player_id":"00-0035993",
-        "player_name":"T.Huntley",
+        "player_id":"00-0033106",
+        "player_name":"J.Goff",
         "position":"QB",
-        "team":"MIA",
+        "team":"DET",
+        "trade_value":43.4
+    },
+    {
+        "player_id":"00-0038394",
+        "player_name":"W.Mallory",
+        "position":"TE",
+        "team":"IND",
         "trade_value":43.4
     },
     {
@@ -1764,10 +1764,10 @@
         "trade_value":43.4
     },
     {
-        "player_id":"00-0033106",
-        "player_name":"J.Goff",
+        "player_id":"00-0035993",
+        "player_name":"T.Huntley",
         "position":"QB",
-        "team":"DET",
+        "team":"MIA",
         "trade_value":43.4
     },
     {
@@ -1785,13 +1785,6 @@
         "trade_value":43.2
     },
     {
-        "player_id":"00-0039338",
-        "player_name":"B.Bowers",
-        "position":"TE",
-        "team":"LV",
-        "trade_value":43.1
-    },
-    {
         "player_id":"00-0039917",
         "player_name":"M.Penix",
         "position":"QB",
@@ -1799,10 +1792,24 @@
         "trade_value":43.1
     },
     {
+        "player_id":"00-0039338",
+        "player_name":"B.Bowers",
+        "position":"TE",
+        "team":"LV",
+        "trade_value":43.1
+    },
+    {
         "player_id":"00-0039875",
         "player_name":"R.Davis",
         "position":"RB",
         "team":"BUF",
+        "trade_value":43.0
+    },
+    {
+        "player_id":"00-0023459",
+        "player_name":"A.Rodgers",
+        "position":"QB",
+        "team":"NYJ",
         "trade_value":43.0
     },
     {
@@ -1816,13 +1823,6 @@
         "player_id":"00-0038496",
         "player_name":"X.Gipson",
         "position":"WR",
-        "team":"NYJ",
-        "trade_value":43.0
-    },
-    {
-        "player_id":"00-0023459",
-        "player_name":"A.Rodgers",
-        "position":"QB",
         "team":"NYJ",
         "trade_value":43.0
     },
@@ -1855,13 +1855,6 @@
         "trade_value":42.8
     },
     {
-        "player_id":"00-0035676",
-        "player_name":"A.Brown",
-        "position":"WR",
-        "team":"PHI",
-        "trade_value":42.7
-    },
-    {
         "player_id":"00-0031585",
         "player_name":"M.Pruitt",
         "position":"TE",
@@ -1869,17 +1862,24 @@
         "trade_value":42.7
     },
     {
-        "player_id":"00-0039152",
-        "player_name":"W.Levis",
-        "position":"QB",
-        "team":"TEN",
-        "trade_value":42.6
+        "player_id":"00-0035676",
+        "player_name":"A.Brown",
+        "position":"WR",
+        "team":"PHI",
+        "trade_value":42.7
     },
     {
         "player_id":"00-0033555",
         "player_name":"M.Hollins",
         "position":"WR",
         "team":"BUF",
+        "trade_value":42.6
+    },
+    {
+        "player_id":"00-0039152",
+        "player_name":"W.Levis",
+        "position":"QB",
+        "team":"TEN",
         "trade_value":42.6
     },
     {
@@ -1890,24 +1890,10 @@
         "trade_value":42.6
     },
     {
-        "player_id":"00-0037741",
-        "player_name":"J.Dotson",
-        "position":"WR",
-        "team":"PHI",
-        "trade_value":42.5
-    },
-    {
         "player_id":"00-0039052",
         "player_name":"T.Palmer",
         "position":"WR",
         "team":"TB",
-        "trade_value":42.5
-    },
-    {
-        "player_id":"00-0031549",
-        "player_name":"N.Agholor",
-        "position":"WR",
-        "team":"BAL",
         "trade_value":42.5
     },
     {
@@ -1918,31 +1904,24 @@
         "trade_value":42.5
     },
     {
-        "player_id":"00-0033106",
-        "player_name":"J.Goff",
-        "position":"QB",
-        "team":"DET",
-        "trade_value":42.4
+        "player_id":"00-0037741",
+        "player_name":"J.Dotson",
+        "position":"WR",
+        "team":"PHI",
+        "trade_value":42.5
     },
     {
-        "player_id":"00-0038559",
-        "player_name":"M.Wilson",
+        "player_id":"00-0031549",
+        "player_name":"N.Agholor",
         "position":"WR",
-        "team":"ARI",
-        "trade_value":42.4
+        "team":"BAL",
+        "trade_value":42.5
     },
     {
         "player_id":"00-0039391",
         "player_name":"K.Vidal",
         "position":"RB",
         "team":"LAC",
-        "trade_value":42.4
-    },
-    {
-        "player_id":"00-0031588",
-        "player_name":"S.Diggs",
-        "position":"WR",
-        "team":"HOU",
         "trade_value":42.4
     },
     {
@@ -1967,17 +1946,38 @@
         "trade_value":42.4
     },
     {
-        "player_id":"00-0035537",
-        "player_name":"T.Johnson",
-        "position":"RB",
-        "team":"BUF",
-        "trade_value":42.3
+        "player_id":"00-0033106",
+        "player_name":"J.Goff",
+        "position":"QB",
+        "team":"DET",
+        "trade_value":42.4
+    },
+    {
+        "player_id":"00-0031588",
+        "player_name":"S.Diggs",
+        "position":"WR",
+        "team":"HOU",
+        "trade_value":42.4
+    },
+    {
+        "player_id":"00-0038559",
+        "player_name":"M.Wilson",
+        "position":"WR",
+        "team":"ARI",
+        "trade_value":42.4
     },
     {
         "player_id":"00-0036988",
         "player_name":"J.Palmer",
         "position":"WR",
         "team":"LAC",
+        "trade_value":42.3
+    },
+    {
+        "player_id":"00-0035537",
+        "player_name":"T.Johnson",
+        "position":"RB",
+        "team":"BUF",
         "trade_value":42.3
     },
     {
@@ -1995,6 +1995,13 @@
         "trade_value":42.2
     },
     {
+        "player_id":"00-0036955",
+        "player_name":"T.Marshall",
+        "position":"WR",
+        "team":"LV",
+        "trade_value":42.2
+    },
+    {
         "player_id":"00-0039851",
         "player_name":"D.Maye",
         "position":"QB",
@@ -2002,11 +2009,11 @@
         "trade_value":42.2
     },
     {
-        "player_id":"00-0036955",
-        "player_name":"T.Marshall",
-        "position":"WR",
-        "team":"LV",
-        "trade_value":42.2
+        "player_id":"00-0023459",
+        "player_name":"A.Rodgers",
+        "position":"QB",
+        "team":"NYJ",
+        "trade_value":42.1
     },
     {
         "player_id":"00-0033009",
@@ -2023,11 +2030,11 @@
         "trade_value":42.1
     },
     {
-        "player_id":"00-0023459",
-        "player_name":"A.Rodgers",
-        "position":"QB",
-        "team":"NYJ",
-        "trade_value":42.1
+        "player_id":"00-0034351",
+        "player_name":"D.Goedert",
+        "position":"TE",
+        "team":"PHI",
+        "trade_value":42.0
     },
     {
         "player_id":"00-0034960",
@@ -2044,17 +2051,10 @@
         "trade_value":42.0
     },
     {
-        "player_id":"00-0034351",
-        "player_name":"D.Goedert",
+        "player_id":"00-0039041",
+        "player_name":"E.Higgins",
         "position":"TE",
-        "team":"PHI",
-        "trade_value":42.0
-    },
-    {
-        "player_id":"00-0036906",
-        "player_name":"K.Herbert",
-        "position":"RB",
-        "team":"CHI",
+        "team":"ARI",
         "trade_value":42.0
     },
     {
@@ -2065,10 +2065,10 @@
         "trade_value":42.0
     },
     {
-        "player_id":"00-0039041",
-        "player_name":"E.Higgins",
-        "position":"TE",
-        "team":"ARI",
+        "player_id":"00-0036906",
+        "player_name":"K.Herbert",
+        "position":"RB",
+        "team":"CHI",
         "trade_value":42.0
     },
     {
@@ -2077,13 +2077,6 @@
         "position":"QB",
         "team":"LA",
         "trade_value":42.0
-    },
-    {
-        "player_id":"00-0039152",
-        "player_name":"W.Levis",
-        "position":"QB",
-        "team":"TEN",
-        "trade_value":41.9
     },
     {
         "player_id":"00-0039386",
@@ -2100,10 +2093,10 @@
         "trade_value":41.8
     },
     {
-        "player_id":"00-0035535",
-        "player_name":"D.Slayton",
-        "position":"WR",
-        "team":"NYG",
+        "player_id":"00-0039152",
+        "player_name":"W.Levis",
+        "position":"QB",
+        "team":"TEN",
         "trade_value":41.8
     },
     {
@@ -2121,17 +2114,17 @@
         "trade_value":41.8
     },
     {
+        "player_id":"00-0035535",
+        "player_name":"D.Slayton",
+        "position":"WR",
+        "team":"NYG",
+        "trade_value":41.8
+    },
+    {
         "player_id":"00-0039373",
         "player_name":"A.Estime",
         "position":"RB",
         "team":"DEN",
-        "trade_value":41.7
-    },
-    {
-        "player_id":"00-0039751",
-        "player_name":"J.Whittington",
-        "position":"WR",
-        "team":"LA",
         "trade_value":41.7
     },
     {
@@ -2142,11 +2135,25 @@
         "trade_value":41.7
     },
     {
+        "player_id":"00-0039751",
+        "player_name":"J.Whittington",
+        "position":"WR",
+        "team":"LA",
+        "trade_value":41.7
+    },
+    {
         "player_id":"00-0036425",
         "player_name":"D.Dallas",
         "position":"RB",
         "team":"ARI",
         "trade_value":41.7
+    },
+    {
+        "player_id":"00-0033881",
+        "player_name":"E.Engram",
+        "position":"TE",
+        "team":"JAX",
+        "trade_value":41.6
     },
     {
         "player_id":"00-0038621",
@@ -2163,13 +2170,6 @@
         "trade_value":41.6
     },
     {
-        "player_id":"00-0033881",
-        "player_name":"E.Engram",
-        "position":"TE",
-        "team":"JAX",
-        "trade_value":41.5
-    },
-    {
         "player_id":"00-0038104",
         "player_name":"T.Thornton",
         "position":"WR",
@@ -2184,13 +2184,6 @@
         "trade_value":41.4
     },
     {
-        "player_id":"00-0027973",
-        "player_name":"A.Dalton",
-        "position":"QB",
-        "team":"CAR",
-        "trade_value":41.3
-    },
-    {
         "player_id":"00-0037256",
         "player_name":"R.White",
         "position":"RB",
@@ -2198,10 +2191,24 @@
         "trade_value":41.3
     },
     {
-        "player_id":"00-0037838",
-        "player_name":"I.Likely",
-        "position":"TE",
-        "team":"BAL",
+        "player_id":"00-0027973",
+        "player_name":"A.Dalton",
+        "position":"QB",
+        "team":"CAR",
+        "trade_value":41.3
+    },
+    {
+        "player_id":"00-0036971",
+        "player_name":"T.Lawrence",
+        "position":"QB",
+        "team":"JAX",
+        "trade_value":41.3
+    },
+    {
+        "player_id":"00-0039910",
+        "player_name":"J.Daniels",
+        "position":"QB",
+        "team":"WAS",
         "trade_value":41.2
     },
     {
@@ -2212,17 +2219,17 @@
         "trade_value":41.2
     },
     {
+        "player_id":"00-0037838",
+        "player_name":"I.Likely",
+        "position":"TE",
+        "team":"BAL",
+        "trade_value":41.2
+    },
+    {
         "player_id":"00-0036328",
         "player_name":"A.Gibson",
         "position":"RB",
         "team":"NE",
-        "trade_value":41.2
-    },
-    {
-        "player_id":"00-0036971",
-        "player_name":"T.Lawrence",
-        "position":"QB",
-        "team":"JAX",
         "trade_value":41.2
     },
     {
@@ -2231,27 +2238,6 @@
         "position":"WR",
         "team":"CLE",
         "trade_value":41.1
-    },
-    {
-        "player_id":"00-0039910",
-        "player_name":"J.Daniels",
-        "position":"QB",
-        "team":"WAS",
-        "trade_value":41.1
-    },
-    {
-        "player_id":"00-0030061",
-        "player_name":"Z.Ertz",
-        "position":"TE",
-        "team":"WAS",
-        "trade_value":41.0
-    },
-    {
-        "player_id":"00-0037248",
-        "player_name":"J.Cook",
-        "position":"RB",
-        "team":"BUF",
-        "trade_value":41.0
     },
     {
         "player_id":"00-0029263",
@@ -2268,6 +2254,13 @@
         "trade_value":41.0
     },
     {
+        "player_id":"00-0039163",
+        "player_name":"C.Stroud",
+        "position":"QB",
+        "team":"HOU",
+        "trade_value":41.0
+    },
+    {
         "player_id":"00-0039918",
         "player_name":"C.Williams",
         "position":"QB",
@@ -2275,11 +2268,25 @@
         "trade_value":41.0
     },
     {
+        "player_id":"00-0037248",
+        "player_name":"J.Cook",
+        "position":"RB",
+        "team":"BUF",
+        "trade_value":41.0
+    },
+    {
+        "player_id":"00-0030061",
+        "player_name":"Z.Ertz",
+        "position":"TE",
+        "team":"WAS",
+        "trade_value":41.0
+    },
+    {
         "player_id":"00-0038977",
         "player_name":"T.Dell",
         "position":"WR",
         "team":"HOU",
-        "trade_value":40.9
+        "trade_value":41.0
     },
     {
         "player_id":"00-0033873",
@@ -2289,25 +2296,11 @@
         "trade_value":40.9
     },
     {
-        "player_id":"00-0039163",
-        "player_name":"C.Stroud",
-        "position":"QB",
-        "team":"HOU",
-        "trade_value":40.9
-    },
-    {
         "player_id":"00-0036971",
         "player_name":"T.Lawrence",
         "position":"QB",
         "team":"JAX",
-        "trade_value":40.8
-    },
-    {
-        "player_id":"00-0035021",
-        "player_name":"A.Dulin",
-        "position":"WR",
-        "team":"IND",
-        "trade_value":40.7
+        "trade_value":40.9
     },
     {
         "player_id":"00-0039074",
@@ -2315,20 +2308,6 @@
         "position":"TE",
         "team":"LA",
         "trade_value":40.7
-    },
-    {
-        "player_id":"00-0036355",
-        "player_name":"J.Herbert",
-        "position":"QB",
-        "team":"LAC",
-        "trade_value":40.6
-    },
-    {
-        "player_id":"00-0038979",
-        "player_name":"C.Tillman",
-        "position":"WR",
-        "team":"CLE",
-        "trade_value":40.6
     },
     {
         "player_id":"00-0031690",
@@ -2345,18 +2324,32 @@
         "trade_value":40.6
     },
     {
-        "player_id":"00-0039164",
-        "player_name":"A.Richardson",
-        "position":"QB",
-        "team":"IND",
-        "trade_value":40.5
+        "player_id":"00-0036973",
+        "player_name":"T.Etienne",
+        "position":"RB",
+        "team":"JAX",
+        "trade_value":40.6
     },
     {
-        "player_id":"00-0039164",
-        "player_name":"A.Richardson",
-        "position":"QB",
+        "player_id":"00-0035021",
+        "player_name":"A.Dulin",
+        "position":"WR",
         "team":"IND",
-        "trade_value":40.5
+        "trade_value":40.6
+    },
+    {
+        "player_id":"00-0036355",
+        "player_name":"J.Herbert",
+        "position":"QB",
+        "team":"LAC",
+        "trade_value":40.6
+    },
+    {
+        "player_id":"00-0038979",
+        "player_name":"C.Tillman",
+        "position":"WR",
+        "team":"CLE",
+        "trade_value":40.6
     },
     {
         "player_id":"00-0035243",
@@ -2366,38 +2359,10 @@
         "trade_value":40.5
     },
     {
-        "player_id":"00-0036973",
-        "player_name":"T.Etienne",
-        "position":"RB",
-        "team":"JAX",
-        "trade_value":40.5
-    },
-    {
-        "player_id":"00-0038563",
-        "player_name":"T.Tucker",
-        "position":"WR",
-        "team":"LV",
-        "trade_value":40.4
-    },
-    {
         "player_id":"00-0030565",
         "player_name":"G.Smith",
         "position":"QB",
         "team":"SEA",
-        "trade_value":40.4
-    },
-    {
-        "player_id":"00-0036900",
-        "player_name":"J.Chase",
-        "position":"WR",
-        "team":"CIN",
-        "trade_value":40.4
-    },
-    {
-        "player_id":"00-0026158",
-        "player_name":"J.Flacco",
-        "position":"QB",
-        "team":"IND",
         "trade_value":40.4
     },
     {
@@ -2408,6 +2373,34 @@
         "trade_value":40.4
     },
     {
+        "player_id":"00-0036900",
+        "player_name":"J.Chase",
+        "position":"WR",
+        "team":"CIN",
+        "trade_value":40.4
+    },
+    {
+        "player_id":"00-0039164",
+        "player_name":"A.Richardson",
+        "position":"QB",
+        "team":"IND",
+        "trade_value":40.4
+    },
+    {
+        "player_id":"00-0039164",
+        "player_name":"A.Richardson",
+        "position":"QB",
+        "team":"IND",
+        "trade_value":40.4
+    },
+    {
+        "player_id":"00-0038563",
+        "player_name":"T.Tucker",
+        "position":"WR",
+        "team":"LV",
+        "trade_value":40.4
+    },
+    {
         "player_id":"00-0035700",
         "player_name":"J.Jacobs",
         "position":"RB",
@@ -2415,17 +2408,17 @@
         "trade_value":40.3
     },
     {
-        "player_id":"00-0034771",
-        "player_name":"M.Rudolph",
+        "player_id":"00-0026158",
+        "player_name":"J.Flacco",
         "position":"QB",
-        "team":"TEN",
+        "team":"IND",
         "trade_value":40.3
     },
     {
-        "player_id":"00-0035250",
-        "player_name":"D.Singletary",
-        "position":"RB",
-        "team":"NYG",
+        "player_id":"00-0039910",
+        "player_name":"J.Daniels",
+        "position":"QB",
+        "team":"WAS",
         "trade_value":40.3
     },
     {
@@ -2436,11 +2429,11 @@
         "trade_value":40.3
     },
     {
-        "player_id":"00-0039910",
-        "player_name":"J.Daniels",
-        "position":"QB",
-        "team":"WAS",
-        "trade_value":40.2
+        "player_id":"00-0035250",
+        "player_name":"D.Singletary",
+        "position":"RB",
+        "team":"NYG",
+        "trade_value":40.3
     },
     {
         "player_id":"00-0029263",
@@ -2450,10 +2443,10 @@
         "trade_value":40.2
     },
     {
-        "player_id":"00-0035639",
-        "player_name":"P.Campbell",
-        "position":"WR",
-        "team":"PHI",
+        "player_id":"00-0034771",
+        "player_name":"M.Rudolph",
+        "position":"QB",
+        "team":"TEN",
         "trade_value":40.2
     },
     {
@@ -2461,6 +2454,13 @@
         "player_name":"L.Jackson",
         "position":"QB",
         "team":"BAL",
+        "trade_value":40.2
+    },
+    {
+        "player_id":"00-0035639",
+        "player_name":"P.Campbell",
+        "position":"WR",
+        "team":"PHI",
         "trade_value":40.2
     },
     {
@@ -2485,13 +2485,6 @@
         "trade_value":40.0
     },
     {
-        "player_id":"00-0035806",
-        "player_name":"J.Hasty",
-        "position":"RB",
-        "team":"NE",
-        "trade_value":40.0
-    },
-    {
         "player_id":"00-0038122",
         "player_name":"D.Ridder",
         "position":"QB",
@@ -2499,24 +2492,24 @@
         "trade_value":40.0
     },
     {
-        "player_id":"00-0037545",
-        "player_name":"R.Shaheed",
-        "position":"WR",
-        "team":"NO",
-        "trade_value":39.9
-    },
-    {
-        "player_id":"00-0037228",
-        "player_name":"J.Warren",
+        "player_id":"00-0035806",
+        "player_name":"J.Hasty",
         "position":"RB",
-        "team":"PIT",
-        "trade_value":39.9
+        "team":"NE",
+        "trade_value":40.0
     },
     {
         "player_id":"00-0033293",
         "player_name":"A.Jones",
         "position":"RB",
         "team":"MIN",
+        "trade_value":39.9
+    },
+    {
+        "player_id":"00-0037545",
+        "player_name":"R.Shaheed",
+        "position":"WR",
+        "team":"NO",
         "trade_value":39.9
     },
     {
@@ -2527,11 +2520,11 @@
         "trade_value":39.9
     },
     {
-        "player_id":"00-0037258",
-        "player_name":"D.Pierce",
+        "player_id":"00-0037228",
+        "player_name":"J.Warren",
         "position":"RB",
-        "team":"HOU",
-        "trade_value":39.8
+        "team":"PIT",
+        "trade_value":39.9
     },
     {
         "player_id":"00-0034827",
@@ -2541,10 +2534,10 @@
         "trade_value":39.8
     },
     {
-        "player_id":"00-0039032",
-        "player_name":"T.Spears",
+        "player_id":"00-0037258",
+        "player_name":"D.Pierce",
         "position":"RB",
-        "team":"TEN",
+        "team":"HOU",
         "trade_value":39.8
     },
     {
@@ -2555,11 +2548,11 @@
         "trade_value":39.7
     },
     {
-        "player_id":"00-0038705",
-        "player_name":"E.Demercado",
+        "player_id":"00-0039032",
+        "player_name":"T.Spears",
         "position":"RB",
-        "team":"ARI",
-        "trade_value":39.6
+        "team":"TEN",
+        "trade_value":39.7
     },
     {
         "player_id":"00-0035228",
@@ -2569,17 +2562,17 @@
         "trade_value":39.6
     },
     {
-        "player_id":"00-0034771",
-        "player_name":"M.Rudolph",
-        "position":"QB",
-        "team":"TEN",
+        "player_id":"00-0038705",
+        "player_name":"E.Demercado",
+        "position":"RB",
+        "team":"ARI",
         "trade_value":39.6
     },
     {
-        "player_id":"00-0030565",
-        "player_name":"G.Smith",
-        "position":"QB",
-        "team":"SEA",
+        "player_id":"00-0032764",
+        "player_name":"D.Henry",
+        "position":"RB",
+        "team":"BAL",
         "trade_value":39.5
     },
     {
@@ -2590,11 +2583,46 @@
         "trade_value":39.5
     },
     {
-        "player_id":"00-0032764",
-        "player_name":"D.Henry",
-        "position":"RB",
-        "team":"BAL",
+        "player_id":"00-0034771",
+        "player_name":"M.Rudolph",
+        "position":"QB",
+        "team":"TEN",
         "trade_value":39.5
+    },
+    {
+        "player_id":"00-0030565",
+        "player_name":"G.Smith",
+        "position":"QB",
+        "team":"SEA",
+        "trade_value":39.5
+    },
+    {
+        "player_id":"00-0039491",
+        "player_name":"J.Coker",
+        "position":"WR",
+        "team":"CAR",
+        "trade_value":39.4
+    },
+    {
+        "player_id":"00-0033537",
+        "player_name":"D.Watson",
+        "position":"QB",
+        "team":"CLE",
+        "trade_value":39.4
+    },
+    {
+        "player_id":"00-0033943",
+        "player_name":"J.Reynolds",
+        "position":"WR",
+        "team":"DEN",
+        "trade_value":39.4
+    },
+    {
+        "player_id":"00-0036158",
+        "player_name":"J.Dobbins",
+        "position":"RB",
+        "team":"LAC",
+        "trade_value":39.4
     },
     {
         "player_id":"00-0026158",
@@ -2611,38 +2639,10 @@
         "trade_value":39.4
     },
     {
-        "player_id":"00-0033943",
-        "player_name":"J.Reynolds",
-        "position":"WR",
-        "team":"DEN",
-        "trade_value":39.4
-    },
-    {
-        "player_id":"00-0039491",
-        "player_name":"J.Coker",
-        "position":"WR",
-        "team":"CAR",
-        "trade_value":39.4
-    },
-    {
-        "player_id":"00-0036158",
-        "player_name":"J.Dobbins",
-        "position":"RB",
-        "team":"LAC",
-        "trade_value":39.4
-    },
-    {
         "player_id":"00-0038573",
         "player_name":"D.Davis",
         "position":"WR",
         "team":"LAC",
-        "trade_value":39.4
-    },
-    {
-        "player_id":"00-0033537",
-        "player_name":"D.Watson",
-        "position":"QB",
-        "team":"CLE",
         "trade_value":39.4
     },
     {
@@ -2660,17 +2660,17 @@
         "trade_value":39.2
     },
     {
-        "player_id":"00-0034796",
-        "player_name":"L.Jackson",
-        "position":"QB",
-        "team":"BAL",
-        "trade_value":39.1
-    },
-    {
         "player_id":"00-0034348",
         "player_name":"C.Sutton",
         "position":"WR",
         "team":"DEN",
+        "trade_value":39.1
+    },
+    {
+        "player_id":"00-0034796",
+        "player_name":"L.Jackson",
+        "position":"QB",
+        "team":"BAL",
         "trade_value":39.1
     },
     {
@@ -2679,13 +2679,6 @@
         "position":"RB",
         "team":"CLE",
         "trade_value":39.1
-    },
-    {
-        "player_id":"00-0037742",
-        "player_name":"T.Burks",
-        "position":"WR",
-        "team":"TEN",
-        "trade_value":39.0
     },
     {
         "player_id":"00-0036875",
@@ -2702,13 +2695,6 @@
         "trade_value":39.0
     },
     {
-        "player_id":"00-0035228",
-        "player_name":"K.Murray",
-        "position":"QB",
-        "team":"ARI",
-        "trade_value":39.0
-    },
-    {
         "player_id":"00-0036389",
         "player_name":"J.Hurts",
         "position":"QB",
@@ -2721,6 +2707,20 @@
         "position":"RB",
         "team":"SF",
         "trade_value":39.0
+    },
+    {
+        "player_id":"00-0035228",
+        "player_name":"K.Murray",
+        "position":"QB",
+        "team":"ARI",
+        "trade_value":39.0
+    },
+    {
+        "player_id":"00-0037742",
+        "player_name":"T.Burks",
+        "position":"WR",
+        "team":"TEN",
+        "trade_value":38.9
     },
     {
         "player_id":"00-0034272",
@@ -2751,6 +2751,13 @@
         "trade_value":38.7
     },
     {
+        "player_id":"00-0033282",
+        "player_name":"C.Samuel",
+        "position":"WR",
+        "team":"BUF",
+        "trade_value":38.6
+    },
+    {
         "player_id":"00-0039361",
         "player_name":"B.Irving",
         "position":"RB",
@@ -2765,13 +2772,6 @@
         "trade_value":38.6
     },
     {
-        "player_id":"00-0033282",
-        "player_name":"C.Samuel",
-        "position":"WR",
-        "team":"BUF",
-        "trade_value":38.6
-    },
-    {
         "player_id":"00-0036389",
         "player_name":"J.Hurts",
         "position":"QB",
@@ -2779,10 +2779,10 @@
         "trade_value":38.6
     },
     {
-        "player_id":"00-0033040",
-        "player_name":"T.Hill",
-        "position":"WR",
-        "team":"MIA",
+        "player_id":"00-0031280",
+        "player_name":"D.Carr",
+        "position":"QB",
+        "team":"NO",
         "trade_value":38.2
     },
     {
@@ -2800,10 +2800,10 @@
         "trade_value":38.2
     },
     {
-        "player_id":"00-0031280",
-        "player_name":"D.Carr",
-        "position":"QB",
-        "team":"NO",
+        "player_id":"00-0033040",
+        "player_name":"T.Hill",
+        "position":"WR",
+        "team":"MIA",
         "trade_value":38.2
     },
     {
@@ -2811,6 +2811,13 @@
         "player_name":"M.Jones",
         "position":"QB",
         "team":"JAX",
+        "trade_value":38.2
+    },
+    {
+        "player_id":"00-0039849",
+        "player_name":"M.Harrison",
+        "position":"WR",
+        "team":"ARI",
         "trade_value":38.1
     },
     {
@@ -2821,11 +2828,11 @@
         "trade_value":38.1
     },
     {
-        "player_id":"00-0039849",
-        "player_name":"M.Harrison",
+        "player_id":"00-0033307",
+        "player_name":"K.Bourne",
         "position":"WR",
-        "team":"ARI",
-        "trade_value":38.1
+        "team":"NE",
+        "trade_value":38.0
     },
     {
         "player_id":"00-0036626",
@@ -2835,11 +2842,11 @@
         "trade_value":38.0
     },
     {
-        "player_id":"00-0033307",
-        "player_name":"K.Bourne",
+        "player_id":"00-0038124",
+        "player_name":"C.Watson",
         "position":"WR",
-        "team":"NE",
-        "trade_value":38.0
+        "team":"GB",
+        "trade_value":37.9
     },
     {
         "player_id":"00-0034184",
@@ -2849,11 +2856,11 @@
         "trade_value":37.9
     },
     {
-        "player_id":"00-0038124",
-        "player_name":"C.Watson",
-        "position":"WR",
-        "team":"GB",
-        "trade_value":37.9
+        "player_id":"00-0039732",
+        "player_name":"B.Nix",
+        "position":"QB",
+        "team":"DEN",
+        "trade_value":37.8
     },
     {
         "player_id":"00-0034364",
@@ -2870,18 +2877,11 @@
         "trade_value":37.8
     },
     {
-        "player_id":"00-0039732",
-        "player_name":"B.Nix",
-        "position":"QB",
-        "team":"DEN",
+        "player_id":"00-0035659",
+        "player_name":"T.McLaurin",
+        "position":"WR",
+        "team":"WAS",
         "trade_value":37.8
-    },
-    {
-        "player_id":"00-0037197",
-        "player_name":"I.Pacheco",
-        "position":"RB",
-        "team":"KC",
-        "trade_value":37.7
     },
     {
         "player_id":"00-0035640",
@@ -2891,11 +2891,18 @@
         "trade_value":37.7
     },
     {
-        "player_id":"00-0035659",
-        "player_name":"T.McLaurin",
-        "position":"WR",
-        "team":"WAS",
+        "player_id":"00-0037197",
+        "player_name":"I.Pacheco",
+        "position":"RB",
+        "team":"KC",
         "trade_value":37.7
+    },
+    {
+        "player_id":"00-0036972",
+        "player_name":"M.Jones",
+        "position":"QB",
+        "team":"JAX",
+        "trade_value":37.6
     },
     {
         "player_id":"00-0034857",
@@ -2903,6 +2910,20 @@
         "position":"QB",
         "team":"BUF",
         "trade_value":37.6
+    },
+    {
+        "player_id":"00-0032268",
+        "player_name":"M.Mariota",
+        "position":"QB",
+        "team":"WAS",
+        "trade_value":37.5
+    },
+    {
+        "player_id":"00-0037267",
+        "player_name":"J.Ford",
+        "position":"RB",
+        "team":"CLE",
+        "trade_value":37.5
     },
     {
         "player_id":"00-0031381",
@@ -2919,24 +2940,10 @@
         "trade_value":37.5
     },
     {
-        "player_id":"00-0036972",
-        "player_name":"M.Jones",
-        "position":"QB",
-        "team":"JAX",
-        "trade_value":37.5
-    },
-    {
-        "player_id":"00-0037267",
-        "player_name":"J.Ford",
-        "position":"RB",
-        "team":"CLE",
-        "trade_value":37.5
-    },
-    {
-        "player_id":"00-0032268",
-        "player_name":"M.Mariota",
-        "position":"QB",
-        "team":"WAS",
+        "player_id":"00-0038994",
+        "player_name":"J.Addison",
+        "position":"WR",
+        "team":"MIN",
         "trade_value":37.4
     },
     {
@@ -2947,17 +2954,17 @@
         "trade_value":37.4
     },
     {
-        "player_id":"00-0038994",
-        "player_name":"J.Addison",
-        "position":"WR",
-        "team":"MIN",
-        "trade_value":37.4
+        "player_id":"00-0034857",
+        "player_name":"J.Allen",
+        "position":"QB",
+        "team":"BUF",
+        "trade_value":37.2
     },
     {
-        "player_id":"00-0038393",
-        "player_name":"D.Wicks",
+        "player_id":"00-0039916",
+        "player_name":"R.Pearsall",
         "position":"WR",
-        "team":"GB",
+        "team":"SF",
         "trade_value":37.2
     },
     {
@@ -2975,25 +2982,11 @@
         "trade_value":37.2
     },
     {
-        "player_id":"00-0034857",
-        "player_name":"J.Allen",
-        "position":"QB",
-        "team":"BUF",
-        "trade_value":37.2
-    },
-    {
-        "player_id":"00-0039916",
-        "player_name":"R.Pearsall",
+        "player_id":"00-0038393",
+        "player_name":"D.Wicks",
         "position":"WR",
-        "team":"SF",
+        "team":"GB",
         "trade_value":37.2
-    },
-    {
-        "player_id":"00-0036223",
-        "player_name":"J.Taylor",
-        "position":"RB",
-        "team":"IND",
-        "trade_value":37.1
     },
     {
         "player_id":"00-0039732",
@@ -3003,13 +2996,6 @@
         "trade_value":37.1
     },
     {
-        "player_id":"00-0038579",
-        "player_name":"A.O'Connell",
-        "position":"QB",
-        "team":"LV",
-        "trade_value":37.0
-    },
-    {
         "player_id":"00-0029604",
         "player_name":"K.Cousins",
         "position":"QB",
@@ -3017,17 +3003,10 @@
         "trade_value":37.0
     },
     {
-        "player_id":"00-0033077",
-        "player_name":"D.Prescott",
+        "player_id":"00-0038579",
+        "player_name":"A.O'Connell",
         "position":"QB",
-        "team":"DAL",
-        "trade_value":37.0
-    },
-    {
-        "player_id":"00-0036963",
-        "player_name":"A.St. Brown",
-        "position":"WR",
-        "team":"DET",
+        "team":"LV",
         "trade_value":37.0
     },
     {
@@ -3038,11 +3017,32 @@
         "trade_value":37.0
     },
     {
+        "player_id":"00-0033077",
+        "player_name":"D.Prescott",
+        "position":"QB",
+        "team":"DAL",
+        "trade_value":37.0
+    },
+    {
+        "player_id":"00-0036223",
+        "player_name":"J.Taylor",
+        "position":"RB",
+        "team":"IND",
+        "trade_value":37.0
+    },
+    {
+        "player_id":"00-0036963",
+        "player_name":"A.St. Brown",
+        "position":"WR",
+        "team":"DET",
+        "trade_value":37.0
+    },
+    {
         "player_id":"00-0036196",
         "player_name":"G.Davis",
         "position":"WR",
         "team":"JAX",
-        "trade_value":36.9
+        "trade_value":37.0
     },
     {
         "player_id":"00-0037239",
@@ -3052,17 +3052,17 @@
         "trade_value":36.8
     },
     {
-        "player_id":"00-0031236",
-        "player_name":"B.Cooks",
-        "position":"WR",
-        "team":"DAL",
-        "trade_value":36.7
-    },
-    {
         "player_id":"00-0039075",
         "player_name":"P.Nacua",
         "position":"WR",
         "team":"LA",
+        "trade_value":36.7
+    },
+    {
+        "player_id":"00-0031236",
+        "player_name":"B.Cooks",
+        "position":"WR",
+        "team":"DAL",
         "trade_value":36.7
     },
     {
@@ -3087,13 +3087,6 @@
         "trade_value":36.3
     },
     {
-        "player_id":"00-0036252",
-        "player_name":"M.Pittman",
-        "position":"WR",
-        "team":"IND",
-        "trade_value":36.1
-    },
-    {
         "player_id":"00-0033077",
         "player_name":"D.Prescott",
         "position":"QB",
@@ -3115,11 +3108,11 @@
         "trade_value":36.0
     },
     {
-        "player_id":"00-0037263",
-        "player_name":"T.Allgeier",
-        "position":"RB",
-        "team":"ATL",
-        "trade_value":35.9
+        "player_id":"00-0036252",
+        "player_name":"M.Pittman",
+        "position":"WR",
+        "team":"IND",
+        "trade_value":36.0
     },
     {
         "player_id":"00-0036554",
@@ -3136,11 +3129,11 @@
         "trade_value":35.9
     },
     {
-        "player_id":"00-0031687",
-        "player_name":"R.Mostert",
+        "player_id":"00-0037263",
+        "player_name":"T.Allgeier",
         "position":"RB",
-        "team":"MIA",
-        "trade_value":35.8
+        "team":"ATL",
+        "trade_value":35.9
     },
     {
         "player_id":"00-0034791",
@@ -3150,17 +3143,24 @@
         "trade_value":35.8
     },
     {
-        "player_id":"00-0034844",
-        "player_name":"S.Barkley",
+        "player_id":"00-0031687",
+        "player_name":"R.Mostert",
         "position":"RB",
-        "team":"PHI",
-        "trade_value":35.5
+        "team":"MIA",
+        "trade_value":35.8
     },
     {
         "player_id":"00-0038544",
         "player_name":"Q.Johnston",
         "position":"WR",
         "team":"LAC",
+        "trade_value":35.5
+    },
+    {
+        "player_id":"00-0034844",
+        "player_name":"S.Barkley",
+        "position":"RB",
+        "team":"PHI",
         "trade_value":35.5
     },
     {
@@ -3171,17 +3171,17 @@
         "trade_value":35.4
     },
     {
-        "player_id":"00-0036264",
-        "player_name":"J.Love",
-        "position":"QB",
-        "team":"GB",
-        "trade_value":35.3
-    },
-    {
         "player_id":"00-0039337",
         "player_name":"M.Nabers",
         "position":"WR",
         "team":"NYG",
+        "trade_value":35.3
+    },
+    {
+        "player_id":"00-0036264",
+        "player_name":"J.Love",
+        "position":"QB",
+        "team":"GB",
         "trade_value":35.3
     },
     {
@@ -3199,17 +3199,17 @@
         "trade_value":35.1
     },
     {
-        "player_id":"00-0033885",
-        "player_name":"D.Njoku",
-        "position":"TE",
-        "team":"CLE",
-        "trade_value":34.9
-    },
-    {
         "player_id":"00-0034830",
         "player_name":"H.Hurst",
         "position":"TE",
         "team":"LAC",
+        "trade_value":34.9
+    },
+    {
+        "player_id":"00-0033885",
+        "player_name":"D.Njoku",
+        "position":"TE",
+        "team":"CLE",
         "trade_value":34.9
     },
     {
@@ -3241,10 +3241,10 @@
         "trade_value":33.6
     },
     {
-        "player_id":"00-0031503",
-        "player_name":"J.Winston",
-        "position":"QB",
-        "team":"CLE",
+        "player_id":"00-0034383",
+        "player_name":"D.Schultz",
+        "position":"TE",
+        "team":"HOU",
         "trade_value":33.4
     },
     {
@@ -3255,6 +3255,13 @@
         "trade_value":33.4
     },
     {
+        "player_id":"00-0031503",
+        "player_name":"J.Winston",
+        "position":"QB",
+        "team":"CLE",
+        "trade_value":33.4
+    },
+    {
         "player_id":"00-0038608",
         "player_name":"K.Boutte",
         "position":"WR",
@@ -3262,18 +3269,11 @@
         "trade_value":33.4
     },
     {
-        "player_id":"00-0034383",
-        "player_name":"D.Schultz",
-        "position":"TE",
-        "team":"HOU",
-        "trade_value":33.3
-    },
-    {
         "player_id":"00-0034775",
         "player_name":"C.Kirk",
         "position":"WR",
         "team":"JAX",
-        "trade_value":33.1
+        "trade_value":33.2
     },
     {
         "player_id":"00-0035229",
@@ -3311,6 +3311,13 @@
         "trade_value":32.4
     },
     {
+        "player_id":"00-0033891",
+        "player_name":"Z.Jones",
+        "position":"WR",
+        "team":"ARI",
+        "trade_value":32.3
+    },
+    {
         "player_id":"00-0034837",
         "player_name":"C.Ridley",
         "position":"WR",
@@ -3322,13 +3329,6 @@
         "player_name":"G.Everett",
         "position":"TE",
         "team":"CHI",
-        "trade_value":32.3
-    },
-    {
-        "player_id":"00-0033891",
-        "player_name":"Z.Jones",
-        "position":"WR",
-        "team":"ARI",
         "trade_value":32.3
     },
     {
@@ -3364,7 +3364,7 @@
         "player_name":"B.Thomas",
         "position":"WR",
         "team":"JAX",
-        "trade_value":30.6
+        "trade_value":30.7
     },
     {
         "player_id":"00-0039894",
